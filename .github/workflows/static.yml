@@ -30,8 +30,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Adjust this path to where your index.html is located
-          path: './'
+          path: './'  # Upload everything in the root directory
 
       # Step 4: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
