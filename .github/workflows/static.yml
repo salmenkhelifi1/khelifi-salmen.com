@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Static HTML to GitHub Pages
 
 on:
   push:
@@ -15,26 +15,25 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Checkout the repository
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Step 2: Configure GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build Project
-        run: |
-          # Your build commands
-          npm install
-          npm run build
-
+      # Step 3: Upload static HTML files
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './'  # Adjust this to match your build output directory
+          # Adjust this path to where your index.html is located
+          path: './'
 
+      # Step 4: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         id: deployment
