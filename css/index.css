@@ -579,7 +579,7 @@ body {
 
 .about-img img {
   width: 100%;
-  height: 380px;
+  height: 600px;
   padding: 30px;
   border-radius: 40px;
 }
@@ -1458,7 +1458,7 @@ form button:hover {
   width: 100%;
 }
 
-.color-red {
+/* .color-red {
   background: #c70039;
 }
 
@@ -1480,7 +1480,7 @@ form button:hover {
 
 .color-orange {
   background: #dd7631;
-}
+} */
 
 @keyframes rotate {
   0% {
@@ -1577,7 +1577,7 @@ For devices with smaller width like mobile phone
   }
 
   #breaker {
-    height: 50vh;
+    height: 100vh;
     width: 200%;
     background-color: #c70039;
     opacity: 1;
@@ -2103,7 +2103,7 @@ for tabs and large phones
   }
 
   #breaker {
-    height: 50vh;
+    height: 100vh;
     width: 200%;
     background-color: #c70039;
     opacity: 1;
@@ -2209,7 +2209,7 @@ for tabs and large phones
 
   .about-img img {
     width: 100%;
-    height: 380px;
+    height: 580px;
     padding: 30px;
     border-radius: 40px;
   }
@@ -2592,16 +2592,16 @@ for tabs and large phones
   }
 
   .about-img img {
-    width: 100%;
-    height: 600px;
+    width: 90%;
+    height: auto;
     padding: 30px;
-    border-radius: 40px;
+    border-radius: 130px;
     animation: opacity 1.4s ease;
   }
 
   .about-img {
     width: 40%;
-    height: 450px;
+    height: auto;
     padding: 30px;
     border-radius: 40px;
   }

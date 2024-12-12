@@ -1,4 +1,4 @@
-*{
+/* *{
     padding: 0;
     margin:0;
     box-sizing: border-box;
@@ -47,4 +47,4 @@
     0%{ transform : translateX(100%)  translateY(100%)}
     50%{ transform : translateX(-70%) translateY(100%)}
     100%{ transform : translateX(-170%) translateY(100%)}
-}
+} */
