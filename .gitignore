@@ -3,3 +3,6 @@
 /phpmyadmin
 /roundcube
 /themes.zip
+# Local Netlify folder
+.netlify
+.env

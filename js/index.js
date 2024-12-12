@@ -190,3 +190,49 @@ $(function(){
   $('.navigation-close').hover(cursorhover,cursor);
 
 })
+
+
+// email 
+// document.getElementById('myForm').addEventListener('submit', async (event) => {
+//   event.preventDefault(); // Prevent default form submission behavior
+
+//   // Get form values
+//   const name = document.getElementById('name').value;
+//   const email = document.getElementById('email').value;
+//   const subject = document.getElementById('subject').value;
+//   const message = document.getElementById('body').value;
+
+//   // Prepare the payload for the Brevo API
+//   const payload = {
+//     sender: { name: name, email: email }, // Sender details
+//     to: [{ email: "your-recipient@example.com", name: "Recipient Name" }], // Replace with recipient email
+//     subject: subject,
+//     htmlContent: `<p><strong>Name:</strong> ${name}</p>
+//                   <p><strong>Email:</strong> ${email}</p>
+//                   <p><strong>Subject:</strong> ${subject}</p>
+//                   <p><strong>Message:</strong> ${message}</p>`
+//   };
+
+//   try {
+//     // Send the request to Brevo API
+//     const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'api-key': '' // Replace with your actual Brevo API key
+//       },
+//       body: JSON.stringify(payload)
+//     });
+
+//     if (response.ok) {
+//       alert('Email sent successfully!');
+//       document.getElementById('myForm').reset(); // Reset the form
+//     } else {
+//       const error = await response.json();
+//       alert(`Error: ${error.message}`);
+//     }
+//   } catch (err) {
+//     console.error('Error sending email:', err);
+//     alert('Failed to send email. Please try again later.');
+//   }
+// });
