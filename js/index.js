@@ -236,3 +236,29 @@ $(function(){
 //     alert('Failed to send email. Please try again later.');
 //   }
 // });
+
+document.getElementById('myForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+    
+    const form = event.target;
+    const formData = new FormData(form);
+    
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => {
+        if (response.ok) {
+            // Form submitted successfully
+            alert('Thank you for your message!');
+            form.reset(); // Optionally reset the form
+        } else {
+            // Something went wrong
+            alert('Oops! There was a problem submitting your form.');
+        }
+    })
+    .catch(error => {
+        // Network error
+        alert('Oops! Something went wrong.');
+    });
+});

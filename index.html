@@ -516,38 +516,16 @@
       <!-- Contact Form -->
       <div class="contact-form">
         <div class="form-header">Message Me</div>
-        <form id="myForm">
-          <div class="input-line">
-            <input 
-              id="name" 
-              type="text" 
-              name="name" 
-              placeholder="Name" 
-              class="input-name" 
-              required>
-            <input 
-              id="email" 
-              type="email" 
-              name="email" 
-              placeholder="Email" 
-              class="input-name" 
-              required>
-          </div>
-          <input 
-            type="text" 
-            id="subject" 
-            name="subject" 
-            placeholder="Subject" 
-            class="input-subject" 
-            required>
-          <textarea 
-            id="body" 
-            name="message" 
-            class="input-textarea" 
-            placeholder="Message" 
-            required></textarea>
-          <button type="submit" id="submit">Submit</button>
+        <form id="myForm" action="https://formspree.io/f/manyzkbz" method="POST">
+            <div class="input-line">
+                <input id="name" name="name" type="text" placeholder="Name" class="input-name" required>
+                <input id="email" name="email" type="email" placeholder="Email" class="input-name" required>
+            </div>
+            <input type="text" id="subject" name="subject" placeholder="Subject" class="input-subject" required>
+            <textarea id="body" name="body" class="input-textarea" placeholder="Message" required></textarea>
+            <button type="submit" id="submit">Submit</button>
         </form>
+        
       </div>
       <!-- Contact Info -->
       <div class="contact-info">
