@@ -248,6 +248,7 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
         body: formData,
     })
     .then(response => {
+        console.log('Form submission response:', response);
         if (response.ok) {
             // Form submitted successfully
             alert('Thank you for your message!');
@@ -259,6 +260,8 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
     })
     .catch(error => {
         // Network error
+        console.error('Network error:', error);
         alert('Oops! Something went wrong.');
     });
 });
+

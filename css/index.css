@@ -224,7 +224,7 @@ body {
 }
 
 .logo img {
-  height: 80px;
+  height: 40px;
   position: absolute;
   top: 3%;
   left: 2.5%;
@@ -240,7 +240,7 @@ body {
 }
 
 #navigation-bar img {
-  height: 80px;
+  height: 40px;
   position: absolute;
   top: 15%;
   left: 2.5%;
@@ -1800,7 +1800,7 @@ For devices with smaller width like mobile phone
   }
 
   #navigation-bar img {
-    height: 80px;
+    height: 40px;
     position: absolute;
     top: 15%;
     left: 2.5%;
@@ -2344,7 +2344,7 @@ for tabs and large phones
   }
 
   #navigation-bar img {
-    height: 80px;
+    height: 40px;
     position: absolute;
     top: 15%;
     left: 2.5%;
