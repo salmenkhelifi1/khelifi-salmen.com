@@ -237,7 +237,6 @@ body {
 
 img:hover {
   opacity: 1;
-  transform: rotate(-45deg) scale(1.1);
   background-color: #105fde; /* Change background to white on hover */
   color: black; /* Adjust the text color for contrast */
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Add shadow effect */
