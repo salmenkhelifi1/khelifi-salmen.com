@@ -1,680 +1,881 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
+<html lang="en" class="scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Enhanced SEO Meta Tags -->
-    <title>Khelifi Salmen - Expert Full Stack Web Developer | React, Vue.js, Node.js, WordPress</title>
-    <meta name="description" content="Professional Full Stack Web Developer with 3+ years experience. Specializing in React, Vue.js, Node.js, Laravel, WordPress, and n8n automation. Based in Vietnam, serving clients globally." />
-    <meta name="keywords" content="Full Stack Developer, Web Development, React Developer, Vue.js Expert, Node.js, Laravel, WordPress Developer, n8n Automation, DevOps, Tunisia Developer, Vietnam Developer, E-commerce Development, API Development, Database Design" />
-    <meta name="author" content="Khelifi Salmen" />
-    <meta name="robots" content="index, follow" />
-    <meta name="language" content="English" />
-    <meta name="revisit-after" content="7 days" />
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Khelifi Salmen - Expert Full Stack Web Developer" />
-    <meta property="og:description" content="Professional Full Stack Developer with 3+ years experience specializing in modern web technologies and automation solutions." />
-    <meta property="og:image" content="images/khelifi_salmen-2.png" />
-    <meta property="og:url" content="https://khelifi-salmen.com" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Khelifi Salmen Portfolio" />
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Khelifi Salmen - Expert Full Stack Web Developer" />
-    <meta name="twitter:description" content="Professional Full Stack Developer with 3+ years experience specializing in modern web technologies." />
-    <meta name="twitter:image" content="images/khelifi_salmen-2.png" />
-    
-    <!-- Technical Meta Tags -->
-    <meta name="theme-color" content="#2563eb" />
-    <link rel="canonical" href="https://khelifi-salmen.com" />
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="images/icon_salmen.svg">
-    <link rel="apple-touch-icon" href="images/icon_salmen.svg">
-    
-    <!-- Schema.org structured data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Khelifi Salmen",
-        "jobTitle": "Full Stack Web Developer",
-        "description": "Expert Full Stack Developer with 3+ years experience in React, Vue.js, Node.js, Laravel, WordPress, and automation solutions",
-        "url": "https://khelifi-salmen.com",
-        "email": "khelifisalmen9@gmail.com",
-        "telephone": "+84961566302",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Da Nang",
-            "addressCountry": "Vietnam"
-        },
-        "sameAs": [
-            "https://www.linkedin.com/in/salmen-khelifi/",
-            "https://github.com/salmenkhelifi1",
-            "https://www.freelancer.com/u/khelifisalmen"
-        ],
-        "knowsAbout": [
-            "Full Stack Development",
-            "React.js",
-            "Vue.js",
-            "Node.js",
-            "Laravel",
-            "WordPress",
-            "n8n Automation",
-            "DevOps",
-            "API Development",
-            "Database Design"
-        ]
-    }
-    </script>
-    
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/color-blue.css">
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="images/khelifi_salmen-2.png" as="image">
-    <link rel="preload" href="css/index.css" as="style">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js" defer></script>
-
-    </head>
-
-<body>
-    <!--contains all the div-->
-    <div id="all">
-        <!--mouse  follower-->
-        <div class="cursor"></div>
-        <!--mouse  follower-->
-        <!--loader-->
-        <!-- <div id="loader">
-            <span class="color">khelifi</span>salmen
-        </div> -->
-        <!--loader-end-->
-        <!--link-screen-->
-        <div id="breaker">
-        </div>
-        <div id="breaker-two">
-        </div>
-        <!--link-screen-->
-        <!--Main-Section-->
-        <!--Navigator-fullscreen-->
-        <div id="navigation-content">
-            <div class="logo">
-                <img src="images/salmen_logo.png" alt="logo">
-            </div>
-            <div class="navigation-close">
-                <span class="close-first"></span>
-                <span class="close-second"></span>
-            </div>
-            <div class="navigation-links">
-                <a href="#" data-text="HOME" id="home-link">HOME</a>
-                <a href="#" data-text="ABOUT" id="about-link">ABOUT</a>
-                <a href="#" data-text="BLOG" id="blog-link">BLOG</a>
-                <a href="#" data-text="PORTFOLIO" id="portfolio-link">PORTFOLIO</a>
-                <a href="#" data-text="CONTACT" id="contact-link">CONTACT</a>
-            </div>
-        </div>
-        <!--Navigator-Fullscreen END-->
-        <!--Home Page-->
-        <!--Menubar-->
-        <div id="navigation-bar">
-            <img src="images/salmen_logo.png" alt="logo">
-            <div class="menubar">
-                <span class="first-span"></span>
-                <span class="second-span"></span>
-                <span class="third-span"></span>
-            </div>
-        </div>
-        <!--Menubar End-->
-        <!--Header-->
-        <div id="header">
-            <div id="particles"></div>
-            <!--Social Media Links-->
-            <div class="social-media-links">
-                <a href="https://www.instagram.com/khelifi.salmen/"><img src="images/instagram logo.png"
-                        class="social-media"
-                        alt="instagram-logo"></a><!--Your instagram homepage link inser in place of "#"-->
-                <a href="https://www.facebook.com/khelifisalmen1"><img src="images/facebook logo.png"
-                        class="social-media" alt="facebook-logo"></a>
-                <a href="https://www.linkedin.com/in/salmen-khelifi/"><img src="images/linkedin logo.png"
-                        class="social-media" alt="linkedin-logo"></a>
-                <a href="https://github.com/salmenkhelifi1"><img src="images/twitter logo.png" class="social-media"
-                        alt="github-logo"></a>
-
-            </div>
-            <!--Social Media Links end-->
-            <div class="header-content">
-                <div class="header-content-box">
-                    <div class="firstline"><span class="color">khelifi </span>salmen</div>
-                    <div class="secondline">
-                        I'm a
-                        <span class="txt-rotate color" data-period="1200" data-rotate='[
-            "Full Stack Development",
-            "React.js Development",
-            "nestJs Development",
-            "Node.js Development",
-            
-            "WordPress Development",
-            "n8n Automation",
-            "DevOps Specialist",
-            "API Development & Integration"
-           
-        ]'></span>
-                        <span class="slash">|</span>
-                    </div>
-                    <div class="contact">
-                        <a href="Mailto:khelifisalmen9@gmail.com"><img src="images/mail.png" alt="email-pic"
-                                class="contactpic"></a><!--Your email Id write in place of "#"-->
-                        <a href="Tel:+84 961566302"><img src="images/call.png" alt="phone-pic"
-                                class="contactpic"></a><!--Your telephone number Id write in place of "#"-->
-                    </div>
-                </div>
-            </div>
-            <!--header image-->
-            <div class="header-image">
-                <img src="images/khelifi_salmen-2.png" alt="logo">
-            </div>
-            <!--header image end-->
-        </div>
-        <!--Header End-->
-        <!--HomePage End-->
-        <!--Main-Section End-->
-        <!--about-->
-        <div id="about">
-
-            <!--about content-->
-            <div id="about-content">
-                <div class="about-header">
-                    About <span class="color">Me</span>
-                    <span class="header-caption">Get to Know <span class="color"> me.</span></span>
-                </div>
-                <div class="about-main">
-                    <div class="about-first-paragraph wow">
-                        <!--about description-->
-                        <span class="about-first-line">
-                              I'm Salmen Khelifi, a <span class="color">Full Stack Web Developer & Automation Specialist</span> 
-                            based in Da Nang, Vietnam
-                        <br>
-                        <span class="about-second-line">With over 3 years of professional experience, I specialize in creating scalable web applications 
-                            and intelligent automation solutions that drive business growth. My expertise spans modern 
-                            frontend frameworks (React, Vue.js), robust backend systems (Node.js, Laravel, PHP), 
-                            and cutting-edge automation tools (n8n).
-                            <br><br>
-                            I've successfully delivered projects for clients across France, Belgium, USA, and Canada, 
-                            with a 100% on-time delivery rate and 4.9/5 client satisfaction score on Freelancer.com. 
-                            I'm passionate about building performant, secure, and user-centric solutions that solve 
-                            real-world problems. <div class="cv">
-                            <a href="/khelifi_salmen.Resume_.pdf" target="_blank" rel="noopener noreferrer"><button>Download <span
-                                        class="colors">CV</span></button></a>
-                        </div>
-                    </div>
-                    <!--about picture-->
-                    <div class="about-img">
-                        <img src="images/about_khelifi_salmen.JPG" alt="Your Image">
-                    </div>
-                </div>
-
-            </div>
-            <!--services start-->
-            <div id="services">
-
-                <!--services header-->
-                <div class="services-heading wow">
-                    <span class="color">My</span> Services
-                </div>
-                <!--services header end-->
-                <!--services content-->
-                <div class="services-content">
-                    <div class="service-one service wow">
-                        <div class="service-img">
-                            <img src="images/coding.png" alt="service-one">
-                        </div>
-                        <div class="service-description">
-                            <h2>Web Development</h2>
-                            <p>Building high-quality, responsive websites that drive business growth.</p>
-                        </div>
-                    </div>
-                    <div class="service-two service wow">
-                        <div class="service-img">
-                            <img src="images/wordpress-logo.png" alt="service-two">
-                        </div>
-                        <div class="service-description">
-                            <h2>CMS Development</h2>
-                            <p>Developing and customizing CMS platforms for easy content management.</p>
-                        </div>
-                    </div>
-                    <div class="service-three service wow">
-                        <div class="service-img">
-                            <img src="images/PngItem_1620106.png" alt="service-three">
-                        </div>
-                        <div class="service-description">
-                            <h2>Server Management</h2>
-                            <p>Configuring and managing servers for optimal performance and security.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--services content end-->
-            <!--services end-->
-            <div id="skills">
-                <div class="skills-header">
-                    My <span class="color"> Skills</span>
-                </div>
-                <div class="skills-content " style="text-align: center;">
-                    <div class="skill-html skill">
-                        <div class="skill-text">
-                            <div class="html">
-                                React
-                            </div>
-                        </div>
-                        <div class="html-prog wow prog">
-                            <div class="html-progress wow">95%</div>
-                        </div>
-                    </div>
-                    <div class="skill-html skill">
-                        <div class="skill-text">
-                            <div class="html">
-                                Node.js
-                            </div>
-                        </div>
-                        <div class="html-prog wow prog">
-                            <div class="js-progress wow">90%</div>
-                        </div>
-                    </div>
-                    <div class="skill-html skill">
-                        <div class="skill-text">
-                            <div class="html">
-                                Vue.js
-                            </div>
-                        </div>
-                        <div class="html-prog wow prog">
-                            <div class="adobe-progress wow">83%</div>
-                        </div>
-                    </div>
-                    <div class="skill-html skill">
-                        <div class="skill-text">
-                            <div class="html">
-                                MongoDB & MySQL
-                            </div>
-                        </div>
-                        <div class="html-prog wow prog">
-                            <div class="php-progress wow">87%</div>
-                        </div>
-                    </div>
-                    <div class="skill-html skill">
-                        <div class="skill-text">
-                            <div class="html">
-                                WordPress
-                            </div>
-                        </div>
-                        <div class="html-prog wow prog">
-                            <div class="jquery-progress wow">94%</div>
-                        </div>
-                    </div>
-                    <div class="skill-html skill">
-                        <div class="skill-text">
-                            <div class="html">
-                                MongoDB & MySQL
-                            </div>
-                        </div>
-                        <div class="html-prog wow prog">
-                            <div class="seo-progress wow">84%</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skills-content " style="text-align: center;">
-                    <div class="skill-html skill">
-                        <div class="skill-text">
-                            <div class="html">
-                                PHP & Laravel
-                            </div>
-                        </div>
-                        <div class="html-prog wow prog">
-                            <div class="html-progress wow">95%</div>
-                        </div>
-                    </div>
-                    <div class="skill-html skill">
-                        <div class="skill-text">
-                            <div class="html">
-                                Linux
-                            </div>
-                        </div>
-                        <div class="html-prog wow prog">
-                            <div class="js-progress wow">90%</div>
-                        </div>
-                    </div>
-                    <div class="skill-html skill">
-                        <div class="skill-text">
-                            <div class="html">
-                                Adobe AI, Ps, XD, figma
-                            </div>
-                        </div>
-                        <div class="html-prog wow prog">
-                            <div class="adobe-progress wow">83%</div>
-                        </div>
-                    </div>
-                    <div class="skill-html skill">
-                        <div class="skill-text">
-                            <div class="html">
-                                Docker
-                            </div>
-                        </div>
-                        <div class="html-prog wow prog">
-                            <div class="php-progress wow">87%</div>
-                        </div>
-                    </div>
-                    <div class="skill-html skill">
-                        <div class="skill-text">
-                            <div class="html">
-                                AWS
-                            </div>
-                        </div>
-                        <div class="html-prog wow prog">
-                            <div class="jquery-progress wow">94%</div>
-                        </div>
-                    </div>
-                    <div class="skill-html skill">
-                        <div class="skill-text">
-                            <div class="html">
-                                SEO
-                            </div>
-                        </div>
-                        <div class="html-prog wow prog">
-                            <div class="seo-progress wow">84%</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--copyright-section You Can Remove After Downloading-->
-            <div class="footer">
-                <div class="footer-text">
-                    <img src="./images/copyright.png" alt="copyright-img" class="images" height="14px"> KHELIFI SALMEN
-                </div>
-            </div>
-            <!--copyright-section-->
-        </div>
-        <!--about end-->
-        <!--portfolio-->
-        <div id="portfolio">
-
-            <div class="portfolio-header"> <span class="color"> My </span> Portfolio
-                <span class="header-caption"> Some Of My <span class="color"> Works</span></span>
-            </div>
-            <div id="portfolio-content">
-                <div class="portfolio portfolio-first">
-                    <div class="portfolio-image">
-                        <img src="images/chaktech_1.png" alt="portfolio-first">
-                    </div>
-                    <div class="portfolio-text">
-                        <h2>chaktech.tn
-                        </h2>
-                        <p>Chaktech.tn is an eCommerce website built with WordPress, designed to provide a seamless
-                            online shopping experience for a local phone store. The platform offers an intuitive user
-                            interface, allowing customers to browse, search, and purchase the latest mobile devices and
-                            accessories. Integrated with secure payment options and optimized for performance, the
-                            website delivers a user-friendly experience across all devices, making it easier for the
-                            store to reach its local market online.</p>
-                        <div class="button"><a href="https://chaktech.tn/"><button><span class="index">
-                                        View Project<i class="gg-arrow-right"></i></span></button></a></div>
-                    </div>
-                </div>
-                <div class="portfolio portfolio-second">
-                    <div class="portfolio-image">
-                        <img src="images/chab-ka.png" alt="portfolio-second">
-                    </div>
-                    <div class="portfolio-text">
-                        <h2>chab-ka</h2>
-                        <p>Chab-ka, a concept store specializing in unique, handcrafted artisanal products. The site features a clean and modern design that highlights the authenticity and craftsmanship of the products</p>
-                        <div class="button"><a href="https://chab-ka.com/"><button><span class="index">
-                                        View Project<i class="gg-arrow-right"></i></span></button></a></div>
-                    </div>
-                </div>   <div class="portfolio portfolio-second">
-                    <div class="portfolio-image">
-                        <img src="images/blog-sainteagnes.png" alt="portfolio-second">
-                    </div>
-                    <div class="portfolio-text">
-                        <h2>blog-sainteagnes</h2>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id cumque placeat minima ad
-                            laudantium suscipit
-                            voluptatem ducimus. Id cumque placeat minima ad laudantium suscipit voluptatem ducimus</p>
-                        <div class="button"><a href="https://blog-sainteagnes.fr/"><button><span class="index">
-                                        View Project<i class="gg-arrow-right"></i></span></button></a></div>
-                    </div>
-                </div>   <div class="portfolio portfolio-second">
-                    <div class="portfolio-image">
-                        <img src="images/HTI.png" alt="portfolio-second">
-                    </div>
-                    <div class="portfolio-text">
-                        <h2>HTI</h2>
-                        <p>LHTI.tn, a professional e-commerce website for an electronics and surveillance equipment retailer. Built on WordPress and WooCommerce, the platform provides a seamless shopping experience</p>
-                        <div class="button"><a href="https://HTI.tn/"><button><span class="index">
-                                        View Project<i class="gg-arrow-right"></i></span></button></a></div>
-                    </div>
-                </div>
-
-                <div class="portfolio portfolio-third">
-                    <div class="portfolio-image">
-                        <img src="images/Velyssa.png" alt="portfolio-third">
-                    </div>
-                    <div class="portfolio-text">
-                        <h2>velyssa</h2>
-                        <p>Velyssa, a fashion brand. The site features a clean and modern design, showcasing their latest collections and products. Utilizing WordPress and WooCommerce, I ensured a seamless shopping experience with features like product categories, detailed product pages, and a user-friendly checkout process.</p>
-                        <div class="button"><a href="https://velyssa.com/"><button><span class="index"> View Project<i
-                                            class="gg-arrow-right"></i></span></button></a></div>
-                    </div>
-                </div>
-                <div class="portfolio portfolio-fourth">
-                    <div class=" portfolio-image">
-                        <img src="images/digitrends.png" alt="portfolio-fourth">
-                    </div>
-                    <div class="portfolio-text">
-                        <h2>digitrends</h2>
-                        <p>L'excellence opérationnelle & L'innovation digitale: Deux forces, une transformation
-Là où l’excellence opérationnelle rencontre l’innovation digitale, naît une transformation complète de votre entreprise.</p>
-                        <div class="button"><a href="https://digitrends.pro/"><button><span class="index"> View Project<i
-                                            class="gg-arrow-right"></i></span></button></a></div>
-                    </div>
-                </div><div class="portfolio portfolio-fourth">
-                    <div class=" portfolio-image">
-                        <img src="images/rentiora.png" alt="portfolio-fourth">
-                    </div>
-                    <div class="portfolio-text">
-                        <h2>rentiora</h2>
-                        <p>100% Trusted car rental platform in the World
-Experience the ultimate in comfort, performance, and sophistication with our luxury car rentals. From sleek sedans and stylish coupes to spacious SUVs and elegant convertibles, we offer a range of premium vehicles to suit your preferences and lifestyle.</p>
-                        <div class="button"><a href="https://rentiora.com/"><button><span class="index"> View Project<i
-                                            class="gg-arrow-right"></i></span></button></a></div>
-                    </div>
-                </div>
-            </div>
-            <!--copyright-section You Can Remove After Downloading-->
-            <div class="footer">
-                <div class="footer-text">
-                    <img src="./images/copyright.png" alt="copyright-img" class="images" height="14px"> KHELIFI SALMEN
-                </div>
-            </div>
-            <!--copyright-section-->
-        </div>
-        <!--portfolio end-->
-        <!--blog-->
-        <div id="blog">
-
-            <div class="blog-header"> Blogs</span>
-                <span class="header-caption"> My Latest <span class="color"> blog posts.</span></span>
-            </div>
-            <div class="blog-content">
-                <div class="blogs">
-                    <a href="#">
-                        <div class="img">
-                            <img src="images/Mastering the Art of Full-Stack Development.png" alt="blog-one">
-                            <div class="blog-date">8 May,24</div>
-                        </div>
-                        <div class="blog-text">
-                            <h3>Mastering the Art of Full-Stack Development</h3>
-                            <p>In the fast-paced world of web development, staying updated with the latest tools and technologies is critical. This blog explores the must-have tools for both front-end and back-end development in 2024, such as React, Vue.js, Node.js, and Laravel. It delves into why mastering APIs, databases, and version control systems like Git is essential for delivering high-quality projects.
-                                .</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="blogs">
-                    <a href="#">
-                        <div class="img">
-                            <img src="images/Building Scalable Full-Stack Applications.png" alt="blog-two">
-                            <div class="blog-date">16 Jan,24</div>
-                        </div>
-                        <div class="blog-text">
-                            <h3>Building Scalable Full-Stack Applications</h3>
-                            <p>Scalability is the backbone of any successful application. This blog outlines strategies for building scalable full-stack applications, focusing on database optimization, caching, and cloud infrastructure. It also highlights how to use tools like Redis, AWS, and microservices architecture to handle increased user loads efficiently.
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="blogs">
-                    <a href="#">
-                        <div class="img">
-                            <img src="images/ntegrating Modern Front-End Frameworks with Secure Back-End APIs.png" alt="blog-three">
-                            <div class="blog-date">30 Nov,24</div>
-                        </div>
-                        <div class="blog-text">
-                            <h3>ntegrating Modern Front-End Frameworks with Secure Back-End APIs</h3>
-                            <p>Combining modern front-end frameworks with secure back-end APIs ensures a seamless user experience. This blog provides a step-by-step guide to integrating Vue.js or React with Node.js or Django backends, emphasizing security measures like authentication, authorization, and data validation.
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="blogs">
-                    <a href="#">
-                        <div class="img">
-                            <img src="images/Automating Deployments for Full-Stack Applications.png" alt="blog-four">
-                            <div class="blog-date">6 Jul,24</div>
-                        </div>
-                        <div class="blog-text">
-                            <h3>Automating Deployments for Full-Stack Applications</h3>
-                            <p>Manual deployments are a thing of the past. This blog walks readers through setting up automated deployments using Jenkins, GitHub Actions, or Docker. It demonstrates how automation improves consistency, reduces downtime, and accelerates release cycles.
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="blogs">
-                    <a href="#">
-                        <div class="img">
-                            <img src="images/DevOps for Full-Stack Developers.png" alt="blog-five">
-                            <div class="blog-date">1 Jun,24</div>
-                        </div>
-                        <div class="blog-text">
-                            <h3>DevOps for Full-Stack Developers</h3>
-                            <p>DevOps is not just a buzzword; it’s a critical skill for full-stack developers. This blog discusses the importance of CI/CD pipelines, containerization, and Infrastructure as Code (IaC). It also provides actionable steps for adopting DevOps practices to enhance collaboration between development and operations teams.
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="blogs">
-                    <a href="#">
-                        <div class="img">
-                            <img src="images/Monitoring and Debugging in Production.png" alt="blog-six">
-                            <div class="blog-date">28 Feb,24</div>
-                        </div>
-                        <div class="blog-text">
-                            <h3>Monitoring and Debugging in Production</h3>
-                            <p>Monitoring and debugging are essential to maintaining a reliable application. This blog introduces tools like Prometheus, Grafana, and Sentry to monitor performance and track errors in real-time. It also covers best practices for debugging in production without disrupting user experiences.
-                            </p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!--copyright-section You Can Remove After Downloading-->
-            <div class="footer">
-                <div class="footer-text">
-                    <img src="./images/copyright.png" alt="copyright-img" class="images" height="14px"> KHELIFI SALMEN 2024/2025
-                </div>
-            </div>
-            <!--copyright-section-->
-        </div>
-        <!--blog end-->
-        <!--contact-->
-       <!-- Contact Section -->
-<div id="contact">
-    <div class="contact-header">
-      Contact <span class="color">Me</span>
-      <div class="contact-header-caption">
-        <span class="color">Get</span> In Touch.
-      </div>
-    </div>
-    <div class="contact-content">
-      <!-- Contact Form -->
-      <div class="contact-form">
-        <div class="form-header">Message Me</div>
-        <form id="myForm" action="https://formspree.io/f/manyzkbz" method="POST">
-            <div class="input-line">
-                <input id="name" name="name" type="text" placeholder="Name" class="input-name" required>
-                <input id="email" name="email" type="email" placeholder="Email" class="input-name" required>
-            </div>
-            <input type="text" id="subject" name="subject" placeholder="Subject" class="input-subject" required>
-            <textarea id="body" name="body" class="input-textarea" placeholder="Message" required></textarea>
-            <button type="submit" id="submit">Submit</button>
-        </form>
+    <title>Salmen Khelifi | Full-Stack, Mobile & Automation Expert</title>
+    <meta name="description" content="Portfolio of Salmen Khelifi - Expert in Full-Stack Web Apps, Flutter Mobile Development, n8n Automation, and WordPress/Shopify Solutions.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-color: #030303;
+            --card-bg: #0f0f10;
+            --accent: #3b82f6;
+            --accent-2: #8b5cf6;
+            --accent-3: #22d3ee;
+            --accent-soft: rgba(59, 130, 246, 0.2);
+            --border-soft: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --text-soft: #cbd5e1;
+            --shadow-soft: 0 20px 50px -30px rgba(0, 0, 0, 0.8);
+            --shadow-strong: 0 30px 70px -40px rgba(0, 0, 0, 0.9);
+            --scroll-y: 0px;
+        }
         
-      </div>
-      <!-- Contact Info -->
-      <div class="contact-info">
-        <div class="contact-info-header">Contact Info</div>
-        <div class="contact-info-content">
-          <div class="contact-info-content-line">
-            <img src="./images/icon-name.png" class="icon" alt="name-icon">
-            <div class="contact-info-icon-text">
-              <h6>Name</h6>
-              <p>Khelifi Salmen</p>
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Manrope', sans-serif;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 15% 10%, rgba(59, 130, 246, 0.14), transparent 40%),
+                radial-gradient(circle at 85% 20%, rgba(139, 92, 246, 0.12), transparent 45%),
+                radial-gradient(circle at 50% 0%, #111 0%, #030303 55%);
+        }
+
+        /* --- Animations --- */
+        
+        /* Smooth Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Blobs Animation */
+        @keyframes blob-bounce {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        .blob {
+            position: absolute;
+            filter: blur(90px);
+            opacity: 0.35;
+            animation: blob-bounce 12s infinite alternate;
+            z-index: -1;
+        }
+
+        /* Infinite Marquee */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: scroll 40s linear infinite;
+        }
+        .marquee-item {
+            display: inline-block;
+            padding: 0 3rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.2);
+            letter-spacing: 0.04em;
+            transition: color 0.3s;
+        }
+        .marquee-item:hover {
+            color: white;
+            cursor: default;
+        }
+
+        /* --- Mockup Containers --- */
+        .mockup-container {
+            perspective: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px; 
+        }
+
+        /* Phone Mockup */
+        .phone-mockup {
+            width: 260px;
+            height: 520px;
+            background: #1a1a1a;
+            border-radius: 40px;
+            border: 6px solid #2a2a2a;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .group:hover .phone-mockup {
+            transform: translateY(-10px) rotateY(-5deg);
+            border-color: #444;
+        }
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 24px;
+            background: #2a2a2a;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            z-index: 10;
+        }
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Laptop Mockup */
+        .laptop-wrapper {
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .group:hover .laptop-wrapper {
+            transform: translateY(-5px) rotateX(2deg);
+        }
+        .laptop-screen-frame {
+            width: 340px;
+            height: 210px;
+            background: #1a1a1a;
+            border: 6px solid #2a2a2a;
+            border-radius: 12px 12px 0 0;
+            position: relative;
+            margin: 0 auto;
+            transition: border-color 0.3s;
+        }
+        .group:hover .laptop-screen-frame {
+             border-color: #444;
+        }
+        .laptop-screen {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            background-size: cover;
+            background-position: top center;
+            overflow: hidden;
+        }
+        .laptop-base {
+            width: 400px;
+            height: 14px;
+            background: #2a2a2a;
+            border-radius: 0 0 12px 12px;
+            margin: 0 auto;
+            position: relative;
+            margin-top: -1px;
+            box-shadow: 0 20px 40px -5px rgba(0,0,0,0.6);
+        }
+        /* Laptop Responsive */
+        @media (max-width: 450px) {
+            .laptop-screen-frame { width: 260px; height: 160px; }
+            .laptop-base { width: 300px; }
+        }
+
+        /* Modern Cards */
+        .modern-card {
+            position: relative;
+            background: linear-gradient(180deg, rgba(22, 22, 22, 0.9) 0%, rgba(12, 12, 12, 0.7) 100%);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease, border-color 0.45s ease;
+            overflow: hidden;
+        }
+        .modern-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(500px circle at 15% 10%, rgba(59, 130, 246, 0.15), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.45s ease;
+        }
+        .modern-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        .modern-card:hover {
+            border-color: rgba(59, 130, 246, 0.35);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 70px -40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(59, 130, 246, 0.15);
+        }
+        .modern-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Text Gradient */
+        .text-gradient {
+            background: linear-gradient(to right bottom, #fff 30%, #9ca3af 90%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Nav Blur */
+        .nav-blur {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background: rgba(3, 3, 3, 0.6);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            box-shadow: 0 10px 30px -20px rgba(0, 0, 0, 0.8);
+        }
+
+        .section-title {
+            letter-spacing: -0.02em;
+        }
+
+        .hero-section {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            border-color: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 6vw, 6rem);
+            line-height: 1.02;
+            letter-spacing: -0.02em;
+            text-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+            color: var(--text-soft);
+        }
+
+        .hero-actions {
+            gap: 1.25rem;
+        }
+
+        .cta-button {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.95rem 2rem;
+            border-radius: 999px;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, background 0.35s ease, color 0.35s ease;
+            box-shadow: 0 18px 35px -25px rgba(0, 0, 0, 0.9);
+        }
+
+        .cta-button::after {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, #ffffff 0%, #e5e7eb 100%);
+            color: #050505;
+        }
+
+        .cta-primary::after {
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.45);
+        }
+
+        .cta-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .cta-secondary::after {
+            box-shadow: 0 0 22px rgba(139, 92, 246, 0.35);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        .cta-button:hover::after {
+            opacity: 1;
+        }
+
+        .cta-small {
+            padding: 0.6rem 1.5rem;
+        }
+
+        .service-card h3 {
+            letter-spacing: -0.01em;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+        }
+
+        .service-icon {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.15));
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -20px rgba(59, 130, 246, 0.5);
+        }
+
+        .project-card {
+            position: relative;
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease;
+        }
+
+        .project-card::after {
+            content: "";
+            position: absolute;
+            inset: -24px;
+            border-radius: 32px;
+            background: radial-gradient(600px circle at 20% 0%, rgba(59, 130, 246, 0.12), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.45s ease;
+            pointer-events: none;
+        }
+
+        .project-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .project-card:hover::after {
+            opacity: 1;
+        }
+
+        .project-card h3 {
+            transition: color 0.35s ease;
+        }
+
+        .project-card:hover h3 {
+            color: #ffffff;
+        }
+
+        .project-link {
+            transition: color 0.3s ease;
+        }
+
+        .project-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-link i {
+            transform: translateX(4px);
+        }
+
+        .project-card .mockup-container {
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease;
+        }
+
+        .project-card:hover .mockup-container {
+            transform: translateY(-6px);
+            filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.5));
+        }
+
+        .about-panel {
+            background: linear-gradient(180deg, rgba(15, 15, 15, 0.85) 0%, rgba(8, 8, 8, 0.75) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(8px);
+        }
+
+        .about-title {
+            letter-spacing: -0.01em;
+        }
+
+        .about-text {
+            color: var(--text-soft);
+        }
+
+        .about-links a {
+            padding: 0.35rem;
+            border-radius: 999px;
+        }
+
+        .about-links a:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .parallax-layer {
+            position: absolute;
+            width: 900px;
+            height: 900px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.35;
+            z-index: 0;
+            pointer-events: none;
+            transform: translate3d(-50%, calc(var(--scroll-y) * -0.08), 0);
+        }
+
+        .parallax-layer.layer-one {
+            top: -250px;
+            left: 30%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.25), transparent 60%);
+        }
+
+        .parallax-layer.layer-two {
+            top: 10%;
+            left: 75%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.2), transparent 60%);
+            transform: translate3d(-50%, calc(var(--scroll-y) * -0.12), 0);
+        }
+
+        @media (max-width: 768px) {
+            .about-panel {
+                padding: 2.5rem 1.5rem;
+            }
+            .project-card::after {
+                inset: -12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .blob,
+            .marquee-content {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+            .reveal {
+                transition: none;
+                transform: none;
+                opacity: 1;
+            }
+            .cta-button,
+            .project-card,
+            .modern-card {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-white selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-blur">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold tracking-tight text-white">Khelifi<span class="text-blue-500">.</span></a>
+            <div class="hidden md:flex gap-10 text-sm font-medium text-gray-400">
+                <a href="#work" class="hover:text-white transition-colors">Work</a>
+                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#about" class="hover:text-white transition-colors">About</a>
             </div>
-          </div>
-          <div class="contact-info-content-line">
-            <img src="./images/icon-location.png" class="icon" alt="location-icon">
-            <div class="contact-info-icon-text">
-              <h6>Location</h6>
-              <p>Da nang, VN</p>
-            </div>
-          </div>
-          <div class="contact-info-content-line">
-            <img src="./images/icon-phone.png" class="icon" alt="phone-icon">
-            <div class="contact-info-icon-text">
-              <h6>Call</h6>
-              <p>+84 961566302</p>
-            </div>
-          </div>
-          <div class="contact-info-content-line">
-            <img src="./images/icon-email.png" class="icon" alt="email-icon">
-            <div class="contact-info-icon-text">
-              <h6>Email</h6>
-              <p>khelifisalmen9@gmail.com</p>
-            </div>
-          </div>
+            <a href="mailto:contact@khelifi-salmen.com" class="cta-button cta-primary cta-small text-sm font-bold">
+                Let's Talk
+            </a>
         </div>
-      </div>
-    </div>
-    <!-- Footer Section -->
-    <div class="footer">
-      <div class="footer-text">
-        <img src="./images/copyright.png" alt="copyright-img" class="images" height="14px">
-        Khelifi Salmen
-      </div>
-    </div>
-  </div>
-  
-        <!--contact end-->
-    </div>
-    <!--all the divisions-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/particles.js"></script>
-    <script src="js/particles.min.js"></script>
-    <script src="js/index.js"></script>
-    <!--particles script-->
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section min-h-screen flex flex-col justify-center items-center px-6 pt-20 relative overflow-hidden">
+        <div class="parallax-layer layer-one" aria-hidden="true"></div>
+        <div class="parallax-layer layer-two" aria-hidden="true"></div>
+        
+        <!-- Animated Background Blobs -->
+        <div class="blob w-96 h-96 bg-blue-600/20 rounded-full top-1/4 left-1/4 blur-[100px]"></div>
+        <div class="blob w-[500px] h-[500px] bg-purple-600/10 rounded-full bottom-0 right-0 blur-[120px]" style="animation-delay: -2s;"></div>
+
+        <div class="hero-content max-w-5xl text-center z-10">
+            <div class="hero-badge inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full border border-white/5 bg-white/5 backdrop-blur-md text-xs font-semibold tracking-wider text-gray-300 reveal">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                AVAILABLE FOR NEW PROJECTS
+            </div>
+            
+            <h1 class="hero-title text-6xl md:text-8xl font-extrabold tracking-tight leading-[1] mb-8 reveal" style="transition-delay: 100ms;">
+                Building automated <br /> 
+                <span class="text-gradient">digital ecosystems.</span>
+            </h1>
+            
+            <p class="hero-subtitle text-lg md:text-2xl text-gray-400 max-w-2xl mx-auto mb-12 font-light leading-relaxed reveal" style="transition-delay: 200ms;">
+                I am Salmen Khelifi, a Software Engineer & Automation Specialist. From <span class="text-white font-medium">Web Apps & Mobile</span> to complex <span class="text-white font-medium">AI Workflows</span>, I build systems that drive revenue.
+            </p>
+            
+            <div class="hero-actions flex flex-col md:flex-row gap-5 justify-center items-center reveal" style="transition-delay: 300ms;">
+                <a href="#work" class="cta-button cta-primary w-full md:w-auto">
+                    View Case Studies
+                </a>
+                <a href="#about" class="cta-button cta-secondary w-full md:w-auto">
+                    My Process
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infinite Marquee Tech Stack -->
+    <section class="py-10 border-y border-white/5 bg-black/20 backdrop-blur-sm">
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <span class="marquee-item">n8n Automation</span>
+                <span class="marquee-item">Flutter</span>
+                <span class="marquee-item">React.js</span>
+                <span class="marquee-item">Node.js</span>
+                <span class="marquee-item">OpenAI API</span>
+                <span class="marquee-item">Shopify Liquid</span>
+                <span class="marquee-item">WordPress</span>
+                <span class="marquee-item">Firebase</span>
+                <!-- Duplicate for loop -->
+                <span class="marquee-item">n8n Automation</span>
+                <span class="marquee-item">Flutter</span>
+                <span class="marquee-item">React.js</span>
+                <span class="marquee-item">Node.js</span>
+                <span class="marquee-item">OpenAI API</span>
+                <span class="marquee-item">Shopify Liquid</span>
+                <span class="marquee-item">WordPress</span>
+                <span class="marquee-item">Firebase</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selected Work Section -->
+    <section id="work" class="py-40">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-title text-4xl md:text-5xl font-bold mb-24 reveal tracking-tight">Selected Work</h2>
+
+            <!-- Project 1: Mobile App (Flutter) -->
+            <div class="project-card group grid md:grid-cols-2 gap-16 items-center mb-40 reveal">
+                <div class="order-2 md:order-1">
+                    <div class="text-blue-400 font-semibold mb-4 tracking-wider text-sm uppercase">Mobile Development</div>
+                    <h3 class="text-4xl font-bold mb-6">Cross-Platform Mobile Application</h3>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        Built a high-performance native app using Flutter. Features include real-time data sync, push notifications, and a seamless UI consistent across iOS and Android.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-10">
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Flutter</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Dart</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Firebase</span>
+                    </div>
+                    <a href="project-mobile.html" class="project-link inline-flex items-center text-white font-bold text-lg hover:text-blue-400 transition-colors">
+                        View Project <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </a>
+                </div>
+                <!-- Vertical Phone Mockup -->
+                <div class="order-1 md:order-2 mockup-container">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <!-- UPDATE IMAGE -->
+                        <div class="phone-screen" style="background-image: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); display: flex; align-items: center; justify-content: center;">
+                            <span class="text-white/50 font-bold text-center px-4">Flutter App<br>UI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Web App (SaaS) -->
+            <div class="project-card group grid md:grid-cols-2 gap-16 items-center mb-40 reveal">
+                <!-- Laptop Mockup -->
+                <div class="mockup-container">
+                    <div class="laptop-wrapper">
+                        <div class="laptop-screen-frame">
+                            <div class="phone-notch" style="width: 40px; height: 10px; border-radius: 0 0 4px 4px;"></div>
+                            <!-- UPDATE IMAGE -->
+                            <div class="laptop-screen" style="background-image: url('images/rentiora.png'); background-size: cover; background-position: top center;">
+                            </div>
+                        </div>
+                        <div class="laptop-base"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-purple-400 font-semibold mb-4 tracking-wider text-sm uppercase">Web Application & SaaS</div>
+                    <h3 class="text-4xl font-bold mb-6">Rentiora - Car Rental Platform</h3>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        100% Trusted car rental platform. Experience the ultimate in comfort, performance, and sophistication with our luxury car rentals. From sleek sedans to spacious SUVs.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-10">
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">React.js</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Node.js</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">MongoDB</span>
+                    </div>
+                    <a href="project-rentiora.html" target="_blank" class="project-link inline-flex items-center text-white font-bold text-lg hover:text-purple-400 transition-colors">
+                        View Project <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 3: AI Automation (n8n) -->
+            <div class="project-card group grid md:grid-cols-2 gap-16 items-center mb-40 reveal">
+                <div class="order-2 md:order-1">
+                    <div class="text-orange-400 font-semibold mb-4 tracking-wider text-sm uppercase">AI & Automation</div>
+                    <h3 class="text-4xl font-bold mb-6">Intelligent n8n Workflow</h3>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        Engineered complex automation pipelines connecting OpenAI agents with CRM data. Reduced manual administrative tasks by 85% through smart logic.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-10">
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">n8n</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">OpenAI</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Webhooks</span>
+                    </div>
+                    <a href="project-n8n.html" class="project-link inline-flex items-center text-white font-bold text-lg hover:text-orange-400 transition-colors">
+                        View Project <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </a>
+                </div>
+                <!-- Vertical Phone Mockup -->
+                <div class="order-1 md:order-2 mockup-container">
+                     <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                         <!-- UPDATE IMAGE -->
+                        <div class="phone-screen" style="background-image: linear-gradient(135deg, #ea580c 0%, #9a3412 100%); display: flex; align-items: center; justify-content: center;">
+                             <span class="text-white/50 font-bold text-center px-4">Automation<br>Flow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: CMS & E-commerce -->
+            <div class="project-card group grid md:grid-cols-2 gap-16 items-center reveal">
+                <!-- Laptop Mockup -->
+                <div class="mockup-container">
+                    <div class="laptop-wrapper">
+                        <div class="laptop-screen-frame">
+                             <div class="phone-notch" style="width: 40px; height: 10px; border-radius: 0 0 4px 4px;"></div>
+                            <!-- UPDATE IMAGE -->
+                            <div class="laptop-screen" style="background-image: url('images/chaktech_1.png'); background-size: cover; background-position: top center;">
+                            </div>
+                        </div>
+                        <div class="laptop-base"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-green-400 font-semibold mb-4 tracking-wider text-sm uppercase">E-commerce & CMS</div>
+                    <h3 class="text-4xl font-bold mb-6">Chaktech.tn</h3>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        An eCommerce website built with WordPress, designed to provide a seamless online shopping experience for a local phone store. Integrated with secure payment options and optimized for performance.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-10">
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">WordPress</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">WooCommerce</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">PHP</span>
+                    </div>
+                    <a href="project-chaktech.html" class="project-link inline-flex items-center text-white font-bold text-lg hover:text-green-400 transition-colors">
+                        View Project <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 5: Adaptifit AI Fitness App -->
+            <div class="project-card group grid md:grid-cols-2 gap-16 items-center mb-40 reveal">
+                <div class="order-2 md:order-1">
+                    <div class="text-cyan-400 font-semibold mb-4 tracking-wider text-sm uppercase">AI Mobile App</div>
+                    <h3 class="text-4xl font-bold mb-6">Adaptifit - AI Fitness Coach</h3>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        AI-powered fitness and nutrition app with personalized workout plans, meal tracking, progress analytics, and an AI coach chat. Full-stack mobile + backend solution.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-10">
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Flutter</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Node.js</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">MongoDB</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">OpenAI</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">n8n</span>
+                    </div>
+                    <a href="project-adaptifit.html" class="project-link inline-flex items-center text-white font-bold text-lg hover:text-cyan-400 transition-colors">
+                        View Project <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </a>
+                </div>
+                <div class="order-1 md:order-2 mockup-container">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); display: flex; align-items: center; justify-content: center;">
+                            <span class="text-white/70 font-bold text-center px-4">Adaptifit<br>AI Coach</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6: Stitch AI Design Project -->
+            <div class="project-card group grid md:grid-cols-2 gap-16 items-center mb-40 reveal">
+                <div class="mockup-container">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen" style="background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); display: flex; align-items: center; justify-content: center;">
+                            <span class="text-white/70 font-bold text-center px-4">AI Design<br>Prototype</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-violet-400 font-semibold mb-4 tracking-wider text-sm uppercase">AI UI Design</div>
+                    <h3 class="text-4xl font-bold mb-6">Stitch AI Prototypes</h3>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        AI-generated UI prototypes designed with Google Stitch and Gemini. Features include modern mobile app interfaces, landing pages, and interactive web components. Rapid design iteration using AI-powered UI generation.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-10">
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Google Stitch</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Gemini AI</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">UI/UX Design</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Mobile First</span>
+                    </div>
+                    <a href="project-stitch-mobile.html" class="project-link inline-flex items-center text-white font-bold text-lg hover:text-violet-400 transition-colors">
+                        View Project <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 7: More Stitch Projects -->
+            <div class="project-card group grid md:grid-cols-2 gap-16 items-center mb-40 reveal">
+                <div class="order-2 md:order-1">
+                    <div class="text-pink-400 font-semibold mb-4 tracking-wider text-sm uppercase">AI Design Tools</div>
+                    <h3 class="text-4xl font-bold mb-6">Extensive UI Design Collection</h3>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        A comprehensive collection of AI-generated UI designs including dashboard interfaces, e-commerce layouts, social media apps, and productivity tools. Created with Google Stitch using Gemini for rapid design exploration.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-10">
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Google Stitch</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Gemini 3</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Dashboard UI</span>
+                        <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">E-commerce</span>
+                    </div>
+                    <a href="project-stitch-collection.html" class="project-link inline-flex items-center text-white font-bold text-lg hover:text-pink-400 transition-colors">
+                        View All Projects <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </a>
+                </div>
+                <div class="order-1 md:order-2 mockup-container">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen" style="background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center;">
+                            <span class="text-white/70 font-bold text-center px-4">More<br>AI Designs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Services / Value Prop -->
+    <section id="services" class="py-40 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-title text-4xl md:text-5xl font-bold mb-24 text-center reveal tracking-tight">My Expertise</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card modern-card p-10 rounded-3xl reveal">
+                    <div class="service-icon w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10">
+                        <i data-lucide="smartphone" class="text-blue-400 w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Mobile & Web Apps</h3>
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        Cross-platform Flutter apps and robust React web applications built for scale and performance.
+                    </p>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card modern-card p-10 rounded-3xl reveal" style="transition-delay: 100ms;">
+                    <div class="service-icon w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10">
+                        <i data-lucide="zap" class="text-orange-400 w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">AI & Automation</h3>
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        Automating complex workflows with n8n and AI agents to save time and reduce operational overhead.
+                    </p>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card modern-card p-10 rounded-3xl reveal" style="transition-delay: 200ms;">
+                    <div class="service-icon w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10">
+                        <i data-lucide="shopping-bag" class="text-green-400 w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">CMS & E-commerce</h3>
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        Custom WordPress plugins and Shopify theme development to create unique, high-converting stores.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-40 border-t border-white/5 bg-black/40">
+        <div class="about-panel max-w-4xl mx-auto text-center">
+            <h2 class="about-title section-title text-4xl font-bold mb-10 reveal">About Me</h2>
+            <p class="about-text text-2xl text-gray-400 leading-relaxed mb-16 font-light reveal">
+                With over <span class="text-white font-medium">5 years of experience</span>, I bridge the gap between complex code and business goals. 
+                <br><br>
+                Whether it's a mobile app in <span class="text-white font-medium">Flutter</span>, a custom <span class="text-white font-medium">WordPress</span> plugin, or an autonomous <span class="text-white font-medium">n8n</span> workflow, I build solutions that work.
+            </p>
+            <div class="about-links flex justify-center gap-8 reveal">
+                <a href="https://github.com/salmenkhelifi1" target="_blank" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110">
+                    <i data-lucide="github" class="w-8 h-8"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110">
+                    <i data-lucide="linkedin" class="w-8 h-8"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110">
+                    <i data-lucide="twitter" class="w-8 h-8"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-black">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+            <p>&copy; 2026 Salmen Khelifi. All rights reserved.</p>
+            <div class="flex gap-8 mt-6 md:mt-0">
+                <a href="mailto:contact@khelifi-salmen.com" class="hover:text-white transition-colors">contact@khelifi-salmen.com</a>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        particlesJS("particles", { "particles": { "number": { "value": 40, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } }, "opacity": { "value": 0.5, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true });
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Subtle Parallax Background
+        var root = document.documentElement;
+        var ticking = false;
+        function updateParallax() {
+            root.style.setProperty("--scroll-y", window.scrollY + "px");
+            ticking = false;
+        }
+        function onScroll() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        updateParallax();
+
+        // Reveal Animation on Scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
     </script>
-
 </body>
-
 </html>
