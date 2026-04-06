@@ -7,3 +7,11 @@
 .netlify
 .env
 .qodo
+.DS_Store
+node_modules/
+nextjs-portfolio/node_modules/
+nextjs-portfolio/.next/
+nextjs-portfolio/.turbo/
+nextjs-portfolio/.swc/
+nextjs-portfolio/.vercel/
+nextjs-portfolio/tsconfig.tsbuildinfo
