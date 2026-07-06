@@ -14,7 +14,15 @@ import {
   Workflow,
   createLucideIcon,
 } from "lucide-react";
-import { bookingUrl, freelancerUrl } from "@/data/schema";
+import {
+  bookingUrl,
+  facebookUrl,
+  freelancerUrl,
+  instagramUrl,
+  linkedinUrl,
+  upworkUrl,
+  xUrl,
+} from "@/data/schema";
 import { testimonials } from "@/data/testimonials";
 
 const GithubIcon = createLucideIcon("Github", [
@@ -23,6 +31,50 @@ const GithubIcon = createLucideIcon("Github", [
     {
       key: "github-path",
       d: "M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22",
+    },
+  ],
+]);
+
+const LinkedinIcon = createLucideIcon("Linkedin", [
+  [
+    "path",
+    {
+      key: "linkedin-main",
+      d: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z",
+    },
+  ],
+  ["rect", { key: "linkedin-posts", width: "4", height: "12", x: "2", y: "9" }],
+  ["circle", { key: "linkedin-dot", cx: "4", cy: "4", r: "2" }],
+]);
+
+const FacebookIcon = createLucideIcon("Facebook", [
+  [
+    "path",
+    {
+      key: "facebook-path",
+      d: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
+    },
+  ],
+]);
+
+const InstagramIcon = createLucideIcon("Instagram", [
+  ["rect", { key: "instagram-frame", width: "20", height: "20", x: "2", y: "2", rx: "5", ry: "5" }],
+  [
+    "path",
+    {
+      key: "instagram-lens",
+      d: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z",
+    },
+  ],
+  ["line", { key: "instagram-dot", x1: "17.5", x2: "17.51", y1: "6.5", y2: "6.5" }],
+]);
+
+const XIcon = createLucideIcon("X", [
+  [
+    "path",
+    {
+      key: "x-path",
+      d: "M18.9 2h3.4l-7.4 8.5L23.6 22h-6.8l-5.3-7-6.1 7H2l7.9-9L1.6 2h7l4.8 6.4L18.9 2Zm-1.2 18h1.9L7.6 3.9h-2L17.7 20Z",
     },
   ],
 ]);
@@ -602,6 +654,18 @@ export default function HomeContent() {
             <a href="https://github.com/salmenkhelifi1" target="_blank" rel="noreferrer" aria-label="GitHub">
               <GithubIcon className="h-8 w-8" />
             </a>
+            <a href={linkedinUrl} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <LinkedinIcon className="h-8 w-8" />
+            </a>
+            <a href={facebookUrl} target="_blank" rel="noreferrer" aria-label="Facebook">
+              <FacebookIcon className="h-8 w-8" />
+            </a>
+            <a href={instagramUrl} target="_blank" rel="noreferrer" aria-label="Instagram">
+              <InstagramIcon className="h-8 w-8" />
+            </a>
+            <a href={xUrl} target="_blank" rel="noreferrer" aria-label="X">
+              <XIcon className="h-8 w-8" />
+            </a>
             <a
               href={freelancerUrl}
               target="_blank"
@@ -610,7 +674,14 @@ export default function HomeContent() {
             >
               Freelancer.com
             </a>
-            {/* LinkedIn/Twitter omitted until real profile URLs exist. */}
+            <a
+              href={upworkUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="freelancer-link"
+            >
+              Upwork
+            </a>
           </div>
         </div>
       </section>
@@ -632,6 +703,14 @@ export default function HomeContent() {
               className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
             >
               contact@khelifi-salmen.com
+            </a>
+            <a
+              href={linkedinUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
+            >
+              LinkedIn
             </a>
           </div>
         </div>

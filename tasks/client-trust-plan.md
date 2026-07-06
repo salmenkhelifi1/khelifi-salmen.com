@@ -21,7 +21,11 @@ Goal: when a prospect (from cold email / Upwork / Freelancer / Google) looks up 
 3. Conversion: cal.com CTA in nav/hero/case-study CTAs/footer; 404 page.
 4. Netlify: netlify.toml with @netlify/plugin-nextjs, redirects for old /project-*.html style URLs if any.
 
-## Status
-- [ ] Codex implementing (see prompt in session)
-- [ ] Verify: tsc/lint/build, rich-results sanity, visual QA
-- [ ] Commit
+## Status — COMPLETE (commit 71d1c3a)
+- [x] Codex implemented all 4 phases
+- [x] Verified: build 0 errors, sitemap/robots/llms.txt/llms-full.txt all 200, JSON-LD valid [Person, ProfessionalService] with 4.9 rating, 3 cal.com CTAs, sections present (Client Feedback, How I Work, 6-card Expertise), 404 works
+- [x] Committed: 71d1c3a
+
+## Pending from user (will strengthen SEO schema when provided)
+- LinkedIn URL, Upwork profile URL, X/Twitter URL → add to sameAs + footer/about
+- After deploy: submit sitemap in Google Search Console, verify rich results at search.google.com/test/rich-results
