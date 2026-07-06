@@ -45,12 +45,14 @@ User decisions: **refined dark / premium** direction (Linear/Vercel polish, no b
 
 Pipeline: agy (design spec) → Codex (implementation) → Claude verifies.
 
-- [x] agy design spec generated → saved to `tasks/design-spec.md` (tokens, per-section redesign, motion, a11y, deletion list)
-- [ ] Codex implementing spec (in flight): globals.css tokens + deletions, home-content.tsx (flat image cards replace phone/laptop mockups, single accent), projects/[slug]/page.tsx (unified accent)
-- [ ] Verify: tsc, lint, next build, all pages 200, visual check
-- [ ] Commit redesign
+- [x] agy design spec generated → saved to `tasks/design-spec.md`
+- [x] Codex implemented spec (globals.css tokens/deletions, flat image cards, unified accent)
+- [x] Punch-list fixes applied (hero space, portrait 4:5 cards, Live Demo system accent, dark nav CTA)
+- [x] Verified: tsc clean, lint 0 errors, `next build` 0 errors/warnings, all 15 project pages 200, visual QA via Playwright
+- [x] Portfolio expanded to 15 projects (done outside session: anlingo, noxivo, leyel, freelancer set, chaktech live admin shots) — included in redesign commit
+- [x] **Committed: 3f85e38** (redesign) on top of a1556f7 (case-study system)
 
-Rollback: `git reset --hard a1556f7` (or revert commit).
+REDESIGN COMPLETE. Remaining ideas: push to origin; migrate old project-* pages → redirects; lint cleanup of 19 legacy warnings.
 
 ## Verify commands
 ```bash

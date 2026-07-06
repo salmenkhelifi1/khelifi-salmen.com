@@ -13,6 +13,7 @@ import {
   Wrench,
 } from "lucide-react";
 import { getProject, projects, type Project } from "@/data/projects";
+import { bookingUrl, projectJsonLd, siteUrl } from "@/data/schema";
 
 type Params = { slug: string };
 
@@ -38,9 +39,26 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return { title: "Project Not Found | Salmen Khelifi" };
+  const path = `/projects/${project.slug}`;
   return {
-    title: `${project.title} - ${project.category} | Salmen Khelifi`,
+    title: `${project.title} - ${project.category}`,
     description: project.tagline,
+    alternates: {
+      canonical: path,
+    },
+    openGraph: {
+      title: `${project.title} - ${project.category}`,
+      description: project.tagline,
+      url: `${siteUrl}${path}`,
+      images: project.heroImage
+        ? [
+            {
+              url: project.heroImage,
+              alt: `${project.title} featured screenshot`,
+            },
+          ]
+        : undefined,
+    },
   };
 }
 
@@ -116,9 +134,16 @@ export default async function ProjectProfilePage({
   const project = getProject(slug);
   if (!project) notFound();
   const hasDesktopGallery = project.galleryAspect === "desktop";
+  const jsonLd = projectJsonLd(project);
 
   return (
     <div className="min-h-screen bg-[var(--bg-page)] text-[var(--text-primary)]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
       <nav className="nav-blur fixed top-0 z-50 w-full">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
           <Link href="/" className="inline-flex min-h-11 items-center text-xl font-bold tracking-tight text-[var(--text-primary)]">
@@ -347,6 +372,14 @@ export default async function ProjectProfilePage({
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <ProjectLinks project={project} large />
+            <Link
+              href={bookingUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 min-w-11 items-center gap-2 rounded-full bg-[var(--accent)] px-8 py-4 font-bold text-[var(--text-primary)] transition-colors hover:bg-[#3b8df3]"
+            >
+              Book a 30-min call <ArrowUpRight className="w-5 h-5" />
+            </Link>
             <Link
               href="/#work"
               className="inline-flex min-h-11 min-w-11 items-center gap-2 rounded-full border border-[var(--border-muted)] bg-[var(--bg-surface)] px-8 py-4 font-bold text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--bg-surface-elevated)]"

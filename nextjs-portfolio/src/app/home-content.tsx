@@ -5,11 +5,17 @@ import Link from "next/link";
 import { useEffect } from "react";
 import {
   ArrowRight,
-  ShoppingBag,
-  Smartphone,
-  Zap,
+  Bot,
+  Code2,
+  Database,
+  Network,
+  ServerCog,
+  Star,
+  Workflow,
   createLucideIcon,
 } from "lucide-react";
+import { bookingUrl, freelancerUrl } from "@/data/schema";
+import { testimonials } from "@/data/testimonials";
 
 const GithubIcon = createLucideIcon("Github", [
   [
@@ -17,28 +23,6 @@ const GithubIcon = createLucideIcon("Github", [
     {
       key: "github-path",
       d: "M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22",
-    },
-  ],
-]);
-
-const LinkedinIcon = createLucideIcon("Linkedin", [
-  [
-    "path",
-    {
-      key: "linkedin-path",
-      d: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z",
-    },
-  ],
-  ["rect", { key: "linkedin-rect", x: "2", y: "9", width: "4", height: "12" }],
-  ["circle", { key: "linkedin-circle", cx: "4", cy: "4", r: "2" }],
-]);
-
-const TwitterIcon = createLucideIcon("Twitter", [
-  [
-    "path",
-    {
-      key: "twitter-path",
-      d: "M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z",
     },
   ],
 ]);
@@ -286,23 +270,48 @@ const portraitPreviewImages = new Set([
 
 const services = [
   {
-    icon: Smartphone,
-    title: "Mobile & Web Apps",
+    icon: Code2,
+    title: "Frontend",
     description:
-      "Cross-platform Flutter apps and robust React web applications built for scale and performance.",
+      "React, Next.js, and Flutter interfaces built for fast, polished product experiences.",
   },
   {
-    icon: Zap,
-    title: "AI & Automation",
+    icon: Database,
+    title: "Backend & APIs",
     description:
-      "Automating complex workflows with n8n and AI agents to save time and reduce operational overhead.",
+      "Node, Express, PostgreSQL, and MongoDB systems with clean API contracts.",
   },
   {
-    icon: ShoppingBag,
-    title: "CMS & E-commerce",
+    icon: Network,
+    title: "Architecture",
     description:
-      "Custom WordPress plugins and Shopify theme development to create unique, high-converting stores.",
+      "Multi-tenant SaaS foundations, clean architecture, and maintainable feature boundaries.",
   },
+  {
+    icon: ServerCog,
+    title: "DevOps & Infrastructure",
+    description:
+      "Docker, Linux/Ubuntu, CI/CD, Netlify, and Cloudflare deployment workflows.",
+  },
+  {
+    icon: Workflow,
+    title: "Automation",
+    description:
+      "n8n, Make.com, and workflow engineering that removes repetitive business operations.",
+  },
+  {
+    icon: Bot,
+    title: "AI Integration",
+    description:
+      "OpenAI, Gemini, Vapi voice AI, and on-device ML connected to real product flows.",
+  },
+];
+
+const processSteps = [
+  "Discovery call",
+  "Proposal & spec",
+  "Build with weekly demos",
+  "Launch & support",
 ];
 
 export default function HomeContent() {
@@ -347,7 +356,9 @@ export default function HomeContent() {
             </a>
           </div>
           <a
-            href="mailto:contact@khelifi-salmen.com"
+            href={bookingUrl}
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--border-muted)] bg-[rgba(255,255,255,0.02)] px-6 py-2.5 text-sm font-bold text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--accent-dim)]"
           >
             Let&apos;s Talk
@@ -384,8 +395,13 @@ export default function HomeContent() {
             <a href="#work" className="cta-button cta-primary w-full md:w-auto">
               View Case Studies
             </a>
-            <a href="#about" className="cta-button cta-secondary w-full md:w-auto">
-              My Process
+            <a
+              href={bookingUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="cta-button cta-secondary w-full md:w-auto"
+            >
+              Book a 30-min call
             </a>
           </div>
         </div>
@@ -477,7 +493,7 @@ export default function HomeContent() {
           <h2 className="section-title reveal mb-20 text-center text-h2 md:mb-24">
             My Expertise
           </h2>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
@@ -500,6 +516,75 @@ export default function HomeContent() {
         </div>
       </section>
 
+      <section id="feedback" className="py-32 md:py-40">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-16 flex flex-col gap-4 md:mb-20 md:flex-row md:items-end md:justify-between">
+            <h2 className="section-title reveal text-h2">Client Feedback</h2>
+            <a
+              href={freelancerUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="reveal inline-flex min-h-11 items-center text-body-regular font-semibold text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
+            >
+              4.9 / 5 across 8 reviews on Freelancer.com
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((item, index) => (
+              <article
+                key={`${item.author}-${item.projectTitle}`}
+                className="modern-card reveal rounded-[var(--radius-xl)] p-8"
+                style={{ transitionDelay: `${index * 80}ms` }}
+              >
+                <div className="mb-6 flex items-center gap-1 text-[var(--accent)]">
+                  {Array.from({ length: 5 }).map((_, starIndex) => (
+                    <Star
+                      key={starIndex}
+                      className="h-4 w-4 fill-current"
+                      aria-hidden="true"
+                    />
+                  ))}
+                  <span className="ml-2 text-sm font-semibold text-[var(--text-secondary)]">
+                    {item.rating.toFixed(1)}
+                  </span>
+                </div>
+                <blockquote className="mb-8 text-body-regular text-[var(--text-primary)]">
+                  &ldquo;{item.quote}&rdquo;
+                </blockquote>
+                <div className="mt-auto">
+                  <p className="font-semibold text-[var(--text-primary)]">
+                    {item.author}
+                  </p>
+                  <p className="mt-1 text-sm text-[var(--text-secondary)]">
+                    {item.projectTitle}
+                  </p>
+                  <span className="mt-5 inline-flex rounded-full border border-[var(--border-muted)] px-3 py-1 text-xs font-semibold text-[var(--text-tertiary)]">
+                    via Freelancer.com
+                  </span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 py-16">
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="reveal mb-10 text-h2">How I Work</h2>
+          <div className="grid gap-6 md:grid-cols-4">
+            {processSteps.map((step, index) => (
+              <div key={step} className="reveal">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-muted)] bg-[var(--bg-surface)] text-sm font-bold text-[var(--accent)]">
+                  {index + 1}
+                </div>
+                <h3 className="text-h3">{step}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="about" className="border-t border-[var(--border-subtle)] py-32 md:py-40">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h2 className="section-title reveal mb-10 text-h2">About Me</h2>
@@ -517,12 +602,15 @@ export default function HomeContent() {
             <a href="https://github.com/salmenkhelifi1" target="_blank" rel="noreferrer" aria-label="GitHub">
               <GithubIcon className="h-8 w-8" />
             </a>
-            <a href="#" aria-label="LinkedIn">
-              <LinkedinIcon className="h-8 w-8" />
+            <a
+              href={freelancerUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="freelancer-link"
+            >
+              Freelancer.com
             </a>
-            <a href="#" aria-label="Twitter">
-              <TwitterIcon className="h-8 w-8" />
-            </a>
+            {/* LinkedIn/Twitter omitted until real profile URLs exist. */}
           </div>
         </div>
       </section>
@@ -531,6 +619,14 @@ export default function HomeContent() {
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between px-6 text-sm text-[var(--text-tertiary)] md:flex-row">
           <p>© 2026 Salmen Khelifi. All rights reserved.</p>
           <div className="mt-6 flex gap-8 md:mt-0">
+            <a
+              href={bookingUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
+            >
+              Book a 30-min call
+            </a>
             <a
               href="mailto:contact@khelifi-salmen.com"
               className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
