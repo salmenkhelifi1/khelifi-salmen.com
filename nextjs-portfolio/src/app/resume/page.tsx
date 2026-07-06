@@ -13,7 +13,7 @@ import {
   Briefcase,
   Layers,
   Languages as LangIcon,
-  MessageSquare
+  MessageSquare,
 } from "lucide-react";
 import { projects } from "@/data/projects";
 import { testimonials } from "@/data/testimonials";
@@ -22,12 +22,12 @@ import {
   freelancerUrl,
   githubUrl,
   linkedinUrl,
-  personAndServiceJsonLd,
-  siteUrl
+  siteUrl,
+  upworkUrl,
 } from "@/data/schema";
 
 export const metadata: Metadata = {
-  title: "Resume — Salmen Khelifi | Full-Stack Developer & Automation Specialist",
+  title: "Resume — Full-Stack Developer & Automation Specialist",
   description:
     "Professional resume of Salmen Khelifi, a Full-Stack Developer & Automation Specialist with 5+ years of experience in React, Next.js, Node.js, Flutter, and AI automation.",
   alternates: {
@@ -35,7 +35,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Filter target projects to match exactly what is requested
 const targetSlugs = [
   "grammarai",
   "chaktech",
@@ -49,7 +48,6 @@ const selectedProjects = targetSlugs
   .map((slug) => projects.find((p) => p.slug === slug))
   .filter((p): p is NonNullable<typeof p> => !!p);
 
-// Manual roles mapping
 const projectRoles: Record<string, string> = {
   grammarai: "Lead Full-Stack & Mobile Developer",
   chaktech: "Lead Architect & Full-Stack Developer",
@@ -59,7 +57,6 @@ const projectRoles: Record<string, string> = {
   anlingo: "Full-Stack Developer & Automation Specialist",
 };
 
-// Grammar/Achievements mapping to keep them action-verb + tech + outcome focused
 const projectBullets: Record<string, string[]> = {
   grammarai: [
     "Developed a native cross-platform editor using Flutter & Riverpod featuring on-device OCR scanners and Speech-to-Text inputs.",
@@ -92,11 +89,59 @@ const projectBullets: Record<string, string[]> = {
   ],
 };
 
+const knowsAbout = [
+  "React",
+  "Next.js",
+  "Node.js",
+  "Express",
+  "Flutter",
+  "Dart",
+  "PostgreSQL",
+  "MongoDB",
+  "n8n",
+  "Make.com",
+  "OpenAI API",
+  "Gemini API",
+  "Vapi AI",
+  "Docker",
+  "Linux",
+  "WordPress",
+  "Shopify",
+  "Payload CMS",
+  "Typesense",
+  "Redis",
+  "Firebase",
+];
+
+const resumeJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Salmen Khelifi",
+  jobTitle: "Full-Stack Developer & Automation Specialist",
+  url: `${siteUrl}/resume`,
+  email: "contact@khelifi-salmen.com",
+  telephone: "+84961566302",
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "TN",
+  },
+  sameAs: [linkedinUrl, githubUrl, upworkUrl, freelancerUrl],
+  hasOccupation: {
+    "@type": "Occupation",
+    name: "Full-Stack Developer & Automation Specialist",
+    skills: knowsAbout.join(", "),
+  },
+  knowsAbout,
+};
+
 export default function ResumePage() {
-  // Extract 2 short client feedback items
   const selectedReviews = [
-    testimonials.find((t) => t.author === "Austin L." && t.projectTitle === "n8n Automation Workflows Specialist"),
-    testimonials.find((t) => t.author === "Jørgen G."),
+    testimonials.find(
+      (t) =>
+        t.author === "Austin L." &&
+        t.projectTitle === "n8n Automation Workflows Specialist",
+    ),
+    testimonials.find((t) => t.author === "Robert D."),
   ].filter((t): t is NonNullable<typeof t> => !!t);
 
   return (
@@ -104,11 +149,13 @@ export default function ResumePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(personAndServiceJsonLd),
+          __html: JSON.stringify(resumeJsonLd),
         }}
       />
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @media print {
           body, html, :root {
             background: #ffffff !important;
@@ -166,6 +213,11 @@ export default function ResumePage() {
           h2 { font-size: 14px !important; margin-bottom: 8px !important; border-bottom: 1px solid #ccc !important; padding-bottom: 2px !important; }
           h3 { font-size: 12px !important; margin-bottom: 2px !important; }
           p, li { font-size: 11px !important; }
+          .print-link[href]::after {
+            color: #555555;
+            content: " (" attr(href) ")";
+            font-weight: 400;
+          }
           .tech-badge {
             border: none !important;
             background: none !important;
@@ -180,9 +232,10 @@ export default function ResumePage() {
             content: "";
           }
         }
-      `}} />
+      `,
+        }}
+      />
 
-      {/* Navigation - Top Nav Pattern (logo + back link) */}
       <nav className="nav-blur fixed top-0 z-50 w-full no-print">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
           <Link
@@ -195,13 +248,12 @@ export default function ResumePage() {
             href="/"
             className="inline-flex min-h-11 items-center gap-2 text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
           >
-            <ArrowLeft className="w-4 h-4" /> Back to Home
+            <ArrowLeft className="w-4 h-4" /> Back
           </Link>
         </div>
       </nav>
 
       <main className="mx-auto max-w-4xl px-6 resume-container">
-        {/* Header Section */}
         <header className="border-b border-[var(--border-muted)] pb-8 mb-10 print-header">
           <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
             <div>
@@ -215,7 +267,7 @@ export default function ResumePage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-[var(--text-secondary)] print-text-secondary">
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-[var(--text-tertiary)] no-print" />
-                  <span>Tunisia · Remote Worldwide</span>
+                  <span>Tunisia · Remote worldwide</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[var(--text-tertiary)] no-print" />
@@ -231,29 +283,56 @@ export default function ResumePage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Globe className="w-4 h-4 text-[var(--text-tertiary)] no-print" />
-                  <a href={siteUrl} target="_blank" rel="noreferrer" className="hover:text-[var(--text-primary)] flex items-center gap-1">
+                  <a
+                    href={siteUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="print-link flex items-center gap-1 hover:text-[var(--text-primary)]"
+                  >
                     {siteUrl.replace("https://", "")} <ArrowUpRight className="w-3 h-3 no-print" />
                   </a>
                 </div>
               </div>
 
-              {/* Online Socials Links */}
               <div className="flex flex-wrap gap-4 mt-4 text-xs text-[var(--text-tertiary)] print-text-muted">
-                <a href={githubUrl} target="_blank" rel="noreferrer" className="hover:text-[var(--text-primary)] underline">
-                  GitHub
-                </a>
-                <span className="no-print">·</span>
-                <a href={linkedinUrl} target="_blank" rel="noreferrer" className="hover:text-[var(--text-primary)] underline">
+                <a
+                  href={linkedinUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="print-link underline hover:text-[var(--text-primary)]"
+                >
                   LinkedIn
                 </a>
                 <span className="no-print">·</span>
-                <a href={freelancerUrl} target="_blank" rel="noreferrer" className="hover:text-[var(--text-primary)] underline">
-                  Freelancer Profile (4.9/5 stars)
+                <a
+                  href={githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="print-link underline hover:text-[var(--text-primary)]"
+                >
+                  GitHub
+                </a>
+                <span className="no-print">·</span>
+                <a
+                  href={upworkUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="print-link underline hover:text-[var(--text-primary)]"
+                >
+                  Upwork
+                </a>
+                <span className="no-print">·</span>
+                <a
+                  href={freelancerUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="print-link underline hover:text-[var(--text-primary)]"
+                >
+                  Freelancer.com (4.9/5, 8 reviews)
                 </a>
               </div>
             </div>
 
-            {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row md:flex-col gap-3 no-print shrink-0">
               <a
                 href="/salmen-khelifi-cv.pdf"
@@ -274,7 +353,6 @@ export default function ResumePage() {
           </div>
         </header>
 
-        {/* Professional Summary */}
         <section className="mb-10 print-section" aria-labelledby="summary-heading">
           <h2 id="summary-heading" className="text-xl font-bold mb-4 flex items-center gap-2 text-[var(--text-primary)] border-b border-[var(--border-subtle)] pb-2 print-text-primary print-border">
             <Briefcase className="w-5 h-5 text-[var(--accent)] no-print" /> Professional Summary
@@ -284,7 +362,6 @@ export default function ResumePage() {
           </p>
         </section>
 
-        {/* Core Skills Grouped */}
         <section className="mb-10 print-section" aria-labelledby="skills-heading">
           <h2 id="skills-heading" className="text-xl font-bold mb-4 flex items-center gap-2 text-[var(--text-primary)] border-b border-[var(--border-subtle)] pb-2 print-text-primary print-border">
             <Layers className="w-5 h-5 text-[var(--accent)] no-print" /> Core Skills
@@ -303,7 +380,7 @@ export default function ResumePage() {
               <p className="text-sm text-[var(--text-secondary)] print-text-secondary">Flutter, Dart</p>
             </div>
             <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 modern-card">
-              <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">DevOps</h3>
+              <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">DevOps & Infra</h3>
               <p className="text-sm text-[var(--text-secondary)] print-text-secondary">Docker, Linux (Ubuntu), DevOps, CI/CD</p>
             </div>
             <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 modern-card">
@@ -317,10 +394,9 @@ export default function ResumePage() {
           </div>
         </section>
 
-        {/* Selected Experience */}
         <section className="mb-10 print-section" aria-labelledby="experience-heading">
           <h2 id="experience-heading" className="text-xl font-bold mb-6 flex items-center gap-2 text-[var(--text-primary)] border-b border-[var(--border-subtle)] pb-2 print-text-primary print-border">
-            <Briefcase className="w-5 h-5 text-[var(--accent)] no-print" /> Selected Experience
+            <Briefcase className="w-5 h-5 text-[var(--accent)] no-print" /> Selected Experience / Projects
           </h2>
           <div className="space-y-8">
             {selectedProjects.map((project) => (
@@ -328,7 +404,10 @@ export default function ResumePage() {
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1">
                   <div>
                     <h3 className="text-lg font-bold text-[var(--text-primary)] print-text-primary hover:text-[var(--accent)] transition-colors">
-                      <Link href={`/projects/${project.slug}`} className="flex items-center gap-1.5">
+                      <Link
+                        href={`/projects/${project.slug}`}
+                        className="print-link flex items-center gap-1.5"
+                      >
                         {project.title}
                         <ExternalLink className="w-3.5 h-3.5 no-print opacity-60" />
                       </Link>
@@ -341,15 +420,11 @@ export default function ResumePage() {
                     {project.category}
                   </span>
                 </div>
-                
-                {/* Achievement Bullets */}
                 <ul className="list-disc pl-5 mb-3 text-sm text-[var(--text-secondary)] space-y-1.5 print-text-secondary">
                   {projectBullets[project.slug]?.map((bullet, idx) => (
                     <li key={idx}>{bullet}</li>
                   ))}
                 </ul>
-
-                {/* Tech Stack List */}
                 <div className="flex flex-wrap gap-1.5 mt-2">
                   <span className="text-xs text-[var(--text-tertiary)] mr-1 pt-1 print-text-muted font-semibold">Tech stack:</span>
                   {[

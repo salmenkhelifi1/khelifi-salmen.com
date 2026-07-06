@@ -677,7 +677,7 @@ export default function HomeContent() {
               href="/resume"
               className="freelancer-link gap-2"
             >
-              View Resume
+              View résumé
             </Link>
             <a
               href="/salmen-khelifi-cv.pdf"
