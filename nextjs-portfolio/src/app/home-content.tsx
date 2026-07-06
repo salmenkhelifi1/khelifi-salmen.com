@@ -205,7 +205,7 @@ export default function HomeContent() {
                 </span>
               </div>
               <Link
-                href="/project-grammarai"
+                href="/projects/grammarai"
                 className="project-link inline-flex items-center text-white font-bold text-lg hover:text-emerald-400 transition-colors"
               >
                 View Project <ArrowRight className="ml-2 w-5 h-5" />
@@ -374,7 +374,7 @@ export default function HomeContent() {
             </div>
           </div>
 
-          <div className="project-card group grid md:grid-cols-2 gap-16 items-center reveal">
+          <div className="project-card group grid md:grid-cols-2 gap-16 items-center mb-40 reveal">
             <div className="mockup-container">
               <div className="laptop-wrapper">
                 <div className="laptop-screen-frame">
@@ -430,6 +430,66 @@ export default function HomeContent() {
           </div>
 
           <div className="project-card group grid md:grid-cols-2 gap-16 items-center mb-40 reveal">
+            <div className="mockup-container">
+              <div className="laptop-wrapper">
+                <div className="laptop-screen-frame">
+                  <div
+                    className="phone-notch"
+                    style={{
+                      width: "40px",
+                      height: "10px",
+                      borderRadius: "0 0 4px 4px",
+                    }}
+                  ></div>
+                  <div
+                    className="laptop-screen"
+                    style={{
+                      backgroundImage: "url('/images/chaktech/chaktech-01.jpg')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "top center",
+                    }}
+                  ></div>
+                </div>
+                <div className="laptop-base"></div>
+              </div>
+            </div>
+            <div>
+              <div className="text-orange-400 font-semibold mb-4 tracking-wider text-sm uppercase">
+                E-commerce Platform
+              </div>
+              <h3 className="text-4xl font-bold mb-6">ChakTech Platform</h3>
+              <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+                Production e-commerce platform for the Tunisian market:
+                multi-tenant storefront, Payload CMS admin, custom Express API,
+                COD checkout, and FR/AR RTL.
+              </p>
+              <div className="flex flex-wrap gap-3 mb-10">
+                <span className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">
+                  Next.js 16
+                </span>
+                <span className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">
+                  Payload CMS
+                </span>
+                <span className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">
+                  Express
+                </span>
+                <span className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">
+                  PostgreSQL
+                </span>
+                <span className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">
+                  Typesense
+                </span>
+              </div>
+              <Link
+                href="/projects/chaktech"
+                className="project-link inline-flex items-center text-white font-bold text-lg hover:text-orange-400 transition-colors"
+              >
+                View Case Study <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="project-card group grid md:grid-cols-2 gap-16 items-center mb-40 reveal">
             <div className="order-2 md:order-1">
               <div className="text-cyan-400 font-semibold mb-4 tracking-wider text-sm uppercase">
                 AI Mobile App
@@ -460,7 +520,7 @@ export default function HomeContent() {
                 </span>
               </div>
               <Link
-                href="/project-adaptifit"
+                href="/projects/adaptifit"
                 className="project-link inline-flex items-center text-white font-bold text-lg hover:text-cyan-400 transition-colors"
               >
                 View Project <ArrowRight className="ml-2 w-5 h-5" />
