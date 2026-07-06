@@ -4,7 +4,11 @@ import { siteUrl } from "@/data/schema";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const routes = ["/", ...projects.map((project) => `/projects/${project.slug}`)];
+  const routes = [
+    "/",
+    "/resume",
+    ...projects.map((project) => `/projects/${project.slug}`),
+  ];
 
   return routes.map((route) => ({
     url: `${siteUrl}${route === "/" ? "" : route}`,

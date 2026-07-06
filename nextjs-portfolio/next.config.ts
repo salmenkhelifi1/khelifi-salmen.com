@@ -35,7 +35,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/cv",
-        destination: "/salmen-khelifi-cv.pdf",
+        destination: "/resume",
         permanent: true,
       },
       {

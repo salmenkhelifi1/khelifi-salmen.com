@@ -673,6 +673,12 @@ export default function HomeContent() {
             >
               Upwork
             </a>
+            <Link
+              href="/resume"
+              className="freelancer-link gap-2"
+            >
+              View Resume
+            </Link>
             <a
               href="/salmen-khelifi-cv.pdf"
               download

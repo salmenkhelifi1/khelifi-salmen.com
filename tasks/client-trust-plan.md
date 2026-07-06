@@ -26,6 +26,13 @@ Goal: when a prospect (from cold email / Upwork / Freelancer / Google) looks up 
 - [x] Verified: build 0 errors, sitemap/robots/llms.txt/llms-full.txt all 200, JSON-LD valid [Person, ProfessionalService] with 4.9 rating, 3 cal.com CTAs, sections present (Client Feedback, How I Work, 6-card Expertise), 404 works
 - [x] Committed: 71d1c3a
 
-## Pending from user (will strengthen SEO schema when provided)
-- LinkedIn URL, Upwork profile URL, X/Twitter URL → add to sameAs + footer/about
-- After deploy: submit sitemap in Google Search Console, verify rich results at search.google.com/test/rich-results
+## Follow-up commits
+- b5e7d29: all profiles wired (LinkedIn/FB/IG/X/Upwork) + vanity redirects (/upwork /freelancer /linkedin /github /x /call)
+- d54d9cd: production polish — legacy pages retired w/ 308 redirects, favicon, OG/Twitter share images, /cv download, mobile nav, pro footer, lint 19→0
+
+## Site is LAUNCH-READY (kept local, not pushed, per user)
+Remaining = user actions after deploy:
+1. Deploy to Netlify (netlify.toml ready)
+2. Google Search Console: submit sitemap.xml
+3. Test rich results: search.google.com/test/rich-results
+4. Use vanity links in cold outreach: khelifi-salmen.com/{call,upwork,linkedin,cv}
