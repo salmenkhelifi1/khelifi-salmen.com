@@ -35,10 +35,22 @@ Session context file. If the conversation is lost, read this to resume.
 - [x] Home integration (Codex): GrammarAI/Adaptifit cards → /projects/{slug}; new ChakTech Platform laptop card added; chaktech gallery trimmed to 6, desktop gallery = aspect-video 2-col
 - [x] Verified locally: home links present, /projects/chaktech 200, `tsc` clean, `npm run lint` 0 errors (19 pre-existing warnings in old pages), `next build` clean
 
-## Feature COMPLETE. Possible follow-ups (ask user)
-1. Migrate remaining old `project-*` pages (rentiora, n8n, mobile, stitch-*) into projects.ts data; delete old pages + add redirects.
-2. Visual polish pass on /projects/chaktech in browser.
-3. Commit the work on `new-website`.
+## Feature COMPLETE — committed as a1556f7 on new-website
+
+---
+
+# Full Portfolio Redesign (current phase)
+
+User decisions: **refined dark / premium** direction (Linear/Vercel polish, no blob gradients, no rainbow accents, ONE accent color); safety commit done (a1556f7 = rollback point).
+
+Pipeline: agy (design spec) → Codex (implementation) → Claude verifies.
+
+- [x] agy design spec generated → saved to `tasks/design-spec.md` (tokens, per-section redesign, motion, a11y, deletion list)
+- [ ] Codex implementing spec (in flight): globals.css tokens + deletions, home-content.tsx (flat image cards replace phone/laptop mockups, single accent), projects/[slug]/page.tsx (unified accent)
+- [ ] Verify: tsc, lint, next build, all pages 200, visual check
+- [ ] Commit redesign
+
+Rollback: `git reset --hard a1556f7` (or revert commit).
 
 ## Verify commands
 ```bash

@@ -20,6 +20,7 @@ const GithubIcon = createLucideIcon("Github", [
   [
     "path",
     {
+      key: "github-path",
       d: "M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22",
     },
   ],
@@ -45,7 +46,7 @@ export async function generateMetadata({
 
 function TechBadge({ label }: { label: string }) {
   return (
-    <span className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">
+    <span className="tech-badge">
       {label}
     </span>
   );
@@ -55,8 +56,8 @@ function ProjectLinks({ project, large }: { project: Project; large?: boolean })
   const { github, live } = project.links;
   if (!github && !live) return null;
   const base = large
-    ? "inline-flex items-center gap-2 px-8 py-4 font-bold rounded-full transition-colors"
-    : "inline-flex items-center gap-2 px-5 py-2.5 font-semibold rounded-full text-sm transition-colors";
+    ? "inline-flex min-h-11 min-w-11 items-center gap-2 rounded-full px-8 py-4 font-bold transition-colors"
+    : "inline-flex min-h-11 min-w-11 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors";
   return (
     <div className="flex flex-wrap gap-4">
       {live && (
@@ -64,7 +65,7 @@ function ProjectLinks({ project, large }: { project: Project; large?: boolean })
           href={live}
           target="_blank"
           rel="noreferrer"
-          className={`${base} ${project.accent.button} text-white`}
+          className={`${base} system-live-link`}
         >
           Live Demo <ExternalLink className={large ? "w-5 h-5" : "w-4 h-4"} />
         </a>
@@ -74,7 +75,7 @@ function ProjectLinks({ project, large }: { project: Project; large?: boolean })
           href={github}
           target="_blank"
           rel="noreferrer"
-          className={`${base} bg-white/5 border border-white/10 hover:bg-white/10 text-white`}
+          className={`${base} border border-[var(--border-muted)] bg-[var(--bg-surface)] text-[var(--text-primary)] hover:border-[var(--border-active)] hover:bg-[var(--bg-surface-elevated)]`}
         >
           <GithubIcon className={large ? "w-5 h-5" : "w-4 h-4"} /> GitHub
         </a>
@@ -87,19 +88,17 @@ function StackCard({
   title,
   icon,
   items,
-  accentText,
 }: {
   title: string;
   icon: React.ReactNode;
   items: string[];
-  accentText: string;
 }) {
   return (
-    <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
-      <h3 className={`text-xl font-bold mb-4 flex items-center gap-2 ${accentText}`}>
+    <div className="rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-6">
+      <h3 className="mb-4 flex items-center gap-2 text-h3 text-[var(--accent)]">
         {icon} {title}
       </h3>
-      <ul className="space-y-3 text-gray-400">
+      <ul className="space-y-3 text-[var(--text-secondary)]">
         {items.map((item) => (
           <li key={item}>{item}</li>
         ))}
@@ -119,15 +118,15 @@ export default async function ProjectProfilePage({
   const hasDesktopGallery = project.galleryAspect === "desktop";
 
   return (
-    <div className="min-h-screen bg-[#030303] text-white">
-      <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-          <Link href="/" className="text-xl font-bold tracking-tight text-white">
-            Khelifi<span className="text-blue-500">.</span>
+    <div className="min-h-screen bg-[var(--bg-page)] text-[var(--text-primary)]">
+      <nav className="nav-blur fixed top-0 z-50 w-full">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+          <Link href="/" className="inline-flex min-h-11 items-center text-xl font-bold tracking-tight text-[var(--text-primary)]">
+            Khelifi<span className="text-[var(--accent)]">.</span>
           </Link>
           <Link
             href="/#work"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+            className="inline-flex min-h-11 items-center gap-2 text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
           >
             <ArrowLeft className="w-4 h-4" /> Back to Work
           </Link>
@@ -135,22 +134,16 @@ export default async function ProjectProfilePage({
       </nav>
 
       {/* Hero */}
-      <header className="pt-32 pb-20 relative overflow-hidden">
-        <div
-          className="blob w-96 h-96 bg-blue-600/10 rounded-full top-10 left-1/4 blur-[100px]"
-          aria-hidden="true"
-        ></div>
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center relative z-10">
+      <header className="relative overflow-hidden pb-20 pt-32">
+        <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-16 px-6 md:grid-cols-2">
           <div>
-            <p
-              className={`font-semibold mb-4 tracking-wider text-sm uppercase ${project.accent.text}`}
-            >
+            <p className="mb-4 text-caption text-[var(--text-secondary)]">
               {project.category}
             </p>
-            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
+            <h1 className="mb-6 text-h1">
               {project.title}
             </h1>
-            <p className="text-xl text-gray-400 mb-8 leading-relaxed">
+            <p className="mb-8 text-body-large text-[var(--text-secondary)]">
               {project.tagline}
             </p>
             <div className="flex flex-wrap gap-3 mb-10">
@@ -162,7 +155,7 @@ export default async function ProjectProfilePage({
           </div>
           {project.heroImage && (
             <div
-              className={`relative w-full mx-auto rounded-3xl overflow-hidden border border-white/10 shadow-2xl ${
+              className={`relative mx-auto w-full overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border-muted)] bg-[var(--bg-surface)] shadow-[var(--shadow-card)] ${
                 hasDesktopGallery
                   ? "aspect-video max-w-xl"
                   : "aspect-[9/16] max-w-xs"
@@ -186,29 +179,29 @@ export default async function ProjectProfilePage({
       </header>
 
       {/* Overview */}
-      <section className="py-20 bg-black/40" aria-labelledby="overview-heading">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 id="overview-heading" className="text-3xl font-bold mb-10">
+      <section className="border-y border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 py-20" aria-labelledby="overview-heading">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 id="overview-heading" className="mb-10 text-h2">
             Overview
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="modern-card p-8 rounded-3xl">
-              <h3 className="text-lg font-bold mb-3 text-white">What it is</h3>
-              <p className="text-gray-400 leading-relaxed">
+            <div className="modern-card rounded-[var(--radius-xl)] p-8">
+              <h3 className="mb-3 text-h3">What it is</h3>
+              <p className="text-body-regular text-[var(--text-secondary)]">
                 {project.overview.what}
               </p>
             </div>
-            <div className="modern-card p-8 rounded-3xl">
-              <h3 className="text-lg font-bold mb-3 text-white">
+            <div className="modern-card rounded-[var(--radius-xl)] p-8">
+              <h3 className="mb-3 text-h3">
                 The problem it solves
               </h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-body-regular text-[var(--text-secondary)]">
                 {project.overview.problem}
               </p>
             </div>
-            <div className="modern-card p-8 rounded-3xl">
-              <h3 className="text-lg font-bold mb-3 text-white">Who it&apos;s for</h3>
-              <p className="text-gray-400 leading-relaxed">
+            <div className="modern-card rounded-[var(--radius-xl)] p-8">
+              <h3 className="mb-3 text-h3">Who it&apos;s for</h3>
+              <p className="text-body-regular text-[var(--text-secondary)]">
                 {project.overview.audience}
               </p>
             </div>
@@ -219,22 +212,22 @@ export default async function ProjectProfilePage({
       {/* Features */}
       {project.features.length > 0 && (
         <section className="py-20" aria-labelledby="features-heading">
-          <div className="max-w-6xl mx-auto px-6">
-            <h2 id="features-heading" className="text-3xl font-bold mb-10">
+          <div className="mx-auto max-w-6xl px-6">
+            <h2 id="features-heading" className="mb-10 text-h2">
               Key Features
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               {project.features.map((feature) => (
                 <div key={feature.title} className="flex items-start gap-4">
                   <CheckCircle
-                    className={`w-6 h-6 mt-1 shrink-0 ${project.accent.text}`}
+                    className="mt-1 h-6 w-6 shrink-0 text-[var(--accent)]"
                     aria-hidden="true"
                   />
                   <div>
-                    <h3 className="text-white font-semibold text-lg mb-1">
+                    <h3 className="mb-1 text-h3">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-400 leading-relaxed">
+                    <p className="text-body-regular text-[var(--text-secondary)]">
                       {feature.description}
                     </p>
                   </div>
@@ -247,9 +240,9 @@ export default async function ProjectProfilePage({
 
       {/* Gallery */}
       {project.gallery.length > 0 && (
-        <section className="py-20 bg-black/40" aria-labelledby="gallery-heading">
-          <div className="max-w-6xl mx-auto px-6">
-            <h2 id="gallery-heading" className="text-3xl font-bold mb-10">
+        <section className="border-y border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 py-20" aria-labelledby="gallery-heading">
+          <div className="mx-auto max-w-6xl px-6">
+            <h2 id="gallery-heading" className="mb-10 text-h2">
               Screenshots
             </h2>
             <div
@@ -259,13 +252,11 @@ export default async function ProjectProfilePage({
                   : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
               }
             >
-              {project.gallery.map((shot, i) => (
+              {project.gallery.map((shot) => (
                 <div
                   key={shot.src}
-                  className={`relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl ${
+                  className={`relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border-muted)] bg-[var(--bg-surface)] shadow-[var(--shadow-card)] ${
                     hasDesktopGallery ? "aspect-video" : "aspect-[9/19]"
-                  } ${
-                    !hasDesktopGallery && i % 2 === 1 ? "md:-mt-8" : ""
                   }`}
                 >
                   <Image
@@ -288,8 +279,8 @@ export default async function ProjectProfilePage({
 
       {/* Tech stack */}
       <section className="py-20" aria-labelledby="stack-heading">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 id="stack-heading" className="text-3xl font-bold mb-10">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 id="stack-heading" className="mb-10 text-h2">
             Technology Stack
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -297,14 +288,12 @@ export default async function ProjectProfilePage({
               title="Frontend"
               icon={<Smartphone className="w-5 h-5" />}
               items={project.techStack.frontend}
-              accentText={project.accent.text}
             />
             {project.techStack.backend && (
               <StackCard
                 title="Backend"
                 icon={<Server className="w-5 h-5" />}
                 items={project.techStack.backend}
-                accentText={project.accent.text}
               />
             )}
             {project.techStack.tools && (
@@ -312,7 +301,6 @@ export default async function ProjectProfilePage({
                 title="Tools & Infrastructure"
                 icon={<Wrench className="w-5 h-5" />}
                 items={project.techStack.tools}
-                accentText={project.accent.text}
               />
             )}
           </div>
@@ -321,23 +309,23 @@ export default async function ProjectProfilePage({
 
       {/* Challenges & learnings */}
       {project.challenges && project.challenges.length > 0 && (
-        <section className="py-20 bg-black/40" aria-labelledby="challenges-heading">
-          <div className="max-w-6xl mx-auto px-6">
-            <h2 id="challenges-heading" className="text-3xl font-bold mb-10">
+        <section className="border-y border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 py-20" aria-labelledby="challenges-heading">
+          <div className="mx-auto max-w-6xl px-6">
+            <h2 id="challenges-heading" className="mb-10 text-h2">
               Challenges & Learnings
             </h2>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="border-b border-white/10 text-gray-300">
+                  <tr className="border-b border-[var(--border-subtle)] text-[var(--text-secondary)]">
                     <th className="py-4 px-4 font-semibold">Challenge</th>
                     <th className="py-4 px-4 font-semibold">Solution</th>
                   </tr>
                 </thead>
-                <tbody className="text-gray-400">
+                <tbody className="text-[var(--text-secondary)]">
                   {project.challenges.map((row) => (
-                    <tr key={row.challenge} className="border-b border-white/5">
-                      <td className="py-4 px-4 text-white">{row.challenge}</td>
+                    <tr key={row.challenge} className="border-b border-[var(--border-subtle)] last:border-b-0">
+                      <td className="py-4 px-4 text-[var(--text-primary)]">{row.challenge}</td>
                       <td className="py-4 px-4">{row.solution}</td>
                     </tr>
                   ))}
@@ -350,18 +338,18 @@ export default async function ProjectProfilePage({
 
       {/* CTA */}
       <section className="py-24" aria-labelledby="cta-heading">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 id="cta-heading" className="text-3xl md:text-4xl font-bold mb-6">
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <h2 id="cta-heading" className="mb-6 text-h2">
             Interested in {project.title}?
           </h2>
-          <p className="text-gray-400 text-lg mb-10">
+          <p className="mb-10 text-body-large text-[var(--text-secondary)]">
             Explore the project or check out more of my work.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <ProjectLinks project={project} large />
             <Link
               href="/#work"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-bold rounded-full transition-colors"
+              className="inline-flex min-h-11 min-w-11 items-center gap-2 rounded-full border border-[var(--border-muted)] bg-[var(--bg-surface)] px-8 py-4 font-bold text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--bg-surface-elevated)]"
             >
               All Projects <ArrowUpRight className="w-5 h-5" />
             </Link>
@@ -369,8 +357,8 @@ export default async function ProjectProfilePage({
         </div>
       </section>
 
-      <footer className="py-12 border-t border-white/10">
-        <div className="max-w-6xl mx-auto px-6 text-center text-gray-500">
+      <footer className="border-t border-[var(--border-subtle)] py-12">
+        <div className="mx-auto max-w-6xl px-6 text-center text-[var(--text-tertiary)]">
           <p>© 2026 Salmen Khelifi. All rights reserved.</p>
         </div>
       </footer>

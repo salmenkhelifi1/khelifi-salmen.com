@@ -15,3 +15,5 @@ nextjs-portfolio/.turbo/
 nextjs-portfolio/.swc/
 nextjs-portfolio/.vercel/
 nextjs-portfolio/tsconfig.tsbuildinfo
+
+.playwright-mcp/
