@@ -2,22 +2,26 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   Bot,
   Code2,
   Database,
+  Download,
+  Menu,
   Network,
   ServerCog,
   Star,
   Workflow,
+  X,
   createLucideIcon,
 } from "lucide-react";
 import {
   bookingUrl,
   facebookUrl,
   freelancerUrl,
+  githubUrl,
   instagramUrl,
   linkedinUrl,
   upworkUrl,
@@ -88,6 +92,20 @@ const marqueeItems = [
   "Shopify Liquid",
   "WordPress",
   "Firebase",
+];
+
+const navLinks = [
+  { href: "#work", label: "Work" },
+  { href: "#services", label: "Services" },
+  { href: "#about", label: "About" },
+];
+
+const footerSocials = [
+  { href: githubUrl, label: "GitHub" },
+  { href: linkedinUrl, label: "LinkedIn" },
+  { href: upworkUrl, label: "Upwork" },
+  { href: freelancerUrl, label: "Freelancer" },
+  { href: xUrl, label: "X" },
 ];
 
 const projects = [
@@ -226,49 +244,6 @@ const projects = [
     image: "/images/rentiora.png",
   },
   {
-    category: "Mobile Development",
-    title: "Cross-Platform Mobile Application",
-    description:
-      "Built a high-performance native app using Flutter. Features include real-time data sync, push notifications, and a seamless UI consistent across iOS and Android.",
-    tags: ["Flutter", "Dart", "Firebase"],
-    href: "/project-mobile",
-    linkLabel: "View Project",
-    image:
-      "/images/stitch-projects/93982865648166192-a91fc2eb22524eefab18d5b8c8b0dea8.png",
-  },
-  {
-    category: "Web Application & SaaS",
-    title: "Rentiora - Car Rental Platform",
-    description:
-      "100% Trusted car rental platform. Experience the ultimate in comfort, performance, and sophistication with our luxury car rentals. From sleek sedans to spacious SUVs.",
-    tags: ["React.js", "Node.js", "MongoDB"],
-    href: "/project-rentiora",
-    linkLabel: "View Project",
-    target: "_blank",
-    image: "/images/rentiora.png",
-  },
-  {
-    category: "AI & Automation",
-    title: "Intelligent n8n Workflow",
-    description:
-      "Engineered complex automation pipelines connecting OpenAI agents with CRM data. Reduced manual administrative tasks by 85% through smart logic.",
-    tags: ["n8n", "OpenAI", "Webhooks"],
-    href: "/project-n8n",
-    linkLabel: "View Project",
-    image:
-      "/images/stitch-projects/5420830943902664185-c38ca9c39e9a4a138fecbfdd173f7ccb.png",
-  },
-  {
-    category: "E-commerce & CMS",
-    title: "Chaktech.tn",
-    description:
-      "An eCommerce website built with WordPress, designed to provide a seamless online shopping experience for a local phone store. Integrated with secure payment options and optimized for performance.",
-    tags: ["WordPress", "WooCommerce", "PHP"],
-    href: "/project-chaktech",
-    linkLabel: "View Project",
-    image: "/images/chaktech_1.png",
-  },
-  {
     category: "E-commerce Platform",
     title: "ChakTech Platform",
     description:
@@ -289,35 +264,11 @@ const projects = [
     image:
       "/images/stitch-projects/15863999156109095280-3ed15ebb08364f629544f22ce389d1c4.png",
   },
-  {
-    category: "AI UI Design",
-    title: "Stitch AI Prototypes",
-    description:
-      "AI-generated UI prototypes designed with Google Stitch and Gemini. Features include modern mobile app interfaces, landing pages, and interactive web components. Rapid design iteration using AI-powered UI generation.",
-    tags: ["Google Stitch", "Gemini AI", "UI/UX Design", "Mobile First"],
-    href: "/project-stitch-mobile",
-    linkLabel: "View Project",
-    image:
-      "/images/stitch-projects/17997727846251710443-f3c2853b8b7f4691bd3875afb4621e7c.png",
-  },
-  {
-    category: "AI Design Tools",
-    title: "Extensive UI Design Collection",
-    description:
-      "A comprehensive collection of AI-generated UI designs including dashboard interfaces, e-commerce layouts, social media apps, and productivity tools. Created with Google Stitch using Gemini for rapid design exploration.",
-    tags: ["Google Stitch", "Gemini 3", "Dashboard UI", "E-commerce"],
-    href: "/project-stitch-collection",
-    linkLabel: "View All Projects",
-    image:
-      "/images/stitch-projects/4268395796315894993-d036a12166e64ecbbf83eb3ba3195a0e.png",
-  },
 ];
 
 const portraitPreviewImages = new Set([
   "/images/stitch-projects/14620193470260808168-70889deedbc14545be22752d8c352941.png",
   "/images/freelancer-portfolio/leyel/leyel-02.png",
-  "/images/stitch-projects/93982865648166192-a91fc2eb22524eefab18d5b8c8b0dea8.png",
-  "/images/stitch-projects/17997727846251710443-f3c2853b8b7f4691bd3875afb4621e7c.png",
 ]);
 
 const services = [
@@ -367,6 +318,9 @@ const processSteps = [
 ];
 
 export default function HomeContent() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const currentYear = new Date().getFullYear();
+
   useEffect(() => {
     const reveal = () => {
       const reveals = document.querySelectorAll<HTMLElement>(".reveal");
@@ -397,24 +351,62 @@ export default function HomeContent() {
             Khelifi<span className="text-[var(--accent)]">.</span>
           </Link>
           <div className="hidden gap-10 text-sm font-medium text-[var(--text-secondary)] md:flex">
-            <a href="#work" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
-              Work
-            </a>
-            <a href="#services" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
-              Services
-            </a>
-            <a href="#about" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
-              About
-            </a>
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
           <a
             href={bookingUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--border-muted)] bg-[rgba(255,255,255,0.02)] px-6 py-2.5 text-sm font-bold text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--accent-dim)]"
+            className="hidden min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--border-muted)] bg-[rgba(255,255,255,0.02)] px-6 py-2.5 text-sm font-bold text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--accent-dim)] md:inline-flex"
           >
             Let&apos;s Talk
           </a>
+          <button
+            type="button"
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((open) => !open)}
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--border-muted)] bg-[rgba(255,255,255,0.02)] text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--accent-dim)] md:hidden"
+          >
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+        <div
+          className={`border-t border-[var(--border-subtle)] bg-black/95 px-6 backdrop-blur transition-all duration-[180ms] md:hidden ${
+            isMenuOpen
+              ? "pointer-events-auto translate-y-0 opacity-100"
+              : "pointer-events-none -translate-y-2 opacity-0"
+          }`}
+        >
+          <div className="mx-auto flex max-w-7xl flex-col gap-1 py-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMenuOpen(false)}
+                className="inline-flex min-h-11 items-center border-b border-[var(--border-subtle)] text-sm font-semibold text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href={bookingUrl}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setIsMenuOpen(false)}
+              className="cta-button cta-primary mt-3 w-full"
+            >
+              Book a call
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -505,7 +497,6 @@ export default function HomeContent() {
                     </div>
                     <Link
                       href={project.href}
-                      target={project.target}
                       className="project-link inline-flex min-h-11 items-center text-lg font-bold text-[var(--text-primary)]"
                     >
                       {project.linkLabel} <ArrowRight className="ml-2 h-5 w-5" />
@@ -641,7 +632,7 @@ export default function HomeContent() {
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h2 className="section-title reveal mb-10 text-h2">About Me</h2>
           <p className="reveal mb-16 text-body-large text-[var(--text-secondary)] md:text-2xl md:leading-relaxed">
-            With over <span className="font-medium text-[var(--text-primary)]">5 years of experience</span>, I
+            With <span className="font-medium text-[var(--text-primary)]">5+ years of experience</span>, I
             bridge the gap between complex code and business goals.
             <br />
             <br />
@@ -650,8 +641,8 @@ export default function HomeContent() {
             autonomous <span className="font-medium text-[var(--text-primary)]">n8n</span> workflow, I build
             solutions that work.
           </p>
-          <div className="about-links reveal flex justify-center gap-8">
-            <a href="https://github.com/salmenkhelifi1" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <div className="about-links reveal flex flex-wrap justify-center gap-4">
+            <a href={githubUrl} target="_blank" rel="noreferrer" aria-label="GitHub">
               <GithubIcon className="h-8 w-8" />
             </a>
             <a href={linkedinUrl} target="_blank" rel="noreferrer" aria-label="LinkedIn">
@@ -682,37 +673,75 @@ export default function HomeContent() {
             >
               Upwork
             </a>
+            <a
+              href="/salmen-khelifi-cv.pdf"
+              download
+              className="freelancer-link gap-2"
+            >
+              <Download className="h-4 w-4" />
+              Download CV
+            </a>
           </div>
         </div>
       </section>
 
-      <footer className="border-t border-[var(--border-subtle)] py-12">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between px-6 text-sm text-[var(--text-tertiary)] md:flex-row">
-          <p>© 2026 Salmen Khelifi. All rights reserved.</p>
-          <div className="mt-6 flex gap-8 md:mt-0">
-            <a
-              href={bookingUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
-            >
-              Book a 30-min call
-            </a>
-            <a
-              href="mailto:contact@khelifi-salmen.com"
-              className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
-            >
-              contact@khelifi-salmen.com
-            </a>
-            <a
-              href={linkedinUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
-            >
-              LinkedIn
-            </a>
+      <footer className="border-t border-[var(--border-subtle)] py-14">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 text-sm text-[var(--text-secondary)] md:grid-cols-3">
+          <div>
+            <Link href="/" className="inline-flex min-h-11 items-center text-xl font-bold tracking-tight text-[var(--text-primary)]">
+              Khelifi<span className="text-[var(--accent)]">.</span>
+            </Link>
+            <p className="mt-3 max-w-xs text-body-regular text-[var(--text-secondary)]">
+              Full-stack, mobile, and automation systems built for revenue-focused launches.
+            </p>
           </div>
+          <div>
+            <h2 className="mb-4 text-caption text-[var(--text-tertiary)]">Quick Links</h2>
+            <div className="grid gap-2">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a
+                href={bookingUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
+              >
+                Book a call
+              </a>
+            </div>
+          </div>
+          <div>
+            <h2 className="mb-4 text-caption text-[var(--text-tertiary)]">Socials</h2>
+            <div className="grid gap-2">
+              {footerSocials.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-3 border-t border-[var(--border-subtle)] px-6 pt-8 text-sm text-[var(--text-tertiary)] md:flex-row md:items-center md:justify-between">
+          <p>© {currentYear} Salmen Khelifi. All rights reserved.</p>
+          <a
+            href="mailto:contact@khelifi-salmen.com"
+            className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
+          >
+            contact@khelifi-salmen.com
+          </a>
         </div>
       </footer>
     </>

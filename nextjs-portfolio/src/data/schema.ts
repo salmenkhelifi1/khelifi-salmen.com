@@ -4,6 +4,7 @@ import { testimonials } from "@/data/testimonials";
 export const siteUrl = "https://khelifi-salmen.com";
 export const bookingUrl = "https://cal.com/salmen-khelifi/30min";
 export const freelancerUrl = "https://www.freelancer.com/u/khelifisalmen";
+export const githubUrl = "https://github.com/salmenkhelifi1";
 export const linkedinUrl = "https://www.linkedin.com/in/salmen-khelifi/";
 export const facebookUrl = "https://www.facebook.com/khelifisalmen1";
 export const instagramUrl = "https://www.instagram.com/khelifi.salmen/";
@@ -20,7 +21,7 @@ export const personAndServiceJsonLd = [
     email: "contact@khelifi-salmen.com",
     telephone: "+84961566302",
     sameAs: [
-      "https://github.com/salmenkhelifi1",
+      githubUrl,
       freelancerUrl,
       linkedinUrl,
       facebookUrl,

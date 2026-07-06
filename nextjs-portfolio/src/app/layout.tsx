@@ -17,33 +17,24 @@ export const metadata: Metadata = {
     template: "%s | Salmen Khelifi",
   },
   description:
-    "Salmen Khelifi is a full-stack, mobile, DevOps, automation, and AI integration freelancer building revenue-focused software systems.",
+    "Salmen Khelifi is a Software Engineer & Automation Specialist building revenue-focused web apps, mobile products, and AI workflows.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Salmen Khelifi | Full-Stack, Mobile & Automation Specialist",
     description:
-      "Full-stack, mobile, DevOps, automation, and AI integration freelancer with 5+ years of delivery experience.",
+      "Software Engineer & Automation Specialist building revenue-focused web apps, mobile products, and AI workflows.",
     url: siteUrl,
     siteName: "Salmen Khelifi",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: "/images/khelifi_salmen.png",
-        width: 1200,
-        height: 630,
-        alt: "Salmen Khelifi portfolio",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Salmen Khelifi | Full-Stack, Mobile & Automation Specialist",
     description:
-      "Full-stack, mobile, DevOps, automation, and AI integration freelancer with 5+ years of delivery experience.",
-    images: ["/images/khelifi_salmen.png"],
+      "Software Engineer & Automation Specialist building revenue-focused web apps, mobile products, and AI workflows.",
   },
   robots: {
     index: true,
