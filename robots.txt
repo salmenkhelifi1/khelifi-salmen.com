@@ -1,2 +1,3 @@
 User-agent: *
 Disallow:
+Sitemap: https://khelifi-salmen.com/sitemap.xml

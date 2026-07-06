@@ -372,6 +372,21 @@ img:hover {
   transform: scale(1.1);
 }
 
+.social-profile-link {
+  color: whitesmoke;
+  font-family: poppins;
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 8px;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+
+.social-profile-link:hover {
+  opacity: 1;
+  color: #c70039;
+}
+
 .navigation-links {
   display: flex;
   align-items: center;
@@ -391,6 +406,19 @@ img:hover {
 
 .navigation-links a:hover {
   opacity: 1;
+}
+
+.navigation-links .nav-call-link {
+  background: #c70039;
+  border-radius: 4px;
+  font-size: 20px;
+  margin-top: 16px;
+  opacity: 1;
+  padding: 12px 24px;
+}
+
+.navigation-links .nav-call-link::before {
+  display: none;
 }
 
 .navigation-links a::before {
@@ -1340,6 +1368,71 @@ form button:hover {
   opacity: 1;
 }
 
+.contact-call {
+  padding-bottom: 30px;
+  padding-top: 0;
+}
+
+.testimonials {
+  color: whitesmoke;
+  margin: 0 auto 40px;
+  width: 90%;
+}
+
+.testimonials-header {
+  font-family: raleway;
+  font-size: 28px;
+  font-weight: 900;
+  padding: 10px 10px 25px;
+}
+
+.testimonials-header a,
+.contact-info-icon-text a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.testimonials-header a:hover,
+.contact-info-icon-text a:hover {
+  color: #c70039;
+}
+
+.testimonials-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.testimonial-card {
+  background-color: #191919;
+  border-radius: 10px;
+  font-family: poppins;
+  margin: 1.5%;
+  padding: 22px;
+  text-align: left;
+  width: 45%;
+}
+
+.testimonial-card h3 {
+  font-size: 22px;
+  font-weight: 400;
+  padding-bottom: 8px;
+}
+
+.testimonial-card h4 {
+  color: whitesmoke;
+  font-size: 16px;
+  font-weight: 200;
+  opacity: 0.8;
+  padding-bottom: 12px;
+}
+
+.testimonial-card p {
+  font-size: 15px;
+  font-weight: 200;
+  opacity: 0.85;
+}
+
 .contact-info-header {
   position: relative;
   z-index: 2;
@@ -1909,6 +2002,14 @@ For devices with smaller width like mobile phone
     transform: translateY(0%);
   }
 
+  .testimonials-header {
+    font-size: 22px;
+  }
+
+  .testimonial-card {
+    width: 90%;
+  }
+
   .contact-content {
     width: 90%;
     margin: auto;
@@ -2472,6 +2573,10 @@ for tabs and large phones
     transform: translateY(0%);
   }
 
+  .testimonial-card {
+    width: 90%;
+  }
+
   .contact-content {
     width: 90%;
     margin: auto;
@@ -2945,4 +3050,8 @@ for tabs and large phones
     border-radius: 8px;
     transition: all 0.4s ease;
   }
+}
+
+.contact-call a button {
+  background: #c70039;
 }
