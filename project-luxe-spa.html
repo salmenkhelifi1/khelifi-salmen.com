@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Spa Booking - White-Label CRM & Scheduling SaaS | Salmen Khelifi</title>
+    <meta name="description" content="White-label booking, CRM, and business management SaaS platform built by Salmen Khelifi">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root { --bg-color: #030303; --text-main: #ffffff; --text-muted: #9ca3af; }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="antialiased">
+    <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-tight text-white">Khelifi<span class="text-blue-500">.</span></a>
+            <a href="index.html#work" class="text-gray-400 hover:text-white transition-colors">← Back to Work</a>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-purple-400 font-semibold mb-4 tracking-wider text-sm uppercase">SaaS & Booking Platform</div>
+            <h1 class="text-5xl md:text-6xl font-bold mb-8">Luxe Spa Booking</h1>
+            <p class="text-xl text-gray-400 mb-12 leading-relaxed">
+                A high-performance white-label booking, CRM, and management system for appointment-based service businesses (spas, salons, clinics). Built with Next.js 16, Express 5, Prisma, and PostgreSQL, it features real-time staff sync, BullMQ background queues, and an intelligent Gemini AI conversational assistant.
+            </p>
+            
+            <div class="flex flex-wrap gap-3 mb-12">
+                <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Next.js 16</span>
+                <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Express.js</span>
+                <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">PostgreSQL</span>
+                <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Prisma ORM</span>
+                <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Socket.io</span>
+                <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">BullMQ & Redis</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Showcase Section -->
+    <section class="py-12 bg-black/20 border-y border-white/5">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-10 text-white">Visual Showcase & Video Demo</h2>
+            
+            <div class="space-y-16">
+                <!-- Video Demo Screenshot -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-purple-400">1. Full Video Walkthrough</h3>
+                    <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                        <img src="images/luxe_spa_video_demo.webp" alt="Luxe Spa Platform Video Walkthrough" class="w-full h-auto">
+                    </div>
+                    <p class="text-gray-400 mt-4 leading-relaxed">
+                        A full end-to-end video demonstration showing the landing page layout, conversational AI interactions, the intuitive customer booking pipeline, and the management dashboard backend.
+                    </p>
+                </div>
+
+                 <!-- Customer Home Page Screenshot -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-purple-400">1. Customer Facing Landing Page</h3>
+                    <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                        <img src="images/luxe_spa_home.png" alt="Customer Facing Home Page" class="w-full h-auto">
+                    </div>
+                    <p class="text-gray-400 mt-4 leading-relaxed">
+                        The responsive storefront features custom client-specific branding, automated layout adjustment for RTL and dark modes, and interactive services lists.
+                    </p>
+                </div>
+
+                <!-- Active Booking Flow Screenshot -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-purple-400">2. Active Customer Booking Wizard</h3>
+                    <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                        <img src="images/luxe_spa_booking_flow.png" alt="Active Customer Booking Flow" class="w-full h-auto">
+                    </div>
+                    <p class="text-gray-400 mt-4 leading-relaxed">
+                        An interactive step-by-step booking form built using Next.js 16 and shadcn/ui. Validates service additions, selects technician availability dynamically, and coordinates appointment slots with the backend server.
+                    </p>
+                </div>
+
+                <!-- AI Concierge Screenshot -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-purple-400">3. Conversational AI Concierge Chatbot</h3>
+                    <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                        <img src="images/luxe_spa_ai_chat.png" alt="Conversational AI Concierge Chat" class="w-full h-auto">
+                    </div>
+                    <p class="text-gray-400 mt-4 leading-relaxed">
+                        An intelligent client-facing chat assistant using the Gemini API. Automatically loads store catalogue and details, answering service questions and guiding clients to the scheduling step conversationally.
+                    </p>
+                </div>
+
+                <!-- Admin Dashboard Screenshot -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-purple-400">4. Owner & Admin Management Dashboard</h3>
+                    <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                        <img src="images/luxe_spa_admin.png" alt="Admin Management Dashboard" class="w-full h-auto">
+                    </div>
+                    <p class="text-gray-400 mt-4 leading-relaxed">
+                        A robust, full-featured back-office giving receptionists and managers live control over booking records, service catalogs, tech availability, coupon promotions, and customer CRM files.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Features -->
+    <section class="py-20 bg-black/40">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-8 text-white">Platform Features</h2>
+            <ul class="space-y-6 text-gray-400 text-lg">
+                <li class="flex items-start gap-4">
+                    <i data-lucide="check-circle" class="text-purple-400 w-6 h-6 mt-1 flex-shrink-0"></i>
+                    <div>
+                        <strong class="text-white">Dynamic Preset Customization:</strong>
+                        <p class="text-sm mt-1">Zod-validated preset schemas (Spa, Clinic, Barber, Salon) dynamically map brand colors, services catalog, active features, and hours into the database in under 10 seconds without code modifications.</p>
+                    </div>
+                </li>
+                <li class="flex items-start gap-4">
+                    <i data-lucide="check-circle" class="text-purple-400 w-6 h-6 mt-1 flex-shrink-0"></i>
+                    <div>
+                        <strong class="text-white">Real-Time Agenda Sync:</strong>
+                        <p class="text-sm mt-1">Implements a Socket.io broadcast interface to push real-time booking changes, technician schedule revisions, and client support messages directly to the staff board without page refreshes.</p>
+                    </div>
+                </li>
+                <li class="flex items-start gap-4">
+                    <i data-lucide="check-circle" class="text-purple-400 w-6 h-6 mt-1 flex-shrink-0"></i>
+                    <div>
+                        <strong class="text-white">Automated SMS Marketing & Jobs Queue:</strong>
+                        <p class="text-sm mt-1">Uses BullMQ and Redis as a background task processor to schedule and throttle Twilio SMS review requests, invoice emails, and VIP credit accruals, shielding the Express API from thread blocks.</p>
+                    </div>
+                </li>
+                <li class="flex items-start gap-4">
+                    <i data-lucide="check-circle" class="text-purple-400 w-6 h-6 mt-1 flex-shrink-0"></i>
+                    <div>
+                        <strong class="text-white">Gemini Conversational AI Assistant:</strong>
+                        <p class="text-sm mt-1">An elegant, client-facing booking concierge assistant using the Gemini API. Sanitizes and reads current scheduling rules, catalog listings, and store policies to guide clients through bookings off-hours.</p>
+                    </div>
+                </li>
+                <li class="flex items-start gap-4">
+                    <i data-lucide="check-circle" class="text-purple-400 w-6 h-6 mt-1 flex-shrink-0"></i>
+                    <div>
+                        <strong class="text-white">Secure Stripe Checkout & Voucher Engine:</strong>
+                        <p class="text-sm mt-1">Handles customer session deposits, VIP memberships, and automatic QR/barcode gift card creation with raw-body webhook verification in the Express backend.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Technical Challenges & Solutions -->
+    <section class="py-20 border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-10 text-white">Technical Challenges & Solutions</h2>
+            <div class="space-y-8">
+                <div class="border-l-2 border-purple-500 pl-6">
+                    <h3 class="text-lg font-bold text-white mb-2">Challenge 1: Zero-Code Rebranding & Vocabulary Mapping</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        <strong>Problem:</strong> Transitioning between service verticals required changing layout strings and labels across dozens of components (e.g. changing 'Service' to 'Treatment' or 'Technician' to 'Doctor').
+                        <br>
+                        <strong>Solution:</strong> Developed a vocabulary mapper that loads a JSON preset from PostgreSQL and swaps UI terminology tokens globally at run-time, allowing instant tenant customization without code churn.
+                    </p>
+                </div>
+                <div class="border-l-2 border-purple-500 pl-6">
+                    <h3 class="text-lg font-bold text-white mb-2">Challenge 2: Concurrency & Booking Double-Scheduling</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        <strong>Problem:</strong> Multiple users checking out simultaneously could book the same technician at the same hour, causing database race conditions.
+                        <br>
+                        <strong>Solution:</strong> Enforced atomic checks using transactional raw-queries in Prisma, validating time slot vacancy at checkout execution, while pushing real-time blocked status to other open clients via Socket.io.
+                    </p>
+                </div>
+                <div class="border-l-2 border-purple-500 pl-6">
+                    <h3 class="text-lg font-bold text-white mb-2">Challenge 3: High-Latency Background Task Handling</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        <strong>Problem:</strong> Network delays from Twilio APIs and email servers blocked Express worker processes, causing request timeouts during peak booking hours.
+                        <br>
+                        <strong>Solution:</strong> Implemented a worker-dispatcher pattern using Redis and BullMQ, deferring low-priority notifications to background processes with configured retry-backoffs and concurrency limits.
+                    </p>
+                </div>
+                <div class="border-l-2 border-purple-500 pl-6">
+                    <h3 class="text-lg font-bold text-white mb-2">Challenge 4: Page Load and LCP Web Vitals Optimization</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        <strong>Problem:</strong> Catalog images and dynamic layouts caused slow mobile performance, degrading Google Search Console core web vitals.
+                        <br>
+                        <strong>Solution:</strong> Integrated ImageKit transformation parameters on images, preset static width/height layouts in Next.js to eliminate Layout Shifts (CLS), and indexed relational tables on PostgreSQL to lower query delays under 50ms.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-black/20 border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <a href="http://localhost:3000" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-full transition-colors">
+                Visit Local Demo <i data-lucide="external-link" class="w-5 h-5"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/10">
+        <div class="max-w-4xl mx-auto px-6 text-center text-gray-500">
+            <p>© 2026 Salmen Khelifi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

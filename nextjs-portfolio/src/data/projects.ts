@@ -51,6 +51,129 @@ const freelancerAccent: ProjectAccent = {
 
 export const projects: Project[] = [
   {
+    slug: "luxe-spa",
+    title: "Luxe Spa Booking",
+    tagline:
+      "A high-performance white-label booking, CRM, and management system for appointment-based service businesses, featuring real-time staff dashboards, BullMQ workflows, and AI-powered concierge scheduling.",
+    category: "SaaS & Booking Platform",
+    accent: {
+      text: "text-purple-400",
+      hoverText: "hover:text-purple-400",
+      button: "bg-purple-600 hover:bg-purple-500",
+    },
+    heroImage: "/images/luxe_spa_home.png",
+    galleryAspect: "desktop",
+    overview: {
+      what: "A comprehensive multi-service white-label booking, CRM, and shop management SaaS platform. The system is designed to allow service-oriented businesses (such as medical aesthetics clinics, hair salons, spas, and consultants) to launch custom-branded online booking experiences, manage technicians, automate customer communications, and handle deposits/payments, fully isolated from other clients.",
+      problem:
+        "Service businesses face a trade-off: use expensive SaaS platforms (Mindbody, Vagaro) that charge high transaction fees, or build custom software that is slow and costly to maintain. Furthermore, switching a platform from a nail spa layout to a dental clinic layout typically requires extensive code modifications, custom databases, and frontend rebuilds.",
+      audience:
+        "Independent boutique operators, local clinic chains, and digital agencies looking to offer localized booking platforms as a service without rebuilding the core scheduling engine.",
+    },
+    features: [
+      {
+        title: "Instant Multi-Vertical Preset System",
+        description:
+          "Zod-validated preset structures (Spa, Salon, Barber, Clinic) dynamically seed the database on command. Swaps catalog categories, custom services, brand colors, vocabulary terminology, and operational hours in less than 10 seconds without code changes.",
+      },
+      {
+        title: "Real-Time Staff Inbox & Messaging",
+        description:
+          "Socket.io-based communication pipeline syncs technician agendas instantly when appointments are updated. Incorporates a unified staff inbox for receptionist-to-client live chats and system notifications.",
+      },
+      {
+        title: "Automated Multi-Channel Engagement",
+        description:
+          "Twilio-integrated SMS review invitations, automated booking confirmations, and customer discount campaigns running on background workers powered by Redis and BullMQ to prevent main event-loop degradation.",
+      },
+      {
+        title: "AI Concierge Booking Flow",
+        description:
+          "An intelligent conversational booking assistant powered by the Gemini API. The AI references live business settings, catalog metadata, and provider availability to answer customer queries and guide them through the scheduling funnel.",
+      },
+      {
+        title: "Granular Role-Based Access Control",
+        description:
+          "Strict hierarchical security rules (OWNER > MANAGER > RECEPTIONIST > TECHNICIAN > CUSTOMER) protecting sensitive customer CRM files, financial metrics, and operational settings.",
+      },
+      {
+        title: "Secure Payments & Digital Vouchers",
+        description:
+          "Full Stripe Checkout integration for session deposits, active VIP memberships subscription billing, and dynamically generated barcodes for digital gift card validation.",
+      },
+    ],
+    gallery: [
+      {
+        src: "/images/luxe_spa_video_demo.webp",
+        alt: "Full end-to-end video walkthrough of the Luxe Spa platform",
+      },
+      {
+        src: "/images/luxe_spa_home.png",
+        alt: "Customer facing booking website landing page showing premium typography and active services",
+      },
+      {
+        src: "/images/luxe_spa_booking_flow.png",
+        alt: "Interactive step-by-step customer booking wizard page",
+      },
+      {
+        src: "/images/luxe_spa_ai_chat.png",
+        alt: "Conversational AI concierge bot answering services questions and guiding bookings",
+      },
+      {
+        src: "/images/luxe_spa_admin.png",
+        alt: "Admin dashboard page showing recent activity metrics and bookings queue",
+      },
+    ],
+    techStack: {
+      frontend: [
+        "Next.js 16 (App Router)",
+        "React 19",
+        "Tailwind CSS 4",
+        "Zustand State Store",
+        "shadcn/ui Layouts",
+      ],
+      backend: [
+        "Express.js (TypeScript)",
+        "PostgreSQL & Prisma ORM",
+        "Socket.io Websockets",
+        "Redis / BullMQ Queue Workers",
+        "Nodemailer & Twilio API",
+      ],
+      tools: ["ImageKit CDN", "Docker", "Dokploy / VPS", "Zod Validation", "Helmet HTTP Headers"],
+    },
+    badges: ["Next.js 16", "Express.js", "PostgreSQL", "Socket.io", "Gemini API"],
+    challenges: [
+      {
+        challenge: "Instant re-branding per client/vertical",
+        solution:
+          "Designed a centralized JSON preset schema that dynamically populates Categories, MenuItems, and SiteSetting records in the database on seed, translating terms (e.g. 'Therapist' vs 'Doctor') globally at runtime.",
+      },
+      {
+        challenge: "Real-time calendar concurrency and synchronization",
+        solution:
+          "Built a robust transaction layer in Prisma to enforce slot validation at booking time, coupled with Socket.io broadcast rooms to instantly update booking states on the receptionist dashboard.",
+      },
+      {
+        challenge: "Decoupled asynchronous notification pipelines",
+        solution:
+          "Offloaded high-latency operations (Nodemailer dispatch, Twilio SMS sending, membership credits updates) to a background BullMQ worker process running alongside Express, guaranteeing retry logic and failure resilience.",
+      },
+      {
+        challenge: "Largest Contentful Paint (LCP) and media optimization",
+        solution:
+          "Optimized image sizes and aspect ratios using ImageKit real-time transformation parameters, prevented layout shifts via fixed Next.js Image dimensions, and added database indexing on foreign keys.",
+      },
+      {
+        challenge: "AI concierge query security and context control",
+        solution:
+          "Injected live catalog details, open hours, and booking guidelines dynamically into the Gemini system prompt while sanitizing user inputs to prevent prompt injection and hallucinated services.",
+      },
+    ],
+    links: {
+      live: "http://localhost:3000",
+    },
+  },
+  {
     slug: "grammarai",
     title: "GrammarAI",
     tagline:

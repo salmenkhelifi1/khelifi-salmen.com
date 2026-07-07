@@ -110,6 +110,16 @@ const footerSocials = [
 
 const projects = [
   {
+    category: "SaaS & Booking Platform",
+    title: "White-Label Booking System",
+    description:
+      "A comprehensive white-label booking, CRM, and management system designed for appointment-based service businesses (spas, salons, clinics) with dynamic preset-based branding, real-time messaging, and an AI concierge.",
+    tags: ["Next.js 16", "Express.js", "PostgreSQL", "Socket.io", "Gemini API"],
+    href: "/projects/luxe-spa",
+    linkLabel: "View Case Study",
+    image: "/images/luxe_spa_home.png",
+  },
+  {
     category: "AI SaaS Platform",
     title: "GrammarAI - Privacy-First Editor",
     description:
