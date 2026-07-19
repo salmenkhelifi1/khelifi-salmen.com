@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Platform Mobile App | Salmen Khelifi</title>
+    <meta name="description" content="Flutter cross-platform mobile application built by Salmen Khelifi">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root { --bg-color: #030303; --text-main: #ffffff; --text-muted: #9ca3af; }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Manrope', sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); }
+    </style>
+</head>
+<body class="antialiased">
+    <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-tight text-white">Khelifi<span class="text-blue-500">.</span></a>
+            <a href="index.html#work" class="text-gray-400 hover:text-white transition-colors">← Back to Work</a>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-blue-400 font-semibold mb-4 tracking-wider text-sm uppercase">Mobile Development</div>
+            <h1 class="text-5xl md:text-6xl font-bold mb-8">Cross-Platform Mobile Application</h1>
+            <p class="text-xl text-gray-400 mb-12 leading-relaxed">
+                A high-performance cross-platform mobile application built with Flutter, featuring real-time data synchronization, push notifications, and a seamless user experience across iOS and Android platforms.
+            </p>
+            
+            <div class="flex flex-wrap gap-3 mb-12">
+                <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Flutter</span>
+                <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Dart</span>
+                <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">Firebase</span>
+                <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">REST API</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-black/40">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-8">Key Features</h2>
+            <ul class="space-y-4 text-gray-400 text-lg">
+                <li class="flex items-start gap-3">
+                    <i data-lucide="check-circle" class="text-blue-400 w-6 h-6 mt-1"></i>
+                    <span>Real-time data synchronization across all devices</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="check-circle" class="text-blue-400 w-6 h-6 mt-1"></i>
+                    <span>Push notifications for user engagement</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="check-circle" class="text-blue-400 w-6 h-6 mt-1"></i>
+                    <span>Native-like performance on both iOS and Android</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="check-circle" class="text-blue-400 w-6 h-6 mt-1"></i>
+                    <span>Modern Material Design UI components</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="check-circle" class="text-blue-400 w-6 h-6 mt-1"></i>
+                    <span>Offline-first architecture with local storage</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="py-20">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-8">Technical Details</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
+                    <h3 class="text-xl font-bold mb-4">Architecture</h3>
+                    <p class="text-gray-400">Clean Architecture with BLoC pattern for state management, ensuring scalable and maintainable code.</p>
+                </div>
+                <div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
+                    <h3 class="text-xl font-bold mb-4">Backend</h3>
+                    <p class="text-gray-400">Firebase for authentication, real-time database, and cloud messaging. REST API integration for external services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/10">
+        <div class="max-w-4xl mx-auto px-6 text-center text-gray-500">
+            <p>© 2026 Salmen Khelifi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

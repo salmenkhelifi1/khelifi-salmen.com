@@ -1,0 +1,25 @@
+{
+  "name": "khelifi-salmen.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "get-stitch-screenshots.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salmenkhelifi1/khelifi-salmen.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/salmenkhelifi1/khelifi-salmen.com/issues"
+  },
+  "homepage": "https://github.com/salmenkhelifi1/khelifi-salmen.com#readme",
+  "dependencies": {
+    "@google/stitch-sdk": "^0.1.0",
+    "@react-grab/cli": "^0.1.29"
+  }
+}

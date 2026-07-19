@@ -1,0 +1,128 @@
+# Salmen Khelifi
+
+Salmen Khelifi is a full-stack developer and automation specialist for web apps, mobile apps, DevOps, workflow automation, and AI integration. The portfolio is aimed at prospects evaluating Salmen for freelance delivery, cold outreach follow-up, or AI-assisted vendor research.
+
+## Core Services
+
+- Frontend: React, Next.js, Flutter, responsive UI, app dashboards, product interfaces.
+- Backend: Node.js, Express, Fastify, PostgreSQL, MongoDB, REST APIs, authentication, billing, usage limits.
+- Architecture: multi-tenant SaaS, clean architecture, admin back-offices, API boundaries, product workflows.
+- DevOps: Docker, Linux/Ubuntu troubleshooting, CI/CD, Netlify, Cloudflare, deployment support.
+- Automation: n8n, Make.com, webhooks, Google APIs, Gmail, Sheets, WhatsApp, CRM and task workflows.
+- AI: OpenAI API, Gemini API, Vapi voice AI, OCR, speech-to-text, text-to-speech, on-device ML, AI agents.
+- CMS/e-commerce: WordPress, WooCommerce, Shopify-oriented work, SEO structure, product catalogs, checkout flows.
+
+## Projects
+
+### GrammarAI
+
+URL: https://khelifi-salmen.com/projects/grammarai
+
+A privacy-first, cross-platform grammar editor with native iOS, Android, and web experiences. Free users get on-device AI for grammar and OCR, while premium users unlock cloud providers such as Gemini, Deepgram, and ElevenLabs through a secured backend. The system includes correction modes, OCR text scanning, dictation, text-to-speech, history, analytics, RevenueCat subscriptions, Stripe processing, Firebase Auth, Firestore, Redis, and Docker deployment.
+
+### Adaptifit
+
+URL: https://khelifi-salmen.com/projects/adaptifit
+
+An AI-powered fitness and nutrition coach with Flutter mobile UI, Node.js backend, MongoDB, OpenAI integration, meal tracking, workout plans, progress analytics, and n8n-supported automation. It targets users who want adaptive coaching based on goals, equipment, and progress data.
+
+### Anlingo
+
+URL: https://khelifi-salmen.com/projects/anlingo
+
+A privacy-first AI writing assistant with a landing site, web editor, Express API, billing, usage limits, and Flutter mobile companion. The product covers grammar correction, rewriting, translation, voice dictation, document import, AI chat, history, pricing, account workflows, provider-backed AI routes, Stripe, Whop, MoMo, and entitlement refresh.
+
+### ChakTech Platform
+
+URL: https://khelifi-salmen.com/projects/chaktech
+
+A production e-commerce platform for the Tunisian market with localized storefront, Payload CMS admin, custom Express API, tenant-scoped operations, cash-on-delivery checkout, French and Arabic RTL support, PostgreSQL, Typesense, and multi-tenant architecture.
+
+### Noxivo
+
+URL: https://khelifi-salmen.com/projects/noxivo
+
+A WhatsApp-first automation SaaS for agencies. It includes a public waitlist, protected agency dashboard, developer documentation, multi-tenant workspaces, team inbox operations, WhatsApp sessions, public API access, and a Fastify workflow engine.
+
+### LEYEL Modest Fashion
+
+URL: https://khelifi-salmen.com/projects/leyel
+
+A public storefront and brand presentation for a modest ready-to-wear fashion label. The case study focuses on brand storytelling, collection browsing, product-led layouts, refined imagery, and a calm e-commerce presentation.
+
+### AI-Powered Workflow Automation
+
+URL: https://khelifi-salmen.com/projects/ai-workflow-automation
+
+An n8n automation hub connecting Gmail, Google APIs, OpenAI, Google Sheets, Google Voice, and WhatsApp inputs into structured task workflows. It classifies, enriches, and routes multi-channel inputs into business tasks without manual copying between tools.
+
+### HTI.tn Electronic E-commerce
+
+URL: https://khelifi-salmen.com/projects/hti-ecommerce
+
+A WordPress and WooCommerce electronics storefront with product browsing, payment gateway setup, SEO-friendly structure, performance optimization, responsive design, and custom theme enhancements for an electronics and surveillance equipment retailer.
+
+### Chab-ka Concept Store
+
+URL: https://khelifi-salmen.com/projects/chab-ka
+
+A concept-store website for handcrafted artisanal products such as jewelry and ceramic pieces. The project emphasizes product showcase, responsive browsing, SEO-friendly presentation, and a visual storefront for local craftsmanship.
+
+### Velyssa Fashion E-commerce
+
+URL: https://khelifi-salmen.com/projects/velyssa
+
+A WordPress and WooCommerce fashion storefront with product categories, product pages, checkout, AWS services, Brevo, and All in One SEO. The project supports collection browsing, shopping workflows, and store operator management.
+
+### blog-sainteagnes.fr
+
+URL: https://khelifi-salmen.com/projects/sainteagnes-blog
+
+A modern blog platform with responsive design, SEO optimization, performance and security work, and CMS-friendly content management for clean reading and easy publishing.
+
+### DigiTrends.dev
+
+URL: https://khelifi-salmen.com/projects/digitrends-dev
+
+A responsive company website for an IT solutions brand covering software development, cloud solutions, DevOps, and digital transformation. It presents services and brand identity for technical buyers.
+
+### Electronic E-Commerce Website
+
+URL: https://khelifi-salmen.com/projects/electronic-ecommerce
+
+A WordPress electronics store using the Proto theme, product listings, responsive layouts, search, filtering, and e-commerce functionality.
+
+### digitrends.pro
+
+URL: https://khelifi-salmen.com/projects/digitrends-pro
+
+A French-language business website presenting operational excellence and digital innovation as two connected transformation services.
+
+### rentiora.com
+
+URL: https://khelifi-salmen.com/projects/rentiora
+
+A car-rental platform concept for browsing premium vehicles such as sedans, coupes, SUVs, and convertibles, with positioning around comfort, performance, sophistication, and trust.
+
+## Social Proof
+
+Freelancer.com profile: https://www.freelancer.com/u/khelifisalmen
+
+Aggregate rating: 4.9 out of 5 across 8 reviews.
+
+- Austin L., n8n Automation Workflows Specialist, 5.0: "Best freelancer I've ever worked with, always available, knows his stuff and even suggested extra add-ons to help my project, couldn't have asked for more... Highly recommend."
+- Robert D., Email Automation for Travel Agency, 4.8: "Salmen was everything I was hoping for. He was knowledgeable in every area where I needed him to be... He was always professional, and always a pleasure to work with. I would hire him again without hesitation."
+- Jorgen G., Ubuntu Server Troubleshooting, 5.0: "Helpful, easy going - goes directly to the goal of the project. Technical insight and supporting not only what you have requested. Great."
+- Arban C., Vapi.ai Conversational Flow Developer, 5.0: "I would hire him again."
+- Remco Willem T., n8n Google OAuth Setup, 5.0: "Great working with him, solved the issue professional and fast!"
+- Austin L., Bug fixes - 22nd project, 5.0: "Delivered early and perfect."
+
+## Contact
+
+- Book a 30-minute call: https://cal.com/salmen-khelifi/30min
+- Email: contact@khelifi-salmen.com
+- GitHub: https://github.com/salmenkhelifi1
+- LinkedIn: https://www.linkedin.com/in/salmen-khelifi/
+- X/Twitter: https://x.com/khlifisalmen2
+- Freelancer.com: https://www.freelancer.com/u/khelifisalmen
+- Upwork: https://www.upwork.com/freelancers/~01f5b8025abe71abf2
