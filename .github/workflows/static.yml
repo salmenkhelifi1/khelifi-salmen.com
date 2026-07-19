@@ -2,11 +2,10 @@
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
+  # Legacy static site retired as of the Next.js portfolio launch (main now
+  # serves the Next.js app via Netlify). Auto-deploy-on-push disabled so this
+  # no longer overwrites GitHub Pages; kept as workflow_dispatch only in case
+  # the old static site is ever needed again.
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
