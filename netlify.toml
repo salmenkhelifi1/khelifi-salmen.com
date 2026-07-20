@@ -1,2 +1,16 @@
 [build]
   command = "node scripts/inject-posthog.mjs"
+
+# PostHog reverse proxy — routes ingestion through our own domain so ad
+# blockers don't drop tracking requests to posthog.com directly.
+[[redirects]]
+  from = "/ingest/static/*"
+  to = "https://us-assets.i.posthog.com/static/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ingest/*"
+  to = "https://us.i.posthog.com/:splat"
+  status = 200
+  force = true

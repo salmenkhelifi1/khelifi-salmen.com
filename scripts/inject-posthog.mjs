@@ -1,7 +1,6 @@
 import fs from 'fs';
 
 const POSTHOG_PROJECT_TOKEN = process.env.POSTHOG_PROJECT_TOKEN || '';
-const POSTHOG_HOST = process.env.POSTHOG_HOST || 'https://us.i.posthog.com';
 
 const htmlFiles = [
   'index.html',
@@ -18,9 +17,7 @@ let replaced = 0;
 for (const file of htmlFiles) {
   if (!fs.existsSync(file)) continue;
   let content = fs.readFileSync(file, 'utf8');
-  const updated = content
-    .replaceAll('{{POSTHOG_PROJECT_TOKEN}}', POSTHOG_PROJECT_TOKEN)
-    .replaceAll('{{POSTHOG_HOST}}', POSTHOG_HOST);
+  const updated = content.replaceAll('{{POSTHOG_PROJECT_TOKEN}}', POSTHOG_PROJECT_TOKEN);
   if (updated !== content) {
     fs.writeFileSync(file, updated);
     replaced++;
