@@ -120,17 +120,6 @@ const projects = [
     image: "/images/luxe_spa_home.png",
   },
   {
-    category: "AI SaaS Platform",
-    title: "GrammarAI - Privacy-First Editor",
-    description:
-      "A full-stack, mobile-first grammar correction application featuring on-device AI for free users and cloud-powered premium features like Gemini, Deepgram, and ElevenLabs. Built natively for iOS, Android, and Web.",
-    tags: ["Flutter", "Next.js 14", "Express.js", "Gemini API"],
-    href: "/projects/grammarai",
-    linkLabel: "View Project",
-    image:
-      "/images/stitch-projects/14620193470260808168-70889deedbc14545be22752d8c352941.png",
-  },
-  {
     category: "AI Writing SaaS",
     title: "Anlingo - AI Writing Assistant",
     description:
@@ -138,7 +127,7 @@ const projects = [
     tags: ["Next.js", "Express", "Firebase", "Flutter", "Gemini", "Stripe"],
     href: "/projects/anlingo",
     linkLabel: "View Case Study",
-    image: "/images/anlingo/anlingo-03.jpg",
+    image: "/images/anlingo/gallery/anlingo-web-dashboard.png",
   },
   {
     category: "WhatsApp Automation SaaS",

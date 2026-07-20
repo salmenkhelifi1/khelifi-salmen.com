@@ -277,26 +277,31 @@ export default async function ProjectProfilePage({
                   : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
               }
             >
-              {project.gallery.map((shot) => (
-                <div
-                  key={shot.src}
-                  className={`relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--glass-border)] bg-[var(--bg-surface)] shadow-[var(--glass-shadow)] ${
-                    hasDesktopGallery ? "aspect-video" : "aspect-[9/19]"
-                  }`}
-                >
-                  <Image
-                    src={shot.src}
-                    alt={shot.alt}
-                    fill
-                    sizes={
-                      hasDesktopGallery
-                        ? "(max-width: 768px) 90vw, 560px"
-                        : "(max-width: 640px) 90vw, (max-width: 768px) 45vw, 30vw"
-                    }
-                    className="object-cover"
-                  />
-                </div>
-              ))}
+              {project.gallery.map((shot) => {
+                const shotIsPhone = shot.aspect
+                  ? shot.aspect === "phone"
+                  : !hasDesktopGallery;
+                return (
+                  <div
+                    key={shot.src}
+                    className={`relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--glass-border)] bg-[var(--bg-surface)] shadow-[var(--glass-shadow)] ${
+                      shotIsPhone ? "aspect-[9/19] w-full max-w-xs mx-auto" : "aspect-video"
+                    }`}
+                  >
+                    <Image
+                      src={shot.src}
+                      alt={shot.alt}
+                      fill
+                      sizes={
+                        shotIsPhone
+                          ? "(max-width: 640px) 90vw, (max-width: 768px) 45vw, 30vw"
+                          : "(max-width: 768px) 90vw, 560px"
+                      }
+                      className="object-cover"
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>

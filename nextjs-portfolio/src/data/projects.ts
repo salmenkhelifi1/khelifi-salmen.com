@@ -29,7 +29,7 @@ export type Project = {
     audience: string;
   };
   features: ProjectFeature[];
-  gallery: { src: string; alt: string }[];
+  gallery: { src: string; alt: string; aspect?: "desktop" | "phone" }[];
   techStack: {
     frontend: string[];
     backend?: string[];
@@ -174,114 +174,6 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "grammarai",
-    title: "GrammarAI",
-    tagline:
-      "A privacy-first, cross-platform grammar editor with on-device AI for free users and cloud-powered premium features.",
-    category: "AI SaaS Platform",
-    accent: {
-      text: "text-emerald-400",
-      hoverText: "hover:text-emerald-400",
-      button: "bg-emerald-600 hover:bg-emerald-500",
-    },
-    heroImage:
-      "/images/stitch-projects/14620193470260808168-70889deedbc14545be22752d8c352941.png",
-    overview: {
-      what: "A full-stack, mobile-first grammar correction application built natively for iOS, Android, and Web. Free users get fully on-device AI; subscribers unlock cloud models like Gemini, Deepgram, and ElevenLabs.",
-      problem:
-        "Most grammar tools send every keystroke to the cloud. GrammarAI keeps the free tier entirely on-device, so private text never leaves the phone — while still offering state-of-the-art cloud accuracy for those who want it.",
-      audience:
-        "Students, professionals, and non-native English speakers who want polished writing without giving up privacy.",
-    },
-    features: [
-      {
-        title: "Grammar Correction",
-        description:
-          "AI-powered checking with explanations and multiple modes — professional, casual, academic, social. On-device ML for free, Gemini 1.5 Flash for premium.",
-      },
-      {
-        title: "OCR Text Scanner",
-        description:
-          "Capture text from images via Google ML Kit, fully on-device for maximum privacy. Handles handwritten notes seamlessly.",
-      },
-      {
-        title: "Voice Input & Dictation",
-        description:
-          "Speak naturally and convert to formatted text. Deepgram Nova-2 cloud accuracy for premium, native speech recognition for free.",
-      },
-      {
-        title: "Text-to-Speech Playback",
-        description:
-          "Listen to corrected text with ElevenLabs neural voices and speed control, with native TTS fallback for free users.",
-      },
-      {
-        title: "History & Analytics",
-        description:
-          "Persistent history in Firestore with full error analytics and writing scores. Unlimited history for premium users.",
-      },
-      {
-        title: "Premium Subscriptions",
-        description:
-          "RevenueCat-integrated paywall with Stripe backend processing and instant gating via Cloud Functions.",
-      },
-    ],
-    gallery: [
-      {
-        src: "/images/stitch-projects/14620193470260808168-70889deedbc14545be22752d8c352941.png",
-        alt: "GrammarAI editor screen",
-      },
-      {
-        src: "/images/stitch-projects/14620193470260808168-86bf1b392bcc4a1787cbc2c9ab421f87.png",
-        alt: "GrammarAI correction results screen",
-      },
-      {
-        src: "/images/stitch-projects/14620193470260808168-f9331ca9a91140e2960b24a81db062bf.png",
-        alt: "GrammarAI premium features screen",
-      },
-    ],
-    techStack: {
-      frontend: [
-        "Flutter & Riverpod",
-        "Next.js 14",
-        "React 18",
-        "TailwindCSS",
-        "ML Kit & MediaPipe GenAI",
-      ],
-      backend: [
-        "Node.js / Express.js (TypeScript)",
-        "Gemini, Deepgram, ElevenLabs APIs",
-        "Redis (ioredis)",
-        "Stripe",
-        "Firebase Auth / Firestore",
-      ],
-      tools: ["Docker", "Render.com", "RevenueCat"],
-    },
-    badges: ["Flutter", "Next.js 14", "Express.js", "Gemini API", "RevenueCat"],
-    challenges: [
-      {
-        challenge: "On-device AI for the free tier",
-        solution:
-          "Implemented a GrammarEngineProxy with a fallback chain: Cloud → On-Device (MediaPipe) → local heuristics.",
-      },
-      {
-        challenge: "Privacy-preserving OCR",
-        solution:
-          "All image processing runs via Google ML Kit on-device — images never leave the device.",
-      },
-      {
-        challenge: "Secure API key management",
-        solution:
-          "Express.js proxies all cloud requests, validating Firebase tokens before forwarding.",
-      },
-      {
-        challenge: "Freemium subscription sync",
-        solution:
-          "RevenueCat webhooks trigger a Firebase Cloud Function that writes entitlements to Firestore.",
-      },
-    ],
-    links: {},
-  },
-  {
     slug: "adaptifit",
     title: "Adaptifit",
     tagline:
@@ -414,6 +306,72 @@ export const projects: Project[] = [
       {
         src: "/images/anlingo/anlingo-05.jpg",
         alt: "Anlingo admin two-factor security screen",
+      },
+      {
+        src: "/images/anlingo/gallery/anlingo-landing-hero.png",
+        alt: "Anlingo landing page hero — AI-generated document summary",
+      },
+      {
+        src: "/images/anlingo/gallery/anlingo-landing-features.png",
+        alt: "Anlingo landing page feature overview",
+      },
+      {
+        src: "/images/anlingo/gallery/anlingo-landing-speaking-ad.png",
+        alt: "Anlingo landing page — speaking practice feature",
+      },
+      {
+        src: "/images/anlingo/gallery/anlingo-web-dashboard.png",
+        alt: "Anlingo web dashboard home",
+      },
+      {
+        src: "/images/anlingo/gallery/anlingo-web-progress.png",
+        alt: "Anlingo web writing progress and score trend",
+      },
+      {
+        src: "/images/anlingo/gallery/anlingo-web-vocabulary-sprint.png",
+        alt: "Anlingo web weekly vocabulary leaderboard",
+      },
+      {
+        src: "/images/anlingo/gallery/anlingo-admin-ai-operations.png",
+        alt: "Anlingo admin AI operations panel",
+      },
+      {
+        src: "/images/anlingo/gallery/anlingo-admin-subscriptions.png",
+        alt: "Anlingo admin subscriptions and revenue dashboard",
+      },
+      {
+        src: "/images/anlingo/gallery/anlingo-admin-users.png",
+        alt: "Anlingo admin users table",
+      },
+      {
+        src: "/images/anlingo/gallery/anlingo-mobile-home.png",
+        alt: "Anlingo mobile home dashboard",
+        aspect: "phone",
+      },
+      {
+        src: "/images/anlingo/gallery/anlingo-mobile-pricing.png",
+        alt: "Anlingo mobile pricing screen",
+        aspect: "phone",
+      },
+      {
+        src: "/images/anlingo/gallery/anlingo-mobile-history.png",
+        alt: "Anlingo mobile writing history",
+        aspect: "phone",
+      },
+      {
+        src: "/images/anlingo/gallery/anlingo-mobile-writing-exercise.png",
+        alt: "Anlingo mobile IELTS writing exercise",
+        aspect: "phone",
+      },
+      {
+        src: "/images/anlingo/gallery/anlingo-mobile-band-feedback.png",
+        alt: "Anlingo mobile band score feedback",
+        aspect: "phone",
+      },
+      {
+        src: "/images/anlingo/gallery/anlingo-mobile-translate.png",
+        alt: "Anlingo mobile translation exercise",
+        aspect: "phone",
       },
     ],
     techStack: {
