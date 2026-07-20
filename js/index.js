@@ -88,6 +88,7 @@ $(function(){
 $(function(){
 
     $('#about-link').on('click',function(){
+      posthog.capture('section_navigated', { section: 'about' });
       gsap.to('#navigation-content',0,{display:"none",delay:.7});
       gsap.to('#navigation-content',0,{y:'-100%',delay:.7});
   gsap.to('#header',0,{display:"none"});
@@ -102,6 +103,7 @@ gsap.to('#contact',0,{display:"none"});
    gsap.to('#navigation-content',0,{display:'flex',delay:2});
  })
  $('#contact-link').on('click',function(){
+   posthog.capture('section_navigated', { section: 'contact' });
    gsap.to('#navigation-content',0,{display:"none",delay:.7});
    gsap.to('#navigation-content',0,{y:'-100%',delay:.7});
 gsap.to('#header',0,{display:"none"});
@@ -116,6 +118,7 @@ gsap.to('#contact',0,{display:"block",delay:.7});
 gsap.to('#navigation-content',0,{display:'flex',delay:2});
 })
 $('#portfolio-link').on('click',function(){
+  posthog.capture('section_navigated', { section: 'portfolio' });
   gsap.to('#navigation-content',0,{display:"none",delay:.7});
   gsap.to('#navigation-content',0,{y:'-100%',delay:.7});
 gsap.to('#header',0,{display:"none"});
@@ -130,6 +133,7 @@ gsap.to('#portfolio',0,{display:"block",delay:.7});
 gsap.to('#navigation-content',0,{display:'flex',delay:2});
 })
 $('#blog-link').on('click',function(){
+  posthog.capture('section_navigated', { section: 'blog' });
   gsap.to('#navigation-content',0,{display:"none",delay:.7});
   gsap.to('#navigation-content',0,{y:'-100%',delay:.7});
 gsap.to('#header',0,{display:"none"});
@@ -144,6 +148,7 @@ gsap.to('#blog',0,{display:"block",delay:.7});
 gsap.to('#navigation-content',0,{display:'flex',delay:2});
 })
 $('#home-link').on('click',function(){
+  posthog.capture('section_navigated', { section: 'home' });
   gsap.to('#navigation-content',0,{display:"none",delay:.7});
   gsap.to('#navigation-content',0,{y:'-100%',delay:.7});
 gsap.to('#header',0,{display:"none"});
@@ -237,6 +242,48 @@ $(function(){
 //   }
 // });
 
+$(function() {
+  // CV download
+  $('a[href*="Resume"]').on('click', function() {
+    posthog.capture('cv_downloaded');
+  });
+
+  // Book a call
+  $('a[href*="cal.com"]').on('click', function() {
+    posthog.capture('book_call_clicked');
+  });
+
+  // Portfolio project links
+  $('.portfolio .button a').on('click', function() {
+    var projectName = $(this).closest('.portfolio-text').find('h2').text().trim();
+    posthog.capture('portfolio_project_clicked', { project_name: projectName });
+  });
+
+  // Freelancer platform profile links
+  $('.social-profile-link').on('click', function() {
+    var href = $(this).attr('href') || '';
+    var platform = href.indexOf('upwork') !== -1 ? 'upwork' : 'freelancer';
+    posthog.capture('social_profile_clicked', { platform: platform });
+  });
+
+  // Social media icon links
+  $('.social-media-links a').on('click', function() {
+    var href = $(this).attr('href') || '';
+    var platform = 'unknown';
+    if (href.indexOf('instagram') !== -1) platform = 'instagram';
+    else if (href.indexOf('facebook') !== -1) platform = 'facebook';
+    else if (href.indexOf('linkedin') !== -1) platform = 'linkedin';
+    else if (href.indexOf('github') !== -1) platform = 'github';
+    else if (href.indexOf('x.com') !== -1 || href.indexOf('twitter') !== -1) platform = 'x';
+    posthog.capture('social_media_clicked', { platform: platform });
+  });
+
+  // Testimonials Freelancer.com link
+  $('.testimonials-header a').on('click', function() {
+    posthog.capture('testimonials_link_clicked');
+  });
+});
+
 document.getElementById('myForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
     
@@ -251,15 +298,18 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
         console.log('Form submission response:', response);
         if (response.ok) {
             // Form submitted successfully
+            posthog.capture('contact_form_submitted');
             alert('Thank you for your message!');
             form.reset(); // Optionally reset the form
         } else {
             // Something went wrong
+            posthog.capture('contact_form_submit_failed', { reason: 'server_error' });
             alert('Oops! There was a problem submitting your form.');
         }
     })
     .catch(error => {
         // Network error
+        posthog.capture('contact_form_submit_failed', { reason: 'network_error' });
         console.error('Network error:', error);
         alert('Oops! Something went wrong.');
     });
