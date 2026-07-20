@@ -60,7 +60,8 @@
           (e.__SV = 1));
       })(document, window.posthog || []);
       posthog.init("{{POSTHOG_PROJECT_TOKEN}}", {
-        api_host: "{{POSTHOG_HOST}}",
+        api_host: "/ingest",
+        ui_host: "https://us.posthog.com",
         defaults: "2026-05-30",
       });
       posthog.capture('project_page_viewed', { project: 'n8n-workflow' });
