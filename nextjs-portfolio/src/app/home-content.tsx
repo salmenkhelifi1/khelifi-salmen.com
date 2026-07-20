@@ -260,8 +260,7 @@ const projects = [
     tags: ["Flutter", "Node.js", "MongoDB", "OpenAI", "n8n"],
     href: "/projects/adaptifit",
     linkLabel: "View Project",
-    image:
-      "/images/stitch-projects/15863999156109095280-3ed15ebb08364f629544f22ce389d1c4.png",
+    image: "/images/adaptifit_1.png",
   },
 ];
 
@@ -284,6 +283,7 @@ const categoryToFilter: Record<string, (typeof workFilters)[number]> = {
 const portraitPreviewImages = new Set([
   "/images/stitch-projects/14620193470260808168-70889deedbc14545be22752d8c352941.png",
   "/images/freelancer-portfolio/leyel/leyel-02.png",
+  "/images/adaptifit_1.png",
 ]);
 
 const services = [

@@ -184,8 +184,7 @@ export const projects: Project[] = [
       hoverText: "hover:text-cyan-400",
       button: "bg-cyan-600 hover:bg-cyan-500",
     },
-    heroImage:
-      "/images/stitch-projects/15863999156109095280-3ed15ebb08364f629544f22ce389d1c4.png",
+    heroImage: "/images/adaptifit_1.png",
     overview: {
       what: "A full-stack mobile + backend solution: AI-generated workout plans, meal tracking, progress analytics, and an AI coach chat, built with Flutter and a Node.js backend.",
       problem:
@@ -217,8 +216,13 @@ export const projects: Project[] = [
     ],
     gallery: [
       {
-        src: "/images/stitch-projects/15863999156109095280-3ed15ebb08364f629544f22ce389d1c4.png",
-        alt: "Adaptifit dashboard screen",
+        src: "/images/adaptifit_1.png",
+        alt: "Adaptifit sign-in screen on mobile",
+      },
+      {
+        src: "/images/adaptifit_dashboard.png",
+        alt: "Adaptifit sign-in screen on tablet",
+        aspect: "desktop",
       },
     ],
     techStack: {
