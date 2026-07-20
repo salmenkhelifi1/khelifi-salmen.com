@@ -56,6 +56,9 @@ export default function RootLayout({
             __html: JSON.stringify(personAndServiceJsonLd),
           }}
         />
+        <div className="bg-blooms" aria-hidden="true">
+          <span />
+        </div>
         {children}
         {process.env.NODE_ENV === "development" && (
           <Script

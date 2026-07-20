@@ -93,7 +93,7 @@ function ProjectLinks({ project, large }: { project: Project; large?: boolean })
           href={github}
           target="_blank"
           rel="noreferrer"
-          className={`${base} border border-[var(--border-muted)] bg-[var(--bg-surface)] text-[var(--text-primary)] hover:border-[var(--border-active)] hover:bg-[var(--bg-surface-elevated)]`}
+          className={`${base} border border-[var(--glass-border)] bg-[var(--glass-bg)] text-[var(--text-primary)] backdrop-blur-xl hover:border-[var(--border-active)] hover:bg-[var(--glass-bg-elevated)]`}
         >
           <GithubIcon className={large ? "w-5 h-5" : "w-4 h-4"} /> GitHub
         </a>
@@ -112,7 +112,7 @@ function StackCard({
   items: string[];
 }) {
   return (
-    <div className="rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-6">
+    <div className="glass-panel rounded-[var(--radius-lg)] p-6">
       <h3 className="mb-4 flex items-center gap-2 text-h3 text-[var(--accent)]">
         {icon} {title}
       </h3>
@@ -137,7 +137,7 @@ export default async function ProjectProfilePage({
   const jsonLd = projectJsonLd(project);
 
   return (
-    <div className="min-h-screen bg-[var(--bg-page)] text-[var(--text-primary)]">
+    <div className="min-h-screen text-[var(--text-primary)]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -180,7 +180,7 @@ export default async function ProjectProfilePage({
           </div>
           {project.heroImage && (
             <div
-              className={`relative mx-auto w-full overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border-muted)] bg-[var(--bg-surface)] shadow-[var(--shadow-card)] ${
+              className={`relative mx-auto w-full overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border)] bg-[var(--bg-surface)] shadow-[var(--glass-shadow)] ${
                 hasDesktopGallery
                   ? "aspect-video max-w-xl"
                   : "aspect-[9/16] max-w-xs"
@@ -280,7 +280,7 @@ export default async function ProjectProfilePage({
               {project.gallery.map((shot) => (
                 <div
                   key={shot.src}
-                  className={`relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border-muted)] bg-[var(--bg-surface)] shadow-[var(--shadow-card)] ${
+                  className={`relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--glass-border)] bg-[var(--bg-surface)] shadow-[var(--glass-shadow)] ${
                     hasDesktopGallery ? "aspect-video" : "aspect-[9/19]"
                   }`}
                 >
@@ -339,7 +339,7 @@ export default async function ProjectProfilePage({
             <h2 id="challenges-heading" className="mb-10 text-h2">
               Challenges & Learnings
             </h2>
-            <div className="overflow-x-auto rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
+            <div className="glass-panel overflow-x-auto rounded-[var(--radius-lg)]">
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="border-b border-[var(--border-subtle)] text-[var(--text-secondary)]">
@@ -376,13 +376,13 @@ export default async function ProjectProfilePage({
               href={bookingUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-11 min-w-11 items-center gap-2 rounded-full bg-[var(--accent)] px-8 py-4 font-bold text-[var(--text-primary)] transition-colors hover:bg-[#3b8df3]"
+              className="inline-flex min-h-11 min-w-11 items-center gap-2 rounded-full bg-[rgba(47,128,237,0.55)] px-8 py-4 font-bold text-[var(--text-primary)] backdrop-blur-xl transition-colors hover:bg-[rgba(59,141,243,0.7)]"
             >
               Book a 30-min call <ArrowUpRight className="w-5 h-5" />
             </Link>
             <Link
               href="/#work"
-              className="inline-flex min-h-11 min-w-11 items-center gap-2 rounded-full border border-[var(--border-muted)] bg-[var(--bg-surface)] px-8 py-4 font-bold text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--bg-surface-elevated)]"
+              className="inline-flex min-h-11 min-w-11 items-center gap-2 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-8 py-4 font-bold text-[var(--text-primary)] backdrop-blur-xl transition-colors hover:border-[var(--border-active)] hover:bg-[var(--glass-bg-elevated)]"
             >
               All Projects <ArrowUpRight className="w-5 h-5" />
             </Link>

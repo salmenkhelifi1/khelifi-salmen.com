@@ -749,7 +749,7 @@ export const projects: Project[] = [
     heroImage: "/images/freelancer-portfolio/leyel/leyel-01.png",
     galleryAspect: "desktop",
     overview: {
-      what: "A fashion storefront case study based on the public Freelancer portfolio entry and screenshots for LEYEL.",
+      what: "A public storefront and brand presentation built for LEYEL, a modest ready-to-wear fashion label focused on simplicity, quality, and durable style.",
       problem:
         "The brand needed to communicate a modest fashion identity built around refined cuts, subtle details, durable materials, and a calmer alternative to fast fashion.",
       audience:
@@ -759,12 +759,12 @@ export const projects: Project[] = [
       {
         title: "Brand Storytelling",
         description:
-          "The portfolio description frames LEYEL as a modest fashion universe built around simplicity, refinement, quality fabrics, and durable wardrobe pieces.",
+          "LEYEL is positioned as a modest fashion universe built around simplicity, refinement, quality fabrics, and durable wardrobe pieces.",
       },
       {
         title: "Collection Browsing",
         description:
-          "The screenshots show collection pages and product-led layouts for browsing clothing and new arrivals.",
+          "Collection pages and product-led layouts make it easy to browse clothing and new arrivals.",
       },
       {
         title: "Visual Product Presentation",
@@ -787,11 +787,7 @@ export const projects: Project[] = [
       },
     ],
     techStack: {
-      frontend: [
-        "Public storefront screenshots",
-        "Collection and product pages",
-        "Platform not stated in the Freelancer item",
-      ],
+      frontend: ["Storefront layout", "Collection & product pages"],
     },
     badges: ["Fashion", "E-commerce", "Brand Site"],
     links: {},
@@ -877,7 +873,7 @@ export const projects: Project[] = [
       {
         title: "WooCommerce Storefront",
         description:
-          "The Freelancer entry verifies WooCommerce integration for product browsing and e-commerce operations.",
+          "WooCommerce powers the storefront, product browsing, and full e-commerce operations.",
       },
       {
         title: "Custom Theme Enhancements",
@@ -892,7 +888,7 @@ export const projects: Project[] = [
       {
         title: "SEO and Performance",
         description:
-          "The portfolio description calls out performance optimization, SEO-friendly structure, and mobile-responsive design.",
+          "Performance optimization, SEO-friendly structure, and mobile-responsive design were core parts of the build.",
       },
     ],
     gallery: [
@@ -939,7 +935,7 @@ export const projects: Project[] = [
       {
         title: "Product Showcase",
         description:
-          "The portfolio entry describes a gallery designed to show detailed handmade products, from jewelry to ceramics.",
+          "A dedicated gallery showcases detailed handmade products, from jewelry to ceramics.",
       },
       {
         title: "Brand Navigation",
@@ -949,7 +945,7 @@ export const projects: Project[] = [
       {
         title: "Responsive Experience",
         description:
-          "The Freelancer description verifies responsive design for accessible browsing across devices.",
+          "Built with responsive design for accessible browsing across devices.",
       },
       {
         title: "SEO Optimization",
@@ -972,11 +968,7 @@ export const projects: Project[] = [
       },
     ],
     techStack: {
-      frontend: [
-        "Responsive website",
-        "Product gallery",
-        "Platform not stated in the Freelancer item",
-      ],
+      frontend: ["Responsive website", "Product gallery"],
       tools: ["SEO optimization"],
     },
     badges: ["Concept Store", "Responsive", "SEO"],
@@ -1007,7 +999,7 @@ export const projects: Project[] = [
       {
         title: "WooCommerce Shopping Flow",
         description:
-          "Product categories, detailed product pages, and a user-friendly checkout process are verified in the portfolio description.",
+          "Product categories, detailed product pages, and a user-friendly checkout process support the full shopping flow.",
       },
       {
         title: "Marketing and SEO Tools",
@@ -1017,7 +1009,7 @@ export const projects: Project[] = [
       {
         title: "Performance Support",
         description:
-          "The Freelancer item states that AWS services were integrated for performance and reliability.",
+          "AWS services were integrated for performance and reliability.",
       },
     ],
     gallery: [
@@ -1065,7 +1057,7 @@ export const projects: Project[] = [
       {
         title: "Responsive Blog Design",
         description:
-          "The Freelancer item verifies custom web development for a responsive and visually appealing blog.",
+          "Custom web development delivers a responsive and visually appealing blog experience.",
       },
       {
         title: "SEO Optimization",
@@ -1080,7 +1072,7 @@ export const projects: Project[] = [
       {
         title: "CMS Integration",
         description:
-          "The portfolio description states that content updates and management were made user-friendly through CMS integration.",
+          "Content updates and management were made user-friendly through CMS integration.",
       },
     ],
     gallery: [
@@ -1127,7 +1119,7 @@ export const projects: Project[] = [
       {
         title: "Service Positioning",
         description:
-          "The portfolio entry verifies pages focused on software development, cloud solutions, DevOps, and digital transformation.",
+          "Dedicated pages focus on software development, cloud solutions, DevOps, and digital transformation services.",
       },
       {
         title: "Responsive Web Experience",
@@ -1147,10 +1139,7 @@ export const projects: Project[] = [
       },
     ],
     techStack: {
-      frontend: [
-        "Responsive company website",
-        "Platform not stated in the Freelancer item",
-      ],
+      frontend: ["Responsive company website"],
       tools: ["On-page SEO", "Performance optimization", "Secure infrastructure"],
     },
     badges: ["Company Website", "SEO", "Performance"],
@@ -1179,7 +1168,7 @@ export const projects: Project[] = [
       {
         title: "Responsive Storefront",
         description:
-          "The Freelancer description verifies responsive behavior across desktops, tablets, and smartphones.",
+          "Built with responsive behavior across desktops, tablets, and smartphones.",
       },
       {
         title: "Proto Theme Customization",
@@ -1194,7 +1183,7 @@ export const projects: Project[] = [
       {
         title: "Search and Filtering",
         description:
-          "Advanced search and filtering are listed in the public portfolio description.",
+          "Advanced search and filtering help shoppers narrow down products quickly.",
       },
     ],
     gallery: [
@@ -1232,7 +1221,7 @@ export const projects: Project[] = [
       {
         title: "French-Language Positioning",
         description:
-          "The portfolio text presents operational excellence and digital innovation as two connected strengths.",
+          "Operational excellence and digital innovation are presented as two connected strengths.",
       },
       {
         title: "Service Pillar Structure",
@@ -1242,7 +1231,7 @@ export const projects: Project[] = [
       {
         title: "Corporate Visual System",
         description:
-          "The screenshots show a polished company presentation with service-focused page layouts.",
+          "A polished company presentation with service-focused page layouts.",
       },
     ],
     gallery: [
@@ -1260,10 +1249,7 @@ export const projects: Project[] = [
       },
     ],
     techStack: {
-      frontend: [
-        "French-language company website",
-        "Platform not stated in the Freelancer item",
-      ],
+      frontend: ["French-language company website"],
     },
     badges: ["Company Website", "French", "Digital Transformation"],
     links: {
@@ -1280,7 +1266,7 @@ export const projects: Project[] = [
     heroImage: "/images/freelancer-portfolio/rentiora/rentiora-01.png",
     galleryAspect: "desktop",
     overview: {
-      what: "A car-rental platform case study based on the public Freelancer item and screenshots for rentiora.com.",
+      what: "A car-rental platform concept built for rentiora.com, presenting premium rental vehicles with a comfort- and trust-focused brand experience.",
       problem:
         "The product needed to present premium rental vehicles and communicate comfort, performance, and trust.",
       audience:
@@ -1290,17 +1276,17 @@ export const projects: Project[] = [
       {
         title: "Premium Vehicle Positioning",
         description:
-          "The public description positions the service around comfort, performance, sophistication, and trusted rentals.",
+          "The service is positioned around comfort, performance, sophistication, and trusted rentals.",
       },
       {
         title: "Vehicle Category Browsing",
         description:
-          "The portfolio text references sedans, coupes, SUVs, and convertibles as supported rental categories.",
+          "Supported rental categories include sedans, coupes, SUVs, and convertibles.",
       },
       {
         title: "Marketing Landing Experience",
         description:
-          "The screenshots show a polished visual landing-page treatment for a car rental brand.",
+          "A polished visual landing-page treatment carries the car rental brand.",
       },
     ],
     gallery: [
@@ -1314,10 +1300,7 @@ export const projects: Project[] = [
       },
     ],
     techStack: {
-      frontend: [
-        "Marketing landing page",
-        "Platform not stated in the Freelancer item",
-      ],
+      frontend: ["Marketing landing page"],
     },
     badges: ["Car Rental", "Landing Page", "Luxury"],
     links: {},

@@ -210,7 +210,7 @@ const projects = [
     href: "/projects/sainteagnes-blog",
     linkLabel: "View Case Study",
     image:
-      "/images/blog-sainteagnes.png",
+      "/images/freelancer-portfolio/sainteagnes-blog/sainteagnes-blog-02.png",
   },
   {
     category: "Company Website",
@@ -375,7 +375,7 @@ export default function HomeContent() {
             href={bookingUrl}
             target="_blank"
             rel="noreferrer"
-            className="hidden min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--border-muted)] bg-[rgba(255,255,255,0.02)] px-6 py-2.5 text-sm font-bold text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--accent-dim)] md:inline-flex"
+            className="hidden min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-6 py-2.5 text-sm font-bold text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--glass-bg-elevated)] md:inline-flex"
           >
             Let&apos;s Talk
           </a>
@@ -384,13 +384,13 @@ export default function HomeContent() {
             aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((open) => !open)}
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--border-muted)] bg-[rgba(255,255,255,0.02)] text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--accent-dim)] md:hidden"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--glass-bg-elevated)] md:hidden"
           >
             {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
         <div
-          className={`border-t border-[var(--border-subtle)] bg-black/95 px-6 backdrop-blur transition-all duration-[180ms] md:hidden ${
+          className={`border-t border-[var(--glass-border)] bg-[var(--glass-bg)] px-6 backdrop-blur-xl transition-all duration-[180ms] md:hidden ${
             isMenuOpen
               ? "pointer-events-auto translate-y-0 opacity-100"
               : "pointer-events-none -translate-y-2 opacity-0"
@@ -628,7 +628,7 @@ export default function HomeContent() {
           <div className="grid gap-6 md:grid-cols-4">
             {processSteps.map((step, index) => (
               <div key={step} className="reveal">
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-muted)] bg-[var(--bg-surface)] text-sm font-bold text-[var(--accent)]">
+                <div className="service-icon mb-4 flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-[var(--accent)]">
                   {index + 1}
                 </div>
                 <h3 className="text-h3">{step}</h3>
