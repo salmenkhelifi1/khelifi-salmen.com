@@ -629,6 +629,16 @@ export default function HomeContent() {
 
       <section id="about" className="border-t border-[var(--border-subtle)] py-32 md:py-40">
         <div className="mx-auto max-w-4xl px-6 text-center">
+          <div className="glass-panel reveal relative mx-auto mb-10 h-32 w-32 overflow-hidden !rounded-full md:h-40 md:w-40">
+            <Image
+              src="/images/salmen-khelifi-full-stack-developer-portrait.jpg"
+              alt="Salmen Khelifi, Full-Stack Developer & Automation Specialist"
+              fill
+              sizes="160px"
+              className="object-cover"
+              priority={false}
+            />
+          </div>
           <h2 className="section-title reveal mb-10 text-h2">About Me</h2>
           <p className="reveal mb-16 text-body-large text-[var(--text-secondary)] md:text-2xl md:leading-relaxed">
             With <span className="font-medium text-[var(--text-primary)]">5+ years of experience</span>, I
