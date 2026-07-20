@@ -265,6 +265,22 @@ const projects = [
   },
 ];
 
+const workFilters = ["All", "SaaS & Booking", "E-commerce", "Automation & AI", "Company Sites"] as const;
+
+const categoryToFilter: Record<string, (typeof workFilters)[number]> = {
+  "SaaS & Booking Platform": "SaaS & Booking",
+  "AI Writing SaaS": "SaaS & Booking",
+  "WhatsApp Automation SaaS": "SaaS & Booking",
+  "Fashion E-commerce": "E-commerce",
+  "E-commerce Website": "E-commerce",
+  "E-commerce Platform": "E-commerce",
+  "AI & Automation": "Automation & AI",
+  "AI Mobile App": "Automation & AI",
+  "Blog Platform": "Company Sites",
+  "Company Website": "Company Sites",
+  "Car Rental Platform": "Company Sites",
+};
+
 const portraitPreviewImages = new Set([
   "/images/stitch-projects/14620193470260808168-70889deedbc14545be22752d8c352941.png",
   "/images/freelancer-portfolio/leyel/leyel-02.png",
@@ -318,6 +334,12 @@ const processSteps = [
 
 export default function HomeContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeFilter, setActiveFilter] =
+    useState<(typeof workFilters)[number]>("All");
+  const filteredProjects =
+    activeFilter === "All"
+      ? projects
+      : projects.filter((p) => categoryToFilter[p.category] === activeFilter);
   const currentYear = new Date().getFullYear();
 
   useEffect(() => {
@@ -464,12 +486,29 @@ export default function HomeContent() {
 
       <section id="work" className="py-32 md:py-40">
         <div className="mx-auto max-w-7xl px-6">
-          <h2 className="section-title reveal mb-20 text-h2 md:mb-24">
+          <h2 className="section-title reveal mb-10 text-h2">
             Selected Work
           </h2>
 
+          <div className="reveal mb-20 flex flex-wrap gap-3 md:mb-24">
+            {workFilters.map((filter) => (
+              <button
+                key={filter}
+                type="button"
+                onClick={() => setActiveFilter(filter)}
+                className={`tech-badge min-h-11 transition-colors ${
+                  activeFilter === filter
+                    ? "!bg-[rgba(47,128,237,0.55)] !text-[var(--text-primary)]"
+                    : ""
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+
           <div className="space-y-28 md:space-y-36">
-            {projects.map((project, index) => {
+            {filteredProjects.map((project, index) => {
               const isPortraitPreview = portraitPreviewImages.has(project.image);
 
               return (
