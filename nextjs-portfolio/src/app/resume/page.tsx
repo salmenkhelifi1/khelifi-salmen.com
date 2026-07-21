@@ -508,7 +508,7 @@ export default function ResumePage() {
               <span className="font-semibold text-[var(--text-primary)] print-text-primary">Arabic:</span> Native
             </div>
             <div>
-              <span className="font-semibold text-[var(--text-primary)] print-text-primary">French:</span> Fluent
+              <span className="font-semibold text-[var(--text-primary)] print-text-primary">French:</span> Basic (understand well, speak a little)
             </div>
             <div>
               <span className="font-semibold text-[var(--text-primary)] print-text-primary">English:</span> Professional
