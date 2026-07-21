@@ -25,9 +25,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {};
   }
 
-  const title = post.frontmatter.seoTitle || `${post.frontmatter.title} | Salmen Khelifi`;
+  const title = post.frontmatter.seoTitle || post.frontmatter.title;
   const description = post.frontmatter.seoDescription || post.frontmatter.excerpt;
   const url = post.frontmatter.canonicalUrl || `${siteUrl}/blog/${post.slug}`;
+  const socialImage = post.frontmatter.cover
+    ? {
+        url: `${siteUrl}${post.frontmatter.cover}`,
+        alt: post.frontmatter.coverAlt,
+      }
+    : {
+        url: "/opengraph-image",
+        alt: "Salmen Khelifi - Full-Stack Developer & Automation Specialist",
+      };
 
   return {
     title,
@@ -43,9 +52,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: post.frontmatter.publishedAt,
       modifiedTime: post.frontmatter.updatedAt || post.frontmatter.publishedAt,
       authors: [post.frontmatter.author],
-      images: post.frontmatter.cover
-        ? [{ url: `${siteUrl}${post.frontmatter.cover}` }]
-        : undefined,
+      images: [socialImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [socialImage],
     },
   };
 }

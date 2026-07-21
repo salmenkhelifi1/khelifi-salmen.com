@@ -53,26 +53,32 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const project = getProject(slug);
-  if (!project) return { title: "Project Not Found | Salmen Khelifi" };
+  if (!project) return { title: "Project Not Found" };
   const path = `/projects/${project.slug}`;
+  const title = `${project.title} - ${project.category}`;
+  const socialImage = {
+    url: project.heroImage || "/opengraph-image",
+    alt: project.heroImage
+      ? `${project.title} featured screenshot`
+      : "Salmen Khelifi - Full-Stack Developer & Automation Specialist",
+  };
   return {
-    title: `${project.title} - ${project.category}`,
+    title,
     description: project.tagline,
     alternates: {
       canonical: path,
     },
     openGraph: {
-      title: `${project.title} - ${project.category}`,
+      title,
       description: project.tagline,
       url: `${siteUrl}${path}`,
-      images: project.heroImage
-        ? [
-            {
-              url: project.heroImage,
-              alt: `${project.title} featured screenshot`,
-            },
-          ]
-        : undefined,
+      images: [socialImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: project.tagline,
+      images: [socialImage],
     },
   };
 }

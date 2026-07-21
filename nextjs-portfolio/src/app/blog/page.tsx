@@ -5,12 +5,42 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SectionContainer from "@/components/SectionContainer";
 import SectionHeading from "@/components/SectionHeading";
+import { siteUrl } from "@/data/schema";
 import { getPublishedPosts } from "@/lib/content/blog";
 
+const title = "Blog";
+const description =
+  "Engineering write-ups, architecture decisions, and retrospectives from real production projects.";
+
 export const metadata: Metadata = {
-  title: "Blog | Salmen Khelifi",
-  description:
-    "Engineering write-ups, architecture decisions, and retrospectives from real production projects.",
+  title,
+  description,
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title,
+    description,
+    url: `${siteUrl}/blog`,
+    type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        alt: "Salmen Khelifi - Full-Stack Developer & Automation Specialist",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [
+      {
+        url: "/opengraph-image",
+        alt: "Salmen Khelifi - Full-Stack Developer & Automation Specialist",
+      },
+    ],
+  },
 };
 
 export default function BlogIndexPage() {
