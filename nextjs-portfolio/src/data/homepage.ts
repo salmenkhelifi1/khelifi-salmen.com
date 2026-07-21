@@ -91,11 +91,19 @@ export interface ServiceItem {
 export const BLUR_PLACEHOLDER =
   "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAFAAgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDhc+1FFFUB/9k=";
 
+export interface ProcessStep {
+  number: string;
+  title: string;
+  whatIDo: string;
+  whatYouGet: string;
+}
+
 export const navLinks: NavLink[] = [
   { href: "#work", label: "Work" },
   { href: "#services", label: "Capabilities" },
   { href: "#process", label: "Process" },
   { href: "#about", label: "About" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export const footerSocials: FooterSocial[] = [
@@ -409,9 +417,33 @@ export const services: ServiceItem[] = [
   },
 ];
 
-export const processSteps: string[] = [
-  "Discovery call",
-  "Proposal & spec",
-  "Build with weekly demos",
-  "Launch & support",
+export const processSteps: ProcessStep[] = [
+  {
+    number: "01",
+    title: "Discover",
+    whatIDo:
+      "Understand the business problem, current workflow, and what success looks like.",
+    whatYouGet: "A clear scope, priorities, and a fixed proposal.",
+  },
+  {
+    number: "02",
+    title: "Architect",
+    whatIDo:
+      "Design the system architecture, select the tech stack, and map out data models.",
+    whatYouGet: "A clear technical blueprint and validated execution roadmap.",
+  },
+  {
+    number: "03",
+    title: "Build",
+    whatIDo:
+      "Develop frontend, backend, and automated flows with clean code and regular progress updates.",
+    whatYouGet: "Working production software built to scale with your business.",
+  },
+  {
+    number: "04",
+    title: "Launch and Improve",
+    whatIDo:
+      "Deploy to production, configure monitoring, and optimize based on real-world performance.",
+    whatYouGet: "A stable live product and reliable ongoing technical support.",
+  },
 ];

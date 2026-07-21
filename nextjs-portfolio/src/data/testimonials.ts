@@ -3,6 +3,7 @@ export type Testimonial = {
   rating: number;
   projectTitle: string;
   quote: string;
+  featured?: boolean;
 };
 
 export const testimonials: Testimonial[] = [
@@ -12,6 +13,7 @@ export const testimonials: Testimonial[] = [
     projectTitle: "n8n Automation Workflows Specialist",
     quote:
       "Best freelancer I've ever worked with, always available, knows his stuff and even suggested extra add-ons to help my project, couldn't have asked for more… Highly recommend.",
+    featured: true,
   },
   {
     author: "Robert D.",

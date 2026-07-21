@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import {
   ArrowRight,
   Download,
-  Star,
   createLucideIcon,
 } from "lucide-react";
 import {
@@ -19,7 +18,6 @@ import {
   upworkUrl,
   xUrl,
 } from "@/data/schema";
-import { testimonials } from "@/data/testimonials";
 import {
   BLUR_PLACEHOLDER,
   categoryToFilter,
@@ -28,7 +26,6 @@ import {
   featuredHrefs,
   featuredWork,
   portraitPreviewImages,
-  processSteps,
   projects,
   services,
   technicalDepth,
@@ -46,6 +43,9 @@ import CredibilityStrip from "@/components/CredibilityStrip";
 import FeaturedProject from "@/components/FeaturedProject";
 import CompactProject from "@/components/CompactProject";
 import TechnicalStory from "@/components/TechnicalStory";
+import TestimonialSpotlight from "@/components/TestimonialSpotlight";
+import ProcessTimeline from "@/components/ProcessTimeline";
+import ContactCTA from "@/components/ContactCTA";
 import SiteFooter from "@/components/SiteFooter";
 
 const GithubIcon = createLucideIcon("Github", [
@@ -283,74 +283,9 @@ export default function HomeContent() {
         </SectionContainer>
       </section>
 
-      <section id="feedback" className="py-32 md:py-40">
-        <SectionContainer>
-          <div className="mb-16 flex flex-col gap-4 md:mb-20 md:flex-row md:items-end md:justify-between">
-            <SectionHeading className="mb-0">Client Feedback</SectionHeading>
-            <a
-              href={freelancerUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="reveal inline-flex min-h-11 items-center text-body-regular font-semibold text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
-            >
-              4.9 / 5 across 8 reviews on Freelancer.com
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {testimonials.map((item, index) => (
-              <article
-                key={`${item.author}-${item.projectTitle}`}
-                className="modern-card reveal rounded-[var(--radius-xl)] p-8"
-                style={{ transitionDelay: `${index * 80}ms` }}
-              >
-                <div className="mb-6 flex items-center gap-1 text-[var(--accent)]">
-                  {Array.from({ length: 5 }).map((_, starIndex) => (
-                    <Star
-                      key={starIndex}
-                      className="h-4 w-4 fill-current"
-                      aria-hidden="true"
-                    />
-                  ))}
-                  <span className="ml-2 text-sm font-semibold text-[var(--text-secondary)]">
-                    {item.rating.toFixed(1)}
-                  </span>
-                </div>
-                <blockquote className="mb-8 text-body-regular text-[var(--text-primary)]">
-                  &ldquo;{item.quote}&rdquo;
-                </blockquote>
-                <div className="mt-auto">
-                  <p className="font-semibold text-[var(--text-primary)]">
-                    {item.author}
-                  </p>
-                  <p className="mt-1 text-sm text-[var(--text-secondary)]">
-                    {item.projectTitle}
-                  </p>
-                  <span className="mt-5 inline-flex rounded-full border border-[var(--border-muted)] px-3 py-1 text-xs font-semibold text-[var(--text-tertiary)]">
-                    via Freelancer.com
-                  </span>
-                </div>
-              </article>
-            ))}
-          </div>
-        </SectionContainer>
-      </section>
+      <TestimonialSpotlight />
 
-      <section id="process" className="border-y border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 py-16">
-        <SectionContainer>
-          <h2 className="reveal mb-10 text-h2">How I Work</h2>
-          <div className="grid gap-6 md:grid-cols-4">
-            {processSteps.map((step, index) => (
-              <div key={step} className="reveal">
-                <div className="service-icon mb-4 flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-[var(--accent)]">
-                  {index + 1}
-                </div>
-                <h3 className="text-h3">{step}</h3>
-              </div>
-            ))}
-          </div>
-        </SectionContainer>
-      </section>
+      <ProcessTimeline />
 
       <section id="about" className="border-t border-[var(--border-subtle)] py-32 md:py-40">
         <div className="mx-auto max-w-4xl px-6 text-center">
@@ -426,6 +361,8 @@ export default function HomeContent() {
           </div>
         </div>
       </section>
+
+      <ContactCTA />
 
       <SiteFooter />
     </>
