@@ -108,6 +108,9 @@ const footerSocials = [
   { href: xUrl, label: "X" },
 ];
 
+const BLUR_PLACEHOLDER =
+  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAFAAgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDhc+1FFFUB/9k=";
+
 const projects = [
   {
     category: "SaaS & Booking Platform",
@@ -260,14 +263,30 @@ const projects = [
     tags: ["Flutter", "Node.js", "MongoDB", "OpenAI", "n8n"],
     href: "/projects/adaptifit",
     linkLabel: "View Project",
-    image:
-      "/images/stitch-projects/15863999156109095280-3ed15ebb08364f629544f22ce389d1c4.png",
+    image: "/images/adaptifit_1.png",
   },
 ];
+
+const workFilters = ["All", "SaaS & Booking", "E-commerce", "Automation & AI", "Company Sites"] as const;
+
+const categoryToFilter: Record<string, (typeof workFilters)[number]> = {
+  "SaaS & Booking Platform": "SaaS & Booking",
+  "AI Writing SaaS": "SaaS & Booking",
+  "WhatsApp Automation SaaS": "SaaS & Booking",
+  "Fashion E-commerce": "E-commerce",
+  "E-commerce Website": "E-commerce",
+  "E-commerce Platform": "E-commerce",
+  "AI & Automation": "Automation & AI",
+  "AI Mobile App": "Automation & AI",
+  "Blog Platform": "Company Sites",
+  "Company Website": "Company Sites",
+  "Car Rental Platform": "Company Sites",
+};
 
 const portraitPreviewImages = new Set([
   "/images/stitch-projects/14620193470260808168-70889deedbc14545be22752d8c352941.png",
   "/images/freelancer-portfolio/leyel/leyel-02.png",
+  "/images/adaptifit_1.png",
 ]);
 
 const services = [
@@ -318,6 +337,12 @@ const processSteps = [
 
 export default function HomeContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeFilter, setActiveFilter] =
+    useState<(typeof workFilters)[number]>("All");
+  const filteredProjects =
+    activeFilter === "All"
+      ? projects
+      : projects.filter((p) => categoryToFilter[p.category] === activeFilter);
   const currentYear = new Date().getFullYear();
 
   useEffect(() => {
@@ -464,12 +489,29 @@ export default function HomeContent() {
 
       <section id="work" className="py-32 md:py-40">
         <div className="mx-auto max-w-7xl px-6">
-          <h2 className="section-title reveal mb-20 text-h2 md:mb-24">
+          <h2 className="section-title reveal mb-10 text-h2">
             Selected Work
           </h2>
 
+          <div className="reveal mb-20 flex flex-wrap gap-3 md:mb-24">
+            {workFilters.map((filter) => (
+              <button
+                key={filter}
+                type="button"
+                onClick={() => setActiveFilter(filter)}
+                className={`tech-badge min-h-11 transition-colors ${
+                  activeFilter === filter
+                    ? "!bg-[rgba(47,128,237,0.55)] !text-[var(--text-primary)]"
+                    : ""
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+
           <div className="space-y-28 md:space-y-36">
-            {projects.map((project, index) => {
+            {filteredProjects.map((project, index) => {
               const isPortraitPreview = portraitPreviewImages.has(project.image);
 
               return (
@@ -520,6 +562,8 @@ export default function HomeContent() {
                             : "(max-width: 768px) 100vw, 50vw"
                         }
                         className="object-cover object-top"
+                        placeholder="blur"
+                        blurDataURL={BLUR_PLACEHOLDER}
                       />
                     </div>
                   </div>
@@ -636,6 +680,8 @@ export default function HomeContent() {
               fill
               sizes="160px"
               className="object-cover"
+              placeholder="blur"
+              blurDataURL={BLUR_PLACEHOLDER}
               priority={false}
             />
           </div>
