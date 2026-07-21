@@ -38,19 +38,11 @@ Fixing these vulnerabilities before release ensured that edge cases were elimina
 
 ## Migrating Live from MongoDB to PostgreSQL
 
-During initial development, the data layer used MongoDB. As the relational domain model solidified—specifically tenant domain mappings and transactional order relations—PostgreSQL became the right choice for long-term consistency.
+During initial development, the data layer used MongoDB. As part of production hardening, I executed a live migration of that data layer to PostgreSQL 16 with Drizzle ORM. The requirement was strict: zero data loss during the transition, with the platform serving real traffic throughout.
 
-I executed a live data layer migration from MongoDB to PostgreSQL 16 with Drizzle ORM. The core requirement was simple: zero data loss during the transition.
+The migration succeeded with zero data loss. PostgreSQL 16 now backs the platform's data layer end to end.
 
-### Zero Data Loss in Practice
-
-To guarantee zero data loss, the migration process followed strict execution stages:
-- Mapped document schemas to relational tables with strict foreign key constraints in PostgreSQL.
-- Verified field types and nullability using Zod schemas during transformation.
-- Executed write validation to ensure data consistency between document source and relational target.
-- Verified relational references, indices, and tenant boundaries prior to switching production traffic.
-
-The database transition succeeded with zero missing records or corrupted states. PostgreSQL 16 now powers all tenant configurations, product catalogs, and transactional order records.
+*[OWNER-TODO: the exact migration methodology — schema mapping approach, validation steps, cutover process — isn't written up yet. Add real detail here if you want the retrospective to go deeper than the headline result.]*
 
 ## Engineering Checkout Integrity
 
