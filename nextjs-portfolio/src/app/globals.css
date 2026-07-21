@@ -609,3 +609,23 @@ body {
     transform: none;
   }
 }
+
+.challenge-flow-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
+  border-top-color: var(--glass-border-bright);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--glass-shadow);
+  transition: background 180ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 180ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.challenge-flow-card:hover {
+  background: var(--glass-bg-elevated);
+  border-color: var(--border-active);
+  box-shadow: var(--glass-shadow), var(--shadow-hover);
+}
+
