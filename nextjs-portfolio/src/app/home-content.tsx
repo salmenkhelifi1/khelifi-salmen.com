@@ -89,20 +89,10 @@ const XIcon = createLucideIcon("X", [
   ],
 ]);
 
-const marqueeItems = [
-  "n8n Automation",
-  "Flutter",
-  "React.js",
-  "Node.js",
-  "OpenAI API",
-  "Shopify Liquid",
-  "WordPress",
-  "Firebase",
-];
-
 const navLinks = [
   { href: "#work", label: "Work" },
-  { href: "#services", label: "Services" },
+  { href: "#services", label: "Capabilities" },
+  { href: "#process", label: "Process" },
   { href: "#about", label: "About" },
 ];
 
@@ -426,6 +416,7 @@ export default function HomeContent() {
     activeFilter === "All"
       ? projects
       : projects.filter((p) => categoryToFilter[p.category] === activeFilter);
+  const remainingProjects = filteredProjects.filter((p) => !featuredHrefs.includes(p.href));
   const currentYear = new Date().getFullYear();
 
   useEffect(() => {
@@ -452,121 +443,156 @@ export default function HomeContent() {
 
   return (
     <>
-      <nav className="fixed top-0 z-50 w-full nav-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-          <Link href="/" className="inline-flex min-h-11 items-center text-xl font-bold tracking-tight text-[var(--text-primary)]">
-            Khelifi<span className="text-[var(--accent)]">.</span>
-          </Link>
-          <div className="hidden gap-10 text-sm font-medium text-[var(--text-secondary)] md:flex">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-          <a
-            href={bookingUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="hidden min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-6 py-2.5 text-sm font-bold text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--glass-bg-elevated)] md:inline-flex"
-          >
-            Let&apos;s Talk
-          </a>
-          <button
-            type="button"
-            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-            aria-expanded={isMenuOpen}
-            onClick={() => setIsMenuOpen((open) => !open)}
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--glass-bg-elevated)] md:hidden"
-          >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
-        <div
-          className={`border-t border-[var(--glass-border)] bg-[var(--glass-bg)] px-6 backdrop-blur-xl transition-all duration-[180ms] md:hidden ${
-            isMenuOpen
-              ? "pointer-events-auto translate-y-0 opacity-100"
-              : "pointer-events-none -translate-y-2 opacity-0"
-          }`}
-        >
-          <div className="mx-auto flex max-w-7xl flex-col gap-1 py-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsMenuOpen(false)}
-                className="inline-flex min-h-11 items-center border-b border-[var(--border-subtle)] text-sm font-semibold text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
-              >
-                {link.label}
-              </a>
-            ))}
+      <div className="fixed inset-x-0 top-4 z-50 flex justify-center px-4 md:px-6">
+        <nav className="relative w-full max-w-5xl nav-pill">
+          <div className="flex items-center justify-between px-6 py-4">
+            <Link href="/" className="inline-flex min-h-11 items-center text-xl font-bold tracking-tight text-[var(--text-primary)]">
+              Khelifi<span className="text-[var(--accent)]">.</span>
+            </Link>
+            <div className="hidden gap-10 text-sm font-medium text-[var(--text-secondary)] md:flex">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
             <a
               href={bookingUrl}
               target="_blank"
               rel="noreferrer"
-              onClick={() => setIsMenuOpen(false)}
-              className="cta-button cta-primary mt-3 w-full"
+              className="hidden min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-6 py-2.5 text-sm font-bold text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--glass-bg-elevated)] md:inline-flex"
             >
-              Book a call
+              Let&apos;s Talk
             </a>
+            <button
+              type="button"
+              aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={isMenuOpen}
+              onClick={() => setIsMenuOpen((open) => !open)}
+              className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--glass-bg-elevated)] md:hidden"
+            >
+              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
-        </div>
-      </nav>
-
-      <section className="hero-section flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-20">
-        <div className="hero-content z-10 max-w-5xl text-center">
-          <div className="hero-badge reveal mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-caption text-[var(--text-secondary)]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
-            AVAILABLE FOR NEW PROJECTS
-          </div>
-
-          <h1 className="hero-title reveal mb-8" style={{ transitionDelay: "100ms" }}>
-            Building automated <br />
-            <span className="text-gradient">digital ecosystems.</span>
-          </h1>
-
-          <p
-            className="hero-subtitle reveal mx-auto mb-12 max-w-2xl text-body-large"
-            style={{ transitionDelay: "200ms" }}
-          >
-            I am Salmen Khelifi, a Software Engineer & Automation Specialist.
-            From <span className="font-medium text-[var(--text-primary)]">Web Apps & Mobile</span>{" "}
-            to complex <span className="font-medium text-[var(--text-primary)]">AI Workflows</span>,
-            I build systems that drive revenue.
-          </p>
-
           <div
-            className="hero-actions reveal flex flex-col items-center justify-center gap-5 md:flex-row"
-            style={{ transitionDelay: "300ms" }}
+            className={`absolute left-0 right-0 top-[calc(100%+0.5rem)] glass-panel px-6 backdrop-blur-xl transition-all duration-[180ms] md:hidden ${
+              isMenuOpen
+                ? "pointer-events-auto translate-y-0 opacity-100"
+                : "pointer-events-none -translate-y-2 opacity-0"
+            }`}
           >
-            <a href="#work" className="cta-button cta-primary w-full md:w-auto">
-              View Case Studies
-            </a>
-            <a
-              href={bookingUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="cta-button cta-secondary w-full md:w-auto"
+            <div className="flex flex-col gap-1 py-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="inline-flex min-h-11 items-center border-b border-[var(--border-subtle)] text-sm font-semibold text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a
+                href={bookingUrl}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setIsMenuOpen(false)}
+                className="cta-button cta-primary mt-3 w-full"
+              >
+                Book a call
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <section className="hero-section flex min-h-screen items-center justify-center overflow-hidden px-6 pt-20 mx-auto max-w-7xl w-full">
+        <div className="hero-content z-10 grid w-full grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7 flex flex-col items-start text-left">
+            <div className="hero-badge reveal mb-8 inline-flex min-h-11 items-center gap-2 rounded-full border px-4 py-2 text-caption text-[var(--text-secondary)]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+              AVAILABLE FOR NEW PROJECTS
+            </div>
+
+            <h1 className="hero-title reveal mb-8" style={{ transitionDelay: "100ms" }}>
+              I build digital products that <span className="text-gradient">automate work</span>, convert users, and scale.
+            </h1>
+
+            <p
+              className="hero-subtitle reveal mb-12 max-w-2xl text-body-large"
+              style={{ transitionDelay: "200ms" }}
             >
-              Book a 30-min call
-            </a>
+              Full-stack software engineer and automation specialist. I design and build resilient systems, from React interfaces to n8n pipelines, that scale with the business behind them.
+            </p>
+
+            <div
+              className="hero-actions reveal flex flex-col sm:flex-row gap-5 w-full sm:w-auto"
+              style={{ transitionDelay: "300ms" }}
+            >
+              <a href="#work" className="cta-button cta-primary w-full sm:w-auto">
+                View Selected Work
+              </a>
+              <a
+                href={bookingUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="cta-button cta-secondary w-full sm:w-auto"
+              >
+                Start a Project
+              </a>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 hidden lg:block reveal" style={{ transitionDelay: "400ms" }}>
+            <div className="glass-panel relative w-full aspect-square rounded-[var(--radius-xl)] flex items-center justify-center overflow-hidden">
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
+                {ecosystemNodes.map((node, i) => (
+                  <line
+                    key={i}
+                    x1="50%"
+                    y1="50%"
+                    x2={node.left}
+                    y2={node.top}
+                    className="ecosystem-line"
+                  />
+                ))}
+              </svg>
+              <div className="ecosystem-hub relative z-10 flex h-16 w-16 items-center justify-center rounded-full text-[var(--accent)]">
+                <Network className="h-8 w-8" />
+              </div>
+              {ecosystemNodes.map((node, i) => {
+                const Icon = node.icon;
+                return (
+                  <div
+                    key={i}
+                    className="ecosystem-node absolute z-10 flex flex-col items-center justify-center gap-1 h-16 w-16 rounded-full text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                    style={{ left: node.left, top: node.top, transform: 'translate(-50%, -50%)' }}
+                  >
+                    <Icon className="h-5 w-5" />
+                    <span className="text-[9px] font-semibold uppercase tracking-wider">{node.label}</span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-[var(--border-subtle)] bg-[var(--bg-surface)]/40 py-6">
-        <div className="marquee-container">
-          <div className="marquee-content">
-            {[...marqueeItems, ...marqueeItems].map((item, index) => (
-              <span className="marquee-item" key={`${item}-${index}`}>
-                {item}
-              </span>
-            ))}
-          </div>
+      <section className="credibility-strip py-8">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-12 gap-y-6 px-6">
+          {credibilityItems.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <div key={index} className="flex items-center gap-3">
+                <Icon className="h-5 w-5 text-[var(--accent)]" />
+                <span className="text-caption text-[var(--text-secondary)]">{item.label}</span>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -593,64 +619,129 @@ export default function HomeContent() {
             ))}
           </div>
 
-          <div className="space-y-28 md:space-y-36">
-            {filteredProjects.map((project, index) => {
+          <div className="mb-24 md:mb-32 space-y-20 md:space-y-32">
+            {featuredWork.map((item, index) => (
+              <article
+                className="project-card group reveal grid items-center gap-10 md:grid-cols-12 md:gap-16"
+                key={item.title}
+              >
+                <div className={`md:col-span-5 ${index % 2 === 0 ? "md:order-1" : "md:order-2"}`}>
+                  <div className="mb-4 text-caption text-[var(--text-secondary)]">
+                    {item.eyebrow}
+                  </div>
+                  <h2 className="mb-6 text-h2">
+                    {item.title}
+                  </h2>
+                  <div className="mb-8 flex flex-wrap gap-3">
+                    {item.tags.map((tag) => (
+                      <span className="tech-badge" key={tag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mb-10 space-y-6">
+                    {item.rows.map((row) => (
+                      <div key={row.label}>
+                        <div className="mb-1 text-sm font-semibold text-[var(--text-secondary)] opacity-80 uppercase tracking-wider">
+                          {row.label}
+                        </div>
+                        <p className="text-body-regular text-[var(--text-primary)]">
+                          {row.text}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <Link
+                    href={item.href}
+                    className="project-link inline-flex min-h-11 items-center text-lg font-bold text-[var(--text-primary)]"
+                  >
+                    View Case Study <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </div>
+                <div className={`md:col-span-7 ${index % 2 === 0 ? "md:order-2" : "md:order-1"}`}>
+                  <div className="image-preview relative overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border-muted)] bg-[var(--bg-surface)] aspect-[4/3]">
+                    <Image
+                      src={item.image}
+                      alt={`${item.title} preview`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 60vw"
+                      className="object-cover object-top"
+                      placeholder="blur"
+                      blurDataURL={BLUR_PLACEHOLDER}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-page)] via-transparent to-transparent pointer-events-none" />
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {remainingProjects.map((project) => {
               const isPortraitPreview = portraitPreviewImages.has(project.image);
 
               return (
-                <article
-                  className="project-card group reveal grid items-center gap-10 md:grid-cols-2 md:gap-16"
-                  key={project.title}
-                >
-                  <div className={index % 2 === 0 ? "md:order-1" : "md:order-2"}>
-                    <div className="mb-4 text-caption text-[var(--text-secondary)]">
-                      {project.category}
-                    </div>
-                    <h3 className="mb-6 text-h3 md:text-[2rem] md:leading-tight">
-                      {project.title}
-                    </h3>
-                    <p className="mb-8 text-body-large text-[var(--text-secondary)]">
-                      {project.description}
-                    </p>
-                    <div className="mb-10 flex flex-wrap gap-3">
-                      {project.tags.map((tag) => (
-                        <span className="tech-badge" key={tag}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <Link
-                      href={project.href}
-                      className="project-link inline-flex min-h-11 items-center text-lg font-bold text-[var(--text-primary)]"
-                    >
-                      {project.linkLabel} <ArrowRight className="ml-2 h-5 w-5" />
-                    </Link>
-                  </div>
-
-                  <div className={index % 2 === 0 ? "md:order-2" : "md:order-1"}>
-                    <div
-                      className={`image-preview relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border-muted)] bg-[var(--bg-surface)] ${
+                <article className="project-card group reveal flex flex-col" key={project.title}>
+                  <div
+                    className={`image-preview relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border-muted)] bg-[var(--bg-surface)] mb-6 ${
+                      isPortraitPreview ? "aspect-[4/5] mx-auto w-full max-w-sm" : "aspect-[16/10]"
+                    }`}
+                  >
+                    <Image
+                      src={project.image}
+                      alt={`${project.title} preview`}
+                      fill
+                      sizes={
                         isPortraitPreview
-                          ? "mx-auto aspect-[4/5] max-w-sm"
-                          : "aspect-[16/10]"
-                      }`}
-                    >
-                      <Image
-                        src={project.image}
-                        alt={`${project.title} preview`}
-                        fill
-                        sizes={
-                          isPortraitPreview
-                            ? "(max-width: 768px) 100vw, 384px"
-                            : "(max-width: 768px) 100vw, 50vw"
-                        }
-                        className="object-cover object-top"
-                        placeholder="blur"
-                        blurDataURL={BLUR_PLACEHOLDER}
-                      />
-                    </div>
+                          ? "(max-width: 768px) 100vw, 384px"
+                          : "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      }
+                      className="object-cover object-top"
+                      placeholder="blur"
+                      blurDataURL={BLUR_PLACEHOLDER}
+                    />
                   </div>
+                  <div className="mb-2 text-caption text-[var(--text-secondary)]">
+                    {project.category}
+                  </div>
+                  <h3 className="mb-4 text-h3 flex-grow">
+                    {project.title}
+                  </h3>
+                  <Link
+                    href={project.href}
+                    className="project-link inline-flex min-h-11 items-center font-bold text-[var(--text-primary)]"
+                  >
+                    {project.linkLabel} <ArrowRight className="ml-1.5 h-4 w-4" />
+                  </Link>
                 </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section id="capabilities" className="py-32 md:py-40">
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="section-title reveal mb-16 text-center text-h2">
+            Technical Depth
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {technicalDepth.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  className={`modern-card reveal rounded-[var(--radius-xl)] p-8 md:p-10 flex flex-col ${item.span}`}
+                  key={item.title}
+                  style={{ transitionDelay: `${index * 100}ms` }}
+                >
+                  <div className="service-icon mb-8 flex h-14 w-14 items-center justify-center rounded-[var(--radius-md)]">
+                    <Icon className="h-7 w-7 text-[var(--text-secondary)]" />
+                  </div>
+                  <h3 className="mb-4 text-h3">{item.title}</h3>
+                  <p className="text-body-regular text-[var(--text-secondary)]">
+                    {item.description}
+                  </p>
+                </div>
               );
             })}
           </div>
@@ -738,7 +829,7 @@ export default function HomeContent() {
         </div>
       </section>
 
-      <section className="border-y border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 py-16">
+      <section id="process" className="border-y border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 py-16">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="reveal mb-10 text-h2">How I Work</h2>
           <div className="grid gap-6 md:grid-cols-4">
