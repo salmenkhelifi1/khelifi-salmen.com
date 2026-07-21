@@ -341,6 +341,48 @@ body {
   box-shadow: var(--glass-shadow);
 }
 
+.nav-pill {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
+  border-top-color: var(--glass-border-bright);
+  border-radius: 999px;
+  box-shadow: var(--glass-shadow);
+  transition: background 180ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.credibility-strip {
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+}
+
+.ecosystem-hub {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--glass-border-bright);
+  box-shadow: var(--glow-accent);
+}
+
+.ecosystem-node {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
+  border-top-color: var(--glass-border-bright);
+  transition: border-color 180ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ecosystem-node:hover {
+  border-color: var(--accent);
+}
+
+.ecosystem-line {
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 1;
+}
+
 .section-title {
   color: var(--text-primary);
 }

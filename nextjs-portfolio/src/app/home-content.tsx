@@ -6,15 +6,21 @@ import { useEffect, useState } from "react";
 import {
   ArrowRight,
   Bot,
+  Briefcase,
   Code2,
   Database,
   Download,
+  Layers,
+  LayoutDashboard,
   Menu,
   Network,
+  ScanEye,
   ServerCog,
+  Smartphone,
   Star,
   Workflow,
   X,
+  Zap,
   createLucideIcon,
 } from "lucide-react";
 import {
@@ -282,6 +288,83 @@ const categoryToFilter: Record<string, (typeof workFilters)[number]> = {
   "Company Website": "Company Sites",
   "Car Rental Platform": "Company Sites",
 };
+
+const featuredHrefs = ["/projects/luxe-spa", "/projects/anlingo"];
+
+const featuredWork = [
+  {
+    eyebrow: "FEATURED PLATFORM",
+    title: "Luxe Spa Booking",
+    href: "/projects/luxe-spa",
+    image: "/images/luxe_spa_home.png",
+    tags: ["SaaS", "Booking"],
+    rows: [
+      {
+        label: "Problem",
+        text: "Service businesses trade off between expensive booking SaaS with high transaction fees, or slow, costly custom software.",
+      },
+      {
+        label: "Solution",
+        text: "A white-label booking engine that swaps an entire business vertical, spa to clinic, in under 10 seconds with zero code changes.",
+      },
+    ],
+  },
+  {
+    eyebrow: "AI WRITING SAAS",
+    title: "Anlingo",
+    href: "/projects/anlingo",
+    image: "/images/anlingo/gallery/anlingo-web-dashboard.png",
+    tags: ["AI", "SaaS"],
+    rows: [
+      {
+        label: "Problem",
+        text: "Most grammar tools force a choice between speed, privacy, and stronger AI.",
+      },
+      {
+        label: "Solution",
+        text: "Anlingo keeps the free path lightweight and private, then routes advanced writing work through guarded backend AI providers.",
+      },
+    ],
+  },
+];
+
+const credibilityItems = [
+  { icon: Code2, label: "5+ years building software" },
+  { icon: Briefcase, label: "3+ years freelance delivery" },
+  { icon: Star, label: "4.9/5 on Freelancer.com" },
+  { icon: Layers, label: "Full-stack ownership" },
+];
+
+const ecosystemNodes = [
+  { icon: Smartphone, label: "Interface", top: "10%", left: "18%" },
+  { icon: LayoutDashboard, label: "Admin", top: "8%", left: "80%" },
+  { icon: Database, label: "Data", top: "82%", left: "16%" },
+  { icon: Zap, label: "Automation", top: "84%", left: "82%" },
+];
+
+const technicalDepth = [
+  {
+    icon: Database,
+    title: "Zero-Downtime Migration",
+    description:
+      "Ran a structured self-audit on a multi-tenant platform I built, then migrated it from MongoDB to PostgreSQL live, with no data loss.",
+    span: "md:col-span-2",
+  },
+  {
+    icon: Zap,
+    title: "10-Second Vertical Swap",
+    description:
+      "A preset-based booking engine that reconfigures an entire business vertical, spa to clinic, in under 10 seconds, no code changes.",
+    span: "",
+  },
+  {
+    icon: ScanEye,
+    title: "On-Device AI",
+    description:
+      "Camera-based pose detection running on-device with Google ML Kit, no cloud round-trip for real-time feedback.",
+    span: "",
+  },
+];
 
 const portraitPreviewImages = new Set([
   "/images/stitch-projects/14620193470260808168-70889deedbc14545be22752d8c352941.png",
