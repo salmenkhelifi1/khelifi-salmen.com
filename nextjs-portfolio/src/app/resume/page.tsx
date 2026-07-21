@@ -35,8 +35,9 @@ export const metadata: Metadata = {
   },
 };
 
+// Note: "grammarai" was removed as a dead reference — no such project exists
+// in projects.ts (it was an earlier phase of Anlingo, which is already listed).
 const targetSlugs = [
-  "grammarai",
   "chaktech",
   "adaptifit",
   "rentiora",
@@ -49,7 +50,6 @@ const selectedProjects = targetSlugs
   .filter((p): p is NonNullable<typeof p> => !!p);
 
 const projectRoles: Record<string, string> = {
-  grammarai: "Lead Full-Stack & Mobile Developer",
   chaktech: "Lead Architect & Full-Stack Developer",
   adaptifit: "Full-Stack Developer & AI Specialist",
   rentiora: "Frontend Developer",
@@ -58,11 +58,6 @@ const projectRoles: Record<string, string> = {
 };
 
 const projectBullets: Record<string, string[]> = {
-  grammarai: [
-    "Developed a native cross-platform editor using Flutter & Riverpod featuring on-device OCR scanners and Speech-to-Text inputs.",
-    "Engineered a scalable Node.js/Express backend with Gemini, Deepgram, and ElevenLabs API integrations, cached via Redis for performance.",
-    "Integrated RevenueCat subscription workflows with Stripe and Firebase Cloud Functions to instantly gate premium entitlements.",
-  ],
   chaktech: [
     "Designed a multi-tenant resolver system using Next.js 16, React 19, and PostgreSQL to load custom themes/settings dynamically.",
     "Implemented cash-on-delivery checkout logic with promo codes, timbre fiscal, and atomic database revalidation to ensure order integrity.",

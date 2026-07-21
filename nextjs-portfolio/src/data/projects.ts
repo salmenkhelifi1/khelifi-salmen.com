@@ -15,6 +15,17 @@ export type ProjectChallenge = {
   solution: string;
 };
 
+/**
+ * Project delivery status. Kept honest per the founder record: owned products
+ * are solo, pre-launch, and have no verified users/revenue, so nothing here
+ * implies a shipped commercial outcome.
+ */
+export type ProjectStatus =
+  | "live"
+  | "in-development"
+  | "prototype"
+  | "archived";
+
 export type Project = {
   slug: string;
   title: string;
@@ -40,6 +51,21 @@ export type Project = {
   links: {
     github?: string;
     live?: string;
+  };
+  /**
+   * Project snapshot fields — all optional. Every consumer must render a field
+   * only when it is present; a missing field must never show an empty label.
+   * Populate ONLY with verified facts (founder record or owner-confirmed).
+   * Leave unset rather than guessing — see docs/CONTENT_NEEDED.md.
+   */
+  snapshot?: {
+    timeframe?: string; // e.g. "2023 - present"
+    status?: ProjectStatus;
+    role?: string; // e.g. "Solo full-stack developer"
+    ownership?: string; // what I personally owned, end to end
+    team?: string; // omit for solo work rather than writing "solo"
+    industry?: string;
+    platform?: string; // e.g. "Web + mobile"
   };
 };
 
@@ -170,7 +196,16 @@ export const projects: Project[] = [
       },
     ],
     links: {
-      live: "http://localhost:3000",
+      // Live demo intentionally omitted: previous value was a localhost URL.
+      // Owner to supply the real public URL — see docs/CONTENT_NEEDED.md.
+    },
+    snapshot: {
+      status: "in-development",
+      role: "Solo full-stack developer",
+      ownership:
+        "Architecture, booking engine, admin and staff dashboards, payments, and automation, built end to end",
+      industry: "Appointment-based services (spa, salon, clinic)",
+      platform: "Web",
     },
   },
   {
@@ -232,6 +267,15 @@ export const projects: Project[] = [
     },
     badges: ["Flutter", "Node.js", "MongoDB", "OpenAI", "n8n"],
     links: {},
+    snapshot: {
+      timeframe: "2026",
+      status: "prototype",
+      role: "Solo full-stack and AI developer",
+      ownership:
+        "Mobile app, backend services, and on-device ML integration, built end to end",
+      industry: "Fitness and wellness",
+      platform: "Mobile",
+    },
   },
   {
     slug: "anlingo",
@@ -428,6 +472,15 @@ export const projects: Project[] = [
     links: {
       live: "https://anlingo.online",
     },
+    snapshot: {
+      timeframe: "2025 - present",
+      status: "in-development",
+      role: "Solo full-stack developer",
+      ownership:
+        "Web app, admin tooling, API, subscription billing, and Flutter companion, built end to end",
+      industry: "AI writing and language learning (SaaS)",
+      platform: "Web and mobile",
+    },
   },
   {
     slug: "chaktech",
@@ -582,6 +635,15 @@ export const projects: Project[] = [
     links: {
       live: "https://dev.chaktech.tn",
     },
+    snapshot: {
+      timeframe: "2023 - present",
+      status: "in-development",
+      role: "Solo full-stack developer",
+      ownership:
+        "Multi-tenant architecture, backend, storefront, admin back-office, and deployment, built end to end",
+      industry: "E-commerce (Tunisian market)",
+      platform: "Web",
+    },
   },
   {
     slug: "noxivo",
@@ -698,7 +760,18 @@ export const projects: Project[] = [
       },
     ],
     links: {
+      // Owner confirmed live. Domain to double-check: data uses noxivo.pro,
+      // founder record references noxivo.app — see docs/CONTENT_NEEDED.md.
       live: "https://noxivo.pro",
+    },
+    snapshot: {
+      timeframe: "2025 - present",
+      status: "in-development",
+      role: "Solo full-stack developer",
+      ownership:
+        "Multi-tenant automation engine, API, and dashboard, built end to end",
+      industry: "WhatsApp automation (SaaS)",
+      platform: "Web",
     },
   },
   {
