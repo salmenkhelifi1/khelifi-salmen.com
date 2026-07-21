@@ -20,6 +20,25 @@
   --accent-dim: rgba(47, 128, 237, 0.1);
   --accent-glow: rgba(47, 128, 237, 0.04);
 
+  /* Semantic status roles — distinct from --accent on purpose. These carry
+     meaning (problem vs. outcome, warning vs. success) that a single brand
+     color can't: collapsing them to --accent removes information, it
+     doesn't just restyle it. "Information" reuses --accent deliberately —
+     this app has one brand hue, and info-level messaging is exactly what
+     that hue is already used for everywhere else. */
+  --color-error: #f87171;
+  --color-error-dim: rgba(239, 68, 68, 0.12);
+  --color-warning: #fbbf24;
+  --color-warning-dim: rgba(245, 158, 11, 0.12);
+  --color-success: #34d399;
+  --color-success-dim: rgba(16, 185, 129, 0.12);
+
+  /* Opaque base under the floating nav pill — needs its own token because it
+     must always be an OPAQUE dark/light color regardless of theme (content
+     scrolling underneath must never show through), whereas --glass-bg is
+     deliberately translucent for every other glass surface. */
+  --nav-pill-bg: rgba(10, 10, 14, 0.78);
+
   /* Spacing Scale (8pt grid system) */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -84,6 +103,18 @@
   --accent: #1f6feb;
   --accent-dim: rgba(31, 111, 235, 0.08);
   --accent-glow: rgba(31, 111, 235, 0.1);
+
+  /* Same deepened-for-white-backgrounds treatment as --accent: the dark-mode
+     400-shade reds/ambers/greens are too light to hold AA contrast on a
+     white surface, so light mode steps to the 600/700 shades instead. */
+  --color-error: #dc2626;
+  --color-error-dim: rgba(220, 38, 38, 0.08);
+  --color-warning: #b45309;
+  --color-warning-dim: rgba(180, 83, 9, 0.08);
+  --color-success: #059669;
+  --color-success-dim: rgba(5, 150, 105, 0.08);
+
+  --nav-pill-bg: rgba(252, 252, 253, 0.85);
 
   --shadow-card: 0 2px 14px rgba(20, 20, 26, 0.06),
     inset 0 1px 1px rgba(255, 255, 255, 0.6);
@@ -361,7 +392,10 @@ html.theme-resolving .bg-blooms > span {
 }
 
 .text-gradient {
-  background: linear-gradient(to bottom, #ffffff 0%, #a1a1aa 100%);
+  /* Was hardcoded #ffffff -> #a1a1aa: correct on dark, nearly invisible on
+     light (white text on a near-white page). Token-based so it fades from
+     primary to secondary text color in whichever theme is active. */
+  background: linear-gradient(to bottom, var(--text-primary) 0%, var(--text-secondary) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -377,8 +411,8 @@ html.theme-resolving .bg-blooms > span {
 }
 
 .nav-pill {
-  /* Opaque dark base under the glass: content must never read through the nav */
-  background: rgba(10, 10, 14, 0.78);
+  /* Opaque base under the glass: content must never read through the nav */
+  background: var(--nav-pill-bg);
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   border: 1px solid var(--glass-border);
@@ -424,7 +458,8 @@ section[id],
 }
 
 .ecosystem-line {
-  stroke: rgba(255, 255, 255, 0.12);
+  /* Was hardcoded white at 12%: invisible on a light card background. */
+  stroke: var(--border-active);
   stroke-width: 1;
 }
 
@@ -493,14 +528,16 @@ section[id],
 }
 
 .cta-primary {
-  background: rgba(47, 128, 237, 0.55);
-  border-color: rgba(47, 128, 237, 0.6);
+  /* color-mix so this tracks --accent per theme instead of a hardcoded
+     rgba() pinned to the dark-mode hex (#2f80ed) regardless of theme. */
+  background: color-mix(in srgb, var(--accent) 55%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
   box-shadow: var(--glow-accent), var(--glass-shadow);
   color: var(--text-primary);
 }
 
 .cta-primary:hover {
-  background: rgba(59, 141, 243, 0.7);
+  background: color-mix(in srgb, var(--accent) 72%, transparent);
   box-shadow: var(--glow-accent), var(--shadow-hover), var(--glass-shadow);
 }
 
@@ -527,7 +564,7 @@ section[id],
 }
 
 .system-live-link:hover {
-  background: #3b8df3 !important;
+  background: color-mix(in srgb, var(--accent) 85%, white 15%) !important;
 }
 
 .service-icon {

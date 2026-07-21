@@ -20,13 +20,13 @@ const variantStyles: Record<
     defaultIcon: <Info className="w-5 h-5" aria-hidden="true" />,
   },
   warning: {
-    container: "border-[var(--border-active)] bg-[var(--glass-bg-elevated)]",
-    iconColor: "text-[var(--accent)]",
+    container: "border-[var(--color-warning)]/30 bg-[var(--color-warning-dim)]",
+    iconColor: "text-[var(--color-warning)]",
     defaultIcon: <AlertTriangle className="w-5 h-5" aria-hidden="true" />,
   },
   success: {
-    container: "border-[var(--accent)]/30 bg-[var(--accent-dim)]",
-    iconColor: "text-[var(--accent)]",
+    container: "border-[var(--color-success)]/30 bg-[var(--color-success-dim)]",
+    iconColor: "text-[var(--color-success)]",
     defaultIcon: <CheckCircle2 className="w-5 h-5" aria-hidden="true" />,
   },
 };

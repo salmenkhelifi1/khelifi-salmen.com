@@ -74,6 +74,14 @@ Flash of Unstyled Content (FOUC) is prevented via a multi-tiered hydration strat
 | `--glass-bg-elevated` | `rgba(255, 255, 255, 0.13)` | `rgba(255, 255, 255, 0.82)` | Glassmorphism hover / elevated material |
 | `--glass-border` | `rgba(255, 255, 255, 0.14)` | `rgba(15, 15, 20, 0.1)` | Glass surface outline border |
 | `--glass-border-bright` | `rgba(255, 255, 255, 0.35)` | `rgba(15, 15, 20, 0.16)` | Highlight border on glass elements |
+| `--color-error` | `#f87171` | `#dc2626` | Problem/constraint indicators, error states |
+| `--color-error-dim` | `rgba(239, 68, 68, 0.12)` | `rgba(220, 38, 38, 0.08)` | Low-opacity error tint background |
+| `--color-warning` | `#fbbf24` | `#b45309` | In-progress/decision indicators, warning states |
+| `--color-warning-dim` | `rgba(245, 158, 11, 0.12)` | `rgba(180, 83, 9, 0.08)` | Low-opacity warning tint background |
+| `--color-success` | `#34d399` | `#059669` | Outcome/result indicators, success states |
+| `--color-success-dim` | `rgba(16, 185, 129, 0.12)` | `rgba(5, 150, 105, 0.08)` | Low-opacity success tint background |
+
+**When to use `--color-error`/`--color-warning`/`--color-success` vs. `--accent`:** these three carry universal, meaning-bearing convention (red = problem, amber = caution/in-progress, green = success/resolved) — use them when color is communicating a *status*, e.g. the Problem → Decision → Outcome cards in case studies, or a Callout's `warning`/`success` variant. Everything else (brand touches, links, active states, decorative icons, "Information" messaging) stays `--accent` — this app has one brand hue by design, and introducing more color there would dilute it. Don't collapse a status color into `--accent` just because it needs a light-mode-safe value; give it its own light-mode value in this table instead (that's exactly what these six tokens are for).
 
 ---
 

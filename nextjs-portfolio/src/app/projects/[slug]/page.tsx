@@ -823,8 +823,8 @@ export default async function ProjectProfilePage({
                         <div className="grid lg:grid-cols-3 gap-6 items-start">
                           {/* Problem */}
                           <div className="space-y-2">
-                            <div className="flex items-center gap-2 text-xs font-bold text-[var(--text-tertiary)] uppercase tracking-wider">
-                              <span className="w-2 h-2 rounded-full bg-[var(--accent)]" aria-hidden="true" />
+                            <div className="flex items-center gap-2 text-xs font-bold text-[var(--color-error)] uppercase tracking-wider">
+                              <span className="w-2 h-2 rounded-full bg-[var(--color-error)]" aria-hidden="true" />
                               Problem / Constraint
                             </div>
                             <h3 className="text-sm font-bold text-[var(--text-primary)]">
@@ -834,7 +834,7 @@ export default async function ProjectProfilePage({
 
                           {/* Decision / Solution */}
                           <div className="space-y-2 lg:border-l lg:border-[var(--border-subtle)] lg:pl-6">
-                            <div className="flex items-center gap-2 text-xs font-bold text-[var(--accent)] uppercase tracking-wider">
+                            <div className="flex items-center gap-2 text-xs font-bold text-[var(--color-warning)] uppercase tracking-wider">
                               <Zap className="w-3.5 h-3.5" aria-hidden="true" />
                               Architectural Decision
                             </div>
@@ -845,11 +845,11 @@ export default async function ProjectProfilePage({
 
                           {/* Result */}
                           <div className="space-y-2 lg:border-l lg:border-[var(--border-subtle)] lg:pl-6">
-                            <div className="flex items-center gap-2 text-xs font-bold text-[var(--accent)] uppercase tracking-wider">
+                            <div className="flex items-center gap-2 text-xs font-bold text-[var(--color-success)] uppercase tracking-wider">
                               <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
                               Architectural Outcome
                             </div>
-                            <p className="text-xs font-semibold text-[var(--text-primary)] leading-relaxed bg-[var(--accent-dim)] border border-[var(--accent)]/30 rounded-xl p-3">
+                            <p className="text-xs font-semibold text-[var(--text-primary)] leading-relaxed bg-[var(--color-success-dim)] border border-[var(--color-success)]/30 rounded-xl p-3">
                               {resultText}
                             </p>
                           </div>

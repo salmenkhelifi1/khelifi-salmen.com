@@ -27,7 +27,7 @@ export default function MetricCard({
         </p>
       )}
       {trend && (
-        <div className="mt-2 text-xs font-semibold text-[var(--accent)]">
+        <div className="mt-2 text-xs font-semibold text-[var(--color-success)]">
           {trend}
         </div>
       )}
