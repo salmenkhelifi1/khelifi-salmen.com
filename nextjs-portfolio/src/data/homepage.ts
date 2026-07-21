@@ -76,8 +76,14 @@ export interface EcosystemNodeItem {
 export interface TechnicalDepthItem {
   icon: LucideIcon;
   title: string;
-  description: string;
-  span: string;
+  challenge: string;
+  risk: string;
+  decision: string;
+  verification: string;
+  projectLabel: string;
+  href: string;
+  description?: string;
+  span?: string;
 }
 
 export interface ServiceItem {
@@ -92,8 +98,9 @@ export const BLUR_PLACEHOLDER =
 export interface ProcessStep {
   number: string;
   title: string;
-  whatIDo: string;
-  whatYouGet: string;
+  concern: string;
+  activity: string;
+  deliverable: string;
 }
 
 export const capabilityMarkers = [
@@ -374,24 +381,43 @@ export const ecosystemNodes: EcosystemNodeItem[] = [
 export const technicalDepth: TechnicalDepthItem[] = [
   {
     icon: Database,
-    title: "Zero-Downtime Migration",
-    description:
-      "Ran a structured self-audit on a multi-tenant platform I built, then migrated it from MongoDB to PostgreSQL live, with no data loss.",
-    span: "md:col-span-2",
+    title: "Zero-Downtime Database Migration",
+    challenge: "Live migration from MongoDB to PostgreSQL on a multi-tenant commerce platform.",
+    risk: "Potential data loss, schema corruption, or ordering downtime during live migration.",
+    decision: "Executed a 54-finding security and schema self-audit prior to running the migration.",
+    verification: "Completed live migration with zero data loss and clean rollback isolation.",
+    projectLabel: "ChakTech Platform",
+    href: "/projects/chaktech",
   },
   {
     icon: Zap,
-    title: "10-Second Vertical Swap",
-    description:
-      "A preset-based booking engine that reconfigures an entire business vertical, spa to clinic, in under 10 seconds, no code changes.",
-    span: "",
+    title: "10-Second Vertical Preset Swap",
+    challenge: "Instant product re-configuration across distinct service verticals (spa to clinic).",
+    risk: "Maintaining custom code forks per business vertical slows releases and increases drift.",
+    decision: "Architected a Zod-validated JSON preset schema to reconfigure categories, terms, and rules on seed.",
+    verification: "Reconfigured an entire vertical setup in under 10 seconds with zero code changes.",
+    projectLabel: "Luxe Spa Booking",
+    href: "/projects/luxe-spa",
   },
   {
     icon: ScanEye,
-    title: "On-Device AI",
-    description:
-      "Camera-based pose detection running on-device with Google ML Kit, no cloud round-trip for real-time feedback.",
-    span: "md:col-span-3",
+    title: "On-Device AI Pose Detection",
+    challenge: "Real-time mobile motion estimation for workout tracking.",
+    risk: "Cloud video streaming adds network latency, bandwidth cost, and privacy exposure.",
+    decision: "Implemented camera-based pose estimation directly on-device using Google ML Kit.",
+    verification: "Executed real-time motion feedback locally with no cloud round-trips or video egress.",
+    projectLabel: "Adaptifit",
+    href: "/projects/adaptifit",
+  },
+  {
+    icon: Network,
+    title: "Guarded AI Routing & Rate Limits",
+    challenge: "Multi-surface writing product (web, admin, Flutter mobile) consuming LLM APIs.",
+    risk: "Unbounded API costs, rate-limit failures, and latency spikes during request surges.",
+    decision: "Built a guarded Express backend with Redis usage tracking, tier limits, and provider fallbacks.",
+    verification: "Protected API budgets and service availability across web and Flutter mobile apps.",
+    projectLabel: "Anlingo",
+    href: "/projects/anlingo",
   },
 ];
 
@@ -428,29 +454,29 @@ export const processSteps: ProcessStep[] = [
   {
     number: "01",
     title: "Discover",
-    whatIDo:
-      "Understand the business problem, current workflow, and what success looks like.",
-    whatYouGet: "A clear scope, priorities, and a fixed proposal.",
+    concern: "Will you understand the real problem?",
+    activity: "Clarify users, workflows, business constraints, and success criteria.",
+    deliverable: "A focused product brief and prioritized scope.",
   },
   {
     number: "02",
     title: "Architect",
-    whatIDo:
-      "Design the system architecture, select the tech stack, and map out data models.",
-    whatYouGet: "A clear technical blueprint and validated execution roadmap.",
+    concern: "Will the system stay reliable as it grows?",
+    activity: "Define data, services, integrations, security, and operational risks.",
+    deliverable: "A practical architecture and delivery plan.",
   },
   {
     number: "03",
     title: "Build",
-    whatIDo:
-      "Develop frontend, backend, and automated flows with clean code and regular progress updates.",
-    whatYouGet: "Working production software built to scale with your business.",
+    concern: "Will I see progress and get working software?",
+    activity: "Implement in reviewable stages with regular validation.",
+    deliverable: "Tested increments and visible progress.",
   },
   {
     number: "04",
     title: "Launch and Improve",
-    whatIDo:
-      "Deploy to production, configure monitoring, and optimize based on real-world performance.",
-    whatYouGet: "A stable live product and reliable ongoing technical support.",
+    concern: "Will it stay stable after release?",
+    activity: "Validate production behavior, monitor risks, and improve from real use.",
+    deliverable: "A launch checklist, production verification, and an improvement backlog.",
   },
 ];

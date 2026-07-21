@@ -1,11 +1,11 @@
-import { ArrowRight, Award, CheckCircle2, Clock, Star } from "lucide-react";
+import { ArrowRight, Award, Clock, Star } from "lucide-react";
 import { freelancerUrl } from "@/data/schema";
 import { testimonials } from "@/data/testimonials";
 import SectionContainer from "./SectionContainer";
 import SectionHeading from "./SectionHeading";
 
 export default function TestimonialSpotlight() {
-  const featured = testimonials[0]; // Austin L. - n8n Automation Workflows Specialist
+  const featured = testimonials[0]; // Austin L.
   const supporting = [testimonials[1], testimonials[2]]; // Robert D. & Jørgen G.
 
   return (
@@ -25,34 +25,44 @@ export default function TestimonialSpotlight() {
         </div>
 
         {/* Verified Stats Row */}
-        <div className="glass-panel reveal mb-12 grid grid-cols-2 gap-4 rounded-[var(--radius-xl)] p-6 sm:grid-cols-4 md:p-8">
-          <div className="flex flex-col items-center justify-center text-center">
+        <div className="glass-panel reveal mb-12 grid grid-cols-1 gap-6 rounded-[var(--radius-xl)] p-6 sm:grid-cols-3 md:p-8">
+          <a
+            href={freelancerUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="group flex flex-col items-center justify-center text-center transition-colors"
+          >
             <div className="mb-2 flex items-center gap-1.5 text-[var(--accent)]">
               <Star className="h-5 w-5 fill-current" aria-hidden="true" />
-              <span className="text-lg font-bold text-[var(--text-primary)]">4.9 / 5</span>
+              <span className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[var(--accent)]">
+                4.9 / 5
+              </span>
             </div>
-            <span className="text-caption text-[var(--text-secondary)]">Across 8 Reviews</span>
-          </div>
+            <span className="text-caption text-[var(--text-secondary)]">
+              Across 8 reviews on Freelancer.com
+            </span>
+          </a>
           <div className="flex flex-col items-center justify-center text-center">
             <div className="mb-2 flex items-center gap-1.5 text-[var(--accent)]">
               <Clock className="h-5 w-5" aria-hidden="true" />
-              <span className="text-lg font-bold text-[var(--text-primary)]">100%</span>
+              <span className="text-lg font-bold text-[var(--text-primary)]">
+                5+ Years
+              </span>
             </div>
-            <span className="text-caption text-[var(--text-secondary)]">On-Time</span>
-          </div>
-          <div className="flex flex-col items-center justify-center text-center">
-            <div className="mb-2 flex items-center gap-1.5 text-[var(--accent)]">
-              <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
-              <span className="text-lg font-bold text-[var(--text-primary)]">100%</span>
-            </div>
-            <span className="text-caption text-[var(--text-secondary)]">On-Budget</span>
+            <span className="text-caption text-[var(--text-secondary)]">
+              Engineering Experience
+            </span>
           </div>
           <div className="flex flex-col items-center justify-center text-center">
             <div className="mb-2 flex items-center gap-1.5 text-[var(--accent)]">
               <Award className="h-5 w-5" aria-hidden="true" />
-              <span className="text-lg font-bold text-[var(--text-primary)]">Preferred</span>
+              <span className="text-lg font-bold text-[var(--text-primary)]">
+                3+ Years
+              </span>
             </div>
-            <span className="text-caption text-[var(--text-secondary)]">Freelancer Badge</span>
+            <span className="text-caption text-[var(--text-secondary)]">
+              Freelance Delivery
+            </span>
           </div>
         </div>
 
@@ -76,15 +86,20 @@ export default function TestimonialSpotlight() {
             &ldquo;{featured.quote}&rdquo;
           </blockquote>
 
-          <cite className="not-italic flex flex-col justify-between gap-2 border-t border-[var(--border-subtle)] pt-6 sm:flex-row sm:items-center">
+          <footer className="flex flex-col justify-between gap-2 border-t border-[var(--border-subtle)] pt-6 sm:flex-row sm:items-center">
             <div>
               <p className="font-bold text-[var(--text-primary)] text-lg">{featured.author}</p>
               <p className="text-sm text-[var(--text-secondary)]">{featured.projectTitle}</p>
             </div>
-            <span className="inline-flex items-center self-start sm:self-auto rounded-full border border-[var(--border-muted)] px-3 py-1 text-xs font-semibold text-[var(--text-tertiary)]">
+            <a
+              href={freelancerUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center self-start sm:self-auto rounded-full border border-[var(--border-muted)] px-3 py-1 text-xs font-semibold text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
+            >
               via Freelancer.com
-            </span>
-          </cite>
+            </a>
+          </footer>
         </article>
 
         {/* 2 Supporting Excerpts */}
@@ -113,17 +128,22 @@ export default function TestimonialSpotlight() {
                 </blockquote>
               </div>
 
-              <cite className="not-italic border-t border-[var(--border-subtle)] pt-4">
+              <footer className="border-t border-[var(--border-subtle)] pt-4">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="font-semibold text-[var(--text-primary)]">{item.author}</p>
                     <p className="text-sm text-[var(--text-secondary)]">{item.projectTitle}</p>
                   </div>
-                  <span className="inline-flex rounded-full border border-[var(--border-muted)] px-2.5 py-0.5 text-xs font-semibold text-[var(--text-tertiary)]">
+                  <a
+                    href={freelancerUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex rounded-full border border-[var(--border-muted)] px-2.5 py-0.5 text-xs font-semibold text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
+                  >
                     Freelancer.com
-                  </span>
+                  </a>
                 </div>
-              </cite>
+              </footer>
             </article>
           ))}
         </div>

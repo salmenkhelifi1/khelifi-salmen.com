@@ -40,7 +40,6 @@ import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 import CredibilityStrip from "@/components/CredibilityStrip";
 import FeaturedProject from "@/components/FeaturedProject";
 import CompactProject from "@/components/CompactProject";
-import TechnicalStory from "@/components/TechnicalStory";
 import TestimonialSpotlight from "@/components/TestimonialSpotlight";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import ContactCTA from "@/components/ContactCTA";
@@ -245,13 +244,88 @@ export default function HomeContent() {
 
       <section id="technical-depth" className="py-32 md:py-40">
         <SectionContainer>
-          <SectionHeading className="mb-16 text-center">
-            Technical Depth
-          </SectionHeading>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {technicalDepth.map((item, index) => (
-              <TechnicalStory key={item.title} item={item} index={index} />
-            ))}
+          <div className="mb-16 text-center reveal">
+            <SectionHeading className="mb-4">
+              Technical Credibility & Engineering Proof
+            </SectionHeading>
+            <p className="max-w-2xl mx-auto text-body-large text-[var(--text-secondary)]">
+              Owning hard technical decisions: every architecture choice, live migration, and system constraint is backed by verified engineering proof.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {technicalDepth.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className="modern-card reveal rounded-[var(--radius-xl)] p-8 md:p-10 flex flex-col justify-between"
+                  style={{ transitionDelay: `${index * 100}ms` }}
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-4 mb-6">
+                      <div className="service-icon flex h-12 w-12 items-center justify-center rounded-[var(--radius-md)]">
+                        <Icon className="h-6 w-6 text-[var(--text-secondary)]" />
+                      </div>
+                      <Link
+                        href={item.href}
+                        className="inline-flex min-h-11 items-center gap-1.5 text-xs font-semibold text-[var(--accent)] hover:underline"
+                      >
+                        {item.projectLabel} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                      </Link>
+                    </div>
+
+                    <h3 className="mb-6 text-h3 text-[var(--text-primary)]">
+                      {item.title}
+                    </h3>
+
+                    <div className="space-y-4 text-sm text-[var(--text-secondary)]">
+                      <div className="border-l-2 border-[var(--border-muted)] pl-3">
+                        <span className="font-semibold text-[var(--text-tertiary)] block text-caption mb-0.5">
+                          Challenge
+                        </span>
+                        {item.challenge}
+                      </div>
+
+                      <div className="border-l-2 border-[var(--border-muted)] pl-3">
+                        <span className="font-semibold text-[var(--text-tertiary)] block text-caption mb-0.5">
+                          Risk
+                        </span>
+                        {item.risk}
+                      </div>
+
+                      <div className="border-l-2 border-[var(--accent-dim)] pl-3">
+                        <span className="font-semibold text-[var(--text-primary)] block text-caption mb-0.5">
+                          Decision
+                        </span>
+                        {item.decision}
+                      </div>
+
+                      <div className="border-l-2 border-[var(--accent)] pl-3">
+                        <span className="font-semibold text-[var(--accent)] block text-caption mb-0.5">
+                          Verification
+                        </span>
+                        <span className="font-medium text-[var(--text-primary)]">
+                          {item.verification}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between">
+                    <span className="text-xs text-[var(--text-tertiary)] font-mono">
+                      Verified Case Study
+                    </span>
+                    <Link
+                      href={item.href}
+                      className="text-xs font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors inline-flex items-center gap-1"
+                    >
+                      View details <ArrowRight className="h-3 w-3" />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </SectionContainer>
       </section>
@@ -289,78 +363,164 @@ export default function HomeContent() {
       <ProcessTimeline />
 
       <section id="about" className="border-t border-[var(--border-subtle)] py-32 md:py-40">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <div className="glass-panel reveal relative mx-auto mb-10 h-32 w-32 overflow-hidden !rounded-full md:h-40 md:w-40">
-            <Image
-              src="/images/salmen-khelifi-full-stack-developer-portrait.jpg"
-              alt="Salmen Khelifi, Full-Stack Developer & Automation Specialist"
-              fill
-              sizes="160px"
-              className="object-cover"
-              placeholder="blur"
-              blurDataURL={BLUR_PLACEHOLDER}
-              priority={false}
-            />
+        <SectionContainer>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Left / Editorial Sidebar */}
+            <div className="lg:col-span-5 flex flex-col items-start reveal">
+              <div className="glass-panel relative mb-8 h-44 w-44 md:h-52 md:w-52 overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border-bright)] shadow-xl">
+                <Image
+                  src="/images/salmen-khelifi-full-stack-developer-portrait.jpg"
+                  alt="Salmen Khelifi, Full-Stack Developer & Automation Specialist"
+                  fill
+                  sizes="(max-width: 768px) 176px, 208px"
+                  className="object-cover"
+                  placeholder="blur"
+                  blurDataURL={BLUR_PLACEHOLDER}
+                  priority={false}
+                />
+              </div>
+
+              <div className="mb-6">
+                <StatusBadge>AVAILABLE FOR NEW PROJECTS</StatusBadge>
+              </div>
+
+              <ul className="mb-8 space-y-3 w-full text-sm text-[var(--text-secondary)]">
+                <li className="flex items-center gap-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3.5 py-2.5">
+                  <span className="h-2 w-2 rounded-full bg-[var(--accent)]" aria-hidden="true" />
+                  <span>Solo, full-stack: architecture to deployment</span>
+                </li>
+                <li className="flex items-center gap-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3.5 py-2.5">
+                  <span className="h-2 w-2 rounded-full bg-[var(--accent)]" aria-hidden="true" />
+                  <span>Based in Tunisia, working remote worldwide</span>
+                </li>
+                <li className="flex items-center gap-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3.5 py-2.5">
+                  <span className="h-2 w-2 rounded-full bg-[var(--accent)]" aria-hidden="true" />
+                  <span>Building web, mobile, and SaaS since 2021</span>
+                </li>
+              </ul>
+
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full mb-8">
+                <PrimaryButton
+                  href={bookingUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full sm:w-auto min-h-11 justify-center"
+                >
+                  Book a Call
+                </PrimaryButton>
+                <Link
+                  href="/resume"
+                  className="inline-flex min-h-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border-active)] bg-[var(--bg-surface)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+                >
+                  View résumé
+                </Link>
+                <a
+                  href="/salmen-khelifi-cv.pdf"
+                  download
+                  className="inline-flex min-h-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3 py-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                  aria-label="Download CV"
+                >
+                  <Download className="h-4 w-4 mr-1.5" />
+                  CV
+                </a>
+              </div>
+
+              {/* Secondary Social Links */}
+              <div className="pt-6 border-t border-[var(--border-subtle)] w-full">
+                <p className="text-caption text-[var(--text-tertiary)] uppercase tracking-wider mb-3">
+                  Profiles & Channels
+                </p>
+                <div className="flex flex-wrap items-center gap-3">
+                  <a
+                    href={githubUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="GitHub Profile"
+                    className="p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
+                  >
+                    <GithubIcon className="h-5 w-5" />
+                  </a>
+                  <a
+                    href={linkedinUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="LinkedIn Profile"
+                    className="p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
+                  >
+                    <LinkedinIcon className="h-5 w-5" />
+                  </a>
+                  <a
+                    href={freelancerUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-3 py-1.5 rounded-md border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
+                  >
+                    Freelancer.com
+                  </a>
+                  <a
+                    href={upworkUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-3 py-1.5 rounded-md border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
+                  >
+                    Upwork
+                  </a>
+                  <a
+                    href={xUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="X Profile"
+                    className="p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
+                  >
+                    <XIcon className="h-5 w-5" />
+                  </a>
+                  <a
+                    href={facebookUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Facebook Profile"
+                    className="p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
+                  >
+                    <FacebookIcon className="h-5 w-5" />
+                  </a>
+                  <a
+                    href={instagramUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Instagram Profile"
+                    className="p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
+                  >
+                    <InstagramIcon className="h-5 w-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right / Main Editorial Composition */}
+            <div className="lg:col-span-7 flex flex-col justify-center reveal">
+              <SectionHeading className="mb-8">About Me</SectionHeading>
+
+              <div className="space-y-6 text-body-large text-[var(--text-secondary)] leading-relaxed">
+                <p className="text-xl font-medium text-[var(--text-primary)] leading-relaxed">
+                  I protect working software. I avoid unnecessary rewrites and focus on changes that improve the product, reduce operational risk, or move the roadmap forward.
+                </p>
+
+                <p>
+                  I can own delivery end to end, from architecture and backend systems to the interface, automation, testing, and deployment.
+                </p>
+
+                <div className="my-8 rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-6 md:p-8">
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-[var(--text-tertiary)] mb-3">
+                    Engineering Philosophy & Tooling
+                  </h4>
+                  <p className="text-base text-[var(--text-secondary)] leading-relaxed">
+                    Reliable software is built through clear system boundaries, thorough verification, and pragmatic decisions. I use automation and AI-assisted tooling to accelerate investigation and repetitive implementation. Architecture, review, testing, and final decisions stay deliberate.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-          <SectionHeading className="mb-10">About Me</SectionHeading>
-          <p className="reveal mb-16 text-body-large text-[var(--text-secondary)] md:text-2xl md:leading-relaxed">
-            With <span className="font-medium text-[var(--text-primary)]">5+ years of experience</span>, I
-            bridge the gap between complex code and business goals.
-            <br />
-            <br />
-            Whether it&apos;s a mobile app in <span className="font-medium text-[var(--text-primary)]">Flutter</span>, a
-            custom <span className="font-medium text-[var(--text-primary)]">WordPress</span> plugin, or an
-            autonomous <span className="font-medium text-[var(--text-primary)]">n8n</span> workflow, I build
-            solutions that work.
-          </p>
-          <div className="about-links reveal flex flex-wrap justify-center gap-4">
-            <a href={githubUrl} target="_blank" rel="noreferrer" aria-label="GitHub">
-              <GithubIcon className="h-8 w-8" />
-            </a>
-            <a href={linkedinUrl} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-              <LinkedinIcon className="h-8 w-8" />
-            </a>
-            <a href={facebookUrl} target="_blank" rel="noreferrer" aria-label="Facebook">
-              <FacebookIcon className="h-8 w-8" />
-            </a>
-            <a href={instagramUrl} target="_blank" rel="noreferrer" aria-label="Instagram">
-              <InstagramIcon className="h-8 w-8" />
-            </a>
-            <a href={xUrl} target="_blank" rel="noreferrer" aria-label="X">
-              <XIcon className="h-8 w-8" />
-            </a>
-            <a
-              href={freelancerUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="freelancer-link"
-            >
-              Freelancer.com
-            </a>
-            <a
-              href={upworkUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="freelancer-link"
-            >
-              Upwork
-            </a>
-            <Link
-              href="/resume"
-              className="freelancer-link gap-2"
-            >
-              View résumé
-            </Link>
-            <a
-              href="/salmen-khelifi-cv.pdf"
-              download
-              className="freelancer-link gap-2"
-            >
-              <Download className="h-4 w-4" />
-              Download CV
-            </a>
-          </div>
-        </div>
+        </SectionContainer>
       </section>
 
       <ContactCTA />
