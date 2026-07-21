@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Case Study - Luxe Spa Booking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "glass-border-bright": "rgba(255,255,255,0.35)",
+                      "on-surface-variant": "#c5c7c9",
+                      "on-secondary": "#002f65",
+                      "inverse-on-surface": "#313032",
+                      "text-dim": "#515156",
+                      "surface-panel": "#0e0e12",
+                      "on-tertiary-fixed": "#1a1b1f",
+                      "surface-container-highest": "#353437",
+                      "surface-elevated": "#16161f",
+                      "surface-container-lowest": "#0e0e10",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-container": "#636466",
+                      "tertiary": "#ffffff",
+                      "inverse-primary": "#5d5e60",
+                      "tertiary-fixed-dim": "#c6c6cb",
+                      "inverse-surface": "#e5e1e4",
+                      "on-primary-fixed": "#1a1c1d",
+                      "error": "#ffb4ab",
+                      "secondary": "#abc7ff",
+                      "on-tertiary-container": "#636469",
+                      "surface-container": "#201f22",
+                      "background": "#131315",
+                      "on-secondary-fixed": "#001b3f",
+                      "on-secondary-fixed-variant": "#00458e",
+                      "surface-bright": "#39393b",
+                      "primary-fixed": "#e2e2e4",
+                      "surface-container-high": "#2a2a2c",
+                      "secondary-fixed-dim": "#abc7ff",
+                      "on-secondary-container": "#f2f4ff",
+                      "on-error": "#690005",
+                      "surface-container-low": "#1c1b1e",
+                      "tertiary-fixed": "#e3e2e7",
+                      "surface-dim": "#131315",
+                      "surface-variant": "#353437",
+                      "secondary-fixed": "#d7e3ff",
+                      "on-surface": "#e5e1e4",
+                      "on-tertiary-fixed-variant": "#46464b",
+                      "on-tertiary": "#2f3034",
+                      "outline-variant": "#44474a",
+                      "error-container": "#93000a",
+                      "on-primary": "#2f3132",
+                      "secondary-container": "#046dd9",
+                      "on-background": "#e5e1e4",
+                      "surface": "#131315",
+                      "primary": "#ffffff",
+                      "glass-border-muted": "rgba(255,255,255,0.14)",
+                      "primary-fixed-dim": "#c6c6c8",
+                      "on-primary-fixed-variant": "#454749",
+                      "outline": "#8f9194",
+                      "tertiary-container": "#e3e2e7",
+                      "surface-tint": "#c6c6c8",
+                      "primary-container": "#e2e2e4",
+                      "accent-glow": "rgba(47,128,237,0.15)"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px",
+                      "glass": "28px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "stack-md": "32px",
+                      "stack-sm": "16px",
+                      "unit": "8px",
+                      "gutter": "24px",
+                      "stack-lg": "64px",
+                      "margin-desktop": "64px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "h2": ["Manrope"],
+                      "body-lg": ["Manrope"],
+                      "h2-mobile": ["Manrope"],
+                      "h3": ["Manrope"],
+                      "body-reg": ["Manrope"],
+                      "h1-mobile": ["Manrope"],
+                      "h1": ["Manrope"],
+                      "display-hero": ["Manrope"],
+                      "label-caps": ["Manrope"],
+                      "display-hero-mobile": ["Manrope"]
+              },
+              "fontSize": {
+                      "h2": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "300"}],
+                      "h2-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "h3": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-reg": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "h1-mobile": ["44px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                      "h1": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                      "display-hero": ["88px", {"lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                      "label-caps": ["12px", {"lineHeight": "1.5", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "display-hero-mobile": ["56px", {"lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "800"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(22, 22, 31, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid theme('colors.glass-border-muted');
+            border-top-color: theme('colors.glass-border-bright');
+        }
+        
+        .ambient-bloom {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .ambient-blue {
+            top: 10%;
+            left: 20%;
+            width: 40vw;
+            height: 40vw;
+            background: #2f80ed;
+        }
+        
+        .ambient-purple {
+            bottom: 20%;
+            right: 10%;
+            width: 30vw;
+            height: 30vw;
+            background: #8b5cf6;
+        }
+
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="relative min-h-screen overflow-x-hidden">
+<div class="ambient-bloom ambient-blue"></div>
+<div class="ambient-bloom ambient-purple"></div>
+<!-- Navigation (Mobile Focused - Simplifed Top Nav for Case Study focus) -->
+<nav class="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-xl border-b border-glass-border-muted px-margin-mobile py-4 flex justify-between items-center md:hidden">
+<span class="font-h3 text-h3 font-bold text-primary">Khelifi<span class="text-secondary-container">.</span></span>
+<a class="text-on-surface-variant flex items-center gap-1 font-body-reg text-body-reg hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+            Back
+        </a>
+</nav>
+<!-- TopNavBar (Web - Suppressed on mobile) -->
+<nav class="hidden md:flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto bg-background/80 backdrop-blur-xl border-b border-glass-border-muted shadow-sm docked full-width top-0 fixed z-50">
+<div class="font-h3 text-h3 font-bold text-primary">Khelifi<span class="text-secondary-container">.</span></div>
+<div class="flex gap-gutter">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-reg text-body-reg hover:bg-glass-border-muted rounded-md px-3 py-1 duration-300" href="#">Work</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-reg text-body-reg hover:bg-glass-border-muted rounded-md px-3 py-1 duration-300" href="#">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-reg text-body-reg hover:bg-glass-border-muted rounded-md px-3 py-1 duration-300" href="#">About</a>
+</div>
+<button class="bg-secondary-container text-white px-6 py-2 rounded-full font-label-caps text-label-caps hover:bg-opacity-90 transition-all shadow-[0_0_15px_rgba(4,109,217,0.3)] scale-95 active:scale-90 flex items-center gap-2">
+            Let's Talk
+        </button>
+</nav>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="fixed left-8 top-1/2 -translate-y-1/2 rounded-xl hidden lg:flex flex-col gap-unit p-unit bg-surface-elevated/40 backdrop-blur-md border border-glass-border-muted shadow-2xl shadow-accent-glow z-40">
+<a class="text-secondary bg-secondary/10 rounded-lg p-2 flex flex-col items-center gap-1 transition-all duration-200" href="#overview" title="Overview">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">info</span>
+</a>
+<a class="text-on-surface-variant p-2 hover:text-primary hover:bg-white/5 rounded-lg flex flex-col items-center gap-1 transition-all duration-200" href="#features" title="Features">
+<span class="material-symbols-outlined">list_alt</span>
+</a>
+<a class="text-on-surface-variant p-2 hover:text-primary hover:bg-white/5 rounded-lg flex flex-col items-center gap-1 transition-all duration-200" href="#screenshots" title="Screenshots">
+<span class="material-symbols-outlined">screenshot_region</span>
+</a>
+<a class="text-on-surface-variant p-2 hover:text-primary hover:bg-white/5 rounded-lg flex flex-col items-center gap-1 transition-all duration-200" href="#stack" title="Stack">
+<span class="material-symbols-outlined">terminal</span>
+</a>
+<a class="text-on-surface-variant p-2 hover:text-primary hover:bg-white/5 rounded-lg flex flex-col items-center gap-1 transition-all duration-200" href="#challenges" title="Challenges">
+<span class="material-symbols-outlined">psychology</span>
+</a>
+</aside>
+<main class="pt-24 pb-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto md:ml-32 lg:ml-48">
+<!-- Hero Section -->
+<section class="flex flex-col gap-stack-md mb-stack-lg">
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">SAAS &amp; BOOKING PLATFORM</span>
+<h1 class="font-h1-mobile text-h1-mobile md:font-h1 md:text-h1 text-primary">Luxe Spa Booking</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    A high-performance white-label booking, CRM, and management system for appointment-based service businesses, featuring real-time staff dashboards, BullMQ workflows, and AI-powered concierge scheduling.
+                </p>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="px-3 py-1 rounded-full border border-glass-border-muted text-xs font-mono text-on-surface-variant">Next.js 16</span>
+<span class="px-3 py-1 rounded-full border border-glass-border-muted text-xs font-mono text-on-surface-variant">Express.js</span>
+<span class="px-3 py-1 rounded-full border border-glass-border-muted text-xs font-mono text-on-surface-variant">PostgreSQL</span>
+<span class="px-3 py-1 rounded-full border border-glass-border-muted text-xs font-mono text-on-surface-variant">Socket.io</span>
+</div>
+</div>
+<div class="w-full rounded-glass overflow-hidden glass-panel relative aspect-video shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="A high-resolution dashboard screenshot of a premium spa booking platform. Dark mode interface with glowing accents, showcasing calendar views, revenue graphs, and upcoming appointments. Sophisticated data visualization." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrnCGdciFLu4vHkoscYYcA1szISrSHaNjs6rdUQTXs9M-mZ8fLdP6Ko0AIYyivt4KvvQ8WHqNR-7Eq_XAHPnhTMKvQQkqbPMoIGjIvIdk0kPkPqlMQG05UdigyVbQ8C6Td2B00Ve42CE6DxWZ8dsUq6iLZYwt4Dbz_zHe4iYLBE5BZNkh9fbyeLaxKLiBf3WCJGBtdq5mLVjT3DPGWMiIYnguBFnGnun16-g8HkpI4buaij4DXjhfy6mOB75qG-oqiv7vl1cH9aPRL"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent flex items-end p-6">
+<button class="bg-secondary-container text-white px-6 py-3 rounded-full font-label-caps text-label-caps hover:bg-opacity-90 transition-all shadow-[0_0_15px_rgba(4,109,217,0.3)] flex items-center gap-2 md:hidden">
+                        Live Demo
+                        <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Bento Grid Overview -->
+<section class="mb-stack-lg" id="overview">
+<h2 class="font-h2-mobile text-h2-mobile md:font-h2 md:text-h2 text-primary mb-stack-sm">Overview</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-unit">
+<div class="glass-panel p-6 rounded-2xl flex flex-col gap-4">
+<h3 class="font-h3 text-h3 text-primary">What it is</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                        A comprehensive multi-service white-label booking, CRM, and shop management SaaS platform. The system is designed to allow service-oriented businesses to launch custom-branded online booking experiences.
+                    </p>
+</div>
+<div class="glass-panel p-6 rounded-2xl flex flex-col gap-4">
+<h3 class="font-h3 text-h3 text-primary">The problem it solves</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                        Service businesses face a trade-off: use expensive SaaS platforms that charge high transaction fees, or build custom software that is slow and costly to maintain. This provides localized agencies an offering without rebuilding engines.
+                    </p>
+</div>
+<div class="glass-panel p-6 rounded-2xl flex flex-col gap-4 md:col-span-2 lg:col-span-1">
+<h3 class="font-h3 text-h3 text-primary">Who it's for</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                        Independent boutique operators, local clinic chains, and digital agencies looking to offer localized booking platforms as a service.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background pt-stack-lg pb-stack-sm border-t border-glass-border-muted w-full px-margin-mobile md:px-margin-desktop pb-24 md:pb-8">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="flex flex-col gap-4">
+<span class="font-h3 text-h3 font-bold text-primary">Khelifi.</span>
+<p class="font-body-reg text-body-reg text-on-surface-variant text-sm">© 2024 Salmen Khelifi. All rights reserved.</p>
+</div>
+<div class="flex flex-col gap-2">
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-secondary transition-colors" href="#">Work</a>
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-secondary transition-colors" href="#">Services</a>
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-secondary transition-colors" href="#">About</a>
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-secondary transition-colors" href="#">Book a call</a>
+</div>
+<div class="flex flex-col gap-2">
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-secondary transition-colors" href="#">GitHub</a>
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-secondary transition-colors" href="#">LinkedIn</a>
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-secondary transition-colors" href="#">Upwork</a>
+</div>
+</div>
+</footer>
+<!-- Sticky Mobile CTA -->
+<div class="fixed bottom-0 left-0 w-full p-4 bg-background/80 backdrop-blur-xl border-t border-glass-border-muted md:hidden z-50 flex justify-center">
+<button class="w-full bg-secondary-container text-white px-6 py-4 rounded-xl font-label-caps text-label-caps hover:bg-opacity-90 transition-all shadow-[0_0_15px_rgba(4,109,217,0.3)] flex justify-center items-center gap-2">
+            View Live Project
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</body></html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Case Study: Luxe Spa Booking | Khelifi.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "glass-border-bright": "rgba(255,255,255,0.35)",
+                        "on-surface-variant": "#c5c7c9",
+                        "on-secondary": "#002f65",
+                        "inverse-on-surface": "#313032",
+                        "text-dim": "#515156",
+                        "surface-panel": "#0e0e12",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "surface-container-highest": "#353437",
+                        "surface-elevated": "#16161f",
+                        "surface-container-lowest": "#0e0e10",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#636466",
+                        "tertiary": "#ffffff",
+                        "inverse-primary": "#5d5e60",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "inverse-surface": "#e5e1e4",
+                        "on-primary-fixed": "#1a1c1d",
+                        "error": "#ffb4ab",
+                        "secondary": "#abc7ff",
+                        "on-tertiary-container": "#636469",
+                        "surface-container": "#201f22",
+                        "background": "#131315",
+                        "on-secondary-fixed": "#001b3f",
+                        "on-secondary-fixed-variant": "#00458e",
+                        "surface-bright": "#39393b",
+                        "primary-fixed": "#e2e2e4",
+                        "surface-container-high": "#2a2a2c",
+                        "secondary-fixed-dim": "#abc7ff",
+                        "on-secondary-container": "#f2f4ff",
+                        "on-error": "#690005",
+                        "surface-container-low": "#1c1b1e",
+                        "tertiary-fixed": "#e3e2e7",
+                        "surface-dim": "#131315",
+                        "surface-variant": "#353437",
+                        "secondary-fixed": "#d7e3ff",
+                        "on-surface": "#e5e1e4",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "on-tertiary": "#2f3034",
+                        "outline-variant": "#44474a",
+                        "error-container": "#93000a",
+                        "on-primary": "#2f3132",
+                        "secondary-container": "#046dd9",
+                        "on-background": "#e5e1e4",
+                        "surface": "#131315",
+                        "primary": "#ffffff",
+                        "glass-border-muted": "rgba(255,255,255,0.14)",
+                        "primary-fixed-dim": "#c6c6c8",
+                        "on-primary-fixed-variant": "#454749",
+                        "outline": "#8f9194",
+                        "tertiary-container": "#e3e2e7",
+                        "surface-tint": "#c6c6c8",
+                        "primary-container": "#e2e2e4",
+                        "accent-glow": "rgba(47,128,237,0.15)"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "margin-mobile": "16px",
+                        "stack-md": "32px",
+                        "stack-sm": "16px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "stack-lg": "64px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px"
+                    },
+                    fontFamily: {
+                        "h2": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "h2-mobile": ["Manrope"],
+                        "h3": ["Manrope"],
+                        "body-reg": ["Manrope"],
+                        "h1-mobile": ["Manrope"],
+                        "h1": ["Manrope"],
+                        "display-hero": ["Manrope"],
+                        "label-caps": ["Manrope"],
+                        "display-hero-mobile": ["Manrope"]
+                    },
+                    fontSize: {
+                        "h2": ["36px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", letterSpacing: "-0.01em", fontWeight: "300" }],
+                        "h2-mobile": ["32px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        "h3": ["20px", { lineHeight: "1.4", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "body-reg": ["16px", { lineHeight: "1.6", letterSpacing: "0", fontWeight: "400" }],
+                        "h1-mobile": ["44px", { lineHeight: "1.1", letterSpacing: "-0.03em", fontWeight: "700" }],
+                        "h1": ["56px", { lineHeight: "1.1", letterSpacing: "-0.03em", fontWeight: "700" }],
+                        "display-hero": ["88px", { lineHeight: "1.05", letterSpacing: "-0.04em", fontWeight: "800" }],
+                        "label-caps": ["12px", { lineHeight: "1.5", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "display-hero-mobile": ["56px", { lineHeight: "1.05", letterSpacing: "-0.04em", fontWeight: "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #08080a; /* Enforcing deep dark background */
+        }
+        .liquid-glass {
+            background: rgba(22, 22, 31, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .liquid-glass:hover {
+            background: rgba(22, 22, 31, 0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        /* Ambient blooms */
+        .ambient-bloom-1 {
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, rgba(47,128,237,0.08) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .ambient-bloom-2 {
+            position: fixed;
+            bottom: -20%;
+            right: -10%;
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle, rgba(138,43,226,0.05) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        /* Hide scrollbar for marquee */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="text-on-background font-body-reg min-h-screen relative overflow-x-hidden">
+<!-- Ambient Background Effects -->
+<div class="ambient-bloom-1"></div>
+<div class="ambient-bloom-2"></div>
+<!-- Navigation Header (Task Focused) -->
+<header class="w-full px-margin-desktop py-6 flex justify-between items-center border-b border-glass-border-muted/30 sticky top-0 bg-background/80 backdrop-blur-xl z-50">
+<a class="font-h3 text-h3 font-bold text-primary flex items-center gap-1" href="#">
+            Khelifi<span class="text-secondary-container">.</span>
+</a>
+<a class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors text-body-reg font-body-reg group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+            Back to Work
+        </a>
+</header>
+<!-- SideNavBar (Adapted for Tablet/Desktop) -->
+<nav class="fixed left-8 top-1/2 -translate-y-1/2 rounded-xl hidden lg:flex flex-col gap-unit p-unit bg-surface-elevated/40 backdrop-blur-md border border-glass-border-muted shadow-2xl shadow-accent-glow z-40 transition-all duration-200">
+<a class="text-secondary bg-secondary/10 rounded-lg p-2 flex items-center justify-center group" href="#overview" title="Overview">
+<span class="material-symbols-outlined">info</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-lg p-2 flex items-center justify-center transition-all duration-200 group" href="#features" title="Features">
+<span class="material-symbols-outlined">list_alt</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-lg p-2 flex items-center justify-center transition-all duration-200 group" href="#screenshots" title="Screenshots">
+<span class="material-symbols-outlined">screenshot_region</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-lg p-2 flex items-center justify-center transition-all duration-200 group" href="#stack" title="Stack">
+<span class="material-symbols-outlined">terminal</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-lg p-2 flex items-center justify-center transition-all duration-200 group" href="#challenges" title="Challenges">
+<span class="material-symbols-outlined">psychology</span>
+</a>
+</nav>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-stack-lg pb-32">
+<!-- Hero Section -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-32">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase mb-4 block">SaaS &amp; Booking Platform</span>
+<h1 class="font-h1 text-h1 text-primary mb-6">Luxe Spa Booking</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-xl">
+                    A high-performance white-label booking, CRM, and management system for appointment-based service businesses, featuring real-time staff dashboards, BullMQ workflows, and AI-powered concierge scheduling.
+                </p>
+<div class="flex flex-wrap gap-3 mb-10">
+<span class="px-4 py-2 rounded-full border border-glass-border-muted text-on-surface-variant text-sm bg-surface-container-lowest/50 backdrop-blur-sm">Next.js 16</span>
+<span class="px-4 py-2 rounded-full border border-glass-border-muted text-on-surface-variant text-sm bg-surface-container-lowest/50 backdrop-blur-sm">Express.js</span>
+<span class="px-4 py-2 rounded-full border border-glass-border-muted text-on-surface-variant text-sm bg-surface-container-lowest/50 backdrop-blur-sm">PostgreSQL</span>
+<span class="px-4 py-2 rounded-full border border-glass-border-muted text-on-surface-variant text-sm bg-surface-container-lowest/50 backdrop-blur-sm">Socket.io</span>
+<span class="px-4 py-2 rounded-full border border-glass-border-muted text-on-surface-variant text-sm bg-surface-container-lowest/50 backdrop-blur-sm">Gemini API</span>
+</div>
+<a class="inline-flex items-center gap-2 bg-secondary-container text-white px-6 py-3 rounded-full font-semibold hover:bg-secondary-container/90 transition-colors shadow-[0_0_20px_rgba(4,109,217,0.3)] hover:scale-95 active:scale-90 duration-200" href="#">
+                    Live Demo
+                    <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+<div class="relative w-full aspect-[4/3] rounded-[28px] overflow-hidden liquid-glass p-2">
+<img alt="Luxe Spa Booking Hero Screenshot" class="w-full h-full object-cover rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClCLiuscYjx4nvupn3Ix2XvsW7CxJtuL_6dBD97X2lSQ48wE9zcbQS2C9yAhHl2jDJn7APb6FqeF74z6WOEqZDQ9Rqf3XCnj6zUFsBfTh-PFp4ZSTcq0iYc-LspJWFI9jFwM6_WCrNel9NMWf-2gf09QWoA56My4ouBYBL9fcZWSpNmUP0haYl1kdrFhtFo8qlrpOC8FXmGMUSDGjvzXrjftYltyr_bZnBNp2nQFbuK9VwoQTtgh6koreDDoXCB8iyk5aXJkkpMM1S"/>
+</div>
+</section>
+<!-- Overview Section -->
+<section class="mb-32 scroll-mt-32" id="overview">
+<h2 class="font-h2 text-h2 text-primary mb-10">Overview</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="liquid-glass rounded-[28px] p-8 transition-all duration-300">
+<h3 class="font-h3 text-h3 text-primary mb-4">What it is</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                        A comprehensive multi-service white-label booking, CRM, and shop management SaaS platform. The system is designed to allow service-oriented businesses (such as medical aesthetics clinics, hair salons, spas, and consultants) to launch custom-branded online booking experiences, manage technicians, automate customer communications, and handle deposits/payments, fully isolated from other clients.
+                    </p>
+</div>
+<div class="liquid-glass rounded-[28px] p-8 transition-all duration-300">
+<h3 class="font-h3 text-h3 text-primary mb-4">The problem it solves</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                        Service businesses face a trade-off: use expensive SaaS platforms (Mindbody, Vagaro) that charge high transaction fees, or build custom software that is slow and costly to maintain. Furthermore, switching a platform from a nail spa layout to a dental clinic layout typically requires extensive code modifications, custom databases, and frontend rebuilds.
+                    </p>
+</div>
+<div class="liquid-glass rounded-[28px] p-8 transition-all duration-300">
+<h3 class="font-h3 text-h3 text-primary mb-4">Who it's for</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                        Independent boutique operators, local clinic chains, and digital agencies looking to offer localized booking platforms as a service without rebuilding the core scheduling engine.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Key Features Section (Bento Grid) -->
+<section class="mb-32 scroll-mt-32" id="features">
+<h2 class="font-h2 text-h2 text-primary mb-10">Key Features</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-secondary-container text-[24px]">check_circle</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-primary mb-2">Instant Multi-Vertical Preset System</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                            Zod-validated preset structures (Spa, Salon, Barber, Clinic) dynamically seed the database on command. Swaps catalog categories, custom services, brand colors, vocabulary terminology, and operational hours in less than 10 seconds without code changes.
+                        </p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-secondary-container text-[24px]">check_circle</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-primary mb-2">Real-Time Staff Inbox &amp; Messaging</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                            Socket.io-based communication pipeline syncs technician agendas instantly when appointments are updated. Incorporates a unified staff inbox for receptionist-to-client live chats and system notifications.
+                        </p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-secondary-container text-[24px]">check_circle</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-primary mb-2">Automated Multi-Channel Engagement</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                            Twilio-integrated SMS review invitations, automated booking confirmations, and customer discount campaigns running on background workers powered by Redis and BullMQ to prevent main event-loop degradation.
+                        </p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-secondary-container text-[24px]">check_circle</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-primary mb-2">AI Concierge Booking Flow</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                            An intelligent conversational booking assistant powered by the Gemini API. The AI references live business settings, catalog metadata, and provider availability to answer customer queries and guide them through the scheduling funnel.
+                        </p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-secondary-container text-[24px]">check_circle</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-primary mb-2">Granular Role-Based Access Control</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                            Strict hierarchical security rules (OWNER &gt; MANAGER &gt; RECEPTIONIST &gt; TECHNICIAN &gt; CUSTOMER) protecting sensitive customer CRM files, financial metrics, and operational settings.
+                        </p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-secondary-container text-[24px]">check_circle</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-primary mb-2">Secure Payments &amp; Digital Vouchers</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                            Full Stripe Checkout integration for session deposits, active VIP memberships subscription billing, and dynamically generated barcodes for digital gift card validation.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Technology Stack Section -->
+<section class="mb-32 scroll-mt-32" id="stack">
+<h2 class="font-h2 text-h2 text-primary mb-10">Technology Stack</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="liquid-glass rounded-[28px] p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary-container">desktop_windows</span>
+<h3 class="font-h3 text-h3 text-primary">Frontend</h3>
+</div>
+<ul class="space-y-4 text-on-surface-variant">
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>Next.js 16 (App Router)</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>React 19</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>Tailwind CSS 4</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>Zustand State Store</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>shadcn/ui Layouts</li>
+</ul>
+</div>
+<div class="liquid-glass rounded-[28px] p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary-container">database</span>
+<h3 class="font-h3 text-h3 text-primary">Backend</h3>
+</div>
+<ul class="space-y-4 text-on-surface-variant">
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>Express.js (TypeScript)</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>PostgreSQL &amp; Prisma ORM</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>Socket.io Websockets</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>Redis / BullMQ Queue Workers</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>Nodemailer &amp; Twilio API</li>
+</ul>
+</div>
+<div class="liquid-glass rounded-[28px] p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary-container">build</span>
+<h3 class="font-h3 text-h3 text-primary">Tools &amp; Infrastructure</h3>
+</div>
+<ul class="space-y-4 text-on-surface-variant">
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>ImageKit CDN</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>Docker</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>Dokploy / VPS</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>Zod Validation</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>Helmet HTTP Headers</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Challenges & Learnings Section -->
+<section class="mb-32 scroll-mt-32" id="challenges">
+<h2 class="font-h2 text-h2 text-primary mb-10">Challenges &amp; Learnings</h2>
+<div class="liquid-glass rounded-[28px] overflow-hidden border border-glass-border-muted">
+<div class="grid grid-cols-1 md:grid-cols-4 border-b border-glass-border-muted/50 p-6 bg-surface-container-lowest/30">
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase md:col-span-1">Challenge</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase md:col-span-3 mt-2 md:mt-0">Solution</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 border-b border-glass-border-muted/50 p-6 items-start gap-4 md:gap-8 hover:bg-white/5 transition-colors">
+<div class="font-body-reg text-body-reg text-primary font-medium md:col-span-1">Instant re-branding per client/vertical</div>
+<div class="font-body-reg text-body-reg text-on-surface-variant md:col-span-3">Designed a centralized JSON preset schema that dynamically populates Categories, MenuItems, and SiteSetting records in the database on seed, translating terms (e.g. "Therapist" vs "Doctor") globally at runtime.</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 border-b border-glass-border-muted/50 p-6 items-start gap-4 md:gap-8 hover:bg-white/5 transition-colors">
+<div class="font-body-reg text-body-reg text-primary font-medium md:col-span-1">Real-time calendar concurrency and synchronization</div>
+<div class="font-body-reg text-body-reg text-on-surface-variant md:col-span-3">Built a robust transaction layer in Prisma to enforce slot validation at booking time, coupled with Socket.io broadcast rooms to instantly update booking states on the receptionist dashboard.</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 border-b border-glass-border-muted/50 p-6 items-start gap-4 md:gap-8 hover:bg-white/5 transition-colors">
+<div class="font-body-reg text-body-reg text-primary font-medium md:col-span-1">Decoupled asynchronous notification pipelines</div>
+<div class="font-body-reg text-body-reg text-on-surface-variant md:col-span-3">Offloaded high-latency operations (Nodemailer dispatch, Twilio SMS sending, membership credits updates) to a background BullMQ worker process running alongside Express, guaranteeing retry logic and failure resilience.</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 border-b border-glass-border-muted/50 p-6 items-start gap-4 md:gap-8 hover:bg-white/5 transition-colors">
+<div class="font-body-reg text-body-reg text-primary font-medium md:col-span-1">Largest Contentful Paint (LCP) and media optimization</div>
+<div class="font-body-reg text-body-reg text-on-surface-variant md:col-span-3">Optimized image sizes and aspect ratios using ImageKit real-time transformation parameters, prevented layout shifts via fixed Next.js Image dimensions, and added database indexing on foreign keys.</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 p-6 items-start gap-4 md:gap-8 hover:bg-white/5 transition-colors">
+<div class="font-body-reg text-body-reg text-primary font-medium md:col-span-1">AI concierge query security and context control</div>
+<div class="font-body-reg text-body-reg text-on-surface-variant md:col-span-3">Injected live catalog details, open hours, and booking guidelines dynamically into the Gemini system prompt while sanitizing user inputs to prevent prompt injection and hallucinated services.</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="text-center py-20">
+<h2 class="font-h2 text-h2 text-primary mb-4">Interested in Luxe Spa Booking?</h2>
+<p class="font-body-reg text-body-reg text-on-surface-variant mb-8">Explore the project or check out more of my work.</p>
+<div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+<a class="inline-flex items-center justify-center gap-2 bg-secondary-container text-white px-8 py-4 rounded-full font-semibold hover:bg-secondary-container/90 transition-colors shadow-[0_0_20px_rgba(4,109,217,0.3)] hover:scale-95 active:scale-90 duration-200 w-full sm:w-auto min-h-[44px]" href="#">
+                    Live Demo
+                    <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+<a class="inline-flex items-center justify-center gap-2 bg-white/5 border border-glass-border-muted text-primary px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition-colors hover:scale-95 active:scale-90 duration-200 w-full sm:w-auto min-h-[44px]" href="#">
+                    Book a 30-min call
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+<a class="inline-flex items-center justify-center gap-2 bg-transparent text-on-surface-variant hover:text-primary px-8 py-4 rounded-full font-semibold transition-colors hover:scale-95 active:scale-90 duration-200 w-full sm:w-auto min-h-[44px]" href="#">
+                    All Projects
+                    <span class="material-symbols-outlined text-sm">north_east</span>
+</a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full pt-stack-lg pb-stack-sm border-t border-glass-border-muted bg-background">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-desktop max-w-container-max mx-auto items-center">
+<div class="text-on-surface-variant font-body-reg text-sm text-center md:text-left">
+                © 2024 Salmen Khelifi. All rights reserved.
+            </div>
+<div class="col-span-1 md:col-span-2 flex flex-wrap justify-center md:justify-end gap-6 text-sm">
+<a class="text-on-surface-variant hover:text-secondary transition-colors py-2 min-h-[44px] flex items-center" href="#">Work</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors py-2 min-h-[44px] flex items-center" href="#">Services</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors py-2 min-h-[44px] flex items-center" href="#">About</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors py-2 min-h-[44px] flex items-center" href="#">Book a call</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors py-2 min-h-[44px] flex items-center" href="#">GitHub</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors py-2 min-h-[44px] flex items-center" href="#">LinkedIn</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple active state logic for side nav based on scroll position
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-secondary', 'bg-secondary/10');
+                link.classList.add('text-on-surface-variant');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('text-secondary', 'bg-secondary/10');
+                    link.classList.remove('text-on-surface-variant');
+                }
+            });
+        });
+    </script>
+</body></html>

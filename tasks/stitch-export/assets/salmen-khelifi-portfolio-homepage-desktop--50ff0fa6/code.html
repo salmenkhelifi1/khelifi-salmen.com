@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Salmen Khelifi | Product Engineering &amp; Automation</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config injected via script block as per instructions -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#44474a",
+                      "on-primary-container": "#636466",
+                      "secondary-container": "#046dd9",
+                      "primary": "#ffffff",
+                      "primary-container": "#e2e2e4",
+                      "on-tertiary-container": "#636469",
+                      "surface-bright": "#39393b",
+                      "glass-border-muted": "rgba(255,255,255,0.14)",
+                      "tertiary-container": "#e3e2e7",
+                      "primary-fixed": "#e2e2e4",
+                      "on-secondary-container": "#f2f4ff",
+                      "on-tertiary": "#2f3034",
+                      "tertiary": "#ffffff",
+                      "on-secondary-fixed": "#001b3f",
+                      "on-background": "#e5e1e4",
+                      "error-container": "#93000a",
+                      "on-error": "#690005",
+                      "surface-container-low": "#1c1b1e",
+                      "on-primary": "#2f3132",
+                      "inverse-primary": "#5d5e60",
+                      "on-tertiary-fixed": "#1a1b1f",
+                      "on-surface-variant": "#c5c7c9",
+                      "surface-elevated": "#16161f",
+                      "surface-tint": "#c6c6c8",
+                      "on-secondary": "#002f65",
+                      "on-primary-fixed-variant": "#454749",
+                      "on-tertiary-fixed-variant": "#46464b",
+                      "error": "#ffb4ab",
+                      "secondary-fixed-dim": "#abc7ff",
+                      "surface-container": "#201f22",
+                      "outline": "#8f9194",
+                      "tertiary-fixed": "#e3e2e7",
+                      "background": "#131315",
+                      "on-error-container": "#ffdad6",
+                      "primary-fixed-dim": "#c6c6c8",
+                      "on-primary-fixed": "#1a1c1d",
+                      "surface-panel": "#0e0e12",
+                      "text-dim": "#515156",
+                      "surface": "#131315",
+                      "on-surface": "#e5e1e4",
+                      "tertiary-fixed-dim": "#c6c6cb",
+                      "secondary": "#abc7ff",
+                      "accent-glow": "rgba(47,128,237,0.15)",
+                      "surface-variant": "#353437",
+                      "surface-container-high": "#2a2a2c",
+                      "surface-dim": "#131315",
+                      "on-secondary-fixed-variant": "#00458e",
+                      "inverse-surface": "#e5e1e4",
+                      "surface-container-lowest": "#0e0e10",
+                      "glass-border-bright": "rgba(255,255,255,0.35)",
+                      "inverse-on-surface": "#313032",
+                      "secondary-fixed": "#d7e3ff",
+                      "surface-container-highest": "#353437"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "32px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px",
+                      "gutter": "24px",
+                      "stack-lg": "64px",
+                      "unit": "8px",
+                      "margin-mobile": "16px",
+                      "stack-sm": "16px"
+              },
+              "fontFamily": {
+                      "body-reg": ["Manrope"],
+                      "h1-mobile": ["Manrope"],
+                      "h2-mobile": ["Manrope"],
+                      "h2": ["Manrope"],
+                      "h1": ["Manrope"],
+                      "label-caps": ["Manrope"],
+                      "body-lg": ["Manrope"],
+                      "display-hero-mobile": ["Manrope"],
+                      "display-hero": ["Manrope"],
+                      "h3": ["Manrope"]
+              },
+              "fontSize": {
+                      "body-reg": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                      "h1-mobile": ["44px", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                      "h2-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                      "h2": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                      "h1": ["56px", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                      "label-caps": ["12px", { "lineHeight": "1.5", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                      "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "300" }],
+                      "display-hero-mobile": ["56px", { "lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                      "display-hero": ["88px", { "lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                      "h3": ["20px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+              }
+      },
+          },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel {
+                @apply bg-surface/40 backdrop-blur-[20px] border border-glass-border-muted border-t-glass-border-bright rounded-[28px] shadow-sm;
+            }
+            .glass-pill {
+                @apply bg-surface/40 backdrop-blur-md border border-glass-border-muted border-t-glass-border-bright rounded-full;
+            }
+            .text-gradient {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-fixed-dim;
+            }
+            .ambient-bloom {
+                @apply absolute w-[600px] h-[600px] rounded-full blur-[120px] opacity-30 pointer-events-none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-reg selection:bg-secondary-container selection:text-primary relative overflow-x-hidden">
+<!-- Ambient Background Depth -->
+<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+<div class="ambient-bloom bg-secondary-container top-[-20%] left-[-10%]"></div>
+<div class="ambient-bloom bg-[#6b21a8] bottom-[-20%] right-[-10%] opacity-20"></div>
+</div>
+<!-- Navigation Shell (Generated from JSON) -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-glass-border-muted shadow-sm flex justify-between items-center max-w-container-max mx-auto px-margin-desktop h-20 left-0 right-0">
+<div class="font-h3 text-h3 font-bold text-primary flex items-center">
+            Khelifi<span class="text-secondary-container">.</span>
+</div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex items-center gap-gutter">
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-primary transition-colors duration-200" href="#work">Work</a>
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-primary transition-colors duration-200" href="#capabilities">Capabilities</a>
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-primary transition-colors duration-200" href="#process">Process</a>
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-primary transition-colors duration-200" href="#about">About</a>
+</nav>
+<div class="flex items-center gap-unit">
+<a class="hidden md:block font-body-reg text-body-reg text-on-surface-variant hover:text-primary transition-colors duration-200 mr-gutter" href="#contact">Contact</a>
+<button class="bg-secondary-container hover:bg-secondary-fixed-dim hover:text-on-secondary-fixed text-primary font-body-reg text-body-reg font-semibold px-6 py-2 rounded-full transition-all duration-300 active:scale-95 shadow-[0_0_15px_rgba(4,109,217,0.3)]">
+                Start a Project
+            </button>
+</div>
+</header>
+<main class="relative z-10 pt-32 pb-stack-lg flex flex-col gap-[96px]">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-desktop min-h-[85vh] flex flex-col justify-center relative">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<!-- Text Content -->
+<div class="lg:col-span-7 flex flex-col gap-stack-md z-10">
+<div class="inline-flex items-center gap-2 glass-pill px-4 py-2 w-fit">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container shadow-[0_0_8px_#046dd9]"></span>
+<span class="font-label-caps text-label-caps text-on-surface tracking-wider">AVAILABLE FOR NEW PROJECTS</span>
+</div>
+<h1 class="font-display-hero-mobile md:font-display-hero text-display-hero-mobile md:text-display-hero text-primary leading-tight">
+                        I build digital products that <span class="text-secondary-container">automate work</span>, convert users, and scale.
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                        Full-stack engineering meets intelligent automation. I design and build resilient systems that look beautiful and perform relentlessly.
+                    </p>
+<div class="flex flex-wrap items-center gap-unit mt-stack-sm">
+<button class="bg-secondary-container hover:bg-secondary-fixed-dim hover:text-on-secondary-fixed text-primary font-body-reg text-body-reg font-semibold px-8 py-4 rounded-full transition-all duration-300 active:scale-95 shadow-[0_0_20px_rgba(4,109,217,0.4)] flex items-center gap-2">
+                            Start a Project
+                            <span class="material-symbols-outlined" data-icon="arrow_forward" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+<button class="glass-pill text-primary font-body-reg text-body-reg font-semibold px-8 py-4 hover:bg-surface-variant/50 transition-all duration-300 active:scale-95 flex items-center gap-2">
+                            View Selected Work
+                        </button>
+</div>
+</div>
+<!-- Architectural Diagram Visual -->
+<div class="lg:col-span-5 relative h-[600px] w-full hidden lg:block perspective-1000">
+<!-- Placeholder for the requested complex shader/image reference -->
+<div class="absolute inset-0 w-full h-full glass-panel overflow-hidden flex items-center justify-center p-8 group">
+<div class="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCStq9M6I1MWPZZJa6tqkwLu7yYSnfvgR4Jz-aLUgCbwRtxkBqVdFZbosZ187donttlZ7PfPSbZCst6GX7Vp5xzHlj2se-I87axkBmzjQHRjM3FxvunAPn8zHSUAvzw-6xUtvf9SaJVDQZeCKjZGQNjK3H-i6vkzFJLkhs01k5CKHdP-Bi1TqqTQOngrdsgEC4-0QdGmhNtr0ctFwSPnrb21Yjb4jSP2SF_NOGruJFvVZmUdats56qjqwD7nSTkdy6qtmho5VR2D-iJ')"></div>
+<!-- Abstract Node System -->
+<div class="relative w-full h-full flex items-center justify-center">
+<!-- Center Node -->
+<div class="absolute z-20 w-16 h-16 rounded-2xl bg-surface border border-glass-border-bright flex items-center justify-center shadow-[0_0_30px_rgba(4,109,217,0.3)] z-30 transform hover:scale-110 transition-transform cursor-pointer">
+<span class="material-symbols-outlined text-secondary-container text-3xl" data-icon="hub">hub</span>
+</div>
+<!-- Surrounding Nodes (Positioned absolutely to form a ring/network) -->
+<div class="absolute top-[15%] left-[20%] w-12 h-12 glass-pill flex items-center justify-center z-20 hover:border-secondary-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="smartphone">smartphone</span>
+</div>
+<div class="absolute top-[10%] right-[25%] w-12 h-12 glass-pill flex items-center justify-center z-20 hover:border-secondary-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="admin_panel_settings">admin_panel_settings</span>
+</div>
+<div class="absolute bottom-[20%] left-[15%] w-12 h-12 glass-pill flex items-center justify-center z-20 hover:border-secondary-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="database">database</span>
+</div>
+<div class="absolute bottom-[15%] right-[20%] w-12 h-12 glass-pill flex items-center justify-center z-20 hover:border-secondary-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="bolt">bolt</span> <!-- representing AI/n8n -->
+</div>
+<!-- Connecting Lines (SVG) -->
+<svg class="absolute inset-0 w-full h-full z-10 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+<path class="dash-anim" d="M 50% 50% L 20% 15%" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"></path>
+<path class="dash-anim delay-100" d="M 50% 50% L 75% 10%" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"></path>
+<path class="dash-anim delay-200" d="M 50% 50% L 15% 80%" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"></path>
+<path class="dash-anim delay-300" d="M 50% 50% L 80% 85%" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Credibility Strip -->
+<section class="border-y border-glass-border-muted bg-surface/30 backdrop-blur-md py-8">
+<div class="max-w-container-max mx-auto px-margin-desktop flex flex-wrap justify-between items-center gap-gutter text-on-surface-variant font-label-caps text-label-caps">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" data-icon="schedule" data-weight="fill">schedule</span>
+<span>5+ YRS EXPERIENCE</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" data-icon="person" data-weight="fill">person</span>
+<span>3+ YRS FREELANCE</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" data-icon="star" data-weight="fill">star</span>
+<span>4.9/5 FREELANCER.COM RATING</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" data-icon="architecture" data-weight="fill">architecture</span>
+<span>FULL-STACK OWNERSHIP</span>
+</div>
+</div>
+</section>
+<!-- Selected Work -->
+<section class="max-w-container-max mx-auto px-margin-desktop flex flex-col gap-stack-lg pt-16" id="work">
+<div class="flex flex-col gap-2">
+<h2 class="font-h1-mobile md:font-h1 text-h1-mobile md:text-h1 text-primary">Selected Work</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">A curated collection of digital products engineered for scale, usability, and operational efficiency.</p>
+</div>
+<div class="flex flex-col gap-[96px]">
+<!-- Featured Project 1: Asymmetric Left -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-7 order-2 lg:order-1 relative group cursor-pointer">
+<div class="glass-panel overflow-hidden aspect-[4/3] relative">
+<!-- Injecting the specific required image as background to represent the project -->
+<div class="absolute inset-0 bg-cover bg-top transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAzXJPsH1913t3wykblLwsa5DSTDVt9d8zX101ueXZ9FkdFmj53zhZduyk4uUENm2JCYguEjsKH6KWnkQGh4hvtyNir0etd0NhXJbIgL7-TBG-7GCwM2bJfz_MSqFDSWqDC0W675ywczRrIL3L85CRniobI6pNcCXjx_g50C4qkmFGagHSYpDTImkAfX4oiORglhGRS7HkBuXO01FuDRsbodvsOFk-b9_pGnmbAFABjSiVDST96t6AHzVyoFkZc7cTxrDQH8J5h_PNs')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-panel via-transparent to-transparent opacity-60"></div>
+</div>
+</div>
+<div class="lg:col-span-5 order-1 lg:order-2 flex flex-col gap-unit lg:pl-12">
+<div class="text-secondary-container font-label-caps text-label-caps mb-2">FEATURED PLATFORM</div>
+<h3 class="font-h2-mobile md:font-h2 text-h2-mobile md:text-h2 text-primary">White-Label Booking System</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant mb-6">A multi-tenant architecture designed to handle high-concurrency reservations with real-time availability sync.</p>
+<div class="flex flex-col gap-4 mb-8">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-text-dim">PROBLEM</span>
+<span class="font-body-reg text-body-reg text-on-surface">Fragmented scheduling leading to double-bookings and revenue loss.</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-text-dim">SOLUTION</span>
+<span class="font-body-reg text-body-reg text-on-surface">Centralized PostgreSQL database with optimistic locking and a React front-end.</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 text-secondary-container font-semibold hover:text-primary transition-colors w-fit" href="#">
+                            View Case Study <span class="material-symbols-outlined text-sm" data-icon="arrow_outward">arrow_outward</span>
+</a>
+</div>
+</div>
+<!-- Featured Project 2: Asymmetric Right (Anlingo AI) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-5 flex flex-col gap-unit lg:pr-12">
+<div class="text-secondary-container font-label-caps text-label-caps mb-2">AI APPLICATION</div>
+<h3 class="font-h2-mobile md:font-h2 text-h2-mobile md:text-h2 text-primary">Anlingo AI</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant mb-6">An intelligent language learning companion utilizing LLMs to generate contextual, adaptive lesson plans.</p>
+<div class="flex flex-col gap-4 mb-8">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-text-dim">ROLE</span>
+<span class="font-body-reg text-body-reg text-on-surface">Lead Full-Stack Engineer &amp; Prompt Architect.</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-text-dim">IMPACT</span>
+<span class="font-body-reg text-body-reg text-on-surface">Reduced content generation costs by 80% while increasing user engagement.</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 text-secondary-container font-semibold hover:text-primary transition-colors w-fit" href="#">
+                            Explore Platform <span class="material-symbols-outlined text-sm" data-icon="arrow_outward">arrow_outward</span>
+</a>
+</div>
+<div class="lg:col-span-7 relative group cursor-pointer">
+<div class="glass-panel overflow-hidden aspect-[4/3] relative flex items-center justify-center bg-surface-container-low">
+<!-- Placeholder Image -->
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80" data-alt="A sleek, dark-mode dashboard interface for an AI language learning application named Anlingo. The UI shows analytical charts in neon blue and purple, alongside a chat interface with a glowing AI avatar. The aesthetic is highly technical, minimalist, and uses a dark color palette of deep blacks and grays with vibrant glassmorphism accents. Professional product design style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDCrjKSEkxCVhLz4QoI9-H4JzWCaXby1fkRLvAh_P2vjKJMQOpYZhT70tibi8YFhhQaEO5H-7sx4aA0b43wAmxcjCIAvyKDN_dAuV7qvGQWJvPO4NIk3570iPZGPDcMS3jSMDz2dVVTf-0ZxOUaZeHFsG9s-txTUZsHMSSnokXn5HX4-o6Jf5z51kO6np4KUKKIW9XDzl4kW8D_1tV8DBZMAG-Fdcp_nkXFfQM4u5JyV_GXW5yfKT4YXD_Fqf9avkhqL3St4rct2kb0')"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Credibility Bento Grid -->
+<section class="max-w-container-max mx-auto px-margin-desktop pt-16" id="capabilities">
+<div class="flex flex-col gap-stack-md">
+<div class="text-center">
+<h2 class="font-h2-mobile md:font-h2 text-h2-mobile md:text-h2 text-primary">Technical Depth</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter auto-rows-[250px]">
+<!-- Bento Item 1 -->
+<div class="glass-panel p-8 flex flex-col justify-between group hover:bg-surface/60 transition-colors md:col-span-2 relative overflow-hidden">
+<div class="absolute right-0 top-0 w-64 h-64 bg-secondary-container/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+<div class="flex justify-between items-start z-10">
+<span class="material-symbols-outlined text-3xl text-secondary-container" data-icon="database" data-weight="fill">database</span>
+<span class="glass-pill px-3 py-1 text-xs text-on-surface-variant">Architecture</span>
+</div>
+<div class="z-10 mt-auto">
+<h3 class="font-h3 text-h3 text-primary mb-2">MongoDB to Postgres Migration</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">Engineered a zero-downtime data migration strategy for a high-volume platform, restructuring unstructured data into relational models for complex querying.</p>
+</div>
+</div>
+<!-- Bento Item 2 -->
+<div class="glass-panel p-8 flex flex-col justify-between group hover:bg-surface/60 transition-colors relative overflow-hidden">
+<div class="absolute right-0 bottom-0 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl -mr-12 -mb-12 pointer-events-none"></div>
+<div class="flex justify-between items-start z-10">
+<span class="material-symbols-outlined text-3xl text-primary" data-icon="language" data-weight="fill">language</span>
+</div>
+<div class="z-10 mt-auto">
+<h3 class="font-h3 text-h3 text-primary mb-2">Multi-Tenant RTL</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant text-sm">Built a robust Right-to-Left styling engine supporting dynamic theming per tenant.</p>
+</div>
+</div>
+<!-- Bento Item 3 -->
+<div class="glass-panel p-8 flex flex-col justify-between group hover:bg-surface/60 transition-colors relative overflow-hidden">
+<div class="flex justify-between items-start z-10">
+<span class="material-symbols-outlined text-3xl text-primary" data-icon="accessibility_new" data-weight="fill">accessibility_new</span>
+</div>
+<div class="z-10 mt-auto">
+<h3 class="font-h3 text-h3 text-primary mb-2">On-Device AI</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant text-sm">Implemented WebGL accelerated pose detection directly in browser for low-latency feedback.</p>
+</div>
+</div>
+<!-- Bento Item 4 (Capabilities Flow) -->
+<div class="glass-panel p-8 flex flex-col justify-center items-center group hover:bg-surface/60 transition-colors md:col-span-2 relative overflow-hidden bg-surface-container-low">
+<div class="flex w-full max-w-md justify-between items-center relative z-10">
+<div class="flex flex-col items-center gap-2">
+<div class="w-16 h-16 rounded-2xl bg-surface border border-glass-border-muted flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-secondary-container" data-icon="web">web</span>
+</div>
+<span class="text-xs font-label-caps text-on-surface-variant">INTERFACE</span>
+</div>
+<div class="flex-1 h-px bg-glass-border-muted relative">
+<div class="absolute inset-y-0 left-0 h-full w-1/3 bg-secondary-container blur-sm opacity-50"></div>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-16 h-16 rounded-2xl bg-surface border border-glass-border-muted flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-primary" data-icon="api">api</span>
+</div>
+<span class="text-xs font-label-caps text-on-surface-variant">API LAYER</span>
+</div>
+<div class="flex-1 h-px bg-glass-border-muted relative"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-16 h-16 rounded-2xl bg-surface border border-glass-border-muted flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-on-surface" data-icon="dns">dns</span>
+</div>
+<span class="text-xs font-label-caps text-on-surface-variant">DATABASE</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Generated from JSON) -->
+<footer class="bg-background w-full py-stack-lg border-t border-glass-border-muted z-20 relative">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto px-margin-desktop gap-gutter transition-all duration-300">
+<div class="font-h3 text-h3 font-bold text-primary">
+                Khelifi.
+            </div>
+<p class="font-body-reg text-body-reg text-on-surface text-center md:text-left text-sm opacity-70">
+                © 2024 Salmen Khelifi. All rights reserved. Built with Refined Dark Architecture.
+            </p>
+<div class="flex items-center gap-6">
+<a class="font-body-reg text-body-reg text-text-dim hover:text-secondary-container transition-colors" href="#">LinkedIn</a>
+<a class="font-body-reg text-body-reg text-text-dim hover:text-secondary-container transition-colors" href="#">GitHub</a>
+<a class="font-body-reg text-body-reg text-text-dim hover:text-secondary-container transition-colors" href="#">Twitter</a>
+<a class="font-body-reg text-body-reg text-text-dim hover:text-secondary-container transition-colors" href="#">Email</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple intersection observer for subtle reveal animations could go here
+    </script>
+</body></html>
