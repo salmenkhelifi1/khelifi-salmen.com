@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
+import Script from "next/script";
 import { siteJsonLd, siteUrl } from "@/data/schema";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import { ThemeProvider } from "@/components/theme/theme-provider";
@@ -80,6 +81,13 @@ export default function RootLayout({
             <span />
           </div>
           {children}
+          {process.env.NODE_ENV === "development" && (
+            <Script
+              src="//unpkg.com/react-grab/dist/index.global.js"
+              crossOrigin="anonymous"
+              strategy="beforeInteractive"
+            />
+          )}
         </ThemeProvider>
       </body>
     </html>
