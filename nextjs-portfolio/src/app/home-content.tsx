@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   ArrowRight,
   Download,
@@ -21,17 +21,14 @@ import {
 import {
   BLUR_PLACEHOLDER,
   capabilityMarkers,
-  categoryToFilter,
   credibilityItems,
   ecosystemNodes,
-  featuredHrefs,
   featuredWork,
+  homepageCompactHrefs,
   portraitPreviewImages,
   projects,
   services,
   technicalDepth,
-  workFilters,
-  WorkFilter,
 } from "@/data/homepage";
 import SiteHeader from "@/components/SiteHeader";
 import SectionContainer from "@/components/SectionContainer";
@@ -104,14 +101,12 @@ const XIcon = createLucideIcon("X", [
 ]);
 
 export default function HomeContent() {
-  const [activeFilter, setActiveFilter] = useState<WorkFilter>("All");
-  const filteredProjects =
-    activeFilter === "All"
-      ? projects
-      : projects.filter((p) => categoryToFilter[p.category] === activeFilter);
-  const remainingProjects = filteredProjects.filter(
-    (p) => !featuredHrefs.includes(p.href)
-  );
+  // Homepage shows a curated four: two featured + two compact. The full,
+  // filterable archive lives at /work — the homepage is a focused journey,
+  // not a project database.
+  const compactProjects = homepageCompactHrefs
+    .map((href) => projects.find((p) => p.href === href))
+    .filter((p): p is (typeof projects)[number] => Boolean(p));
 
   useEffect(() => {
     // IntersectionObserver instead of a scroll listener: fires reliably on
@@ -213,25 +208,9 @@ export default function HomeContent() {
 
       <section id="work" className="py-32 md:py-40">
         <SectionContainer>
-          <SectionHeading className="mb-10">Selected Work</SectionHeading>
-
-          <div className="reveal mb-20 flex flex-wrap gap-3 md:mb-24">
-            {workFilters.map((filter) => (
-              <button
-                key={filter}
-                type="button"
-                aria-pressed={activeFilter === filter}
-                onClick={() => setActiveFilter(filter)}
-                className={`tech-badge min-h-11 transition-colors ${
-                  activeFilter === filter
-                    ? "!bg-[var(--accent)] !text-[var(--text-primary)]"
-                    : ""
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
+          <SectionHeading className="mb-16 md:mb-20">
+            Selected Work
+          </SectionHeading>
 
           <div className="mb-24 md:mb-32 space-y-20 md:space-y-32">
             {featuredWork.map((item, index) => (
@@ -243,8 +222,8 @@ export default function HomeContent() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {remainingProjects.map((project) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {compactProjects.map((project) => (
               <CompactProject
                 key={project.title}
                 project={project}
@@ -264,7 +243,7 @@ export default function HomeContent() {
         </SectionContainer>
       </section>
 
-      <section id="capabilities" className="py-32 md:py-40">
+      <section id="technical-depth" className="py-32 md:py-40">
         <SectionContainer>
           <SectionHeading className="mb-16 text-center">
             Technical Depth
@@ -277,7 +256,7 @@ export default function HomeContent() {
         </SectionContainer>
       </section>
 
-      <section id="services" className="py-32 md:py-40">
+      <section id="capabilities" className="py-32 md:py-40">
         <SectionContainer>
           <SectionHeading className="mb-20 text-center md:mb-24">
             Capabilities

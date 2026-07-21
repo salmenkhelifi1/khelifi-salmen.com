@@ -1,5 +1,4 @@
 import {
-  Bot,
   Briefcase,
   Code2,
   Database,
@@ -8,7 +7,6 @@ import {
   LucideIcon,
   Network,
   ScanEye,
-  ServerCog,
   Smartphone,
   Star,
   Workflow,
@@ -108,7 +106,7 @@ export const capabilityMarkers = [
 // plus real route links (résumé) for the recruiter path.
 export const navLinks: NavLink[] = [
   { href: "/#work", label: "Work" },
-  { href: "/#services", label: "Capabilities" },
+  { href: "/#capabilities", label: "Capabilities" },
   { href: "/#process", label: "Process" },
   { href: "/#about", label: "About" },
   { href: "/resume", label: "Résumé" },
@@ -306,6 +304,14 @@ export const featuredHrefs: string[] = [
   "/projects/anlingo",
 ];
 
+// The homepage shows at most four projects: the two featured above plus these
+// two compact ones (an automation platform + a specialist e-commerce platform).
+// The full archive lives at /work. Order here is the render order.
+export const homepageCompactHrefs: string[] = [
+  "/projects/noxivo",
+  "/projects/chaktech",
+];
+
 export const featuredWork: FeaturedWorkItem[] = [
   {
     eyebrow: "FEATURED PLATFORM",
@@ -316,11 +322,15 @@ export const featuredWork: FeaturedWorkItem[] = [
     rows: [
       {
         label: "Problem",
-        text: "Service businesses trade off between expensive booking SaaS with high transaction fees, or slow, costly custom software.",
+        text: "Appointment businesses get squeezed between expensive booking SaaS with per-transaction fees and slow one-off custom builds that are hard to change.",
       },
       {
-        label: "Solution",
-        text: "A white-label booking engine that swaps an entire business vertical, spa to clinic, in under 10 seconds with zero code changes.",
+        label: "What I built",
+        text: "A white-label booking and CRM platform where one preset reconfigures the whole product for a new vertical, spa to clinic, in under 10 seconds with no code changes.",
+      },
+      {
+        label: "My role",
+        text: "Solo across architecture, booking engine, staff dashboards, payments, and the automation pipeline, end to end.",
       },
     ],
   },
@@ -333,11 +343,15 @@ export const featuredWork: FeaturedWorkItem[] = [
     rows: [
       {
         label: "Problem",
-        text: "Most grammar tools force a choice between speed, privacy, and stronger AI.",
+        text: "Grammar tools force a trade-off between a fast, lightweight experience and access to stronger, more expensive AI.",
       },
       {
-        label: "Solution",
-        text: "Anlingo keeps the free path lightweight and private, then routes advanced writing work through guarded backend AI providers.",
+        label: "What I built",
+        text: "A writing platform that keeps the free path lightweight, then routes advanced work through guarded backend AI providers with usage limits and fallbacks.",
+      },
+      {
+        label: "My role",
+        text: "Solo across the web app, admin tooling, API, subscription billing, and the Flutter companion, end to end.",
       },
     ],
   },
@@ -387,42 +401,26 @@ export const portraitPreviewImages: Set<string> = new Set([
   "/images/adaptifit_1.png",
 ]);
 
+// Three focused service areas, dominant one first. Reduced from six generic
+// categories so positioning reads as focused, not scattered.
 export const services: ServiceItem[] = [
   {
-    icon: Code2,
-    title: "Frontend",
-    description:
-      "React, Next.js, and Flutter interfaces built for fast, polished product experiences.",
-  },
-  {
-    icon: Database,
-    title: "Backend & APIs",
-    description:
-      "Node, Express, PostgreSQL, and MongoDB systems with clean API contracts.",
-  },
-  {
     icon: Network,
-    title: "Architecture",
+    title: "Product Engineering",
     description:
-      "Multi-tenant SaaS foundations, clean architecture, and maintainable feature boundaries.",
-  },
-  {
-    icon: ServerCog,
-    title: "DevOps & Infrastructure",
-    description:
-      "Docker, Linux/Ubuntu, CI/CD, Netlify, and Cloudflare deployment workflows.",
+      "Full-stack SaaS products and multi-tenant platforms, built end to end: architecture, authentication, payments, databases, dashboards, and mobile and web delivery. React, Next.js, Flutter, Node, Express, PostgreSQL.",
   },
   {
     icon: Workflow,
-    title: "Automation",
+    title: "Automation & Integrations",
     description:
-      "n8n, Make.com, and workflow engineering that removes repetitive business operations.",
+      "n8n and AI-assisted workflows that remove repetitive operations, connected to CRMs, messaging, notifications, data sync, and third-party APIs, with reliable monitoring.",
   },
   {
-    icon: Bot,
-    title: "AI Integration",
+    icon: Zap,
+    title: "High-Performance Web Experiences",
     description:
-      "OpenAI, Gemini, Vapi voice AI, and on-device ML connected to real product flows.",
+      "Conversion-focused, accessible, SEO-ready websites and storefronts with strong performance and clear interaction design.",
   },
 ];
 
