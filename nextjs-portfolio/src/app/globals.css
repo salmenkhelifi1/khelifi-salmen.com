@@ -54,6 +54,52 @@
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 var(--glass-border-bright),
     inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+
+  color-scheme: dark;
+}
+
+/*
+ * Light theme — "Refined Light Architecture". Deliberately not an inversion
+ * of the dark palette: soft off-white page (not pure #fff), near-black text
+ * (not pure #000), a deepened accent for AA contrast on white, and glass
+ * borders that read as a dark edge instead of a light-catching highlight
+ * (a light-colored highlight is invisible on an already-light page).
+ * Applied via [data-theme="light"] on <html>, set pre-hydration — see the
+ * inline script in layout.tsx. :root above stays the default dark palette,
+ * so no-JS / pre-hydration state is identical to the original single-theme app.
+ */
+[data-theme="light"] {
+  --bg-page: #f6f6f8;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #fcfcfd;
+
+  --border-subtle: rgba(15, 15, 20, 0.05);
+  --border-muted: rgba(15, 15, 20, 0.1);
+  --border-active: rgba(15, 15, 20, 0.18);
+
+  --text-primary: #14141a;
+  --text-secondary: #52525b;
+  --text-tertiary: #6b6b76;
+
+  --accent: #1f6feb;
+  --accent-dim: rgba(31, 111, 235, 0.08);
+  --accent-glow: rgba(31, 111, 235, 0.1);
+
+  --shadow-card: 0 2px 14px rgba(20, 20, 26, 0.06),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  --shadow-hover: 0 10px 28px rgba(20, 20, 26, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  --glow-accent: 0 0 32px -8px rgba(31, 111, 235, 0.22);
+
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-bg-elevated: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(15, 15, 20, 0.1);
+  --glass-border-bright: rgba(15, 15, 20, 0.16);
+  --glass-shadow: 0 8px 24px rgba(20, 20, 26, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(20, 20, 26, 0.04);
+
+  color-scheme: light;
 }
 
 @theme inline {
@@ -64,6 +110,17 @@ html {
   background: var(--bg-page);
 }
 
+/*
+ * Only body's own background/text crossfade on a theme switch — this covers
+ * the dominant visual change (the page flipping) without touching any
+ * per-component transition declaration (.cta-button, .glass-panel, etc.
+ * already define their own hover/focus transitions further down this file;
+ * a blanket "*" rule here would collide with those shorthand declarations).
+ * Individual surfaces/borders snap instantly, which reads as part of the
+ * same near-instant flip rather than a second, staggered animation.
+ * Suppressed during initial pre-hydration resolution via .theme-resolving
+ * (see the inline script in layout.tsx) so first paint never animates.
+ */
 body {
   background-color: var(--bg-page);
   color: var(--text-primary);
@@ -71,6 +128,14 @@ body {
   overflow-x: hidden;
   position: relative;
   isolation: isolate;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+html.theme-resolving body,
+html.theme-resolving .bg-blooms::before,
+html.theme-resolving .bg-blooms::after,
+html.theme-resolving .bg-blooms > span {
+  transition: none !important;
 }
 
 .bg-blooms {
@@ -88,6 +153,19 @@ body {
   border-radius: 50%;
   filter: blur(110px);
   opacity: 0.8;
+  transition: opacity 200ms ease;
+}
+
+/* Same nebula-style blooms as dark mode, but the saturated colors that read
+   as moody ambience on near-black are eye strain on a light page — drop
+   them to a barely-there tint instead of inventing a different decoration. */
+[data-theme="light"] .bg-blooms::before,
+[data-theme="light"] .bg-blooms::after {
+  opacity: 0.18;
+}
+
+[data-theme="light"] .bg-blooms > span {
+  opacity: 0.12;
 }
 
 .bg-blooms::before {
@@ -125,6 +203,7 @@ body {
   border-radius: 50%;
   filter: blur(110px);
   opacity: 0.5;
+  transition: opacity 200ms ease;
   background: radial-gradient(
     circle,
     rgba(45, 212, 191, 0.32),
