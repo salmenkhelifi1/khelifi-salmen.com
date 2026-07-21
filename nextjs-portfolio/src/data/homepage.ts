@@ -360,7 +360,7 @@ export const technicalDepth: TechnicalDepthItem[] = [
     title: "On-Device AI",
     description:
       "Camera-based pose detection running on-device with Google ML Kit, no cloud round-trip for real-time feedback.",
-    span: "",
+    span: "md:col-span-3",
   },
 ];
 

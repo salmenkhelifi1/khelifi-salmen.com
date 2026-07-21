@@ -113,24 +113,34 @@ export default function HomeContent() {
   );
 
   useEffect(() => {
-    const reveal = () => {
-      const reveals = document.querySelectorAll<HTMLElement>(".reveal");
-      const windowHeight = window.innerHeight;
-      const elementVisible = 150;
+    // IntersectionObserver instead of a scroll listener: fires reliably on
+    // anchor jumps, fast scrolling, and filter changes (scroll events don't).
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -80px 0px" }
+    );
 
-      reveals.forEach((element) => {
-        const elementTop = element.getBoundingClientRect().top;
-        if (elementTop < windowHeight - elementVisible) {
-          element.classList.add("active");
-        }
-      });
+    const observeAll = () => {
+      document
+        .querySelectorAll<HTMLElement>(".reveal:not(.active)")
+        .forEach((element) => observer.observe(element));
     };
 
-    window.addEventListener("scroll", reveal);
-    reveal();
+    observeAll();
+    // Re-observe when the work filter swaps the project list in/out.
+    const mutationObserver = new MutationObserver(observeAll);
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      window.removeEventListener("scroll", reveal);
+      observer.disconnect();
+      mutationObserver.disconnect();
     };
   }, []);
 
@@ -248,7 +258,7 @@ export default function HomeContent() {
       <section id="services" className="py-32 md:py-40">
         <SectionContainer>
           <SectionHeading className="mb-20 text-center md:mb-24">
-            My Expertise
+            Capabilities
           </SectionHeading>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => {

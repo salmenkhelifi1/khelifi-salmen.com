@@ -46,7 +46,7 @@ export default function FeaturedProject({
         </Link>
       </div>
       <div className={`md:col-span-7 ${imageOnRight ? "md:order-2" : "md:order-1"}`}>
-        <div className="image-preview relative overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border-muted)] bg-[var(--bg-surface)] aspect-[4/3]">
+        <div className="image-preview relative overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border-muted)] bg-[var(--bg-surface)] aspect-[16/10]">
           <Image
             src={item.image}
             alt={`${item.title} preview`}

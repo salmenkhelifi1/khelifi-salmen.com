@@ -342,7 +342,8 @@ body {
 }
 
 .nav-pill {
-  background: var(--glass-bg);
+  /* Opaque dark base under the glass: content must never read through the nav */
+  background: rgba(10, 10, 14, 0.78);
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   border: 1px solid var(--glass-border);
@@ -351,6 +352,15 @@ body {
   box-shadow: var(--glass-shadow);
   transition: background 180ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Anchor jumps must not bury section headings under the floating nav */
+section[id],
+[id="work"],
+[id="services"],
+[id="process"],
+[id="about"] {
+  scroll-margin-top: 7rem;
 }
 
 .credibility-strip {
