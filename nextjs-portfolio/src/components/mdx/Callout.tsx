@@ -15,18 +15,18 @@ const variantStyles: Record<
   { container: string; iconColor: string; defaultIcon: React.ReactNode }
 > = {
   info: {
-    container: "border-[var(--accent)]/30 bg-[var(--accent-dim)]/20",
+    container: "border-[var(--accent)]/30 bg-[var(--accent-dim)]",
     iconColor: "text-[var(--accent)]",
     defaultIcon: <Info className="w-5 h-5" aria-hidden="true" />,
   },
   warning: {
-    container: "border-amber-500/30 bg-amber-950/20",
-    iconColor: "text-amber-400",
+    container: "border-[var(--border-active)] bg-[var(--glass-bg-elevated)]",
+    iconColor: "text-[var(--accent)]",
     defaultIcon: <AlertTriangle className="w-5 h-5" aria-hidden="true" />,
   },
   success: {
-    container: "border-emerald-500/30 bg-emerald-950/20",
-    iconColor: "text-emerald-400",
+    container: "border-[var(--accent)]/30 bg-[var(--accent-dim)]",
+    iconColor: "text-[var(--accent)]",
     defaultIcon: <CheckCircle2 className="w-5 h-5" aria-hidden="true" />,
   },
 };

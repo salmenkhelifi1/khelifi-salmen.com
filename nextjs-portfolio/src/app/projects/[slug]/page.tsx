@@ -162,43 +162,43 @@ function getFactualArchitecture(project: Project): ArchitectureComponent[] {
         name: "Admin & Staff Dashboard",
         tech: "shadcn/ui, Socket.io Client, Zustand",
         role: "Real-time agenda management, receptionist chat & service configuration",
-        icon: <Layers className="w-5 h-5 text-purple-400" />,
+        icon: <Layers className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "API & Access Control",
         tech: "Express.js (TypeScript), Helmet, Zod Validation",
         role: "Strict RBAC (Owner > Manager > Receptionist > Technician > Customer)",
-        icon: <ShieldCheck className="w-5 h-5 text-cyan-400" />,
+        icon: <ShieldCheck className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Data & ORM Layer",
         tech: "PostgreSQL, Prisma ORM",
         role: "Multi-tenant business settings, appointment logs & customer CRM",
-        icon: <Database className="w-5 h-5 text-blue-400" />,
+        icon: <Database className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Real-Time Pipeline",
         tech: "Socket.io WebSockets",
         role: "Instant schedule synchronization & live receptionist inbox",
-        icon: <Zap className="w-5 h-5 text-yellow-400" />,
+        icon: <Zap className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Async Queue Workers",
         tech: "Redis, BullMQ Queue Workers",
         role: "Offloaded email dispatch, SMS reminders & background job processing",
-        icon: <Cpu className="w-5 h-5 text-red-400" />,
+        icon: <Cpu className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Automated Messaging",
         tech: "Twilio API, Nodemailer",
         role: "Automated SMS confirmations, review invitations & customer campaigns",
-        icon: <MessageSquare className="w-5 h-5 text-emerald-400" />,
+        icon: <MessageSquare className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "AI Concierge Engine",
         tech: "Gemini API",
         role: "Conversational assistant referencing live catalog & provider availability",
-        icon: <Code2 className="w-5 h-5 text-indigo-400" />,
+        icon: <Code2 className="w-5 h-5 text-[var(--accent)]" />,
       },
     ];
   }
@@ -210,37 +210,37 @@ function getFactualArchitecture(project: Project): ArchitectureComponent[] {
         name: "Web Editor & Marketing Site",
         tech: "Next.js 14/16 App Router, TailwindCSS, React",
         role: "Public landing funnel & interactive writing workspace",
-        icon: <Smartphone className="w-5 h-5 text-violet-400" />,
+        icon: <Smartphone className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Express API Services",
         tech: "Express (TypeScript), Redis, Zod Contracts",
         role: "Grammar, translation, rewrite, dictation & usage API routes",
-        icon: <Server className="w-5 h-5 text-cyan-400" />,
+        icon: <Server className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Flutter Mobile Companion",
         tech: "Flutter, Riverpod, GoRouter, Dio",
         role: "Cross-platform mobile client with Sentry & Firebase Auth",
-        icon: <Smartphone className="w-5 h-5 text-emerald-400" />,
+        icon: <Smartphone className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Database & Authentication",
         tech: "Firebase Auth, Firestore, PostgreSQL",
         role: "User identity, writing history & plan entitlement storage",
-        icon: <Database className="w-5 h-5 text-blue-400" />,
+        icon: <Database className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Protected Admin System",
         tech: "Next.js Admin, 2FA Security",
         role: "Analytics, user administration, support & security operations",
-        icon: <ShieldCheck className="w-5 h-5 text-amber-400" />,
+        icon: <ShieldCheck className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Guarded AI Provider Pool",
         tech: "Gemini, OpenRouter, NVIDIA, DeepSeek",
         role: "Multi-provider AI routing with rate limiting & kill switches",
-        icon: <Cpu className="w-5 h-5 text-indigo-400" />,
+        icon: <Cpu className="w-5 h-5 text-[var(--accent)]" />,
       },
     ];
   }
@@ -252,31 +252,31 @@ function getFactualArchitecture(project: Project): ArchitectureComponent[] {
         name: "Customer Storefront",
         tech: "Next.js 16, React 19, FR/AR RTL i18n",
         role: "Tunisia-first e-commerce experience with zero-FOUC tenant theming",
-        icon: <Smartphone className="w-5 h-5 text-orange-400" />,
+        icon: <Smartphone className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Payload Back-Office",
         tech: "Payload CMS, Express, TypeScript",
         role: "Admin surface for catalog, orders, inventory & localized i18n",
-        icon: <Layers className="w-5 h-5 text-purple-400" />,
+        icon: <Layers className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Tenant & Commerce API",
         tech: "Express, Drizzle ORM, Zod",
         role: "Hostname domain resolution, price revalidation & COD order processing",
-        icon: <Server className="w-5 h-5 text-amber-400" />,
+        icon: <Server className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Database & Cache",
         tech: "PostgreSQL 16, Redis",
         role: "Tenant registrations, products, order queues & session storage",
-        icon: <Database className="w-5 h-5 text-blue-400" />,
+        icon: <Database className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Search Engine",
         tech: "Typesense",
         role: "Typo-tolerant product search & faceted filtering",
-        icon: <Zap className="w-5 h-5 text-yellow-400" />,
+        icon: <Zap className="w-5 h-5 text-[var(--accent)]" />,
       },
     ];
   }
@@ -288,25 +288,25 @@ function getFactualArchitecture(project: Project): ArchitectureComponent[] {
         name: "Protected Agency Dashboard",
         tech: "Next.js 15 App Router, React 19, TailwindCSS",
         role: "Multi-tenant workspace management & WhatsApp team inbox",
-        icon: <Layers className="w-5 h-5 text-green-400" />,
+        icon: <Layers className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Fastify Workflow Engine",
         tech: "Fastify 5, BullMQ, Redis",
         role: "DAG-style automation engine, message queues & event publishing",
-        icon: <Cpu className="w-5 h-5 text-emerald-400" />,
+        icon: <Cpu className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Database & Models",
         tech: "MongoDB, Mongoose, Zod Contracts",
         role: "Agency, tenant, workspace & WhatsApp conversation state",
-        icon: <Database className="w-5 h-5 text-blue-400" />,
+        icon: <Database className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Developer Portal",
         tech: "Docusaurus 3",
         role: "Public API documentation, webhooks & n8n integration guides",
-        icon: <Code2 className="w-5 h-5 text-purple-400" />,
+        icon: <Code2 className="w-5 h-5 text-[var(--accent)]" />,
       },
     ];
   }
@@ -326,7 +326,7 @@ function getFactualArchitecture(project: Project): ArchitectureComponent[] {
       name: "Backend Services",
       tech: project.techStack.backend.join(", "),
       role: "Business logic, API routes & server infrastructure",
-      icon: <Server className="w-5 h-5 text-purple-400" />,
+      icon: <Server className="w-5 h-5 text-[var(--accent)]" />,
     });
   }
 
@@ -335,7 +335,7 @@ function getFactualArchitecture(project: Project): ArchitectureComponent[] {
       name: "Tools & Integrations",
       tech: project.techStack.tools.join(", "),
       role: "Deployment, automation & external services",
-      icon: <Wrench className="w-5 h-5 text-amber-400" />,
+      icon: <Wrench className="w-5 h-5 text-[var(--accent)]" />,
     });
   }
 
@@ -823,8 +823,8 @@ export default async function ProjectProfilePage({
                         <div className="grid lg:grid-cols-3 gap-6 items-start">
                           {/* Problem */}
                           <div className="space-y-2">
-                            <div className="flex items-center gap-2 text-xs font-bold text-red-400 uppercase tracking-wider">
-                              <span className="w-2 h-2 rounded-full bg-red-400" aria-hidden="true" />
+                            <div className="flex items-center gap-2 text-xs font-bold text-[var(--text-tertiary)] uppercase tracking-wider">
+                              <span className="w-2 h-2 rounded-full bg-[var(--accent)]" aria-hidden="true" />
                               Problem / Constraint
                             </div>
                             <h3 className="text-sm font-bold text-[var(--text-primary)]">
@@ -834,7 +834,7 @@ export default async function ProjectProfilePage({
 
                           {/* Decision / Solution */}
                           <div className="space-y-2 lg:border-l lg:border-[var(--border-subtle)] lg:pl-6">
-                            <div className="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider">
+                            <div className="flex items-center gap-2 text-xs font-bold text-[var(--accent)] uppercase tracking-wider">
                               <Zap className="w-3.5 h-3.5" aria-hidden="true" />
                               Architectural Decision
                             </div>
@@ -845,11 +845,11 @@ export default async function ProjectProfilePage({
 
                           {/* Result */}
                           <div className="space-y-2 lg:border-l lg:border-[var(--border-subtle)] lg:pl-6">
-                            <div className="flex items-center gap-2 text-xs font-bold text-emerald-400 uppercase tracking-wider">
+                            <div className="flex items-center gap-2 text-xs font-bold text-[var(--accent)] uppercase tracking-wider">
                               <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
                               Architectural Outcome
                             </div>
-                            <p className="text-xs font-semibold text-emerald-400/90 leading-relaxed bg-emerald-950/30 border border-emerald-800/40 rounded-xl p-3">
+                            <p className="text-xs font-semibold text-[var(--text-primary)] leading-relaxed bg-[var(--accent-dim)] border border-[var(--accent)]/30 rounded-xl p-3">
                               {resultText}
                             </p>
                           </div>

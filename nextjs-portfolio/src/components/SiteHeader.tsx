@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, Menu, X, createLucideIcon } from "lucide-react";
 import { bookingUrl, githubUrl } from "@/data/schema";
 import { navLinks } from "@/data/homepage";
+import ThemeSwitcher from "@/components/theme/theme-switcher";
 
 const Github = createLucideIcon("Github", [
   [
@@ -37,13 +38,16 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
           </Link>
 
           {backHref ? (
-            <Link
-              href={backHref}
-              className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
-            >
-              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-              {backLabel ?? "Back"}
-            </Link>
+            <div className="flex items-center gap-3">
+              <ThemeSwitcher />
+              <Link
+                href={backHref}
+                className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
+              >
+                <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                {backLabel ?? "Back"}
+              </Link>
+            </div>
           ) : (
             <>
               <div className="hidden gap-8 text-sm font-medium text-[var(--text-secondary)] md:flex">
@@ -67,6 +71,7 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
                 >
                   <Github className="h-4 w-4" aria-hidden="true" />
                 </a>
+                <ThemeSwitcher />
                 <a
                   href={bookingUrl}
                   target="_blank"
@@ -124,6 +129,14 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
               >
                 GitHub
               </a>
+              <div className="flex flex-col gap-2 py-3 border-b border-[var(--border-subtle)]">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[var(--text-secondary)]">
+                  Theme
+                </span>
+                <div>
+                  <ThemeSwitcher />
+                </div>
+              </div>
               <a
                 href={bookingUrl}
                 target="_blank"

@@ -224,7 +224,7 @@ export default function HomeContent() {
                 onClick={() => setActiveFilter(filter)}
                 className={`tech-badge min-h-11 transition-colors ${
                   activeFilter === filter
-                    ? "!bg-[rgba(47,128,237,0.55)] !text-[var(--text-primary)]"
+                    ? "!bg-[var(--accent)] !text-[var(--text-primary)]"
                     : ""
                 }`}
               >

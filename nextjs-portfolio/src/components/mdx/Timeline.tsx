@@ -41,7 +41,7 @@ export default function Timeline({ items }: TimelineProps) {
                 {step.description}
               </p>
               {step.result && (
-                <div className="text-xs font-semibold text-emerald-400">
+                <div className="text-xs font-semibold text-[var(--accent)]">
                   {step.result}
                 </div>
               )}

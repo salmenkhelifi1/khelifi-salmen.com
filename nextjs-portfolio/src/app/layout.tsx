@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google";
 import Script from "next/script";
 import { personAndServiceJsonLd, siteUrl } from "@/data/schema";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -69,23 +70,25 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
       <body className="min-h-full antialiased">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(personAndServiceJsonLd),
-          }}
-        />
-        <div className="bg-blooms" aria-hidden="true">
-          <span />
-        </div>
-        {children}
-        {process.env.NODE_ENV === "development" && (
-          <Script
-            src="//unpkg.com/react-grab/dist/index.global.js"
-            crossOrigin="anonymous"
-            strategy="beforeInteractive"
+        <ThemeProvider>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(personAndServiceJsonLd),
+            }}
           />
-        )}
+          <div className="bg-blooms" aria-hidden="true">
+            <span />
+          </div>
+          {children}
+          {process.env.NODE_ENV === "development" && (
+            <Script
+              src="//unpkg.com/react-grab/dist/index.global.js"
+              crossOrigin="anonymous"
+              strategy="beforeInteractive"
+            />
+          )}
+        </ThemeProvider>
       </body>
     </html>
   );

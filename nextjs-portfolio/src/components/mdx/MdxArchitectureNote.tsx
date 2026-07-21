@@ -18,15 +18,15 @@ interface MdxArchitectureNoteProps {
 function getIcon(type?: string) {
   switch (type) {
     case "db":
-      return <Database className="w-5 h-5 text-blue-400" />;
+      return <Database className="w-5 h-5 text-[var(--accent)]" />;
     case "queue":
-      return <Cpu className="w-5 h-5 text-red-400" />;
+      return <Cpu className="w-5 h-5 text-[var(--accent)]" />;
     case "security":
-      return <ShieldCheck className="w-5 h-5 text-cyan-400" />;
+      return <ShieldCheck className="w-5 h-5 text-[var(--accent)]" />;
     case "ui":
-      return <Layers className="w-5 h-5 text-purple-400" />;
+      return <Layers className="w-5 h-5 text-[var(--accent)]" />;
     case "api":
-      return <Server className="w-5 h-5 text-emerald-400" />;
+      return <Server className="w-5 h-5 text-[var(--accent)]" />;
     default:
       return <Zap className="w-5 h-5 text-[var(--accent)]" />;
   }
