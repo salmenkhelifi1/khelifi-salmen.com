@@ -35,17 +35,14 @@ export const metadata: Metadata = {
   },
 };
 
-// Note: "grammarai" was removed as a dead reference — no such project exists
-// in projects.ts (it was an earlier phase of Anlingo, which is already listed).
-const targetSlugs = [
-  "chaktech",
-  "adaptifit",
-  "rentiora",
-  "ai-workflow-automation",
-  "anlingo",
-];
+const independentSlugs = ["anlingo", "adaptifit"];
+const clientSlugs = ["chaktech", "rentiora", "ai-workflow-automation"];
 
-const selectedProjects = targetSlugs
+const independentProjects = independentSlugs
+  .map((slug) => projects.find((p) => p.slug === slug))
+  .filter((p): p is NonNullable<typeof p> => !!p);
+
+const clientProjects = clientSlugs
   .map((slug) => projects.find((p) => p.slug === slug))
   .filter((p): p is NonNullable<typeof p> => !!p);
 
@@ -83,6 +80,25 @@ const projectBullets: Record<string, string[]> = {
     "Integrated payment logic via Stripe, Whop, and MoMo with raw-body webhook verification for automatic subscription updates.",
   ],
 };
+
+const coreSkills = [
+  {
+    title: "Product Engineering",
+    skills: "React, Next.js, Flutter, product architecture",
+  },
+  {
+    title: "Backend & Architecture",
+    skills: "Node, Express, PostgreSQL, Redis, multi-tenant, Payload CMS",
+  },
+  {
+    title: "Automation & Integrations",
+    skills: "n8n, Make.com, APIs, webhooks",
+  },
+  {
+    title: "Mobile & Applied AI",
+    skills: "Flutter, OpenAI, Gemini, on-device ML",
+  },
+];
 
 const knowsAbout = [
   "React",
@@ -129,15 +145,70 @@ const resumeJsonLd = {
   knowsAbout,
 };
 
+function renderProjectEntry(project: (typeof projects)[number]) {
+  const timeframe = project.snapshot?.timeframe;
+  const techBadges = [
+    ...(project.techStack.frontend || []),
+    ...(project.techStack.backend || []),
+    ...(project.techStack.tools || []),
+  ].slice(0, 5);
+
+  return (
+    <div key={project.slug} className="print-project">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1">
+        <div>
+          <h4 className="text-lg font-bold text-[var(--text-primary)] print-text-primary hover:text-[var(--accent)] transition-colors">
+            <Link
+              href={`/projects/${project.slug}`}
+              className="print-link flex items-center gap-1.5"
+            >
+              {project.title}
+              <ExternalLink className="w-3.5 h-3.5 no-print opacity-60" />
+            </Link>
+          </h4>
+          <p className="text-sm text-[var(--accent)] font-medium print-accent">
+            {projectRoles[project.slug]}
+          </p>
+        </div>
+        <div className="sm:text-right">
+          <span className="text-xs text-[var(--text-tertiary)] print-text-muted block">
+            {project.category}
+          </span>
+          {timeframe && (
+            <span className="text-xs text-[var(--text-tertiary)] print-text-muted block">
+              {timeframe}
+            </span>
+          )}
+        </div>
+      </div>
+      <ul className="list-disc pl-5 mb-3 text-sm text-[var(--text-secondary)] space-y-1.5 print-text-secondary">
+        {projectBullets[project.slug]?.map((bullet, idx) => (
+          <li key={idx}>{bullet}</li>
+        ))}
+      </ul>
+      <div className="flex flex-wrap gap-1.5 mt-2">
+        <span className="text-xs text-[var(--text-tertiary)] mr-1 pt-1 print-text-muted font-semibold">
+          Tech stack:
+        </span>
+        {techBadges.map((tech) => (
+          <span
+            key={tech}
+            className="text-xs px-2.5 py-0.5 rounded-full border border-[var(--border-muted)] bg-[var(--bg-surface)] text-[var(--text-secondary)] tech-badge print-text-primary"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function ResumePage() {
-  const selectedReviews = [
-    testimonials.find(
-      (t) =>
-        t.author === "Austin L." &&
-        t.projectTitle === "n8n Automation Workflows Specialist",
-    ),
-    testimonials.find((t) => t.author === "Robert D."),
-  ].filter((t): t is NonNullable<typeof t> => !!t);
+  const featuredReview = testimonials.find(
+    (t) =>
+      t.author === "Austin L." &&
+      t.projectTitle === "n8n Automation Workflows Specialist",
+  );
 
   return (
     <div className="min-h-screen bg-[var(--bg-page)] text-[var(--text-primary)] font-sans antialiased pb-20 pt-32">
@@ -245,7 +316,7 @@ export default function ResumePage() {
               <p className="text-xl font-medium text-[var(--accent)] mb-4 print-accent">
                 Full-Stack Developer & Automation Specialist
               </p>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-[var(--text-secondary)] print-text-secondary">
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-[var(--text-tertiary)] no-print" />
@@ -340,7 +411,16 @@ export default function ResumePage() {
             <Briefcase className="w-5 h-5 text-[var(--accent)] no-print" /> Professional Summary
           </h2>
           <p className="text-[var(--text-secondary)] leading-relaxed print-text-secondary">
-            Results-driven Full-Stack Developer and Workflow Automation Specialist with over 5 years of professional experience building scalable digital ecosystems. Expert at bridging advanced frontend interfaces, secure backend structures, and automated AI logic to solve real-world operational challenges. Proven track record of delivering revenue-focused solutions for clients worldwide with a 4.9/5 rating on Freelancer.com.
+            Full-stack product engineer and automation specialist with 5+ years building web, mobile, and SaaS systems. I own delivery across architecture, backend, frontend, integrations, and deployment, with particular experience in multi-tenant platforms and operational automation. I maintain a{" "}
+            <a
+              href={freelancerUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="print-link underline hover:text-[var(--text-primary)]"
+            >
+              4.9/5 rating across 8 reviews on Freelancer.com
+            </a>
+            .
           </p>
         </section>
 
@@ -348,112 +428,75 @@ export default function ResumePage() {
           <h2 id="skills-heading" className="text-xl font-bold mb-4 flex items-center gap-2 text-[var(--text-primary)] border-b border-[var(--border-subtle)] pb-2 print-text-primary print-border">
             <Layers className="w-5 h-5 text-[var(--accent)] no-print" /> Core Skills
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 print-skills-grid">
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
-              <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">Frontend</h3>
-              <p className="text-sm text-[var(--text-secondary)] print-text-secondary">React, Next.js, WordPress, Shopify, Payload CMS</p>
-            </div>
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
-              <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">Backend</h3>
-              <p className="text-sm text-[var(--text-secondary)] print-text-secondary">Node.js, Express, PostgreSQL, MongoDB, Redis, Firebase, Typesense</p>
-            </div>
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
-              <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">Mobile</h3>
-              <p className="text-sm text-[var(--text-secondary)] print-text-secondary">Flutter, Dart</p>
-            </div>
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
-              <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">DevOps & Infra</h3>
-              <p className="text-sm text-[var(--text-secondary)] print-text-secondary">Docker, Linux (Ubuntu), DevOps, CI/CD</p>
-            </div>
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
-              <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">Automation</h3>
-              <p className="text-sm text-[var(--text-secondary)] print-text-secondary">n8n, Make.com</p>
-            </div>
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
-              <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">AI</h3>
-              <p className="text-sm text-[var(--text-secondary)] print-text-secondary">OpenAI, Gemini, Vapi AI, On-device ML</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-10 print-section" aria-labelledby="experience-heading">
-          <h2 id="experience-heading" className="text-xl font-bold mb-6 flex items-center gap-2 text-[var(--text-primary)] border-b border-[var(--border-subtle)] pb-2 print-text-primary print-border">
-            <Briefcase className="w-5 h-5 text-[var(--accent)] no-print" /> Selected Experience / Projects
-          </h2>
-          <div className="space-y-8">
-            {selectedProjects.map((project) => (
-              <div key={project.slug} className="print-project">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1">
-                  <div>
-                    <h3 className="text-lg font-bold text-[var(--text-primary)] print-text-primary hover:text-[var(--accent)] transition-colors">
-                      <Link
-                        href={`/projects/${project.slug}`}
-                        className="print-link flex items-center gap-1.5"
-                      >
-                        {project.title}
-                        <ExternalLink className="w-3.5 h-3.5 no-print opacity-60" />
-                      </Link>
-                    </h3>
-                    <p className="text-sm text-[var(--accent)] font-medium print-accent">
-                      {projectRoles[project.slug]}
-                    </p>
-                  </div>
-                  <span className="text-xs text-[var(--text-tertiary)] print-text-muted">
-                    {project.category}
-                  </span>
-                </div>
-                <ul className="list-disc pl-5 mb-3 text-sm text-[var(--text-secondary)] space-y-1.5 print-text-secondary">
-                  {projectBullets[project.slug]?.map((bullet, idx) => (
-                    <li key={idx}>{bullet}</li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-1.5 mt-2">
-                  <span className="text-xs text-[var(--text-tertiary)] mr-1 pt-1 print-text-muted font-semibold">Tech stack:</span>
-                  {[
-                    ...(project.techStack.frontend || []),
-                    ...(project.techStack.backend || []),
-                    ...(project.techStack.tools || []),
-                  ].map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-xs px-2.5 py-0.5 rounded-full border border-[var(--border-muted)] bg-[var(--bg-surface)] text-[var(--text-secondary)] tech-badge print-text-primary"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 print-skills-grid">
+            {coreSkills.map((cat) => (
+              <div
+                key={cat.title}
+                className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]"
+              >
+                <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">
+                  {cat.title}
+                </h3>
+                <p className="text-sm text-[var(--text-secondary)] print-text-secondary">
+                  {cat.skills}
+                </p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Client Feedback */}
-        <section className="mb-10 print-section" aria-labelledby="feedback-heading">
-          <h2 id="feedback-heading" className="text-xl font-bold mb-4 flex items-center gap-2 text-[var(--text-primary)] border-b border-[var(--border-subtle)] pb-2 print-text-primary print-border">
-            <MessageSquare className="w-5 h-5 text-[var(--accent)] no-print" /> Client Feedback
+        <section className="mb-10 print-section" aria-labelledby="experience-heading">
+          <h2 id="experience-heading" className="text-xl font-bold mb-6 flex items-center gap-2 text-[var(--text-primary)] border-b border-[var(--border-subtle)] pb-2 print-text-primary print-border">
+            <Briefcase className="w-5 h-5 text-[var(--accent)] no-print" /> Selected Experience & Projects
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 print-grid">
-            {selectedReviews.map((review, idx) => (
-              <blockquote
-                key={idx}
-                className="p-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] relative print-project"
-              >
-                <div className="flex gap-1 text-[var(--accent)] mb-3 no-print">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="w-4.5 h-4.5 fill-current" />
-                  ))}
-                </div>
-                <p className="text-sm italic text-[var(--text-secondary)] mb-4 print-text-secondary">
-                  &ldquo;{review.quote}&rdquo;
-                </p>
-                <cite className="not-italic text-xs block">
-                  <span className="font-bold text-[var(--text-primary)] print-text-primary block">{review.author}</span>
-                  <span className="text-[var(--text-tertiary)] print-text-muted">{review.projectTitle}</span>
-                </cite>
-              </blockquote>
-            ))}
+          
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-md font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-4 print-text-secondary">
+                Independent Products
+              </h3>
+              <div className="space-y-6">
+                {independentProjects.map(renderProjectEntry)}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-md font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-4 print-text-secondary">
+                Client & Freelance Projects
+              </h3>
+              <div className="space-y-6">
+                {clientProjects.map(renderProjectEntry)}
+              </div>
+            </div>
           </div>
         </section>
+
+        {/* Client Feedback */}
+        {featuredReview && (
+          <section className="mb-10 print-section" aria-labelledby="feedback-heading">
+            <h2 id="feedback-heading" className="text-xl font-bold mb-4 flex items-center gap-2 text-[var(--text-primary)] border-b border-[var(--border-subtle)] pb-2 print-text-primary print-border">
+              <MessageSquare className="w-5 h-5 text-[var(--accent)] no-print" /> Client Feedback
+            </h2>
+            <blockquote className="p-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] relative print-project">
+              <div className="flex gap-1 text-[var(--accent)] mb-3 no-print">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="w-4.5 h-4.5 fill-current" />
+                ))}
+              </div>
+              <p className="text-sm italic text-[var(--text-secondary)] mb-4 print-text-secondary">
+                &ldquo;{featuredReview.quote}&rdquo;
+              </p>
+              <cite className="not-italic text-xs block">
+                <span className="font-bold text-[var(--text-primary)] print-text-primary block">
+                  {featuredReview.author}
+                </span>
+                <span className="text-[var(--text-tertiary)] print-text-muted">
+                  {featuredReview.projectTitle}
+                </span>
+              </cite>
+            </blockquote>
+          </section>
+        )}
 
         {/* Languages */}
         <section className="print-section" aria-labelledby="languages-heading">
