@@ -220,6 +220,15 @@ export default function HomeContent() {
               />
             ))}
           </div>
+
+          <div className="mt-16 text-center reveal">
+            <Link
+              href="/work"
+              className="project-link inline-flex min-h-11 items-center text-lg font-bold text-[var(--text-primary)]"
+            >
+              View All Work <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </div>
         </SectionContainer>
       </section>
 
