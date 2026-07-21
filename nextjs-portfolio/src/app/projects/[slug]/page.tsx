@@ -26,6 +26,9 @@ import { BLUR_PLACEHOLDER } from "@/data/homepage";
 import ProjectToc, { type TocSection } from "@/components/ProjectToc";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { getCaseStudyNarrative } from "@/lib/content/case-study-narratives";
+import type { CaseStudyPlacement } from "@/lib/content/schemas";
+
 
 type Params = { slug: string };
 
@@ -392,6 +395,8 @@ export default async function ProjectProfilePage({
   const project = getProject(slug);
   if (!project) notFound();
 
+  const narrative = await getCaseStudyNarrative(slug);
+
   const slugIndex = projects.findIndex((p) => p.slug === slug);
   const prevProject = projects[(slugIndex - 1 + projects.length) % projects.length];
   const nextProject = projects[(slugIndex + 1) % projects.length];
@@ -428,6 +433,60 @@ export default async function ProjectProfilePage({
   renderedSections.push({ id: "technology-stack", label: "Technology Stack" });
   renderedSections.push({ id: "final-result", label: "Results & Lessons" });
   renderedSections.push({ id: "start-similar-project", label: "Start a Project" });
+
+  if (narrative && narrative.toc.length > 0) {
+    let insertAfterId = "solution";
+    if (narrative.placement === "after-architecture" && architectureItems.length > 0) {
+      insertAfterId = "architecture";
+    } else if (
+      narrative.placement === "after-key-product-flows" &&
+      project.features.length > 0
+    ) {
+      insertAfterId = "key-product-flows";
+    } else if (
+      narrative.placement === "after-engineering-decisions" &&
+      project.features.length > 0
+    ) {
+      insertAfterId = "engineering-decisions";
+    } else if (narrative.placement === "before-gallery") {
+      if (project.challenges && project.challenges.length > 0) {
+        insertAfterId = "challenges";
+      } else if (project.features.length > 0) {
+        insertAfterId = "engineering-decisions";
+      } else if (architectureItems.length > 0) {
+        insertAfterId = "architecture";
+      }
+    }
+
+    const idx = renderedSections.findIndex((s) => s.id === insertAfterId);
+    if (idx !== -1) {
+      renderedSections.splice(idx + 1, 0, ...narrative.toc);
+    } else {
+      renderedSections.push(...narrative.toc);
+    }
+  }
+
+  const NarrativeComponent = narrative?.Component;
+  const narrativeContent = NarrativeComponent ? (
+    <section
+      id={narrative.toc[0]?.id || "case-study-narrative"}
+      className="scroll-mt-32 space-y-6"
+    >
+      <NarrativeComponent />
+    </section>
+  ) : null;
+
+  const renderedNarrativePositions = new Set<string>();
+
+  const renderNarrativeSlot = (position: CaseStudyPlacement) => {
+    if (!narrative || !narrativeContent) return null;
+    if (narrative.placement === position && !renderedNarrativePositions.has("narrative")) {
+      renderedNarrativePositions.add("narrative");
+      return narrativeContent;
+    }
+    return null;
+  };
+
 
   return (
     <div className="min-h-screen text-[var(--text-primary)]">
@@ -599,6 +658,8 @@ export default async function ProjectProfilePage({
               </div>
             </section>
 
+            {renderNarrativeSlot("after-solution")}
+
             {/* Section 5: Architecture */}
             {architectureItems.length > 0 && (
               <section id="architecture" className="scroll-mt-32" aria-labelledby="arch-heading">
@@ -638,6 +699,8 @@ export default async function ProjectProfilePage({
                 </div>
               </section>
             )}
+
+            {renderNarrativeSlot("after-architecture")}
 
             {/* Section 6: Key Product Flows */}
             {project.features.length > 0 && (
@@ -698,6 +761,8 @@ export default async function ProjectProfilePage({
               </section>
             )}
 
+            {renderNarrativeSlot("after-key-product-flows")}
+
             {/* Section 7: Engineering Decisions */}
             {project.features.length > 0 && (
               <section id="engineering-decisions" className="scroll-mt-32" aria-labelledby="decisions-heading">
@@ -725,6 +790,8 @@ export default async function ProjectProfilePage({
                 </div>
               </section>
             )}
+
+            {renderNarrativeSlot("after-engineering-decisions")}
 
             {/* Section 8: Challenges (Problem -> Decision -> Result cards) */}
             {project.challenges && project.challenges.length > 0 && (
@@ -794,6 +861,8 @@ export default async function ProjectProfilePage({
               </section>
             )}
 
+            {renderNarrativeSlot("before-gallery")}
+
             {/* Section 9: Visual Gallery */}
             {project.gallery.length > 0 && (
               <section id="visual-gallery" className="scroll-mt-32" aria-labelledby="gallery-heading">
@@ -837,6 +906,9 @@ export default async function ProjectProfilePage({
                 </div>
               </section>
             )}
+
+            {narrative && !renderedNarrativePositions.has("narrative") && narrativeContent}
+
 
             {/* Section 10: Technology Stack */}
             <section id="technology-stack" className="scroll-mt-32" aria-labelledby="stack-heading">

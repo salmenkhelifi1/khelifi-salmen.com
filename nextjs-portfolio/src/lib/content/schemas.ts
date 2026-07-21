@@ -23,3 +23,31 @@ export const BlogFrontmatterSchema = z.object({
 });
 
 export type BlogFrontmatter = z.infer<typeof BlogFrontmatterSchema>;
+
+export const CaseStudyPlacementSchema = z
+  .enum([
+    "after-solution",
+    "after-architecture",
+    "after-key-product-flows",
+    "after-engineering-decisions",
+    "before-gallery",
+  ])
+  .default("after-engineering-decisions");
+
+export type CaseStudyPlacement = z.infer<typeof CaseStudyPlacementSchema>;
+
+export const CaseStudyTocEntrySchema = z.object({
+  id: z.string(),
+  label: z.string(),
+});
+
+export type CaseStudyTocEntry = z.infer<typeof CaseStudyTocEntrySchema>;
+
+export const CaseStudyNarrativeSchema = z.object({
+  projectSlug: z.string(),
+  placement: CaseStudyPlacementSchema,
+  toc: z.array(CaseStudyTocEntrySchema).default([]),
+});
+
+export type CaseStudyNarrativeFrontmatter = z.infer<typeof CaseStudyNarrativeSchema>;
+

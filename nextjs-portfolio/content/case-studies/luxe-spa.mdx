@@ -1,0 +1,41 @@
+---
+projectSlug: "luxe-spa"
+placement: "after-engineering-decisions"
+toc:
+  - id: "system-design-notes"
+    label: "System Design Notes"
+---
+
+{/* Supplemental System Design Notes backing Luxe Spa implementation */}
+
+### System Design Notes
+
+To support multi-tenant white-label deployments while maintaining high runtime performance, the Luxe Spa platform was architected around three critical backend subsystems: dynamic schema presets, concurrent booking synchronization, and an asynchronous background worker pipeline.
+
+<Callout variant="info" title="Verified Technology Stack">
+  The system is built with Next.js 16 App Router, React 19, Tailwind CSS 4, Zustand, Express.js/TypeScript, PostgreSQL + Prisma ORM, Socket.io, Redis/BullMQ, ImageKit CDN, and Zod validation.
+</Callout>
+
+<DecisionCard
+  title="Vertical Adaptability"
+  subtitle="Dynamic Preset Engine"
+  problem="Adapting the booking platform to different service domains (e.g., spas vs. medical clinics) without maintaining separate codebase forks."
+  decision="Built a centralized JSON preset schema that dynamically populates Categories, MenuItems, and SiteSetting records in PostgreSQL on seed, translating terminology (such as 'Therapist' vs 'Doctor') globally at runtime."
+  result="Enables a complete spa-to-clinic vertical swap in under 10 seconds with zero code changes."
+/>
+
+<DecisionCard
+  title="Slot Concurrency & Real-Time Sync"
+  subtitle="Transactional Booking Layer"
+  problem="Preventing double-booking race conditions when multiple customers or receptionists attempt to book the same appointment slot simultaneously."
+  decision="Implemented a transaction layer in Prisma to enforce slot validation at booking time, coupled with Socket.io broadcast rooms that instantly synchronize booking states across receptionist dashboards."
+  result="Eliminates double-bookings under concurrent access while keeping receptionists updated in real time."
+/>
+
+<DecisionCard
+  title="Non-Blocking Notification Pipeline"
+  subtitle="Offloaded Async Workers"
+  problem="Preventing high-latency external messaging and credit calculation tasks from degrading API response times."
+  decision="Offloaded high-latency operations—including Nodemailer email dispatch, Twilio SMS sending, and membership credit updates—to a background BullMQ worker process running alongside Express, complete with retry logic and failure resilience."
+  result="Keeps the main HTTP request/response cycle fast and responsive while guaranteeing background job completion."
+/>

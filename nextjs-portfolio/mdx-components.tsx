@@ -1,4 +1,15 @@
 import type { MDXComponents } from "mdx/types";
+import Callout from "@/components/mdx/Callout";
+import DecisionCard from "@/components/mdx/DecisionCard";
+import MetricCard from "@/components/mdx/MetricCard";
+import AnnotatedImage from "@/components/mdx/AnnotatedImage";
+import MdxGallery from "@/components/mdx/MdxGallery";
+import TradeOffTable from "@/components/mdx/TradeOffTable";
+import Timeline from "@/components/mdx/Timeline";
+import Quote from "@/components/mdx/Quote";
+import MdxArchitectureNote from "@/components/mdx/MdxArchitectureNote";
+import TechnicalNote from "@/components/mdx/TechnicalNote";
+import CodeBlock from "@/components/mdx/CodeBlock";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -51,6 +62,18 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </a>
     ),
+    Callout,
+    DecisionCard,
+    MetricCard,
+    AnnotatedImage,
+    MdxGallery,
+    TradeOffTable,
+    Timeline,
+    Quote,
+    MdxArchitectureNote,
+    TechnicalNote,
+    CodeBlock,
     ...components,
   };
 }
+
