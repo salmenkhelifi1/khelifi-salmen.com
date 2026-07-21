@@ -3,6 +3,9 @@ import path from "path";
 import matter from "gray-matter";
 import { BlogFrontmatter, BlogFrontmatterSchema } from "./schemas";
 import { calculateReadingTime, ReadingTime } from "./reading-time";
+import { projects } from "@/data/projects";
+
+const validProjectSlugs = new Set(projects.map((p) => p.slug));
 
 export type BlogPost = {
   frontmatter: BlogFrontmatter;
@@ -45,6 +48,14 @@ export function getAllPosts(): BlogPost[] {
       throw new Error(
         `Slug mismatch in blog post "${filePath}": frontmatter slug "${frontmatter.slug}" does not match filename "${expectedSlug}"`
       );
+    }
+
+    for (const relatedSlug of frontmatter.relatedCaseStudies) {
+      if (!validProjectSlugs.has(relatedSlug)) {
+        throw new Error(
+          `Invalid relatedCaseStudies entry "${relatedSlug}" in blog post "${filePath}": must match an existing project slug in src/data/projects.ts`
+        );
+      }
     }
 
     return {
