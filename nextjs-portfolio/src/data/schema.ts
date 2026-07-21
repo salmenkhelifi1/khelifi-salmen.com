@@ -129,3 +129,58 @@ export function projectJsonLd(project: Project) {
     },
   ];
 }
+
+import type { BlogPost } from "@/lib/content/blog";
+
+export function articleJsonLd(post: BlogPost) {
+  const postUrl = post.frontmatter.canonicalUrl || `${siteUrl}/blog/${post.slug}`;
+
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: siteUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blog",
+          item: `${siteUrl}/blog`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: post.frontmatter.title,
+          item: postUrl,
+        },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.frontmatter.seoTitle || post.frontmatter.title,
+      description: post.frontmatter.seoDescription || post.frontmatter.excerpt,
+      url: postUrl,
+      datePublished: post.frontmatter.publishedAt,
+      dateModified: post.frontmatter.updatedAt || post.frontmatter.publishedAt,
+      author: {
+        "@type": "Person",
+        name: post.frontmatter.author,
+        url: siteUrl,
+      },
+      publisher: {
+        "@type": "Person",
+        name: "Salmen Khelifi",
+        url: siteUrl,
+      },
+      image: post.frontmatter.cover ? `${siteUrl}${post.frontmatter.cover}` : undefined,
+      keywords: post.frontmatter.tags.join(", "),
+      articleSection: post.frontmatter.category,
+    },
+  ];
+}

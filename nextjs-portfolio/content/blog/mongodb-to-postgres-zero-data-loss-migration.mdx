@@ -1,0 +1,75 @@
+---
+title: "MongoDB to PostgreSQL: Zero Data Loss Live Migration & Production Hardening"
+slug: "mongodb-to-postgres-zero-data-loss-migration"
+excerpt: "A technical retrospective on migrating ChakTech's data layer live from MongoDB to PostgreSQL, executing a 54-finding security audit, and engineering checkout integrity."
+status: "draft"
+category: "Frontend and Architecture"
+tags:
+  - "PostgreSQL"
+  - "Migrations"
+  - "Security"
+  - "Multi-tenant"
+featured: false
+author: "Salmen Khelifi"
+relatedCaseStudies:
+  - "chaktech"
+---
+
+{/* Note: Reading time is derived automatically from word count during build time. */}
+
+ChakTech is a production multi-tenant e-commerce platform built for the Tunisian market. It includes a French and Arabic RTL storefront, an admin back-office, and a tenant-scoped API. The stack runs on Next.js 16, React 19, Payload CMS, Express with TypeScript, PostgreSQL 16, Drizzle ORM, Redis, Typesense, Cloudflare R2, Docker, Dokploy, Zod, and Helmet. As the solo engineer, I built the system end to end, covering the database, backend, frontend, and deployment pipeline.
+
+Before launching the live platform at dev.chaktech.tn, I focused on system resilience and data safety. A platform handling real transactions needs explicit guarantees, not optimistic assumptions.
+
+## Why I Conducted a 54-Finding Self-Audit
+
+Building software solo requires disciplined verification. Before declaring the platform launch-ready, I ran a structured 54-finding self-audit across the full application surface.
+
+The audit systematically evaluated seven critical operational areas:
+1. Tenant isolation across shared infrastructure.
+2. PII protection and data exposure boundaries.
+3. Zod schema validation on all inbound HTTP requests.
+4. HTTP hardening with security headers and rate limits via Helmet.
+5. Authentication flows and session token validation.
+6. File upload verification before writing to Cloudflare R2.
+7. Operational logging and monitoring controls.
+
+Fixing these vulnerabilities before release ensured that edge cases were eliminated early, rather than discovered during production traffic.
+
+## Migrating Live from MongoDB to PostgreSQL
+
+During initial development, the data layer used MongoDB. As the relational domain model solidified—specifically tenant domain mappings and transactional order relations—PostgreSQL became the right choice for long-term consistency.
+
+I executed a live data layer migration from MongoDB to PostgreSQL 16 with Drizzle ORM. The core requirement was simple: zero data loss during the transition.
+
+### Zero Data Loss in Practice
+
+To guarantee zero data loss, the migration process followed strict execution stages:
+- Mapped document schemas to relational tables with strict foreign key constraints in PostgreSQL.
+- Verified field types and nullability using Zod schemas during transformation.
+- Executed write validation to ensure data consistency between document source and relational target.
+- Verified relational references, indices, and tenant boundaries prior to switching production traffic.
+
+The database transition succeeded with zero missing records or corrupted states. PostgreSQL 16 now powers all tenant configurations, product catalogs, and transactional order records.
+
+## Engineering Checkout Integrity
+
+A second key outcome of the hardening process was reinforcing checkout integrity. In an e-commerce platform, client-submitted payload data must never be trusted.
+
+To prevent manipulation and overselling, the backend enforces atomic checkout controls:
+- Prices and inventory levels revalidate server-side against PostgreSQL at order placement time.
+- All client-submitted price totals are ignored completely.
+- Stock decrements occur atomically in PostgreSQL within the order placement transaction.
+- If inventory validation fails during execution, the transaction rolls back cleanly.
+
+## Multi-Tenant Domain Architecture
+
+ChakTech handles multi-tenancy at the domain boundary. Each incoming request resolves its hostname against registered tenant domains in PostgreSQL.
+
+The backend returns tenant branding, theme tokens, and commerce settings. Theme CSS variables inject before first paint, preventing any flash of unstyled or wrong-branded content. To manage operational scope at launch, the platform was deployed multi-tenant-capable while serving a single active store.
+
+Instant product discovery is powered by Typesense, providing typo-tolerant, faceted search integrated with an admin reindex pipeline.
+
+## What Production Hardening Demonstrates
+
+Shipping production software means taking full responsibility for data integrity, security, and operational stability. Moving live from MongoDB to PostgreSQL with zero data loss, enforcing atomic checkout rules, and completing a 54-finding security audit established a reliable foundation for ChakTech.
