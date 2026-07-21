@@ -20,7 +20,7 @@ export default function SiteFooter() {
             Full-stack, mobile, and automation systems built for revenue-focused launches.
           </p>
         </div>
-        <div>
+        <nav aria-label="Footer quick links">
           <h2 className="mb-4 text-caption text-[var(--text-tertiary)]">Quick Links</h2>
           <div className="grid gap-2">
             {navLinks.map((link) => (
@@ -41,8 +41,8 @@ export default function SiteFooter() {
               Book a call
             </a>
           </div>
-        </div>
-        <div>
+        </nav>
+        <nav aria-label="Footer social links">
           <h2 className="mb-4 text-caption text-[var(--text-tertiary)]">Socials</h2>
           <div className="grid gap-2">
             {footerSocials.map((link) => (
@@ -57,7 +57,7 @@ export default function SiteFooter() {
               </a>
             ))}
           </div>
-        </div>
+        </nav>
       </SectionContainer>
       <SectionContainer className="mt-10 flex flex-col gap-3 border-t border-[var(--border-subtle)] pt-8 text-sm text-[var(--text-tertiary)] md:flex-row md:items-center md:justify-between">
         <p>© {currentYear} Salmen Khelifi. All rights reserved.</p>

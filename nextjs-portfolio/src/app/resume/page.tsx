@@ -160,7 +160,7 @@ function renderProjectEntry(project: (typeof projects)[number]) {
           <h4 className="text-lg font-bold text-[var(--text-primary)] print-text-primary hover:text-[var(--accent)] transition-colors">
             <Link
               href={`/projects/${project.slug}`}
-              className="print-link flex items-center gap-1.5"
+              className="print-link inline-flex min-h-11 items-center gap-1.5"
             >
               {project.title}
               <ExternalLink className="w-3.5 h-3.5 no-print opacity-60" />
@@ -324,13 +324,13 @@ export default function ResumePage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[var(--text-tertiary)] no-print" />
-                  <a href="mailto:contact@khelifi-salmen.com" className="hover:text-[var(--text-primary)]">
+                  <a href="mailto:contact@khelifi-salmen.com" className="inline-flex min-h-11 items-center hover:text-[var(--text-primary)]">
                     contact@khelifi-salmen.com
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[var(--text-tertiary)] no-print" />
-                  <a href="tel:+84961566302" className="hover:text-[var(--text-primary)]">
+                  <a href="tel:+84961566302" className="inline-flex min-h-11 items-center hover:text-[var(--text-primary)]">
                     +84961566302
                   </a>
                 </div>
@@ -340,19 +340,19 @@ export default function ResumePage() {
                     href={siteUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="print-link flex items-center gap-1 hover:text-[var(--text-primary)]"
+                    className="print-link inline-flex min-h-11 items-center gap-1 hover:text-[var(--text-primary)]"
                   >
                     {siteUrl.replace("https://", "")} <ArrowUpRight className="w-3 h-3 no-print" />
                   </a>
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-4 mt-4 text-xs text-[var(--text-tertiary)] print-text-muted">
+              <div className="flex flex-wrap items-center gap-4 mt-4 text-xs text-[var(--text-tertiary)] print-text-muted">
                 <a
                   href={linkedinUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="print-link underline hover:text-[var(--text-primary)]"
+                  className="print-link inline-flex min-h-11 items-center underline hover:text-[var(--text-primary)]"
                 >
                   LinkedIn
                 </a>
@@ -361,7 +361,7 @@ export default function ResumePage() {
                   href={githubUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="print-link underline hover:text-[var(--text-primary)]"
+                  className="print-link inline-flex min-h-11 items-center underline hover:text-[var(--text-primary)]"
                 >
                   GitHub
                 </a>
@@ -370,7 +370,7 @@ export default function ResumePage() {
                   href={upworkUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="print-link underline hover:text-[var(--text-primary)]"
+                  className="print-link inline-flex min-h-11 items-center underline hover:text-[var(--text-primary)]"
                 >
                   Upwork
                 </a>
@@ -379,7 +379,7 @@ export default function ResumePage() {
                   href={freelancerUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="print-link underline hover:text-[var(--text-primary)]"
+                  className="print-link inline-flex min-h-11 items-center underline hover:text-[var(--text-primary)]"
                 >
                   Freelancer.com (4.9/5, 8 reviews)
                 </a>
@@ -416,7 +416,7 @@ export default function ResumePage() {
               href={freelancerUrl}
               target="_blank"
               rel="noreferrer"
-              className="print-link underline hover:text-[var(--text-primary)]"
+              className="print-link inline-flex min-h-11 items-center underline hover:text-[var(--text-primary)]"
             >
               4.9/5 rating across 8 reviews on Freelancer.com
             </a>
@@ -478,22 +478,22 @@ export default function ResumePage() {
               <MessageSquare className="w-5 h-5 text-[var(--accent)] no-print" /> Client Feedback
             </h2>
             <blockquote className="p-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] relative print-project">
-              <div className="flex gap-1 text-[var(--accent)] mb-3 no-print">
+              <div className="flex gap-1 text-[var(--accent)] mb-3 no-print" aria-label={`${featuredReview.rating} out of 5 stars`}>
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="w-4.5 h-4.5 fill-current" />
+                  <Star key={i} className="w-4.5 h-4.5 fill-current" aria-hidden="true" />
                 ))}
               </div>
               <p className="text-sm italic text-[var(--text-secondary)] mb-4 print-text-secondary">
                 &ldquo;{featuredReview.quote}&rdquo;
               </p>
-              <cite className="not-italic text-xs block">
+              <footer className="not-italic text-xs block">
                 <span className="font-bold text-[var(--text-primary)] print-text-primary block">
                   {featuredReview.author}
                 </span>
                 <span className="text-[var(--text-tertiary)] print-text-muted">
                   {featuredReview.projectTitle}
                 </span>
-              </cite>
+              </footer>
             </blockquote>
           </section>
         )}

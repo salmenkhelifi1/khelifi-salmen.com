@@ -217,6 +217,7 @@ export default function HomeContent() {
                 key={item.title}
                 item={item}
                 imageOnRight={index % 2 === 0}
+                headingLevel="h3"
               />
             ))}
           </div>
@@ -436,7 +437,7 @@ export default function HomeContent() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label="GitHub Profile"
-                    className="p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
                   >
                     <GithubIcon className="h-5 w-5" />
                   </a>
@@ -445,7 +446,7 @@ export default function HomeContent() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label="LinkedIn Profile"
-                    className="p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
                   >
                     <LinkedinIcon className="h-5 w-5" />
                   </a>
@@ -453,7 +454,7 @@ export default function HomeContent() {
                     href={freelancerUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="px-3 py-1.5 rounded-md border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
+                    className="inline-flex min-h-11 items-center px-3 py-1.5 rounded-md border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
                   >
                     Freelancer.com
                   </a>
@@ -461,7 +462,7 @@ export default function HomeContent() {
                     href={upworkUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="px-3 py-1.5 rounded-md border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
+                    className="inline-flex min-h-11 items-center px-3 py-1.5 rounded-md border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
                   >
                     Upwork
                   </a>
@@ -470,7 +471,7 @@ export default function HomeContent() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label="X Profile"
-                    className="p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
                   >
                     <XIcon className="h-5 w-5" />
                   </a>
@@ -479,7 +480,7 @@ export default function HomeContent() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label="Facebook Profile"
-                    className="p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
                   >
                     <FacebookIcon className="h-5 w-5" />
                   </a>
@@ -488,7 +489,7 @@ export default function HomeContent() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label="Instagram Profile"
-                    className="p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
                   >
                     <InstagramIcon className="h-5 w-5" />
                   </a>
@@ -510,9 +511,9 @@ export default function HomeContent() {
                 </p>
 
                 <div className="my-8 rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-6 md:p-8">
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-[var(--text-tertiary)] mb-3">
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--text-tertiary)] mb-3">
                     Engineering Philosophy & Tooling
-                  </h4>
+                  </h3>
                   <p className="text-base text-[var(--text-secondary)] leading-relaxed">
                     Reliable software is built through clear system boundaries, thorough verification, and pragmatic decisions. I use automation and AI-assisted tooling to accelerate investigation and repetitive implementation. Architecture, review, testing, and final decisions stay deliberate.
                   </p>

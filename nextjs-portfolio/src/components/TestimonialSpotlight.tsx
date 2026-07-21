@@ -95,7 +95,7 @@ export default function TestimonialSpotlight() {
               href={freelancerUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center self-start sm:self-auto rounded-full border border-[var(--border-muted)] px-3 py-1 text-xs font-semibold text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
+              className="inline-flex min-h-11 items-center self-start sm:self-auto rounded-full border border-[var(--border-muted)] px-3 py-1 text-xs font-semibold text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
             >
               via Freelancer.com
             </a>
@@ -138,7 +138,7 @@ export default function TestimonialSpotlight() {
                     href={freelancerUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex rounded-full border border-[var(--border-muted)] px-2.5 py-0.5 text-xs font-semibold text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
+                    className="inline-flex min-h-11 items-center rounded-full border border-[var(--border-muted)] px-2.5 py-0.5 text-xs font-semibold text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
                   >
                     Freelancer.com
                   </a>

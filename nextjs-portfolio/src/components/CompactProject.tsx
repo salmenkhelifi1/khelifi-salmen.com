@@ -21,7 +21,7 @@ export default function CompactProject({
       >
         <Image
           src={project.image}
-          alt={`${project.title} preview`}
+          alt=""
           fill
           sizes={
             isPortraitPreview

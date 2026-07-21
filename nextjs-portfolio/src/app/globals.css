@@ -9,6 +9,7 @@
   --border-subtle: rgba(255, 255, 255, 0.03);
   --border-muted: rgba(255, 255, 255, 0.08);
   --border-active: rgba(255, 255, 255, 0.16);
+  --border-control: rgba(255, 255, 255, 0.28);
 
   /* Text Hierarchy */
   --text-primary: #f5f5f7;
@@ -19,6 +20,7 @@
   --accent: #2f80ed;
   --accent-dim: rgba(47, 128, 237, 0.1);
   --accent-glow: rgba(47, 128, 237, 0.04);
+  --text-on-accent: #ffffff;
 
   /* Semantic status roles — distinct from --accent on purpose. These carry
      meaning (problem vs. outcome, warning vs. success) that a single brand
@@ -95,14 +97,16 @@
   --border-subtle: rgba(15, 15, 20, 0.05);
   --border-muted: rgba(15, 15, 20, 0.1);
   --border-active: rgba(15, 15, 20, 0.18);
+  --border-control: rgba(15, 15, 20, 0.45);
 
   --text-primary: #14141a;
   --text-secondary: #52525b;
   --text-tertiary: #6b6b76;
 
-  --accent: #1f6feb;
+  --accent: #1b64d8;
   --accent-dim: rgba(31, 111, 235, 0.08);
   --accent-glow: rgba(31, 111, 235, 0.1);
+  --text-on-accent: #ffffff;
 
   /* Same deepened-for-white-backgrounds treatment as --accent: the dark-mode
      400-shade reds/ambers/greens are too light to hold AA contrast on a
@@ -111,7 +115,7 @@
   --color-error-dim: rgba(220, 38, 38, 0.08);
   --color-warning: #b45309;
   --color-warning-dim: rgba(180, 83, 9, 0.08);
-  --color-success: #059669;
+  --color-success: #047857;
   --color-success-dim: rgba(5, 150, 105, 0.08);
 
   --nav-pill-bg: rgba(252, 252, 253, 0.85);
@@ -274,7 +278,7 @@ html.theme-resolving .bg-blooms > span {
 
 ::selection {
   background: var(--accent);
-  color: var(--text-primary);
+  color: var(--text-on-accent);
 }
 
 :where(a, button, input, textarea, select, [tabindex]):focus-visible {
@@ -560,7 +564,7 @@ section[id],
   background: var(--accent) !important;
   border-color: transparent !important;
   box-shadow: var(--glow-accent);
-  color: var(--text-primary);
+  color: var(--text-on-accent);
 }
 
 .system-live-link:hover {

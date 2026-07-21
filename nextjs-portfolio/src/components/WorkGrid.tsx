@@ -115,7 +115,8 @@ export default function WorkGrid() {
       </header>
 
       {/* Accessible Category Filters */}
-      <nav
+      <div
+        role="group"
         aria-label="Work category filters"
         className="mb-16 flex flex-wrap gap-3"
       >
@@ -129,15 +130,15 @@ export default function WorkGrid() {
               onClick={() => setActiveCategory(cat)}
               className={`tech-badge min-h-11 cursor-pointer transition-colors px-5 py-2.5 rounded-full border text-sm font-semibold ${
                 isSelected
-                  ? "border-[var(--accent)] bg-[var(--accent)] text-[var(--text-primary)]"
-                  : "border-[var(--border-muted)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:border-[var(--border-active)] hover:text-[var(--text-primary)]"
+                  ? "border-[var(--accent)] bg-[var(--accent)] text-[var(--text-on-accent)]"
+                  : "border-[var(--border-control)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:border-[var(--border-active)] hover:text-[var(--text-primary)]"
               }`}
             >
               {cat}
             </button>
           );
         })}
-      </nav>
+      </div>
 
       {/* Featured Projects Tier */}
       {featuredProjects.length > 0 && (
@@ -154,19 +155,22 @@ export default function WorkGrid() {
 
       {/* Standard / Compact Projects Tier */}
       {compactProjects.length > 0 && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {compactProjects.map((project) => (
-            <CompactProject
-              key={project.slug}
-              project={projectToHomepageProject(project)}
-              isPortraitPreview={
-                project.galleryAspect === "phone" ||
-                portraitPreviewImages.has(
-                  project.heroImage || (project.gallery[0] ? project.gallery[0].src : "")
-                )
-              }
-            />
-          ))}
+        <div className="space-y-8">
+          <h2 className="sr-only">More Projects</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {compactProjects.map((project) => (
+              <CompactProject
+                key={project.slug}
+                project={projectToHomepageProject(project)}
+                isPortraitPreview={
+                  project.galleryAspect === "phone" ||
+                  portraitPreviewImages.has(
+                    project.heroImage || (project.gallery[0] ? project.gallery[0].src : "")
+                  )
+                }
+              />
+            ))}
+          </div>
         </div>
       )}
 

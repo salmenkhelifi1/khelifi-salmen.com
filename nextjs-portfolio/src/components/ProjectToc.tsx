@@ -74,7 +74,8 @@ export default function ProjectToc({ sections }: ProjectTocProps) {
                   <a
                     href={`#${sec.id}`}
                     onClick={() => setIsOpen(false)}
-                    className={`block min-h-11 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-[var(--accent)] ${
+                    aria-current={activeId === sec.id ? "location" : undefined}
+                    className={`flex items-center min-h-11 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-[var(--accent)] ${
                       activeId === sec.id
                         ? "bg-[var(--accent-dim)] text-[var(--accent)]"
                         : "text-[var(--text-secondary)] hover:bg-[var(--glass-bg)] hover:text-[var(--text-primary)]"
@@ -103,7 +104,8 @@ export default function ProjectToc({ sections }: ProjectTocProps) {
             <li key={sec.id}>
               <a
                 href={`#${sec.id}`}
-                className={`group flex items-center min-h-9 gap-2.5 rounded-lg px-3 py-1.5 transition-all focus-visible:outline-2 focus-visible:outline-[var(--accent)] ${
+                aria-current={activeId === sec.id ? "location" : undefined}
+                className={`group flex items-center min-h-11 gap-2.5 rounded-lg px-3 py-1.5 transition-all focus-visible:outline-2 focus-visible:outline-[var(--accent)] ${
                   activeId === sec.id
                     ? "bg-[var(--accent-dim)] font-semibold text-[var(--accent)]"
                     : "text-[var(--text-secondary)] hover:bg-[var(--glass-bg)] hover:text-[var(--text-primary)]"

@@ -19,23 +19,21 @@ export function ThemeSwitcher() {
 
   return (
     <div
-      role="radiogroup"
       aria-label="Color theme"
       className="inline-flex items-center gap-1 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] p-1 backdrop-blur-xl"
     >
       {themeOptions.map(({ value, label, icon: Icon }) => {
-        const isChecked = preference === value;
+        const isSelected = preference === value;
         return (
           <button
             key={value}
             type="button"
-            role="radio"
-            aria-checked={isChecked}
+            aria-pressed={isSelected}
             aria-label={label}
             title={label}
             onClick={() => setPreference(value)}
             className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-full transition-colors ${
-              isChecked
+              isSelected
                 ? "bg-[var(--glass-bg-elevated)] text-[var(--accent)] border border-[var(--glass-border-bright)]"
                 : "text-[var(--text-secondary)] hover:bg-[var(--glass-bg-elevated)] hover:text-[var(--text-primary)]"
             }`}
