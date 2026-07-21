@@ -249,50 +249,6 @@ body {
   transform: translateY(0);
 }
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.marquee-container {
-  overflow: hidden;
-  white-space: nowrap;
-  width: 100%;
-  mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    black 12%,
-    black 88%,
-    transparent 100%
-  );
-}
-
-.marquee-content {
-  animation: scroll 40s linear infinite;
-  display: inline-block;
-}
-
-.marquee-item {
-  color: var(--text-tertiary);
-  cursor: default;
-  display: inline-block;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0;
-  padding: 0 var(--space-8);
-  transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.marquee-item:hover {
-  color: var(--text-primary);
-}
-
 .glass-panel {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
@@ -608,10 +564,6 @@ section[id],
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
-  }
-
-  .marquee-content {
-    animation: none !important;
   }
 
   .reveal {

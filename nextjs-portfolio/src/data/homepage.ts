@@ -98,12 +98,21 @@ export interface ProcessStep {
   whatYouGet: string;
 }
 
+export const capabilityMarkers = [
+  "Product Engineering",
+  "Automation & Integrations",
+  "High-Performance Experiences",
+] as const;
+
+// Absolute home anchors so nav works from every route (/work, /resume, /projects/*),
+// plus real route links (résumé) for the recruiter path.
 export const navLinks: NavLink[] = [
-  { href: "#work", label: "Work" },
-  { href: "#services", label: "Capabilities" },
-  { href: "#process", label: "Process" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#work", label: "Work" },
+  { href: "/#services", label: "Capabilities" },
+  { href: "/#process", label: "Process" },
+  { href: "/#about", label: "About" },
+  { href: "/resume", label: "Résumé" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export const footerSocials: FooterSocial[] = [

@@ -20,6 +20,7 @@ import {
 } from "@/data/schema";
 import {
   BLUR_PLACEHOLDER,
+  capabilityMarkers,
   categoryToFilter,
   credibilityItems,
   ecosystemNodes,
@@ -148,7 +149,8 @@ export default function HomeContent() {
     <>
       <SiteHeader />
 
-      <section className="hero-section flex min-h-screen items-center justify-center overflow-hidden px-6 pt-20 mx-auto max-w-7xl w-full">
+      <main>
+      <section className="hero-section flex min-h-screen items-center justify-center overflow-hidden px-6 pt-32 md:pt-40 pb-16 mx-auto max-w-7xl w-full">
         <div className="hero-content z-10 grid w-full grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             <StatusBadge>AVAILABLE FOR NEW PROJECTS</StatusBadge>
@@ -158,11 +160,30 @@ export default function HomeContent() {
             </h1>
 
             <p
-              className="hero-subtitle reveal mb-12 max-w-2xl text-body-large"
+              className="hero-subtitle reveal mb-8 max-w-2xl text-body-large"
               style={{ transitionDelay: "200ms" }}
             >
               Full-stack software engineer and automation specialist. I design and build resilient systems, from React interfaces to n8n pipelines, that scale with the business behind them.
             </p>
+
+            <ul
+              className="reveal mb-12 flex flex-wrap gap-3"
+              style={{ transitionDelay: "250ms" }}
+              aria-label="Core capabilities"
+            >
+              {capabilityMarkers.map((marker) => (
+                <li
+                  key={marker}
+                  className="inline-flex items-center gap-2 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-2 text-caption text-[var(--text-secondary)]"
+                >
+                  <span
+                    className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]"
+                    aria-hidden="true"
+                  />
+                  {marker}
+                </li>
+              ))}
+            </ul>
 
             <div
               className="hero-actions reveal flex flex-col sm:flex-row gap-5 w-full sm:w-auto"
@@ -199,6 +220,7 @@ export default function HomeContent() {
               <button
                 key={filter}
                 type="button"
+                aria-pressed={activeFilter === filter}
                 onClick={() => setActiveFilter(filter)}
                 className={`tech-badge min-h-11 transition-colors ${
                   activeFilter === filter
@@ -363,6 +385,7 @@ export default function HomeContent() {
       </section>
 
       <ContactCTA />
+      </main>
 
       <SiteFooter />
     </>
