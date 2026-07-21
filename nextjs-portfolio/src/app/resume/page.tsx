@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  ArrowLeft,
   ArrowUpRight,
   Download,
   Mail,
@@ -25,6 +24,7 @@ import {
   siteUrl,
   upworkUrl,
 } from "@/data/schema";
+import SiteHeader from "@/components/SiteHeader";
 
 export const metadata: Metadata = {
   title: "Resume — Full-Stack Developer & Automation Specialist",
@@ -162,7 +162,7 @@ export default function ResumePage() {
             color: #000000 !important;
             background-image: none !important;
           }
-          .no-print {
+          .no-print, nav, header, footer, .bg-blooms {
             display: none !important;
           }
           .print-header {
@@ -236,22 +236,9 @@ export default function ResumePage() {
         }}
       />
 
-      <nav className="nav-blur fixed top-0 z-50 w-full no-print">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-          <Link
-            href="/"
-            className="inline-flex min-h-11 items-center text-xl font-bold tracking-tight text-[var(--text-primary)]"
-          >
-            Khelifi<span className="text-[var(--accent)]">.</span>
-          </Link>
-          <Link
-            href="/"
-            className="inline-flex min-h-11 items-center gap-2 text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back
-          </Link>
-        </div>
-      </nav>
+      <div className="no-print">
+        <SiteHeader backHref="/" backLabel="Back to home" />
+      </div>
 
       <main className="mx-auto max-w-4xl px-6 resume-container">
         <header className="border-b border-[var(--border-muted)] pb-8 mb-10 print-header">
@@ -337,17 +324,17 @@ export default function ResumePage() {
               <a
                 href="/salmen-khelifi-cv.pdf"
                 download
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[var(--accent)] text-white text-sm font-bold shadow-[var(--shadow-card)] hover:bg-[#3b8df3] transition-colors"
+                className="cta-button cta-primary inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold text-[var(--text-primary)]"
               >
-                <Download className="w-4 h-4" /> Download PDF
+                <Download className="w-4 h-4" aria-hidden="true" /> Download PDF
               </a>
               <a
                 href={bookingUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-[var(--border-muted)] bg-[var(--bg-surface)] text-sm font-bold text-[var(--text-primary)] hover:border-[var(--border-active)] hover:bg-[var(--bg-surface-elevated)] transition-colors"
+                className="cta-button cta-secondary inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold text-[var(--text-primary)]"
               >
-                Book a call <ArrowUpRight className="w-4 h-4" />
+                Book a call <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -367,27 +354,27 @@ export default function ResumePage() {
             <Layers className="w-5 h-5 text-[var(--accent)] no-print" /> Core Skills
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 print-skills-grid">
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 modern-card">
+            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
               <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">Frontend</h3>
               <p className="text-sm text-[var(--text-secondary)] print-text-secondary">React, Next.js, WordPress, Shopify, Payload CMS</p>
             </div>
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 modern-card">
+            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
               <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">Backend</h3>
               <p className="text-sm text-[var(--text-secondary)] print-text-secondary">Node.js, Express, PostgreSQL, MongoDB, Redis, Firebase, Typesense</p>
             </div>
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 modern-card">
+            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
               <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">Mobile</h3>
               <p className="text-sm text-[var(--text-secondary)] print-text-secondary">Flutter, Dart</p>
             </div>
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 modern-card">
+            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
               <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">DevOps & Infra</h3>
               <p className="text-sm text-[var(--text-secondary)] print-text-secondary">Docker, Linux (Ubuntu), DevOps, CI/CD</p>
             </div>
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 modern-card">
+            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
               <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">Automation</h3>
               <p className="text-sm text-[var(--text-secondary)] print-text-secondary">n8n, Make.com</p>
             </div>
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 modern-card">
+            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
               <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">AI</h3>
               <p className="text-sm text-[var(--text-secondary)] print-text-secondary">OpenAI, Gemini, Vapi AI, On-device ML</p>
             </div>
@@ -454,7 +441,7 @@ export default function ResumePage() {
             {selectedReviews.map((review, idx) => (
               <blockquote
                 key={idx}
-                className="p-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/20 relative print-project"
+                className="p-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] relative print-project"
               >
                 <div className="flex gap-1 text-[var(--accent)] mb-3 no-print">
                   {Array.from({ length: 5 }).map((_, i) => (

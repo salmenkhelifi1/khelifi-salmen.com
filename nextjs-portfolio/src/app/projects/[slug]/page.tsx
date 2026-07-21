@@ -22,10 +22,10 @@ import {
 } from "lucide-react";
 import { getProject, projects, type Project } from "@/data/projects";
 import { bookingUrl, projectJsonLd, siteUrl } from "@/data/schema";
+import { BLUR_PLACEHOLDER } from "@/data/homepage";
 import ProjectToc, { type TocSection } from "@/components/ProjectToc";
-
-const BLUR_PLACEHOLDER =
-  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAFAAgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKrobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDhc+1FFFUB/9k=";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 type Params = { slug: string };
 
@@ -437,26 +437,11 @@ export default async function ProjectProfilePage({
           __html: JSON.stringify(jsonLd),
         }}
       />
-      <nav className="nav-blur fixed top-0 z-50 w-full" aria-label="Main navigation">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <Link
-            href="/"
-            className="inline-flex min-h-11 items-center text-xl font-bold tracking-tight text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-[var(--accent)] rounded-lg px-2"
-          >
-            Khelifi<span className="text-[var(--accent)]">.</span>
-          </Link>
-          <Link
-            href="/#work"
-            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-5 py-2 text-sm font-semibold text-[var(--text-secondary)] transition-colors hover:border-[var(--border-active)] hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-[var(--accent)]"
-          >
-            <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back to Work
-          </Link>
-        </div>
-      </nav>
+      <SiteHeader backHref="/work" backLabel="Back to Work" />
 
       {/* Main Layout Container with Toc */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-24 pt-28">
-        <div className="lg:flex lg:gap-12 items-start">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-24 pt-28 md:pt-32">
+        <div className="lg:flex lg:gap-12">
           {/* Table of Contents component */}
           <ProjectToc sections={renderedSections} />
 
@@ -899,7 +884,7 @@ export default async function ProjectProfilePage({
             </section>
 
             {/* Section 12: Previous / Next Project Navigation */}
-            <section id="project-navigation" className="scroll-mt-32 border-t border-[var(--border-subtle)] pt-12">
+            <nav id="project-navigation" aria-label="Project navigation" className="scroll-mt-32 border-t border-[var(--border-subtle)] pt-12">
               <div className="grid sm:grid-cols-2 gap-6">
                 <Link
                   href={`/projects/${prevProject.slug}`}
@@ -937,7 +922,7 @@ export default async function ProjectProfilePage({
                   </div>
                 </Link>
               </div>
-            </section>
+            </nav>
 
             {/* Section 13: 'Start a Similar Project' CTA */}
             <section id="start-similar-project" className="scroll-mt-32 pt-8" aria-labelledby="cta-heading">
@@ -972,11 +957,7 @@ export default async function ProjectProfilePage({
         </div>
       </div>
 
-      <footer className="border-t border-[var(--border-subtle)] py-12">
-        <div className="mx-auto max-w-7xl px-6 text-center text-[var(--text-tertiary)] text-sm">
-          <p>© {new Date().getFullYear()} Salmen Khelifi. All rights reserved.</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
