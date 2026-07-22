@@ -111,7 +111,7 @@ export default function BlogIndexPage() {
                     <h2 className="text-h3 text-[var(--text-primary)] mb-3">
                       <Link
                         href={`/blog/${post.slug}`}
-                        className="hover:text-[var(--accent)] transition-colors"
+                        className="inline-flex min-h-11 items-center hover:text-[var(--accent)] transition-colors"
                       >
                         {post.frontmatter.title}
                       </Link>
@@ -126,7 +126,7 @@ export default function BlogIndexPage() {
                     </span>
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--accent)] hover:underline"
+                      className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-[var(--accent)] hover:underline"
                     >
                       Read Article <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </Link>

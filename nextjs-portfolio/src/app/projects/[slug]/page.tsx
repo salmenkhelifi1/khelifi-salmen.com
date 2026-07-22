@@ -57,10 +57,11 @@ export async function generateMetadata({
   if (!project) return { title: "Project Not Found" };
   const path = `/projects/${project.slug}`;
   const title = `${project.title} - ${project.category}`;
+  const heroAlt = project.gallery.find((shot) => shot.src === project.heroImage)?.alt || "";
   const socialImage = {
     url: project.heroImage || "/opengraph-image",
     alt: project.heroImage
-      ? `${project.title} featured screenshot`
+      ? heroAlt
       : "Salmen Khelifi - Full-Stack Developer & Automation Specialist",
   };
   return {
@@ -504,7 +505,7 @@ export default async function ProjectProfilePage({
                 </p>
                 {snapshotFields.length > 0 && (
                   <div className="glass-panel rounded-[var(--radius-xl)] p-5 md:p-6">
-                    <p className="text-caption text-[var(--accent)] mb-4">Project Snapshot</p>
+                    <h2 className="text-caption text-[var(--accent)] mb-4">Project Snapshot</h2>
                     <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                       {snapshotFields.map(([label, value]) => (
                         <div key={label}>

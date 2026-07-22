@@ -14,6 +14,6 @@
 Salmen builds each flagship product solo; each is pre-launch or early-stage.
 
 - [Luxe Spa Booking](https://khelifi-salmen.com/projects/luxe-spa): A white-label booking, CRM, and management platform for appointment-based service businesses.
-- [Anlingo](https://khelifi-salmen.com/projects/anlingo): A privacy-first AI writing product spanning a web editor, Express API, billing, and a Flutter mobile companion.
+- [Anlingo](https://khelifi-salmen.com/projects/anlingo): An AI writing product spanning a web editor, Express API, billing, and a Flutter mobile companion.
 - [ChakTech Platform](https://khelifi-salmen.com/projects/chaktech): A Tunisia-focused e-commerce platform with a localized storefront, admin back-office, and tenant-scoped API.
 - [Noxivo](https://khelifi-salmen.com/projects/noxivo): A WhatsApp-first agency automation SaaS with a waitlist, protected dashboard, developer documentation, and Fastify workflow engine.
