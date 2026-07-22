@@ -14,11 +14,7 @@ Salmen Khelifi is a full-stack developer and automation specialist for web apps,
 
 ## Projects
 
-### GrammarAI
-
-URL: https://khelifi-salmen.com/projects/grammarai
-
-A privacy-first, cross-platform grammar editor with native iOS, Android, and web experiences. Free users get on-device AI for grammar and OCR, while premium users unlock cloud providers such as Gemini, Deepgram, and ElevenLabs through a secured backend. The system includes correction modes, OCR text scanning, dictation, text-to-speech, history, analytics, RevenueCat subscriptions, Stripe processing, Firebase Auth, Firestore, Redis, and Docker deployment.
+Note: the owned products below (Luxe Spa, Anlingo, Noxivo, Adaptifit) are solo-built and pre-launch, with no verified users or revenue. Descriptions cover engineering scope only.
 
 ### Adaptifit
 
@@ -30,13 +26,13 @@ An AI-powered fitness and nutrition coach with Flutter mobile UI, Node.js backen
 
 URL: https://khelifi-salmen.com/projects/anlingo
 
-A privacy-first AI writing assistant with a landing site, web editor, Express API, billing, usage limits, and Flutter mobile companion. The product covers grammar correction, rewriting, translation, voice dictation, document import, AI chat, history, pricing, account workflows, provider-backed AI routes, Stripe, Whop, MoMo, and entitlement refresh.
+An AI writing assistant with a landing site, web editor, Express API, billing, usage limits, and Flutter mobile companion. The product covers grammar correction, rewriting, translation, voice dictation, document import, AI chat, history, pricing, account workflows, provider-backed AI routes, Stripe, Whop, MoMo, and entitlement refresh.
 
 ### ChakTech Platform
 
 URL: https://khelifi-salmen.com/projects/chaktech
 
-A production e-commerce platform for the Tunisian market with localized storefront, Payload CMS admin, custom Express API, tenant-scoped operations, cash-on-delivery checkout, French and Arabic RTL support, PostgreSQL, Typesense, and multi-tenant architecture.
+A multi-tenant e-commerce platform for the Tunisian market with localized storefront, Payload CMS admin, custom Express API, tenant-scoped operations, cash-on-delivery checkout, French and Arabic RTL support, PostgreSQL, and Typesense.
 
 ### Noxivo
 

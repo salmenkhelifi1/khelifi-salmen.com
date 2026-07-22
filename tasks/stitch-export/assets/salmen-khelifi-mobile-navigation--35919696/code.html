@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mobile Navigation Open State</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#44474a",
+                        "on-primary-container": "#636466",
+                        "secondary-container": "#046dd9",
+                        "primary": "#ffffff",
+                        "primary-container": "#e2e2e4",
+                        "on-tertiary-container": "#636469",
+                        "surface-bright": "#39393b",
+                        "glass-border-muted": "rgba(255,255,255,0.14)",
+                        "tertiary-container": "#e3e2e7",
+                        "primary-fixed": "#e2e2e4",
+                        "on-secondary-container": "#f2f4ff",
+                        "on-tertiary": "#2f3034",
+                        "tertiary": "#ffffff",
+                        "on-secondary-fixed": "#001b3f",
+                        "on-background": "#e5e1e4",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "surface-container-low": "#1c1b1e",
+                        "on-primary": "#2f3132",
+                        "inverse-primary": "#5d5e60",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "on-surface-variant": "#c5c7c9",
+                        "surface-elevated": "#16161f",
+                        "surface-tint": "#c6c6c8",
+                        "on-secondary": "#002f65",
+                        "on-primary-fixed-variant": "#454749",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#abc7ff",
+                        "surface-container": "#201f22",
+                        "outline": "#8f9194",
+                        "tertiary-fixed": "#e3e2e7",
+                        "background": "#131315",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed-dim": "#c6c6c8",
+                        "on-primary-fixed": "#1a1c1d",
+                        "surface-panel": "#0e0e12",
+                        "text-dim": "#515156",
+                        "surface": "#131315",
+                        "on-surface": "#e5e1e4",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "secondary": "#abc7ff",
+                        "accent-glow": "rgba(47,128,237,0.15)",
+                        "surface-variant": "#353437",
+                        "surface-container-high": "#2a2a2c",
+                        "surface-dim": "#131315",
+                        "on-secondary-fixed-variant": "#00458e",
+                        "inverse-surface": "#e5e1e4",
+                        "surface-container-lowest": "#0e0e10",
+                        "glass-border-bright": "rgba(255,255,255,0.35)",
+                        "inverse-on-surface": "#313032",
+                        "secondary-fixed": "#d7e3ff",
+                        "surface-container-highest": "#353437"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "32px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "stack-lg": "64px",
+                        "unit": "8px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "16px"
+                    },
+                    "fontFamily": {
+                        "body-reg": ["Manrope"],
+                        "h1-mobile": ["Manrope"],
+                        "h2-mobile": ["Manrope"],
+                        "h2": ["Manrope"],
+                        "h1": ["Manrope"],
+                        "label-caps": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "display-hero-mobile": ["Manrope"],
+                        "display-hero": ["Manrope"],
+                        "h3": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-reg": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h1-mobile": ["44px", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "h2-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h2": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h1": ["56px", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.5", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "300" }],
+                        "display-hero-mobile": ["56px", { "lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "display-hero": ["88px", { "lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "h3": ["20px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            /* Simulate scroll lock */
+            overflow: hidden;
+            background-color: #08080a; /* Base dark from brand */
+        }
+        
+        .liquid-glass {
+            background-color: rgba(19, 19, 21, 0.7); /* Background with opacity */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255,255,255,0.35); /* glass-border-bright equivalent for highlight */
+            border-left: 1px solid rgba(255,255,255,0.14); /* glass-border-muted */
+            border-right: 1px solid rgba(255,255,255,0.14);
+            border-bottom: 1px solid rgba(255,255,255,0.14);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-primary font-body-reg antialiased selection:bg-secondary-container selection:text-white h-screen flex justify-center items-center">
+<!-- Container to simulate mobile width (390px) for preview purposes -->
+<div class="relative w-[390px] h-[844px] bg-[#08080a] overflow-hidden rounded-[40px] border-[8px] border-surface-container shadow-2xl flex flex-col">
+<!-- Mock background content to show blur effect -->
+<div class="absolute inset-0 p-8 flex flex-col gap-6 opacity-40">
+<div class="w-full h-32 rounded-2xl bg-surface-variant/50"></div>
+<div class="w-3/4 h-8 rounded-lg bg-surface-variant/50"></div>
+<div class="w-full h-64 rounded-2xl bg-surface-variant/50"></div>
+</div>
+<!-- Ambient Bloom Behind Nav -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary-container opacity-[0.15] rounded-full blur-[80px] pointer-events-none transform translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary-fixed-dim opacity-[0.1] rounded-full blur-[80px] pointer-events-none transform -translate-x-1/2 translate-y-1/2"></div>
+<!-- FULL SCREEN NAV OVERLAY -->
+<div class="absolute inset-0 z-50 liquid-glass flex flex-col px-margin-mobile py-[env(safe-area-inset-top,24px)] pb-margin-mobile">
+<!-- Header Row -->
+<div class="flex justify-between items-center h-20 mb-stack-md flex-shrink-0">
+<!-- Brand Logo from JSON -->
+<a class="font-h3 text-h3 font-bold text-primary flex items-baseline" href="#">
+                    Khelifi<span class="text-secondary-container">.</span>
+</a>
+<!-- Close Control -->
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container/50 hover:bg-surface-variant transition-colors border border-glass-border-muted text-on-surface hover:text-primary active:scale-95 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">close</span>
+</button>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 flex flex-col justify-center gap-6 px-4 overflow-y-auto pb-stack-md hide-scrollbar">
+<!-- Home (Current Page Indicator) -->
+<a class="group flex items-center gap-4 text-h2-mobile font-h2-mobile font-bold text-secondary-container transition-transform active:scale-[0.98]" href="#">
+<span class="w-2 h-2 rounded-full bg-secondary-container group-hover:scale-150 transition-transform"></span>
+                    Home
+                </a>
+<!-- Other Links -->
+<a class="group flex items-center gap-4 text-h2-mobile font-h2-mobile font-semibold text-on-surface-variant hover:text-primary transition-colors active:scale-[0.98]" href="#">
+<span class="w-2 h-2 rounded-full bg-transparent group-hover:bg-primary/50 transition-colors"></span>
+                    Work
+                </a>
+<a class="group flex items-center gap-4 text-h2-mobile font-h2-mobile font-semibold text-on-surface-variant hover:text-primary transition-colors active:scale-[0.98]" href="#">
+<span class="w-2 h-2 rounded-full bg-transparent group-hover:bg-primary/50 transition-colors"></span>
+                    Capabilities
+                </a>
+<a class="group flex items-center gap-4 text-h2-mobile font-h2-mobile font-semibold text-on-surface-variant hover:text-primary transition-colors active:scale-[0.98]" href="#">
+<span class="w-2 h-2 rounded-full bg-transparent group-hover:bg-primary/50 transition-colors"></span>
+                    Process
+                </a>
+<a class="group flex items-center gap-4 text-h2-mobile font-h2-mobile font-semibold text-on-surface-variant hover:text-primary transition-colors active:scale-[0.98]" href="#">
+<span class="w-2 h-2 rounded-full bg-transparent group-hover:bg-primary/50 transition-colors"></span>
+                    About
+                </a>
+<a class="group flex items-center gap-4 text-h2-mobile font-h2-mobile font-semibold text-on-surface-variant hover:text-primary transition-colors active:scale-[0.98]" href="#">
+<span class="w-2 h-2 rounded-full bg-transparent group-hover:bg-primary/50 transition-colors"></span>
+                    Contact
+                </a>
+<a class="group flex items-center gap-4 text-h2-mobile font-h2-mobile font-semibold text-on-surface-variant hover:text-primary transition-colors active:scale-[0.98]" href="#">
+<span class="w-2 h-2 rounded-full bg-transparent group-hover:bg-primary/50 transition-colors"></span>
+                    Résumé
+                </a>
+</nav>
+<!-- Bottom CTA Area -->
+<div class="mt-auto pt-stack-sm border-t border-glass-border-muted flex-shrink-0">
+<button class="w-full flex items-center justify-center gap-2 bg-secondary-container hover:bg-secondary-container/90 text-primary font-body-reg font-semibold py-4 px-6 rounded-full shadow-[0_0_20px_rgba(4,109,217,0.3)] transition-all active:scale-[0.97]">
+                    Start a Project
+                    <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 500;">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<style>
+        /* Hide scrollbar for nav links if they overflow */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>

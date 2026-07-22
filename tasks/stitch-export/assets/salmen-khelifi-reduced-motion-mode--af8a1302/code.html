@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Salmen Khelifi | Software Engineer &amp; Designer</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config injected from Style Guidance -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#131315",
+                      "tertiary-fixed": "#e3e2e7",
+                      "on-background": "#e5e1e4",
+                      "primary-fixed-dim": "#c6c6c8",
+                      "glass-border-muted": "rgba(255,255,255,0.14)",
+                      "surface-tint": "#c6c6c8",
+                      "surface-elevated": "#16161f",
+                      "on-secondary": "#002f65",
+                      "on-secondary-fixed-variant": "#00458e",
+                      "on-surface-variant": "#c5c7c9",
+                      "tertiary-container": "#e3e2e7",
+                      "inverse-primary": "#5d5e60",
+                      "primary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#46464b",
+                      "inverse-on-surface": "#313032",
+                      "surface-variant": "#353437",
+                      "surface": "#131315",
+                      "on-primary": "#2f3132",
+                      "error": "#ffb4ab",
+                      "text-dim": "#515156",
+                      "secondary": "#abc7ff",
+                      "on-tertiary-fixed": "#1a1b1f",
+                      "secondary-fixed": "#d7e3ff",
+                      "on-primary-fixed-variant": "#454749",
+                      "glass-border-bright": "rgba(255,255,255,0.35)",
+                      "on-primary-container": "#636466",
+                      "on-secondary-fixed": "#001b3f",
+                      "surface-bright": "#39393b",
+                      "error-container": "#93000a",
+                      "on-tertiary-container": "#636469",
+                      "background": "#131315",
+                      "surface-container-low": "#1c1b1e",
+                      "inverse-surface": "#e5e1e4",
+                      "surface-container-highest": "#353437",
+                      "on-error": "#690005",
+                      "surface-container": "#201f22",
+                      "outline": "#8f9194",
+                      "surface-container-high": "#2a2a2c",
+                      "secondary-container": "#046dd9",
+                      "tertiary-fixed-dim": "#c6c6cb",
+                      "accent-glow": "rgba(47,128,237,0.15)",
+                      "surface-panel": "#0e0e12",
+                      "on-tertiary": "#2f3034",
+                      "tertiary": "#ffffff",
+                      "on-secondary-container": "#f2f4ff",
+                      "outline-variant": "#44474a",
+                      "primary-container": "#e2e2e4",
+                      "primary-fixed": "#e2e2e4",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-lowest": "#0e0e10",
+                      "on-primary-fixed": "#1a1c1d",
+                      "secondary-fixed-dim": "#abc7ff",
+                      "on-surface": "#e5e1e4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "32px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "64px",
+                      "container-max": "1280px",
+                      "unit": "8px",
+                      "stack-sm": "16px",
+                      "gutter": "24px",
+                      "stack-lg": "64px"
+              },
+              "fontFamily": {
+                      "display-hero": [
+                              "Manrope"
+                      ],
+                      "display-hero-mobile": [
+                              "Manrope"
+                      ],
+                      "h3": [
+                              "Manrope"
+                      ],
+                      "h2-mobile": [
+                              "Manrope"
+                      ],
+                      "h2": [
+                              "Manrope"
+                      ],
+                      "h1": [
+                              "Manrope"
+                      ],
+                      "label-caps": [
+                              "Manrope"
+                      ],
+                      "h1-mobile": [
+                              "Manrope"
+                      ],
+                      "body-reg": [
+                              "Manrope"
+                      ],
+                      "body-lg": [
+                              "Manrope"
+                      ]
+              },
+              "fontSize": {
+                      "display-hero": [
+                              "88px",
+                              {
+                                      "lineHeight": "1.05",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "display-hero-mobile": [
+                              "56px",
+                              {
+                                      "lineHeight": "1.05",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "h3": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2": [
+                              "36px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h1": [
+                              "56px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.03em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h1-mobile": [
+                              "44px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.03em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-reg": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "300"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Ambient Blobs - Static for prefers-reduced-motion, or subtle fades if enabled */
+        .ambient-bloom {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Glass Panel Styling */
+        .glass-panel {
+            background: rgba(19, 19, 21, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.35);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-panel:hover {
+            background: rgba(19, 19, 21, 0.6);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Reduced Motion Fades (Replacing high-velocity transforms) */
+        @media (prefers-reduced-motion: reduce) {
+            .transition-all, .transition-transform {
+                transition-property: opacity, background-color, border-color, color, box-shadow !important;
+                transition-duration: 200ms !important;
+                transform: none !important;
+            }
+            .active\:scale-95:active {
+                transform: none !important;
+                opacity: 0.8;
+            }
+            .hover\:scale-105:hover {
+                transform: none !important;
+                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+            }
+        }
+
+        /* Hide scrollbar for marquee */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased relative min-h-screen selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Ambient Blooms (Static positions) -->
+<div class="ambient-bloom bg-secondary-container w-[600px] h-[600px] top-[-200px] left-[-200px]"></div>
+<div class="ambient-bloom bg-[#7c3aed] w-[500px] h-[500px] top-[40%] right-[-100px] opacity-10"></div>
+<div class="ambient-bloom bg-[#0d9488] w-[700px] h-[700px] bottom-[-200px] left-[20%] opacity-10"></div>
+<!-- TopNavBar Component -->
+<nav aria-label="Main Navigation" class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-glass-border-muted shadow-sm transition-colors duration-200">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-20">
+<!-- Brand -->
+<a class="font-h3 text-h3 font-bold text-primary flex items-baseline" href="#">
+                Khelifi<span class="text-secondary-container">.</span>
+</a>
+<!-- Desktop Nav Links -->
+<div class="hidden md:flex gap-gutter items-center font-body-reg text-body-reg">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#work">Work</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#capabilities">Capabilities</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#process">Process</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#about">About</a>
+</div>
+<!-- CTA -->
+<a class="hidden md:inline-flex px-6 py-2 rounded-full bg-secondary-container text-primary font-body-reg text-body-reg font-semibold shadow-[0_0_15px_rgba(4,109,217,0.3)] hover:bg-secondary-container/90 transition-colors duration-200 active:opacity-80" href="#contact">
+                Contact
+            </a>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-on-surface-variant hover:text-primary p-2">
+<span aria-hidden="true" class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<main class="pt-[140px] pb-stack-lg max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Section -->
+<section class="flex flex-col items-start mb-[120px] max-w-4xl">
+<!-- Status Badge -->
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-glass-border-muted bg-surface-container/50 backdrop-blur-sm mb-stack-md transition-colors duration-200 hover:bg-surface-container">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary-container shadow-[0_0_8px_rgba(4,109,217,0.8)]"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-widest">AVAILABLE FOR PROJECTS</span>
+</div>
+<h1 class="font-display-hero-mobile text-display-hero-mobile md:font-display-hero md:text-display-hero text-primary mb-stack-sm text-balance">
+                Engineering <br class="hidden md:block"/>
+<span class="text-on-surface-variant">digital systems.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-stack-md leading-relaxed">
+                I design and build resilient, high-performance software architectures. Specializing in highly scalable backends, intuitive interfaces, and automated workflows that drive efficiency.
+            </p>
+<div class="flex gap-4">
+<a class="inline-flex items-center justify-center px-8 py-3 rounded-full bg-secondary-container text-primary font-body-reg text-body-reg font-semibold shadow-[0_0_20px_rgba(4,109,217,0.2)] hover:bg-[#035ab3] transition-colors duration-200 active:opacity-80" href="#work">
+                    View Projects
+                </a>
+<a class="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full glass-panel text-primary font-body-reg text-body-reg font-semibold transition-colors duration-200" href="#github">
+<span aria-hidden="true" class="material-symbols-outlined text-[20px]">code</span>
+                    GitHub
+                </a>
+</div>
+</section>
+<!-- Tech Marquee -->
+<section class="mb-[120px] overflow-hidden opacity-60 hover:opacity-100 transition-opacity duration-300">
+<div class="flex gap-8 whitespace-nowrap overflow-x-auto no-scrollbar pb-4 items-center">
+<!-- Static layout for reduced motion, typical marquee would animate -->
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors duration-200 cursor-default">TypeScript</span>
+<span class="text-text-dim px-2">•</span>
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors duration-200 cursor-default">React</span>
+<span class="text-text-dim px-2">•</span>
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors duration-200 cursor-default">Node.js</span>
+<span class="text-text-dim px-2">•</span>
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors duration-200 cursor-default">Go</span>
+<span class="text-text-dim px-2">•</span>
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors duration-200 cursor-default">Kubernetes</span>
+<span class="text-text-dim px-2">•</span>
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors duration-200 cursor-default">PostgreSQL</span>
+<span class="text-text-dim px-2">•</span>
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors duration-200 cursor-default">Next.js</span>
+<span class="text-text-dim px-2">•</span>
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors duration-200 cursor-default">AWS</span>
+</div>
+</section>
+<!-- Capabilities (Bento Grid) -->
+<section class="mb-[160px] scroll-mt-24" id="capabilities">
+<h2 class="font-h2-mobile text-h2-mobile md:font-h2 md:text-h2 text-primary mb-stack-lg">Core Capabilities</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-unit md:gap-4">
+<!-- Large Feature Card -->
+<div class="md:col-span-2 rounded-[28px] glass-panel p-8 md:p-12 flex flex-col justify-end min-h-[400px] relative overflow-hidden group transition-colors duration-200">
+<div class="absolute inset-0 bg-gradient-to-br from-surface-panel/80 to-transparent z-0"></div>
+<!-- Abstract architectural representation replacing complex animations -->
+<div class="absolute top-8 right-8 z-0 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
+<svg fill="none" height="200" viewbox="0 0 100 100" width="200" xmlns="http://www.w3.org/2000/svg">
+<rect height="30" rx="4" stroke="currentColor" stroke-width="2" width="30" x="10" y="10"></rect>
+<rect height="30" rx="4" stroke="currentColor" stroke-width="2" width="30" x="60" y="10"></rect>
+<rect height="30" rx="4" stroke="currentColor" stroke-width="2" width="30" x="35" y="60"></rect>
+<path d="M25 40 v10 h25 v10" fill="none" stroke="currentColor" stroke-width="2"></path>
+<path d="M75 40 v10 h-25" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</div>
+<div class="relative z-10">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-6 border border-glass-border-muted">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary-container">architecture</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-2">Systems Architecture</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant max-w-md">
+                            Designing scalable, fault-tolerant microservices. Transitioning monolithic structures to distributed systems optimized for cloud-native deployment.
+                        </p>
+</div>
+</div>
+<!-- Small Feature Card 1 -->
+<div class="rounded-[28px] glass-panel p-8 flex flex-col justify-end min-h-[400px] relative overflow-hidden transition-colors duration-200 group">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-panel/90 to-transparent z-0"></div>
+<div class="relative z-10">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-6 border border-glass-border-muted">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary-container">devices</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-2">Interface Engineering</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                            Pixel-perfect implementation of design systems using React, prioritizing accessibility and rendering performance.
+                        </p>
+</div>
+</div>
+<!-- Small Feature Card 2 -->
+<div class="rounded-[28px] glass-panel p-8 flex flex-col justify-end min-h-[300px] md:min-h-[400px] relative overflow-hidden transition-colors duration-200 group">
+<div class="absolute inset-0 bg-gradient-to-tr from-surface-panel/90 to-surface-container-low/20 z-0"></div>
+<div class="relative z-10">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-6 border border-glass-border-muted">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary-container">account_tree</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-2">Workflow Automation</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                            Orchestrating complex data pipelines and automated operational tasks using n8n and custom scripting.
+                        </p>
+</div>
+</div>
+<!-- Wide Feature Card -->
+<div class="md:col-span-2 rounded-[28px] glass-panel p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 min-h-[300px] md:min-h-[400px] relative overflow-hidden transition-colors duration-200">
+<div class="flex-1 relative z-10">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-6 border border-glass-border-muted">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary-container">speed</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-2">Performance Optimization</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant max-w-md">
+                            Profiling and resolving bottlenecks in legacy codebases. Implementing caching strategies, query optimization, and CDN edge computing to drive latency near zero.
+                        </p>
+</div>
+<!-- Static abstract representation of performance -->
+<div class="flex-1 w-full flex justify-center opacity-40">
+<div class="flex items-end gap-2 h-32">
+<div class="w-8 bg-surface-container border-t border-glass-border-muted rounded-t-sm h-1/4"></div>
+<div class="w-8 bg-surface-container border-t border-glass-border-muted rounded-t-sm h-2/4"></div>
+<div class="w-8 bg-surface-container border-t border-glass-border-muted rounded-t-sm h-3/4"></div>
+<div class="w-8 bg-secondary-container border-t border-glass-border-bright rounded-t-sm h-full shadow-[0_0_15px_rgba(4,109,217,0.3)]"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Selected Work (Asymmetric Layout) -->
+<section class="mb-[160px] scroll-mt-24" id="work">
+<div class="flex flex-col md:flex-row justify-between items-baseline mb-stack-lg gap-4">
+<h2 class="font-h2-mobile text-h2-mobile md:font-h2 md:text-h2 text-primary">Selected Work</h2>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 flex items-center gap-1 text-body-reg font-body-reg" href="#">
+                    View Archive <span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<div class="space-y-[120px]">
+<!-- Project 1 -->
+<div class="group flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+<div class="w-full md:w-3/5 aspect-video rounded-[28px] overflow-hidden glass-panel p-2 relative">
+<!-- Image container simulating an application UI -->
+<div class="w-full h-full bg-surface-dim rounded-[20px] overflow-hidden relative border border-surface-container-high">
+<img alt="Dashboard Project Preview" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" data-alt="A sleek, modern dashboard UI displayed on a dark background. The interface features minimalist data visualizations, line charts with glowing blue accents, and dark gray glassmorphism panels. The overall aesthetic is high-tech, professional, and refined, aligning with a premium SaaS product design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsj4GWNaKv9ZKUMqbWl86SDYcMn9tJL9in20wEBF9L6CSzH37iA0_m6FTKxnx1-j_VvwPgpytaq7EdInffN4Glu0tMClFhuLJ0wYLZKgJazY1ibDSA3WDFdeINidTi7yFebxcgs58NrgrVLIqxyba6iNRtiXNfuHLxQf7PB25alo6YMk1hm4EkONTMYfBT0HRUfQpFzUexn3qdlSjo2OnIbcUqATeS9L12RQ8C5dZGvGotjzquNd7aThWtFcqcz2OLMQYO-rJV_-Fc"/>
+</div>
+</div>
+<div class="w-full md:w-2/5 flex flex-col items-start">
+<span class="font-label-caps text-label-caps text-secondary-container mb-4 tracking-widest">FINTECH PLATFORM</span>
+<h3 class="font-h1-mobile text-h1-mobile md:font-h1 md:text-h1 text-primary mb-4 leading-tight">Nexus Analytics</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant mb-6">
+                            A high-throughput financial data aggregation platform. Re-architected the monolithic backend into modular microservices, reducing query latency by 40% while implementing a cohesive dark-mode design system.
+                        </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1 rounded-full bg-surface-container border border-glass-border-muted text-text-dim text-[12px] font-semibold">React</span>
+<span class="px-3 py-1 rounded-full bg-surface-container border border-glass-border-muted text-text-dim text-[12px] font-semibold">Node.js</span>
+<span class="px-3 py-1 rounded-full bg-surface-container border border-glass-border-muted text-text-dim text-[12px] font-semibold">PostgreSQL</span>
+</div>
+<a class="inline-flex items-center gap-2 text-primary font-semibold hover:text-secondary-container transition-colors duration-200" href="#">
+                            Read Case Study <span aria-hidden="true" class="material-symbols-outlined">arrow_right_alt</span>
+</a>
+</div>
+</div>
+<!-- Project 2 (Reversed Layout) -->
+<div class="group flex flex-col md:flex-row-reverse gap-8 md:gap-16 items-center">
+<div class="w-full md:w-3/5 aspect-[4/3] md:aspect-video rounded-[28px] overflow-hidden glass-panel p-2 relative">
+<div class="w-full h-full bg-surface-dim rounded-[20px] overflow-hidden relative border border-surface-container-high flex items-center justify-center">
+<!-- Placeholder for an architecture diagram or abstract representation -->
+<img alt="Architecture Diagram Preview" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" data-alt="A dark-themed, highly technical architecture diagram illustrating server nodes and data flow. The visual uses thin, low-opacity white lines connecting glowing glassmorphism boxes that represent databases and microservices. The style is strictly utilitarian, anti-hype, and precise, set against a deep black background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsJLw-JeyP0dOjBWr9sJbkK8pqfJuDXbpVqKhhcRDIRw8mZ1-Dz7dThwo2XVMWMI8mMzrpCbkOwiE4TlhCj7XEmXUvAsznotCHC01aZDdnTIdejAcGolf_QXV_ZifGFUOgXC1WjAkILu_LWtq4_FQbMWyEVppEXR0Vg_PnTWKeuAUeqAya2PDzW2vxIrgKsbOmM2MwSR5u45m3lm6hSVIg9a5-57Ok4y14u0uuXnTal_jUW98Dh4nz-uJyZjnnTFI8ETBWc2SzHlaB"/>
+</div>
+</div>
+<div class="w-full md:w-2/5 flex flex-col items-start">
+<span class="font-label-caps text-label-caps text-secondary-container mb-4 tracking-widest">INFRASTRUCTURE</span>
+<h3 class="font-h1-mobile text-h1-mobile md:font-h1 md:text-h1 text-primary mb-4 leading-tight">Vanguard API</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant mb-6">
+                            Designed and deployed a highly available GraphQL gateway serving millions of requests daily. Implemented robust rate-limiting, caching layers, and comprehensive observability pipelines.
+                        </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1 rounded-full bg-surface-container border border-glass-border-muted text-text-dim text-[12px] font-semibold">GraphQL</span>
+<span class="px-3 py-1 rounded-full bg-surface-container border border-glass-border-muted text-text-dim text-[12px] font-semibold">Go</span>
+<span class="px-3 py-1 rounded-full bg-surface-container border border-glass-border-muted text-text-dim text-[12px] font-semibold">Redis</span>
+</div>
+<a class="inline-flex items-center gap-2 text-primary font-semibold hover:text-secondary-container transition-colors duration-200" href="#">
+                            Read Case Study <span aria-hidden="true" class="material-symbols-outlined">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-stack-lg border-t border-glass-border-muted bg-background transition-all duration-300">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop gap-gutter">
+<div class="flex flex-col items-center md:items-start gap-4">
+<a class="font-h3 text-h3 font-bold text-primary" href="#">
+                    Khelifi<span class="text-secondary-container">.</span>
+</a>
+<p class="font-body-reg text-body-reg text-on-surface text-center md:text-left text-sm opacity-60">
+                    © 2024 Salmen Khelifi. All rights reserved. Built with Refined Dark Architecture.
+                </p>
+</div>
+<div class="flex gap-6 font-body-reg text-body-reg">
+<a class="text-text-dim hover:text-secondary-container transition-colors" href="#">LinkedIn</a>
+<a class="text-text-dim hover:text-secondary-container transition-colors" href="#">GitHub</a>
+<a class="text-text-dim hover:text-secondary-container transition-colors" href="#">Twitter</a>
+<a class="text-text-dim hover:text-secondary-container transition-colors" href="mailto:contact@example.com">Email</a>
+</div>
+</div>
+</footer>
+</body></html>

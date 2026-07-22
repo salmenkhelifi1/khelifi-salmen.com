@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portfolio - Building Automated Digital Ecosystems</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Icons&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#3B82F6",
+                        "background-light": "#FFFFFF",
+                        "background-dark": "#0A0A0A",
+                        "card-light": "#F9FAFB",
+                        "card-dark": "#121212",
+                        "border-light": "#E5E7EB",
+                        "border-dark": "#1F2937",
+                    },
+                    fontFamily: {
+                        display: ["Plus Jakarta Sans", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                        'xl': '16px',
+                        '2xl': '24px',
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .section-padding { padding-top: 5rem; padding-bottom: 5rem; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased transition-colors duration-300">
+<nav class="fixed top-0 w-full z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-border-light dark:border-border-dark">
+<div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+<div class="text-xl font-display font-bold tracking-tight">Khelifi</div>
+<div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+<a class="hover:text-primary transition-colors" href="#work">Work</a>
+<a class="hover:text-primary transition-colors" href="#services">Services</a>
+<a class="hover:text-primary transition-colors" href="#about">About</a>
+<a class="bg-primary text-white px-5 py-2 rounded-full hover:opacity-90 transition-opacity" href="#">Let's Talk</a>
+</div>
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons text-xl dark:hidden">dark_mode</span>
+<span class="material-icons text-xl hidden dark:block">light_mode</span>
+</button>
+</div>
+</nav>
+<header class="relative pt-40 pb-24 overflow-hidden">
+<div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.1),transparent_50%)]"></div>
+<div class="max-w-4xl mx-auto px-6 text-center">
+<div class="inline-flex items-center space-x-2 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-4 py-1.5 rounded-full mb-8">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+<span class="text-xs font-semibold tracking-wide uppercase">Available for new projects</span>
+</div>
+<h1 class="text-5xl md:text-7xl font-display font-extrabold tracking-tight leading-tight mb-8">
+                Building automated <br/> <span class="text-primary">digital ecosystems.</span>
+</h1>
+<p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-12">
+                I am Salmen Khelifi, a Software Engineer &amp; Automation Specialist. From <span class="font-semibold text-slate-900 dark:text-white">Web Apps &amp; Mobile</span> to complex <span class="font-semibold text-slate-900 dark:text-white">AI Workflows</span>, I build systems that drive revenue.
+            </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a class="w-full sm:w-auto bg-primary text-white px-8 py-4 rounded-xl font-semibold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform" href="#work">View Case Studies</a>
+<a class="w-full sm:w-auto bg-slate-100 dark:bg-white/5 px-8 py-4 rounded-xl font-semibold hover:bg-slate-200 dark:hover:bg-white/10 transition-colors" href="#">Book a 30-min call</a>
+</div>
+</div>
+<div class="mt-24 py-6 border-y border-border-light dark:border-border-dark bg-slate-50 dark:bg-white/[0.02]">
+<div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-40 grayscale">
+<span class="font-bold text-lg">Next.js</span>
+<span class="font-bold text-lg">Flutter</span>
+<span class="font-bold text-lg">React.js</span>
+<span class="font-bold text-lg">Node.js</span>
+<span class="font-bold text-lg">OpenAI API</span>
+<span class="font-bold text-lg">Firebase</span>
+<span class="font-bold text-lg">n8n Automation</span>
+</div>
+</div>
+</header>
+<section class="section-padding" id="work">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+<div>
+<h2 class="text-4xl font-display font-bold mb-4">Selected Work</h2>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-1.5 bg-primary text-white rounded-full text-sm font-medium">All</button>
+<button class="px-4 py-1.5 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 rounded-full text-sm font-medium transition-colors">SaaS &amp; Booking</button>
+<button class="px-4 py-1.5 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 rounded-full text-sm font-medium transition-colors">E-commerce</button>
+<button class="px-4 py-1.5 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 rounded-full text-sm font-medium transition-colors">Automation &amp; AI</button>
+</div>
+</div>
+</div>
+<div class="space-y-32">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="order-2 md:order-1">
+<span class="text-xs font-bold text-primary uppercase tracking-widest mb-4 block">SaaS &amp; Booking Platform</span>
+<h3 class="text-3xl font-display font-bold mb-6">White-Label Booking System</h3>
+<p class="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                            A comprehensive white-label booking, CRM, and management system designed for appointment-based service businesses. Featuring a dynamic dashboard with preset-based branding, real-time messaging, and an AI concierge.
+                        </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1 bg-slate-100 dark:bg-white/5 rounded text-xs font-medium">Next.js 15</span>
+<span class="px-3 py-1 bg-slate-100 dark:bg-white/5 rounded text-xs font-medium">Express.js</span>
+<span class="px-3 py-1 bg-slate-100 dark:bg-white/5 rounded text-xs font-medium">PostgreSQL</span>
+<span class="px-3 py-1 bg-slate-100 dark:bg-white/5 rounded text-xs font-medium">Socket.io</span>
+<span class="px-3 py-1 bg-slate-100 dark:bg-white/5 rounded text-xs font-medium">Gemini AI</span>
+</div>
+<a class="group inline-flex items-center font-semibold text-primary" href="#">
+                            View Case Study 
+                            <span class="material-icons ml-2 transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+<div class="order-1 md:order-2 rounded-2xl overflow-hidden border border-border-light dark:border-border-dark shadow-2xl group">
+<img alt="Booking System Dashboard" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdbDVDP33M9NUgKWYb7xlxUpED1TtJL8VvgaG6ecIMFApsUHioCRKD9wBvJ0dhjWQk2KcsBJ42giUeqeoJDiSnYImcDTivAqiSqU1GYPZ-6EHVjnBgPbGnBSYGYG58iLncP5c2kLfLZE2VDVcGUsgu5h_Gv3GPb5syaf2eM14tBzGAbXe6IkMFL52WQePwW4tL5WLmzv8XolJ-gQzq0sYwei5nCvLXcuPQeTUe2inDbC2g734phLFEJVdep15Eq1fr31hjmZoywdPc"/>
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="rounded-2xl overflow-hidden border border-border-light dark:border-border-dark shadow-2xl group">
+<img alt="AI Writing Assistant" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvZRD2qhZS2_gRAmMiwhb_urfe-zKYjx_GKOgTEJ75OU0E-466TezaCMt7iAYR4xFym9jHHOqxEZ99onB_ggCxlP2rH1yTQORijy9FQ2MgfNDVZXGl7cXDDbLEvP6125_Or5nOyxNiw9XFL843zfTd0jhtS9PsRuNl3iIfAUWAuQsc9_VnHbI8jjIXXPvb7GlGfiCoCUC-GQXd1Paxd68m-uD_jrb3h4LLZgmsngY7_6p1nsRU1upPeUNtfjmOwTR3ByUdX3N-C_Xc"/>
+</div>
+<div>
+<span class="text-xs font-bold text-primary uppercase tracking-widest mb-4 block">AI Writing SaaS</span>
+<h3 class="text-3xl font-display font-bold mb-6">Anlingo - AI Writing Assistant</h3>
+<p class="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                            Privacy-first grammar and writing platform with a public landing site, web editor, Express API, billing, usage limits, and Flutter mobile companion.
+                        </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1 bg-slate-100 dark:bg-white/5 rounded text-xs font-medium">Next.js</span>
+<span class="px-3 py-1 bg-slate-100 dark:bg-white/5 rounded text-xs font-medium">Express</span>
+<span class="px-3 py-1 bg-slate-100 dark:bg-white/5 rounded text-xs font-medium">Firebase</span>
+<span class="px-3 py-1 bg-slate-100 dark:bg-white/5 rounded text-xs font-medium">Flutter</span>
+<span class="px-3 py-1 bg-slate-100 dark:bg-white/5 rounded text-xs font-medium">Stripe</span>
+</div>
+<a class="group inline-flex items-center font-semibold text-primary" href="#">
+                            View Case Study 
+                            <span class="material-icons ml-2 transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section-padding bg-slate-50 dark:bg-white/[0.02]" id="services">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="text-4xl font-display font-bold text-center mb-16">My Expertise</h2>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="p-8 rounded-2xl bg-white dark:bg-card-dark border border-border-light dark:border-border-dark hover:border-primary/50 transition-colors">
+<span class="material-icons text-primary text-3xl mb-6">code</span>
+<h4 class="text-xl font-display font-bold mb-4">Frontend</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        React, Next.js, and Flutter interfaces built for fast, polished product experiences with focus on performance.
+                    </p>
+</div>
+<div class="p-8 rounded-2xl bg-white dark:bg-card-dark border border-border-light dark:border-border-dark hover:border-primary/50 transition-colors">
+<span class="material-icons text-primary text-3xl mb-6">storage</span>
+<h4 class="text-xl font-display font-bold mb-4">Backend &amp; APIs</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Node, Express, PostgreSQL, and MongoDB systems with clean API contracts and scalable architectures.
+                    </p>
+</div>
+<div class="p-8 rounded-2xl bg-white dark:bg-card-dark border border-border-light dark:border-border-dark hover:border-primary/50 transition-colors">
+<span class="material-icons text-primary text-3xl mb-6">architecture</span>
+<h4 class="text-xl font-display font-bold mb-4">Architecture</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        OpenAI, Gemini, Vapi voice AI, and on-premise AI models connected to real product workflows.
+                    </p>
+</div>
+<div class="p-8 rounded-2xl bg-white dark:bg-card-dark border border-border-light dark:border-border-dark hover:border-primary/50 transition-colors">
+<span class="material-icons text-primary text-3xl mb-6">cloud</span>
+<h4 class="text-xl font-display font-bold mb-4">DevOps</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Docker, Linux, CI/CD, Netlify, and Cloudflare deployment workflows for seamless shipping.
+                    </p>
+</div>
+<div class="p-8 rounded-2xl bg-white dark:bg-card-dark border border-border-light dark:border-border-dark hover:border-primary/50 transition-colors">
+<span class="material-icons text-primary text-3xl mb-6">settings_suggest</span>
+<h4 class="text-xl font-display font-bold mb-4">Automation</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        n8n, Make.com, and custom workflow engineering that removes repetitive business operations.
+                    </p>
+</div>
+<div class="p-8 rounded-2xl bg-white dark:bg-card-dark border border-border-light dark:border-border-dark hover:border-primary/50 transition-colors">
+<span class="material-icons text-primary text-3xl mb-6">smart_toy</span>
+<h4 class="text-xl font-display font-bold mb-4">AI Integration</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Leveraging LLMs and fine-tuned models to create intelligent features within existing platforms.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<section class="section-padding overflow-hidden">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex justify-between items-end mb-12">
+<h2 class="text-4xl font-display font-bold">Client Feedback</h2>
+<div class="text-sm font-medium text-slate-500">4.9 / 5 across 8 reviews on Freelancer.com</div>
+</div>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="p-8 bg-slate-50 dark:bg-white/[0.03] rounded-2xl border border-border-light dark:border-border-dark">
+<div class="flex text-amber-400 mb-4">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+</div>
+<p class="text-slate-700 dark:text-slate-300 mb-6 italic">"Best freelancer I've ever worked with... always available, knows his stuff and even suggested extra add-ons to help my project... Highly recommend."</p>
+<div class="font-bold">Austin L.</div>
+<div class="text-xs text-slate-500">n8n Automation Specialist</div>
+</div>
+<div class="p-8 bg-slate-50 dark:bg-white/[0.03] rounded-2xl border border-border-light dark:border-border-dark">
+<div class="flex text-amber-400 mb-4">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+</div>
+<p class="text-slate-700 dark:text-slate-300 mb-6 italic">"Salmen was everything I was hoping for. He was knowledgeable in every area I needed him to be... He was always professional."</p>
+<div class="font-bold">Robert D.</div>
+<div class="text-xs text-slate-500">Email Automation for Travel Agency</div>
+</div>
+<div class="p-8 bg-slate-50 dark:bg-white/[0.03] rounded-2xl border border-border-light dark:border-border-dark">
+<div class="flex text-amber-400 mb-4">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+</div>
+<p class="text-slate-700 dark:text-slate-300 mb-6 italic">"Helpful, easy going - goes directly to the goal of the project. Great technical insight and supporting not only what you have requested."</p>
+<div class="font-bold">Jargon G.</div>
+<div class="text-xs text-slate-500">Ubuntu Server Troubleshooting</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section-padding bg-slate-50 dark:bg-white/[0.02]">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="text-4xl font-display font-bold text-center mb-16">How I Work</h2>
+<div class="grid md:grid-cols-4 gap-12 relative">
+<div class="hidden md:block absolute top-10 left-0 w-full h-[1px] bg-slate-200 dark:bg-white/10 -z-10"></div>
+<div class="text-center group">
+<div class="w-20 h-20 bg-white dark:bg-card-dark border border-border-light dark:border-border-dark rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:border-primary transition-colors">
+<span class="text-2xl font-bold text-primary">1</span>
+</div>
+<h4 class="font-bold mb-2">Discovery Call</h4>
+<p class="text-sm text-slate-500">We discuss your goals and requirements.</p>
+</div>
+<div class="text-center group">
+<div class="w-20 h-20 bg-white dark:bg-card-dark border border-border-light dark:border-border-dark rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:border-primary transition-colors">
+<span class="text-2xl font-bold text-primary">2</span>
+</div>
+<h4 class="font-bold mb-2">Proposal &amp; Spec</h4>
+<p class="text-sm text-slate-500">Detailed roadmap and architecture plan.</p>
+</div>
+<div class="text-center group">
+<div class="w-20 h-20 bg-white dark:bg-card-dark border border-border-light dark:border-border-dark rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:border-primary transition-colors">
+<span class="text-2xl font-bold text-primary">3</span>
+</div>
+<h4 class="font-bold mb-2">Weekly Demos</h4>
+<p class="text-sm text-slate-500">See progress every week and iterate.</p>
+</div>
+<div class="text-center group">
+<div class="w-20 h-20 bg-white dark:bg-card-dark border border-border-light dark:border-border-dark rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:border-primary transition-colors">
+<span class="text-2xl font-bold text-primary">4</span>
+</div>
+<h4 class="font-bold mb-2">Launch &amp; Support</h4>
+<p class="text-sm text-slate-500">Go live with post-launch maintenance.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="section-padding" id="about">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<img alt="Salmen Khelifi" class="w-24 h-24 rounded-full mx-auto mb-8 object-cover border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzobCZsSZZQ8CqW5x6OTQa6xENWwak0hGc_tEAtQMv1oOYc3BPhlhN_zIy8J2owcGQ_zoi1NxIQ7hjUIP6i0sWoy2CvgGVZF7-KqI7uKBzajxhp2M4rgFfGbkhlcqf45sMuYsEQkwIDR-b-1eMofU06f9q239OUKUv6zPRPIx0o0p6f7Wu2ez-Ch0euwuvLtyyrq_6QL6Mig5P4gl9BscWpZ0AVICsVvZF4s42jGZ7qfTcgO_5Sqcei9mCITg_hKXmn86DTGNsyDG-"/>
+<h2 class="text-4xl font-display font-bold mb-6">About Me</h2>
+<p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+                With <span class="font-bold text-slate-900 dark:text-white">5+ years of experience</span>, I bridge the gap between complex code and business goals. Whether it's a mobile app in <span class="font-bold">Flutter</span>, a custom <span class="font-bold">WordPress</span> plugin, or an autonomous <span class="font-bold">n8n</span> workflow, I build solutions that work.
+            </p>
+<div class="flex flex-wrap justify-center gap-6 mb-12 text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">GitHub</a>
+<a class="hover:text-primary transition-colors" href="#">LinkedIn</a>
+<a class="hover:text-primary transition-colors" href="#">Freelancer</a>
+<a class="hover:text-primary transition-colors" href="#">Upwork</a>
+</div>
+<a class="inline-flex items-center space-x-2 bg-slate-100 dark:bg-white/5 px-6 py-3 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 transition-colors" href="#">
+<span class="material-icons text-sm">download</span>
+<span class="font-semibold">Download CV</span>
+</a>
+</div>
+</section>
+<section class="section-padding relative overflow-hidden bg-primary text-white">
+<div class="absolute inset-0 bg-[linear-gradient(45deg,rgba(0,0,0,0.1)_25%,transparent_25%,transparent_50%,rgba(0,0,0,0.1)_50%,rgba(0,0,0,0.1)_75%,transparent_75%,transparent)] bg-[length:24px_24px] opacity-10"></div>
+<div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+<h2 class="text-4xl md:text-5xl font-display font-extrabold mb-8">Ready to automate your <br/>digital ecosystem?</h2>
+<p class="text-blue-100 text-lg mb-12 max-w-2xl mx-auto">Explore your project idea or book a strategy call today to see how we can optimize your business workflows.</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a class="w-full sm:w-auto bg-white text-primary px-8 py-4 rounded-xl font-bold shadow-lg hover:scale-105 transition-transform" href="#">Book a 30-min call</a>
+<a class="w-full sm:w-auto border-2 border-white/30 px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-colors" href="#work">All Projects</a>
+</div>
+</div>
+</section>
+<footer class="py-16 border-t border-border-light dark:border-border-dark bg-slate-50 dark:bg-black">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-2">
+<div class="text-2xl font-display font-bold mb-6">Khelifi.</div>
+<p class="text-slate-500 max-w-xs leading-relaxed">Full-stack, mobile, and automation systems built for revenue-focused launches.</p>
+</div>
+<div>
+<h5 class="font-bold mb-6 uppercase text-xs tracking-widest text-slate-400">Quick Links</h5>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#work">Work</a></li>
+<li><a class="hover:text-primary transition-colors" href="#services">Services</a></li>
+<li><a class="hover:text-primary transition-colors" href="#about">About</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Book a call</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6 uppercase text-xs tracking-widest text-slate-400">Socials</h5>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">GitHub</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">LinkedIn</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Upwork</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">X (Twitter)</a></li>
+</ul>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border-light dark:border-border-dark text-xs text-slate-400">
+<p>© 2024 Salmen Khelifi. All rights reserved.</p>
+<a class="hover:text-primary transition-colors mt-4 md:mt-0" href="mailto:contact@khelifi-salmen.com">contact@khelifi-salmen.com</a>
+</div>
+</div>
+</footer>
+
+</body></html>

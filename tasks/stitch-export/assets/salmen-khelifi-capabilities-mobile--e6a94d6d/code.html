@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Khelifi - Capabilities</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#c6c6c8",
+                        "surface-container-low": "#1c1b1e",
+                        "tertiary-container": "#e3e2e7",
+                        "surface-container-highest": "#353437",
+                        "on-tertiary": "#2f3034",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#001b3f",
+                        "surface-elevated": "#16161f",
+                        "glass-border-muted": "rgba(255,255,255,0.14)",
+                        "surface-container-lowest": "#0e0e10",
+                        "secondary-fixed-dim": "#abc7ff",
+                        "glass-border-bright": "rgba(255,255,255,0.35)",
+                        "secondary-container": "#046dd9",
+                        "primary": "#ffffff",
+                        "background": "#131315",
+                        "surface-container": "#201f22",
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#313032",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#e2e2e4",
+                        "text-dim": "#515156",
+                        "on-background": "#e5e1e4",
+                        "surface-variant": "#353437",
+                        "primary-fixed-dim": "#c6c6c8",
+                        "outline-variant": "#44474a",
+                        "on-secondary-container": "#f2f4ff",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "on-primary": "#2f3132",
+                        "on-secondary-fixed-variant": "#00458e",
+                        "on-tertiary-container": "#636469",
+                        "primary-container": "#e2e2e4",
+                        "surface-container-high": "#2a2a2c",
+                        "on-surface-variant": "#c5c7c9",
+                        "on-primary-fixed-variant": "#454749",
+                        "outline": "#8f9194",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "on-primary-container": "#636466",
+                        "secondary-fixed": "#d7e3ff",
+                        "on-secondary": "#002f65",
+                        "tertiary": "#ffffff",
+                        "on-error-container": "#ffdad6",
+                        "secondary": "#abc7ff",
+                        "surface-dim": "#131315",
+                        "accent-glow": "rgba(47,128,237,0.15)",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "tertiary-fixed": "#e3e2e7",
+                        "surface-panel": "#0e0e12",
+                        "on-surface": "#e5e1e4",
+                        "inverse-surface": "#e5e1e4",
+                        "inverse-primary": "#5d5e60",
+                        "surface-bright": "#39393b",
+                        "surface": "#131315",
+                        "on-primary-fixed": "#1a1c1d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "64px",
+                        "unit": "8px",
+                        "stack-sm": "16px",
+                        "gutter": "24px",
+                        "stack-md": "32px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Manrope"],
+                        "display-hero": ["Manrope"],
+                        "label-caps": ["Manrope"],
+                        "h2-mobile": ["Manrope"],
+                        "h1-mobile": ["Manrope"],
+                        "display-hero-mobile": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "h3": ["Manrope"],
+                        "body-reg": ["Manrope"],
+                        "h2": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "h1": ["56px", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "display-hero": ["88px", { "lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "label-caps": ["12px", { "lineHeight": "1.5", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h2-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h1-mobile": ["44px", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "display-hero-mobile": ["56px", { "lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "300" }],
+                        "h3": ["20px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-reg": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h2": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Mobile specific ambient effects - reduced complexity for performance */
+        .ambient-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 20%, rgba(47, 128, 237, 0.05) 0%, transparent 60%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased min-h-screen font-body-reg selection:bg-secondary-container selection:text-on-secondary-container">
+<div class="ambient-bg"></div>
+<!-- TopNavBar (Mobile App-like Header) -->
+<header class="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-md border-b border-glass-border-muted shadow-sm md:hidden">
+<div class="flex justify-between items-center h-16 px-margin-mobile max-w-container-max mx-auto">
+<a class="font-h3 text-h3 font-bold text-primary flex items-baseline" href="#">
+                Khelifi<span class="text-secondary-container">.</span>
+</a>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- TopNavBar (Desktop - Hidden on mobile) -->
+<header class="hidden md:flex fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-glass-border-muted shadow-sm">
+<div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto w-full">
+<a class="font-h3 text-h3 font-bold text-primary flex items-baseline" href="#">
+                Khelifi<span class="text-secondary-container">.</span>
+</a>
+<nav class="flex gap-gutter items-center font-body-reg text-body-reg">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Work</a>
+<a class="text-primary font-semibold hover:text-primary transition-colors duration-300" href="#">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">About</a>
+</nav>
+<button class="bg-secondary-container text-on-secondary-container px-6 py-2 rounded-full font-label-caps text-label-caps hover:bg-opacity-90 scale-95 active:scale-90 transition-all shadow-[0_0_15px_rgba(4,109,217,0.3)]">
+                Let's Talk
+            </button>
+</div>
+</header>
+<main class="pt-24 pb-stack-lg px-margin-mobile max-w-container-max mx-auto flex flex-col gap-stack-lg">
+<!-- Page Header -->
+<section class="flex flex-col gap-unit">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Capabilities</span>
+<h1 class="font-h1-mobile text-h1-mobile text-primary">Solving Complex Problems.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-stack-sm max-w-md">
+                We engineer scalable solutions for intricate business challenges. Focus on the outcome, we handle the architecture.
+            </p>
+</section>
+<!-- Problem Stack -->
+<div class="flex flex-col gap-stack-md">
+<!-- Problem 1 -->
+<article class="bg-surface-elevated border border-surface-variant border-t-glass-border-muted rounded-xl p-stack-sm flex flex-col gap-stack-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-[64px]">account_tree</span>
+</div>
+<header>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary-container"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Problem 01</span>
+</div>
+<h2 class="font-h2-mobile text-h2-mobile text-primary">Data Silos &amp; Fragmentation</h2>
+</header>
+<p class="font-body-reg text-body-reg text-on-surface-variant z-10">
+                    Disparate systems holding crucial data hostage. Manual entry causing errors and blocking real-time decision making across departments.
+                </p>
+<div class="bg-surface-container rounded-lg p-4 border border-glass-border-muted z-10 mt-2">
+<h3 class="font-h3 text-h3 text-primary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">integration_instructions</span>
+                        The Solution
+                    </h3>
+<p class="font-body-reg text-body-reg text-text-dim text-sm mb-4">
+                        Custom API gateways and automated ETL pipelines built on robust modern infrastructure.
+                    </p>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase text-xs">Reference Case</span>
+<div class="flex items-center justify-between group">
+<span class="font-body-reg text-body-reg text-primary font-medium">Fintech Automation Hub</span>
+<span class="material-symbols-outlined text-secondary-container opacity-50 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Problem 2 -->
+<article class="bg-surface-elevated border border-surface-variant border-t-glass-border-muted rounded-xl p-stack-sm flex flex-col gap-stack-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-[64px]">speed</span>
+</div>
+<header>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary-container"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Problem 02</span>
+</div>
+<h2 class="font-h2-mobile text-h2-mobile text-primary">Legacy System Bottlenecks</h2>
+</header>
+<p class="font-body-reg text-body-reg text-on-surface-variant z-10">
+                    Outdated monoliths slowing down feature delivery. High infrastructure costs with poor scalability during peak user loads.
+                </p>
+<div class="bg-surface-container rounded-lg p-4 border border-glass-border-muted z-10 mt-2">
+<h3 class="font-h3 text-h3 text-primary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">cloud_done</span>
+                        The Solution
+                    </h3>
+<p class="font-body-reg text-body-reg text-text-dim text-sm mb-4">
+                        Progressive decoupling into microservices. Serverless architecture migration for elastic scaling.
+                    </p>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase text-xs">Reference Case</span>
+<div class="flex items-center justify-between group">
+<span class="font-body-reg text-body-reg text-primary font-medium">E-commerce Cloud Migration</span>
+<span class="material-symbols-outlined text-secondary-container opacity-50 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Problem 3 -->
+<article class="bg-surface-elevated border border-surface-variant border-t-glass-border-muted rounded-xl p-stack-sm flex flex-col gap-stack-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-[64px]">design_services</span>
+</div>
+<header>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary-container"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Problem 03</span>
+</div>
+<h2 class="font-h2-mobile text-h2-mobile text-primary">Inconsistent User Experience</h2>
+</header>
+<p class="font-body-reg text-body-reg text-on-surface-variant z-10">
+                    Fragmented UI patterns across products leading to user confusion, high support volume, and slow frontend development cycles.
+                </p>
+<div class="bg-surface-container rounded-lg p-4 border border-glass-border-muted z-10 mt-2">
+<h3 class="font-h3 text-h3 text-primary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">layers</span>
+                        The Solution
+                    </h3>
+<p class="font-body-reg text-body-reg text-text-dim text-sm mb-4">
+                        Comprehensive Design System engineering. Reusable component libraries connected to centralized design tokens.
+                    </p>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase text-xs">Reference Case</span>
+<div class="flex items-center justify-between group">
+<span class="font-body-reg text-body-reg text-primary font-medium">SaaS Platform UI Overhaul</span>
+<span class="material-symbols-outlined text-secondary-container opacity-50 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- CTA Section -->
+<section class="mt-stack-md flex flex-col items-center text-center gap-stack-sm bg-surface-panel p-stack-md rounded-xl border border-glass-border-muted">
+<h2 class="font-h2-mobile text-h2-mobile text-primary">Ready to architect your solution?</h2>
+<button class="w-full bg-secondary-container text-on-secondary-container py-4 rounded-xl font-h3 text-h3 hover:bg-opacity-90 active:scale-[0.98] transition-transform shadow-[0_0_20px_rgba(4,109,217,0.2)]">
+                Book a Consultation
+            </button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg bg-surface-panel border-t border-glass-border-muted flat no shadows">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto font-body-reg text-body-reg">
+<div class="flex flex-col gap-4 mb-8 md:mb-0">
+<span class="font-h3 text-h3 font-bold text-primary flex items-baseline">
+                    Khelifi<span class="text-secondary-container">.</span>
+</span>
+<p class="text-on-surface-variant text-sm">© 2024 Salmen Khelifi. All rights reserved.</p>
+</div>
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Work</a>
+<a class="text-primary hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Book a call</a>
+</div>
+<div class="flex flex-col gap-3 mt-4 md:mt-0">
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">GitHub</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">X</a>
+</div>
+<div class="flex flex-col gap-3 mt-4 md:mt-0">
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Upwork</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Freelancer</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -9,6 +9,7 @@
   --border-subtle: rgba(255, 255, 255, 0.03);
   --border-muted: rgba(255, 255, 255, 0.08);
   --border-active: rgba(255, 255, 255, 0.16);
+  --border-control: rgba(255, 255, 255, 0.28);
 
   /* Text Hierarchy */
   --text-primary: #f5f5f7;
@@ -19,6 +20,26 @@
   --accent: #2f80ed;
   --accent-dim: rgba(47, 128, 237, 0.1);
   --accent-glow: rgba(47, 128, 237, 0.04);
+  --text-on-accent: #ffffff;
+
+  /* Semantic status roles — distinct from --accent on purpose. These carry
+     meaning (problem vs. outcome, warning vs. success) that a single brand
+     color can't: collapsing them to --accent removes information, it
+     doesn't just restyle it. "Information" reuses --accent deliberately —
+     this app has one brand hue, and info-level messaging is exactly what
+     that hue is already used for everywhere else. */
+  --color-error: #f87171;
+  --color-error-dim: rgba(239, 68, 68, 0.12);
+  --color-warning: #fbbf24;
+  --color-warning-dim: rgba(245, 158, 11, 0.12);
+  --color-success: #34d399;
+  --color-success-dim: rgba(16, 185, 129, 0.12);
+
+  /* Opaque base under the floating nav pill — needs its own token because it
+     must always be an OPAQUE dark/light color regardless of theme (content
+     scrolling underneath must never show through), whereas --glass-bg is
+     deliberately translucent for every other glass surface. */
+  --nav-pill-bg: rgba(10, 10, 14, 0.78);
 
   /* Spacing Scale (8pt grid system) */
   --space-1: 0.25rem;
@@ -54,6 +75,66 @@
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 var(--glass-border-bright),
     inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+
+  color-scheme: dark;
+}
+
+/*
+ * Light theme — "Refined Light Architecture". Deliberately not an inversion
+ * of the dark palette: soft off-white page (not pure #fff), near-black text
+ * (not pure #000), a deepened accent for AA contrast on white, and glass
+ * borders that read as a dark edge instead of a light-catching highlight
+ * (a light-colored highlight is invisible on an already-light page).
+ * Applied via [data-theme="light"] on <html>, set pre-hydration — see the
+ * inline script in layout.tsx. :root above stays the default dark palette,
+ * so no-JS / pre-hydration state is identical to the original single-theme app.
+ */
+[data-theme="light"] {
+  --bg-page: #f6f6f8;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #fcfcfd;
+
+  --border-subtle: rgba(15, 15, 20, 0.05);
+  --border-muted: rgba(15, 15, 20, 0.1);
+  --border-active: rgba(15, 15, 20, 0.18);
+  --border-control: rgba(15, 15, 20, 0.45);
+
+  --text-primary: #14141a;
+  --text-secondary: #52525b;
+  --text-tertiary: #6b6b76;
+
+  --accent: #1b64d8;
+  --accent-dim: rgba(31, 111, 235, 0.08);
+  --accent-glow: rgba(31, 111, 235, 0.1);
+  --text-on-accent: #ffffff;
+
+  /* Same deepened-for-white-backgrounds treatment as --accent: the dark-mode
+     400-shade reds/ambers/greens are too light to hold AA contrast on a
+     white surface, so light mode steps to the 600/700 shades instead. */
+  --color-error: #dc2626;
+  --color-error-dim: rgba(220, 38, 38, 0.08);
+  --color-warning: #b45309;
+  --color-warning-dim: rgba(180, 83, 9, 0.08);
+  --color-success: #047857;
+  --color-success-dim: rgba(5, 150, 105, 0.08);
+
+  --nav-pill-bg: rgba(252, 252, 253, 0.85);
+
+  --shadow-card: 0 2px 14px rgba(20, 20, 26, 0.06),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  --shadow-hover: 0 10px 28px rgba(20, 20, 26, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  --glow-accent: 0 0 32px -8px rgba(31, 111, 235, 0.22);
+
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-bg-elevated: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(15, 15, 20, 0.1);
+  --glass-border-bright: rgba(15, 15, 20, 0.16);
+  --glass-shadow: 0 8px 24px rgba(20, 20, 26, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(20, 20, 26, 0.04);
+
+  color-scheme: light;
 }
 
 @theme inline {
@@ -64,6 +145,17 @@ html {
   background: var(--bg-page);
 }
 
+/*
+ * Only body's own background/text crossfade on a theme switch — this covers
+ * the dominant visual change (the page flipping) without touching any
+ * per-component transition declaration (.cta-button, .glass-panel, etc.
+ * already define their own hover/focus transitions further down this file;
+ * a blanket "*" rule here would collide with those shorthand declarations).
+ * Individual surfaces/borders snap instantly, which reads as part of the
+ * same near-instant flip rather than a second, staggered animation.
+ * Suppressed during initial pre-hydration resolution via .theme-resolving
+ * (see the inline script in layout.tsx) so first paint never animates.
+ */
 body {
   background-color: var(--bg-page);
   color: var(--text-primary);
@@ -71,6 +163,14 @@ body {
   overflow-x: hidden;
   position: relative;
   isolation: isolate;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+html.theme-resolving body,
+html.theme-resolving .bg-blooms::before,
+html.theme-resolving .bg-blooms::after,
+html.theme-resolving .bg-blooms > span {
+  transition: none !important;
 }
 
 .bg-blooms {
@@ -88,6 +188,19 @@ body {
   border-radius: 50%;
   filter: blur(110px);
   opacity: 0.8;
+  transition: opacity 200ms ease;
+}
+
+/* Same nebula-style blooms as dark mode, but the saturated colors that read
+   as moody ambience on near-black are eye strain on a light page — drop
+   them to a barely-there tint instead of inventing a different decoration. */
+[data-theme="light"] .bg-blooms::before,
+[data-theme="light"] .bg-blooms::after {
+  opacity: 0.18;
+}
+
+[data-theme="light"] .bg-blooms > span {
+  opacity: 0.12;
 }
 
 .bg-blooms::before {
@@ -125,6 +238,7 @@ body {
   border-radius: 50%;
   filter: blur(110px);
   opacity: 0.5;
+  transition: opacity 200ms ease;
   background: radial-gradient(
     circle,
     rgba(45, 212, 191, 0.32),
@@ -164,7 +278,7 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: var(--text-primary);
+  color: var(--text-on-accent);
 }
 
 :where(a, button, input, textarea, select, [tabindex]):focus-visible {
@@ -249,50 +363,6 @@ body {
   transform: translateY(0);
 }
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.marquee-container {
-  overflow: hidden;
-  white-space: nowrap;
-  width: 100%;
-  mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    black 12%,
-    black 88%,
-    transparent 100%
-  );
-}
-
-.marquee-content {
-  animation: scroll 40s linear infinite;
-  display: inline-block;
-}
-
-.marquee-item {
-  color: var(--text-tertiary);
-  cursor: default;
-  display: inline-block;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0;
-  padding: 0 var(--space-8);
-  transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.marquee-item:hover {
-  color: var(--text-primary);
-}
-
 .glass-panel {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
@@ -326,7 +396,10 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(to bottom, #ffffff 0%, #a1a1aa 100%);
+  /* Was hardcoded #ffffff -> #a1a1aa: correct on dark, nearly invisible on
+     light (white text on a near-white page). Token-based so it fades from
+     primary to secondary text color in whichever theme is active. */
+  background: linear-gradient(to bottom, var(--text-primary) 0%, var(--text-secondary) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -339,6 +412,59 @@ body {
   border: 1px solid var(--glass-border);
   border-top-color: var(--glass-border-bright);
   box-shadow: var(--glass-shadow);
+}
+
+.nav-pill {
+  /* Opaque base under the glass: content must never read through the nav */
+  background: var(--nav-pill-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
+  border-top-color: var(--glass-border-bright);
+  border-radius: 999px;
+  box-shadow: var(--glass-shadow);
+  transition: background 180ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Anchor jumps must not bury section headings under the floating nav */
+section[id],
+[id="work"],
+[id="services"],
+[id="process"],
+[id="about"] {
+  scroll-margin-top: 7rem;
+}
+
+.credibility-strip {
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+}
+
+.ecosystem-hub {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--glass-border-bright);
+  box-shadow: var(--glow-accent);
+}
+
+.ecosystem-node {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
+  border-top-color: var(--glass-border-bright);
+  transition: border-color 180ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ecosystem-node:hover {
+  border-color: var(--accent);
+}
+
+.ecosystem-line {
+  /* Was hardcoded white at 12%: invisible on a light card background. */
+  stroke: var(--border-active);
+  stroke-width: 1;
 }
 
 .section-title {
@@ -406,14 +532,16 @@ body {
 }
 
 .cta-primary {
-  background: rgba(47, 128, 237, 0.55);
-  border-color: rgba(47, 128, 237, 0.6);
+  /* color-mix so this tracks --accent per theme instead of a hardcoded
+     rgba() pinned to the dark-mode hex (#2f80ed) regardless of theme. */
+  background: color-mix(in srgb, var(--accent) 55%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
   box-shadow: var(--glow-accent), var(--glass-shadow);
   color: var(--text-primary);
 }
 
 .cta-primary:hover {
-  background: rgba(59, 141, 243, 0.7);
+  background: color-mix(in srgb, var(--accent) 72%, transparent);
   box-shadow: var(--glow-accent), var(--shadow-hover), var(--glass-shadow);
 }
 
@@ -436,11 +564,11 @@ body {
   background: var(--accent) !important;
   border-color: transparent !important;
   box-shadow: var(--glow-accent);
-  color: var(--text-primary);
+  color: var(--text-on-accent);
 }
 
 .system-live-link:hover {
-  background: #3b8df3 !important;
+  background: color-mix(in srgb, var(--accent) 85%, white 15%) !important;
 }
 
 .service-icon {
@@ -558,12 +686,28 @@ body {
     transition-duration: 0.01ms !important;
   }
 
-  .marquee-content {
-    animation: none !important;
-  }
-
   .reveal {
     opacity: 1;
     transform: none;
   }
 }
+
+.challenge-flow-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
+  border-top-color: var(--glass-border-bright);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--glass-shadow);
+  transition: background 180ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 180ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.challenge-flow-card:hover {
+  background: var(--glass-bg-elevated);
+  border-color: var(--border-active);
+  box-shadow: var(--glass-shadow), var(--shadow-hover);
+}
+

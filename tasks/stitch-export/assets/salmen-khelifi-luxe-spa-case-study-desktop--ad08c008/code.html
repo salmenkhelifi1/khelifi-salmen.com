@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Case Study: Luxe Spa Booking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "glass-border-bright": "rgba(255,255,255,0.35)",
+                        "on-surface-variant": "#c5c7c9",
+                        "on-secondary": "#002f65",
+                        "inverse-on-surface": "#313032",
+                        "text-dim": "#515156",
+                        "surface-panel": "#0e0e12",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "surface-container-highest": "#353437",
+                        "surface-elevated": "#16161f",
+                        "surface-container-lowest": "#0e0e10",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#636466",
+                        "tertiary": "#ffffff",
+                        "inverse-primary": "#5d5e60",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "inverse-surface": "#e5e1e4",
+                        "on-primary-fixed": "#1a1c1d",
+                        "error": "#ffb4ab",
+                        "secondary": "#abc7ff",
+                        "on-tertiary-container": "#636469",
+                        "surface-container": "#201f22",
+                        "background": "#131315",
+                        "on-secondary-fixed": "#001b3f",
+                        "on-secondary-fixed-variant": "#00458e",
+                        "surface-bright": "#39393b",
+                        "primary-fixed": "#e2e2e4",
+                        "surface-container-high": "#2a2a2c",
+                        "secondary-fixed-dim": "#abc7ff",
+                        "on-secondary-container": "#f2f4ff",
+                        "on-error": "#690005",
+                        "surface-container-low": "#1c1b1e",
+                        "tertiary-fixed": "#e3e2e7",
+                        "surface-dim": "#131315",
+                        "surface-variant": "#353437",
+                        "secondary-fixed": "#d7e3ff",
+                        "on-surface": "#e5e1e4",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "on-tertiary": "#2f3034",
+                        "outline-variant": "#44474a",
+                        "error-container": "#93000a",
+                        "on-primary": "#2f3132",
+                        "secondary-container": "#046dd9",
+                        "on-background": "#e5e1e4",
+                        "surface": "#131315",
+                        "primary": "#ffffff",
+                        "glass-border-muted": "rgba(255,255,255,0.14)",
+                        "primary-fixed-dim": "#c6c6c8",
+                        "on-primary-fixed-variant": "#454749",
+                        "outline": "#8f9194",
+                        "tertiary-container": "#e3e2e7",
+                        "surface-tint": "#c6c6c8",
+                        "primary-container": "#e2e2e4",
+                        "accent-glow": "rgba(47,128,237,0.15)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "stack-md": "32px",
+                        "stack-sm": "16px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "stack-lg": "64px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "h2-mobile": ["Manrope"],
+                        "h3": ["Manrope"],
+                        "body-reg": ["Manrope"],
+                        "h1-mobile": ["Manrope"],
+                        "h1": ["Manrope"],
+                        "display-hero": ["Manrope"],
+                        "label-caps": ["Manrope"],
+                        "display-hero-mobile": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "h2": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "300" }],
+                        "h2-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h3": ["20px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-reg": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h1-mobile": ["44px", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "h1": ["56px", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "display-hero": ["88px", { "lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "label-caps": ["12px", { "lineHeight": "1.5", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-hero-mobile": ["56px", { "lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(22, 22, 31, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.35);
+            border-left: 1px solid rgba(255, 255, 255, 0.14);
+            border-right: 1px solid rgba(255, 255, 255, 0.14);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        }
+        .ambient-bloom {
+            background: radial-gradient(circle, rgba(47,128,237,0.15) 0%, rgba(19,19,21,0) 70%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-secondary selection:text-on-secondary min-h-screen flex flex-col relative overflow-x-hidden font-body-reg">
+<!-- Ambient Bloom Backgrounds -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full ambient-bloom opacity-50 blur-[100px]"></div>
+<div class="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full ambient-bloom opacity-30 blur-[120px]"></div>
+</div>
+<!-- TopNavBar -->
+<header class="bg-background/80 backdrop-blur-xl border-b border-glass-border-muted shadow-sm docked full-width top-0 fixed z-50">
+<div class="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="font-h3 text-h3 font-bold text-primary flex items-center">
+                Khelifi<span class="text-secondary">.</span>
+</div>
+<div class="flex items-center gap-gutter text-on-surface-variant">
+<a class="hover:text-primary transition-colors flex items-center gap-2 group text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                    Back to Work
+                </a>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Sticky TOC) -->
+<nav class="fixed left-8 top-1/2 -translate-y-1/2 rounded-xl hidden lg:flex flex-col gap-unit p-unit bg-surface-elevated/40 backdrop-blur-md border border-glass-border-muted shadow-2xl shadow-accent-glow z-40 w-48">
+<div class="px-2 pb-2 border-b border-glass-border-muted mb-2 hidden">
+<!-- Brand hidden as per style_brand_logo -->
+</div>
+<a class="text-secondary bg-secondary/10 rounded-lg p-2 font-label-caps text-label-caps flex items-center gap-3 transition-all duration-200" href="#overview">
+<span class="material-symbols-outlined text-sm">info</span> Overview
+        </a>
+<a class="text-on-surface-variant p-2 font-label-caps text-label-caps hover:text-primary hover:bg-white/5 flex items-center gap-3 transition-all duration-200 rounded-lg" href="#features">
+<span class="material-symbols-outlined text-sm">list_alt</span> Features
+        </a>
+<a class="text-on-surface-variant p-2 font-label-caps text-label-caps hover:text-primary hover:bg-white/5 flex items-center gap-3 transition-all duration-200 rounded-lg" href="#screenshots">
+<span class="material-symbols-outlined text-sm">screenshot_region</span> Screenshots
+        </a>
+<a class="text-on-surface-variant p-2 font-label-caps text-label-caps hover:text-primary hover:bg-white/5 flex items-center gap-3 transition-all duration-200 rounded-lg" href="#stack">
+<span class="material-symbols-outlined text-sm">terminal</span> Stack
+        </a>
+<a class="text-on-surface-variant p-2 font-label-caps text-label-caps hover:text-primary hover:bg-white/5 flex items-center gap-3 transition-all duration-200 rounded-lg" href="#challenges">
+<span class="material-symbols-outlined text-sm">psychology</span> Challenges
+        </a>
+</nav>
+<main class="flex-grow z-10 pt-[100px] pb-stack-lg max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full ml-0 lg:ml-64">
+<!-- Hero Section -->
+<section class="mb-stack-lg pt-stack-md flex flex-col md:flex-row gap-gutter items-center" id="hero">
+<div class="flex-1 space-y-6">
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">
+                    SAAS &amp; BOOKING PLATFORM
+                </div>
+<h1 class="font-h1-mobile md:font-h1 text-h1-mobile md:text-h1 text-primary">Luxe Spa Booking</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    A high-performance white-label booking, CRM, and management system for appointment-based service businesses, featuring real-time staff dashboards, BullMQ workflows, and AI-powered concierge scheduling.
+                </p>
+<div class="flex flex-wrap gap-2 pt-4">
+<span class="px-3 py-1 rounded-full border border-glass-border-muted text-xs font-medium bg-white/5 text-on-surface-variant">Next.js 16</span>
+<span class="px-3 py-1 rounded-full border border-glass-border-muted text-xs font-medium bg-white/5 text-on-surface-variant">Express.js</span>
+<span class="px-3 py-1 rounded-full border border-glass-border-muted text-xs font-medium bg-white/5 text-on-surface-variant">PostgreSQL</span>
+<span class="px-3 py-1 rounded-full border border-glass-border-muted text-xs font-medium bg-white/5 text-on-surface-variant">Socket.io</span>
+<span class="px-3 py-1 rounded-full border border-glass-border-muted text-xs font-medium bg-white/5 text-on-surface-variant">Gemini API</span>
+</div>
+<div class="pt-6">
+<button class="bg-secondary-container text-primary px-6 py-3 rounded-full font-medium shadow-[0_0_15px_rgba(47,128,237,0.3)] hover:scale-95 transition-transform flex items-center gap-2">
+                        Live Demo
+                        <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</div>
+<div class="flex-1 w-full mt-stack-md md:mt-0">
+<div class="glass-panel rounded-[28px] p-2 shadow-2xl relative overflow-hidden group">
+<img alt="Luxe Spa Booking Hero" class="w-full h-auto rounded-xl object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClCLiuscYjx4nvupn3Ix2XvsW7CxJtuL_6dBD97X2lSQ48wE9zcbQS2C9yAhHl2jDJn7APb6FqeF74z6WOEqZDQ9Rqf3XCnj6zUFsBfTh-PFp4ZSTcq0iYc-LspJWFI9jFwM6_WCrNel9NMWf-2gf09QWoA56My4ouBYBL9fcZWSpNmUP0haYl1kdrFhtFo8qlrpOC8FXmGMUSDGjvzXrjftYltyr_bZnBNp2nQFbuK9VwoQTtgh6koreDDoXCB8iyk5aXJkkpMM1S"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-panel/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[28px]"></div>
+</div>
+</div>
+</section>
+<div class="w-full h-px bg-glass-border-muted my-stack-lg"></div>
+<!-- Overview Section -->
+<section class="mb-stack-lg scroll-mt-32" id="overview">
+<h2 class="font-h2-mobile md:font-h2 text-h2-mobile md:text-h2 text-primary mb-stack-md">Overview</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="glass-panel rounded-[28px] p-6 hover:bg-surface-elevated/60 transition-colors">
+<h3 class="font-h3 text-h3 text-primary mb-4">What it is</h3>
+<p class="text-on-surface-variant font-body-reg text-body-reg">
+                        A comprehensive multi-service white-label booking, CRM, and shop management SaaS platform. The system is designed to allow service-oriented businesses (such as medical aesthetics clinics, hair salons, spas, and consultants) to launch custom-branded online booking experiences, manage technicians, automate customer communications, and handle deposits/payments, fully isolated from other clients.
+                    </p>
+</div>
+<div class="glass-panel rounded-[28px] p-6 hover:bg-surface-elevated/60 transition-colors">
+<h3 class="font-h3 text-h3 text-primary mb-4">The problem it solves</h3>
+<p class="text-on-surface-variant font-body-reg text-body-reg">
+                        Service businesses face a trade-off: use expensive SaaS platforms (Mindbody, Vagaro) that charge high transaction fees, or build custom software that is slow and costly to maintain. Furthermore, switching a platform from a nail spa layout to a dental clinic layout typically requires extensive code modifications, custom databases, and frontend rebuilds.
+                    </p>
+</div>
+<div class="glass-panel rounded-[28px] p-6 hover:bg-surface-elevated/60 transition-colors">
+<h3 class="font-h3 text-h3 text-primary mb-4">Who it's for</h3>
+<p class="text-on-surface-variant font-body-reg text-body-reg">
+                        Independent boutique operators, local clinic chains, and digital agencies looking to offer localized booking platforms as a service without rebuilding the core scheduling engine.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background border-t border-glass-border-muted full-width pt-stack-lg pb-stack-sm mt-auto relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+<div>
+<div class="font-h3 text-h3 font-bold text-primary mb-4">
+                    Khelifi<span class="text-secondary">.</span>
+</div>
+<p class="text-on-surface-variant text-sm">
+                    © 2024 Salmen Khelifi. All rights reserved.
+                </p>
+</div>
+<div class="flex flex-col gap-2">
+<a class="text-on-surface-variant hover:text-secondary transition-colors text-sm" href="#">Work</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors text-sm" href="#">Services</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors text-sm" href="#">About</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors text-sm" href="#">Book a call</a>
+</div>
+<div class="flex flex-col gap-2">
+<a class="text-on-surface-variant hover:text-secondary transition-colors text-sm" href="#">GitHub</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors text-sm" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors text-sm" href="#">Upwork</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors text-sm" href="#">X</a>
+</div>
+</div>
+</footer>
+</body></html>

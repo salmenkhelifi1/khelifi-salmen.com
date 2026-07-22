@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Salmen Khelifi | Software Engineer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#131315",
+                        "tertiary-fixed": "#e3e2e7",
+                        "on-background": "#e5e1e4",
+                        "primary-fixed-dim": "#c6c6c8",
+                        "glass-border-muted": "rgba(255,255,255,0.14)",
+                        "surface-tint": "#c6c6c8",
+                        "surface-elevated": "#16161f",
+                        "on-secondary": "#002f65",
+                        "on-secondary-fixed-variant": "#00458e",
+                        "on-surface-variant": "#c5c7c9",
+                        "tertiary-container": "#e3e2e7",
+                        "inverse-primary": "#5d5e60",
+                        "primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "inverse-on-surface": "#313032",
+                        "surface-variant": "#353437",
+                        "surface": "#131315",
+                        "on-primary": "#2f3132",
+                        "error": "#ffb4ab",
+                        "text-dim": "#515156",
+                        "secondary": "#abc7ff",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "secondary-fixed": "#d7e3ff",
+                        "on-primary-fixed-variant": "#454749",
+                        "glass-border-bright": "rgba(255,255,255,0.35)",
+                        "on-primary-container": "#636466",
+                        "on-secondary-fixed": "#001b3f",
+                        "surface-bright": "#39393b",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#636469",
+                        "background": "#131315",
+                        "surface-container-low": "#1c1b1e",
+                        "inverse-surface": "#e5e1e4",
+                        "surface-container-highest": "#353437",
+                        "on-error": "#690005",
+                        "surface-container": "#201f22",
+                        "outline": "#8f9194",
+                        "surface-container-high": "#2a2a2c",
+                        "secondary-container": "#046dd9",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "accent-glow": "rgba(47,128,237,0.15)",
+                        "surface-panel": "#0e0e12",
+                        "on-tertiary": "#2f3034",
+                        "tertiary": "#ffffff",
+                        "on-secondary-container": "#f2f4ff",
+                        "outline-variant": "#44474a",
+                        "primary-container": "#e2e2e4",
+                        "primary-fixed": "#e2e2e4",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0e0e10",
+                        "on-primary-fixed": "#1a1c1d",
+                        "secondary-fixed-dim": "#abc7ff",
+                        "on-surface": "#e5e1e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "32px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "stack-sm": "16px",
+                        "gutter": "24px",
+                        "stack-lg": "64px"
+                    },
+                    "fontFamily": {
+                        "display-hero": ["Manrope"],
+                        "display-hero-mobile": ["Manrope"],
+                        "h3": ["Manrope"],
+                        "h2-mobile": ["Manrope"],
+                        "h2": ["Manrope"],
+                        "h1": ["Manrope"],
+                        "label-caps": ["Manrope"],
+                        "h1-mobile": ["Manrope"],
+                        "body-reg": ["Manrope"],
+                        "body-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "display-hero": ["88px", { "lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "display-hero-mobile": ["56px", { "lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "h3": ["20px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h2-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h2": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h1": ["56px", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.5", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h1-mobile": ["44px", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "body-reg": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "300" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Base styles */
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-surface');
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Solid surfaces for prefers-reduced-transparency */
+        .solid-panel {
+            background-color: theme('colors.surface-panel');
+            border-top: 1px solid theme('colors.glass-border-muted');
+            border-left: 1px solid theme('colors.glass-border-muted');
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 28px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+        }
+
+        .solid-panel:hover {
+            background-color: theme('colors.surface-elevated');
+            transform: translateY(-2px);
+        }
+        
+        .solid-nav {
+            background-color: theme('colors.background');
+        }
+
+        .gradient-text {
+            background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden pt-24">
+<!-- Ambient Depth Background -->
+<div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-secondary-container/10 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[#1e1b4b]/20 blur-[150px]"></div>
+</div>
+<!-- Navigation -->
+<nav class="solid-nav text-primary font-body-reg text-body-reg fixed top-0 w-full z-50 border-b border-glass-border-muted shadow-sm flex justify-between items-center max-w-container-max mx-auto px-margin-desktop h-20 transition-all duration-300">
+<a class="font-h3 text-h3 font-bold text-primary flex items-center" href="#">
+            Khelifi<span class="text-secondary-container">.</span>
+</a>
+<div class="hidden md:flex items-center gap-stack-md">
+<a class="text-secondary-container font-semibold hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="#work">Work</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="#capabilities">Capabilities</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="#process">Process</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="#about">About</a>
+</div>
+<button class="bg-secondary-container hover:bg-secondary-container/90 text-primary px-6 py-2 rounded-full font-semibold transition-all duration-300 active:scale-95 shadow-[0_0_15px_rgba(47,128,237,0.15)] flex items-center gap-2">
+            Contact
+            <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+</button>
+</nav>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col gap-[96px] pb-[96px]">
+<!-- Hero Section -->
+<section class="min-h-[716px] flex flex-col justify-center items-start mt-12 md:mt-0 relative">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-glass-border-muted bg-surface-panel mb-8">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary-container animate-pulse"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-widest uppercase">Available for Projects</span>
+</div>
+<h1 class="font-display-hero-mobile md:font-display-hero text-display-hero-mobile md:text-display-hero gradient-text max-w-4xl mb-6">
+                Engineering <br/> Refined Systems.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-12">
+                I build high-performance software architectures and precise interfaces. Focusing on clarity, scalability, and an anti-hype approach to digital product creation.
+            </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-secondary-container hover:bg-secondary-container/90 text-primary px-8 py-3 rounded-full font-semibold transition-all duration-300 active:scale-95 shadow-[0_0_20px_rgba(47,128,237,0.2)]">
+                    View Selected Work
+                </button>
+<button class="bg-surface-panel hover:bg-surface-elevated border border-glass-border-muted text-primary px-8 py-3 rounded-full font-semibold transition-all duration-300 active:scale-95">
+                    Read Manifesto
+                </button>
+</div>
+<!-- Tech Stack Marquee -->
+<div class="w-full mt-24 border-y border-glass-border-muted py-6 overflow-hidden relative">
+<div class="flex gap-12 items-center whitespace-nowrap animate-[marquee_20s_linear_infinite] opacity-60">
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors cursor-default">TypeScript</span>
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors cursor-default">React</span>
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors cursor-default">Node.js</span>
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors cursor-default">Python</span>
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors cursor-default">PostgreSQL</span>
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors cursor-default">Docker</span>
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors cursor-default">AWS</span>
+<!-- Duplicate for infinite effect -->
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors cursor-default">TypeScript</span>
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors cursor-default">React</span>
+<span class="font-h3 text-h3 text-text-dim hover:text-primary transition-colors cursor-default">Node.js</span>
+</div>
+</div>
+<style>
+                @keyframes marquee {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+            </style>
+</section>
+<!-- Selected Work (Asymmetric Layout) -->
+<section class="flex flex-col gap-stack-lg pt-12 border-t border-glass-border-muted/30" id="work">
+<div class="flex justify-between items-end mb-4">
+<h2 class="font-h2-mobile md:font-h2 text-h2-mobile md:text-h2 text-primary">Selected Work</h2>
+<a class="text-secondary-container hover:text-secondary-fixed transition-colors flex items-center gap-1 font-body-reg text-body-reg" href="#">
+                    View all <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</a>
+</div>
+<!-- Project 1 (Image Right) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<div class="md:col-span-5 flex flex-col gap-6 order-2 md:order-1">
+<span class="font-label-caps text-label-caps text-secondary-container uppercase tracking-widest">Fintech Platform</span>
+<h3 class="font-h1-mobile md:font-h1 text-h1-mobile md:text-h1 text-primary">Nexus Global</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                        A high-frequency trading interface prioritizing data density and real-time execution. Reduced visual noise to focus strictly on architectural clarity and performance metrics.
+                    </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-surface-elevated border border-glass-border-muted text-xs text-on-surface-variant">React</span>
+<span class="px-3 py-1 rounded-full bg-surface-elevated border border-glass-border-muted text-xs text-on-surface-variant">WebSockets</span>
+<span class="px-3 py-1 rounded-full bg-surface-elevated border border-glass-border-muted text-xs text-on-surface-variant">Rust</span>
+</div>
+</div>
+<div class="md:col-span-7 solid-panel p-2 aspect-[4/3] order-1 md:order-2 group overflow-hidden">
+<div class="w-full h-full bg-cover bg-center rounded-xl bg-surface-dim group-hover:scale-105 transition-transform duration-700" data-alt="A sleek, dark-mode financial dashboard interface displayed on a monitor, featuring intricate charts, data tables, and subtle blue glowing accents against a deep black background. High precision, minimalist UI design." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAobUP_OxWU9QkdNtVsXIYIsLsorT5r-Bto6fSo7kKp_syFGrV439wVl6wcv0WrfY4nas93ePk9_J0YLU3ckKF3ozJbftgrL2ZiyZLGsUb2MN_hoqjUnvbT3GXvtVdME9kWHRRn7chMWVRMgQPuGpTic_cq_jsBWbo6ZFrKjxFT9YyENwt7fYumoXUvQNF70cZi8jja1QnhRpwhn340VuNhZ7bGSfNBxPHz70YByxNIdlfgs0JIRXFZXthT7uWGjIGcEEKq9XRGhEyc')"></div>
+</div>
+</div>
+<!-- Project 2 (Image Left) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mt-12">
+<div class="md:col-span-7 solid-panel p-2 aspect-[4/3] group overflow-hidden">
+<div class="w-full h-full bg-cover bg-center rounded-xl bg-surface-dim group-hover:scale-105 transition-transform duration-700" data-alt="An abstract 3D visualization of interconnected data nodes in space, glowing with subtle teal and purple light against a dark void. Represents a complex automation architecture." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBP519bzKw9bqVEIKbq2Nn4bL4th0vDK9e2bOj3-UsFUFw69fThc9CkSdjPAvH0nXd7fDr81SoGsF1EE4SMORwzSOhs9XfNNwqXJhzqJ7O_MWgmmf5Outr2CbA2SQisZwk56My-_2eMbH98DIjhehv1nlmHw8OZQrktZmw-CZpbGQJ60ZAm0SfZeKCBzH_j7W6OuB6cGWdrdveZ0sFJaj-O5CxGFPvmYNOY3PM9cN67DtsUvzMfKLLZFIY6FR_IWdCkxNetNwp3gckl')"></div>
+</div>
+<div class="md:col-span-5 flex flex-col gap-6 md:pl-8">
+<span class="font-label-caps text-label-caps text-secondary-container uppercase tracking-widest">Workflow Engine</span>
+<h3 class="font-h1-mobile md:font-h1 text-h1-mobile md:text-h1 text-primary">Automata.io</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                        Visual node-based editor for defining complex backend automations. Built with an emphasis on tactile interaction and state predictability.
+                    </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-surface-elevated border border-glass-border-muted text-xs text-on-surface-variant">Vue 3</span>
+<span class="px-3 py-1 rounded-full bg-surface-elevated border border-glass-border-muted text-xs text-on-surface-variant">Canvas API</span>
+<span class="px-3 py-1 rounded-full bg-surface-elevated border border-glass-border-muted text-xs text-on-surface-variant">Go</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Capabilities (Bento Grid) -->
+<section class="flex flex-col gap-stack-md pt-12 border-t border-glass-border-muted/30" id="capabilities">
+<div class="mb-4">
+<h2 class="font-h2-mobile md:font-h2 text-h2-mobile md:text-h2 text-primary">Capabilities</h2>
+<p class="font-body-reg text-body-reg text-on-surface-variant mt-2 max-w-xl">A systematic approach across the entire engineering stack.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[240px]">
+<!-- Architecture Panel (Span 2) -->
+<div class="md:col-span-2 solid-panel p-8 flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-surface-elevated to-surface-panel opacity-50"></div>
+<div class="relative z-10 flex justify-between items-start">
+<span class="material-symbols-outlined text-secondary-container" style="font-size: 32px; font-variation-settings: 'FILL' 1;">account_tree</span>
+<div class="w-10 h-10 rounded-full border border-glass-border-muted flex items-center justify-center bg-surface-elevated group-hover:bg-secondary-container group-hover:border-secondary-container transition-colors duration-300">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" style="font-size: 16px;">arrow_outward</span>
+</div>
+</div>
+<div class="relative z-10 mt-auto">
+<h3 class="font-h3 text-h3 text-primary mb-2">Systems Architecture</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant text-sm max-w-sm">Designing scalable, resilient backend topologies optimized for low-latency data processing.</p>
+</div>
+</div>
+<!-- Interface Panel -->
+<div class="solid-panel p-8 flex flex-col justify-between group">
+<span class="material-symbols-outlined text-text-dim" style="font-size: 32px; font-variation-settings: 'FILL' 1;">design_services</span>
+<div class="mt-auto">
+<h3 class="font-h3 text-h3 text-primary mb-2">Interface Design</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant text-sm">Precise, accessible, and mathematically harmonious UI systems.</p>
+</div>
+</div>
+<!-- API Panel -->
+<div class="solid-panel p-8 flex flex-col justify-between group">
+<span class="material-symbols-outlined text-text-dim" style="font-size: 32px; font-variation-settings: 'FILL' 1;">api</span>
+<div class="mt-auto">
+<h3 class="font-h3 text-h3 text-primary mb-2">API Development</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant text-sm">RESTful and GraphQL service layers.</p>
+</div>
+</div>
+<!-- Automation Panel (Span 2) -->
+<div class="md:col-span-2 solid-panel p-8 flex flex-col justify-between group relative overflow-hidden">
+<div class="absolute right-0 bottom-0 opacity-10 pointer-events-none group-hover:opacity-20 transition-opacity duration-500">
+<span class="material-symbols-outlined" style="font-size: 180px;">sync_alt</span>
+</div>
+<span class="material-symbols-outlined text-secondary-container" style="font-size: 32px; font-variation-settings: 'FILL' 1;">smart_toy</span>
+<div class="mt-auto relative z-10">
+<h3 class="font-h3 text-h3 text-primary mb-2">Workflow Automation</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant text-sm max-w-sm">Connecting desperate systems through robust orchestration engines to eliminate manual overhead.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background text-on-surface font-body-reg text-body-reg w-full py-stack-lg border-t border-glass-border-muted flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto px-margin-desktop gap-gutter transition-all duration-300">
+<a class="font-h3 text-h3 font-bold text-primary flex items-center" href="#">
+            Khelifi<span class="text-secondary-container">.</span>
+</a>
+<p class="text-text-dim text-sm text-center md:text-left">
+            © 2024 Salmen Khelifi. All rights reserved. Built with Refined Dark Architecture.
+        </p>
+<div class="flex gap-6">
+<a class="text-text-dim hover:text-secondary-container transition-colors" href="#">LinkedIn</a>
+<a class="text-text-dim hover:text-secondary-container transition-colors" href="#">GitHub</a>
+<a class="text-text-dim hover:text-secondary-container transition-colors" href="#">Twitter</a>
+<a class="text-text-dim hover:text-secondary-container transition-colors" href="#">Email</a>
+</div>
+</footer>
+</body></html>

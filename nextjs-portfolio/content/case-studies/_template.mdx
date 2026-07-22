@@ -1,0 +1,25 @@
+---
+projectSlug: "template-slug"
+placement: "after-engineering-decisions"
+toc:
+  - id: "system-design-notes"
+    label: "System Design Notes"
+---
+
+{/*
+  CONTENT DISCIPLINE REMINDER:
+  Use ONLY verified real facts from projects.ts or owner-reviewed technical specifications.
+  Do NOT invent any new technical methodology, sub-steps, numbers, dates, or outcomes.
+  Every concrete technical claim in this narrative must trace directly to verified system facts.
+*/}
+
+<Callout variant="info" title="System Architecture Note">
+  This section details the concrete backend architecture and execution patterns.
+</Callout>
+
+<DecisionCard
+  title="Preset & Schema Dynamic Resolution"
+  problem="Supporting different service verticals without maintaining separate codebase forks."
+  decision="Implemented a centralized JSON preset schema dynamically populating database records."
+  result="Sub-10-second vertical preset switching with zero code changes."
+/>

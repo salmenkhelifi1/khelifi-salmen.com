@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  ArrowLeft,
   ArrowUpRight,
   Download,
   Mail,
@@ -22,34 +21,49 @@ import {
   freelancerUrl,
   githubUrl,
   linkedinUrl,
+  personId,
   siteUrl,
   upworkUrl,
 } from "@/data/schema";
+import SiteHeader from "@/components/SiteHeader";
+
+const title = "Resume — Full-Stack Developer & Automation Specialist";
+const description =
+  "Professional resume of Salmen Khelifi, a Full-Stack Developer & Automation Specialist with 5+ years of experience in React, Next.js, Node.js, Flutter, and AI automation.";
 
 export const metadata: Metadata = {
-  title: "Resume — Full-Stack Developer & Automation Specialist",
-  description:
-    "Professional resume of Salmen Khelifi, a Full-Stack Developer & Automation Specialist with 5+ years of experience in React, Next.js, Node.js, Flutter, and AI automation.",
+  title,
+  description,
   alternates: {
     canonical: "/resume",
   },
+  openGraph: {
+    title,
+    description,
+    url: `${siteUrl}/resume`,
+    type: "website",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/opengraph-image"],
+  },
 };
 
-const targetSlugs = [
-  "grammarai",
-  "chaktech",
-  "adaptifit",
-  "rentiora",
-  "ai-workflow-automation",
-  "anlingo",
-];
+const independentSlugs = ["anlingo", "adaptifit"];
+const clientSlugs = ["chaktech", "rentiora", "ai-workflow-automation"];
 
-const selectedProjects = targetSlugs
+const independentProjects = independentSlugs
+  .map((slug) => projects.find((p) => p.slug === slug))
+  .filter((p): p is NonNullable<typeof p> => !!p);
+
+const clientProjects = clientSlugs
   .map((slug) => projects.find((p) => p.slug === slug))
   .filter((p): p is NonNullable<typeof p> => !!p);
 
 const projectRoles: Record<string, string> = {
-  grammarai: "Lead Full-Stack & Mobile Developer",
   chaktech: "Lead Architect & Full-Stack Developer",
   adaptifit: "Full-Stack Developer & AI Specialist",
   rentiora: "Frontend Developer",
@@ -58,11 +72,6 @@ const projectRoles: Record<string, string> = {
 };
 
 const projectBullets: Record<string, string[]> = {
-  grammarai: [
-    "Developed a native cross-platform editor using Flutter & Riverpod featuring on-device OCR scanners and Speech-to-Text inputs.",
-    "Engineered a scalable Node.js/Express backend with Gemini, Deepgram, and ElevenLabs API integrations, cached via Redis for performance.",
-    "Integrated RevenueCat subscription workflows with Stripe and Firebase Cloud Functions to instantly gate premium entitlements.",
-  ],
   chaktech: [
     "Designed a multi-tenant resolver system using Next.js 16, React 19, and PostgreSQL to load custom themes/settings dynamically.",
     "Implemented cash-on-delivery checkout logic with promo codes, timbre fiscal, and atomic database revalidation to ensure order integrity.",
@@ -88,6 +97,25 @@ const projectBullets: Record<string, string[]> = {
     "Integrated payment logic via Stripe, Whop, and MoMo with raw-body webhook verification for automatic subscription updates.",
   ],
 };
+
+const coreSkills = [
+  {
+    title: "Product Engineering",
+    skills: "React, Next.js, Flutter, product architecture",
+  },
+  {
+    title: "Backend & Architecture",
+    skills: "Node, Express, PostgreSQL, Redis, multi-tenant, Payload CMS",
+  },
+  {
+    title: "Automation & Integrations",
+    skills: "n8n, Make.com, APIs, webhooks",
+  },
+  {
+    title: "Mobile & Applied AI",
+    skills: "Flutter, OpenAI, Gemini, on-device ML",
+  },
+];
 
 const knowsAbout = [
   "React",
@@ -116,9 +144,11 @@ const knowsAbout = [
 const resumeJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": personId,
   name: "Salmen Khelifi",
   jobTitle: "Full-Stack Developer & Automation Specialist",
-  url: `${siteUrl}/resume`,
+  url: siteUrl,
+  mainEntityOfPage: `${siteUrl}/resume`,
   email: "contact@khelifi-salmen.com",
   telephone: "+84961566302",
   address: {
@@ -134,15 +164,70 @@ const resumeJsonLd = {
   knowsAbout,
 };
 
+function renderProjectEntry(project: (typeof projects)[number]) {
+  const timeframe = project.snapshot?.timeframe;
+  const techBadges = [
+    ...(project.techStack.frontend || []),
+    ...(project.techStack.backend || []),
+    ...(project.techStack.tools || []),
+  ].slice(0, 5);
+
+  return (
+    <div key={project.slug} className="print-project">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1">
+        <div>
+          <h4 className="text-lg font-bold text-[var(--text-primary)] print-text-primary hover:text-[var(--accent)] transition-colors">
+            <Link
+              href={`/projects/${project.slug}`}
+              className="print-link inline-flex min-h-11 items-center gap-1.5"
+            >
+              {project.title}
+              <ExternalLink className="w-3.5 h-3.5 no-print opacity-60" />
+            </Link>
+          </h4>
+          <p className="text-sm text-[var(--accent)] font-medium print-accent">
+            {projectRoles[project.slug]}
+          </p>
+        </div>
+        <div className="sm:text-right">
+          <span className="text-xs text-[var(--text-tertiary)] print-text-muted block">
+            {project.category}
+          </span>
+          {timeframe && (
+            <span className="text-xs text-[var(--text-tertiary)] print-text-muted block">
+              {timeframe}
+            </span>
+          )}
+        </div>
+      </div>
+      <ul className="list-disc pl-5 mb-3 text-sm text-[var(--text-secondary)] space-y-1.5 print-text-secondary">
+        {projectBullets[project.slug]?.map((bullet, idx) => (
+          <li key={idx}>{bullet}</li>
+        ))}
+      </ul>
+      <div className="flex flex-wrap gap-1.5 mt-2">
+        <span className="text-xs text-[var(--text-tertiary)] mr-1 pt-1 print-text-muted font-semibold">
+          Tech stack:
+        </span>
+        {techBadges.map((tech) => (
+          <span
+            key={tech}
+            className="text-xs px-2.5 py-0.5 rounded-full border border-[var(--border-muted)] bg-[var(--bg-surface)] text-[var(--text-secondary)] tech-badge print-text-primary"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function ResumePage() {
-  const selectedReviews = [
-    testimonials.find(
-      (t) =>
-        t.author === "Austin L." &&
-        t.projectTitle === "n8n Automation Workflows Specialist",
-    ),
-    testimonials.find((t) => t.author === "Robert D."),
-  ].filter((t): t is NonNullable<typeof t> => !!t);
+  const featuredReview = testimonials.find(
+    (t) =>
+      t.author === "Austin L." &&
+      t.projectTitle === "n8n Automation Workflows Specialist",
+  );
 
   return (
     <div className="min-h-screen bg-[var(--bg-page)] text-[var(--text-primary)] font-sans antialiased pb-20 pt-32">
@@ -162,7 +247,7 @@ export default function ResumePage() {
             color: #000000 !important;
             background-image: none !important;
           }
-          .no-print {
+          .no-print, nav, header, footer, .bg-blooms {
             display: none !important;
           }
           .print-header {
@@ -236,22 +321,9 @@ export default function ResumePage() {
         }}
       />
 
-      <nav className="nav-blur fixed top-0 z-50 w-full no-print">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-          <Link
-            href="/"
-            className="inline-flex min-h-11 items-center text-xl font-bold tracking-tight text-[var(--text-primary)]"
-          >
-            Khelifi<span className="text-[var(--accent)]">.</span>
-          </Link>
-          <Link
-            href="/"
-            className="inline-flex min-h-11 items-center gap-2 text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back
-          </Link>
-        </div>
-      </nav>
+      <div className="no-print">
+        <SiteHeader backHref="/" backLabel="Back to home" />
+      </div>
 
       <main className="mx-auto max-w-4xl px-6 resume-container">
         <header className="border-b border-[var(--border-muted)] pb-8 mb-10 print-header">
@@ -263,7 +335,7 @@ export default function ResumePage() {
               <p className="text-xl font-medium text-[var(--accent)] mb-4 print-accent">
                 Full-Stack Developer & Automation Specialist
               </p>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-[var(--text-secondary)] print-text-secondary">
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-[var(--text-tertiary)] no-print" />
@@ -271,13 +343,13 @@ export default function ResumePage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[var(--text-tertiary)] no-print" />
-                  <a href="mailto:contact@khelifi-salmen.com" className="hover:text-[var(--text-primary)]">
+                  <a href="mailto:contact@khelifi-salmen.com" className="inline-flex min-h-11 items-center hover:text-[var(--text-primary)]">
                     contact@khelifi-salmen.com
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[var(--text-tertiary)] no-print" />
-                  <a href="tel:+84961566302" className="hover:text-[var(--text-primary)]">
+                  <a href="tel:+84961566302" className="inline-flex min-h-11 items-center hover:text-[var(--text-primary)]">
                     +84961566302
                   </a>
                 </div>
@@ -287,19 +359,19 @@ export default function ResumePage() {
                     href={siteUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="print-link flex items-center gap-1 hover:text-[var(--text-primary)]"
+                    className="print-link inline-flex min-h-11 items-center gap-1 hover:text-[var(--text-primary)]"
                   >
                     {siteUrl.replace("https://", "")} <ArrowUpRight className="w-3 h-3 no-print" />
                   </a>
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-4 mt-4 text-xs text-[var(--text-tertiary)] print-text-muted">
+              <div className="flex flex-wrap items-center gap-4 mt-4 text-xs text-[var(--text-tertiary)] print-text-muted">
                 <a
                   href={linkedinUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="print-link underline hover:text-[var(--text-primary)]"
+                  className="print-link inline-flex min-h-11 items-center underline hover:text-[var(--text-primary)]"
                 >
                   LinkedIn
                 </a>
@@ -308,7 +380,7 @@ export default function ResumePage() {
                   href={githubUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="print-link underline hover:text-[var(--text-primary)]"
+                  className="print-link inline-flex min-h-11 items-center underline hover:text-[var(--text-primary)]"
                 >
                   GitHub
                 </a>
@@ -317,7 +389,7 @@ export default function ResumePage() {
                   href={upworkUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="print-link underline hover:text-[var(--text-primary)]"
+                  className="print-link inline-flex min-h-11 items-center underline hover:text-[var(--text-primary)]"
                 >
                   Upwork
                 </a>
@@ -326,7 +398,7 @@ export default function ResumePage() {
                   href={freelancerUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="print-link underline hover:text-[var(--text-primary)]"
+                  className="print-link inline-flex min-h-11 items-center underline hover:text-[var(--text-primary)]"
                 >
                   Freelancer.com (4.9/5, 8 reviews)
                 </a>
@@ -337,17 +409,17 @@ export default function ResumePage() {
               <a
                 href="/salmen-khelifi-cv.pdf"
                 download
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[var(--accent)] text-white text-sm font-bold shadow-[var(--shadow-card)] hover:bg-[#3b8df3] transition-colors"
+                className="cta-button cta-primary inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold text-[var(--text-primary)]"
               >
-                <Download className="w-4 h-4" /> Download PDF
+                <Download className="w-4 h-4" aria-hidden="true" /> Download PDF
               </a>
               <a
                 href={bookingUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-[var(--border-muted)] bg-[var(--bg-surface)] text-sm font-bold text-[var(--text-primary)] hover:border-[var(--border-active)] hover:bg-[var(--bg-surface-elevated)] transition-colors"
+                className="cta-button cta-secondary inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold text-[var(--text-primary)]"
               >
-                Book a call <ArrowUpRight className="w-4 h-4" />
+                Book a call <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -358,7 +430,16 @@ export default function ResumePage() {
             <Briefcase className="w-5 h-5 text-[var(--accent)] no-print" /> Professional Summary
           </h2>
           <p className="text-[var(--text-secondary)] leading-relaxed print-text-secondary">
-            Results-driven Full-Stack Developer and Workflow Automation Specialist with over 5 years of professional experience building scalable digital ecosystems. Expert at bridging advanced frontend interfaces, secure backend structures, and automated AI logic to solve real-world operational challenges. Proven track record of delivering revenue-focused solutions for clients worldwide with a 4.9/5 rating on Freelancer.com.
+            Full-stack product engineer and automation specialist with 5+ years building web, mobile, and SaaS systems. I own delivery across architecture, backend, frontend, integrations, and deployment, with particular experience in multi-tenant platforms and operational automation. I maintain a{" "}
+            <a
+              href={freelancerUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="print-link inline-flex min-h-11 items-center underline hover:text-[var(--text-primary)]"
+            >
+              4.9/5 rating across 8 reviews on Freelancer.com
+            </a>
+            .
           </p>
         </section>
 
@@ -366,112 +447,75 @@ export default function ResumePage() {
           <h2 id="skills-heading" className="text-xl font-bold mb-4 flex items-center gap-2 text-[var(--text-primary)] border-b border-[var(--border-subtle)] pb-2 print-text-primary print-border">
             <Layers className="w-5 h-5 text-[var(--accent)] no-print" /> Core Skills
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 print-skills-grid">
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 modern-card">
-              <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">Frontend</h3>
-              <p className="text-sm text-[var(--text-secondary)] print-text-secondary">React, Next.js, WordPress, Shopify, Payload CMS</p>
-            </div>
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 modern-card">
-              <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">Backend</h3>
-              <p className="text-sm text-[var(--text-secondary)] print-text-secondary">Node.js, Express, PostgreSQL, MongoDB, Redis, Firebase, Typesense</p>
-            </div>
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 modern-card">
-              <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">Mobile</h3>
-              <p className="text-sm text-[var(--text-secondary)] print-text-secondary">Flutter, Dart</p>
-            </div>
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 modern-card">
-              <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">DevOps & Infra</h3>
-              <p className="text-sm text-[var(--text-secondary)] print-text-secondary">Docker, Linux (Ubuntu), DevOps, CI/CD</p>
-            </div>
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 modern-card">
-              <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">Automation</h3>
-              <p className="text-sm text-[var(--text-secondary)] print-text-secondary">n8n, Make.com</p>
-            </div>
-            <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/30 modern-card">
-              <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">AI</h3>
-              <p className="text-sm text-[var(--text-secondary)] print-text-secondary">OpenAI, Gemini, Vapi AI, On-device ML</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-10 print-section" aria-labelledby="experience-heading">
-          <h2 id="experience-heading" className="text-xl font-bold mb-6 flex items-center gap-2 text-[var(--text-primary)] border-b border-[var(--border-subtle)] pb-2 print-text-primary print-border">
-            <Briefcase className="w-5 h-5 text-[var(--accent)] no-print" /> Selected Experience / Projects
-          </h2>
-          <div className="space-y-8">
-            {selectedProjects.map((project) => (
-              <div key={project.slug} className="print-project">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1">
-                  <div>
-                    <h3 className="text-lg font-bold text-[var(--text-primary)] print-text-primary hover:text-[var(--accent)] transition-colors">
-                      <Link
-                        href={`/projects/${project.slug}`}
-                        className="print-link flex items-center gap-1.5"
-                      >
-                        {project.title}
-                        <ExternalLink className="w-3.5 h-3.5 no-print opacity-60" />
-                      </Link>
-                    </h3>
-                    <p className="text-sm text-[var(--accent)] font-medium print-accent">
-                      {projectRoles[project.slug]}
-                    </p>
-                  </div>
-                  <span className="text-xs text-[var(--text-tertiary)] print-text-muted">
-                    {project.category}
-                  </span>
-                </div>
-                <ul className="list-disc pl-5 mb-3 text-sm text-[var(--text-secondary)] space-y-1.5 print-text-secondary">
-                  {projectBullets[project.slug]?.map((bullet, idx) => (
-                    <li key={idx}>{bullet}</li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-1.5 mt-2">
-                  <span className="text-xs text-[var(--text-tertiary)] mr-1 pt-1 print-text-muted font-semibold">Tech stack:</span>
-                  {[
-                    ...(project.techStack.frontend || []),
-                    ...(project.techStack.backend || []),
-                    ...(project.techStack.tools || []),
-                  ].map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-xs px-2.5 py-0.5 rounded-full border border-[var(--border-muted)] bg-[var(--bg-surface)] text-[var(--text-secondary)] tech-badge print-text-primary"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 print-skills-grid">
+            {coreSkills.map((cat) => (
+              <div
+                key={cat.title}
+                className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]"
+              >
+                <h3 className="font-semibold mb-2 text-[var(--text-primary)] print-text-primary">
+                  {cat.title}
+                </h3>
+                <p className="text-sm text-[var(--text-secondary)] print-text-secondary">
+                  {cat.skills}
+                </p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Client Feedback */}
-        <section className="mb-10 print-section" aria-labelledby="feedback-heading">
-          <h2 id="feedback-heading" className="text-xl font-bold mb-4 flex items-center gap-2 text-[var(--text-primary)] border-b border-[var(--border-subtle)] pb-2 print-text-primary print-border">
-            <MessageSquare className="w-5 h-5 text-[var(--accent)] no-print" /> Client Feedback
+        <section className="mb-10 print-section" aria-labelledby="experience-heading">
+          <h2 id="experience-heading" className="text-xl font-bold mb-6 flex items-center gap-2 text-[var(--text-primary)] border-b border-[var(--border-subtle)] pb-2 print-text-primary print-border">
+            <Briefcase className="w-5 h-5 text-[var(--accent)] no-print" /> Selected Experience & Projects
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 print-grid">
-            {selectedReviews.map((review, idx) => (
-              <blockquote
-                key={idx}
-                className="p-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/20 relative print-project"
-              >
-                <div className="flex gap-1 text-[var(--accent)] mb-3 no-print">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="w-4.5 h-4.5 fill-current" />
-                  ))}
-                </div>
-                <p className="text-sm italic text-[var(--text-secondary)] mb-4 print-text-secondary">
-                  &ldquo;{review.quote}&rdquo;
-                </p>
-                <cite className="not-italic text-xs block">
-                  <span className="font-bold text-[var(--text-primary)] print-text-primary block">{review.author}</span>
-                  <span className="text-[var(--text-tertiary)] print-text-muted">{review.projectTitle}</span>
-                </cite>
-              </blockquote>
-            ))}
+          
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-md font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-4 print-text-secondary">
+                Independent Products
+              </h3>
+              <div className="space-y-6">
+                {independentProjects.map(renderProjectEntry)}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-md font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-4 print-text-secondary">
+                Client & Freelance Projects
+              </h3>
+              <div className="space-y-6">
+                {clientProjects.map(renderProjectEntry)}
+              </div>
+            </div>
           </div>
         </section>
+
+        {/* Client Feedback */}
+        {featuredReview && (
+          <section className="mb-10 print-section" aria-labelledby="feedback-heading">
+            <h2 id="feedback-heading" className="text-xl font-bold mb-4 flex items-center gap-2 text-[var(--text-primary)] border-b border-[var(--border-subtle)] pb-2 print-text-primary print-border">
+              <MessageSquare className="w-5 h-5 text-[var(--accent)] no-print" /> Client Feedback
+            </h2>
+            <blockquote className="p-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] relative print-project">
+              <div className="flex gap-1 text-[var(--accent)] mb-3 no-print" aria-label={`${featuredReview.rating} out of 5 stars`}>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="w-4.5 h-4.5 fill-current" aria-hidden="true" />
+                ))}
+              </div>
+              <p className="text-sm italic text-[var(--text-secondary)] mb-4 print-text-secondary">
+                &ldquo;{featuredReview.quote}&rdquo;
+              </p>
+              <footer className="not-italic text-xs block">
+                <span className="font-bold text-[var(--text-primary)] print-text-primary block">
+                  {featuredReview.author}
+                </span>
+                <span className="text-[var(--text-tertiary)] print-text-muted">
+                  {featuredReview.projectTitle}
+                </span>
+              </footer>
+            </blockquote>
+          </section>
+        )}
 
         {/* Languages */}
         <section className="print-section" aria-labelledby="languages-heading">
@@ -483,7 +527,7 @@ export default function ResumePage() {
               <span className="font-semibold text-[var(--text-primary)] print-text-primary">Arabic:</span> Native
             </div>
             <div>
-              <span className="font-semibold text-[var(--text-primary)] print-text-primary">French:</span> Fluent
+              <span className="font-semibold text-[var(--text-primary)] print-text-primary">French:</span> Basic (understand well, speak a little)
             </div>
             <div>
               <span className="font-semibold text-[var(--text-primary)] print-text-primary">English:</span> Professional

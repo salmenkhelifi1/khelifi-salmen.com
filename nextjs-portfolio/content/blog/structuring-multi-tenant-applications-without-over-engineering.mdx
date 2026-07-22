@@ -1,0 +1,37 @@
+---
+title: "How I structure multi-tenant applications without over-engineering"
+slug: "structuring-multi-tenant-applications-without-over-engineering"
+excerpt: "A draft guide to the verified tenant-resolution and isolation decisions used in the ChakTech platform."
+status: "draft"
+category: "Architecture"
+tags:
+  - "Multi-tenant"
+  - "Next.js"
+  - "PostgreSQL"
+featured: false
+author: "Salmen Khelifi"
+relatedCaseStudies:
+  - "chaktech"
+---
+
+## The problem boundary
+
+ChakTech resolves each request against a registered tenant domain and returns tenant-scoped branding, commerce settings, and UI configuration.
+
+> [OWNER-TODO: Confirm the tenant model, trust boundaries, and scale assumptions that shaped the design.]
+
+## The minimum useful tenant context
+
+> [OWNER-TODO: List the verified fields carried through a request and where each is resolved.]
+
+## Isolation and validation
+
+> [OWNER-TODO: Document the enforced database, API, authentication, and cache boundaries from the code.]
+
+## What I deliberately did not abstract
+
+> [OWNER-TODO: Add concrete examples of abstractions or infrastructure deferred because the current product did not need them.]
+
+## When this structure should evolve
+
+> [OWNER-TODO: State measurable limits that would justify changing the architecture.]

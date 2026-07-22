@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Capabilities - Khelifi.</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#c6c6c8",
+                      "surface-container-low": "#1c1b1e",
+                      "tertiary-container": "#e3e2e7",
+                      "surface-container-highest": "#353437",
+                      "on-tertiary": "#2f3034",
+                      "on-error": "#690005",
+                      "on-secondary-fixed": "#001b3f",
+                      "surface-elevated": "#16161f",
+                      "glass-border-muted": "rgba(255,255,255,0.14)",
+                      "surface-container-lowest": "#0e0e10",
+                      "secondary-fixed-dim": "#abc7ff",
+                      "glass-border-bright": "rgba(255,255,255,0.35)",
+                      "secondary-container": "#046dd9",
+                      "primary": "#ffffff",
+                      "background": "#131315",
+                      "surface-container": "#201f22",
+                      "error-container": "#93000a",
+                      "inverse-on-surface": "#313032",
+                      "error": "#ffb4ab",
+                      "primary-fixed": "#e2e2e4",
+                      "text-dim": "#515156",
+                      "on-background": "#e5e1e4",
+                      "surface-variant": "#353437",
+                      "primary-fixed-dim": "#c6c6c8",
+                      "outline-variant": "#44474a",
+                      "on-secondary-container": "#f2f4ff",
+                      "tertiary-fixed-dim": "#c6c6cb",
+                      "on-primary": "#2f3132",
+                      "on-secondary-fixed-variant": "#00458e",
+                      "on-tertiary-container": "#636469",
+                      "primary-container": "#e2e2e4",
+                      "surface-container-high": "#2a2a2c",
+                      "on-surface-variant": "#c5c7c9",
+                      "on-primary-fixed-variant": "#454749",
+                      "outline": "#8f9194",
+                      "on-tertiary-fixed": "#1a1b1f",
+                      "on-primary-container": "#636466",
+                      "secondary-fixed": "#d7e3ff",
+                      "on-secondary": "#002f65",
+                      "tertiary": "#ffffff",
+                      "on-error-container": "#ffdad6",
+                      "secondary": "#abc7ff",
+                      "surface-dim": "#131315",
+                      "accent-glow": "rgba(47,128,237,0.15)",
+                      "on-tertiary-fixed-variant": "#46464b",
+                      "tertiary-fixed": "#e3e2e7",
+                      "surface-panel": "#0e0e12",
+                      "on-surface": "#e5e1e4",
+                      "inverse-surface": "#e5e1e4",
+                      "inverse-primary": "#5d5e60",
+                      "surface-bright": "#39393b",
+                      "surface": "#131315",
+                      "on-primary-fixed": "#1a1c1d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-lg": "64px",
+                      "unit": "8px",
+                      "stack-sm": "16px",
+                      "gutter": "24px",
+                      "stack-md": "32px",
+                      "container-max": "1280px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "h1": [
+                              "Manrope"
+                      ],
+                      "display-hero": [
+                              "Manrope"
+                      ],
+                      "label-caps": [
+                              "Manrope"
+                      ],
+                      "h2-mobile": [
+                              "Manrope"
+                      ],
+                      "h1-mobile": [
+                              "Manrope"
+                      ],
+                      "display-hero-mobile": [
+                              "Manrope"
+                      ],
+                      "body-lg": [
+                              "Manrope"
+                      ],
+                      "h3": [
+                              "Manrope"
+                      ],
+                      "body-reg": [
+                              "Manrope"
+                      ],
+                      "h2": [
+                              "Manrope"
+                      ]
+              },
+              "fontSize": {
+                      "h1": [
+                              "56px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.03em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-hero": [
+                              "88px",
+                              {
+                                      "lineHeight": "1.05",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h1-mobile": [
+                              "44px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.03em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-hero-mobile": [
+                              "56px",
+                              {
+                                      "lineHeight": "1.05",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "300"
+                              }
+                      ],
+                      "h3": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-reg": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h2": [
+                              "36px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #08080a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            border-radius: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .liquid-glass:hover {
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .ambient-bloom {
+            position: fixed;
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle, rgba(47,128,237,0.05) 0%, rgba(8,8,10,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            top: -20vh;
+            left: -20vw;
+            animation: drift 30s infinite alternate linear;
+        }
+
+        .ambient-bloom-2 {
+            position: fixed;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(138,43,226,0.03) 0%, rgba(8,8,10,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            bottom: -10vh;
+            right: -10vw;
+            animation: drift-reverse 40s infinite alternate linear;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(5vw, 10vh) scale(1.1); }
+        }
+
+        @keyframes drift-reverse {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-5vw, -5vh) scale(1.2); }
+        }
+
+        .btn-primary {
+            background-color: #2f80ed;
+            color: #ffffff;
+            border-radius: 9999px;
+            padding: 12px 24px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 20px rgba(47, 128, 237, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(47, 128, 237, 0.4);
+            transform: scale(0.97);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-radius: 9999px;
+            padding: 12px 24px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: scale(0.97);
+        }
+        
+        .status-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            padding: 6px 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #2f80ed;
+            box-shadow: 0 0 8px #2f80ed;
+        }
+
+    </style>
+</head>
+<body class="font-body-reg text-body-reg antialiased selection:bg-secondary-container selection:text-white">
+<div class="ambient-bloom"></div>
+<div class="ambient-bloom-2"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-glass-border-muted shadow-sm flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-h3 text-h3 font-bold text-primary flex items-center">
+            Khelifi<span style="color: #2f80ed;">.</span>
+</div>
+<!-- Web Nav -->
+<div class="hidden md:flex gap-gutter items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200" href="#">Work</a>
+<a class="text-primary font-semibold border-b-2 border-secondary-container pb-1 hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200" href="#">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200" href="#">Stack</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200" href="#">About</a>
+</div>
+<a class="btn-primary text-sm hidden md:inline-flex" href="#">
+            Let's Talk
+        </a>
+<!-- Mobile Nav Toggle (Visual only for structural completeness) -->
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+<main class="pt-[120px] pb-stack-lg max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Section -->
+<section class="min-h-[614px] flex flex-col justify-center items-start gap-stack-md mb-32 relative">
+<div class="status-badge font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">
+<div class="status-dot"></div>
+                Capabilities &amp; Services
+            </div>
+<h1 class="font-display-hero-mobile text-display-hero-mobile md:font-display-hero md:text-display-hero text-primary max-w-4xl leading-tight">
+                I build and improve systems across <span class="text-surface-tint">product, engineering and automation.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-4">
+                Architecting robust solutions that scale. From 0-to-1 product development to optimizing complex legacy infrastructure.
+            </p>
+<div class="mt-8">
+<a class="btn-primary font-h3 text-h3 px-8 py-4" href="#discovery">
+                    Start a Technical Discovery Conversation
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- Capabilities Layout -->
+<section class="flex flex-col gap-32">
+<!-- 1. Build a new product -->
+<article class="flex flex-col md:flex-row gap-gutter md:gap-16 items-center">
+<div class="w-full md:w-1/2 flex flex-col gap-stack-sm order-2 md:order-1">
+<h2 class="font-h2-mobile text-h2-mobile md:font-h2 md:text-h2 text-primary">Build a new product</h2>
+<p class="font-body-reg text-body-reg text-text-dim uppercase tracking-wider mb-2">SaaS • Dashboards • Booking systems</p>
+<div class="space-y-4 text-on-surface-variant">
+<p><strong class="text-primary font-semibold">The Problem:</strong> Translating a core business idea into a functional, scalable application without accumulating crippling technical debt early on.</p>
+<p><strong class="text-primary font-semibold">Delivery:</strong> End-to-end development, from initial architecture selection to final deployment, ensuring modern practices are embedded from day one.</p>
+<p><strong class="text-primary font-semibold">Ownership:</strong> Full stack responsibility. Handling database schema design, robust backend APIs, and responsive frontend interfaces.</p>
+<p><strong class="text-primary font-semibold">Client Value:</strong> Speed to market with a solid foundation. You get a reliable product that can handle growth, not a fragile prototype.</p>
+</div>
+<div class="mt-6 p-4 liquid-glass inline-block self-start">
+<span class="text-xs text-text-dim uppercase tracking-wide block mb-1">Project Reference</span>
+<span class="font-h3 text-h3 text-primary">Global Logistics SaaS Dashboard</span>
+</div>
+</div>
+<div class="w-full md:w-1/2 order-1 md:order-2">
+<div class="liquid-glass p-8 relative overflow-hidden h-[400px] flex items-center justify-center">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen" data-alt="A highly detailed, sleek, abstract 3D architectural rendering representing 'building a new product'. Features glowing cyan and blue neon lines forming wireframe structures rising from a dark, liquid-like obsidian surface. The lighting is cinematic, casting soft reflections. The mood is futuristic, precise, and high-tech, emphasizing strong foundations and modern software engineering in a refined dark mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjwt_CxGR2--_Wdv-cO0rNDx0P3psRxLfPsGzOA6AFIlnLFk0fP7RB8_-2E6mntxxSnOMsQg4AjMUrRvU6zmyHElmn16MAl7fSca0Zk8ZHHUtT4R8jodxpt7XvhgnK0UQgOjxOSVXDFPRh5tx4PULQC51Dhy22IxN80blnjiLoziYRktO4ZmYmlD8vQ8FXcLWzfMghzj47kZ3gCe1a5VpgDnaY6MuooRvrCB2LFOgtPjl019Ja58VdQ6DI5gAVTgZG_TWzsYqaeZC3"/>
+</div>
+</div>
+</article>
+<!-- 2. Improve an existing system -->
+<article class="flex flex-col md:flex-row gap-gutter md:gap-16 items-center">
+<div class="w-full md:w-5/12 order-1">
+<div class="liquid-glass p-8 relative overflow-hidden h-[500px] flex flex-col gap-4">
+<div class="flex-1 border border-glass-border-muted rounded-xl bg-surface-container-low/50 relative overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center opacity-30">
+<span class="material-symbols-outlined" style="font-size: 120px;">speed</span>
+</div>
+<img class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay" data-alt="A detailed abstract macro shot of metallic servers or complex mechanical gears seamlessly meshing together, glowing with subtle steel-blue light against a pitch-black background. Represents performance optimization and system improvement. High contrast, sharp focus on the interlocking mechanisms, conveying precision, speed, and upgraded architecture in a premium dark engineering style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-G4HSrRm-r2dAVKDDb2hlQVZPwmHqBy7OqdgqtoS-uoqf0Tgy78DHpGP4OZT9j5i0MWTilecP9Qr3sIEzBq7RMw1A5TEZ1CO4qbiXpQEO2RIoCnHdxs6PcDkcXgnpGaboUrIMVIxkVkbLc0U0Qxz1eNTocCchU0GOtulNc1FHrUxnyi-fNu4kvhFHcS4osKki4gr_TY2vKvlJ2K9A2kk2thFiyWzx-uZj6T43XvTFhzoDegDUOmD95lS2CAgoEAUbQSk8f12N8Zrv"/>
+</div>
+</div>
+</div>
+<div class="w-full md:w-7/12 flex flex-col gap-stack-sm order-2 pl-0 md:pl-8">
+<h2 class="font-h2-mobile text-h2-mobile md:font-h2 md:text-h2 text-primary">Improve an existing system</h2>
+<p class="font-body-reg text-body-reg text-text-dim uppercase tracking-wider mb-2">Architecture • Performance • Migrations</p>
+<div class="space-y-4 text-on-surface-variant">
+<p><strong class="text-primary font-semibold">The Problem:</strong> Legacy applications suffering from slow load times, frequent downtime, or outdated frameworks that hinder new feature development.</p>
+<p><strong class="text-primary font-semibold">Delivery:</strong> Strategic refactoring, bottleneck identification, and phased migrations to modern stacks without disrupting active operations.</p>
+<p><strong class="text-primary font-semibold">Ownership:</strong> Deep dive audits, optimizing queries, updating core dependencies, and implementing robust CI/CD pipelines for safer deployments.</p>
+<p><strong class="text-primary font-semibold">Client Value:</strong> Reduced operational costs, happier users due to increased speed, and a revitalized codebase ready for the next phase of growth.</p>
+</div>
+<div class="mt-6 p-4 liquid-glass inline-block self-start">
+<span class="text-xs text-text-dim uppercase tracking-wide block mb-1">Project Reference</span>
+<span class="font-h3 text-h3 text-primary">Fintech Monolith to Microservices Migration</span>
+</div>
+</div>
+</article>
+<!-- 3. Automate operations (Bento-ish approach) -->
+<article class="flex flex-col gap-stack-md">
+<div class="max-w-2xl">
+<h2 class="font-h2-mobile text-h2-mobile md:font-h2 md:text-h2 text-primary mb-2">Automate operations</h2>
+<p class="font-body-reg text-body-reg text-text-dim uppercase tracking-wider">n8n workflows • AI processes • CRM sync</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="liquid-glass p-8 md:col-span-2 flex flex-col justify-between min-h-[300px]">
+<div>
+<p class="text-primary font-semibold mb-2">The Problem &amp; Delivery</p>
+<p class="text-on-surface-variant">Manual, repetitive tasks consuming team bandwidth and leading to human error. I design and deploy resilient, self-healing automation workflows that connect disparate tools, process data automatically, and trigger actions based on complex logic.</p>
+</div>
+<div class="mt-8 flex items-center gap-4">
+<div class="h-[1px] flex-1 bg-gradient-to-r from-transparent via-glass-border-muted to-transparent"></div>
+<span class="material-symbols-outlined text-secondary-container">account_tree</span>
+<div class="h-[1px] flex-1 bg-gradient-to-r from-transparent via-glass-border-muted to-transparent"></div>
+</div>
+</div>
+<div class="liquid-glass p-8 flex flex-col justify-center">
+<p class="text-primary font-semibold mb-2">Client Value</p>
+<p class="text-on-surface-variant text-sm">Exponential time savings. Teams focus on strategy while the infrastructure handles the execution invisibly and reliably.</p>
+</div>
+<div class="liquid-glass p-8 flex flex-col justify-center">
+<p class="text-primary font-semibold mb-2">Ownership</p>
+<p class="text-on-surface-variant text-sm">Self-hosted n8n management, custom node creation, and API rate-limit handling.</p>
+</div>
+<div class="liquid-glass p-8 md:col-span-2 relative overflow-hidden group">
+<div class="absolute inset-0 bg-surface-container-low/80 z-10 p-8 flex flex-col justify-end transition-opacity duration-300">
+<span class="text-xs text-text-dim uppercase tracking-wide block mb-1">Project Reference</span>
+<span class="font-h3 text-h3 text-primary">Automated Lead Qualification &amp; CRM Sync</span>
+</div>
+<img class="absolute inset-0 w-full h-full object-cover opacity-50 z-0" data-alt="A highly detailed abstract visualization of digital workflows and automation. Features glowing interconnected nodes and thin laser lines transmitting data pulses across a dark, glass-like grid. Colors are deep purples and bright steel-blues (#2f80ed) against a near-black void. The aesthetic is clean, professional, and represents 'liquid glass' software engineering and seamless data flow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdgpOG650C39QSAMdJLitKbjnZaiPdTC4_A-GpL2WX8l3z7F6DbhsiDjrMpttxHPhu61zqsH93rhwzW0hHhaZQS21XV9nw4Ed3DtqeLFcbqjGbZzJIbyyVBNjpzKYhJjn6Om7dJHThBdCh_HzxYPbaCJQAPdS82s5bbKUY_wSXmzkg3CJJlu5vI-oyMG3bAQbM94Up0zQfvgr1jB_JeyiLTUSlt-DoaH52cTLDA3kHGYp3eSehv6SuWgL_-8Qzj-e8sAYiOIhUmid1"/>
+</div>
+</div>
+</article>
+<!-- 4. Connect disconnected systems -->
+<article class="flex flex-col md:flex-row gap-gutter md:gap-16 items-center">
+<div class="w-full md:w-1/2 flex flex-col gap-stack-sm order-2 md:order-1 pl-0 md:pl-16">
+<h2 class="font-h2-mobile text-h2-mobile md:font-h2 md:text-h2 text-primary">Connect disconnected systems</h2>
+<p class="font-body-reg text-body-reg text-text-dim uppercase tracking-wider mb-2">APIs • Payments • Custom integrations</p>
+<div class="space-y-4 text-on-surface-variant border-l border-glass-border-muted pl-6 py-2">
+<p><strong class="text-primary font-semibold">The Problem:</strong> Valuable data siloed across different platforms, forcing manual data entry and preventing a unified view of business operations.</p>
+<p><strong class="text-primary font-semibold">Delivery:</strong> Building robust middleware and custom API wrappers to facilitate secure, real-time data exchange between incompatible systems.</p>
+<p><strong class="text-primary font-semibold">Ownership:</strong> Handling authentication (OAuth, JWT), managing webhooks, ensuring data consistency, and implementing fallback mechanisms for API failures.</p>
+<p><strong class="text-primary font-semibold">Client Value:</strong> A cohesive tech ecosystem. Automated billing, synchronized inventory, and unified analytics without changing the core tools your team loves.</p>
+</div>
+<div class="mt-6 p-4 liquid-glass inline-block self-start">
+<span class="text-xs text-text-dim uppercase tracking-wide block mb-1">Project Reference</span>
+<span class="font-h3 text-h3 text-primary">Stripe &amp; Custom ERP Integration</span>
+</div>
+</div>
+<div class="w-full md:w-1/2 order-1 md:order-2 flex justify-center">
+<div class="relative w-full max-w-[400px] aspect-square">
+<!-- Abstract representation of connected systems -->
+<div class="absolute top-0 left-0 w-32 h-32 liquid-glass flex items-center justify-center transform hover:scale-105 transition-transform z-10">
+<span class="material-symbols-outlined text-primary text-4xl">api</span>
+</div>
+<div class="absolute bottom-0 right-0 w-40 h-40 liquid-glass flex items-center justify-center transform hover:scale-105 transition-transform z-10">
+<span class="material-symbols-outlined text-primary text-5xl">database</span>
+</div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-secondary-container/20 rounded-full blur-xl z-0"></div>
+<!-- Connecting line -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 5;">
+<path d="M 64 64 L 320 320" stroke="rgba(255,255,255,0.2)" stroke-dasharray="4 4" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</article>
+<!-- 5. Technical ownership -->
+<article class="liquid-glass p-8 md:p-16 relative overflow-hidden">
+<div class="relative z-10 max-w-3xl mx-auto text-center flex flex-col items-center gap-stack-sm">
+<span class="material-symbols-outlined text-secondary-container" style="font-size: 48px;">admin_panel_settings</span>
+<h2 class="font-h2-mobile text-h2-mobile md:font-h2 md:text-h2 text-primary">Technical ownership</h2>
+<p class="font-body-reg text-body-reg text-text-dim uppercase tracking-wider mb-6">DB • Backend • Frontend • Mobile • Deployment</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 text-left md:text-center">
+                        I don't just write code; I take responsibility for the outcome. From provisioning the servers to polishing the final UI interaction, I act as a technical partner. You bring the domain expertise; I provide the architectural vision and execution to make it a reality.
+                    </p>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-4 w-full text-left">
+<div class="border-t border-glass-border-muted pt-2">
+<span class="text-primary font-semibold text-sm block">Database</span>
+<span class="text-text-dim text-xs">Schema, Tuning</span>
+</div>
+<div class="border-t border-glass-border-muted pt-2">
+<span class="text-primary font-semibold text-sm block">Backend</span>
+<span class="text-text-dim text-xs">Logic, APIs</span>
+</div>
+<div class="border-t border-glass-border-muted pt-2">
+<span class="text-primary font-semibold text-sm block">Frontend</span>
+<span class="text-text-dim text-xs">UI/UX, State</span>
+</div>
+<div class="border-t border-glass-border-muted pt-2">
+<span class="text-primary font-semibold text-sm block">Mobile</span>
+<span class="text-text-dim text-xs">Cross-platform</span>
+</div>
+<div class="border-t border-glass-border-muted pt-2 col-span-2 md:col-span-1">
+<span class="text-primary font-semibold text-sm block">Deployment</span>
+<span class="text-text-dim text-xs">CI/CD, Hosting</span>
+</div>
+</div>
+</div>
+</article>
+</section>
+<!-- Final CTA -->
+<section class="mt-32 mb-16 text-center py-stack-lg border-t border-glass-border-muted" id="discovery">
+<h2 class="font-h2-mobile text-h2-mobile md:font-h2 md:text-h2 text-primary mb-8">Ready to architect your next phase?</h2>
+<a class="btn-primary font-h3 text-h3 px-10 py-5" href="#">
+                Start a Technical Discovery Conversation
+            </a>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg border-t border-glass-border-muted bg-surface flex flex-col md:flex-row justify-between items-start px-margin-desktop max-w-container-max mx-auto gap-gutter">
+<div class="flex flex-col gap-4">
+<div class="font-h3 text-h3 text-primary">Khelifi.</div>
+<p class="font-body-reg text-body-reg text-on-surface-variant">© 2024 Khelifi. Built for performance.</p>
+</div>
+<div class="flex gap-gutter">
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-secondary transition-colors" href="#">LinkedIn</a>
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-secondary transition-colors" href="#">GitHub</a>
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-secondary transition-colors" href="#">Twitter</a>
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-secondary transition-colors" href="#">Email</a>
+</div>
+</footer>
+</body></html>

@@ -15,6 +15,17 @@ export type ProjectChallenge = {
   solution: string;
 };
 
+/**
+ * Project delivery status. Kept honest per the founder record: owned products
+ * are solo, pre-launch, and have no verified users/revenue, so nothing here
+ * implies a shipped commercial outcome.
+ */
+export type ProjectStatus =
+  | "live"
+  | "in-development"
+  | "prototype"
+  | "archived";
+
 export type Project = {
   slug: string;
   title: string;
@@ -40,6 +51,21 @@ export type Project = {
   links: {
     github?: string;
     live?: string;
+  };
+  /**
+   * Project snapshot fields — all optional. Every consumer must render a field
+   * only when it is present; a missing field must never show an empty label.
+   * Populate ONLY with verified facts (founder record or owner-confirmed).
+   * Leave unset rather than guessing — see docs/CONTENT_NEEDED.md.
+   */
+  snapshot?: {
+    timeframe?: string; // e.g. "2023 - present"
+    status?: ProjectStatus;
+    role?: string; // e.g. "Solo full-stack developer"
+    ownership?: string; // what I personally owned, end to end
+    team?: string; // omit for solo work rather than writing "solo"
+    industry?: string;
+    platform?: string; // e.g. "Web + mobile"
   };
 };
 
@@ -156,7 +182,7 @@ export const projects: Project[] = [
       {
         challenge: "Decoupled asynchronous notification pipelines",
         solution:
-          "Offloaded high-latency operations (Nodemailer dispatch, Twilio SMS sending, membership credits updates) to a background BullMQ worker process running alongside Express, guaranteeing retry logic and failure resilience.",
+          "Offloaded high-latency operations (Nodemailer dispatch, Twilio SMS sending, membership credits updates) to a background BullMQ worker process running alongside Express, with retry logic and failure handling.",
       },
       {
         challenge: "Largest Contentful Paint (LCP) and media optimization",
@@ -166,11 +192,20 @@ export const projects: Project[] = [
       {
         challenge: "AI concierge query security and context control",
         solution:
-          "Injected live catalog details, open hours, and booking guidelines dynamically into the Gemini system prompt while sanitizing user inputs to prevent prompt injection and hallucinated services.",
+          "Injected live catalog details, open hours, and booking guidelines dynamically into the Gemini system prompt and sanitized user inputs to reduce the risk of prompt injection and off-catalog answers.",
       },
     ],
     links: {
-      live: "http://localhost:3000",
+      // Live demo intentionally omitted: previous value was a localhost URL.
+      // Owner to supply the real public URL — see docs/CONTENT_NEEDED.md.
+    },
+    snapshot: {
+      status: "in-development",
+      role: "Solo full-stack developer",
+      ownership:
+        "Architecture, booking engine, admin and staff dashboards, payments, and automation, built end to end",
+      industry: "Appointment-based services (spa, salon, clinic)",
+      platform: "Web",
     },
   },
   {
@@ -184,8 +219,7 @@ export const projects: Project[] = [
       hoverText: "hover:text-cyan-400",
       button: "bg-cyan-600 hover:bg-cyan-500",
     },
-    heroImage:
-      "/images/stitch-projects/15863999156109095280-3ed15ebb08364f629544f22ce389d1c4.png",
+    heroImage: "/images/adaptifit_1.png",
     overview: {
       what: "A full-stack mobile + backend solution: AI-generated workout plans, meal tracking, progress analytics, and an AI coach chat, built with Flutter and a Node.js backend.",
       problem:
@@ -217,8 +251,13 @@ export const projects: Project[] = [
     ],
     gallery: [
       {
-        src: "/images/stitch-projects/15863999156109095280-3ed15ebb08364f629544f22ce389d1c4.png",
-        alt: "Adaptifit dashboard screen",
+        src: "/images/adaptifit_1.png",
+        alt: "Adaptifit sign-in screen on mobile",
+      },
+      {
+        src: "/images/adaptifit_dashboard.png",
+        alt: "Adaptifit sign-in screen on tablet",
+        aspect: "desktop",
       },
     ],
     techStack: {
@@ -228,6 +267,15 @@ export const projects: Project[] = [
     },
     badges: ["Flutter", "Node.js", "MongoDB", "OpenAI", "n8n"],
     links: {},
+    snapshot: {
+      timeframe: "2026",
+      status: "prototype",
+      role: "Solo full-stack and AI developer",
+      ownership:
+        "Mobile app, backend services, and on-device ML integration, built end to end",
+      industry: "Fitness and wellness",
+      platform: "Mobile",
+    },
   },
   {
     slug: "anlingo",
@@ -245,7 +293,7 @@ export const projects: Project[] = [
     overview: {
       what: "A full-stack writing product for grammar correction, rewriting, translation, voice dictation, document import, AI chat, history, pricing, and account workflows across web and mobile.",
       problem:
-        "Most grammar tools force users to choose between speed, privacy, and stronger cloud AI. Anlingo keeps the free path lightweight and private while routing advanced writing work through guarded backend AI providers.",
+        "Most grammar tools force users to choose between a fast, lightweight experience and stronger cloud AI. Anlingo keeps the free path lightweight while routing advanced writing work through guarded backend AI providers.",
       audience:
         "Professionals, students, job seekers, support teams, and non-native English writers who need cleaner writing without a complicated editing workflow.",
     },
@@ -398,7 +446,7 @@ export const projects: Project[] = [
       {
         challenge: "Privacy and AI quality tradeoff",
         solution:
-          "Kept the free experience lightweight and private while sending premium grammar, rewrite, translation, chat, and speech work through guarded backend routes.",
+          "Kept the free experience lightweight while sending premium grammar, rewrite, translation, chat, and speech work through guarded backend routes.",
       },
       {
         challenge: "Multiple product surfaces",
@@ -423,6 +471,15 @@ export const projects: Project[] = [
     ],
     links: {
       live: "https://anlingo.online",
+    },
+    snapshot: {
+      timeframe: "2025 - present",
+      status: "in-development",
+      role: "Solo full-stack developer",
+      ownership:
+        "Web app, admin tooling, API, subscription billing, and Flutter companion, built end to end",
+      industry: "AI writing and language learning (SaaS)",
+      platform: "Web and mobile",
     },
   },
   {
@@ -578,6 +635,15 @@ export const projects: Project[] = [
     links: {
       live: "https://dev.chaktech.tn",
     },
+    snapshot: {
+      timeframe: "2023 - present",
+      status: "in-development",
+      role: "Solo full-stack developer",
+      ownership:
+        "Multi-tenant architecture, backend, storefront, admin back-office, and deployment, built end to end",
+      industry: "E-commerce (Tunisian market)",
+      platform: "Web",
+    },
   },
   {
     slug: "noxivo",
@@ -603,7 +669,7 @@ export const projects: Project[] = [
       {
         title: "Public Waitlist Funnel",
         description:
-          "The live site at noxivo.pro presents an early-access waitlist with Netlify form handling, consent links, theme switching, cookie consent, and a contact modal.",
+          "The public site presents an early-access waitlist with Netlify form handling, consent links, theme switching, cookie consent, and a contact modal.",
       },
       {
         title: "Agency And Tenant Dashboard",
@@ -694,7 +760,18 @@ export const projects: Project[] = [
       },
     ],
     links: {
+      // Owner confirmed live. Domain to double-check: data uses noxivo.pro,
+      // founder record references noxivo.app — see docs/CONTENT_NEEDED.md.
       live: "https://noxivo.pro",
+    },
+    snapshot: {
+      timeframe: "2025 - present",
+      status: "in-development",
+      role: "Solo full-stack developer",
+      ownership:
+        "Multi-tenant automation engine, API, and dashboard, built end to end",
+      industry: "WhatsApp automation (SaaS)",
+      platform: "Web",
     },
   },
   {

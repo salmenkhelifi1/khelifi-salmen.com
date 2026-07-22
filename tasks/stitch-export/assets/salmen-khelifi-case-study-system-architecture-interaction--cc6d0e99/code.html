@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Luxe Spa Booking - Case Study</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "glass-border-bright": "rgba(255,255,255,0.35)",
+                    "on-surface-variant": "#c5c7c9",
+                    "on-secondary": "#002f65",
+                    "inverse-on-surface": "#313032",
+                    "text-dim": "#515156",
+                    "surface-panel": "#0e0e12",
+                    "on-tertiary-fixed": "#1a1b1f",
+                    "surface-container-highest": "#353437",
+                    "surface-elevated": "#16161f",
+                    "surface-container-lowest": "#0e0e10",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-container": "#636466",
+                    "tertiary": "#ffffff",
+                    "inverse-primary": "#5d5e60",
+                    "tertiary-fixed-dim": "#c6c6cb",
+                    "inverse-surface": "#e5e1e4",
+                    "on-primary-fixed": "#1a1c1d",
+                    "error": "#ffb4ab",
+                    "secondary": "#abc7ff",
+                    "on-tertiary-container": "#636469",
+                    "surface-container": "#201f22",
+                    "background": "#131315",
+                    "on-secondary-fixed": "#001b3f",
+                    "on-secondary-fixed-variant": "#00458e",
+                    "surface-bright": "#39393b",
+                    "primary-fixed": "#e2e2e4",
+                    "surface-container-high": "#2a2a2c",
+                    "secondary-fixed-dim": "#abc7ff",
+                    "on-secondary-container": "#f2f4ff",
+                    "on-error": "#690005",
+                    "surface-container-low": "#1c1b1e",
+                    "tertiary-fixed": "#e3e2e7",
+                    "surface-dim": "#131315",
+                    "surface-variant": "#353437",
+                    "secondary-fixed": "#d7e3ff",
+                    "on-surface": "#e5e1e4",
+                    "on-tertiary-fixed-variant": "#46464b",
+                    "on-tertiary": "#2f3034",
+                    "outline-variant": "#44474a",
+                    "error-container": "#93000a",
+                    "on-primary": "#2f3132",
+                    "secondary-container": "#046dd9",
+                    "on-background": "#e5e1e4",
+                    "surface": "#131315",
+                    "primary": "#ffffff",
+                    "glass-border-muted": "rgba(255,255,255,0.14)",
+                    "primary-fixed-dim": "#c6c6c8",
+                    "on-primary-fixed-variant": "#454749",
+                    "outline": "#8f9194",
+                    "tertiary-container": "#e3e2e7",
+                    "surface-tint": "#c6c6c8",
+                    "primary-container": "#e2e2e4",
+                    "accent-glow": "rgba(47,128,237,0.15)",
+                    "brand-blue": "#2f80ed"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "stack-md": "32px",
+                    "stack-sm": "16px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "stack-lg": "64px",
+                    "stack-xl": "96px",
+                    "margin-desktop": "64px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "h2": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "h2-mobile": ["Manrope"],
+                    "h3": ["Manrope"],
+                    "body-reg": ["Manrope"],
+                    "h1-mobile": ["Manrope"],
+                    "h1": ["Manrope"],
+                    "display-hero": ["Manrope"],
+                    "label-caps": ["Manrope"],
+                    "display-hero-mobile": ["Manrope"]
+            },
+            "fontSize": {
+                    "h2": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "300"}],
+                    "h2-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "h3": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-reg": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h1-mobile": ["44px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "h1": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "display-hero": ["88px", {"lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "label-caps": ["12px", {"lineHeight": "1.5", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-hero-mobile": ["56px", {"lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #08080a; /* Dark Architecture base */
+            color: #e5e1e4;
+        }
+        
+        .glass-panel {
+            background: rgba(22, 22, 31, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.35); /* glass-border-bright */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .ambient-bloom {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .btn-primary {
+            background-color: #2f80ed;
+            box-shadow: 0 0 15px rgba(47, 128, 237, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 25px rgba(47, 128, 237, 0.5);
+            transform: scale(0.97);
+        }
+        
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            transition: all 0.2s;
+        }
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.35);
+            transform: scale(0.97);
+        }
+
+        /* Node Architecture Styles */
+        .arch-node {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        
+        .arch-node.active {
+            border-color: #2f80ed;
+            box-shadow: 0 0 20px rgba(47, 128, 237, 0.2);
+            background: rgba(22, 22, 31, 0.8);
+        }
+        
+        .arch-node:hover:not(.active) {
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(22, 22, 31, 0.6);
+        }
+
+        .node-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(2.4); opacity: 0; }
+        }
+
+        /* Connecting lines for architecture diagram */
+        .conn-line {
+            stroke: rgba(255,255,255,0.1);
+            stroke-width: 1.5;
+            fill: none;
+            transition: stroke 0.3s;
+        }
+        .conn-line.active {
+            stroke: #2f80ed;
+            stroke-width: 2;
+        }
+        .conn-line.animated {
+            stroke-dasharray: 4;
+            animation: dash 20s linear infinite;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: -1000; }
+        }
+    </style>
+</head>
+<body class="font-body-reg text-body-reg antialiased selection:bg-brand-blue selection:text-white">
+<!-- Ambient Background Blooms -->
+<div class="ambient-bloom w-[600px] h-[600px] bg-brand-blue top-[-100px] left-[-100px]"></div>
+<div class="ambient-bloom w-[800px] h-[800px] bg-purple-900 bottom-[-200px] right-[-100px] opacity-10"></div>
+<!-- Top Navigation (Shell suppressed based on prompt focus, but maintaining minimal header as requested in image context) -->
+<header class="w-full border-b border-glass-border-muted bg-background/80 backdrop-blur-xl fixed top-0 z-50">
+<div class="max-w-container-max mx-auto px-margin-desktop py-4 flex justify-between items-center">
+<div class="font-h3 text-h3 font-bold text-primary flex items-center gap-1">
+                Khelifi<span class="text-brand-blue">.</span>
+</div>
+<a class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors font-body-reg text-body-reg" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                Back to Work
+            </a>
+</div>
+</header>
+<main class="pt-[100px] pb-stack-xl max-w-container-max mx-auto px-margin-desktop">
+<!-- Hero Section -->
+<section class="py-stack-lg border-b border-glass-border-muted/30 flex flex-col lg:flex-row gap-gutter items-center">
+<div class="lg:w-1/2 flex flex-col items-start gap-6">
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-widest uppercase">SaaS &amp; Booking Platform</span>
+<h1 class="font-h1 text-h1 text-primary">Luxe Spa Booking</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    A high-performance white-label booking, CRM, and management system for appointment-based service businesses, featuring real-time staff dashboards, BullMQ workflows, and AI-powered concierge scheduling.
+                </p>
+<div class="flex flex-wrap gap-3 mt-2">
+<span class="glass-panel px-4 py-2 rounded-full font-label-caps text-label-caps text-on-surface">Next.js 16</span>
+<span class="glass-panel px-4 py-2 rounded-full font-label-caps text-label-caps text-on-surface">Express.js</span>
+<span class="glass-panel px-4 py-2 rounded-full font-label-caps text-label-caps text-on-surface">PostgreSQL</span>
+<span class="glass-panel px-4 py-2 rounded-full font-label-caps text-label-caps text-on-surface">Socket.io</span>
+<span class="glass-panel px-4 py-2 rounded-full font-label-caps text-label-caps text-on-surface">Gemini API</span>
+</div>
+<button class="btn-primary mt-4 px-6 py-3 rounded-full font-body-reg text-white flex items-center gap-2">
+                    Live Demo <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="lg:w-1/2 w-full">
+<div class="glass-panel rounded-2xl overflow-hidden aspect-video relative group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A high-fidelity mockup of a luxury spa booking website interface on a dark background. The UI features elegant typography reading 'The Art Of Self-Manifestation' with a soft, moody color palette of deep purples and warm ambient lighting. A sophisticated navigation bar and a prominent 'Book Now' button are visible. The design is modern, minimal, and highly professional, reflecting a premium service platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy2LvyJev7RZl1KrNQ0g9TVpx00SuNgWRgHZj-zMcPoCBUMDagDWyEjkEvh2FkLOq8tPzfVsnNnymlLAzYaNSmTlDij26ZQbNfXFO1-YwJHJtvnWQ0hY2A7g76usYbSG1AOPp4ebyltjFh9EiZ53f4_YVcxQ4RHKtTJvhd4baqiKrcFYslaIYvV1fyYyOwzHbs2nrlwrEbeoanOSJ7ZNsG9YUwoLNHy-6XEA_pTsAYAzWN64F7YDWMBUqK9SNl__ikCmEWM4E6qjGD"/>
+</div>
+</div>
+</section>
+<!-- System Architecture Section - Focus Interaction State -->
+<section class="py-stack-xl" id="architecture">
+<div class="mb-stack-md flex flex-col gap-2">
+<h2 class="font-h2 text-h2 text-primary">System Architecture</h2>
+<p class="font-body-reg text-body-reg text-on-surface-variant">Real-time data flow and service orchestration layer.</p>
+</div>
+<div class="flex flex-col lg:flex-row gap-gutter h-[600px]">
+<!-- Diagram Canvas (Left) -->
+<div class="glass-panel rounded-2xl p-8 lg:w-2/3 relative flex items-center justify-center overflow-hidden">
+<!-- SVG Connections -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none z-0" preserveaspectratio="xMidYMid slice" viewbox="0 0 1000 600">
+<!-- Client to API -->
+<path class="conn-line active animated" d="M 200 300 C 350 300, 350 300, 480 300"></path>
+<!-- API to DB -->
+<path class="conn-line active" d="M 680 300 C 800 300, 800 200, 850 200"></path>
+<!-- API to Worker -->
+<path class="conn-line active" d="M 680 300 C 800 300, 800 400, 850 400"></path>
+<!-- Worker to External -->
+<path class="conn-line" d="M 950 400 C 1050 400, 1050 400, 1100 400"></path>
+</svg>
+<!-- Nodes -->
+<div class="absolute inset-0 w-full h-full z-10 flex">
+<!-- Client Layer -->
+<div class="absolute left-[10%] top-1/2 -translate-y-1/2 flex flex-col gap-4">
+<div class="arch-node glass-panel w-40 p-4 rounded-xl flex flex-col items-center gap-2 border-outline-variant/30" tabindex="0">
+<span class="material-symbols-outlined text-on-surface-variant">desktop_windows</span>
+<span class="font-label-caps text-label-caps text-on-surface">Next.js Client</span>
+</div>
+</div>
+<!-- API / Automation Layer (ACTIVE FOCUS) -->
+<div class="absolute left-[45%] top-1/2 -translate-y-1/2 flex flex-col gap-4">
+<div class="relative">
+<!-- Pulse effect behind active node -->
+<div class="absolute inset-0 bg-brand-blue rounded-xl node-pulse z-[-1]"></div>
+<div class="arch-node active glass-panel w-56 p-6 rounded-xl flex flex-col items-center gap-3" tabindex="0">
+<div class="w-12 h-12 rounded-full bg-brand-blue/20 flex items-center justify-center border border-brand-blue/50">
+<span class="material-symbols-outlined text-brand-blue">api</span>
+</div>
+<span class="font-h3 text-h3 text-primary text-center">Booking API &amp; Automation</span>
+<span class="font-label-caps text-label-caps text-brand-blue bg-brand-blue/10 px-2 py-1 rounded">Express.js + Socket.io</span>
+</div>
+</div>
+</div>
+<!-- Data / Worker Layer -->
+<div class="absolute left-[80%] top-[30%] flex flex-col gap-4">
+<div class="arch-node glass-panel w-40 p-4 rounded-xl flex flex-col items-center gap-2 border-outline-variant/30" tabindex="0">
+<span class="material-symbols-outlined text-on-surface-variant">database</span>
+<span class="font-label-caps text-label-caps text-on-surface">PostgreSQL</span>
+</div>
+</div>
+<div class="absolute left-[80%] top-[60%] flex flex-col gap-4">
+<div class="arch-node glass-panel w-40 p-4 rounded-xl flex flex-col items-center gap-2 border-outline-variant/30" tabindex="0">
+<span class="material-symbols-outlined text-on-surface-variant">memory</span>
+<span class="font-label-caps text-label-caps text-on-surface">BullMQ Workers</span>
+</div>
+</div>
+</div>
+<!-- Legend -->
+<div class="absolute bottom-6 left-6 flex gap-4 glass-panel px-4 py-2 rounded-lg">
+<div class="flex items-center gap-2">
+<div class="w-3 h-0.5 bg-brand-blue"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Active Flow</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-0.5 bg-white/10"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Idle</span>
+</div>
+</div>
+</div>
+<!-- Detail Panel (Right) - Showing state for 'Booking API' -->
+<div class="glass-panel rounded-2xl p-8 lg:w-1/3 flex flex-col gap-6">
+<div class="flex items-center gap-3 pb-4 border-b border-glass-border-muted/30">
+<div class="w-10 h-10 rounded-lg bg-brand-blue/20 flex items-center justify-center border border-brand-blue/50">
+<span class="material-symbols-outlined text-brand-blue">api</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-primary">Booking API</h3>
+<span class="font-label-caps text-label-caps text-brand-blue">Automation Layer</span>
+</div>
+</div>
+<div class="flex flex-col gap-4 flex-grow overflow-y-auto pr-2 custom-scrollbar">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider block mb-2">Purpose</span>
+<p class="font-body-reg text-body-reg text-on-surface">Orchestrates real-time slot validation, handles concurrency locks during checkout, and dispatches background tasks for notifications.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider block mb-2">Inputs</span>
+<ul class="font-body-reg text-body-reg text-on-surface space-y-1">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> REST Payloads</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> WSS Events</li>
+</ul>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider block mb-2">Outputs</span>
+<ul class="font-body-reg text-body-reg text-on-surface space-y-1">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> Prisma Queries</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> Redis Jobs</li>
+</ul>
+</div>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider block mb-2">Connected Services</span>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high border border-glass-border-muted px-2 py-1 rounded text-sm text-on-surface">PostgreSQL</span>
+<span class="bg-surface-container-high border border-glass-border-muted px-2 py-1 rounded text-sm text-on-surface">Redis Cache</span>
+<span class="bg-surface-container-high border border-glass-border-muted px-2 py-1 rounded text-sm text-on-surface">Stripe API</span>
+<span class="bg-surface-container-high border border-glass-border-muted px-2 py-1 rounded text-sm text-on-surface">Gemini LLM</span>
+</div>
+</div>
+<div class="bg-surface-elevated/50 p-4 rounded-xl border border-brand-blue/20 mt-2">
+<span class="font-label-caps text-label-caps text-brand-blue uppercase tracking-wider block mb-1">Reliability Decision</span>
+<p class="font-body-reg text-body-reg text-on-surface text-sm">Decoupled email/SMS notifications into BullMQ workers to prevent the main event loop from blocking during high-latency external API calls, ensuring &lt; 50ms response times for slot locking.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Overview Bento Grid -->
+<section class="py-stack-xl">
+<h2 class="font-h2 text-h2 text-primary mb-stack-md">Overview</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="glass-panel rounded-2xl p-8 flex flex-col gap-4">
+<h3 class="font-h3 text-h3 text-primary">What it is</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                        A comprehensive multi-service white-label booking, CRM, and shop management SaaS platform. The system is designed to allow service-oriented businesses (such as medical aesthetics clinics, hair salons, spas, and consultants) to launch custom-branded online booking experiences, manage technicians, automate customer communications, and handle deposits/payments, fully isolated from other clients.
+                    </p>
+</div>
+<div class="glass-panel rounded-2xl p-8 flex flex-col gap-4">
+<h3 class="font-h3 text-h3 text-primary">The problem it solves</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                        Service businesses face a trade-off: use expensive SaaS platforms (Mindbody, Vagaro) that charge high transaction fees, or build custom software that is slow and costly to maintain. Furthermore, switching a platform from a nail spa layout to a dental clinic layout typically requires extensive code modifications, custom databases, and frontend rebuilds.
+                    </p>
+</div>
+<div class="glass-panel rounded-2xl p-8 flex flex-col gap-4">
+<h3 class="font-h3 text-h3 text-primary">Who it's for</h3>
+<p class="font-body-reg text-body-reg text-on-surface-variant">
+                        Independent boutique operators, local clinic chains, and digital agencies looking to offer localized booking platforms as a service without rebuilding the core scheduling engine.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full pt-stack-lg pb-stack-sm border-t border-glass-border-muted bg-background">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+<div class="font-h3 text-h3 font-bold text-primary">
+                Khelifi.
+            </div>
+<div class="flex gap-4">
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-secondary transition-colors" href="#">Work</a>
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-secondary transition-colors" href="#">Services</a>
+<a class="font-body-reg text-body-reg text-on-surface-variant hover:text-secondary transition-colors" href="#">About</a>
+</div>
+<div class="text-right">
+<p class="font-body-reg text-body-reg text-on-surface-variant text-sm">© 2024 Salmen Khelifi. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+        // Simple interaction script to make nodes focusable visually in the demo
+        document.addEventListener('DOMContentLoaded', () => {
+            const nodes = document.querySelectorAll('.arch-node');
+            
+            nodes.forEach(node => {
+                node.addEventListener('click', function() {
+                    // In a full implementation, this would swap the data in the right panel
+                    // For this static demo focused on UI state, we just log it
+                    console.log('Node selected:', this.querySelector('span.font-label-caps').textContent);
+                });
+                
+                // Keyboard accessibility
+                node.addEventListener('keydown', function(e) {
+                    if(e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+        });
+    </script>
+</body></html>
