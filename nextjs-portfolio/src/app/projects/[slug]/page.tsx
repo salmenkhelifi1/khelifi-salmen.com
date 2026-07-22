@@ -27,6 +27,7 @@ import ProjectToc, { type TocSection } from "@/components/ProjectToc";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { getCaseStudyNarrative } from "@/lib/content/case-study-narratives";
+import { getPublishedPosts } from "@/lib/content/blog";
 import type { CaseStudyPlacement } from "@/lib/content/schemas";
 
 
@@ -410,6 +411,20 @@ export default async function ProjectProfilePage({
   const hasDesktopGallery = project.galleryAspect === "desktop";
   const jsonLd = projectJsonLd(project);
   const architectureItems = getFactualArchitecture(project);
+  const relatedPosts = getPublishedPosts().filter((post) =>
+    post.frontmatter.relatedCaseStudies.includes(project.slug),
+  );
+  const heroAlt = project.gallery.find((shot) => shot.src === project.heroImage)?.alt || "";
+  const snapshotFields = project.snapshot
+    ? [
+        ["Timeframe", project.snapshot.timeframe],
+        ["Status", project.snapshot.status?.replaceAll("-", " ")],
+        ["Role", project.snapshot.role],
+        ["Ownership", project.snapshot.ownership],
+        ["Industry", project.snapshot.industry],
+        ["Platform", project.snapshot.platform],
+      ].filter((field): field is [string, string] => Boolean(field[1]))
+    : [];
 
   // Construct table of contents sections dynamically based on present data
   const renderedSections: TocSection[] = [
@@ -437,6 +452,9 @@ export default async function ProjectProfilePage({
   }
 
   renderedSections.push({ id: "technology-stack", label: "Technology Stack" });
+  if (relatedPosts.length > 0) {
+    renderedSections.push({ id: "related-articles", label: "Related Articles" });
+  }
   renderedSections.push({ id: "final-result", label: "Results & Lessons" });
   renderedSections.push({ id: "start-similar-project", label: "Start a Project" });
 
@@ -528,6 +546,23 @@ export default async function ProjectProfilePage({
                 <p className="text-body-large text-[var(--text-secondary)] max-w-3xl">
                   {project.tagline}
                 </p>
+                {snapshotFields.length > 0 && (
+                  <div className="glass-panel rounded-[var(--radius-xl)] p-5 md:p-6">
+                    <p className="text-caption text-[var(--accent)] mb-4">Project Snapshot</p>
+                    <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                      {snapshotFields.map(([label, value]) => (
+                        <div key={label}>
+                          <dt className="text-xs font-semibold uppercase tracking-wider text-[var(--text-tertiary)]">
+                            {label}
+                          </dt>
+                          <dd className="mt-1 text-sm text-[var(--text-primary)] first-letter:uppercase">
+                            {value}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                )}
                 <div className="flex flex-wrap gap-2.5 pt-2">
                   {project.badges.map((badge) => (
                     <TechBadge key={badge} label={badge} />
@@ -547,7 +582,7 @@ export default async function ProjectProfilePage({
                   >
                     <Image
                       src={project.heroImage}
-                      alt={`${project.title} featured screenshot`}
+                      alt={heroAlt}
                       fill
                       priority
                       sizes={
@@ -944,6 +979,26 @@ export default async function ProjectProfilePage({
               </div>
             </section>
 
+            {relatedPosts.length > 0 && (
+              <section id="related-articles" className="scroll-mt-32" aria-labelledby="related-articles-heading">
+                <h2 id="related-articles-heading" className="mb-6 text-h2">
+                  Related Articles
+                </h2>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {relatedPosts.map((post) => (
+                    <Link
+                      key={post.slug}
+                      href={`/blog/${post.slug}`}
+                      className="modern-card flex min-h-11 items-center justify-between rounded-[var(--radius-lg)] p-5 font-semibold hover:border-[var(--border-active)]"
+                    >
+                      {post.frontmatter.title}
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
+
             {/* Section 11: Final Result and Lessons */}
             <section id="final-result" className="scroll-mt-32" aria-labelledby="results-heading">
               <div className="modern-card rounded-[var(--radius-xl)] p-8 md:p-10">
@@ -1022,7 +1077,7 @@ export default async function ProjectProfilePage({
                       Book a 30-min Call <ArrowUpRight className="w-5 h-5" aria-hidden="true" />
                     </a>
                     <Link
-                      href="/#work"
+                      href="/work"
                       className="cta-button cta-secondary w-full sm:w-auto text-base font-bold min-h-11 focus-visible:outline-2 focus-visible:outline-[var(--accent)]"
                     >
                       Explore All Work

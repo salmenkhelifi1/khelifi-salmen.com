@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SectionContainer from "@/components/SectionContainer";
 import { getPublishedPosts, getPostBySlug } from "@/lib/content/blog";
 import { articleJsonLd, siteUrl } from "@/data/schema";
+import { getProject, type Project } from "@/data/projects";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -80,6 +82,9 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   const jsonLd = articleJsonLd(post);
+  const relatedProjects = post.frontmatter.relatedCaseStudies
+    .map(getProject)
+    .filter((project): project is Project => Boolean(project));
 
   return (
     <>
@@ -150,6 +155,25 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="glass-panel p-8 md:p-12">
               <MDXContent />
             </div>
+            {relatedProjects.length > 0 && (
+              <aside className="mt-12" aria-labelledby="related-case-studies-heading">
+                <h2 id="related-case-studies-heading" className="text-h2 mb-6">
+                  Related Case Studies
+                </h2>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {relatedProjects.map((project) => (
+                    <Link
+                      key={project.slug}
+                      href={`/projects/${project.slug}`}
+                      className="modern-card flex min-h-11 items-center justify-between rounded-[var(--radius-lg)] p-5 font-semibold hover:border-[var(--border-active)]"
+                    >
+                      {project.title}
+                      <span aria-hidden="true">→</span>
+                    </Link>
+                  ))}
+                </div>
+              </aside>
+            )}
           </SectionContainer>
         </article>
       </main>

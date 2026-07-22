@@ -21,17 +21,34 @@ import {
   freelancerUrl,
   githubUrl,
   linkedinUrl,
+  personId,
   siteUrl,
   upworkUrl,
 } from "@/data/schema";
 import SiteHeader from "@/components/SiteHeader";
 
+const title = "Resume — Full-Stack Developer & Automation Specialist";
+const description =
+  "Professional resume of Salmen Khelifi, a Full-Stack Developer & Automation Specialist with 5+ years of experience in React, Next.js, Node.js, Flutter, and AI automation.";
+
 export const metadata: Metadata = {
-  title: "Resume — Full-Stack Developer & Automation Specialist",
-  description:
-    "Professional resume of Salmen Khelifi, a Full-Stack Developer & Automation Specialist with 5+ years of experience in React, Next.js, Node.js, Flutter, and AI automation.",
+  title,
+  description,
   alternates: {
     canonical: "/resume",
+  },
+  openGraph: {
+    title,
+    description,
+    url: `${siteUrl}/resume`,
+    type: "website",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/opengraph-image"],
   },
 };
 
@@ -127,9 +144,11 @@ const knowsAbout = [
 const resumeJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": personId,
   name: "Salmen Khelifi",
   jobTitle: "Full-Stack Developer & Automation Specialist",
-  url: `${siteUrl}/resume`,
+  url: siteUrl,
+  mainEntityOfPage: `${siteUrl}/resume`,
   email: "contact@khelifi-salmen.com",
   telephone: "+84961566302",
   address: {
