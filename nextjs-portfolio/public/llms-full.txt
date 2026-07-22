@@ -14,11 +14,7 @@ Salmen Khelifi is a full-stack developer and automation specialist for web apps,
 
 ## Projects
 
-### GrammarAI
-
-URL: https://khelifi-salmen.com/projects/grammarai
-
-A privacy-first, cross-platform grammar editor with native iOS, Android, and web experiences. Free users get on-device AI for grammar and OCR, while premium users unlock cloud providers such as Gemini, Deepgram, and ElevenLabs through a secured backend. The system includes correction modes, OCR text scanning, dictation, text-to-speech, history, analytics, RevenueCat subscriptions, Stripe processing, Firebase Auth, Firestore, Redis, and Docker deployment.
+Note: the owned products below (Luxe Spa, Anlingo, Noxivo, Adaptifit) are solo-built and pre-launch, with no verified users or revenue. Descriptions cover engineering scope only.
 
 ### Adaptifit
 

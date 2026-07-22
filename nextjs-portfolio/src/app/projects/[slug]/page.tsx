@@ -349,50 +349,6 @@ function getFactualArchitecture(project: Project): ArchitectureComponent[] {
   return components;
 }
 
-function deriveResultFromSolution(solution: string): string {
-  if (solution.toLowerCase().includes("preset")) {
-    return "Result: Zero-code vertical switching with instant global schema & terminology resolution.";
-  }
-  if (solution.toLowerCase().includes("transaction") || solution.toLowerCase().includes("concurrency")) {
-    return "Result: Eliminated double-booking race conditions across concurrent technician schedules.";
-  }
-  if (solution.toLowerCase().includes("bullmq") || solution.toLowerCase().includes("worker")) {
-    return "Result: Non-blocking event loop execution with guaranteed notification delivery & retries.";
-  }
-  if (solution.toLowerCase().includes("imagekit") || solution.toLowerCase().includes("lcp")) {
-    return "Result: Fast LCP image loading with zero Cumulative Layout Shift (CLS).";
-  }
-  if (solution.toLowerCase().includes("gemini") || solution.toLowerCase().includes("prompt")) {
-    return "Result: Safe, context-bound AI responses with zero hallucinated catalog services.";
-  }
-  if (solution.toLowerCase().includes("tenant")) {
-    return "Result: Strict tenant isolation and consistent domain-scoped branding across all clients.";
-  }
-  if (solution.toLowerCase().includes("revalidated") || solution.toLowerCase().includes("checkout")) {
-    return "Result: 100% price integrity and instant server-side inventory reservation.";
-  }
-  if (solution.toLowerCase().includes("caching") || solution.toLowerCase().includes("isr")) {
-    return "Result: Instant page renders before client hydration without styling flicker.";
-  }
-  if (solution.toLowerCase().includes("self-audit") || solution.toLowerCase().includes("hardening")) {
-    return "Result: Complete pre-launch security & operational readiness across 54 audit checkpoints.";
-  }
-  if (solution.toLowerCase().includes("guarded") || solution.toLowerCase().includes("private")) {
-    return "Result: High-performance local editing with secure cloud AI execution for premium features.";
-  }
-  if (solution.toLowerCase().includes("split") || solution.toLowerCase().includes("surfaces")) {
-    return "Result: Clean architectural separation across marketing, web app, API, and mobile codebases.";
-  }
-  if (solution.toLowerCase().includes("rate limiting") || solution.toLowerCase().includes("abuse")) {
-    return "Result: Controlled API cost exposure and resilient provider failover protection.";
-  }
-  if (solution.toLowerCase().includes("webhook") || solution.toLowerCase().includes("billing")) {
-    return "Result: Instant entitlement updates and idempotent payment webhook handling.";
-  }
-
-  return "Result: Scalable architectural implementation and reliable system operation.";
-}
-
 export default async function ProjectProfilePage({
   params,
 }: {
@@ -608,18 +564,18 @@ export default async function ProjectProfilePage({
                   </div>
                   <div>
                     <h2 id="impact-heading" className="text-h2">
-                      Impact & Delivered Value
+                      Scope & Ownership
                     </h2>
                     <p className="text-xs font-semibold uppercase tracking-wider text-[var(--text-tertiary)]">
-                      Architectural & Operational Results
+                      What I built and owned
                     </p>
                   </div>
                 </div>
                 <p className="text-body-large text-[var(--text-primary)] mb-8">
                   {project.slug === "luxe-spa" &&
-                    "Delivered a production multi-tenant white-label booking and CRM platform that eliminates legacy SaaS transaction fees and supports sub-10-second vertical preset switching, real-time technician sync, and AI concierge scheduling."}
+                    "A solo-built multi-tenant white-label booking and CRM platform (in development), designed to avoid per-transaction SaaS fees, with sub-10-second vertical preset switching, real-time technician sync, and an AI concierge scheduling flow."}
                   {project.slug === "anlingo" &&
-                    "Engineered a privacy-first AI writing assistant spanning web app editor, Express API, usage-limited subscription billing, and Flutter mobile companion without exposing private user text."}
+                    "A solo-built AI writing product (in development) spanning web editor, Express API, usage-limited subscription billing, and a Flutter companion, keeping the free path lightweight and routing advanced work through guarded backend AI providers."}
                   {project.slug === "chaktech" &&
                     "Built a multi-tenant commerce platform for Tunisia with instant hostname tenant resolution, zero-FOUC server theming, cash-on-delivery checkout, and Payload CMS back-office."}
                   {project.slug === "noxivo" &&
@@ -842,26 +798,21 @@ export default async function ProjectProfilePage({
                     Technical Challenges & Solutions
                   </h2>
                   <p className="text-sm text-[var(--text-secondary)] mt-1">
-                    Structured Problem → Decision → Result engineering breakdowns
+                    The real constraints and the decisions I made to solve them
                   </p>
                 </div>
 
                 <div className="space-y-6">
                   {project.challenges.map((ch, idx) => {
-                    const resultText = deriveResultFromSolution(ch.solution);
-
                     return (
                       <div key={ch.challenge} className="challenge-flow-card">
                         <div className="flex items-center justify-between mb-4 border-b border-[var(--border-subtle)] pb-3">
                           <span className="text-xs font-bold text-[var(--accent)] uppercase tracking-wider font-mono">
                             Engineering Story 0{idx + 1}
                           </span>
-                          <span className="text-xs font-semibold text-[var(--text-tertiary)]">
-                            Factual Retrospective
-                          </span>
                         </div>
 
-                        <div className="grid lg:grid-cols-3 gap-6 items-start">
+                        <div className="grid lg:grid-cols-2 gap-6 items-start">
                           {/* Problem */}
                           <div className="space-y-2">
                             <div className="flex items-center gap-2 text-xs font-bold text-[var(--color-error)] uppercase tracking-wider">
@@ -881,17 +832,6 @@ export default async function ProjectProfilePage({
                             </div>
                             <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                               {ch.solution}
-                            </p>
-                          </div>
-
-                          {/* Result */}
-                          <div className="space-y-2 lg:border-l lg:border-[var(--border-subtle)] lg:pl-6">
-                            <div className="flex items-center gap-2 text-xs font-bold text-[var(--color-success)] uppercase tracking-wider">
-                              <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
-                              Architectural Outcome
-                            </div>
-                            <p className="text-xs font-semibold text-[var(--text-primary)] leading-relaxed bg-[var(--color-success-dim)] border border-[var(--color-success)]/30 rounded-xl p-3">
-                              {resultText}
                             </p>
                           </div>
                         </div>
@@ -1006,7 +946,7 @@ export default async function ProjectProfilePage({
                   Final Retrospective & Architectural Lessons
                 </h2>
                 <p className="text-body-large text-[var(--text-secondary)] leading-relaxed mb-6">
-                  Building {project.title} demonstrated the value of clear domain modeling, explicit separation of concerns, and robust system boundaries. By grounding technical decisions strictly in business requirements—whether enforcing RBAC security, automating background notifications via BullMQ, or managing localized multi-tenant state—the product achieved high reliability without operational bloat.
+                  Building {project.title} reinforced how I work: clear domain modeling, explicit separation of concerns, and system boundaries grounded strictly in the business requirements, rather than abstractions the product does not yet need.
                 </p>
                 <div className="flex flex-wrap gap-2 pt-2 border-t border-[var(--border-subtle)]">
                   {project.badges.map((badge) => (

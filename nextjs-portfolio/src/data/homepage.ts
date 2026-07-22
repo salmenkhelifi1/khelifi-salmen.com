@@ -415,7 +415,7 @@ export const technicalDepth: TechnicalDepthItem[] = [
     challenge: "Multi-surface writing product (web, admin, Flutter mobile) consuming LLM APIs.",
     risk: "Unbounded API costs, rate-limit failures, and latency spikes during request surges.",
     decision: "Built a guarded Express backend with Redis usage tracking, tier limits, and provider fallbacks.",
-    verification: "Protected API budgets and service availability across web and Flutter mobile apps.",
+    verification: "Rate limits, usage tracking, and provider fallbacks bound API cost and keep the service responsive across web and Flutter.",
     projectLabel: "Anlingo",
     href: "/projects/anlingo",
   },

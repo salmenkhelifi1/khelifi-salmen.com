@@ -182,7 +182,7 @@ export const projects: Project[] = [
       {
         challenge: "Decoupled asynchronous notification pipelines",
         solution:
-          "Offloaded high-latency operations (Nodemailer dispatch, Twilio SMS sending, membership credits updates) to a background BullMQ worker process running alongside Express, guaranteeing retry logic and failure resilience.",
+          "Offloaded high-latency operations (Nodemailer dispatch, Twilio SMS sending, membership credits updates) to a background BullMQ worker process running alongside Express, with retry logic and failure handling.",
       },
       {
         challenge: "Largest Contentful Paint (LCP) and media optimization",
@@ -192,7 +192,7 @@ export const projects: Project[] = [
       {
         challenge: "AI concierge query security and context control",
         solution:
-          "Injected live catalog details, open hours, and booking guidelines dynamically into the Gemini system prompt while sanitizing user inputs to prevent prompt injection and hallucinated services.",
+          "Injected live catalog details, open hours, and booking guidelines dynamically into the Gemini system prompt and sanitized user inputs to reduce the risk of prompt injection and off-catalog answers.",
       },
     ],
     links: {
@@ -293,7 +293,7 @@ export const projects: Project[] = [
     overview: {
       what: "A full-stack writing product for grammar correction, rewriting, translation, voice dictation, document import, AI chat, history, pricing, and account workflows across web and mobile.",
       problem:
-        "Most grammar tools force users to choose between speed, privacy, and stronger cloud AI. Anlingo keeps the free path lightweight and private while routing advanced writing work through guarded backend AI providers.",
+        "Most grammar tools force users to choose between a fast, lightweight experience and stronger cloud AI. Anlingo keeps the free path lightweight while routing advanced writing work through guarded backend AI providers.",
       audience:
         "Professionals, students, job seekers, support teams, and non-native English writers who need cleaner writing without a complicated editing workflow.",
     },
@@ -446,7 +446,7 @@ export const projects: Project[] = [
       {
         challenge: "Privacy and AI quality tradeoff",
         solution:
-          "Kept the free experience lightweight and private while sending premium grammar, rewrite, translation, chat, and speech work through guarded backend routes.",
+          "Kept the free experience lightweight while sending premium grammar, rewrite, translation, chat, and speech work through guarded backend routes.",
       },
       {
         challenge: "Multiple product surfaces",
@@ -669,7 +669,7 @@ export const projects: Project[] = [
       {
         title: "Public Waitlist Funnel",
         description:
-          "The live site at noxivo.pro presents an early-access waitlist with Netlify form handling, consent links, theme switching, cookie consent, and a contact modal.",
+          "The public site presents an early-access waitlist with Netlify form handling, consent links, theme switching, cookie consent, and a contact modal.",
       },
       {
         title: "Agency And Tenant Dashboard",
