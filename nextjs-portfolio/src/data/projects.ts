@@ -77,6 +77,146 @@ const freelancerAccent: ProjectAccent = {
 
 export const projects: Project[] = [
   {
+    slug: "founderflow",
+    title: "FounderFlow",
+    tagline:
+      "An iOS-first founder discovery and curated meetup app with a focused seven-screen journey, privacy-aware connections, and iOS 26 Liquid Glass navigation.",
+    category: "iOS Founder Network",
+    accent: {
+      text: "text-indigo-400",
+      hoverText: "hover:text-indigo-400",
+      button: "bg-indigo-600 hover:bg-indigo-500",
+    },
+    heroImage: "/images/founderflow/founderflow-cover.png",
+    galleryAspect: "desktop",
+    overview: {
+      what: "A feature-first Flutter application covering sign-in, founder onboarding, a state-preserving Home dashboard, list and map discovery, privacy-aware founder profiles, curated events, and account management. The client is backed by Supabase Auth, Postgres, Storage, RLS, RPCs, and Edge Functions.",
+      problem:
+        "Founders often have to search noisy social feeds or broad professional networks to find relevant builders and small, useful meetups. FounderFlow deliberately removes posts, likes, followers, chat, and marketplace mechanics so discovery, connection requests, and curated event invitations stay clear and private.",
+      audience:
+        "Early-stage founders looking for relevant builders, collaborators, and reviewed founder meetups without joining another engagement-driven social network.",
+    },
+    features: [
+      {
+        title: "Locked Founder Journey",
+        description:
+          "A deterministic Welcome → profile setup → Home → Discover → founder → Connect → Events → Invite → Profile flow keeps the MVP understandable and testable.",
+      },
+      {
+        title: "List and Map Discovery",
+        description:
+          "Founder search, filters, map/list switching, approximate locations, safe missing-key and empty states, and consistent results share one discovery state model.",
+      },
+      {
+        title: "Privacy-Aware Connections",
+        description:
+          "Contact-link visibility, profile visibility, owner-only writes, self-connection prevention, duplicate-request prevention, reporting, blocking, and terminal request states are enforced across UI and backend policies.",
+      },
+      {
+        title: "Curated Event Invitations",
+        description:
+          "Founders browse reviewed events and request invitations with explicit pending, approved, declined, full, retry, and duplicate-action states instead of publishing an open social feed.",
+      },
+      {
+        title: "iOS 26 Interaction Layer",
+        description:
+          "A stable four-tab floating navigation surface and pill controls use functional Liquid Glass hierarchy on iOS, while content stays opaque and Android retains Material 3 behavior.",
+      },
+    ],
+    gallery: [
+      {
+        src: "/images/founderflow/founderflow-demo.gif",
+        alt: "FounderFlow iPhone simulator demo with realistic sample founder and event data",
+        aspect: "phone",
+      },
+      {
+        src: "/images/founderflow/founderflow-welcome.png",
+        alt: "FounderFlow Welcome screen with Apple, Google, and email sign-in actions",
+        aspect: "phone",
+      },
+      {
+        src: "/images/founderflow/founderflow-home.png",
+        alt: "FounderFlow Home dashboard showing a nearby sample founder and curated event",
+        aspect: "phone",
+      },
+      {
+        src: "/images/founderflow/founderflow-discover.png",
+        alt: "FounderFlow Discover screen showing realistic sample founders and search controls",
+        aspect: "phone",
+      },
+      {
+        src: "/images/founderflow/founderflow-map.png",
+        alt: "FounderFlow Map screen with map and list modes, location sharing, safe key fallback, and sample founder results",
+        aspect: "phone",
+      },
+      {
+        src: "/images/founderflow/founderflow-founder-profile.png",
+        alt: "FounderFlow sample founder profile with one clear connection action",
+        aspect: "phone",
+      },
+      {
+        src: "/images/founderflow/founderflow-events.png",
+        alt: "FounderFlow Curated Events screen with a realistic Da Nang meetup example",
+        aspect: "phone",
+      },
+      {
+        src: "/images/founderflow/founderflow-profile.png",
+        alt: "FounderFlow account profile with links, visibility, revenue verification, and settings",
+        aspect: "phone",
+      },
+    ],
+    techStack: {
+      frontend: [
+        "Flutter & Dart",
+        "Riverpod",
+        "GoRouter",
+        "Cupertino / iOS 26 interaction patterns",
+        "Material 3 on Android",
+      ],
+      backend: [
+        "Supabase Auth",
+        "PostgreSQL with RLS and RPCs",
+        "Supabase Storage",
+        "Supabase Edge Functions",
+      ],
+      tools: [
+        "Xcode & iOS Simulator",
+        "Flutter integration tests",
+        "Google Maps SDK",
+        "Google Stitch",
+        "Optional Sentry and PostHog",
+      ],
+    },
+    badges: ["Flutter", "Supabase", "iOS 26", "Riverpod", "PostgreSQL"],
+    challenges: [
+      {
+        challenge: "Adopting Liquid Glass without turning the whole interface into decoration",
+        solution:
+          "Centralized the design tokens and limited translucency to navigation and controls. Founder cards, profiles, event content, and forms remain opaque for contrast, while Reduce Transparency, Increase Contrast, Reduce Motion, dark mode, and 44-point targets are represented in the UI contracts.",
+      },
+      {
+        challenge: "Keeping private founder data safe across discovery and connection flows",
+        solution:
+          "Separated owner tables from visibility-filtered discovery RPCs, enforced RLS and fixed Storage paths, and represented moderation, report, block, in-flight, duplicate, self-request, retry, and deletion states explicitly in the client.",
+      },
+      {
+        challenge: "Proving a multi-screen MVP without expanding it into a social network",
+        solution:
+          "Locked the product to seven top-level screens and one core journey, then covered it with focused widget/provider tests and a deterministic iPhone simulator smoke test that exercises every primary destination and action.",
+      },
+    ],
+    links: {},
+    snapshot: {
+      timeframe: "2026",
+      status: "in-development",
+      role: "Solo product designer and full-stack mobile developer",
+      ownership:
+        "Product scope, Flutter architecture, iOS interaction design, Supabase data/security layer, automated QA, and release preparation",
+      industry: "Founder networking and curated events",
+      platform: "iOS-first mobile app",
+    },
+  },
+  {
     slug: "luxe-spa",
     title: "Luxe Spa Booking",
     tagline:
