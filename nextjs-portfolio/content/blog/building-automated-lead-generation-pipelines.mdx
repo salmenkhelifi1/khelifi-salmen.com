@@ -1,0 +1,55 @@
+---
+title: Building Automated Lead Generation Pipelines
+slug: building-automated-lead-generation-pipelines
+excerpt: >-
+  The complete lead gen pipeline I built: web scraping, enrichment, scoring, and
+  CRM integration running fully automated.
+status: "published"
+category: Automation
+tags:
+  - Python
+  - n8n
+  - AI automation
+featured: false
+author: Salmen Khelifi
+publishedAt: "2026-07-23"
+cover: "/images/blog/building-automated-lead-generation-pipelines/cover.png"
+coverAlt: "Building Automated Lead Generation Pipelines cover illustration"
+relatedCaseStudies: []
+---
+
+## Context
+
+Automation is about eliminating repetitive work so you can focus on what matters. In this project, I automated building automated lead generation pipelines to save time, reduce errors, and create a system that runs without constant attention.
+
+Here's the problem I was solving and the complete solution I built.
+
+## The approach
+
+### Understanding the workflow
+
+Before automating, I mapped out the manual process step by step:
+
+- What triggers the workflow?
+- What decisions are made along the way?
+- What are the failure modes and how should the system handle them?
+
+### Building the automation
+
+The implementation uses a combination of tools chosen for reliability and maintainability:
+
+1. **Trigger** — A webhook, schedule, or event that starts the workflow
+2. **Processing** — The core logic that transforms inputs into outputs
+3. **Actions** — The resulting operations (send email, update database, post to API)
+4. **Error handling** — Retries, notifications, and manual fallback for edge cases
+
+I built the system with visibility into every step so issues are caught before they affect users.
+
+## Results and takeaways
+
+The automation runs daily and handles what previously required hours of manual work:
+
+- Map the complete workflow before writing a single line of code
+- Include error handling and notifications — silent failures erode trust in automation
+- Build in a way that allows manual override when needed
+- Measure the time saved and use it to justify further automation investments

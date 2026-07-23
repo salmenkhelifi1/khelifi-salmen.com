@@ -1,0 +1,53 @@
+---
+title: Deploying Multi-container Applications with Dokploy
+slug: deploying-multi-container-applications-with-dokploy
+excerpt: >-
+  How I use Dokploy to deploy complex applications with databases, workers, and
+  cron jobs across multiple servers.
+status: "published"
+category: DevOps & Infrastructure
+tags:
+  - Docker
+  - DevOps
+  - Node.js
+featured: false
+author: Salmen Khelifi
+publishedAt: "2026-07-23"
+cover: "/images/blog/deploying-multi-container-applications-with-dokploy/cover.png"
+coverAlt: "Deploying Multi-container Applications with Dokploy cover illustration"
+relatedCaseStudies: []
+---
+
+## Context
+
+Infrastructure is the foundation that everything else runs on. When I set out to devops & infrastructure, my goals were reliability, repeatability, and minimal manual intervention.
+
+This guide walks through the exact setup I use in production, including the configuration files, the rationale behind each choice, and the lessons learned from operating it daily.
+
+## The approach
+
+### Architecture overview
+
+The setup follows infrastructure-as-code principles with everything version-controlled and deployable through automated pipelines.
+
+Key decisions included:
+
+- **Reproducibility** — Every environment is built from the same configuration, with environment-specific overrides
+- **Observability** — Logs, metrics, and alerts configured from the start, not retrofitted
+- **Security** — Least-privilege access, secret management, and network isolation baked into the design
+
+### Step-by-step implementation
+
+1. **Infrastructure definition** — Terraform or Docker Compose files that define the entire stack
+2. **CI/CD pipeline** — Automated build, test, and deploy stages
+3. **Monitoring setup** — Health checks, metrics collection, and alerting rules
+4. **Disaster recovery** — Backup strategies and restore procedures
+
+## Results and takeaways
+
+The setup has been running in production with minimal issues. What I learned:
+
+- Automate everything you do more than once — the second time should be the last manual time
+- Test your disaster recovery procedure, not just your deployment pipeline
+- Infrastructure documentation goes stale fast — keep it in code, not in READMEs
+- Start simple and add complexity only when the need is proven
