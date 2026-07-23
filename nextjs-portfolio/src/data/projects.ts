@@ -51,6 +51,7 @@ export type Project = {
   links: {
     github?: string;
     live?: string;
+    demo?: string;
   };
   /**
    * Project snapshot fields — all optional. Every consumer must render a field
@@ -135,23 +136,28 @@ export const projects: Project[] = [
         aspect: "phone",
       },
       {
+        src: "/images/founderflow/founderflow-create-profile.png",
+        alt: "FounderFlow profile setup with Salmen's founder portrait, location consent, and founder focus controls",
+        aspect: "phone",
+      },
+      {
         src: "/images/founderflow/founderflow-home.png",
         alt: "FounderFlow Home dashboard showing a nearby sample founder and curated event",
         aspect: "phone",
       },
       {
         src: "/images/founderflow/founderflow-discover.png",
-        alt: "FounderFlow Discover screen showing realistic sample founders and search controls",
+        alt: "FounderFlow Discover screen with Salmen marked as You, a safe own-profile action, realistic sample founders, and search controls",
         aspect: "phone",
       },
       {
         src: "/images/founderflow/founderflow-map.png",
-        alt: "FounderFlow Map screen with map and list modes, location sharing, safe key fallback, and sample founder results",
+        alt: "FounderFlow live Google Map with Map and List modes, location sharing, current-location control, and a sample San Francisco founder marker",
         aspect: "phone",
       },
       {
         src: "/images/founderflow/founderflow-founder-profile.png",
-        alt: "FounderFlow sample founder profile with one clear connection action",
+        alt: "FounderFlow high-resolution Sarah Chen founder profile with one clear connection action",
         aspect: "phone",
       },
       {
@@ -161,7 +167,7 @@ export const projects: Project[] = [
       },
       {
         src: "/images/founderflow/founderflow-profile.png",
-        alt: "FounderFlow account profile with links, visibility, revenue verification, and settings",
+        alt: "FounderFlow Salmen Khelifi account profile with a high-resolution portrait, links, visibility, revenue verification, and settings",
         aspect: "phone",
       },
     ],
@@ -205,7 +211,9 @@ export const projects: Project[] = [
           "Locked the product to seven top-level screens and one core journey, then covered it with focused widget/provider tests and a deterministic iPhone simulator smoke test that exercises every primary destination and action.",
       },
     ],
-    links: {},
+    links: {
+      demo: "/images/founderflow/founderflow-demo.mp4",
+    },
     snapshot: {
       timeframe: "2026",
       status: "in-development",

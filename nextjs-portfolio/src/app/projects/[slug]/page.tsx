@@ -14,6 +14,7 @@ import {
   ExternalLink,
   Layers,
   MessageSquare,
+  PlayCircle,
   Server,
   ShieldCheck,
   Smartphone,
@@ -90,13 +91,23 @@ function TechBadge({ label }: { label: string }) {
 }
 
 function ProjectLinks({ project, large }: { project: Project; large?: boolean }) {
-  const { github, live } = project.links;
-  if (!github && !live) return null;
+  const { demo, github, live } = project.links;
+  if (!demo && !github && !live) return null;
   const base = large
     ? "inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full px-8 py-4 font-bold transition-all focus-visible:outline-2 focus-visible:outline-[var(--accent)]"
     : "inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold transition-all focus-visible:outline-2 focus-visible:outline-[var(--accent)]";
   return (
     <div className="flex flex-wrap gap-4">
+      {demo && (
+        <a
+          href={demo}
+          target="_blank"
+          rel="noreferrer"
+          className={`${base} system-live-link`}
+        >
+          <PlayCircle className={large ? "w-5 h-5" : "w-4 h-4"} aria-hidden="true" /> Full App Demo
+        </a>
+      )}
       {live && (
         <a
           href={live}

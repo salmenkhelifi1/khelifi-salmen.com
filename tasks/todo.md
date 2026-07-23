@@ -21,7 +21,7 @@ Session context file. If the conversation is lost, read this to resume.
 
 ## Architecture decided
 - Data-driven case-study pages:
-  - `src/data/projects.ts` — typed static `Project[]` (slug, title, tagline, category, accent = literal Tailwind class strings, overview{what/problem/audience}, features[], gallery[], techStack{frontend/backend?/tools?}, badges[], challenges?, links{github?/live?}).
+  - `src/data/projects.ts` — typed static `Project[]` (slug, title, tagline, category, accent = literal Tailwind class strings, overview{what/problem/audience}, features[], gallery[], techStack{frontend/backend?/tools?}, badges[], challenges?, links{github?/live?/demo?}).
   - `src/app/projects/[slug]/page.tsx` — dynamic route, `generateStaticParams` + `generateMetadata`, `notFound()` for unknown slugs. Sections: hero, overview cards, features, gallery, tech stack, challenges table, CTA, footer. Optional fields render conditionally.
 - Adding a project = append one object to `projects` array.
 
