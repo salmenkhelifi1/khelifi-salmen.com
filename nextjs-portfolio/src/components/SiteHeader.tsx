@@ -72,14 +72,15 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
                   <Github className="h-4 w-4" aria-hidden="true" />
                 </a>
                 <ThemeSwitcher />
-                <a
-                  href={bookingUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-6 py-2.5 text-sm font-bold text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--glass-bg-elevated)]"
+                <button
+                  type="button"
+                  data-cal-namespace="30min"
+                  data-cal-link="salmen-khelifi/30min"
+                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                  className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-6 py-2.5 text-sm font-bold text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--glass-bg-elevated)] cursor-pointer"
                 >
                   Let&apos;s Talk
-                </a>
+                </button>
               </div>
               <button
                 type="button"
@@ -137,15 +138,16 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
                   <ThemeSwitcher />
                 </div>
               </div>
-              <a
-                href={bookingUrl}
-                target="_blank"
-                rel="noreferrer"
+              <button
+                type="button"
+                data-cal-namespace="30min"
+                data-cal-link="salmen-khelifi/30min"
+                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
                 onClick={() => setIsMenuOpen(false)}
-                className="cta-button cta-primary mt-3 w-full"
+                className="cta-button cta-primary mt-3 w-full cursor-pointer"
               >
                 Book a call
-              </a>
+              </button>
             </div>
           </div>
         )}

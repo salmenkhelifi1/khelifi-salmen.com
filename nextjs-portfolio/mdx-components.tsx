@@ -10,6 +10,7 @@ import Quote from "@/components/mdx/Quote";
 import MdxArchitectureNote from "@/components/mdx/MdxArchitectureNote";
 import TechnicalNote from "@/components/mdx/TechnicalNote";
 import CodeBlock from "@/components/mdx/CodeBlock";
+import MdxImage from "@/components/mdx/MdxImage";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -62,6 +63,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </a>
     ),
+    img: ({ src, alt }) => <MdxImage src={src} alt={alt} />,
     Callout,
     DecisionCard,
     MetricCard,

@@ -1,0 +1,128 @@
+---
+title: "My Solo Stack: Running 3 SaaS Products as a Full-Stack Developer"
+slug: "solo-developer-saas-tools-stack"
+excerpt: "My Solo Stack: Running 3 SaaS Products as a Full-Stack Developer"
+status: "published"
+updatedAt: "2026-07-24"
+publishedAt: "2026-07-24"
+category: "Product Engineering"
+tags: ["solo founder","saas tools","full-stack dev","indie hacking"]
+featured: false
+cover: "/images/blog/solo-developer-saas-tools-stack/cover.png"
+coverAlt: "My Solo Stack: Running 3 SaaS Products as a Full-Stack Developer cover illustration"
+author: "Salmen Khelifi"
+seoTitle: "My Solo Stack: Running 3 SaaS Products as a Full-Stack Developer"
+seoDescription: "My Solo Stack: Running 3 SaaS Products as a Full-Stack Developer"
+canonicalUrl: "https://khelifi-salmen.com/blog/solo-developer-saas-tools-stack"
+relatedCaseStudies: []
+---
+
+Running three SaaS products as a solo developer sounds daunting. The reality is, it's not just possible; it's efficient, thanks to a carefully selected tech stack. This article breaks down the tools and strategies I use across development, deployment, operations, and business management to maximize output and minimize overhead.
+
+My goal as a solo founder is to focus almost exclusively on product development and user value, not infrastructure management. Every tool in my stack is chosen with this principle in mind: **leverage managed services and automation wherever possible.**
+
+
+
+## The Development Core: Building Fast, Building Right
+
+My primary stack revolves around **Next.js** with **React** and **TypeScript**. For styling, **Tailwind CSS** is non-negotiable. Database-wise, I lean on **PostgreSQL**, often managed via **Prisma ORM**. For shared code across projects, a **monorepo** setup (using **Turborepo**) is crucial. **VS Code** is my IDE.
+
+**What I did:** I standardized on this stack early on. Instead of experimenting with new frameworks for each project, I refined my expertise in this specific set of technologies. This consistency allows for rapid iteration and reduces context switching.
+
+**What I learned:**
+
+*   **TypeScript is an investment, not an overhead.** While it adds initial setup time and a learning curve, it catches errors early, improves refactoring, and makes collaboration (even with myself) smoother. The type safety prevents a significant class of bugs from ever reaching production.
+*   **Tailwind CSS accelerates UI development.** Once you grasp its utility-first approach, designing and implementing interfaces becomes incredibly fast. It keeps CSS bloat down and ensures design consistency across components without writing custom CSS for every element.
+*   **Monorepos streamline shared logic.** Instead of copying components, hooks, or utility functions between projects, Turborepo allows me to manage them in a single repository. This ensures consistency, reduces maintenance, and simplifies dependency management across my different SaaS products.
+*   **Prisma simplifies database interactions.** Its type safety with TypeScript is a game-changer. Migrations are straightforward, and the query builder is intuitive, abstracting away raw SQL while still providing powerful control.
+
+**Trade-offs:** TypeScript has a learning curve. Tailwind can feel verbose initially, though IDE extensions mitigate this. Monorepos add a layer of configuration complexity, but the benefits for multiple projects outweigh this.
+
+```typescript
+// Example: A type-safe API route with Next.js and Prisma
+// pages/api/users.ts
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method === 'GET') {
+    const users = await prisma.user.findMany();
+    return res.status(200).json(users);
+  }
+  return res.status(405).end(); // Method Not Allowed
+}
+```
+
+## Deployment & Infrastructure: Set It and Forget It (Mostly)
+
+**Vercel** hosts all my Next.js applications, handling frontend, API routes, and serverless functions. For databases, I rely on managed **PostgreSQL** services like **Supabase** or **Neon**. Supabase also provides authentication, storage, and real-time capabilities. For caching, **Upstash** (serverless Redis) is my go-to.
+
+**What I did:** I embraced serverless and managed services fully. My infrastructure decisions prioritize developer experience and minimal operational burden over granular control or extreme cost optimization (at small scales).
+
+**What I learned:**
+
+*   **Serverless is a solo dev's superpower.** Vercel's integration with Next.js is seamless. It handles scaling, CDN, and deployments with minimal configuration. This frees up immense time from server management, allowing me to deploy new features multiple times a day without worry.
+*   **Managed databases are essential.** Services like Supabase or Neon abstract away database administration. I focus on schema design and queries, not backups, replication, or patching. Supabase's built-in auth and storage are huge time-savers, reducing the need for separate services.
+*   **Caching is critical for performance and cost.** Upstash provides a simple, serverless Redis instance that's easy to integrate for frequently accessed data, reducing database load and improving response times without managing a Redis server.
+
+**Trade-offs:** Vendor lock-in is a reality with highly integrated platforms like Vercel and Supabase. Costs can escalate with heavy usage, though typically remain manageable for early-stage SaaS. You trade some control for convenience.
+
+
+
+## Operations & Monitoring: Proactive Problem Solving
+
+**Sentry** for error tracking across all applications. **Logtail** (or similar centralized logging) for aggregating application logs. **UptimeRobot** for basic external uptime monitoring. For scheduled tasks, Vercel's built-in cron jobs or a dedicated service like **Cronitor**.
+
+**What I did:** I set up monitoring and logging from day one for each product. The goal is to be aware of issues before users report them, and to have the necessary context to debug quickly.
+
+**What I learned:**
+
+*   **Don't wait for users to report bugs.** Sentry provides real-time error alerts, stack traces, and context (user info, request data), allowing me to fix issues proactively. This significantly improves user experience and reduces support load.
+*   **Centralized logging is non-negotiable for debugging.** Sifting through individual server logs is inefficient. Logtail aggregates everything, making it easy to search, filter, and correlate events across different services or timeframes.
+*   **Simple uptime monitoring is sufficient initially.** UptimeRobot sends me a ping if a site goes down. It's basic but effective for knowing if a critical service is offline. For more complex health checks, I might use a custom endpoint.
+
+**Trade-offs:** Sentry can be noisy if not configured well with proper filters and alerts. Log retention can become expensive with high-volume applications. Monitoring tools add another layer of configuration and potential alert fatigue.
+
+## Business & Growth: Automating the Non-Code
+
+**Stripe** for payment processing. For handling global sales tax and compliance, I use **Lemon Squeezy** (or Paddle). Transactional emails go through **Postmark** or **Mailgun**. For marketing newsletters, **ConvertKit** or **Resend**. **Plausible Analytics** (or Fathom) for privacy-friendly website analytics.
+
+**What I did:** I identified critical business functions that are complex or time-consuming and sought out specialized services to handle them. This allows me to focus on product features rather than legal, financial, or marketing infrastructure.
+
+**What I learned:**
+
+*   **Offload tax and compliance early.** Dealing with global sales tax (VAT, GST) is a nightmare for a solo founder. Reseller services like Lemon Squeezy handle all of it – invoicing, tax calculation, remittance – letting me focus on the product without becoming a tax expert.
+*   **Reliable transactional emails are paramount.** Password resets, invoices, notifications – these need to be delivered consistently and quickly. Postmark has excellent deliverability and a developer-friendly API.
+*   **Privacy-friendly analytics are sufficient and ethical.** I don't need complex user tracking. Plausible gives me the essential metrics (page views, referrers, top pages) without compromising user privacy or requiring a complex cookie consent banner.
+
+**Trade-offs:** Each service adds a monthly cost, which can accumulate. Integration can take time, and switching providers later can be complex. Choosing between resellers (Lemon Squeezy vs. Paddle) involves weighing features, fees, and regional support.
+
+
+
+## Productivity & Management: Staying Focused
+
+**Linear** for task management and issue tracking. **Notion** for all documentation, knowledge base, and product roadmaps. **Google Workspace** for email, calendar, and shared documents. **Slack** or **Discord** for community support and quick internal communication.
+
+**What I did:** I adopted tools that are fast, flexible, and integrate well. I resist the urge to over-engineer my internal processes, keeping them as lean as possible.
+
+**What I learned:**
+
+*   **Keep task management lean.** Linear's focus on speed, keyboard shortcuts, and a clear workflow makes it incredibly efficient. I avoid over-engineering my project boards; a simple backlog, in-progress, and done column is often enough.
+*   **Document everything.** Notion serves as my single source of truth for product specs, API docs, marketing copy, internal processes, and even personal notes. This prevents knowledge silos and speeds up onboarding for future contractors or hires.
+*   **Centralize communication.** Having dedicated channels for support (e.g., a Discord server) and internal announcements helps keep things organized and ensures I don't miss critical messages.
+
+**Trade-offs:** Too many tools can lead to context switching and subscription fatigue. While each tool is powerful, the discipline to use them effectively is key.
+
+## Conclusion: The Power of a Curated Stack
+
+Building and maintaining multiple SaaS products as a solo developer isn't about working harder; it's about working smarter with the right tools. My current stack is a testament to the power of leveraging modern cloud services and developer-centric platforms.
+
+Each tool was chosen to maximize efficiency, minimize operational overhead, and allow me to focus on product development and delivering value to users. By automating away the mundane and outsourcing complex non-core functions, I can operate at a scale that would be impossible with a traditional, self-managed infrastructure.
+
+Evaluate your own workflow. Where can you automate? Where can you leverage managed services? A well-chosen stack is your force multiplier, enabling you to build, launch, and grow without needing a large team. The landscape evolves, and so will my stack. But the principles of efficiency, reliability, and focus remain constant.
+
+---
+
+*Originally published at [khelifi-salmen.com](https://khelifi-salmen.com/blog/solo-developer-saas-tools-stack)*

@@ -1,0 +1,55 @@
+---
+title: How I Built a Real-Time Chat Application with WebSockets
+slug: how-i-built-a-real-time-chat-application-with-websockets
+excerpt: >-
+  Lessons from building a real-time messaging system with WebSocket connections,
+  presence detection, and message persistence.
+status: "published"
+category: Full-Stack Development
+tags:
+  - Node.js
+  - React
+  - TypeScript
+featured: false
+author: Salmen Khelifi
+publishedAt: "2026-07-23"
+cover: "/images/blog/how-i-built-a-real-time-chat-application-with-websockets/cover.png"
+coverAlt: "How I Built a Real-Time Chat Application with WebSockets cover illustration"
+relatedCaseStudies: []
+---
+
+## Context
+
+When building how i built a real-time chat application with websockets, I faced several architectural decisions that shaped the final outcome. This article breaks down the approach, the trade-offs I considered, and the implementation details that made the difference between a working prototype and a production-ready system.
+
+Every project starts with constraints — budget, timeline, existing infrastructure. Understanding these constraints upfront drove the decisions you'll read about below.
+
+## The approach
+
+### Research and planning
+
+Before writing any code, I mapped out the requirements and identified the key decision points. This involved:
+
+- Understanding the core domain and its edge cases
+- Evaluating existing solutions and their limitations
+- Identifying the minimal viable architecture that supports future growth
+
+### Implementation
+
+I structured the implementation in phases, each delivering value independently:
+
+1. **Foundation** — Setting up the core infrastructure and data models
+2. **Core features** — Building the primary user-facing functionality
+3. **Optimization** — Performance tuning, caching, and error handling
+4. **Hardening** — Security, monitoring, and disaster recovery
+
+Each phase included automated tests and a deployment step to catch regressions early.
+
+## Results and takeaways
+
+The implementation covered the requirements and left room for growth. Key takeaways:
+
+- Invest in the data model early — it's the most expensive thing to change later
+- Measure before optimising — assumptions about bottlenecks are often wrong
+- Document architectural decisions and the rationale behind them
+- Build with observability in mind from day one

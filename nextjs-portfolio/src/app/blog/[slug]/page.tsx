@@ -139,20 +139,21 @@ export default async function BlogPostPage({ params }: Props) {
 
             {/* Optional Cover Image */}
             {post.frontmatter.cover && (
-              <div className="mb-12 overflow-hidden rounded-2xl border border-[var(--glass-border)]">
+              <div className="mb-10 max-w-2xl mx-auto overflow-hidden rounded-2xl border border-[var(--glass-border)] shadow-md">
                 <Image
                   src={post.frontmatter.cover}
                   alt={post.frontmatter.coverAlt || post.frontmatter.title}
                   width={1200}
                   height={630}
-                  className="w-full h-auto object-cover"
+                  unoptimized
+                  className="w-full h-auto rounded-2xl block"
                   priority
                 />
               </div>
             )}
 
             {/* Article Content */}
-            <div className="glass-panel p-8 md:p-12">
+            <div className="glass-panel p-8 md:p-12 blog-article-content">
               <MDXContent />
             </div>
             {relatedProjects.length > 0 && (

@@ -1,0 +1,51 @@
+---
+title: 'Push Notifications: A Comprehensive Implementation Guide'
+slug: push-notifications-a-comprehensive-implementation-guide
+excerpt: >-
+  Implementing push notifications across iOS and Android with Firebase Cloud
+  Messaging, notification channels, and delivery tracking.
+status: "published"
+category: Mobile Development
+tags:
+  - Node.js
+  - React
+  - Operations
+featured: false
+author: Salmen Khelifi
+publishedAt: "2026-07-23"
+cover: "/images/blog/push-notifications-a-comprehensive-implementation-guide/cover.png"
+coverAlt: "Push Notifications: A Comprehensive Implementation Guide cover illustration"
+relatedCaseStudies: []
+---
+
+## Context
+
+Mobile development comes with its own set of challenges: device fragmentation, app store policies, offline support, and performance constraints. When building push notifications: a comprehensive implementation guide, I encountered each of these and developed practical solutions.
+
+Here's what went into shipping a production mobile app.
+
+## The approach
+
+### Architecture decisions
+
+Cross-platform development required careful architecture choices:
+
+- Shared business logic with platform-specific UI layers where needed
+- Offline-first data strategy with sync reconciliation
+- Navigation patterns that feel native on each platform
+
+### Implementation highlights
+
+1. **Setup** — Project structure, build configuration, and CI for both platforms
+2. **Core features** — Shared components and platform-specific access
+3. **Integration** — Push notifications, deep linking, and third-party SDKs
+4. **Release** — App store submission, testing, and monitoring
+
+## Results and takeaways
+
+Shipping to both app stores was a milestone that taught me:
+
+- React Native is production-ready but expect platform-specific work
+- Test on real devices — simulators don't catch everything
+- App store review times are unpredictable — plan ahead
+- Offline support isn't optional — it's expected by users
