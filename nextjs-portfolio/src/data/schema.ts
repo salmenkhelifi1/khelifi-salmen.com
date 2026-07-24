@@ -9,6 +9,8 @@ export const githubUrl = "https://github.com/salmenkhelifi1";
 export const linkedinUrl = "https://www.linkedin.com/in/salmen-khelifi/";
 export const facebookUrl = "https://www.facebook.com/khelifisalmen1";
 export const instagramUrl = "https://www.instagram.com/khelifi.salmen/";
+export const substackUrl = "https://salmenkhelifi.substack.com/";
+export const youtubeUrl = "https://www.youtube.com/@khelifisalmen";
 export const xUrl = "https://x.com/khlifisalmen2";
 export const upworkUrl = "https://www.upwork.com/freelancers/~01f5b8025abe71abf2";
 export const personId = `${siteUrl}/#person`;
@@ -23,14 +25,16 @@ export const siteJsonLd = [
     name: "Salmen Khelifi",
     jobTitle: "Full-Stack Developer & Automation Specialist",
     url: siteUrl,
-    email: "contact@khelifi-salmen.com",
+    email: "hello@khelifi-salmen.com",
     telephone: "+84961566302",
     sameAs: [
       githubUrl,
-      freelancerUrl,
       linkedinUrl,
-      facebookUrl,
+      substackUrl,
+      youtubeUrl,
       instagramUrl,
+      freelancerUrl,
+      facebookUrl,
       xUrl,
       upworkUrl,
     ],
@@ -66,7 +70,7 @@ export const siteJsonLd = [
     "@id": serviceId,
     name: "Salmen Khelifi",
     url: siteUrl,
-    email: "contact@khelifi-salmen.com",
+    email: "hello@khelifi-salmen.com",
     telephone: "+84961566302",
     areaServed: "Worldwide",
     serviceType: [

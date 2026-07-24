@@ -397,10 +397,17 @@ export default async function ProjectProfilePage({
   // Construct table of contents sections dynamically based on present data
   const renderedSections: TocSection[] = [
     { id: "hero", label: "Overview" },
+  ];
+
+  if (project.heroVideo) {
+    renderedSections.push({ id: "demo-video", label: "App Demo" });
+  }
+
+  renderedSections.push(
     { id: "impact", label: "Impact & Value" },
     { id: "context-and-problem", label: "Context & Problem" },
-    { id: "solution", label: "The Solution" },
-  ];
+    { id: "solution", label: "The Solution" }
+  );
 
   if (architectureItems.length > 0) {
     renderedSections.push({ id: "architecture", label: "Architecture" });
@@ -541,31 +548,56 @@ export default async function ProjectProfilePage({
                 </div>
               </div>
 
-              {project.heroImage && (
+              {(project.heroImage || project.slug === "founderflow") && (
                 <div className="mt-10">
-                  <div
-                    className={`relative mx-auto w-full overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border)] bg-[var(--bg-surface)] shadow-[var(--glass-shadow)] ${
-                      hasDesktopGallery ? "aspect-video max-w-4xl" : "aspect-[9/16] max-w-md"
-                    }`}
-                  >
+                  <div className="relative mx-auto w-full overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border-bright)] bg-black shadow-2xl aspect-video max-w-4xl">
                     <Image
-                      src={project.heroImage}
+                      src={
+                        project.slug === "founderflow"
+                          ? "/images/founderflow/founderflow-demo.gif"
+                          : project.heroImage!
+                      }
                       alt={heroAlt}
                       fill
                       priority
-                      sizes={
-                        hasDesktopGallery
-                          ? "(max-width: 1024px) 95vw, 880px"
-                          : "(max-width: 768px) 90vw, 420px"
-                      }
-                      className="object-cover"
-                      placeholder="blur"
-                      blurDataURL={BLUR_PLACEHOLDER}
+                      sizes="(max-width: 1024px) 95vw, 880px"
+                      className="object-cover bg-black"
+                      unoptimized={project.slug === "founderflow"}
                     />
                   </div>
                 </div>
               )}
             </section>
+
+            {/* Live Mobile App Video Demo Section */}
+            {project.heroVideo && (
+              <section id="demo-video" className="scroll-mt-32" aria-labelledby="demo-video-heading">
+                <div className="modern-card rounded-[var(--radius-xl)] p-6 md:p-10 text-center">
+                  <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[var(--accent)] bg-[var(--accent-dim)] px-3.5 py-1.5 rounded-full mb-4">
+                    <PlayCircle className="w-4 h-4" aria-hidden="true" />
+                    Full HD Video Walkthrough
+                  </div>
+                  <h2 id="demo-video-heading" className="text-h2 mb-3">
+                    Live Mobile App Demo
+                  </h2>
+                  <p className="text-sm text-[var(--text-secondary)] max-w-xl mx-auto mb-8">
+                    Watch the full app navigation and interactive founder flow recorded directly from the iOS simulator.
+                  </p>
+                  <div className="relative mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md aspect-[9/19.5] overflow-hidden rounded-[2.5rem] border-[6px] border-[#22232e] bg-black shadow-2xl">
+                    <video
+                      src={project.heroVideo}
+                      poster={project.heroImage}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      controls
+                      className="w-full h-full object-cover bg-black"
+                    />
+                  </div>
+                </div>
+              </section>
+            )}
 
             {/* Section 2: Impact */}
             <section id="impact" className="scroll-mt-32" aria-labelledby="impact-heading">
@@ -752,15 +784,28 @@ export default async function ProjectProfilePage({
                               !isEven ? "lg:order-first" : ""
                             }`}
                           >
-                            <Image
-                              src={matchedScreenshot.src}
-                              alt={matchedScreenshot.alt}
-                              fill
-                              sizes="(max-width: 1024px) 90vw, 450px"
-                              className="object-cover"
-                              placeholder="blur"
-                              blurDataURL={BLUR_PLACEHOLDER}
-                            />
+                            {matchedScreenshot.src.endsWith(".mp4") ||
+                            matchedScreenshot.src.endsWith(".webm") ? (
+                              <video
+                                src={matchedScreenshot.src}
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                controls
+                                className="w-full h-full object-contain bg-black"
+                              />
+                            ) : (
+                              <Image
+                                src={matchedScreenshot.src}
+                                alt={matchedScreenshot.alt}
+                                fill
+                                sizes="(max-width: 1024px) 90vw, 450px"
+                                className="object-cover"
+                                placeholder="blur"
+                                blurDataURL={BLUR_PLACEHOLDER}
+                              />
+                            )}
                           </div>
                         )}
                       </div>
@@ -873,6 +918,8 @@ export default async function ProjectProfilePage({
                     const shotIsPhone = shot.aspect
                       ? shot.aspect === "phone"
                       : !hasDesktopGallery;
+                    const isVideo =
+                      shot.src.endsWith(".mp4") || shot.src.endsWith(".webm");
                     return (
                       <div
                         key={shot.src}
@@ -880,19 +927,31 @@ export default async function ProjectProfilePage({
                           shotIsPhone ? "aspect-[9/19] w-full max-w-xs mx-auto" : "aspect-video"
                         }`}
                       >
-                        <Image
-                          src={shot.src}
-                          alt={shot.alt}
-                          fill
-                          sizes={
-                            shotIsPhone
-                              ? "(max-width: 640px) 90vw, (max-width: 768px) 45vw, 300px"
-                              : "(max-width: 768px) 90vw, 500px"
-                          }
-                          className="object-cover"
-                          placeholder="blur"
-                          blurDataURL={BLUR_PLACEHOLDER}
-                        />
+                        {isVideo ? (
+                          <video
+                            src={shot.src}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            controls
+                            className="w-full h-full object-contain bg-black"
+                          />
+                        ) : (
+                          <Image
+                            src={shot.src}
+                            alt={shot.alt}
+                            fill
+                            sizes={
+                              shotIsPhone
+                                ? "(max-width: 640px) 90vw, (max-width: 768px) 45vw, 300px"
+                                : "(max-width: 768px) 90vw, 500px"
+                            }
+                            className="object-cover"
+                            placeholder="blur"
+                            blurDataURL={BLUR_PLACEHOLDER}
+                          />
+                        )}
                       </div>
                     );
                   })}
@@ -1022,8 +1081,9 @@ export default async function ProjectProfilePage({
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
                     <a
                       href={bookingUrl}
-                      target="_blank"
-                      rel="noreferrer"
+                      data-cal-namespace="30min"
+                      data-cal-link="salmen-khelifi/30min"
+                      data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
                       className="cta-button cta-primary w-full sm:w-auto text-base font-bold min-h-11 focus-visible:outline-2 focus-visible:outline-[var(--accent)]"
                     >
                       Book a 30-min Call <ArrowUpRight className="w-5 h-5" aria-hidden="true" />

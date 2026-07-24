@@ -1,0 +1,278 @@
+---
+title: "Self-Host n8n on a $5 VPS: Production-Ready with Docker, SSL & Backups"
+slug: "self-hosting-n8n-5-vps-production-ready"
+excerpt: "Self-Host n8n on a $5 VPS: Production-Ready with Docker, SSL & Backups"
+status: "published"
+updatedAt: "2026-07-24"
+publishedAt: "2026-07-24"
+category: "DevOps & Infrastructure"
+tags: ["n8n","self-hosting","docker","devops"]
+featured: false
+cover: "/images/blog/self-hosting-n8n-5-vps-production-ready/cover.png"
+coverAlt: "Self-Host n8n on a $5 VPS: Production-Ready with Docker, SSL & Backups cover illustration"
+author: "Salmen Khelifi"
+seoTitle: "Self-Host n8n on a $5 VPS: Production-Ready with Docker, SSL & Backups"
+seoDescription: "Self-Host n8n on a $5 VPS: Production-Ready with Docker, SSL & Backups"
+canonicalUrl: "https://khelifi-salmen.com/blog/self-hosting-n8n-5-vps-production-ready"
+relatedCaseStudies: []
+---
+
+## Building a Production-Ready n8n on a $5 VPS
+
+As a freelance software engineer and founder, I'm constantly looking for ways to optimize my workflows and automate repetitive tasks. I needed a robust, flexible automation platform, but the managed solutions were either too expensive or too restrictive for my specific needs. That's where **n8n** came in.
+
+n8n is an incredible open-source workflow automation tool. It's self-hostable, highly customizable, and has a vast array of integrations. My challenge was to deploy it in a **production-ready** manner – meaning reliable, secure, and with automated backups – all while keeping costs minimal. My target: a $5/month Virtual Private Server (VPS).
+
+This article details exactly how I achieved this. I'll walk you through setting up n8n with **Docker**, securing it with **Nginx** and **SSL**, and implementing a solid **backup strategy**. This isn't just theory; it's the exact setup I use daily for my business operations. It proves that powerful infrastructure doesn't demand a huge budget. 
+
+## The Foundation: Choosing Your $5 VPS & Docker
+
+**What I Did:**
+
+My first step was selecting an unmanaged VPS. I've used providers like DigitalOcean, Vultr, and Linode for years. For this project, I went with a basic droplet/instance offering 1GB RAM and 1 CPU, costing around $5-$6 per month. I chose **Ubuntu Server LTS** as the operating system for its stability and vast community support.
+
+After provisioning, I immediately focused on security. I updated the system, created a non-root user, disabled password authentication for SSH, and configured a basic firewall using **UFW**. Only SSH (port 22, restricted to my IP) and HTTP/HTTPS (ports 80, 443) were initially open.
+
+Next, I installed **Docker** and **Docker Compose**. These are non-negotiable for modern application deployment. Docker provides isolated environments for n8n and its database, while Docker Compose orchestrates multiple containers as a single application.
+
+```bash
+# Update system
+sudo apt update && sudo apt upgrade -y
+
+# Create a new user and add to sudo group
+sudo adduser deployuser
+sudo usermod -aG sudo deployuser
+
+# Configure UFW firewall
+sudo ufw allow OpenSSH
+sudo ufw enable
+sudo ufw status
+
+# Install Docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker deployuser # Add user to docker group
+
+# Install Docker Compose
+sudo apt install docker-compose-plugin # For newer Docker versions
+# Or for older: sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+# sudo chmod +x /usr/local/bin/docker-compose
+```
+
+**What I Learned:**
+
+Opting for an unmanaged VPS gives you maximum control and cost savings, but it also means you're responsible for everything. **Security from day one is critical.** Don't postpone basic hardening. Docker and Docker Compose simplify dependency management and ensure consistent environments. They are the backbone of this entire setup, making the $5 VPS feel much more powerful than it is by efficiently utilizing resources.
+
+## n8n Deployment: Docker Compose for Reliability
+
+**What I Did:**
+
+I created a directory for my n8n project (e.g., `/opt/n8n`). Inside, I set up a `docker-compose.yml` file to define two services: `n8n` itself and a **PostgreSQL** database. While n8n can use SQLite by default, Postgres is far more robust for production, especially if you plan to scale or have many workflows. I also created a `.env` file to manage environment variables, keeping sensitive information out of the `docker-compose.yml`.
+
+Crucially, I configured **persistent volumes** for both n8n's data (workflows, credentials, custom nodes) and the PostgreSQL database. This ensures that my data persists even if containers are recreated or updated.
+
+```yaml
+# /opt/n8n/docker-compose.yml
+version: '3.8'
+
+services:
+  n8n:
+    image: n8nio/n8n
+    restart: always
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=${SUBDOMAIN}.${DOMAIN_NAME}
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - WEBHOOK_URL=https://${SUBDOMAIN}.${DOMAIN_NAME}/
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=postgres
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=${POSTGRES_DB}
+      - DB_POSTGRESDB_USER=${POSTGRES_USER}
+      - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD}
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=${N8N_USER}
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_PASSWORD}
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+    volumes:
+      - ./n8n_data:/home/node/.n8n
+
+  postgres:
+    image: postgres:13
+    restart: always
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+
+volumes:
+  n8n_data:
+  postgres_data:
+```
+
+```ini
+# /opt/n8n/.env
+DOMAIN_NAME=yourdomain.com
+SUBDOMAIN=n8n
+
+POSTGRES_DB=n8n_db
+POSTGRES_USER=n8n_user
+POSTGRES_PASSWORD=your_strong_postgres_password
+
+N8N_USER=admin
+N8N_PASSWORD=your_strong_n8n_password
+N8N_ENCRYPTION_KEY=a_very_long_random_string_for_encryption_key
+```
+
+After creating these files, I simply ran `docker-compose up -d` from the `/opt/n8n` directory to bring everything online. 
+
+**What I Learned:**
+
+Using `docker-compose` for multi-service applications like n8n and Postgres is a game-changer. It defines the entire application stack in a single, readable file. **Persistent volumes are absolutely critical**; without them, all your workflows and data would vanish on container restart. Environment variables (`.env` file) are the correct way to manage secrets and configuration, keeping them separate from your version-controlled `docker-compose.yml`.
+
+## Secure Access: Nginx Reverse Proxy & Let's Encrypt SSL
+
+**What I Did:**
+
+n8n runs on port 5678 internally. To make it accessible via a custom domain (e.g., `n8n.yourdomain.com`) and secure it with HTTPS, I installed **Nginx** as a reverse proxy. Nginx listens on standard HTTP (80) and HTTPS (443) ports and forwards requests to the n8n container.
+
+After configuring Nginx, I used **Certbot** from Let's Encrypt to provision and automatically renew SSL certificates. This provides free, trusted SSL, ensuring all traffic between users and n8n is encrypted.
+
+First, install Nginx and Certbot:
+
+```bash
+sudo apt install nginx python3-certbot-nginx -y
+```
+
+Then, create an Nginx configuration file for your n8n subdomain:
+
+```nginx
+# /etc/nginx/sites-available/n8n.yourdomain.com
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name n8n.yourdomain.com;
+
+    location / {
+        proxy_pass http://localhost:5678;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+Enable the site and test Nginx config:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/n8n.yourdomain.com /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+Finally, obtain the SSL certificate:
+
+```bash
+sudo certbot --nginx -d n8n.yourdomain.com
+```
+
+Certbot automatically modifies the Nginx configuration to include SSL settings and sets up a cron job for automatic renewal. 
+
+**What I Learned:**
+
+**Nginx is indispensable** for routing traffic, handling SSL termination, and serving as a robust front-end for web applications. Using **Let's Encrypt with Certbot** makes obtaining and managing SSL certificates incredibly easy and free. This setup ensures secure communication without manual certificate renewals, which is a common point of failure. Don't forget to configure your DNS records (A record pointing `n8n.yourdomain.com` to your VPS IP) before attempting to get SSL.
+
+## Data Safety: Robust Backup Strategy
+
+**What I Did:**
+
+Backups are not optional; they are critical. I implemented a daily backup routine for both the n8n data volume (`n8n_data`) and the PostgreSQL database (`postgres_data`). I wrote a simple shell script that performs a `pg_dump` of the database, then tars up both the database dump and the n8n data directory. This archive is then uploaded to an **S3-compatible object storage** (e.g., DigitalOcean Spaces, Backblaze B2, AWS S3) using `rclone`.
+
+This script is scheduled to run daily via a **cron job**.
+
+```bash
+# /opt/n8n/backup.sh
+#!/bin/bash
+
+BACKUP_DIR="/tmp/n8n_backup"
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+DB_CONTAINER_NAME="n8n_postgres_1" # Or whatever your postgres container is named
+N8N_DATA_PATH="/opt/n8n/n8n_data"
+
+# Load environment variables
+set -a
+. /opt/n8n/.env
+set +a
+
+mkdir -p $BACKUP_DIR
+
+# 1. Backup PostgreSQL database
+docker exec $DB_CONTAINER_NAME pg_dump -U $POSTGRES_USER -d $POSTGRES_DB > $BACKUP_DIR/n8n_db_backup_$TIMESTAMP.sql
+
+# 2. Tar n8n data volume
+tar -czf $BACKUP_DIR/n8n_data_backup_$TIMESTAMP.tar.gz -C $N8N_DATA_PATH .
+
+# 3. Combine and compress both backups
+tar -czf /tmp/n8n_full_backup_$TIMESTAMP.tar.gz -C $BACKUP_DIR .
+
+# 4. Upload to S3-compatible storage using rclone
+# Make sure rclone is configured (rclone config)
+rclone copy /tmp/n8n_full_backup_$TIMESTAMP.tar.gz s3-n8n-backups:n8n-backups/
+
+# 5. Clean up local backups
+rm -rf $BACKUP_DIR
+rm /tmp/n8n_full_backup_$TIMESTAMP.tar.gz
+
+# Optional: Remove old backups from S3 (e.g., keep last 30 days)
+# rclone delete --min-age 30d s3-n8n-backups:n8n-backups/
+```
+
+```bash
+# Add to cron (e.g., run daily at 3 AM)
+sudo crontab -e
+0 3 * * * /bin/bash /opt/n8n/backup.sh >> /var/log/n8n_backup.log 2>&1
+```
+
+**What I Learned:**
+
+**Automated, off-site backups are non-negotiable for any production system.** A simple script combined with `cron` and `rclone` provides a robust solution. Always test your restore process! A backup is useless if you can't restore from it. Storing backups on S3-compatible storage is cost-effective and highly durable. This strategy protects against data loss due to hardware failure, accidental deletion, or even malicious attacks.
+
+## Monitoring & Maintenance: Keeping it Healthy
+
+**What I Did:**
+
+While a $5 VPS doesn't allow for complex monitoring stacks, I implemented basic health checks. I use a simple external uptime monitor (like UptimeRobot or Healthchecks.io) to ping my n8n instance every few minutes. If it goes down, I get an alert.
+
+For updates, I regularly pull new Docker images for n8n and Postgres and restart the containers. I also keep the underlying Ubuntu OS updated.
+
+```bash
+# To update n8n and Postgres containers
+cd /opt/n8n
+docker-compose pull
+docker-compose up -d
+
+# To update OS
+sudo apt update && sudo apt upgrade -y
+```
+
+**What I Learned:**
+
+**Proactive monitoring is key to preventing extended downtime.** Even a simple uptime check is better than nothing. Regular updates for both the application (n8n) and the operating system are crucial for security and performance. While a $5 VPS has limitations, a disciplined approach to maintenance keeps it running smoothly. Plan for a short maintenance window for updates, as `docker-compose up -d` will briefly stop and restart containers.
+
+## Conclusion: Powerful Automation on a Budget
+
+I set out to build a production-ready n8n automation platform on a $5 VPS, and I achieved it. By leveraging **Docker**, **Nginx**, **Let's Encrypt SSL**, and a robust **backup strategy**, I created a reliable, secure, and cost-effective solution that powers my business operations daily. This setup demonstrates that you don't need a massive budget or complex infrastructure to run powerful tools.
+
+This approach gives me full control over my data and environment, something managed services often restrict. It's a testament to the power of open-source software and modern DevOps practices. If you're a freelance engineer, solo founder, or small business owner, this blueprint can empower you to take control of your automation without breaking the bank.
+
+My next steps involve exploring more advanced monitoring solutions that are still lightweight enough for a $5 VPS, and integrating more of my business processes into n8n. The possibilities for automation are endless, and having a solid, self-hosted foundation makes all the difference.
+
+---
+
+*Originally published at [khelifi-salmen.com](https://khelifi-salmen.com/blog/self-hosting-n8n-5-vps-production-ready)*

@@ -149,7 +149,7 @@ const resumeJsonLd = {
   jobTitle: "Full-Stack Developer & Automation Specialist",
   url: siteUrl,
   mainEntityOfPage: `${siteUrl}/resume`,
-  email: "contact@khelifi-salmen.com",
+  email: "hello@khelifi-salmen.com",
   telephone: "+84961566302",
   address: {
     "@type": "PostalAddress",
@@ -343,8 +343,8 @@ export default function ResumePage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[var(--text-tertiary)] no-print" />
-                  <a href="mailto:contact@khelifi-salmen.com" className="inline-flex min-h-11 items-center hover:text-[var(--text-primary)]">
-                    contact@khelifi-salmen.com
+                  <a href="mailto:hello@khelifi-salmen.com" className="inline-flex min-h-11 items-center hover:text-[var(--text-primary)]">
+                    hello@khelifi-salmen.com
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
@@ -413,14 +413,15 @@ export default function ResumePage() {
               >
                 <Download className="w-4 h-4" aria-hidden="true" /> Download PDF
               </a>
-              <a
-                href={bookingUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="cta-button cta-secondary inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold text-[var(--text-primary)]"
+              <button
+                type="button"
+                data-cal-namespace="30min"
+                data-cal-link="salmen-khelifi/30min"
+                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                className="cta-button cta-secondary inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold text-[var(--text-primary)] cursor-pointer"
               >
                 Book a call <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
-              </a>
+              </button>
             </div>
           </div>
         </header>

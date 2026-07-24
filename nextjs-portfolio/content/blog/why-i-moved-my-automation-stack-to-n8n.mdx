@@ -1,0 +1,110 @@
+---
+title: "Why I Switched to n8n for Automation and Never Looked Back (3 Months In)"
+slug: "why-i-moved-my-automation-stack-to-n8n"
+excerpt: "Why I Switched to n8n for Automation and Never Looked Back (3 Months In)"
+status: "published"
+updatedAt: "2026-07-24"
+publishedAt: "2026-07-24"
+category: "Automation"
+tags: ["n8n","workflow automation","freelance engineer","low-code","developer tools"]
+featured: false
+cover: "/images/blog/why-i-moved-my-automation-stack-to-n8n/cover.png"
+coverAlt: "Why I Switched to n8n for Automation and Never Looked Back (3 Months In) cover illustration"
+author: "Salmen Khelifi"
+seoTitle: "Why I Switched to n8n for Automation and Never Looked Back (3 Months In)"
+seoDescription: "Why I Switched to n8n for Automation and Never Looked Back (3 Months In)"
+canonicalUrl: "https://khelifi-salmen.com/blog/why-i-moved-my-automation-stack-to-n8n"
+relatedCaseStudies: []
+---
+
+As a freelance software engineer and founder, efficiency isn't just a buzzword; it's the bedrock of profitability and sanity. For years, my operational automation stack was a patchwork of SaaS tools, custom scripts, and a growing monthly bill. Three months ago, I made a significant switch: I migrated everything to **n8n**. It's been a game-changer.
+
+My core thesis is simple: migrating my automation stack to n8n has significantly streamlined my operations, reduced costs, and provided unparalleled flexibility. It's proven to be a game-changer for my freelance engineering business, and I believe it can be for yours too. This isn't just about saving money; it's about regaining control and unlocking new possibilities for growth without vendor lock-in.
+
+Before n8n, my setup looked something like this: Zapier for connecting SaaS apps, custom Python scripts running on a small VPS for more complex logic, and a handful of cron jobs for scheduled tasks. It worked, but it was clunky, expensive, and hard to maintain. Every new integration meant another Zap, another script, or another dependency to manage. I was spending more time managing the automation infrastructure than actually building new features or serving clients.
+
+
+
+## The Breaking Point: Cost and Complexity
+
+**What I did:** I audited my existing automation stack, listing every tool, every script, and its associated cost and maintenance overhead. I tracked how much time I spent debugging broken Zaps or updating Python dependencies.
+
+**What I learned:** The total cost was far higher than I'd realized. Zapier's professional plan was a significant recurring expense, and while my VPS was cheap, the *time* spent maintaining custom scripts was not. I had a dozen different places to check when something went wrong. This fragmentation was a silent killer of productivity. I needed a unified platform that offered both flexibility and cost predictability, ideally one I could self-host.
+
+My automations ranged from lead qualification (parsing emails, enriching data, adding to CRM) to project management (syncing tasks between tools, notifying clients) to internal operations (generating invoices, tracking expenses). Each of these had its own logic, often duplicated or hard-coded. I needed a system that could handle API calls, data transformation, conditional logic, and scheduled execution, all within a single, visual interface.
+
+## Why n8n? The Self-Hosted, Open-Source Advantage
+
+**What I did:** I researched alternatives to Zapier and custom scripting. I looked at Make (formerly Integromat), Activepieces, and n8n. My primary criteria were: self-hostable, open-source (or at least source-available), robust API integrations, and a visual workflow builder.
+
+**What I learned:** n8n stood out for several reasons:
+
+*   **Self-Hosting:** This was non-negotiable. Running n8n on my own infrastructure meant I controlled the data, the costs, and the scaling. I deployed it on a small DigitalOcean droplet using Docker, which took less than an hour to set up. The cost went from ~$50/month for Zapier to ~$6/month for the droplet, plus my time.
+*   **Open-Source Core:** The transparency and community support of an open-source project are invaluable. It means no vendor lock-in and the ability to inspect, modify, or even contribute to the codebase if needed. This aligns perfectly with the ethos of a freelance engineer.
+*   **Nodes and Workflows:** n8n's node-based visual workflow builder is incredibly intuitive. It's like a flowchart for your data. Each node performs a specific action (e.g., HTTP request, data transformation, database query, sending an email). This modularity makes workflows easy to build, understand, and debug.
+*   **Customization:** The ability to write custom JavaScript code directly within a **Code node** or even build entirely new **custom nodes** was a huge selling point. This bridged the gap between off-the-shelf integrations and complex custom scripts, giving me the best of both worlds.
+
+
+
+## The Migration: From Patchwork to Pipeline
+
+**What I did:** I started by identifying my most critical and frequently used automations. I tackled them one by one, recreating the logic in n8n. I began with simpler tasks, like sending Slack notifications for new client inquiries, and gradually moved to more complex ones, such as syncing project milestones from my project management tool to a client-facing dashboard.
+
+**What I learned:** The migration process was surprisingly smooth, largely due to n8n's visual interface and extensive documentation. For each Zapier automation, I found an equivalent n8n node or a combination of nodes. For my custom Python scripts, I often replaced them with a combination of HTTP Request nodes (for external APIs) and Code nodes (for data manipulation or complex logic). Here's a simplified example of how a custom script for data enrichment might translate:
+
+```javascript
+// Code node example: Enriching data from an external API
+const items = [];
+for (const item of $input.json) {
+  const email = item.email;
+  // Assume an API call to an enrichment service
+  const response = await fetch(`https://api.enrichment.com/v1/user?email=${email}`, {
+    headers: { 'Authorization': 'Bearer YOUR_API_KEY' }
+  });
+  const enrichedData = await response.json();
+  items.push({ ...item, ...enrichedData });
+}
+return items;
+```
+
+This allowed me to consolidate all my automation logic into a single, observable platform. I could see the flow of data, inspect intermediate results, and quickly pinpoint issues. The learning curve for n8n's expression language and JavaScript within code nodes was minimal for someone with a development background.
+
+## Tangible Benefits: Cost, Control, and Flexibility
+
+**What I did:** After three months, I reviewed the impact of the switch on my operations, finances, and overall productivity.
+
+**What I learned:** The benefits have been profound:
+
+*   **Cost Reduction:** My direct automation tool costs dropped by over 80%. The initial setup time was an investment, but the recurring savings are substantial. This frees up budget for other tools or marketing efforts.
+*   **Full Control:** I own my automation infrastructure. I decide when to update, what security measures to implement, and how to scale. There's no fear of a SaaS provider changing their pricing model, deprecating a feature, or going out of business.
+*   **Unparalleled Flexibility:** n8n's open-ended nature means I can connect to virtually any API, database, or service. If there isn't a pre-built node, I can use the HTTP Request node, a Code node, or even build a custom node. This has enabled me to automate workflows that were previously impossible or prohibitively expensive with off-the-shelf solutions. For example, I built a workflow to automatically generate project reports from my internal database and send them to clients via email, customized with their specific data.
+*   **Improved Debugging and Observability:** The visual workflow editor and execution logs make debugging issues incredibly efficient. I can see exactly where a workflow failed, inspect the data at each step, and quickly resolve problems. This was a nightmare with disparate scripts and external services.
+
+
+
+## The Trade-offs: What's Not Perfect
+
+**What I did:** I critically evaluated the downsides and challenges I encountered during and after the migration.
+
+**What I learned:** No tool is perfect, and n8n has its trade-offs:
+
+*   **Initial Setup and Maintenance:** While deployment with Docker is straightforward, it still requires basic server administration knowledge. You're responsible for updates, backups, and ensuring your server is running. This is a trade-off for the control you gain.
+*   **Learning Curve:** While easier than writing everything from scratch, there's still a learning curve for n8n's specific concepts (nodes, expressions, triggers). It's less steep than full-stack development but steeper than a purely no-code tool like Zapier for complex logic.
+*   **Community Node Quality:** While the community nodes are a great resource, their quality and maintenance can vary. For critical automations, I often prefer to use core nodes or build my own logic with HTTP Request and Code nodes to ensure stability.
+*   **Scaling:** For extremely high-volume or mission-critical enterprise-level automations, scaling a self-hosted n8n instance requires more advanced infrastructure knowledge (e.g., Kubernetes, message queues). For a freelance engineer or small team, a single droplet is usually sufficient.
+
+These trade-offs are, in my opinion, well worth the benefits, especially for someone with a technical background looking for maximum control and cost efficiency.
+
+## Looking Forward: More Automation, More Freedom
+
+**What I did:** I'm continuously exploring new ways to leverage n8n, not just for operational tasks but also for client projects and product development.
+
+**What I learned:** The switch to n8n has fundamentally changed how I approach automation. It's no longer a cost center or a maintenance burden; it's a powerful enabler. I'm now building more sophisticated internal tools, automating client reporting, and even prototyping new product ideas faster than ever before. The ability to quickly spin up a workflow to test an API or process some data is invaluable.
+
+For any freelance software engineer, solo founder, or small team grappling with escalating SaaS costs and fragmented automation, I wholeheartedly recommend evaluating n8n. The initial investment in learning and setup pays dividends in cost savings, operational efficiency, and the sheer flexibility to build exactly what you need. It's an investment in your business's long-term agility and independence.
+
+My next steps involve exploring n8n's queue mode for more robust asynchronous processing and integrating it deeper with my internal analytics tools. The journey with n8n has just begun, and I'm excited about the possibilities it continues to unlock.
+
+---
+
+*Originally published at [khelifi-salmen.com](https://khelifi-salmen.com/blog/why-i-moved-my-automation-stack-to-n8n)*

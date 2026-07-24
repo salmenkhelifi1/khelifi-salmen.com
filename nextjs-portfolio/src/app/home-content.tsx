@@ -188,8 +188,6 @@ export default function HomeContent() {
               </PrimaryButton>
               <SecondaryButton
                 href={bookingUrl}
-                target="_blank"
-                rel="noreferrer"
                 className="w-full sm:w-auto"
               >
                 Start a Project
@@ -370,7 +368,7 @@ export default function HomeContent() {
             <div className="lg:col-span-5 flex flex-col items-start reveal">
               <div className="glass-panel relative mb-8 h-44 w-44 md:h-52 md:w-52 overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border-bright)] shadow-xl">
                 <Image
-                  src="/images/salmen-khelifi-full-stack-developer-portrait.jpg"
+                  src="/images/khelifi-salmen.png"
                   alt="Salmen Khelifi, Full-Stack Developer & Automation Specialist"
                   fill
                   sizes="(max-width: 768px) 176px, 208px"
@@ -403,8 +401,6 @@ export default function HomeContent() {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full mb-8">
                 <PrimaryButton
                   href={bookingUrl}
-                  target="_blank"
-                  rel="noreferrer"
                   className="w-full sm:w-auto min-h-11 justify-center"
                 >
                   Book a Call

@@ -4,6 +4,7 @@ import Script from "next/script";
 import { siteJsonLd, siteUrl } from "@/data/schema";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import CalFloatingButton from "@/components/CalFloatingButton";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -81,6 +82,7 @@ export default function RootLayout({
             <span />
           </div>
           {children}
+          <CalFloatingButton />
           {process.env.NODE_ENV === "development" && (
             <Script
               src="//unpkg.com/react-grab/dist/index.global.js"

@@ -15,9 +15,12 @@ import {
 import {
   freelancerUrl,
   githubUrl,
+  instagramUrl,
   linkedinUrl,
+  substackUrl,
   upworkUrl,
   xUrl,
+  youtubeUrl,
 } from "@/data/schema";
 
 export interface NavLink {
@@ -118,11 +121,15 @@ export const navLinks: NavLink[] = [
   { href: "/#about", label: "About" },
   { href: "/resume", label: "Résumé" },
   { href: "/#contact", label: "Contact" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export const footerSocials: FooterSocial[] = [
   { href: githubUrl, label: "GitHub" },
   { href: linkedinUrl, label: "LinkedIn" },
+  { href: substackUrl, label: "Substack" },
+  { href: youtubeUrl, label: "YouTube" },
+  { href: instagramUrl, label: "Instagram" },
   { href: upworkUrl, label: "Upwork" },
   { href: freelancerUrl, label: "Freelancer" },
   { href: xUrl, label: "X" },

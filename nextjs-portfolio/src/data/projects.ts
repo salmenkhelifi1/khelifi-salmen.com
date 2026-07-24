@@ -33,6 +33,7 @@ export type Project = {
   category: string;
   accent: ProjectAccent;
   heroImage?: string;
+  heroVideo?: string;
   galleryAspect?: "phone" | "desktop";
   overview: {
     what: string;
@@ -89,7 +90,8 @@ export const projects: Project[] = [
       button: "bg-indigo-600 hover:bg-indigo-500",
     },
     heroImage: "/images/founderflow/founderflow-cover.png",
-    galleryAspect: "desktop",
+    heroVideo: "/images/founderflow/founderflow-full-demo.mp4",
+    galleryAspect: "phone",
     overview: {
       what: "A feature-first Flutter application covering sign-in, founder onboarding, a state-preserving Home dashboard, list and map discovery, privacy-aware founder profiles, curated events, and account management. The client is backed by Supabase Auth, Postgres, Storage, RLS, RPCs, and Edge Functions.",
       problem:
@@ -126,11 +128,6 @@ export const projects: Project[] = [
     ],
     gallery: [
       {
-        src: "/images/founderflow/founderflow-demo.gif",
-        alt: "FounderFlow iPhone simulator demo with realistic sample founder and event data",
-        aspect: "phone",
-      },
-      {
         src: "/images/founderflow/founderflow-welcome.png",
         alt: "FounderFlow Welcome screen with Apple, Google, and email sign-in actions",
         aspect: "phone",
@@ -152,7 +149,7 @@ export const projects: Project[] = [
       },
       {
         src: "/images/founderflow/founderflow-map.png",
-        alt: "FounderFlow live Google Map with Map and List modes, location sharing, current-location control, and a sample San Francisco founder marker",
+        alt: "FounderFlow live Da Nang map with Map and List modes, location sharing, current-location control, and founder markers",
         aspect: "phone",
       },
       {

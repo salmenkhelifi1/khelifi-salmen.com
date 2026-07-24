@@ -32,14 +32,15 @@ export default function SiteFooter() {
                 {link.label}
               </a>
             ))}
-            <a
-              href={bookingUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
+            <button
+              type="button"
+              data-cal-namespace="30min"
+              data-cal-link="salmen-khelifi/30min"
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+              className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)] cursor-pointer text-left font-inherit"
             >
               Book a call
-            </a>
+            </button>
           </div>
         </nav>
         <nav aria-label="Footer social links">
@@ -62,10 +63,10 @@ export default function SiteFooter() {
       <SectionContainer className="mt-10 flex flex-col gap-3 border-t border-[var(--border-subtle)] pt-8 text-sm text-[var(--text-tertiary)] md:flex-row md:items-center md:justify-between">
         <p>© {currentYear} Salmen Khelifi. All rights reserved.</p>
         <a
-          href="mailto:contact@khelifi-salmen.com"
+          href="mailto:hello@khelifi-salmen.com"
           className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
         >
-          contact@khelifi-salmen.com
+          hello@khelifi-salmen.com
         </a>
       </SectionContainer>
     </footer>

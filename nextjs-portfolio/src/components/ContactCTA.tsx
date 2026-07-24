@@ -28,22 +28,18 @@ export default function ContactCTA() {
           <div className="reveal flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 w-full sm:w-auto">
             <PrimaryButton
               href={bookingUrl}
-              target="_blank"
-              rel="noreferrer"
               className="w-full sm:w-auto min-h-11"
             >
               Start a Project
             </PrimaryButton>
             <SecondaryButton
               href={bookingUrl}
-              target="_blank"
-              rel="noreferrer"
               className="w-full sm:w-auto min-h-11"
             >
               Book a Call
             </SecondaryButton>
             <SecondaryButton
-              href="mailto:contact@khelifi-salmen.com"
+              href="mailto:hello@khelifi-salmen.com"
               className="w-full sm:w-auto min-h-11"
             >
               Email Me

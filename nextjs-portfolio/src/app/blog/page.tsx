@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Clock, Tag } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SectionContainer from "@/components/SectionContainer";
 import SectionHeading from "@/components/SectionHeading";
+import BlogListWithFilter from "@/components/BlogListWithFilter";
 import { siteUrl } from "@/data/schema";
 import { getPublishedPosts } from "@/lib/content/blog";
 
@@ -78,62 +79,7 @@ export default function BlogIndexPage() {
               </div>
             </div>
           ) : (
-            <div className="grid gap-8 md:grid-cols-2">
-              {posts.map((post) => (
-                <article
-                  key={post.slug}
-                  className="glass-panel flex flex-col justify-between p-8 transition-all hover:border-[var(--border-active)]"
-                >
-                  <div>
-                    <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--text-tertiary)] mb-4">
-                      <span className="inline-flex items-center gap-1 font-semibold text-[var(--accent)]">
-                        <Tag className="h-3 w-3" aria-hidden="true" />
-                        {post.frontmatter.category}
-                      </span>
-                      <span>•</span>
-                      <span className="inline-flex items-center gap-1">
-                        <Clock className="h-3 w-3" aria-hidden="true" />
-                        {post.readingTime.text}
-                      </span>
-                      {post.frontmatter.publishedAt && (
-                        <>
-                          <span>•</span>
-                          <time dateTime={post.frontmatter.publishedAt}>
-                            {new Date(post.frontmatter.publishedAt).toLocaleDateString("en-US", {
-                              month: "short",
-                              day: "numeric",
-                              year: "numeric",
-                            })}
-                          </time>
-                        </>
-                      )}
-                    </div>
-                    <h2 className="text-h3 text-[var(--text-primary)] mb-3">
-                      <Link
-                        href={`/blog/${post.slug}`}
-                        className="inline-flex min-h-11 items-center hover:text-[var(--accent)] transition-colors"
-                      >
-                        {post.frontmatter.title}
-                      </Link>
-                    </h2>
-                    <p className="text-body-regular text-[var(--text-secondary)] mb-6 line-clamp-3">
-                      {post.frontmatter.excerpt}
-                    </p>
-                  </div>
-                  <div className="pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between">
-                    <span className="text-xs text-[var(--text-tertiary)]">
-                      By {post.frontmatter.author}
-                    </span>
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-[var(--accent)] hover:underline"
-                    >
-                      Read Article <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
+            <BlogListWithFilter posts={posts} />
           )}
         </SectionContainer>
       </main>

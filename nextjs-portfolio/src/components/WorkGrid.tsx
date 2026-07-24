@@ -184,10 +184,10 @@ export default function WorkGrid() {
             I am available for new full-stack development, SaaS architecture, and automation projects.
           </p>
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-            <PrimaryButton href={bookingUrl} target="_blank" rel="noreferrer">
+            <PrimaryButton href={bookingUrl}>
               Start a Project
             </PrimaryButton>
-            <SecondaryButton href="mailto:contact@khelifi-salmen.com">
+            <SecondaryButton href="mailto:hello@khelifi-salmen.com">
               Email Me <Mail className="ml-2 h-4 w-4" />
             </SecondaryButton>
           </div>
