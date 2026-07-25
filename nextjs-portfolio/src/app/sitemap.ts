@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       new URL(post.frontmatter.canonicalUrl).origin === siteUrl,
   );
 
-  const staticRoutes = ["", "/work", "/resume", "/blog"];
+  const staticRoutes = ["", "/work", "/resume", "/blog", "/llms.txt", "/services.md", "/pricing.md"];
   const projectRoutes = projects.map((project) => `/projects/${project.slug}`);
 
   const mainEntries: MetadataRoute.Sitemap = [
@@ -19,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: (route === "" || route === "/blog"
         ? "monthly"
         : "yearly") as MetadataRoute.Sitemap[number]["changeFrequency"],
-      priority: route === "" ? 1 : 0.7,
+      priority: route === "" ? 1 : route === "/services.md" || route === "/pricing.md" ? 0.9 : 0.7,
     })),
     ...projectRoutes.map((route) => ({
       url: `${siteUrl}${route}`,

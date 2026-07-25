@@ -1,0 +1,152 @@
+---
+title: "Vibe Coding Isn’t the Problem — Shipping Unverified AI Code Is"
+slug: "vibe-coding-isnt-the-problem-shipping-unverified-ai-code"
+excerpt: "Learn a practical seven-prompt security workflow to threat-model, audit, fix, test, and verify AI-generated code before it reaches production."
+status: "published"
+publishedAt: "2026-07-25"
+updatedAt: "2026-07-25"
+category: "AI / Security"
+tags: ["vibe coding", "AI security", "prompt engineering", "code audit", "devsecops"]
+featured: true
+cover: "/images/blog/vibe-coding-isnt-the-problem-shipping-unverified-ai-code/vibe-coded-vs-secure-workflow.png"
+coverAlt: "Vibe Coding Security: Don’t Ship Unverified AI Code"
+author: "Salmen Khelifi"
+seoTitle: "Vibe Coding Security: Don’t Ship Unverified AI Code"
+seoDescription: "Learn a seven-prompt security workflow to threat-model, audit, fix, test, and verify AI-generated code before it reaches production."
+canonicalUrl: "https://salmenkhelifi.substack.com/p/vibe-coding-isnt-the-problemshipping"
+relatedCaseStudies: []
+---
+
+## Vibe Coding Isn’t the Problem — Shipping Unverified AI Code Is
+
+> **Quick Summary & Technical Overview:**
+> Vibe coding allows developers and founders to build software at unprecedented speed, but shipping unverified AI code directly to production introduces severe security risks. In this article, Salmen Khelifi breaks down a practical 7-prompt security workflow to threat-model, audit, challenge, fix, test, and verify AI-generated code before deployment.
+
+You describe what you want, an AI agent creates the files, connects the database, writes the API, builds the interface, and sometimes even prepares the deployment. Work that once took days can appear in minutes.
+
+That speed is real. So is the risk.
+
+The problem is not that AI writes code. The problem is what often happens next: the code looks convincing, the happy path works, and the application is pushed toward production without anyone systematically checking what the agent missed.
+
+- Did it verify authorization on every route?
+- Can one user access another user’s order by changing an ID?
+- Can an attacker submit SQL operators, malicious HTML, unsafe URLs, or oversized files?
+- Are password-reset tokens single-use?
+- Does the payment webhook verify its signature?
+- Can the AI agent access production secrets or execute dangerous commands?
+
+A working application is not necessarily a secure application. And a confident AI response is not evidence.
+
+---
+
+### The Dangerous Version of Vibe Coding
+
+![Vibe-Coded vs. Secure Workflow](/images/blog/vibe-coding-isnt-the-problem-shipping-unverified-ai-code/vibe-coded-vs-secure-workflow.png)
+
+The unsafe workflow usually looks like this:
+
+**Idea → AI agent → Production**
+
+There may be a few manual checks in between, but they often focus on visible behavior:
+- Does the page load?
+- Does login work?
+- Can I create a product?
+- Does checkout return a success message?
+- Did the build pass?
+
+Those checks matter, but they do not answer security questions. Security failures frequently live outside the happy path. They appear when someone:
+- Changes an object ID (IDOR).
+- Replays a webhook.
+- Reuses a refresh token.
+- Sends two requests simultaneously (race condition).
+- Uploads a disguised file.
+- Supplies an internal network URL (SSRF).
+- Manipulates a role field.
+- Injects instructions into content processed by an AI agent.
+
+---
+
+### The Three Levels of AI Oversight
+
+![Security Baseline for Vibe-Coded Apps](/images/blog/vibe-coding-isnt-the-problem-shipping-unverified-ai-code/security-baseline-oversight.png)
+
+Not every AI-assisted development task carries the same risk.
+
+#### 1. Automated (Low Risk)
+These tasks are low risk when performed in an isolated branch:
+- Explaining code
+- Generating initial unit tests
+- Formatting and linting
+- Creating documentation drafts
+- Identifying edge cases
+
+#### 2. Guarded Automation (Medium Risk)
+These tasks change important application behavior and require constraints, automated tests, and diff review:
+- Refactoring core logic
+- Security auditing
+- Updating authentication and authorization middleware
+- Adding third-party dependencies
+- Modifying API validation schemas
+
+#### 3. Manual Approval Required (High Risk / Critical)
+These operations should **never** happen automatically:
+- Production deployments
+- Secret creation or rotation
+- Database migrations on live production data
+- Payment processing configuration
+- Role and permission escalations
+- Destructive terminal commands
+
+---
+
+### The 7-Prompt Security Workflow
+
+![The 7-Prompt Security Chain](/images/blog/vibe-coding-isnt-the-problem-shipping-unverified-ai-code/7-prompt-security-chain.jpg)
+
+To bridge the gap between fast AI coding and safe production deployment, use this 7-step prompt chain:
+
+#### Prompt 1: Context & Architecture Mapping
+> "Explain the security architecture of this codebase. Identify entry points, data flows, authentication mechanisms, authorization checks, and third-party integrations."
+
+#### Prompt 2: Threat Modeling
+> "Perform a threat modeling exercise for this feature. Identify potential attack vectors, privilege escalation risks, IDOR vulnerabilities, injection points, and business logic flaws."
+
+#### Prompt 3: Evidence-Based Security Audit
+> "Perform a complete evidence-based security audit. Check for OWASP Top 10 vulnerabilities, authentication bypasses, missing authorization checks, and unsafe data handling. Report exact line numbers and proof for every finding."
+
+![Bad Prompt vs Good Prompt](/images/blog/vibe-coding-isnt-the-problem-shipping-unverified-ai-code/bad-vs-good-prompt.jpg)
+
+#### Prompt 4: Challenge the Audit
+> "Assume the previous security audit missed important vulnerabilities. Independently challenge it by searching for unattached middleware, unvalidated schemas, and unchecked tenant boundaries."
+
+#### Prompt 5: Remediation Planning
+> "Create a prioritized remediation plan from confirmed security findings. Group by severity and impact without combining unrelated security fixes into one large rewrite."
+
+#### Prompt 6: Safe Fix Implementation
+> "Implement approved security fixes in priority order inside an isolated branch. Add regression tests, preserve existing secure behavior, and never weaken security controls to pass tests."
+
+#### Prompt 7: Verification Before Completion
+> "Independently verify every security fix using fresh evidence. Run unit tests, type checks, linting, production builds, and static analysis before declaring completion."
+
+---
+
+### The Security Rule I Would Never Break
+
+Never give an AI agent unrestricted access to:
+- Production secrets & environment variables
+- Live production databases
+- Cloud administrator credentials
+- Payment gateways & billing dashboards
+- Unrestricted shell execution on production hosts
+
+Use **least privilege**. Give the agent only the permissions required for the current stage. Keep audits read-only. Apply fixes in an isolated branch. Use test credentials. Require manual approval for migrations, secrets, and deployment.
+
+---
+
+### Final Takeaway
+
+Vibe coding is not inherently irresponsible. Shipping code you do not understand, have not audited, and cannot safely roll back is irresponsible.
+
+Use AI for speed. Use security gates for trust.
+
+**Understand. Threat-model. Audit. Challenge. Plan. Fix. Verify.**

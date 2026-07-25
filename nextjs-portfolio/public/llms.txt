@@ -8,6 +8,9 @@
 - [Work](https://khelifi-salmen.com/work): Portfolio and case studies for software products, platforms, and automation projects.
 - [Resume](https://khelifi-salmen.com/resume): Professional experience, technical skills, selected work, and contact details.
 - [Blog](https://khelifi-salmen.com/blog): Engineering write-ups, architecture decisions, and project retrospectives.
+- [Services](https://khelifi-salmen.com/services.md): Detailed breakdown of full-stack, n8n automation, and Flutter services.
+- [Engagement Process](https://khelifi-salmen.com/pricing.md): Discovery call booking policy and custom contract engagement process (no public fixed rates).
+
 
 ## Flagship projects
 

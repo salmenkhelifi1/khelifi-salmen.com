@@ -4,13 +4,12 @@ Salmen Khelifi is a full-stack developer and automation specialist for web apps,
 
 ## Core Services
 
-- Frontend: React, Next.js, Flutter, responsive UI, app dashboards, product interfaces.
-- Backend: Node.js, Express, Fastify, PostgreSQL, MongoDB, REST APIs, authentication, billing, usage limits.
-- Architecture: multi-tenant SaaS, clean architecture, admin back-offices, API boundaries, product workflows.
-- DevOps: Docker, Linux/Ubuntu troubleshooting, CI/CD, Netlify, Cloudflare, deployment support.
-- Automation: n8n, Make.com, webhooks, Google APIs, Gmail, Sheets, WhatsApp, CRM and task workflows.
-- AI: OpenAI API, Gemini API, Vapi voice AI, OCR, speech-to-text, text-to-speech, on-device ML, AI agents.
-- CMS/e-commerce: WordPress, WooCommerce, Shopify-oriented work, SEO structure, product catalogs, checkout flows.
+- Mobile Apps: Flutter, iOS, Android, cross-platform apps, offline storage, mobile UI/UX, cloud backends.
+- Web Applications: Next.js 15, React, Node.js, Express, Fastify, PostgreSQL, multi-tenant SaaS architecture, admin dashboards, custom APIs.
+- Landing Pages & Websites: SEO-first landing pages, custom marketing websites, high-converting product pages, Payload CMS, WordPress/WooCommerce.
+- Website & Workflow Automation: n8n (self-hosted & cloud), Make.com, webhooks, automated lead capture, CRM sync, WhatsApp business bots, email sequences.
+- AI Integration: OpenAI API, Google Vertex AI, Gemini API, Vapi AI voice agents, speech-to-text, RAG search, intelligent AI agents.
+- Server Operations & DevOps: Docker, Linux/Ubuntu VPS setup & troubleshooting, Dokploy, Nginx, Traefik, Netlify, Cloudflare, CI/CD pipelines.
 
 ## Projects
 
