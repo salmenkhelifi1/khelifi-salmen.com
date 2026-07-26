@@ -487,6 +487,37 @@ export default async function ProjectProfilePage({
     return null;
   };
 
+  const heroMedia = (project.heroImage || project.slug === "founderflow") ? (
+    <div className={project.slug === "adaptifit" ? "pt-2" : "mt-10"}>
+      <div className={`relative mx-auto w-full overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border-bright)] bg-black shadow-2xl ${project.slug === "adaptifit" ? "aspect-[9/19] max-w-xs" : "aspect-video max-w-4xl"}`}>
+        <Image
+          src={
+            project.slug === "founderflow"
+              ? "/images/founderflow/founderflow-demo.webp"
+              : project.heroImage!
+          }
+          alt={heroAlt}
+          fill
+          priority
+          sizes="(max-width: 1024px) 95vw, 880px"
+          className={`${project.slug === "adaptifit" ? "object-contain" : "object-cover"} bg-black ${project.slug === "founderflow" ? "theme-image-light" : ""}`}
+          unoptimized={project.slug === "founderflow"}
+        />
+        {project.slug === "founderflow" && (
+          <Image
+            src="/images/founderflow/founderflow-demo-dark.gif"
+            alt=""
+            fill
+            sizes="(max-width: 1024px) 95vw, 880px"
+            className="object-cover bg-black theme-image-dark"
+            unoptimized
+            aria-hidden="true"
+          />
+        )}
+      </div>
+    </div>
+  ) : null;
+
 
   return (
     <div className="min-h-screen text-[var(--text-primary)]">
@@ -522,6 +553,7 @@ export default async function ProjectProfilePage({
                 <p className="text-body-large text-[var(--text-secondary)] max-w-3xl">
                   {project.tagline}
                 </p>
+                {project.slug === "adaptifit" && heroMedia}
                 {snapshotFields.length > 0 && (
                   <div className="glass-panel rounded-[var(--radius-xl)] p-5 md:p-6">
                     <h2 className="text-caption text-[var(--accent)] mb-4">Project Snapshot</h2>
@@ -549,36 +581,7 @@ export default async function ProjectProfilePage({
                 </div>
               </div>
 
-              {(project.heroImage || project.slug === "founderflow") && (
-                <div className="mt-10">
-                  <div className={`relative mx-auto w-full overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border-bright)] bg-black shadow-2xl ${project.slug === "adaptifit" ? "aspect-[9/19] max-w-xs" : "aspect-video max-w-4xl"}`}>
-                    <Image
-                      src={
-                        project.slug === "founderflow"
-                          ? "/images/founderflow/founderflow-demo.webp"
-                          : project.heroImage!
-                      }
-                      alt={heroAlt}
-                      fill
-                      priority
-                      sizes="(max-width: 1024px) 95vw, 880px"
-                      className={`${project.slug === "adaptifit" ? "object-contain" : "object-cover"} bg-black ${project.slug === "founderflow" ? "theme-image-light" : ""}`}
-                      unoptimized={project.slug === "founderflow"}
-                    />
-                    {project.slug === "founderflow" && (
-                      <Image
-                        src="/images/founderflow/founderflow-demo-dark.gif"
-                        alt=""
-                        fill
-                        sizes="(max-width: 1024px) 95vw, 880px"
-                        className="object-cover bg-black theme-image-dark"
-                        unoptimized
-                        aria-hidden="true"
-                      />
-                    )}
-                  </div>
-                </div>
-              )}
+              {project.slug !== "adaptifit" && heroMedia}
             </section>
 
             {/* Live Mobile App Video Demo Section */}
