@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Mail } from "lucide-react";
 import { projects as realProjects, Project as RealProject } from "@/data/projects";
 import {
@@ -82,6 +82,32 @@ function projectToHomepageProject(p: RealProject): HomepageProject {
 
 export default function WorkGrid() {
   const [activeCategory, setActiveCategory] = useState<WorkPageCategory>("All");
+
+  useEffect(() => {
+    const elements = document.querySelectorAll<HTMLElement>(
+      ".reveal:not(.active)"
+    );
+
+    if (!("IntersectionObserver" in window)) {
+      elements.forEach((element) => element.classList.add("active"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -80px 0px" }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, [activeCategory]);
 
   const filteredProjects =
     activeCategory === "All"
