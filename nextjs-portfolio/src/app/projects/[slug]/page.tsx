@@ -554,7 +554,7 @@ export default async function ProjectProfilePage({
                     <Image
                       src={
                         project.slug === "founderflow"
-                          ? "/images/founderflow/founderflow-demo.gif"
+                          ? "/images/founderflow/founderflow-demo.webp"
                           : project.heroImage!
                       }
                       alt={heroAlt}

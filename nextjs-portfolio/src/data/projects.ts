@@ -82,7 +82,7 @@ export const projects: Project[] = [
     slug: "founderflow",
     title: "FounderFlow",
     tagline:
-      "An iOS-first founder discovery and curated meetup app with a focused seven-screen journey, privacy-aware connections, and iOS 26 Liquid Glass navigation.",
+      "An iOS-first founder discovery and curated meetup app with a focused nine-screen journey, privacy-aware connections, and iOS 26 Liquid Glass navigation.",
     category: "iOS Founder Network",
     accent: {
       text: "text-indigo-400",
@@ -155,6 +155,11 @@ export const projects: Project[] = [
       {
         src: "/images/founderflow/founderflow-founder-profile.png",
         alt: "FounderFlow high-resolution Sarah Chen founder profile with one clear connection action",
+        aspect: "phone",
+      },
+      {
+        src: "/images/founderflow/founderflow-request-sent.png",
+        alt: "FounderFlow connection request sent confirmation screen",
         aspect: "phone",
       },
       {
