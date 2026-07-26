@@ -144,24 +144,24 @@ export default function HomeContent() {
       <SiteHeader />
 
       <main>
-      <section className="hero-section flex min-h-screen items-center justify-center overflow-hidden px-6 pt-32 md:pt-40 pb-16 mx-auto max-w-7xl w-full">
-        <div className="hero-content z-10 grid w-full grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
+      <section className="hero-section mx-auto flex w-full max-w-7xl items-center px-6">
+        <div className="hero-content grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-12">
+          <div className="hero-copy flex flex-col items-start text-left lg:col-span-8">
             <StatusBadge>AVAILABLE FOR NEW PROJECTS</StatusBadge>
 
-            <h1 className="hero-title reveal mb-8" style={{ transitionDelay: "100ms" }}>
+            <h1 className="hero-title reveal" style={{ transitionDelay: "100ms" }}>
               I build digital products that <span className="text-gradient">automate work</span>, convert users, and scale.
             </h1>
 
             <p
-              className="hero-subtitle reveal mb-8 max-w-2xl text-body-large"
+              className="hero-subtitle reveal max-w-2xl text-body-large"
               style={{ transitionDelay: "200ms" }}
             >
               Full-stack software engineer and automation specialist. I design and build resilient systems, from React interfaces to n8n pipelines, that scale with the business behind them.
             </p>
 
             <ul
-              className="reveal mb-12 flex flex-wrap gap-3"
+              className="hero-capabilities reveal flex flex-wrap gap-3"
               style={{ transitionDelay: "250ms" }}
               aria-label="Core capabilities"
             >
@@ -180,22 +180,19 @@ export default function HomeContent() {
             </ul>
 
             <div
-              className="hero-actions reveal flex flex-col sm:flex-row gap-5 w-full sm:w-auto"
+              className="hero-actions reveal flex w-full flex-col gap-4 sm:w-auto sm:flex-row"
               style={{ transitionDelay: "300ms" }}
             >
-              <PrimaryButton href="#work" className="w-full sm:w-auto">
-                View Selected Work
-              </PrimaryButton>
-              <SecondaryButton
-                href={bookingUrl}
-                className="w-full sm:w-auto"
-              >
+              <PrimaryButton href={bookingUrl} className="w-full sm:w-auto">
                 Start a Project
+              </PrimaryButton>
+              <SecondaryButton href="#work" className="w-full sm:w-auto">
+                View Selected Work
               </SecondaryButton>
             </div>
           </div>
 
-          <div className="lg:col-span-5 hidden lg:block reveal" style={{ transitionDelay: "400ms" }}>
+          <div className="hero-visual hidden reveal lg:col-span-4 lg:block" style={{ transitionDelay: "400ms" }}>
             <ArchitectureDiagram nodes={ecosystemNodes} />
           </div>
         </div>
@@ -350,6 +347,14 @@ export default function HomeContent() {
                   <p className="text-body-regular text-[var(--text-secondary)]">
                     {service.description}
                   </p>
+                  {service.href && (
+                    <Link
+                      href={service.href}
+                      className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)]"
+                    >
+                      Explore automation services <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  )}
                 </div>
               );
             })}

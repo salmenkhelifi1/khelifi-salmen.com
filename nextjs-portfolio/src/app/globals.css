@@ -473,12 +473,18 @@ section[id],
 
 .hero-section {
   isolation: isolate;
+  min-height: 100svh;
+  padding-block: clamp(7.5rem, 15vh, 10rem) clamp(3rem, 8vh, 5rem);
   position: relative;
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
+}
+
+.hero-copy {
+  max-width: 50rem;
 }
 
 .hero-badge {
@@ -490,20 +496,83 @@ section[id],
   box-shadow: var(--glass-shadow);
 }
 
+.hero-copy .hero-badge {
+  margin-bottom: clamp(1.25rem, 3vh, 2rem);
+}
+
 .hero-title {
   color: var(--text-primary);
-  font-size: 3.5rem;
+  font-size: clamp(3rem, 5.6vw, 4.5rem);
   font-weight: 800;
   letter-spacing: -0.04em;
-  line-height: 1.05;
+  line-height: 0.98;
+  margin-bottom: clamp(1.25rem, 3vh, 2rem);
+}
+
+.hero-title .text-gradient {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--text-primary) 82%, var(--accent)),
+    color-mix(in srgb, var(--accent) 72%, var(--text-primary))
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 .hero-subtitle {
-  color: var(--text-secondary);
+  color: color-mix(in srgb, var(--text-secondary) 82%, var(--text-primary));
+  margin-bottom: clamp(1.25rem, 3vh, 2rem);
+}
+
+.hero-capabilities {
+  margin-bottom: clamp(1.5rem, 4vh, 3rem);
 }
 
 .hero-actions {
   gap: 1.25rem;
+}
+
+.hero-visual {
+  margin-inline: auto;
+  max-width: 22rem;
+  width: 100%;
+}
+
+.hero-visual .ecosystem-line {
+  stroke: color-mix(in srgb, var(--border-active) 65%, var(--accent));
+}
+
+.hero-visual .ecosystem-node {
+  color: color-mix(in srgb, var(--text-secondary) 78%, var(--text-primary));
+}
+
+@media (max-width: 639px) {
+  .hero-section {
+    padding-block: 6.75rem 2.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.75rem, 12vw, 3rem);
+  }
+
+  .hero-copy .hero-badge,
+  .hero-title,
+  .hero-subtitle {
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-capabilities {
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-capabilities li {
+    padding-block: 0.375rem;
+  }
+
+  .hero-actions {
+    gap: 0.75rem;
+  }
 }
 
 .cta-button {
@@ -670,9 +739,23 @@ section[id],
   box-shadow: var(--shadow-hover);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) and (max-height: 760px) {
+  .hero-section {
+    padding-block: 7rem 2.5rem;
+  }
+
   .hero-title {
-    font-size: 5.5rem;
+    font-size: clamp(3.25rem, 5.2vw, 4.5rem);
+  }
+
+  .hero-copy .hero-badge,
+  .hero-title,
+  .hero-subtitle {
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-capabilities {
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -726,4 +809,3 @@ section[id],
   margin: 1.5rem auto;
   border: 1px solid var(--glass-border);
 }
-
