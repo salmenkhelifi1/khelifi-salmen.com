@@ -793,6 +793,11 @@ export default async function ProjectProfilePage({
                       project.gallery.length > 0
                         ? project.gallery[idx % project.gallery.length]
                         : null;
+                    const screenshotIsPhone = matchedScreenshot
+                      ? matchedScreenshot.aspect
+                        ? matchedScreenshot.aspect === "phone"
+                        : !hasDesktopGallery
+                      : false;
                     const isEven = idx % 2 === 0;
 
                     return (
@@ -815,7 +820,7 @@ export default async function ProjectProfilePage({
                         {matchedScreenshot && (
                           <div
                             className={`mt-6 lg:mt-0 ${
-                              matchedScreenshot.aspect === "phone"
+                              screenshotIsPhone
                                 ? "w-full max-w-xs mx-auto aspect-[9/19] lg:w-1/2"
                                 : "w-full aspect-video lg:w-1/2"
                             } relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--glass-border)] bg-[var(--bg-surface)] shadow-[var(--glass-shadow)] ${
@@ -838,8 +843,12 @@ export default async function ProjectProfilePage({
                                 src={matchedScreenshot.src}
                                 alt={matchedScreenshot.alt}
                                 fill
-                                sizes="(max-width: 1024px) 90vw, 450px"
-                                className="object-cover"
+                                sizes={
+                                  screenshotIsPhone
+                                    ? "(max-width: 640px) 90vw, 300px"
+                                    : "(max-width: 1024px) 90vw, 450px"
+                                }
+                                className={screenshotIsPhone ? "object-contain" : "object-cover"}
                                 placeholder="blur"
                                 blurDataURL={BLUR_PLACEHOLDER}
                               />
