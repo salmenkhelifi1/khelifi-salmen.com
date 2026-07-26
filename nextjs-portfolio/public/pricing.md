@@ -24,4 +24,4 @@ If both parties agree to move forward, a formal project proposal and contract ag
 ## Contact
 - **Schedule Call**: [https://cal.com/salmen-khelifi/30min](https://cal.com/salmen-khelifi/30min)
 - **Direct Email**: hello@khelifi-salmen.com
-- **Website**: [https://khelifi-salmen.com](https://khelifi-salmen.com)
+- **Website**: [https://www.khelifi-salmen.com](https://www.khelifi-salmen.com)

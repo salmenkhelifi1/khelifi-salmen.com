@@ -6,8 +6,14 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SectionContainer from "@/components/SectionContainer";
 import { getPublishedPosts, getPostBySlug } from "@/lib/content/blog";
-import { articleJsonLd, siteUrl } from "@/data/schema";
+import {
+  articleJsonLd,
+  siteUrl,
+  socialImage as defaultSocialImage,
+  twitterImage,
+} from "@/data/schema";
 import { getProject, type Project } from "@/data/projects";
+import { createSeoDescription, createSeoTitle } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -27,21 +33,36 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {};
   }
 
-  const title = post.frontmatter.seoTitle || post.frontmatter.title;
-  const description = post.frontmatter.seoDescription || post.frontmatter.excerpt;
-  const url = post.frontmatter.canonicalUrl || `${siteUrl}/blog/${post.slug}`;
+  const articleText = post.content
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[#*_`[\]()!>|-]/g, " ");
+  const title = createSeoTitle(
+    post.frontmatter.seoTitle || post.frontmatter.title,
+    post.frontmatter.category,
+    "Salmen Khelifi",
+  );
+  const description = createSeoDescription(
+    post.frontmatter.seoDescription || "",
+    post.frontmatter.excerpt,
+    post.frontmatter.title,
+    post.frontmatter.category,
+    post.frontmatter.tags.join(", "),
+    articleText,
+  );
+  const url = `${siteUrl}/blog/${post.slug}`;
   const socialImage = post.frontmatter.cover
     ? {
         url: `${siteUrl}${post.frontmatter.cover}`,
         alt: post.frontmatter.coverAlt,
       }
-    : {
-        url: "/opengraph-image",
-        alt: "Salmen Khelifi - Full-Stack Developer & Automation Specialist",
-      };
+    : defaultSocialImage;
+  const postTwitterImage = post.frontmatter.cover
+    ? socialImage
+    : twitterImage;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: {
       canonical: url,
@@ -60,7 +81,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
-      images: [socialImage],
+      images: [postTwitterImage],
     },
   };
 }

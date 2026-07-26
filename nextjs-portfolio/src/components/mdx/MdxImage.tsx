@@ -4,7 +4,7 @@ import { useState } from "react";
 
 interface MdxImageProps {
   src?: string;
-  alt?: string;
+  alt: string;
 }
 
 export default function MdxImage({ src, alt }: MdxImageProps) {
@@ -17,7 +17,7 @@ export default function MdxImage({ src, alt }: MdxImageProps) {
       <div className="relative w-full overflow-hidden rounded-xl bg-[var(--bg-surface-elevated)]">
         <img
           src={failed ? "/images/khelifi-salmen.com-og.png" : src}
-          alt={alt || "Article illustration"}
+          alt={alt}
           className="w-full h-auto max-h-[420px] object-cover rounded-xl block"
           loading="lazy"
           onError={() => {

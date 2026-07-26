@@ -4,19 +4,19 @@
 
 ## Main pages
 
-- [Home](https://khelifi-salmen.com/): Overview of Salmen's full-stack, mobile, and automation work.
-- [Work](https://khelifi-salmen.com/work): Portfolio and case studies for software products, platforms, and automation projects.
-- [Resume](https://khelifi-salmen.com/resume): Professional experience, technical skills, selected work, and contact details.
-- [Blog](https://khelifi-salmen.com/blog): Engineering write-ups, architecture decisions, and project retrospectives.
-- [Services](https://khelifi-salmen.com/services.md): Detailed breakdown of full-stack, n8n automation, and Flutter services.
-- [Engagement Process](https://khelifi-salmen.com/pricing.md): Discovery call booking policy and custom contract engagement process (no public fixed rates).
+- [Home](https://www.khelifi-salmen.com/): Overview of Salmen's full-stack, mobile, and automation work.
+- [Work](https://www.khelifi-salmen.com/work): Portfolio and case studies for software products, platforms, and automation projects.
+- [Resume](https://www.khelifi-salmen.com/resume): Professional experience, technical skills, selected work, and contact details.
+- [Blog](https://www.khelifi-salmen.com/blog): Engineering write-ups, architecture decisions, and project retrospectives.
+- [Services](https://www.khelifi-salmen.com/services.md): Detailed breakdown of full-stack, n8n automation, and Flutter services.
+- [Engagement Process](https://www.khelifi-salmen.com/pricing.md): Discovery call booking policy and custom contract engagement process (no public fixed rates).
 
 
 ## Flagship projects
 
 Salmen builds each flagship product solo; each is pre-launch or early-stage.
 
-- [Luxe Spa Booking](https://khelifi-salmen.com/projects/luxe-spa): A white-label booking, CRM, and management platform for appointment-based service businesses.
-- [Anlingo](https://khelifi-salmen.com/projects/anlingo): An AI writing product spanning a web editor, Express API, billing, and a Flutter mobile companion.
-- [ChakTech Platform](https://khelifi-salmen.com/projects/chaktech): A Tunisia-focused e-commerce platform with a localized storefront, admin back-office, and tenant-scoped API.
-- [Noxivo](https://khelifi-salmen.com/projects/noxivo): A WhatsApp-first agency automation SaaS with a waitlist, protected dashboard, developer documentation, and Fastify workflow engine.
+- [Luxe Spa Booking](https://www.khelifi-salmen.com/projects/luxe-spa): A white-label booking, CRM, and management platform for appointment-based service businesses.
+- [Anlingo](https://www.khelifi-salmen.com/projects/anlingo): An AI writing product spanning a web editor, Express API, billing, and a Flutter mobile companion.
+- [ChakTech Platform](https://www.khelifi-salmen.com/projects/chaktech): A Tunisia-focused e-commerce platform with a localized storefront, admin back-office, and tenant-scoped API.
+- [Noxivo](https://www.khelifi-salmen.com/projects/noxivo): A WhatsApp-first agency automation SaaS with a waitlist, protected dashboard, developer documentation, and Fastify workflow engine.

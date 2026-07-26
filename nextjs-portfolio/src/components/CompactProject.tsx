@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { BLUR_PLACEHOLDER, Project } from "@/data/homepage";
+import { getProject } from "@/data/projects";
 
 interface CompactProjectProps {
   project: Project;
@@ -12,6 +13,12 @@ export default function CompactProject({
   project,
   isPortraitPreview = false,
 }: CompactProjectProps) {
+  const caseStudy = getProject(project.href.split("/").at(-1) || "");
+  const imageAlt =
+    caseStudy?.gallery.find((shot) => shot.src === project.image)?.alt ||
+    caseStudy?.gallery[0]?.alt ||
+    project.title;
+
   return (
     <article className="project-card group reveal flex flex-col">
       <div
@@ -21,7 +28,7 @@ export default function CompactProject({
       >
         <Image
           src={project.image}
-          alt=""
+          alt={imageAlt}
           fill
           sizes={
             isPortraitPreview

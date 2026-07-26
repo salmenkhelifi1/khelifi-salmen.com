@@ -44,4 +44,4 @@ Salmen Khelifi does not display fixed public prices or template packages. All en
 ## Contact & Booking
 - **Schedule a 30-Minute Consultation**: [https://cal.com/salmen-khelifi/30min](https://cal.com/salmen-khelifi/30min)
 - **Direct Email**: hello@khelifi-salmen.com
-- **Portfolio & Case Studies**: [https://khelifi-salmen.com](https://khelifi-salmen.com)
+- **Portfolio & Case Studies**: [https://www.khelifi-salmen.com](https://www.khelifi-salmen.com)

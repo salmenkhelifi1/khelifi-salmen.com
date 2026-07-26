@@ -4,13 +4,9 @@ import { siteUrl } from "@/data/schema";
 import { getPublishedPosts } from "@/lib/content/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const publishedPosts = getPublishedPosts().filter(
-    (post) =>
-      !post.frontmatter.canonicalUrl ||
-      new URL(post.frontmatter.canonicalUrl).origin === siteUrl,
-  );
+  const publishedPosts = getPublishedPosts();
 
-  const staticRoutes = ["", "/work", "/resume", "/blog", "/llms.txt", "/services.md", "/pricing.md"];
+  const staticRoutes = ["", "/work", "/resume", "/blog", "/n8n-automation-developer", "/llms.txt", "/services.md", "/pricing.md"];
   const projectRoutes = projects.map((project) => `/projects/${project.slug}`);
 
   const mainEntries: MetadataRoute.Sitemap = [

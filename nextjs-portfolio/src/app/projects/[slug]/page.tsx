@@ -22,7 +22,13 @@ import {
   Zap,
 } from "lucide-react";
 import { getProject, projects, type Project } from "@/data/projects";
-import { bookingUrl, projectJsonLd, siteUrl } from "@/data/schema";
+import {
+  bookingUrl,
+  projectJsonLd,
+  siteUrl,
+  socialImage as defaultSocialImage,
+  twitterImage,
+} from "@/data/schema";
 import { BLUR_PLACEHOLDER } from "@/data/homepage";
 import ProjectToc, { type TocSection } from "@/components/ProjectToc";
 import SiteHeader from "@/components/SiteHeader";
@@ -30,6 +36,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { getCaseStudyNarrative } from "@/lib/content/case-study-narratives";
 import { getPublishedPosts } from "@/lib/content/blog";
 import type { CaseStudyPlacement } from "@/lib/content/schemas";
+import { createSeoDescription, createSeoTitle } from "@/lib/seo";
 
 
 type Params = { slug: string };
@@ -57,31 +64,44 @@ export async function generateMetadata({
   const project = getProject(slug);
   if (!project) return { title: "Project Not Found" };
   const path = `/projects/${project.slug}`;
-  const title = `${project.title} - ${project.category}`;
+  const title = createSeoTitle(
+    `${project.title} — ${project.category}`,
+    "Salmen Khelifi",
+    project.tagline,
+    "Project",
+  );
+  const description = createSeoDescription(
+    project.tagline,
+    project.overview.what,
+    project.overview.problem,
+  );
   const heroAlt = project.gallery.find((shot) => shot.src === project.heroImage)?.alt || "";
   const socialImage = {
-    url: project.heroImage || "/opengraph-image",
+    url: project.heroImage
+      ? `${siteUrl}${project.heroImage}`
+      : defaultSocialImage.url,
     alt: project.heroImage
       ? heroAlt
-      : "Salmen Khelifi - Full-Stack Developer & Automation Specialist",
+      : defaultSocialImage.alt,
   };
+  const projectTwitterImage = project.heroImage ? socialImage : twitterImage;
   return {
-    title,
-    description: project.tagline,
+    title: { absolute: title },
+    description,
     alternates: {
       canonical: path,
     },
     openGraph: {
       title,
-      description: project.tagline,
+      description,
       url: `${siteUrl}${path}`,
       images: [socialImage],
     },
     twitter: {
       card: "summary_large_image",
       title,
-      description: project.tagline,
-      images: [socialImage],
+      description,
+      images: [projectTwitterImage],
     },
   };
 }
@@ -389,6 +409,7 @@ export default async function ProjectProfilePage({
         ["Status", project.snapshot.status?.replaceAll("-", " ")],
         ["Role", project.snapshot.role],
         ["Ownership", project.snapshot.ownership],
+        ["Team / Credits", project.snapshot.team],
         ["Industry", project.snapshot.industry],
         ["Platform", project.snapshot.platform],
       ].filter((field): field is [string, string] => Boolean(field[1]))
@@ -486,6 +507,37 @@ export default async function ProjectProfilePage({
     return null;
   };
 
+  const heroMedia = (project.heroImage || project.slug === "founderflow") ? (
+    <div className={project.slug === "adaptifit" ? "pt-2" : "mt-10"}>
+      <div className={`relative mx-auto w-full overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border-bright)] bg-black shadow-2xl ${project.slug === "adaptifit" ? "aspect-[9/19] max-w-xs" : "aspect-video max-w-4xl"}`}>
+        <Image
+          src={
+            project.slug === "founderflow"
+              ? "/images/founderflow/founderflow-demo.webp"
+              : project.heroImage!
+          }
+          alt={heroAlt}
+          fill
+          priority
+          sizes="(max-width: 1024px) 95vw, 880px"
+          className={`${project.slug === "adaptifit" ? "object-contain" : "object-cover"} bg-black ${project.slug === "founderflow" ? "theme-image-light" : ""}`}
+          unoptimized={project.slug === "founderflow"}
+        />
+        {project.slug === "founderflow" && (
+          <Image
+            src="/images/founderflow/founderflow-demo-dark.gif"
+            alt=""
+            fill
+            sizes="(max-width: 1024px) 95vw, 880px"
+            className="object-cover bg-black theme-image-dark"
+            unoptimized
+            aria-hidden="true"
+          />
+        )}
+      </div>
+    </div>
+  ) : null;
+
 
   return (
     <div className="min-h-screen text-[var(--text-primary)]">
@@ -521,6 +573,7 @@ export default async function ProjectProfilePage({
                 <p className="text-body-large text-[var(--text-secondary)] max-w-3xl">
                   {project.tagline}
                 </p>
+                {project.slug === "adaptifit" && heroMedia}
                 {snapshotFields.length > 0 && (
                   <div className="glass-panel rounded-[var(--radius-xl)] p-5 md:p-6">
                     <h2 className="text-caption text-[var(--accent)] mb-4">Project Snapshot</h2>
@@ -548,36 +601,7 @@ export default async function ProjectProfilePage({
                 </div>
               </div>
 
-              {(project.heroImage || project.slug === "founderflow") && (
-                <div className="mt-10">
-                  <div className="relative mx-auto w-full overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border-bright)] bg-black shadow-2xl aspect-video max-w-4xl">
-                    <Image
-                      src={
-                        project.slug === "founderflow"
-                          ? "/images/founderflow/founderflow-demo.webp"
-                          : project.heroImage!
-                      }
-                      alt={heroAlt}
-                      fill
-                      priority
-                      sizes="(max-width: 1024px) 95vw, 880px"
-                      className={`object-cover bg-black ${project.slug === "founderflow" ? "theme-image-light" : ""}`}
-                      unoptimized={project.slug === "founderflow"}
-                    />
-                    {project.slug === "founderflow" && (
-                      <Image
-                        src="/images/founderflow/founderflow-demo-dark.gif"
-                        alt=""
-                        fill
-                        sizes="(max-width: 1024px) 95vw, 880px"
-                        className="object-cover bg-black theme-image-dark"
-                        unoptimized
-                        aria-hidden="true"
-                      />
-                    )}
-                  </div>
-                </div>
-              )}
+              {project.slug !== "adaptifit" && heroMedia}
             </section>
 
             {/* Live Mobile App Video Demo Section */}
@@ -635,10 +659,13 @@ export default async function ProjectProfilePage({
                     "Built a multi-tenant commerce platform for Tunisia with instant hostname tenant resolution, zero-FOUC server theming, cash-on-delivery checkout, and Payload CMS back-office."}
                   {project.slug === "noxivo" &&
                     "Created a WhatsApp-first automation platform with multi-tenant agency workspaces, Fastify workflow engine, BullMQ job queues, and Docusaurus developer documentation."}
+                  {project.slug === "adaptifit" &&
+                    "Implemented the client's supplied brand and UI/UX as a Flutter app, then built the Express/MongoDB services and n8n workflows behind personalized plans, progress, and AI coach flows."}
                   {project.slug !== "luxe-spa" &&
                     project.slug !== "anlingo" &&
                     project.slug !== "chaktech" &&
                     project.slug !== "noxivo" &&
+                    project.slug !== "adaptifit" &&
                     `Engineered a high-performance system for ${project.title}, delivering reliable ${project.category.toLowerCase()} capabilities strictly backed by clean code and robust software architecture.`}
                 </p>
 

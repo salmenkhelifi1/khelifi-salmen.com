@@ -373,67 +373,115 @@ export const projects: Project[] = [
     slug: "adaptifit",
     title: "Adaptifit",
     tagline:
-      "An AI-powered fitness and nutrition coach with personalized workout plans, meal tracking, and progress analytics.",
-    category: "AI Mobile App",
+      "A client fitness and nutrition app implemented in Flutter, backed by an Express API and n8n-powered AI plan generation.",
+    category: "Client Fitness & Nutrition App",
     accent: {
       text: "text-cyan-400",
       hoverText: "hover:text-cyan-400",
       button: "bg-cyan-600 hover:bg-cyan-500",
     },
-    heroImage: "/images/adaptifit_1.png",
+    heroImage: "/images/adaptifit/my-plan.png",
+    galleryAspect: "phone",
     overview: {
-      what: "A full-stack mobile + backend solution: AI-generated workout plans, meal tracking, progress analytics, and an AI coach chat, built with Flutter and a Node.js backend.",
+      what: "A cross-platform Flutter mobile app that turns a client's fitness product brief and supplied UI/UX into daily workout plans, nutrition plans, progress tracking, calendar views, profile management, and an AI coach experience. The app connects to an Express and MongoDB backend, with n8n workflows coordinating AI-generated plan data.",
       problem:
-        "Generic fitness apps hand everyone the same plan. Adaptifit generates and adapts plans from each user's goals, equipment, and progress data.",
+        "Fitness users need one place to follow an adaptive workout and nutrition routine instead of managing plans, meals, completion data, and coaching conversations across separate tools.",
       audience:
-        "People who want a personal-trainer experience — adaptive plans and coaching — at app-subscription prices.",
+        "People following a personalized fitness and nutrition program through the client's Adaptifit product.",
     },
     features: [
       {
-        title: "Personalized Workout Plans",
+        title: "Personalized Daily Plans",
         description:
-          "AI-generated programs tailored to goals, experience level, and available equipment — re-adapted as progress data comes in.",
+          "Workout and nutrition plans are generated from the user's profile and surfaced as a single daily routine with completion state and upcoming-plan previews.",
       },
       {
-        title: "Meal Tracking & Nutrition",
+        title: "Workout, Nutrition & Calendar Flows",
         description:
-          "Log meals and track macros with AI-assisted suggestions aligned to training goals.",
-      },
-      {
-        title: "Progress Analytics",
-        description:
-          "Charts and trends for workouts, body metrics, and nutrition over time.",
+          "Users can move from calendar dates to workout details, exercise sets, meal breakdowns, hydration targets, and daily tasks without leaving the mobile flow.",
       },
       {
         title: "AI Coach Chat",
         description:
-          "An OpenAI-powered coach that answers questions and adjusts plans conversationally, with n8n automations behind the scenes.",
+          "The Flutter coach experience sends authenticated prompts through Express to an n8n webhook and stores the resulting conversation history.",
+      },
+      {
+        title: "Progress & Plan Management",
+        description:
+          "Profile progress, completed workouts and meals, streak-oriented feedback, and plan rewriting are connected to the same backend data model.",
       },
     ],
     gallery: [
       {
-        src: "/images/adaptifit_1.png",
-        alt: "Adaptifit sign-in screen on mobile",
+        src: "/images/adaptifit/my-plan.png",
+        alt: "Adaptifit My Plan screen showing today's workout, nutrition, and weekly progress",
       },
       {
-        src: "/images/adaptifit_dashboard.png",
-        alt: "Adaptifit sign-in screen on tablet",
-        aspect: "desktop",
+        src: "/images/adaptifit/daily-plan.png",
+        alt: "Adaptifit daily plan detail screen combining workout and nutrition plans",
+      },
+      {
+        src: "/images/adaptifit/coach.png",
+        alt: "Adaptifit AI Coach conversation screen",
+      },
+      {
+        src: "/images/adaptifit/progress.png",
+        alt: "Adaptifit profile progress screen showing workouts, meals, and weeks completed",
+      },
+      {
+        src: "/images/adaptifit/profile.png",
+        alt: "Adaptifit profile screen showing account information and progress totals",
+      },
+      {
+        src: "/images/adaptifit/calendar.png",
+        alt: "Adaptifit calendar screen showing workout and nutrition completion markers",
+      },
+      {
+        src: "/images/adaptifit/workout.png",
+        alt: "Adaptifit workout detail screen showing exercises, sets, reps, and rest periods",
+      },
+      {
+        src: "/images/adaptifit/workout-list.png",
+        alt: "Adaptifit workout exercise list for an upper body strength plan",
+      },
+      {
+        src: "/images/adaptifit/nutrition.png",
+        alt: "Adaptifit nutrition plan screen showing calories, protein, and meals",
+      },
+      {
+        src: "/images/adaptifit/upcoming-plan.png",
+        alt: "Adaptifit upcoming plan screen showing a lower body workout and personalized meals",
       },
     ],
     techStack: {
-      frontend: ["Flutter", "Dart"],
-      backend: ["Node.js", "MongoDB", "OpenAI API"],
-      tools: ["n8n"],
+      frontend: ["Flutter", "Dart", "Riverpod"],
+      backend: ["Express.js", "MongoDB", "Mongoose", "JWT authentication"],
+      tools: ["n8n", "OpenAI"],
     },
-    badges: ["Flutter", "Node.js", "MongoDB", "OpenAI", "n8n"],
+    badges: ["Flutter", "Express.js", "MongoDB", "n8n", "OpenAI"],
+    challenges: [
+      {
+        challenge: "Implementing an existing client-owned visual system without claiming design ownership",
+        solution:
+          "Translated the supplied brand and UI/UX into reusable Flutter screens, navigation, state, and responsive mobile layouts while keeping the portfolio credit explicit: the client owns the brand and a separate designer created the UI/UX.",
+      },
+      {
+        challenge: "Turning AI output into consistent product data",
+        solution:
+          "Connected Express endpoints to n8n workflows that generate and parse AI output, then save the main plan, individual workouts, nutrition, and calendar entries through authenticated API calls.",
+      },
+      {
+        challenge: "Keeping plan rewrites and progress views aligned",
+        solution:
+          "Handled active-plan replacement across related workout, nutrition, and calendar records so the mobile app can regenerate a plan without leaving stale data visible in the user's daily flow.",
+      },
+    ],
     links: {},
     snapshot: {
-      timeframe: "2026",
-      status: "prototype",
-      role: "Solo full-stack and AI developer",
+      role: "Flutter, backend & automation developer",
       ownership:
-        "Mobile app, backend services, and on-device ML integration, built end to end",
+        "Flutter mobile implementation, Express/MongoDB API, authentication and data flows, progress/calendar integration, and n8n AI workflows",
+      team: "Client-owned brand; UI/UX created by a separate designer",
       industry: "Fitness and wellness",
       platform: "Mobile",
     },
