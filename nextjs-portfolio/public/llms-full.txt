@@ -13,13 +13,13 @@ Salmen Khelifi is a full-stack developer and automation specialist for web apps,
 
 ## Projects
 
-Note: the owned products below (Luxe Spa, Anlingo, Noxivo, Adaptifit) are solo-built and pre-launch, with no verified users or revenue. Descriptions cover engineering scope only.
+Note: the owned products below (Luxe Spa, Anlingo, Noxivo) are solo-built and pre-launch, with no verified users or revenue. Descriptions cover engineering scope only.
 
 ### Adaptifit
 
 URL: https://khelifi-salmen.com/projects/adaptifit
 
-An AI-powered fitness and nutrition coach with Flutter mobile UI, Node.js backend, MongoDB, OpenAI integration, meal tracking, workout plans, progress analytics, and n8n-supported automation. It targets users who want adaptive coaching based on goals, equipment, and progress data.
+Adaptifit is a client fitness and nutrition app. Salmen implemented the Flutter mobile app, Express and MongoDB backend, and n8n/OpenAI workflows for personalized plans and coach chat. The client owns the brand, and a separate designer created the UI/UX.
 
 ### Anlingo
 

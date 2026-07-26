@@ -280,14 +280,14 @@ export const projects: Project[] = [
     image: "/images/chaktech/chaktech-admin-dashboard-live.png",
   },
   {
-    category: "AI Mobile App",
-    title: "Adaptifit - AI Fitness Coach",
+    category: "Client Fitness & Nutrition App",
+    title: "Adaptifit",
     description:
-      "AI-powered fitness and nutrition app with personalized workout plans, meal tracking, progress analytics, and an AI coach chat. Full-stack mobile + backend solution.",
-    tags: ["Flutter", "Node.js", "MongoDB", "OpenAI", "n8n"],
+      "Client fitness and nutrition app implemented in Flutter with an Express/MongoDB backend and n8n-powered AI plan generation.",
+    tags: ["Flutter", "Express.js", "MongoDB", "n8n", "OpenAI"],
     href: "/projects/adaptifit",
     linkLabel: "View Project",
-    image: "/images/adaptifit_1.png",
+    image: "/images/adaptifit/my-plan.png",
   },
 ];
 
@@ -431,7 +431,7 @@ export const technicalDepth: TechnicalDepthItem[] = [
 export const portraitPreviewImages: Set<string> = new Set([
   "/images/stitch-projects/14620193470260808168-70889deedbc14545be22752d8c352941.png",
   "/images/freelancer-portfolio/leyel/leyel-02.png",
-  "/images/adaptifit_1.png",
+  "/images/adaptifit/my-plan.png",
 ]);
 
 // Three focused service areas, dominant one first. Reduced from six generic

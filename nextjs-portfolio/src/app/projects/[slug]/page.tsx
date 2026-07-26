@@ -389,6 +389,7 @@ export default async function ProjectProfilePage({
         ["Status", project.snapshot.status?.replaceAll("-", " ")],
         ["Role", project.snapshot.role],
         ["Ownership", project.snapshot.ownership],
+        ["Team / Credits", project.snapshot.team],
         ["Industry", project.snapshot.industry],
         ["Platform", project.snapshot.platform],
       ].filter((field): field is [string, string] => Boolean(field[1]))
@@ -550,7 +551,7 @@ export default async function ProjectProfilePage({
 
               {(project.heroImage || project.slug === "founderflow") && (
                 <div className="mt-10">
-                  <div className="relative mx-auto w-full overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border-bright)] bg-black shadow-2xl aspect-video max-w-4xl">
+                  <div className={`relative mx-auto w-full overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border-bright)] bg-black shadow-2xl ${project.slug === "adaptifit" ? "aspect-[9/19] max-w-xs" : "aspect-video max-w-4xl"}`}>
                     <Image
                       src={
                         project.slug === "founderflow"
@@ -561,7 +562,7 @@ export default async function ProjectProfilePage({
                       fill
                       priority
                       sizes="(max-width: 1024px) 95vw, 880px"
-                      className={`object-cover bg-black ${project.slug === "founderflow" ? "theme-image-light" : ""}`}
+                      className={`${project.slug === "adaptifit" ? "object-contain" : "object-cover"} bg-black ${project.slug === "founderflow" ? "theme-image-light" : ""}`}
                       unoptimized={project.slug === "founderflow"}
                     />
                     {project.slug === "founderflow" && (
@@ -635,10 +636,13 @@ export default async function ProjectProfilePage({
                     "Built a multi-tenant commerce platform for Tunisia with instant hostname tenant resolution, zero-FOUC server theming, cash-on-delivery checkout, and Payload CMS back-office."}
                   {project.slug === "noxivo" &&
                     "Created a WhatsApp-first automation platform with multi-tenant agency workspaces, Fastify workflow engine, BullMQ job queues, and Docusaurus developer documentation."}
+                  {project.slug === "adaptifit" &&
+                    "Implemented the client's supplied brand and UI/UX as a Flutter app, then built the Express/MongoDB services and n8n workflows behind personalized plans, progress, and AI coach flows."}
                   {project.slug !== "luxe-spa" &&
                     project.slug !== "anlingo" &&
                     project.slug !== "chaktech" &&
                     project.slug !== "noxivo" &&
+                    project.slug !== "adaptifit" &&
                     `Engineered a high-performance system for ${project.title}, delivering reliable ${project.category.toLowerCase()} capabilities strictly backed by clean code and robust software architecture.`}
                 </p>
 
