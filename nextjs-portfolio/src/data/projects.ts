@@ -33,6 +33,7 @@ export type Project = {
   category: string;
   accent: ProjectAccent;
   heroImage?: string;
+  heroDarkImage?: string;
   heroVideo?: string;
   galleryAspect?: "phone" | "desktop";
   overview: {
@@ -41,7 +42,7 @@ export type Project = {
     audience: string;
   };
   features: ProjectFeature[];
-  gallery: { src: string; alt: string; aspect?: "desktop" | "phone" }[];
+  gallery: { src: string; darkSrc?: string; alt: string; aspect?: "desktop" | "phone" }[];
   techStack: {
     frontend: string[];
     backend?: string[];
@@ -90,6 +91,7 @@ export const projects: Project[] = [
       button: "bg-indigo-600 hover:bg-indigo-500",
     },
     heroImage: "/images/founderflow/founderflow-cover.png",
+    heroDarkImage: "/images/founderflow/founderflow-cover-dark.png",
     heroVideo: "/images/founderflow/founderflow-full-demo.mp4",
     galleryAspect: "phone",
     overview: {
@@ -129,46 +131,55 @@ export const projects: Project[] = [
     gallery: [
       {
         src: "/images/founderflow/founderflow-welcome.png",
+        darkSrc: "/images/founderflow/founderflow-welcome-dark.png",
         alt: "FounderFlow Welcome screen with Apple, Google, and email sign-in actions",
         aspect: "phone",
       },
       {
         src: "/images/founderflow/founderflow-create-profile.png",
+        darkSrc: "/images/founderflow/founderflow-create-profile-dark.png",
         alt: "FounderFlow profile setup with Salmen's founder portrait, location consent, and founder focus controls",
         aspect: "phone",
       },
       {
         src: "/images/founderflow/founderflow-home.png",
+        darkSrc: "/images/founderflow/founderflow-home-dark.png",
         alt: "FounderFlow Home dashboard showing a nearby sample founder and curated event",
         aspect: "phone",
       },
       {
         src: "/images/founderflow/founderflow-discover.png",
+        darkSrc: "/images/founderflow/founderflow-discover-dark.png",
         alt: "FounderFlow Discover screen with Salmen marked as You, a safe own-profile action, realistic sample founders, and search controls",
         aspect: "phone",
       },
       {
         src: "/images/founderflow/founderflow-map.png",
+        darkSrc: "/images/founderflow/founderflow-map-dark.png",
         alt: "FounderFlow live Da Nang map with Map and List modes, location sharing, current-location control, and founder markers",
         aspect: "phone",
       },
       {
         src: "/images/founderflow/founderflow-founder-profile.png",
+        darkSrc: "/images/founderflow/founderflow-founder-profile-dark.png",
         alt: "FounderFlow high-resolution Sarah Chen founder profile with one clear connection action",
         aspect: "phone",
       },
       {
         src: "/images/founderflow/founderflow-request-sent.png",
+        darkSrc: "/images/founderflow/founderflow-request-sent-dark.png",
         alt: "FounderFlow connection request sent confirmation screen",
         aspect: "phone",
       },
       {
         src: "/images/founderflow/founderflow-events.png",
+        darkSrc: "/images/founderflow/founderflow-events-dark.png",
         alt: "FounderFlow Curated Events screen with a realistic Da Nang meetup example",
         aspect: "phone",
       },
       {
         src: "/images/founderflow/founderflow-profile.png",
+        darkSrc: "/images/founderflow/founderflow-profile-dark.png",
         alt: "FounderFlow Salmen Khelifi account profile with a high-resolution portrait, links, visibility, revenue verification, and settings",
         aspect: "phone",
       },

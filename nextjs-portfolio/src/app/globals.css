@@ -137,6 +137,13 @@
   color-scheme: light;
 }
 
+/* FounderFlow ships verified light and dark simulator captures. Keep the app
+   chrome aligned with the portfolio theme instead of recoloring screenshots. */
+.theme-image-dark { display: block; }
+.theme-image-light { display: none; }
+[data-theme="light"] .theme-image-dark { display: none; }
+[data-theme="light"] .theme-image-light { display: block; }
+
 @theme inline {
   --font-sans: var(--font-manrope);
 }

@@ -561,9 +561,20 @@ export default async function ProjectProfilePage({
                       fill
                       priority
                       sizes="(max-width: 1024px) 95vw, 880px"
-                      className="object-cover bg-black"
+                      className={`object-cover bg-black ${project.slug === "founderflow" ? "theme-image-light" : ""}`}
                       unoptimized={project.slug === "founderflow"}
                     />
+                    {project.slug === "founderflow" && (
+                      <Image
+                        src="/images/founderflow/founderflow-demo-dark.gif"
+                        alt=""
+                        fill
+                        sizes="(max-width: 1024px) 95vw, 880px"
+                        className="object-cover bg-black theme-image-dark"
+                        unoptimized
+                        aria-hidden="true"
+                      />
+                    )}
                   </div>
                 </div>
               )}
@@ -938,7 +949,8 @@ export default async function ProjectProfilePage({
                             className="w-full h-full object-contain bg-black"
                           />
                         ) : (
-                          <Image
+                          <>
+                            <Image
                             src={shot.src}
                             alt={shot.alt}
                             fill
@@ -947,10 +959,27 @@ export default async function ProjectProfilePage({
                                 ? "(max-width: 640px) 90vw, (max-width: 768px) 45vw, 300px"
                                 : "(max-width: 768px) 90vw, 500px"
                             }
-                            className="object-cover"
+                            className={`object-cover ${shot.darkSrc ? "theme-image-light" : ""}`}
                             placeholder="blur"
                             blurDataURL={BLUR_PLACEHOLDER}
-                          />
+                            />
+                            {shot.darkSrc && (
+                              <Image
+                            src={shot.darkSrc}
+                            alt=""
+                            fill
+                            sizes={
+                              shotIsPhone
+                                ? "(max-width: 640px) 90vw, (max-width: 768px) 45vw, 300px"
+                                : "(max-width: 768px) 90vw, 500px"
+                            }
+                            className="object-cover theme-image-dark"
+                            placeholder="blur"
+                            blurDataURL={BLUR_PLACEHOLDER}
+                            aria-hidden="true"
+                              />
+                            )}
+                          </>
                         )}
                       </div>
                     );
