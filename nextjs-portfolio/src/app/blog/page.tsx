@@ -6,15 +6,15 @@ import SiteFooter from "@/components/SiteFooter";
 import SectionContainer from "@/components/SectionContainer";
 import SectionHeading from "@/components/SectionHeading";
 import BlogListWithFilter from "@/components/BlogListWithFilter";
-import { siteUrl } from "@/data/schema";
+import { siteUrl, socialImage, twitterImage } from "@/data/schema";
 import { getPublishedPosts } from "@/lib/content/blog";
 
-const title = "Blog";
+const title = "Engineering Journal & Retrospectives | Salmen Khelifi";
 const description =
-  "Engineering write-ups, architecture decisions, and retrospectives from real production projects.";
+  "Read Salmen Khelifi’s engineering journal on system architecture, database migrations, automation, production hardening, and decisions from real projects.";
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   alternates: {
     canonical: "/blog",
@@ -24,23 +24,13 @@ export const metadata: Metadata = {
     description,
     url: `${siteUrl}/blog`,
     type: "website",
-    images: [
-      {
-        url: "/opengraph-image",
-        alt: "Salmen Khelifi - Full-Stack Developer & Automation Specialist",
-      },
-    ],
+    images: [socialImage],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: [
-      {
-        url: "/opengraph-image",
-        alt: "Salmen Khelifi - Full-Stack Developer & Automation Specialist",
-      },
-    ],
+    images: [twitterImage],
   },
 };
 

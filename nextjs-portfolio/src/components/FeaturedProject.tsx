@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { BLUR_PLACEHOLDER, FeaturedWorkItem } from "@/data/homepage";
+import { getProject } from "@/data/projects";
 
 interface FeaturedProjectProps {
   item: FeaturedWorkItem;
@@ -15,6 +16,11 @@ export default function FeaturedProject({
   headingLevel = "h2",
 }: FeaturedProjectProps) {
   const Heading = headingLevel;
+  const project = getProject(item.href.split("/").at(-1) || "");
+  const imageAlt =
+    project?.gallery.find((shot) => shot.src === item.image)?.alt ||
+    project?.gallery[0]?.alt ||
+    item.title;
 
   return (
     <article className="project-card group reveal grid items-center gap-10 md:grid-cols-12 md:gap-16">
@@ -53,7 +59,7 @@ export default function FeaturedProject({
         <div className="image-preview relative overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border-muted)] bg-[var(--bg-surface)] aspect-[16/10]">
           <Image
             src={item.image}
-            alt=""
+            alt={imageAlt}
             fill
             sizes="(max-width: 768px) 100vw, 60vw"
             className="object-cover object-top"

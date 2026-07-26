@@ -449,6 +449,7 @@ export const services: ServiceItem[] = [
     title: "Automation & Integrations",
     description:
       "n8n and AI-assisted workflows that remove repetitive operations, connected to CRMs, messaging, notifications, data sync, and third-party APIs, with reliable monitoring.",
+    href: "/n8n-automation-developer",
   },
   {
     icon: Zap,

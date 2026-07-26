@@ -2,7 +2,7 @@ import type { Project } from "@/data/projects";
 import { testimonials } from "@/data/testimonials";
 import type { BlogPost } from "@/lib/content/blog";
 
-export const siteUrl = "https://khelifi-salmen.com";
+export const siteUrl = "https://www.khelifi-salmen.com";
 export const bookingUrl = "https://cal.com/salmen-khelifi/30min";
 export const freelancerUrl = "https://www.freelancer.com/u/khelifisalmen";
 export const githubUrl = "https://github.com/salmenkhelifi1";
@@ -16,6 +16,14 @@ export const upworkUrl = "https://www.upwork.com/freelancers/~01f5b8025abe71abf2
 export const personId = `${siteUrl}/#person`;
 export const websiteId = `${siteUrl}/#website`;
 export const serviceId = `${siteUrl}/#service`;
+export const socialImage = {
+  url: `${siteUrl}/opengraph-image`,
+  alt: "Salmen Khelifi - Full-Stack Developer & Automation Specialist",
+};
+export const twitterImage = {
+  url: `${siteUrl}/twitter-image`,
+  alt: socialImage.alt,
+};
 
 export const siteJsonLd = [
   {
@@ -26,7 +34,7 @@ export const siteJsonLd = [
     jobTitle: "Full-Stack Developer & Automation Specialist",
     url: siteUrl,
     email: "hello@khelifi-salmen.com",
-    telephone: "+84961566302",
+    // telephone removed pending owner confirmation
     sameAs: [
       githubUrl,
       linkedinUrl,
@@ -71,7 +79,6 @@ export const siteJsonLd = [
     name: "Salmen Khelifi",
     url: siteUrl,
     email: "hello@khelifi-salmen.com",
-    telephone: "+84961566302",
     areaServed: "Worldwide",
     serviceType: [
       "Full-stack development",
@@ -154,7 +161,7 @@ export function projectJsonLd(project: Project) {
 }
 
 export function articleJsonLd(post: BlogPost) {
-  const postUrl = post.frontmatter.canonicalUrl || `${siteUrl}/blog/${post.slug}`;
+  const postUrl = `${siteUrl}/blog/${post.slug}`;
 
   return [
     breadcrumbJsonLd([
@@ -183,7 +190,9 @@ export function articleJsonLd(post: BlogPost) {
         name: "Salmen Khelifi",
         url: siteUrl,
       },
-      image: post.frontmatter.cover ? `${siteUrl}${post.frontmatter.cover}` : undefined,
+      image: post.frontmatter.cover
+        ? `${siteUrl}${post.frontmatter.cover}`
+        : socialImage.url,
       keywords: post.frontmatter.tags.join(", "),
       articleSection: post.frontmatter.category,
     },

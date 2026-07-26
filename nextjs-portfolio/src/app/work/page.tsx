@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import WorkGrid from "@/components/WorkGrid";
-import { siteUrl } from "@/data/schema";
+import { siteUrl, socialImage, twitterImage } from "@/data/schema";
 
-const title = "Work — Software & Automation Portfolio";
+const title = "Software & Automation Project Portfolio | Salmen Khelifi";
 const description =
-  "Explore full-stack web platforms, mobile applications, SaaS systems, and automated workflows built by Salmen Khelifi.";
+  "Explore full-stack web platforms, mobile applications, SaaS systems, e-commerce products, and automated workflows built by Salmen Khelifi in case studies.";
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   alternates: {
     canonical: "/work",
@@ -19,23 +19,13 @@ export const metadata: Metadata = {
     description,
     url: `${siteUrl}/work`,
     type: "website",
-    images: [
-      {
-        url: "/opengraph-image",
-        alt: "Salmen Khelifi - Full-Stack Developer & Automation Specialist",
-      },
-    ],
+    images: [socialImage],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: [
-      {
-        url: "/opengraph-image",
-        alt: "Salmen Khelifi - Full-Stack Developer & Automation Specialist",
-      },
-    ],
+    images: [twitterImage],
   },
 };
 

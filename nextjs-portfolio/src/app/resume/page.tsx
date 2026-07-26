@@ -23,16 +23,18 @@ import {
   linkedinUrl,
   personId,
   siteUrl,
+  socialImage,
+  twitterImage,
   upworkUrl,
 } from "@/data/schema";
 import SiteHeader from "@/components/SiteHeader";
 
 const title = "Resume — Full-Stack Developer & Automation Specialist";
 const description =
-  "Professional resume of Salmen Khelifi, a Full-Stack Developer & Automation Specialist with 5+ years of experience in React, Next.js, Node.js, Flutter, and AI automation.";
+  "Review Salmen Khelifi’s full-stack resume, including React, Next.js, Node.js, Flutter, automation experience, selected projects, and technical skills.";
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   alternates: {
     canonical: "/resume",
@@ -42,13 +44,13 @@ export const metadata: Metadata = {
     description,
     url: `${siteUrl}/resume`,
     type: "website",
-    images: ["/opengraph-image"],
+    images: [socialImage],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: ["/opengraph-image"],
+    images: [twitterImage],
   },
 };
 
@@ -150,7 +152,7 @@ const resumeJsonLd = {
   url: siteUrl,
   mainEntityOfPage: `${siteUrl}/resume`,
   email: "hello@khelifi-salmen.com",
-  telephone: "+84961566302",
+  // telephone removed pending owner confirmation
   address: {
     "@type": "PostalAddress",
     addressCountry: "TN",

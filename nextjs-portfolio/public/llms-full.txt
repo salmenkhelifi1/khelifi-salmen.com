@@ -17,85 +17,85 @@ Note: the owned products below (Luxe Spa, Anlingo, Noxivo) are solo-built and pr
 
 ### Adaptifit
 
-URL: https://khelifi-salmen.com/projects/adaptifit
+URL: https://www.khelifi-salmen.com/projects/adaptifit
 
 Adaptifit is a client fitness and nutrition app. Salmen implemented the Flutter mobile app, Express and MongoDB backend, and n8n/OpenAI workflows for personalized plans and coach chat. The client owns the brand, and a separate designer created the UI/UX.
 
 ### Anlingo
 
-URL: https://khelifi-salmen.com/projects/anlingo
+URL: https://www.khelifi-salmen.com/projects/anlingo
 
 An AI writing assistant with a landing site, web editor, Express API, billing, usage limits, and Flutter mobile companion. The product covers grammar correction, rewriting, translation, voice dictation, document import, AI chat, history, pricing, account workflows, provider-backed AI routes, Stripe, Whop, MoMo, and entitlement refresh.
 
 ### ChakTech Platform
 
-URL: https://khelifi-salmen.com/projects/chaktech
+URL: https://www.khelifi-salmen.com/projects/chaktech
 
 A multi-tenant e-commerce platform for the Tunisian market with localized storefront, Payload CMS admin, custom Express API, tenant-scoped operations, cash-on-delivery checkout, French and Arabic RTL support, PostgreSQL, and Typesense.
 
 ### Noxivo
 
-URL: https://khelifi-salmen.com/projects/noxivo
+URL: https://www.khelifi-salmen.com/projects/noxivo
 
 A WhatsApp-first automation SaaS for agencies. It includes a public waitlist, protected agency dashboard, developer documentation, multi-tenant workspaces, team inbox operations, WhatsApp sessions, public API access, and a Fastify workflow engine.
 
 ### LEYEL Modest Fashion
 
-URL: https://khelifi-salmen.com/projects/leyel
+URL: https://www.khelifi-salmen.com/projects/leyel
 
 A public storefront and brand presentation for a modest ready-to-wear fashion label. The case study focuses on brand storytelling, collection browsing, product-led layouts, refined imagery, and a calm e-commerce presentation.
 
 ### AI-Powered Workflow Automation
 
-URL: https://khelifi-salmen.com/projects/ai-workflow-automation
+URL: https://www.khelifi-salmen.com/projects/ai-workflow-automation
 
 An n8n automation hub connecting Gmail, Google APIs, OpenAI, Google Sheets, Google Voice, and WhatsApp inputs into structured task workflows. It classifies, enriches, and routes multi-channel inputs into business tasks without manual copying between tools.
 
 ### HTI.tn Electronic E-commerce
 
-URL: https://khelifi-salmen.com/projects/hti-ecommerce
+URL: https://www.khelifi-salmen.com/projects/hti-ecommerce
 
 A WordPress and WooCommerce electronics storefront with product browsing, payment gateway setup, SEO-friendly structure, performance optimization, responsive design, and custom theme enhancements for an electronics and surveillance equipment retailer.
 
 ### Chab-ka Concept Store
 
-URL: https://khelifi-salmen.com/projects/chab-ka
+URL: https://www.khelifi-salmen.com/projects/chab-ka
 
 A concept-store website for handcrafted artisanal products such as jewelry and ceramic pieces. The project emphasizes product showcase, responsive browsing, SEO-friendly presentation, and a visual storefront for local craftsmanship.
 
 ### Velyssa Fashion E-commerce
 
-URL: https://khelifi-salmen.com/projects/velyssa
+URL: https://www.khelifi-salmen.com/projects/velyssa
 
 A WordPress and WooCommerce fashion storefront with product categories, product pages, checkout, AWS services, Brevo, and All in One SEO. The project supports collection browsing, shopping workflows, and store operator management.
 
 ### blog-sainteagnes.fr
 
-URL: https://khelifi-salmen.com/projects/sainteagnes-blog
+URL: https://www.khelifi-salmen.com/projects/sainteagnes-blog
 
 A modern blog platform with responsive design, SEO optimization, performance and security work, and CMS-friendly content management for clean reading and easy publishing.
 
 ### DigiTrends.dev
 
-URL: https://khelifi-salmen.com/projects/digitrends-dev
+URL: https://www.khelifi-salmen.com/projects/digitrends-dev
 
 A responsive company website for an IT solutions brand covering software development, cloud solutions, DevOps, and digital transformation. It presents services and brand identity for technical buyers.
 
 ### Electronic E-Commerce Website
 
-URL: https://khelifi-salmen.com/projects/electronic-ecommerce
+URL: https://www.khelifi-salmen.com/projects/electronic-ecommerce
 
 A WordPress electronics store using the Proto theme, product listings, responsive layouts, search, filtering, and e-commerce functionality.
 
 ### digitrends.pro
 
-URL: https://khelifi-salmen.com/projects/digitrends-pro
+URL: https://www.khelifi-salmen.com/projects/digitrends-pro
 
 A French-language business website presenting operational excellence and digital innovation as two connected transformation services.
 
 ### rentiora.com
 
-URL: https://khelifi-salmen.com/projects/rentiora
+URL: https://www.khelifi-salmen.com/projects/rentiora
 
 A car-rental platform concept for browsing premium vehicles such as sedans, coupes, SUVs, and convertibles, with positioning around comfort, performance, sophistication, and trust.
 

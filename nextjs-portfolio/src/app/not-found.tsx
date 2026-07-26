@@ -1,6 +1,35 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { bookingUrl } from "@/data/schema";
+import {
+  bookingUrl,
+  siteUrl,
+  socialImage,
+  twitterImage,
+} from "@/data/schema";
+
+const title = "Page Not Found | Salmen Khelifi Developer Portfolio";
+const description =
+  "The requested portfolio page is unavailable or may have moved. Return home, browse Salmen Khelifi’s project case studies, or use the listed contact options.";
+
+export const metadata: Metadata = {
+  title: { absolute: title },
+  description,
+  alternates: { canonical: `${siteUrl}/404` },
+  openGraph: {
+    title,
+    description,
+    url: `${siteUrl}/404`,
+    type: "website",
+    images: [socialImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [twitterImage],
+  },
+};
 
 export default function NotFound() {
   return (

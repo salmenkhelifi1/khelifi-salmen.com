@@ -22,7 +22,13 @@ import {
   Zap,
 } from "lucide-react";
 import { getProject, projects, type Project } from "@/data/projects";
-import { bookingUrl, projectJsonLd, siteUrl } from "@/data/schema";
+import {
+  bookingUrl,
+  projectJsonLd,
+  siteUrl,
+  socialImage as defaultSocialImage,
+  twitterImage,
+} from "@/data/schema";
 import { BLUR_PLACEHOLDER } from "@/data/homepage";
 import ProjectToc, { type TocSection } from "@/components/ProjectToc";
 import SiteHeader from "@/components/SiteHeader";
@@ -30,6 +36,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { getCaseStudyNarrative } from "@/lib/content/case-study-narratives";
 import { getPublishedPosts } from "@/lib/content/blog";
 import type { CaseStudyPlacement } from "@/lib/content/schemas";
+import { createSeoDescription, createSeoTitle } from "@/lib/seo";
 
 
 type Params = { slug: string };
@@ -57,31 +64,44 @@ export async function generateMetadata({
   const project = getProject(slug);
   if (!project) return { title: "Project Not Found" };
   const path = `/projects/${project.slug}`;
-  const title = `${project.title} - ${project.category}`;
+  const title = createSeoTitle(
+    `${project.title} — ${project.category}`,
+    "Salmen Khelifi",
+    project.tagline,
+    "Project",
+  );
+  const description = createSeoDescription(
+    project.tagline,
+    project.overview.what,
+    project.overview.problem,
+  );
   const heroAlt = project.gallery.find((shot) => shot.src === project.heroImage)?.alt || "";
   const socialImage = {
-    url: project.heroImage || "/opengraph-image",
+    url: project.heroImage
+      ? `${siteUrl}${project.heroImage}`
+      : defaultSocialImage.url,
     alt: project.heroImage
       ? heroAlt
-      : "Salmen Khelifi - Full-Stack Developer & Automation Specialist",
+      : defaultSocialImage.alt,
   };
+  const projectTwitterImage = project.heroImage ? socialImage : twitterImage;
   return {
-    title,
-    description: project.tagline,
+    title: { absolute: title },
+    description,
     alternates: {
       canonical: path,
     },
     openGraph: {
       title,
-      description: project.tagline,
+      description,
       url: `${siteUrl}${path}`,
       images: [socialImage],
     },
     twitter: {
       card: "summary_large_image",
       title,
-      description: project.tagline,
-      images: [socialImage],
+      description,
+      images: [projectTwitterImage],
     },
   };
 }

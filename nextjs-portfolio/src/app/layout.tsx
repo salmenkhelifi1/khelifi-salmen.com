@@ -1,7 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
 import Script from "next/script";
-import { siteJsonLd, siteUrl } from "@/data/schema";
+import {
+  siteJsonLd,
+  siteUrl,
+  socialImage,
+  twitterImage,
+} from "@/data/schema";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import CalFloatingButton from "@/components/CalFloatingButton";
@@ -14,30 +19,29 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: "Salmen Khelifi | Full-Stack, Mobile & Automation Specialist",
-    template: "%s | Salmen Khelifi",
-  },
+  metadataBase: new URL("https://www.khelifi-salmen.com"),
+  title: "Salmen Khelifi | Full-Stack, Mobile & Automation Specialist",
   description:
-    "Salmen Khelifi is a Software Engineer & Automation Specialist building revenue-focused web apps, mobile products, and AI workflows.",
+    "Salmen Khelifi is a Software Engineer & Automation Specialist building revenue-focused web apps, mobile products, SaaS platforms, and AI workflows worldwide.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Salmen Khelifi | Full-Stack, Mobile & Automation Specialist",
     description:
-      "Software Engineer & Automation Specialist building revenue-focused web apps, mobile products, and AI workflows.",
+      "Salmen Khelifi is a Software Engineer & Automation Specialist building revenue-focused web apps, mobile products, SaaS platforms, and AI workflows worldwide.",
     url: siteUrl,
     siteName: "Salmen Khelifi",
     locale: "en_US",
     type: "website",
+    images: [socialImage],
   },
   twitter: {
     card: "summary_large_image",
     title: "Salmen Khelifi | Full-Stack, Mobile & Automation Specialist",
     description:
-      "Software Engineer & Automation Specialist building revenue-focused web apps, mobile products, and AI workflows.",
+      "Salmen Khelifi is a Software Engineer & Automation Specialist building revenue-focused web apps, mobile products, SaaS platforms, and AI workflows worldwide.",
+    images: [twitterImage],
   },
   robots: {
     index: true,
