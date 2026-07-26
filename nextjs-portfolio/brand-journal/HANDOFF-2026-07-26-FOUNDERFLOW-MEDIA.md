@@ -7,6 +7,9 @@
   Both are 15.8-second H.264/30 fps exports with Rec.709 metadata and zero
   `avmediainfo` errors.
 - Added the verified Request Sent capture and updated the case-study description to the complete nine-screen flow.
+- Pushed the replacement videos in `4384bec`; Netlify serves the new
+  12,509,788-byte landscape and 17,336,364-byte portrait assets. Fresh public
+  downloads match the source SHA-256 hashes exactly.
 - Production build passed and commit `12d4b93` was pushed to `main`.
 - Verified the new WebP reference on `https://www.khelifi-salmen.com/projects/founderflow`.
 - No remaining media blocker. Use `final-2026-07-26` as the canonical portfolio source.
