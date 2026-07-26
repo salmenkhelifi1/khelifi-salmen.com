@@ -93,6 +93,7 @@ export interface ServiceItem {
   icon: LucideIcon;
   title: string;
   description: string;
+  href?: string;
 }
 
 export const BLUR_PLACEHOLDER =
