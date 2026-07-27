@@ -507,25 +507,25 @@ export default async function ProjectProfilePage({
     return null;
   };
 
-  const heroMedia = (project.heroImage || project.slug === "founderflow") ? (
+  const heroMedia = (project.heroImage || project.slug === "foundpeers") ? (
     <div className={project.slug === "adaptifit" ? "pt-2" : "mt-10"}>
       <div className={`relative mx-auto w-full overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border-bright)] bg-black shadow-2xl ${project.slug === "adaptifit" ? "aspect-[9/19] max-w-xs" : "aspect-video max-w-4xl"}`}>
         <Image
           src={
-            project.slug === "founderflow"
-              ? "/images/founderflow/founderflow-demo.webp"
+            project.slug === "foundpeers"
+              ? "/images/foundpeers/foundpeers-demo.webp"
               : project.heroImage!
           }
           alt={heroAlt}
           fill
           priority
           sizes="(max-width: 1024px) 95vw, 880px"
-          className={`${project.slug === "adaptifit" ? "object-contain" : "object-cover"} bg-black ${project.slug === "founderflow" ? "theme-image-light" : ""}`}
-          unoptimized={project.slug === "founderflow"}
+          className={`${project.slug === "adaptifit" ? "object-contain" : "object-cover"} bg-black ${project.slug === "foundpeers" ? "theme-image-light" : ""}`}
+          unoptimized={project.slug === "foundpeers"}
         />
-        {project.slug === "founderflow" && (
+        {project.slug === "foundpeers" && (
           <Image
-            src="/images/founderflow/founderflow-demo-dark.gif"
+            src="/images/foundpeers/foundpeers-demo-dark.gif"
             alt=""
             fill
             sizes="(max-width: 1024px) 95vw, 880px"
