@@ -226,6 +226,9 @@ const robots = read(".next/server/app/robots.txt.body");
 const netlify = read("../netlify.toml");
 const nextConfig = read("next.config.ts");
 
+if (!/\[\[plugins\]\]\s*package\s*=\s*"@netlify\/plugin-nextjs"/.test(netlify)) {
+  errors.push("netlify.toml must enable @netlify/plugin-nextjs for Next.js routing");
+}
 if (sitemap.includes("https://khelifi-salmen.com")) {
   errors.push("sitemap contains non-www host");
 }
