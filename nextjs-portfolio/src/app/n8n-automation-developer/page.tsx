@@ -15,7 +15,7 @@ import {
 } from "@/data/schema";
 import { testimonials } from "@/data/testimonials";
 
-const title = "n8n Automation Developer for Hire | Salmen Khelifi";
+const title = "n8n Developer & Consultant for Hire | Salmen Khelifi";
 const description =
   "Hire Salmen Khelifi for n8n automation, AI workflows, API integrations, and production-ready business systems from scoping through testing and handover.";
 const pageUrl = `${siteUrl}/n8n-automation-developer`;
@@ -61,7 +61,7 @@ export default function N8nAutomationDeveloperPage() {
           <p className="text-caption uppercase tracking-wider text-[var(--accent)]">Automation & integrations</p>
           <h1 className="mt-3 max-w-3xl text-h1">n8n automation developer for reliable business workflows.</h1>
           <p className="mt-6 max-w-2xl text-body-large text-[var(--text-secondary)]">
-            Salmen Khelifi builds and improves n8n automations that connect forms, CRMs, AI tools, messaging, and internal systems—without leaving fragile workflows behind.
+            As an n8n automation consultant, Salmen Khelifi builds and improves n8n automations that connect forms, CRMs, AI tools, messaging, and internal systems—without leaving fragile workflows behind.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <PrimaryButton href={bookingUrl}>Book a discovery call</PrimaryButton>

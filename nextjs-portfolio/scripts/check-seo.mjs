@@ -3,6 +3,7 @@ import path from "node:path";
 import matter from "gray-matter";
 
 const siteUrl = "https://www.khelifi-salmen.com";
+const authorProfileUrl = `${siteUrl}/resume`;
 const appDir = path.join(process.cwd(), ".next", "server", "app");
 const machineFiles = ["/llms.txt", "/llms-full.txt", "/services.md", "/pricing.md"];
 const errors = [];
@@ -61,6 +62,23 @@ function hasType(value, type) {
   return value && typeof value === "object" && value["@type"] === type;
 }
 
+function findType(value, type) {
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      const found = findType(item, type);
+      if (found) return found;
+    }
+    return null;
+  }
+  if (!value || typeof value !== "object") return null;
+  if (value["@type"] === type) return value;
+  for (const item of Object.values(value)) {
+    const found = findType(item, type);
+    if (found) return found;
+  }
+  return null;
+}
+
 function hasKey(value, key) {
   if (Array.isArray(value)) return value.some((item) => hasKey(item, key));
   if (!value || typeof value !== "object") return false;
@@ -79,6 +97,7 @@ const publishedBlogPosts = fs
       slug: file.replace(/\.mdx$/, ""),
       status: data.status,
       indexable: data.indexable !== false,
+      canonicalUrl: data.canonicalUrl,
     };
   })
   .filter((post) => post.status === "published");
@@ -104,12 +123,14 @@ const routes = [
     jsonLd: "CreativeWork",
     breadcrumb: true,
   })),
-  ...publishedBlogPosts.map(({ slug, indexable }) => ({
+  ...publishedBlogPosts.map(({ slug, indexable, canonicalUrl }) => ({
     route: `/blog/${slug}`,
     file: `blog/${slug}.html`,
     jsonLd: "BlogPosting",
     breadcrumb: true,
     indexable,
+    canonical: canonicalUrl || `${siteUrl}/blog/${slug}`,
+    sitemap: indexable && (!canonicalUrl || canonicalUrl === `${siteUrl}/blog/${slug}`),
   })),
 ];
 
@@ -127,7 +148,7 @@ for (const page of routes) {
   const title = decode(html.match(/<title>(.*?)<\/title>/i)?.[1]);
   const description = meta(html, "name", "description");
   const canonical = decode(html.match(/<link rel="canonical" href="([^"]+)"/i)?.[1]);
-  const expectedUrl = `${siteUrl}${page.route === "/" ? "" : page.route}`;
+  const expectedUrl = page.canonical || `${siteUrl}${page.route === "/" ? "" : page.route}`;
 
   if (page.indexable === false && !hasRobotsDirective(html, "noindex")) {
     errors.push(`${page.route}: noindex robots directive missing`);
@@ -204,6 +225,24 @@ for (const page of routes) {
   if (page.route === "/" && jsonLd.some((value) => hasKey(value, "telephone"))) {
     errors.push("/: JSON-LD still exposes telephone");
   }
+  if (page.route === "/") {
+    const person = jsonLd.map((value) => findType(value, "Person")).find(Boolean);
+    if (person?.url !== authorProfileUrl) {
+      errors.push("/: Person JSON-LD must point to the author profile");
+    }
+  }
+  if (page.route === "/resume") {
+    const profile = jsonLd.map((value) => findType(value, "ProfilePage")).find(Boolean);
+    if (profile?.mainEntity?.["@id"] !== `${siteUrl}/#person`) {
+      errors.push("/resume: ProfilePage must reference the global Person");
+    }
+  }
+  if (page.route.startsWith("/blog/")) {
+    const article = jsonLd.map((value) => findType(value, "BlogPosting")).find(Boolean);
+    if (article?.author?.url !== authorProfileUrl || article?.publisher?.url !== authorProfileUrl) {
+      errors.push(`${page.route}: BlogPosting author and publisher must point to the author profile`);
+    }
+  }
 
   titles.set(title, [...(titles.get(title) || []), page.route]);
   descriptions.set(description, [...(descriptions.get(description) || []), page.route]);
@@ -233,11 +272,20 @@ if (sitemap.includes("https://khelifi-salmen.com")) {
   errors.push("sitemap contains non-www host");
 }
 for (const page of routes.filter(
-  ({ route, indexable }) => route !== "/404" && indexable !== false,
+  ({ route, indexable, sitemap }) =>
+    route !== "/404" && indexable !== false && sitemap !== false,
 )) {
   const expectedUrl = `${siteUrl}${page.route === "/" ? "" : page.route}`;
   if (!sitemap.includes(`<loc>${expectedUrl}</loc>`)) {
     errors.push(`sitemap missing ${page.route}`);
+  }
+}
+for (const page of routes.filter(
+  (page) => page.sitemap === false && page.route.startsWith("/blog/"),
+)) {
+  const localUrl = `${siteUrl}${page.route}`;
+  if (sitemap.includes(`<loc>${localUrl}</loc>`)) {
+    errors.push(`sitemap includes non-canonical blog post ${page.route}`);
   }
 }
 for (const route of machineFiles) {

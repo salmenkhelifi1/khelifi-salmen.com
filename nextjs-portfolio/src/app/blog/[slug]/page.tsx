@@ -67,6 +67,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     || `An article by Salmen Khelifi about ${post.frontmatter.title}.`;
   const description = createSeoDescription(descriptionSource);
   const url = `${siteUrl}/blog/${post.slug}`;
+  const canonicalUrl = post.frontmatter.canonicalUrl || url;
   const socialImage = post.frontmatter.cover
     ? {
         url: `${siteUrl}${post.frontmatter.cover}`,
@@ -81,12 +82,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: { absolute: title },
     description,
     alternates: {
-      canonical: url,
+      canonical: canonicalUrl,
     },
     openGraph: {
       title,
       description,
-      url,
+      url: canonicalUrl,
       type: "article",
       publishedTime: post.frontmatter.publishedAt,
       modifiedTime: post.frontmatter.updatedAt || post.frontmatter.publishedAt,

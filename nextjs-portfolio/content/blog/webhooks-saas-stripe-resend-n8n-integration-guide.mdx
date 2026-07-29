@@ -14,7 +14,8 @@ author: "Salmen Khelifi"
 seoTitle: "Mastering Webhooks for Your SaaS: Stripe, Resend, n8n Integration Guide"
 seoDescription: "Mastering Webhooks for Your SaaS: Stripe, Resend, n8n Integration Guide"
 canonicalUrl: "https://www.khelifi-salmen.com/blog/webhooks-saas-stripe-resend-n8n-integration-guide"
-relatedCaseStudies: []
+relatedCaseStudies:
+  - "ai-workflow-automation"
 ---
 
 ## Mastering Webhooks for Your SaaS: Stripe, Resend, n8n Integration Guide
@@ -158,6 +159,8 @@ app.post('/webhook/resend', async (req, res) => {
 4.  Optionally, sends a notification to my team's Slack channel.
 
 This entire flow is a visual graph in n8n, making it incredibly clear and maintainable. The trade-off is another service to manage (if self-hosting) or pay for (if using their cloud offering). For me, the time saved far outweighed this.
+
+For a related n8n workflow that classifies and routes multi-channel inputs, see the [AI-powered workflow automation case study](/projects/ai-workflow-automation).
 
 ## Best Practices and Trade-offs I Encountered
 

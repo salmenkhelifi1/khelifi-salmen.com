@@ -4,7 +4,11 @@ import { siteUrl } from "@/data/schema";
 import { getIndexablePublishedPosts } from "@/lib/content/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const publishedPosts = getIndexablePublishedPosts();
+  const publishedPosts = getIndexablePublishedPosts().filter(
+    (post) =>
+      !post.frontmatter.canonicalUrl ||
+      post.frontmatter.canonicalUrl === `${siteUrl}/blog/${post.slug}`,
+  );
 
   const staticRoutes = ["", "/work", "/resume", "/blog", "/n8n-automation-developer"];
   const projectRoutes = projects.map((project) => `/projects/${project.slug}`);

@@ -14,7 +14,8 @@ author: "Salmen Khelifi"
 seoTitle: "N8n vs. Make.com vs. Zapier in 2026: The Ultimate Business Bet"
 seoDescription: "N8n vs. Make.com vs. Zapier in 2026: The Ultimate Business Bet"
 canonicalUrl: "https://www.khelifi-salmen.com/blog/n8n-vs-make-vs-zapier-2026-business-bet"
-relatedCaseStudies: []
+relatedCaseStudies:
+  - "ai-workflow-automation"
 ---
 
 ## N8n vs. Make.com vs. Zapier in 2026: The Ultimate Business Bet
@@ -28,6 +29,8 @@ My journey through these tools has been driven by a constant need to do more wit
 **What I did:** I first adopted n8n when I hit the limits of what SaaS automation tools could offer, both in terms of customization and cost. My primary use cases involved complex data transformations, integrating with obscure APIs that lacked pre-built connectors, and processing large volumes of data without incurring per-task costs. I've self-hosted n8n on a DigitalOcean droplet and within a Kubernetes cluster, giving me full control over its environment and execution.
 
 **What I learned:** n8n shines when you need **deep customization** and **cost predictability** for high-volume tasks. Its open-source nature means you can extend it with custom nodes written in JavaScript, connect to virtually any API, and even manipulate data locally before sending it to external services. For example, I built a workflow to scrape product data from a supplier's website, clean it using custom JavaScript functions, and then push it to a client's e-commerce platform. This involved complex error handling and retry logic, which n8n's visual workflow builder handled elegantly. The self-hosting option means that once your infrastructure is set up, your operational costs are largely fixed, regardless of the number of executions.
+
+For a concrete n8n use case, see the [AI-powered workflow automation case study](/projects/ai-workflow-automation).
 
 **Trade-offs:** The power comes with a **steeper learning curve** and **operational overhead**. You're responsible for hosting, updates, backups, and monitoring. While n8n.cloud offers a managed service, the core appeal for many technical users is the self-hosted flexibility. This platform is ideal for businesses with in-house technical talent or those willing to invest time in infrastructure management. It's not a 'set it and forget it' solution for non-technical users.
 

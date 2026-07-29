@@ -17,11 +17,10 @@ import {
 import { projects } from "@/data/projects";
 import { testimonials } from "@/data/testimonials";
 import {
-  bookingUrl,
+  authorProfileJsonLd,
   freelancerUrl,
   githubUrl,
   linkedinUrl,
-  personId,
   siteUrl,
   socialImage,
   twitterImage,
@@ -119,53 +118,6 @@ const coreSkills = [
   },
 ];
 
-const knowsAbout = [
-  "React",
-  "Next.js",
-  "Node.js",
-  "Express",
-  "Flutter",
-  "Dart",
-  "PostgreSQL",
-  "MongoDB",
-  "n8n",
-  "Make.com",
-  "OpenAI API",
-  "Gemini API",
-  "Vapi AI",
-  "Docker",
-  "Linux",
-  "WordPress",
-  "Shopify",
-  "Payload CMS",
-  "Typesense",
-  "Redis",
-  "Firebase",
-];
-
-const resumeJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": personId,
-  name: "Salmen Khelifi",
-  jobTitle: "Full-Stack Developer & Automation Specialist",
-  url: siteUrl,
-  mainEntityOfPage: `${siteUrl}/resume`,
-  email: "hello@khelifi-salmen.com",
-  // telephone removed pending owner confirmation
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "TN",
-  },
-  sameAs: [linkedinUrl, githubUrl, upworkUrl, freelancerUrl],
-  hasOccupation: {
-    "@type": "Occupation",
-    name: "Full-Stack Developer & Automation Specialist",
-    skills: knowsAbout.join(", "),
-  },
-  knowsAbout,
-};
-
 function renderProjectEntry(project: (typeof projects)[number]) {
   const timeframe = project.snapshot?.timeframe;
   const techBadges = [
@@ -236,7 +188,7 @@ export default function ResumePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(resumeJsonLd),
+          __html: JSON.stringify(authorProfileJsonLd),
         }}
       />
 

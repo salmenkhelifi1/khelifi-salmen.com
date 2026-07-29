@@ -12,6 +12,7 @@ export const substackUrl = "https://salmenkhelifi.substack.com/";
 export const youtubeUrl = "https://www.youtube.com/@khelifisalmen";
 export const xUrl = "https://x.com/khlifisalmen2";
 export const upworkUrl = "https://www.upwork.com/freelancers/~01f5b8025abe71abf2";
+export const authorProfileUrl = `${siteUrl}/resume`;
 export const personId = `${siteUrl}/#person`;
 export const websiteId = `${siteUrl}/#website`;
 export const serviceId = `${siteUrl}/#service`;
@@ -31,7 +32,7 @@ export const siteJsonLd = [
     "@id": personId,
     name: "Salmen Khelifi",
     jobTitle: "Full-Stack Developer & Automation Specialist",
-    url: siteUrl,
+    url: authorProfileUrl,
     email: "hello@khelifi-salmen.com",
     description:
       "Tunisia-based full-stack developer and automation specialist working remotely worldwide on web products, mobile apps, SaaS platforms, and n8n integrations.",
@@ -103,6 +104,17 @@ export const siteJsonLd = [
   },
 ];
 
+export const authorProfileJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": `${authorProfileUrl}#profile`,
+  url: authorProfileUrl,
+  mainEntity: {
+    "@type": "Person",
+    "@id": personId,
+  },
+};
+
 type BreadcrumbItem = {
   name: string;
   url: string;
@@ -158,6 +170,7 @@ export function projectJsonLd(project: Project) {
 
 export function articleJsonLd(post: BlogPost) {
   const postUrl = `${siteUrl}/blog/${post.slug}`;
+  const canonicalUrl = post.frontmatter.canonicalUrl || postUrl;
 
   return [
     breadcrumbJsonLd([
@@ -168,23 +181,23 @@ export function articleJsonLd(post: BlogPost) {
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "@id": `${postUrl}#article`,
+      "@id": `${canonicalUrl}#article`,
       headline: post.frontmatter.title,
       description: post.frontmatter.seoDescription || post.frontmatter.excerpt,
-      url: postUrl,
+      url: canonicalUrl,
       datePublished: post.frontmatter.publishedAt,
       dateModified: post.frontmatter.updatedAt || post.frontmatter.publishedAt,
       author: {
         "@type": "Person",
         "@id": personId,
         name: post.frontmatter.author,
-        url: siteUrl,
+        url: authorProfileUrl,
       },
       publisher: {
         "@type": "Person",
         "@id": personId,
         name: "Salmen Khelifi",
-        url: siteUrl,
+        url: authorProfileUrl,
       },
       image: post.frontmatter.cover
         ? `${siteUrl}${post.frontmatter.cover}`
