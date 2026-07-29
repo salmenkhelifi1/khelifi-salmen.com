@@ -9,6 +9,7 @@ export const BlogFrontmatterSchema = z
     slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
     excerpt: z.string().min(1),
     status: BlogStatusSchema,
+    indexable: z.boolean().default(true),
     publishedAt: z.string().date().optional(),
     updatedAt: z.string().date().optional(),
     category: z.string().min(1),
@@ -59,4 +60,3 @@ export const CaseStudyNarrativeSchema = z.object({
 });
 
 export type CaseStudyNarrativeFrontmatter = z.infer<typeof CaseStudyNarrativeSchema>;
-

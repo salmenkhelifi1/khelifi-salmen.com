@@ -2,8 +2,37 @@
   command = "npm run build"
   publish = ".next"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+[[headers]]
+  for = "/*"
+
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+[[headers]]
+  for = "/llms.txt"
+
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/llms-full.txt"
+
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/services.md"
+
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/pricing.md"
+
+  [headers.values]
+    X-Robots-Tag = "noindex"
 
 [[redirects]]
   from = "https://khelifi-salmen.com/*"

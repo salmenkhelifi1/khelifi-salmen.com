@@ -1,5 +1,4 @@
 import type { Project } from "@/data/projects";
-import { testimonials } from "@/data/testimonials";
 import type { BlogPost } from "@/lib/content/blog";
 
 export const siteUrl = "https://www.khelifi-salmen.com";
@@ -34,6 +33,13 @@ export const siteJsonLd = [
     jobTitle: "Full-Stack Developer & Automation Specialist",
     url: siteUrl,
     email: "hello@khelifi-salmen.com",
+    description:
+      "Tunisia-based full-stack developer and automation specialist working remotely worldwide on web products, mobile apps, SaaS platforms, and n8n integrations.",
+    image: `${siteUrl}/images/salmen-khelifi-full-stack-developer-portrait.jpg`,
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "TN",
+    },
     // telephone removed pending owner confirmation
     sameAs: [
       githubUrl,
@@ -68,17 +74,21 @@ export const siteJsonLd = [
     "@id": websiteId,
     name: "Salmen Khelifi",
     url: siteUrl,
+    description:
+      "Portfolio, case studies, engineering writing, and contact details for Salmen Khelifi.",
     creator: {
       "@id": personId,
     },
   },
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": "Service",
     "@id": serviceId,
     name: "Salmen Khelifi",
     url: siteUrl,
     email: "hello@khelifi-salmen.com",
+    description:
+      "Full-stack web and SaaS engineering, mobile app development, n8n automation, AI integration, and DevOps for clients worldwide.",
     areaServed: "Worldwide",
     serviceType: [
       "Full-stack development",
@@ -90,20 +100,6 @@ export const siteJsonLd = [
     provider: {
       "@id": personId,
     },
-    review: testimonials.slice(0, 4).map((item) => ({
-      "@type": "Review",
-      author: {
-        "@type": "Person",
-        name: item.author,
-      },
-      name: item.projectTitle,
-      reviewBody: item.quote,
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: item.rating.toString(),
-        bestRating: "5",
-      },
-    })),
   },
 ];
 

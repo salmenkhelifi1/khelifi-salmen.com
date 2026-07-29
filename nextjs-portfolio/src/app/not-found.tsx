@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   title: { absolute: title },
   description,
   alternates: { canonical: `${siteUrl}/404` },
+  robots: { index: false, follow: true },
   openGraph: {
     title,
     description,

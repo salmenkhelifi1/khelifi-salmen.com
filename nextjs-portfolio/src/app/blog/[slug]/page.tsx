@@ -19,6 +19,25 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+const automationTopicPattern = /\b(n8n|automation|workflow|webhook|integration)\b/i;
+
+function firstArticleParagraph(content: string) {
+  return content
+    .replace(/```[\s\S]*?```/g, "")
+    .split(/\n\s*\n/)
+    .map((part) =>
+      part
+        .replace(/^#{1,6}\s+.*$/gm, "")
+        .replace(/^>\s?/gm, "")
+        .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+        .replace(/<[^>]+>/g, " ")
+        .replace(/[*_`]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim(),
+    )
+    .find((part) => part.length >= 80) || "";
+}
+
 export async function generateStaticParams() {
   const posts = getPublishedPosts();
   return posts.map((post) => ({
@@ -33,23 +52,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {};
   }
 
-  const articleText = post.content
-    .replace(/```[\s\S]*?```/g, " ")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/[#*_`[\]()!>|-]/g, " ");
   const title = createSeoTitle(
     post.frontmatter.seoTitle || post.frontmatter.title,
     post.frontmatter.category,
     "Salmen Khelifi",
   );
-  const description = createSeoDescription(
-    post.frontmatter.seoDescription || "",
+  const descriptionSource = [
+    post.frontmatter.seoDescription,
     post.frontmatter.excerpt,
-    post.frontmatter.title,
-    post.frontmatter.category,
-    post.frontmatter.tags.join(", "),
-    articleText,
-  );
+  ].find(
+    (value) => value && value !== post.frontmatter.title && value.length >= 80,
+  )
+    || firstArticleParagraph(post.content)
+    || `An article by Salmen Khelifi about ${post.frontmatter.title}.`;
+  const description = createSeoDescription(descriptionSource);
   const url = `${siteUrl}/blog/${post.slug}`;
   const socialImage = post.frontmatter.cover
     ? {
@@ -83,6 +99,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       images: [postTwitterImage],
     },
+    robots: {
+      index: post.frontmatter.indexable,
+      follow: true,
+    },
   };
 }
 
@@ -106,6 +126,9 @@ export default async function BlogPostPage({ params }: Props) {
   const relatedProjects = post.frontmatter.relatedCaseStudies
     .map(getProject)
     .filter((project): project is Project => Boolean(project));
+  const isAutomationArticle =
+    post.frontmatter.indexable &&
+    post.frontmatter.tags.some((tag) => automationTopicPattern.test(tag));
 
   return (
     <>
@@ -124,6 +147,13 @@ export default async function BlogPostPage({ params }: Props) {
                   {post.frontmatter.category}
                 </span>
                 <span>•</span>
+                <span>
+                  By{" "}
+                  <Link href="/resume" className="font-semibold hover:text-[var(--text-primary)]">
+                    {post.frontmatter.author}
+                  </Link>
+                </span>
+                <span>•</span>
                 <span>{post.readingTime.text}</span>
                 {post.frontmatter.publishedAt && (
                   <>
@@ -137,6 +167,22 @@ export default async function BlogPostPage({ params }: Props) {
                     </time>
                   </>
                 )}
+                {post.frontmatter.updatedAt &&
+                  post.frontmatter.updatedAt !== post.frontmatter.publishedAt && (
+                    <>
+                      <span>•</span>
+                      <span>
+                        Updated{" "}
+                        <time dateTime={post.frontmatter.updatedAt}>
+                          {new Date(post.frontmatter.updatedAt).toLocaleDateString("en-US", {
+                            month: "long",
+                            day: "numeric",
+                            year: "numeric",
+                          })}
+                        </time>
+                      </span>
+                    </>
+                  )}
               </div>
               <h1 className="text-h1 text-[var(--text-primary)] mb-6 tracking-tight">
                 {post.frontmatter.title}
@@ -166,7 +212,7 @@ export default async function BlogPostPage({ params }: Props) {
                   alt={post.frontmatter.coverAlt || post.frontmatter.title}
                   width={1200}
                   height={630}
-                  unoptimized
+                  sizes="(min-width: 768px) 672px, calc(100vw - 3rem)"
                   className="w-full h-auto rounded-2xl block"
                   priority
                 />
@@ -177,6 +223,25 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="glass-panel p-8 md:p-12 blog-article-content">
               <MDXContent />
             </div>
+            {isAutomationArticle && (
+              <aside
+                className="modern-card mt-12 rounded-[var(--radius-lg)] p-6"
+                aria-labelledby="automation-service-heading"
+              >
+                <h2 id="automation-service-heading" className="text-h2 mb-3">
+                  Need an n8n workflow implemented?
+                </h2>
+                <p className="text-body-regular text-[var(--text-secondary)]">
+                  Explore Salmen&apos;s approach to scoped, tested automation and API integration work.
+                </p>
+                <Link
+                  href="/n8n-automation-developer"
+                  className="mt-4 inline-flex min-h-11 items-center font-semibold text-[var(--accent)] hover:underline"
+                >
+                  Explore n8n automation development →
+                </Link>
+              </aside>
+            )}
             {relatedProjects.length > 0 && (
               <aside className="mt-12" aria-labelledby="related-case-studies-heading">
                 <h2 id="related-case-studies-heading" className="text-h2 mb-6">

@@ -4,12 +4,12 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Search, X, ChevronLeft, ChevronRight, Tag, Clock, ArrowRight, BookOpen } from "lucide-react";
-import type { BlogPost } from "@/lib/content/blog";
+import type { BlogPostSummary } from "@/lib/content/blog";
 
 const POSTS_PER_PAGE = 6;
 
 interface BlogListWithFilterProps {
-  posts: BlogPost[];
+  posts: BlogPostSummary[];
 }
 
 export default function BlogListWithFilter({ posts }: BlogListWithFilterProps) {

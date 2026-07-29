@@ -5,7 +5,7 @@ Salmen Khelifi is a full-stack developer and automation specialist for web apps,
 ## Core Services
 
 - Mobile Apps: Flutter, iOS, Android, cross-platform apps, offline storage, mobile UI/UX, cloud backends.
-- Web Applications: Next.js 15, React, Node.js, Express, Fastify, PostgreSQL, multi-tenant SaaS architecture, admin dashboards, custom APIs.
+- Web Applications: Next.js, React, Node.js, Express, Fastify, PostgreSQL, multi-tenant SaaS architecture, admin dashboards, custom APIs.
 - Landing Pages & Websites: SEO-first landing pages, custom marketing websites, high-converting product pages, Payload CMS, WordPress/WooCommerce.
 - Website & Workflow Automation: n8n (self-hosted & cloud), Make.com, webhooks, automated lead capture, CRM sync, WhatsApp business bots, email sequences.
 - AI Integration: OpenAI API, Google Vertex AI, Gemini API, Vapi AI voice agents, speech-to-text, RAG search, intelligent AI agents.
@@ -14,6 +14,18 @@ Salmen Khelifi is a full-stack developer and automation specialist for web apps,
 ## Projects
 
 Note: the owned products below (Luxe Spa, Anlingo, Noxivo) are solo-built and pre-launch, with no verified users or revenue. Descriptions cover engineering scope only.
+
+### FoundPeers
+
+URL: https://www.khelifi-salmen.com/projects/foundpeers
+
+FoundPeers is an iOS-first founder discovery and curated-meetup application in development. Salmen owns the product scope, Flutter architecture, iOS interaction design, Supabase data and security layer, automated QA, and release preparation.
+
+### Luxe Spa Booking
+
+URL: https://www.khelifi-salmen.com/projects/luxe-spa
+
+Luxe Spa Booking is an in-development white-label booking, CRM, and management system for appointment-based service businesses. Salmen owns the architecture, booking engine, staff dashboards, payments, and automation pipeline; the platform can reconfigure a vertical preset from spa to clinic in under 10 seconds without code changes.
 
 ### Adaptifit
 

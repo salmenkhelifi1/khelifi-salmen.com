@@ -70,11 +70,7 @@ export async function generateMetadata({
     project.tagline,
     "Project",
   );
-  const description = createSeoDescription(
-    project.tagline,
-    project.overview.what,
-    project.overview.problem,
-  );
+  const description = createSeoDescription(project.tagline);
   const heroAlt = project.gallery.find((shot) => shot.src === project.heroImage)?.alt || "";
   const socialImage = {
     url: project.heroImage
@@ -521,7 +517,6 @@ export default async function ProjectProfilePage({
           priority
           sizes="(max-width: 1024px) 95vw, 880px"
           className={`${project.slug === "adaptifit" ? "object-contain" : "object-cover"} bg-black ${project.slug === "foundpeers" ? "theme-image-light" : ""}`}
-          unoptimized={project.slug === "foundpeers"}
         />
         {project.slug === "foundpeers" && (
           <Image
@@ -622,9 +617,7 @@ export default async function ProjectProfilePage({
                     <video
                       src={project.heroVideo}
                       poster={project.heroImage}
-                      autoPlay
-                      muted
-                      loop
+                      preload="metadata"
                       playsInline
                       controls
                       className="w-full h-full object-cover bg-black"
@@ -831,9 +824,7 @@ export default async function ProjectProfilePage({
                             matchedScreenshot.src.endsWith(".webm") ? (
                               <video
                                 src={matchedScreenshot.src}
-                                autoPlay
-                                muted
-                                loop
+                                preload="metadata"
                                 playsInline
                                 controls
                                 className="w-full h-full object-contain bg-black"
@@ -977,9 +968,7 @@ export default async function ProjectProfilePage({
                         {isVideo ? (
                           <video
                             src={shot.src}
-                            autoPlay
-                            muted
-                            loop
+                            preload="metadata"
                             playsInline
                             controls
                             className="w-full h-full object-contain bg-black"

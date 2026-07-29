@@ -41,11 +41,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/project-grammarai",
-        destination: "/projects/grammarai",
-        permanent: true,
-      },
-      {
         source: "/project-adaptifit",
         destination: "/projects/adaptifit",
         permanent: true,

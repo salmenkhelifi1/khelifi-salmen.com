@@ -157,7 +157,7 @@ export default function HomeContent() {
               className="hero-subtitle reveal max-w-2xl text-body-large"
               style={{ transitionDelay: "200ms" }}
             >
-              Full-stack software engineer and automation specialist. I design and build resilient systems, from React interfaces to n8n pipelines, that scale with the business behind them.
+              Salmen Khelifi is a Tunisia-based full-stack developer and automation specialist working remotely worldwide. I build resilient web products, mobile apps, SaaS platforms, and n8n integrations.
             </p>
 
             <ul

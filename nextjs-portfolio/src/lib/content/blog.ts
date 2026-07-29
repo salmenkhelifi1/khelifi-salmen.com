@@ -15,6 +15,11 @@ export type BlogPost = {
   filePath: string;
 };
 
+export type BlogPostSummary = Pick<
+  BlogPost,
+  "frontmatter" | "readingTime" | "slug"
+>;
+
 const BLOG_DIRECTORY = path.join(process.cwd(), "content", "blog");
 
 export function getAllPosts(): BlogPost[] {
@@ -76,6 +81,18 @@ export function getAllPosts(): BlogPost[] {
 
 export function getPublishedPosts(): BlogPost[] {
   return getAllPosts().filter((post) => post.frontmatter.status === "published");
+}
+
+export function getIndexablePublishedPosts(): BlogPost[] {
+  return getPublishedPosts().filter((post) => post.frontmatter.indexable);
+}
+
+export function getPublishedPostSummaries(): BlogPostSummary[] {
+  return getPublishedPosts().map(({ frontmatter, readingTime, slug }) => ({
+    frontmatter,
+    readingTime,
+    slug,
+  }));
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {

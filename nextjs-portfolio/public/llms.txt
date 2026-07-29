@@ -8,14 +8,17 @@
 - [Work](https://www.khelifi-salmen.com/work): Portfolio and case studies for software products, platforms, and automation projects.
 - [Resume](https://www.khelifi-salmen.com/resume): Professional experience, technical skills, selected work, and contact details.
 - [Blog](https://www.khelifi-salmen.com/blog): Engineering write-ups, architecture decisions, and project retrospectives.
+- [n8n Automation](https://www.khelifi-salmen.com/n8n-automation-developer): How Salmen scopes, builds, tests, and hands over reliable workflow automation.
 - [Services](https://www.khelifi-salmen.com/services.md): Detailed breakdown of full-stack, n8n automation, and Flutter services.
 - [Engagement Process](https://www.khelifi-salmen.com/pricing.md): Discovery call booking policy and custom contract engagement process (no public fixed rates).
+- [Full portfolio context](https://www.khelifi-salmen.com/llms-full.txt): Detailed project, service, and contact information.
 
 
 ## Flagship projects
 
-Salmen builds each flagship product solo; each is pre-launch or early-stage.
+These case studies cover Salmen's independently built products and client delivery. Each project page states the available scope.
 
+- [FoundPeers](https://www.khelifi-salmen.com/projects/foundpeers): An iOS-first founder discovery and curated-meetup app with privacy-aware connections and Supabase-backed data controls.
 - [Luxe Spa Booking](https://www.khelifi-salmen.com/projects/luxe-spa): A white-label booking, CRM, and management platform for appointment-based service businesses.
 - [Anlingo](https://www.khelifi-salmen.com/projects/anlingo): An AI writing product spanning a web editor, Express API, billing, and a Flutter mobile companion.
 - [ChakTech Platform](https://www.khelifi-salmen.com/projects/chaktech): A Tunisia-focused e-commerce platform with a localized storefront, admin back-office, and tenant-scoped API.

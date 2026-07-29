@@ -7,7 +7,7 @@ import SectionContainer from "@/components/SectionContainer";
 import SectionHeading from "@/components/SectionHeading";
 import BlogListWithFilter from "@/components/BlogListWithFilter";
 import { siteUrl, socialImage, twitterImage } from "@/data/schema";
-import { getPublishedPosts } from "@/lib/content/blog";
+import { getPublishedPostSummaries } from "@/lib/content/blog";
 
 const title = "Engineering Journal & Retrospectives | Salmen Khelifi";
 const description =
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 };
 
 export default function BlogIndexPage() {
-  const posts = getPublishedPosts();
+  const posts = getPublishedPostSummaries();
 
   return (
     <>

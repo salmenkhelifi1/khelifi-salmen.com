@@ -12,7 +12,7 @@
 ### 2. Full-Stack Web Apps & Multi-Tenant SaaS Architecture
 - **Scope**: End-to-end web application development from DB schema design to production. Building scalable multi-tenant SaaS products, role-based admin panels, custom APIs, and payment billing.
 - **Use Cases**: B2B / B2C SaaS platforms, multi-tenant agency management tools, custom client portals, internal operations dashboards.
-- **Tech Stack**: Next.js 15, React 19, TypeScript, Tailwind CSS, PostgreSQL, Drizzle ORM, Node.js, Fastify, Stripe, Whop, Flouci.
+- **Tech Stack**: Next.js, React 19, TypeScript, Tailwind CSS, PostgreSQL, Drizzle ORM, Node.js, Fastify, Stripe, Whop, Flouci.
 
 ### 3. High-Converting Landing Pages & Custom Websites
 - **Scope**: Fast, SEO-optimized, highly responsive landing pages and custom websites with modern design, micro-animations, structured schema, and analytics.

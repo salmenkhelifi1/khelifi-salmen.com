@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   title: "Salmen Khelifi | Full-Stack, Mobile & Automation Specialist",
   description:
     "Salmen Khelifi is a Software Engineer & Automation Specialist building revenue-focused web apps, mobile products, SaaS platforms, and AI workflows worldwide.",
+  authors: [{ name: "Salmen Khelifi", url: siteUrl }],
+  creator: "Salmen Khelifi",
+  publisher: "Salmen Khelifi",
   alternates: {
     canonical: "/",
   },
@@ -42,10 +45,6 @@ export const metadata: Metadata = {
     description:
       "Salmen Khelifi is a Software Engineer & Automation Specialist building revenue-focused web apps, mobile products, SaaS platforms, and AI workflows worldwide.",
     images: [twitterImage],
-  },
-  robots: {
-    index: true,
-    follow: true,
   },
 };
 
