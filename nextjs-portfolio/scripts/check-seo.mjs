@@ -223,7 +223,7 @@ for (const [, matchingRoutes] of descriptions) {
 
 const sitemap = read(".next/server/app/sitemap.xml.body");
 const robots = read(".next/server/app/robots.txt.body");
-const netlify = read("netlify.toml");
+const netlify = read("../netlify.toml");
 const nextConfig = read("next.config.ts");
 
 if (sitemap.includes("https://khelifi-salmen.com")) {
