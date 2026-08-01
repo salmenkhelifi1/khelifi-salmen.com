@@ -71,7 +71,8 @@ export async function generateMetadata({
     "Project",
   );
   const description = createSeoDescription(project.tagline);
-  const heroAlt = project.gallery.find((shot) => shot.src === project.heroImage)?.alt || "";
+  const heroAlt = project.gallery.find((shot) => shot.src === project.heroImage)?.alt
+    || `${project.title} product demonstration`;
   const socialImage = {
     url: project.heroImage
       ? `${siteUrl}${project.heroImage}`
@@ -507,25 +508,20 @@ export default async function ProjectProfilePage({
     <div className={project.slug === "adaptifit" ? "pt-2" : "mt-10"}>
       <div className={`relative mx-auto w-full overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border-bright)] bg-black shadow-2xl ${project.slug === "adaptifit" ? "aspect-[9/19] max-w-xs" : "aspect-video max-w-4xl"}`}>
         <Image
-          src={
-            project.slug === "foundpeers"
-              ? "/images/foundpeers/foundpeers-demo.webp"
-              : project.heroImage!
-          }
+          src={project.heroImage!}
           alt={heroAlt}
           fill
           priority
           sizes="(max-width: 1024px) 95vw, 880px"
           className={`${project.slug === "adaptifit" ? "object-contain" : "object-cover"} bg-black ${project.slug === "foundpeers" ? "theme-image-light" : ""}`}
         />
-        {project.slug === "foundpeers" && (
+        {project.slug === "foundpeers" && project.heroDarkImage && (
           <Image
-            src="/images/foundpeers/foundpeers-demo-dark.gif"
+            src={project.heroDarkImage}
             alt=""
             fill
             sizes="(max-width: 1024px) 95vw, 880px"
             className="object-cover bg-black theme-image-dark"
-            unoptimized
             aria-hidden="true"
           />
         )}
@@ -605,15 +601,17 @@ export default async function ProjectProfilePage({
                 <div className="modern-card rounded-[var(--radius-xl)] p-6 md:p-10 text-center">
                   <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[var(--accent)] bg-[var(--accent-dim)] px-3.5 py-1.5 rounded-full mb-4">
                     <PlayCircle className="w-4 h-4" aria-hidden="true" />
-                    Full HD Video Walkthrough
+                    {project.slug === "foundpeers" ? "4K Product Walkthrough" : "Full HD Video Walkthrough"}
                   </div>
                   <h2 id="demo-video-heading" className="text-h2 mb-3">
-                    Live Mobile App Demo
+                    {project.slug === "foundpeers" ? "The Working iOS MVP" : "Live Mobile App Demo"}
                   </h2>
                   <p className="text-sm text-[var(--text-secondary)] max-w-xl mx-auto mb-8">
-                    Watch the full app navigation and interactive founder flow recorded directly from the iOS simulator.
+                    {project.slug === "foundpeers"
+                      ? "Watch the current founder journey—from profile creation and nearby discovery to connections, events, and account controls—recorded from the iOS simulator with disclosed sample data."
+                      : "Watch the full app navigation and interactive founder flow recorded directly from the iOS simulator."}
                   </p>
-                  <div className="relative mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md aspect-[9/19.5] overflow-hidden rounded-[2.5rem] border-[6px] border-[#22232e] bg-black shadow-2xl">
+                  <div className={`relative mx-auto w-full overflow-hidden border border-[var(--glass-border-bright)] bg-black shadow-2xl ${project.slug === "foundpeers" ? "max-w-5xl aspect-video rounded-[var(--radius-xl)]" : "max-w-xs sm:max-w-sm md:max-w-md aspect-[9/19.5] rounded-[2.5rem] border-[6px] border-[#22232e]"}`}>
                     <video
                       src={project.heroVideo}
                       poster={project.heroImage}

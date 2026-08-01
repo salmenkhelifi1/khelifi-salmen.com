@@ -19,7 +19,7 @@ Note: the owned products below (Luxe Spa, Anlingo, Noxivo) are solo-built and pr
 
 URL: https://www.khelifi-salmen.com/projects/foundpeers
 
-FoundPeers is an iOS-first founder discovery and curated-meetup application in development. Salmen owns the product scope, Flutter architecture, iOS interaction design, Supabase data and security layer, automated QA, and release preparation.
+FoundPeers is a working iOS-first founder discovery and curated-meetup MVP under local testing, with no claimed public users or App Store release. Salmen owns the product scope, Flutter architecture, iOS interaction design, Supabase data and security layer, 363-test automated QA suite, physical-device verification, and founding-access preparation.
 
 ### Luxe Spa Booking
 

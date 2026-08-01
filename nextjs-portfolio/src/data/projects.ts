@@ -83,7 +83,7 @@ export const projects: Project[] = [
     slug: "foundpeers",
     title: "FoundPeers",
     tagline:
-      "An iOS-first founder discovery and curated meetup app with a focused nine-screen journey, privacy-aware connections, and iOS 26 Liquid Glass navigation.",
+      "A privacy-aware founder network that helps serious builders discover nearby peers, make intentional connections, and find curated meetups—without a social feed.",
     category: "iOS Founder Network",
     accent: {
       text: "text-indigo-400",
@@ -92,10 +92,10 @@ export const projects: Project[] = [
     },
     heroImage: "/images/foundpeers/foundpeers-cover.png",
     heroDarkImage: "/images/foundpeers/foundpeers-cover-dark.png",
-    heroVideo: "/images/foundpeers/foundpeers-full-demo.mp4",
+    heroVideo: "/images/foundpeers/foundpeers-demo.mp4",
     galleryAspect: "phone",
     overview: {
-      what: "A feature-first Flutter application covering sign-in, founder onboarding, a state-preserving Home dashboard, list and map discovery, privacy-aware founder profiles, curated events, and account management. The client is backed by Supabase Auth, Postgres, Storage, RLS, RPCs, and Edge Functions.",
+      what: "A working iOS-first Flutter MVP covering sign-in, founder onboarding, Home, list and map discovery, founder profiles, connection requests, accepted-connection contact, notifications, curated events, and privacy-aware account controls. Supabase Auth, Postgres, Storage, RLS, RPCs, and Edge Functions provide the production data layer.",
       problem:
         "Founders often have to search noisy social feeds or broad professional networks to find relevant builders and small, useful meetups. FoundPeers deliberately removes posts, likes, followers, chat, and marketplace mechanics so discovery, connection requests, and curated event invitations stay clear and private.",
       audience:
@@ -103,19 +103,19 @@ export const projects: Project[] = [
     },
     features: [
       {
-        title: "Locked Founder Journey",
+        title: "Focused Founder Journey",
         description:
-          "A deterministic Welcome → profile setup → Home → Discover → founder → Connect → Events → Invite → Profile flow keeps the MVP understandable and testable.",
+          "A clear Welcome → profile setup → Home → Discover → founder → Connect → Events → Profile journey keeps the MVP understandable while preserving state across every primary destination.",
       },
       {
         title: "List and Map Discovery",
         description:
-          "Founder search, filters, map/list switching, approximate locations, safe missing-key and empty states, and consistent results share one discovery state model.",
+          "Founder search, filters, map/list switching, approximate locations, a two-kilometre default view, explicit zoom controls, and friendly fallback states share one discovery model.",
       },
       {
         title: "Privacy-Aware Connections",
         description:
-          "Contact-link visibility, profile visibility, owner-only writes, self-connection prevention, duplicate-request prevention, reporting, blocking, and terminal request states are enforced across UI and backend policies.",
+          "Connection requests move through explicit pending and accepted states; contact details are revealed only after acceptance. Owner-only writes, self-request prevention, duplicate prevention, reporting, and blocking are enforced across UI and backend policies.",
       },
       {
         title: "Curated Event Invitations",
@@ -125,14 +125,14 @@ export const projects: Project[] = [
       {
         title: "iOS 26 Interaction Layer",
         description:
-          "A stable four-tab floating navigation surface and pill controls use functional Liquid Glass hierarchy on iOS, while content stays opaque and Android retains Material 3 behavior.",
+          "A responsive four-tab floating navigation surface and compact controls use functional Liquid Glass hierarchy across iPhone and iPad, with light/dark contrast and safe-area behavior built into the layout system.",
       },
     ],
     gallery: [
       {
         src: "/images/foundpeers/foundpeers-welcome.png",
         darkSrc: "/images/foundpeers/foundpeers-welcome-dark.png",
-        alt: "FoundPeers Welcome screen with Apple, Google, and email sign-in actions",
+        alt: "FoundPeers Welcome screen with Google and email sign-in actions",
         aspect: "phone",
       },
       {
@@ -221,11 +221,12 @@ export const projects: Project[] = [
       {
         challenge: "Proving a multi-screen MVP without expanding it into a social network",
         solution:
-          "Locked the product to seven top-level screens and one core journey, then covered it with focused widget/provider tests and a deterministic iPhone simulator smoke test that exercises every primary destination and action.",
+          "Locked the product to one core founder journey, then covered it with 363 automated tests, deterministic iPhone simulator smoke flows, production-profile builds, and physical-device installation checks without adding feeds, followers, likes, or chat.",
       },
     ],
     links: {
       demo: "/images/foundpeers/foundpeers-demo.mp4",
+      live: "https://foundpeers.com",
     },
     snapshot: {
       timeframe: "2026",
