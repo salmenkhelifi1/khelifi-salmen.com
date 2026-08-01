@@ -13,6 +13,32 @@ export const youtubeUrl = "https://www.youtube.com/@khelifisalmen";
 export const xUrl = "https://x.com/khlifisalmen2";
 export const upworkUrl = "https://www.upwork.com/freelancers/~01f5b8025abe71abf2";
 export const authorProfileUrl = `${siteUrl}/resume`;
+export const fiverrUrl = "https://www.fiverr.com/salmenkhlifi";
+
+// Fixed-scope entry points. Slugs are legacy and do not match the current gig
+// titles, so keep both fields in sync by hand when a gig is renamed on Fiverr.
+export const fiverrGigs = [
+  {
+    title: "Automate WhatsApp and email leads into your CRM with n8n",
+    blurb: "Inbound messages routed through n8n into structured CRM records.",
+    url: `${fiverrUrl}/set-up-or-fix-n8n-workflows-zapier-and-n8n`,
+  },
+  {
+    title: "Fix Supabase auth, RLS, storage and permission denied errors",
+    blurb: "Row-level security and policy errors traced and resolved.",
+    url: `${fiverrUrl}/fix-supabase-auth-rls-storage-and-permission-denied-errors`,
+  },
+  {
+    title: "Make your Lovable, Bolt or Replit app production ready",
+    blurb: "Auth, environments, error handling and deployment hardening.",
+    url: `${fiverrUrl}/create-a-workflow-automation-service-using-n8n`,
+  },
+  {
+    title: "Fix Lovable, Bolt, Replit or Base44 AI app bugs",
+    blurb: "Debugging and repair for AI-generated codebases.",
+    url: `${fiverrUrl}/fix-lovable-bolt-replit-or-base44-ai-app-bugs`,
+  },
+] as const;
 export const personId = `${siteUrl}/#person`;
 export const websiteId = `${siteUrl}/#website`;
 export const serviceId = `${siteUrl}/#service`;
@@ -52,6 +78,7 @@ export const siteJsonLd = [
       facebookUrl,
       xUrl,
       upworkUrl,
+      fiverrUrl,
     ],
     knowsAbout: [
       "React",

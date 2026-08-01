@@ -16,19 +16,14 @@ export function createSeoTitle(primary: string, ...context: string[]) {
   const parts = [...new Set([primary, ...context].map(normalize).filter(Boolean))];
   let title = truncateAtWord(parts.shift() || "", TITLE_MAX, TITLE_MIN);
 
-  // Keep complete words when a full context part does not fit. Appending then
-  // truncating raw text leaves dangling fragments in og:title.
+  // Append context parts only when they fit whole, and skip the ones that do
+  // not. Slicing a part to fit is what produced titles like
+  // "FoundPeers | Salmen Khelifi | An" — the project tagline cut to one word.
+  // A title short of TITLE_MIN reads better than one ending in a fragment.
   while (title.length < TITLE_MIN && parts.length) {
-    const contextPart = parts.shift()!;
-    const candidate = `${title} | ${contextPart}`;
+    const candidate = `${title} | ${parts.shift()}`;
     if (candidate.length <= TITLE_MAX) {
       title = candidate;
-      continue;
-    }
-
-    const boundary = contextPart.lastIndexOf(" ", TITLE_MAX - title.length - 3);
-    if (boundary > 0) {
-      title = `${title} | ${contextPart.slice(0, boundary).trim()}`;
     }
   }
 

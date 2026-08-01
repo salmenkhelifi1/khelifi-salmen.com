@@ -11,6 +11,8 @@ import {
 import {
   bookingUrl,
   facebookUrl,
+  fiverrGigs,
+  fiverrUrl,
   freelancerUrl,
   githubUrl,
   instagramUrl,
@@ -36,6 +38,7 @@ import SectionHeading from "@/components/SectionHeading";
 import StatusBadge from "@/components/StatusBadge";
 import PrimaryButton from "@/components/PrimaryButton";
 import SecondaryButton from "@/components/SecondaryButton";
+import SubstackEmbed from "@/components/SubstackEmbed";
 import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 import CredibilityStrip from "@/components/CredibilityStrip";
 import FeaturedProject from "@/components/FeaturedProject";
@@ -427,6 +430,53 @@ export default function HomeContent() {
                 </a>
               </div>
 
+              {/* Fixed-scope entry points for buyers who want a defined job
+                  rather than a call. */}
+              <div className="pt-6 border-t border-[var(--border-subtle)] w-full">
+                <p className="text-caption text-[var(--text-tertiary)] uppercase tracking-wider mb-3">
+                  Hire me for a fixed scope
+                </p>
+                <ul className="space-y-2 mb-4">
+                  {fiverrGigs.map((gig) => (
+                    <li key={gig.url}>
+                      <a
+                        href={gig.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group flex items-start gap-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3.5 py-2.5 hover:border-[var(--accent)] transition-colors"
+                      >
+                        <ArrowRight
+                          className="h-4 w-4 mt-0.5 shrink-0 text-[var(--text-tertiary)] group-hover:text-[var(--accent)] transition-colors"
+                          aria-hidden="true"
+                        />
+                        <span>
+                          <span className="block text-sm font-medium text-[var(--text-primary)]">
+                            {gig.title}
+                          </span>
+                          <span className="block text-xs text-[var(--text-secondary)]">
+                            {gig.blurb}
+                          </span>
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={fiverrUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
+                >
+                  See all services on Fiverr
+                </a>
+              </div>
+
+              {/* Email capture. Sits above the social links so the list is the
+                  primary ask and the profiles are the fallback. */}
+              <div className="pt-6 border-t border-[var(--border-subtle)] w-full">
+                <SubstackEmbed />
+              </div>
+
               {/* Secondary Social Links */}
               <div className="pt-6 border-t border-[var(--border-subtle)] w-full">
                 <p className="text-caption text-[var(--text-tertiary)] uppercase tracking-wider mb-3">
@@ -466,6 +516,14 @@ export default function HomeContent() {
                     className="inline-flex min-h-11 items-center px-3 py-1.5 rounded-md border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
                   >
                     Upwork
+                  </a>
+                  <a
+                    href={fiverrUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-11 items-center px-3 py-1.5 rounded-md border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
+                  >
+                    Fiverr
                   </a>
                   <a
                     href={xUrl}
