@@ -14,7 +14,13 @@ import Script from "next/script";
  * not secrets — they ship in the page source by design.
  */
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+// The GA4 measurement ID is not a secret — it is visible in the page source of
+// every site that uses it. Defaulting it here means analytics survive a deploy
+// where the host env var was never set, which is exactly how this shipped dead
+// the first time. Set NEXT_PUBLIC_GA_ID to override (e.g. a staging property).
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-8N7BGP0VPJ";
+
+// No default: an unset pixel should stay unset rather than guess an ID.
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
 export default function Analytics() {
