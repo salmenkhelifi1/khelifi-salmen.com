@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { ArrowLeft, Menu, X, createLucideIcon } from "lucide-react";
 import { bookingUrl, githubUrl } from "@/data/schema";
@@ -25,6 +25,31 @@ type SiteHeaderProps = {
 
 export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      // Focus first element in menu
+      const focusableElements = menuRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusableElements && focusableElements.length > 0) {
+        focusableElements[0].focus();
+      }
+
+      // Handle Escape key
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setIsMenuOpen(false);
+          buttonRef.current?.focus();
+        }
+      };
+
+      document.addEventListener("keydown", handleKeyDown);
+      return () => document.removeEventListener("keydown", handleKeyDown);
+    }
+  }, [isMenuOpen]);
 
   return (
     <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4 md:px-6">
@@ -83,6 +108,7 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
                 </a>
               </div>
               <button
+                ref={buttonRef}
                 type="button"
                 aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
                 aria-expanded={isMenuOpen}
@@ -103,6 +129,10 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
         {!backHref && (
           <div
             id="mobile-menu"
+            ref={menuRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
             hidden={!isMenuOpen}
             className={`absolute left-0 right-0 top-[calc(100%+0.5rem)] glass-panel px-6 backdrop-blur-xl transition-all duration-[180ms] md:hidden ${
               isMenuOpen

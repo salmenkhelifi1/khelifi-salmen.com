@@ -87,6 +87,9 @@ export default function RootLayout({
       </head>
       <body className="min-h-full antialiased">
         <ThemeProvider>
+          <a href="#main-content" className="skip-link">
+            Skip to main content
+          </a>
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{

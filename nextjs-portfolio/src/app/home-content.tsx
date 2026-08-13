@@ -146,8 +146,8 @@ export default function HomeContent() {
     <>
       <SiteHeader />
 
-      <main>
-      <section className="hero-section mx-auto flex w-full max-w-7xl items-center px-6">
+      <main id="main-content">
+      <section aria-label="Hero introduction" className="hero-section mx-auto flex w-full max-w-7xl items-center px-6">
         <div className="hero-content grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-12">
           <div className="hero-copy flex flex-col items-start text-left lg:col-span-8">
             <StatusBadge>AVAILABLE FOR NEW PROJECTS</StatusBadge>
@@ -203,7 +203,7 @@ export default function HomeContent() {
 
       <CredibilityStrip items={credibilityItems} />
 
-      <section id="work" className="py-32 md:py-40">
+      <section id="work" aria-label="Featured projects" className="py-32 md:py-40">
         <SectionContainer>
           <SectionHeading className="mb-16 md:mb-20">
             Selected Work
@@ -241,7 +241,7 @@ export default function HomeContent() {
         </SectionContainer>
       </section>
 
-      <section id="technical-depth" className="py-32 md:py-40">
+      <section id="technical-depth" aria-label="Technical depth" className="py-32 md:py-40">
         <SectionContainer>
           <div className="mb-16 text-center reveal">
             <SectionHeading className="mb-4">
@@ -329,7 +329,7 @@ export default function HomeContent() {
         </SectionContainer>
       </section>
 
-      <section id="capabilities" className="py-32 md:py-40">
+      <section id="capabilities" aria-label="Capabilities and services" className="py-32 md:py-40">
         <SectionContainer>
           <SectionHeading className="mb-20 text-center md:mb-24">
             Capabilities
@@ -369,7 +369,7 @@ export default function HomeContent() {
 
       <ProcessTimeline />
 
-      <section id="about" className="border-t border-[var(--border-subtle)] py-32 md:py-40">
+      <section id="about" aria-label="About Salmen Khelifi" className="border-t border-[var(--border-subtle)] py-32 md:py-40">
         <SectionContainer>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left / Editorial Sidebar */}

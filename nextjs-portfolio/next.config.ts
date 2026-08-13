@@ -77,6 +77,46 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://cal.com https://*.cal.com",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cal.com https://*.cal.com",
+              "img-src 'self' data: blob: https://*.googleusercontent.com https://*.google-analytics.com https://*.cal.com https://cal.com",
+              "font-src 'self' https://fonts.gstatic.com https://cal.com https://*.cal.com",
+              "connect-src 'self' https://*.cal.com https://cal.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.sentry.io",
+              "frame-src 'self' https://cal.com https://*.cal.com https://salmenkhelifi.substack.com",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+            ].join("; "),
+          },
+          {
+            key: "X-Frame-Options",
+            value: "SAMEORIGIN",
+          },
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
+          {
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
+          },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 const withMDX = createMDX({
