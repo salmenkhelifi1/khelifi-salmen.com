@@ -1,8 +1,5 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
 import {
   ArrowRight,
   Download,
@@ -32,6 +29,7 @@ import {
   services,
   technicalDepth,
 } from "@/data/homepage";
+import RevealObserver from "@/components/RevealObserver";
 import SiteHeader from "@/components/SiteHeader";
 import SectionContainer from "@/components/SectionContainer";
 import SectionHeading from "@/components/SectionHeading";
@@ -109,38 +107,6 @@ export default function HomeContent() {
   const compactProjects = homepageCompactHrefs
     .map((href) => projects.find((p) => p.href === href))
     .filter((p): p is (typeof projects)[number] => Boolean(p));
-
-  useEffect(() => {
-    // IntersectionObserver instead of a scroll listener: fires reliably on
-    // anchor jumps, fast scrolling, and filter changes (scroll events don't).
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("active");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { rootMargin: "0px 0px -80px 0px" }
-    );
-
-    const observeAll = () => {
-      document
-        .querySelectorAll<HTMLElement>(".reveal:not(.active)")
-        .forEach((element) => observer.observe(element));
-    };
-
-    observeAll();
-    // Re-observe when the work filter swaps the project list in/out.
-    const mutationObserver = new MutationObserver(observeAll);
-    mutationObserver.observe(document.body, { childList: true, subtree: true });
-
-    return () => {
-      observer.disconnect();
-      mutationObserver.disconnect();
-    };
-  }, []);
 
   return (
     <>
@@ -585,6 +551,7 @@ export default function HomeContent() {
       </main>
 
       <SiteFooter />
+      <RevealObserver />
     </>
   );
 }
