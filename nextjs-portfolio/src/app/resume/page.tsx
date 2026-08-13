@@ -18,6 +18,7 @@ import { projects } from "@/data/projects";
 import { testimonials } from "@/data/testimonials";
 import {
   authorProfileJsonLd,
+  bookingUrl,
   freelancerUrl,
   githubUrl,
   linkedinUrl,
@@ -367,15 +368,17 @@ export default function ResumePage() {
               >
                 <Download className="w-4 h-4" aria-hidden="true" /> Download PDF
               </a>
-              <button
-                type="button"
+              <a
+                href={bookingUrl}
+                target="_blank"
+                rel="noreferrer"
                 data-cal-namespace="30min"
                 data-cal-link="salmen-khelifi/30min"
                 data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
                 className="cta-button cta-secondary inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold text-[var(--text-primary)] cursor-pointer"
               >
                 Book a call <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
-              </button>
+              </a>
             </div>
           </div>
         </header>

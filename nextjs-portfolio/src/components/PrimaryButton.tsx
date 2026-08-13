@@ -18,15 +18,18 @@ export default function PrimaryButton({
 
   if (isCalLink) {
     return (
-      <button
-        type="button"
+      <a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
         data-cal-namespace="30min"
         data-cal-link="salmen-khelifi/30min"
         data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
         className={`cta-button cta-primary cursor-pointer ${className}`.trim()}
+        {...props}
       >
         {children}
-      </button>
+      </a>
     );
   }
 

@@ -6,6 +6,7 @@ import AnnotatedImage from "@/components/mdx/AnnotatedImage";
 import MdxGallery from "@/components/mdx/MdxGallery";
 import TradeOffTable from "@/components/mdx/TradeOffTable";
 import Timeline from "@/components/mdx/Timeline";
+import BuildLog from "@/components/mdx/BuildLog";
 import Quote from "@/components/mdx/Quote";
 import MdxArchitectureNote from "@/components/mdx/MdxArchitectureNote";
 import TechnicalNote from "@/components/mdx/TechnicalNote";
@@ -71,6 +72,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     MdxGallery,
     TradeOffTable,
     Timeline,
+    BuildLog,
     Quote,
     MdxArchitectureNote,
     TechnicalNote,

@@ -72,15 +72,17 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
                   <Github className="h-4 w-4" aria-hidden="true" />
                 </a>
                 <ThemeSwitcher />
-                <button
-                  type="button"
+                <a
+                  href={bookingUrl}
+                  target="_blank"
+                  rel="noreferrer"
                   data-cal-namespace="30min"
                   data-cal-link="salmen-khelifi/30min"
                   data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
                   className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-6 py-2.5 text-sm font-bold text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--glass-bg-elevated)] cursor-pointer"
                 >
                   Let&apos;s Talk
-                </button>
+                </a>
               </div>
               <button
                 type="button"
@@ -138,8 +140,10 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
                   <ThemeSwitcher />
                 </div>
               </div>
-              <button
-                type="button"
+              <a
+                href={bookingUrl}
+                target="_blank"
+                rel="noreferrer"
                 data-cal-namespace="30min"
                 data-cal-link="salmen-khelifi/30min"
                 data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
@@ -147,7 +151,7 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
                 className="cta-button cta-primary mt-3 w-full cursor-pointer"
               >
                 Book a call
-              </button>
+              </a>
             </div>
           </div>
         )}

@@ -32,15 +32,17 @@ export default function SiteFooter() {
                 {link.label}
               </a>
             ))}
-            <button
-              type="button"
+            <a
+              href={bookingUrl}
+              target="_blank"
+              rel="noreferrer"
               data-cal-namespace="30min"
               data-cal-link="salmen-khelifi/30min"
               data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
               className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)] cursor-pointer text-left font-inherit"
             >
               Book a call
-            </button>
+            </a>
           </div>
         </nav>
         <nav aria-label="Footer social links">
