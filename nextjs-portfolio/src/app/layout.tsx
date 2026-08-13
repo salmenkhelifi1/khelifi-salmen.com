@@ -68,11 +68,22 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* PWA manifest + apple-touch-icon */}
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
         {/* Pre-hydration theme resolution: sets data-theme on <html> before
             first paint so there is no flash of the wrong theme. Must run
             here, synchronously, before body renders — see src/lib/theme.ts
             for the single source of truth this mirrors. */}
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+
+        {/* Register service worker for PWA installability */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js')})}`,
+          }}
+        />
       </head>
       <body className="min-h-full antialiased">
         <ThemeProvider>
