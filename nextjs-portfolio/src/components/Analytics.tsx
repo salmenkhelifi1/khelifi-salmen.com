@@ -1,5 +1,5 @@
 import Script from "next/script";
-
+import { GoogleAnalytics } from '@next/third-parties/google';
 /**
  * GA4 and Meta Pixel, both driven by env vars.
  *
@@ -27,20 +27,7 @@ export default function Analytics() {
   return (
     <>
       {GA_ID ? (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-            strategy="lazyOnload"
-          />
-          <Script id="ga4-init" strategy="lazyOnload">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GA_ID}');
-            `}
-          </Script>
-        </>
+        <GoogleAnalytics gaId={GA_ID} />
       ) : null}
 
       {META_PIXEL_ID ? (
