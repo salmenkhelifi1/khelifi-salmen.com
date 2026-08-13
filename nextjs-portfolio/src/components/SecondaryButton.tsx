@@ -20,8 +20,6 @@ export default function SecondaryButton({
     return (
       <a
         href={href}
-        target="_blank"
-        rel="noreferrer"
         data-cal-namespace="30min"
         data-cal-link="salmen-khelifi/30min"
         data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
