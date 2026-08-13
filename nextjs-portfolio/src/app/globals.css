@@ -816,3 +816,20 @@ section[id],
   margin: 1.5rem auto;
   border: 1px solid var(--glass-border);
 }
+
+/* Cal.com inline modal popup - constrained centered dialog */
+iframe[src*="cal.com"],
+div[id*="cal-modal"] iframe,
+.cal-embed-iframe {
+  max-width: 920px !important;
+  max-height: 85vh !important;
+  border-radius: 16px !important;
+}
+
+div[id*="cal-modal"],
+.cal-modal-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1.5rem !important;
+}

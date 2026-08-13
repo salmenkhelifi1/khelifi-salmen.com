@@ -430,53 +430,6 @@ export default function HomeContent() {
                 </a>
               </div>
 
-              {/* Fixed-scope entry points for buyers who want a defined job
-                  rather than a call. */}
-              <div className="pt-6 border-t border-[var(--border-subtle)] w-full">
-                <p className="text-caption text-[var(--text-tertiary)] uppercase tracking-wider mb-3">
-                  Hire me for a fixed scope
-                </p>
-                <ul className="space-y-2 mb-4">
-                  {fiverrGigs.map((gig) => (
-                    <li key={gig.url}>
-                      <a
-                        href={gig.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group flex items-start gap-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3.5 py-2.5 hover:border-[var(--accent)] transition-colors"
-                      >
-                        <ArrowRight
-                          className="h-4 w-4 mt-0.5 shrink-0 text-[var(--text-tertiary)] group-hover:text-[var(--accent)] transition-colors"
-                          aria-hidden="true"
-                        />
-                        <span>
-                          <span className="block text-sm font-medium text-[var(--text-primary)]">
-                            {gig.title}
-                          </span>
-                          <span className="block text-xs text-[var(--text-secondary)]">
-                            {gig.blurb}
-                          </span>
-                        </span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href={fiverrUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
-                >
-                  See all services on Fiverr
-                </a>
-              </div>
-
-              {/* Email capture. Sits above the social links so the list is the
-                  primary ask and the profiles are the fallback. */}
-              <div className="pt-6 border-t border-[var(--border-subtle)] w-full">
-                <SubstackEmbed />
-              </div>
-
               {/* Secondary Social Links */}
               <div className="pt-6 border-t border-[var(--border-subtle)] w-full">
                 <p className="text-caption text-[var(--text-tertiary)] uppercase tracking-wider mb-3">
@@ -557,8 +510,8 @@ export default function HomeContent() {
             </div>
 
             {/* Right / Main Editorial Composition */}
-            <div className="lg:col-span-7 flex flex-col justify-center reveal">
-              <SectionHeading className="mb-8">About Me</SectionHeading>
+            <div className="lg:col-span-7 flex flex-col justify-start reveal space-y-8">
+              <SectionHeading className="mb-4">About Me</SectionHeading>
 
               <div className="space-y-6 text-body-large text-[var(--text-secondary)] leading-relaxed">
                 <p className="text-xl font-medium text-[var(--text-primary)] leading-relaxed">
@@ -569,7 +522,7 @@ export default function HomeContent() {
                   I can own delivery end to end, from architecture and backend systems to the interface, automation, testing, and deployment.
                 </p>
 
-                <div className="my-8 rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-6 md:p-8">
+                <div className="my-6 rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-6 md:p-8">
                   <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--text-tertiary)] mb-3">
                     Engineering Philosophy & Tooling
                   </h3>
@@ -577,6 +530,51 @@ export default function HomeContent() {
                     Reliable software is built through clear system boundaries, thorough verification, and pragmatic decisions. I use automation and AI-assisted tooling to accelerate investigation and repetitive implementation. Architecture, review, testing, and final decisions stay deliberate.
                   </p>
                 </div>
+              </div>
+
+              {/* Fixed-scope entry points */}
+              <div className="pt-6 border-t border-[var(--border-subtle)] w-full">
+                <p className="text-caption text-[var(--text-tertiary)] uppercase tracking-wider mb-3">
+                  Hire me for a fixed scope
+                </p>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                  {fiverrGigs.map((gig) => (
+                    <li key={gig.url}>
+                      <a
+                        href={gig.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group flex items-start gap-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3.5 py-2.5 hover:border-[var(--accent)] transition-colors h-full"
+                      >
+                        <ArrowRight
+                          className="h-4 w-4 mt-0.5 shrink-0 text-[var(--text-tertiary)] group-hover:text-[var(--accent)] transition-colors"
+                          aria-hidden="true"
+                        />
+                        <span>
+                          <span className="block text-sm font-medium text-[var(--text-primary)]">
+                            {gig.title}
+                          </span>
+                          <span className="block text-xs text-[var(--text-secondary)]">
+                            {gig.blurb}
+                          </span>
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={fiverrUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
+                >
+                  See all services on Fiverr
+                </a>
+              </div>
+
+              {/* Email capture */}
+              <div className="pt-6 border-t border-[var(--border-subtle)] w-full">
+                <SubstackEmbed />
               </div>
             </div>
           </div>
