@@ -91,7 +91,7 @@ export const projects: Project[] = [
       button: "bg-cyan-600 hover:bg-cyan-500",
     },
     heroImage: "/images/synclead/portfolio-card.png",
-    galleryAspect: "phone",
+    galleryAspect: "desktop",
     overview: {
       what: "A role-aware sales operations workspace that connects CRM, email and WhatsApp campaigns, quotes and PDFs, calendars, unified messaging, AI assistance, catalog management, public landing pages, agent invitations, and Odoo synchronization.",
       problem:
