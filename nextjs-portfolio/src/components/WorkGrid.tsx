@@ -35,6 +35,7 @@ export const workCategories: readonly WorkPageCategory[] = [
 
 export const projectCategoryMap: Record<string, WorkPageCategory> = {
   synclead: "SaaS and Platforms",
+  foundpeers: "Mobile",
   "luxe-spa": "SaaS and Platforms",
   anlingo: "SaaS and Platforms",
   noxivo: "SaaS and Platforms",
@@ -52,7 +53,7 @@ export const projectCategoryMap: Record<string, WorkPageCategory> = {
   rentiora: "Websites",
 };
 
-const featuredSlugs = new Set(["luxe-spa", "chaktech", "anlingo", "noxivo"]);
+const featuredSlugs = new Set(["foundpeers", "luxe-spa", "chaktech", "anlingo", "noxivo"]);
 
 function projectToFeaturedWorkItem(p: RealProject): FeaturedWorkItem {
   return {
