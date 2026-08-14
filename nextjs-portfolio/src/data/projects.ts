@@ -137,27 +137,27 @@ export const projects: Project[] = [
         alt: "SyncLead quote workspace with customer details, line items, totals, and status actions",
       },
       {
-        src: "/images/synclead/messaging-unified.png",
+        src: "/images/synclead/portfolio-media/png/unified-messaging.png",
         alt: "SyncLead unified messaging workspace with conversation and customer context",
       },
       {
-        src: "/images/synclead/ai-assistant.png",
+        src: "/images/synclead/portfolio-media/png/ai-assistant.png",
         alt: "SyncLead AI assistant workspace for sales and content tasks",
       },
       {
-        src: "/images/synclead/campaigns-index.png",
+        src: "/images/synclead/portfolio-media/png/campaign-management.png",
         alt: "SyncLead email and WhatsApp campaign management screen",
       },
       {
-        src: "/images/synclead/quotes-show.png",
+        src: "/images/synclead/portfolio-media/png/quote-detail.png",
         alt: "SyncLead quote detail screen with line items, totals, and status actions",
       },
       {
-        src: "/images/synclead/calendar.png",
+        src: "/images/synclead/portfolio-media/png/shared-calendar.png",
         alt: "SyncLead shared calendar with scheduled sales follow-ups",
       },
       {
-        src: "/images/synclead/public-landing-page.png",
+        src: "/images/synclead/portfolio-media/png/public-landing-page.png",
         alt: "Public landing page created and managed through SyncLead",
       },
     ],

@@ -82,6 +82,44 @@ const architecture = [
   },
 ];
 
+const portfolioMedia = [
+  {
+    title: "SyncLead dashboard overview",
+    src: "/images/synclead/portfolio-media/mp4/dashboard-overview.mp4",
+    poster: "/images/synclead/portfolio-media/png/dashboard-overview.png",
+  },
+  {
+    title: "SyncLead unified messaging workspace with conversation and customer context",
+    src: "/images/synclead/portfolio-media/mp4/unified-messaging.mp4",
+    poster: "/images/synclead/portfolio-media/png/unified-messaging.png",
+  },
+  {
+    title: "SyncLead AI assistant workspace for sales and content tasks",
+    src: "/images/synclead/portfolio-media/mp4/ai-assistant.mp4",
+    poster: "/images/synclead/portfolio-media/png/ai-assistant.png",
+  },
+  {
+    title: "SyncLead email and WhatsApp campaign management screen",
+    src: "/images/synclead/portfolio-media/mp4/campaign-management.mp4",
+    poster: "/images/synclead/portfolio-media/png/campaign-management.png",
+  },
+  {
+    title: "SyncLead quote detail screen with line items, totals, and status actions",
+    src: "/images/synclead/portfolio-media/mp4/quote-detail.mp4",
+    poster: "/images/synclead/portfolio-media/png/quote-detail.png",
+  },
+  {
+    title: "SyncLead shared calendar with scheduled sales follow-ups",
+    src: "/images/synclead/portfolio-media/mp4/shared-calendar.mp4",
+    poster: "/images/synclead/portfolio-media/png/shared-calendar.png",
+  },
+  {
+    title: "Public landing page created and managed through SyncLead",
+    src: "/images/synclead/portfolio-media/mp4/public-landing-page.mp4",
+    poster: "/images/synclead/portfolio-media/png/public-landing-page.png",
+  },
+] as const;
+
 const focusedProofs = [
   {
     title: "CRM and contact segmentation",
@@ -148,7 +186,6 @@ function CaseSection({
 
 export default function SyncLeadCaseStudy({ project }: { project: Project }) {
   const jsonLd = projectJsonLd(project);
-  const gallery = project.gallery.slice(1);
 
   return (
     <div className="min-h-screen bg-[var(--bg-page)] text-[var(--text-primary)]">
@@ -206,7 +243,7 @@ export default function SyncLeadCaseStudy({ project }: { project: Project }) {
 
               <div className="relative mt-10 aspect-video overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border-bright)] bg-black shadow-2xl">
                 <Image
-                  src="/images/synclead/dashboard.png"
+                  src="/images/synclead/portfolio-media/png/dashboard-overview.png"
                   alt="SyncLead sales dashboard with campaign, quote, contact, and activity summaries"
                   fill
                   priority
@@ -290,7 +327,7 @@ export default function SyncLeadCaseStudy({ project }: { project: Project }) {
               <figure className="modern-card overflow-hidden rounded-[var(--radius-xl)]">
                 <video
                   src="/images/synclead/full-project-demo-hd.mp4"
-                  poster="/images/synclead/dashboard.png"
+                  poster="/images/synclead/portfolio-media/png/dashboard-overview.png"
                   controls
                   preload="metadata"
                   playsInline
@@ -301,31 +338,24 @@ export default function SyncLeadCaseStudy({ project }: { project: Project }) {
                   Full project walkthrough across nine verified product views
                 </figcaption>
               </figure>
+              <h3 className="mt-10 text-h3">Selected product walkthroughs</h3>
               <div className="mt-6 grid gap-6 md:grid-cols-2">
-                <figure className="modern-card overflow-hidden rounded-[var(--radius-xl)]">
-                  <video
-                    src="/images/synclead/dashboard.mp4"
-                    poster="/images/synclead/dashboard.png"
-                    controls
-                    preload="metadata"
-                    playsInline
-                    className="aspect-video w-full bg-black object-cover"
-                    aria-label="SyncLead dashboard walkthrough"
-                  />
-                  <figcaption className="p-4 text-sm text-[var(--text-secondary)]">Dashboard overview</figcaption>
-                </figure>
-                <figure className="modern-card overflow-hidden rounded-[var(--radius-xl)]">
-                  <video
-                    src="/images/synclead/messaging-unified.mp4"
-                    poster="/images/synclead/messaging-unified.png"
-                    controls
-                    preload="metadata"
-                    playsInline
-                    className="aspect-video w-full bg-black object-cover"
-                    aria-label="SyncLead unified messaging walkthrough"
-                  />
-                  <figcaption className="p-4 text-sm text-[var(--text-secondary)]">Unified messaging</figcaption>
-                </figure>
+                {portfolioMedia.map((media) => (
+                  <figure key={media.src} className="modern-card overflow-hidden rounded-[var(--radius-xl)]">
+                    <video
+                      src={media.src}
+                      poster={media.poster}
+                      controls
+                      preload="metadata"
+                      playsInline
+                      className="aspect-video w-full bg-black object-cover"
+                      aria-label={media.title}
+                    />
+                    <figcaption className="p-4 text-sm text-[var(--text-secondary)]">
+                      {media.title}
+                    </figcaption>
+                  </figure>
+                ))}
               </div>
               <h3 className="mt-10 text-h3">Focused workflow proof</h3>
               <div className="mt-6 grid gap-6 md:grid-cols-2">
@@ -343,23 +373,6 @@ export default function SyncLeadCaseStudy({ project }: { project: Project }) {
                     <figcaption className="p-4 text-sm text-[var(--text-secondary)]">
                       {proof.title}
                     </figcaption>
-                  </figure>
-                ))}
-              </div>
-              <div className="mt-6 grid gap-6 md:grid-cols-2">
-                {gallery.map((shot) => (
-                  <figure key={shot.src} className="modern-card overflow-hidden rounded-[var(--radius-xl)]">
-                    <div className="relative aspect-video bg-black">
-                      <Image
-                        src={shot.src}
-                        alt={shot.alt}
-                        fill
-                        loading="lazy"
-                        sizes="(max-width: 768px) 95vw, 430px"
-                        className="object-cover object-top"
-                      />
-                    </div>
-                    <figcaption className="p-4 text-sm text-[var(--text-secondary)]">{shot.alt}</figcaption>
                   </figure>
                 ))}
               </div>
