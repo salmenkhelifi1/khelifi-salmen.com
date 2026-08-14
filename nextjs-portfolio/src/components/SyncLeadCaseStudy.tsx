@@ -82,6 +82,39 @@ const architecture = [
   },
 ];
 
+const focusedProofs = [
+  {
+    title: "CRM and contact segmentation",
+    src: "/images/synclead/focused-proof/contacts-index.mp4",
+    poster: "/images/synclead/focused-proof/contacts-index.png",
+  },
+  {
+    title: "Public landing-page editor",
+    src: "/images/synclead/focused-proof/landing-page-editor.mp4",
+    poster: "/images/synclead/focused-proof/landing-page-editor.png",
+  },
+  {
+    title: "Internal AI chatbot",
+    src: "/images/synclead/focused-proof/ai-internal-chatbot.mp4",
+    poster: "/images/synclead/focused-proof/ai-internal-chatbot.png",
+  },
+  {
+    title: "Product catalog management",
+    src: "/images/synclead/focused-proof/catalog-products.mp4",
+    poster: "/images/synclead/focused-proof/catalog-products.png",
+  },
+  {
+    title: "Agent invitation workflow",
+    src: "/images/synclead/focused-proof/agents-invite.mp4",
+    poster: "/images/synclead/focused-proof/agents-invite.png",
+  },
+  {
+    title: "Odoo synchronization overview",
+    src: "/images/synclead/focused-proof/odoo-index.mp4",
+    poster: "/images/synclead/focused-proof/odoo-index.png",
+  },
+] as const;
+
 const qaCoverage = [
   ["42/42", "requested screens returned HTTP 200"],
   ["42", "4K screenshots at 3840 × 2160"],
@@ -255,17 +288,15 @@ export default function SyncLeadCaseStudy({ project }: { project: Project }) {
 
             <CaseSection id="gallery" eyebrow="Selected product views" title="Visual gallery">
               <figure className="modern-card overflow-hidden rounded-[var(--radius-xl)]">
-                <div className="relative aspect-video bg-black">
-                  <Image
-                    src="/images/synclead/full-project-demo-hd.webp"
-                    alt="SyncLead walkthrough covering the dashboard, campaigns, contacts, quotes, messaging, AI chatbot, catalog, agents, and settings"
-                    fill
-                    loading="lazy"
-                    unoptimized
-                    sizes="(max-width: 1024px) 95vw, 900px"
-                    className="object-cover"
-                  />
-                </div>
+                <video
+                  src="/images/synclead/full-project-demo-hd.mp4"
+                  poster="/images/synclead/dashboard.png"
+                  controls
+                  preload="metadata"
+                  playsInline
+                  className="aspect-video w-full bg-black object-cover"
+                  aria-label="Full SyncLead project walkthrough across nine product screens"
+                />
                 <figcaption className="p-4 text-sm text-[var(--text-secondary)]">
                   Full project walkthrough across nine verified product views
                 </figcaption>
@@ -295,6 +326,25 @@ export default function SyncLeadCaseStudy({ project }: { project: Project }) {
                   />
                   <figcaption className="p-4 text-sm text-[var(--text-secondary)]">Unified messaging</figcaption>
                 </figure>
+              </div>
+              <h3 className="mt-10 text-h3">Focused workflow proof</h3>
+              <div className="mt-6 grid gap-6 md:grid-cols-2">
+                {focusedProofs.map((proof) => (
+                  <figure key={proof.src} className="modern-card overflow-hidden rounded-[var(--radius-xl)]">
+                    <video
+                      src={proof.src}
+                      poster={proof.poster}
+                      controls
+                      preload="metadata"
+                      playsInline
+                      className="aspect-video w-full bg-black object-cover"
+                      aria-label={`SyncLead ${proof.title}`}
+                    />
+                    <figcaption className="p-4 text-sm text-[var(--text-secondary)]">
+                      {proof.title}
+                    </figcaption>
+                  </figure>
+                ))}
               </div>
               <div className="mt-6 grid gap-6 md:grid-cols-2">
                 {gallery.map((shot) => (
