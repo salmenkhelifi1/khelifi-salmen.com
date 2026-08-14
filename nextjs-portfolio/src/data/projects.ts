@@ -80,6 +80,105 @@ const freelancerAccent: ProjectAccent = {
 
 export const projects: Project[] = [
   {
+    slug: "synclead",
+    title: "SyncLead",
+    tagline:
+      "One workspace for contacts, campaigns, quotes, messaging, calendars, AI assistance, and back-office synchronization.",
+    category: "Sales Operations & AI Workspace",
+    accent: {
+      text: "text-cyan-400",
+      hoverText: "hover:text-cyan-400",
+      button: "bg-cyan-600 hover:bg-cyan-500",
+    },
+    heroImage: "/images/synclead/dashboard.png",
+    galleryAspect: "desktop",
+    overview: {
+      what: "A role-aware sales operations workspace that connects CRM, email and WhatsApp campaigns, quotes and PDFs, calendars, unified messaging, AI assistance, catalog management, public landing pages, agent invitations, and Odoo synchronization.",
+      problem:
+        "Sales teams often split customer context across spreadsheets, inboxes, messaging tools, calendars, quote documents, and an ERP, creating duplicate entry and fragile handoffs.",
+      audience:
+        "Sales managers, agents, and operations teams that need customer work and back-office context in one shared workspace.",
+    },
+    features: [
+      {
+        title: "CRM and segmentation",
+        description:
+          "Shared contact records, lists, imports, and segmentation keep campaign, message, and quote context connected.",
+      },
+      {
+        title: "Campaigns and messaging",
+        description:
+          "Email and WhatsApp campaign workflows sit alongside a unified inbox with customer context and AI-assisted replies.",
+      },
+      {
+        title: "Quotes and follow-ups",
+        description:
+          "Catalog-backed quotes, PDF workflows, status tracking, customer actions, and calendar follow-ups share one flow.",
+      },
+      {
+        title: "AI inside sales work",
+        description:
+          "The AI assistant and internal chatbot support content, knowledge, catalog, landing-page, template, and reply tasks.",
+      },
+      {
+        title: "Team and public workflows",
+        description:
+          "Agent invitations, onboarding, catalog management, and editable public landing pages support the wider sales workspace.",
+      },
+      {
+        title: "Back-office synchronization",
+        description:
+          "Dedicated service and job boundaries connect provider-aware workflows, including Odoo synchronization.",
+      },
+    ],
+    gallery: [
+      {
+        src: "/images/synclead/dashboard.png",
+        alt: "SyncLead sales dashboard with campaign, quote, contact, and activity summaries",
+      },
+      {
+        src: "/images/synclead/messaging-unified.png",
+        alt: "SyncLead unified messaging workspace with conversation and customer context",
+      },
+      {
+        src: "/images/synclead/ai-assistant.png",
+        alt: "SyncLead AI assistant workspace for sales and content tasks",
+      },
+      {
+        src: "/images/synclead/campaigns-index.png",
+        alt: "SyncLead email and WhatsApp campaign management screen",
+      },
+      {
+        src: "/images/synclead/quotes-show.png",
+        alt: "SyncLead quote detail screen with line items, totals, and status actions",
+      },
+      {
+        src: "/images/synclead/calendar.png",
+        alt: "SyncLead shared calendar with scheduled sales follow-ups",
+      },
+      {
+        src: "/images/synclead/public-landing-page.png",
+        alt: "Public landing page created and managed through SyncLead",
+      },
+    ],
+    techStack: {
+      frontend: ["Vue 3", "Inertia.js", "Tailwind CSS 4", "FullCalendar"],
+      backend: ["Laravel 13", "PHP 8.3", "Eloquent ORM"],
+      tools: ["Vite", "Laravel jobs", "Puppeteer", "ffmpeg"],
+    },
+    badges: ["Laravel 13", "PHP 8.3", "Vue 3", "Inertia.js", "AI Integration"],
+    links: {
+      live: "https://synclead.site/",
+    },
+    snapshot: {
+      status: "live",
+      role: "Full-Stack & AI Engineer · Team Contributor",
+      team: "Product team",
+      industry: "Sales operations",
+      platform: "Responsive web application",
+    },
+  },
+  {
     slug: "foundpeers",
     title: "FoundPeers",
     tagline:

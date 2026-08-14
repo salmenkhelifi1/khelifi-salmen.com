@@ -162,6 +162,23 @@ export function breadcrumbJsonLd(items: readonly BreadcrumbItem[]) {
 
 export function projectCreativeWorkJsonLd(project: Project) {
   const projectUrl = `${siteUrl}/projects/${project.slug}`;
+  const credit = project.snapshot?.team
+    ? {
+        contributor: {
+          "@type": "Person",
+          "@id": personId,
+          name: "Salmen Khelifi",
+          url: siteUrl,
+        },
+      }
+    : {
+        author: {
+          "@type": "Person",
+          "@id": personId,
+          name: "Salmen Khelifi",
+          url: siteUrl,
+        },
+      };
 
   return {
     "@context": "https://schema.org",
@@ -171,12 +188,7 @@ export function projectCreativeWorkJsonLd(project: Project) {
     description: project.tagline,
     url: projectUrl,
     image: project.heroImage ? `${siteUrl}${project.heroImage}` : undefined,
-    author: {
-      "@type": "Person",
-      "@id": personId,
-      name: "Salmen Khelifi",
-      url: siteUrl,
-    },
+    ...credit,
     keywords: project.badges,
     genre: project.category,
   };

@@ -37,6 +37,7 @@ import { getCaseStudyNarrative } from "@/lib/content/case-study-narratives";
 import { getPublishedPosts } from "@/lib/content/blog";
 import type { CaseStudyPlacement } from "@/lib/content/schemas";
 import { createSeoDescription, createSeoTitle } from "@/lib/seo";
+import SyncLeadCaseStudy from "@/components/SyncLeadCaseStudy";
 
 
 type Params = { slug: string };
@@ -386,6 +387,10 @@ export default async function ProjectProfilePage({
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
+
+  if (slug === "synclead") {
+    return <SyncLeadCaseStudy project={project} />;
+  }
 
   const narrative = await getCaseStudyNarrative(slug);
 

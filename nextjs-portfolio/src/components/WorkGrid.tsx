@@ -34,6 +34,7 @@ export const workCategories: readonly WorkPageCategory[] = [
 ] as const;
 
 export const projectCategoryMap: Record<string, WorkPageCategory> = {
+  synclead: "SaaS and Platforms",
   "luxe-spa": "SaaS and Platforms",
   anlingo: "SaaS and Platforms",
   noxivo: "SaaS and Platforms",

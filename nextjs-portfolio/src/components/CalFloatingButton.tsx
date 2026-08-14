@@ -8,9 +8,7 @@ export default function CalFloatingButton() {
   const pathname = usePathname();
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-    
-    timeoutId = setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       (async function () {
         try {
           const cal = await getCalApi({ namespace: "30min" });
