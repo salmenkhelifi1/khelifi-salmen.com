@@ -254,7 +254,23 @@ export default function SyncLeadCaseStudy({ project }: { project: Project }) {
             </CaseSection>
 
             <CaseSection id="gallery" eyebrow="Selected product views" title="Visual gallery">
-              <div className="grid gap-6 md:grid-cols-2">
+              <figure className="modern-card overflow-hidden rounded-[var(--radius-xl)]">
+                <div className="relative aspect-video bg-black">
+                  <Image
+                    src="/images/synclead/full-project-demo-hd.webp"
+                    alt="SyncLead walkthrough covering the dashboard, campaigns, contacts, quotes, messaging, AI chatbot, catalog, agents, and settings"
+                    fill
+                    loading="lazy"
+                    unoptimized
+                    sizes="(max-width: 1024px) 95vw, 900px"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="p-4 text-sm text-[var(--text-secondary)]">
+                  Full project walkthrough across nine verified product views
+                </figcaption>
+              </figure>
+              <div className="mt-6 grid gap-6 md:grid-cols-2">
                 <figure className="modern-card overflow-hidden rounded-[var(--radius-xl)]">
                   <video
                     src="/images/synclead/dashboard.mp4"
