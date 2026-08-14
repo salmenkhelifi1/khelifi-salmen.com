@@ -90,7 +90,7 @@ export const projects: Project[] = [
       hoverText: "hover:text-cyan-400",
       button: "bg-cyan-600 hover:bg-cyan-500",
     },
-    heroImage: "/images/synclead/dashboard.png",
+    heroImage: "/images/synclead/portfolio-card.png",
     galleryAspect: "desktop",
     overview: {
       what: "A role-aware sales operations workspace that connects CRM, email and WhatsApp campaigns, quotes and PDFs, calendars, unified messaging, AI assistance, catalog management, public landing pages, agent invitations, and Odoo synchronization.",
@@ -133,8 +133,8 @@ export const projects: Project[] = [
     ],
     gallery: [
       {
-        src: "/images/synclead/dashboard.png",
-        alt: "SyncLead sales dashboard with campaign, quote, contact, and activity summaries",
+        src: "/images/synclead/portfolio-card.png",
+        alt: "SyncLead quote workspace with customer details, line items, totals, and status actions",
       },
       {
         src: "/images/synclead/messaging-unified.png",
