@@ -120,39 +120,6 @@ const portfolioMedia = [
   },
 ] as const;
 
-const focusedProofs = [
-  {
-    title: "CRM and contact segmentation",
-    src: "/images/synclead/focused-proof/contacts-index.mp4",
-    poster: "/images/synclead/focused-proof/contacts-index.png",
-  },
-  {
-    title: "Public landing-page editor",
-    src: "/images/synclead/focused-proof/landing-page-editor.mp4",
-    poster: "/images/synclead/focused-proof/landing-page-editor.png",
-  },
-  {
-    title: "Internal AI chatbot",
-    src: "/images/synclead/focused-proof/ai-internal-chatbot.mp4",
-    poster: "/images/synclead/focused-proof/ai-internal-chatbot.png",
-  },
-  {
-    title: "Product catalog management",
-    src: "/images/synclead/focused-proof/catalog-products.mp4",
-    poster: "/images/synclead/focused-proof/catalog-products.png",
-  },
-  {
-    title: "Agent invitation workflow",
-    src: "/images/synclead/focused-proof/agents-invite.mp4",
-    poster: "/images/synclead/focused-proof/agents-invite.png",
-  },
-  {
-    title: "Odoo synchronization overview",
-    src: "/images/synclead/focused-proof/odoo-index.mp4",
-    poster: "/images/synclead/focused-proof/odoo-index.png",
-  },
-] as const;
-
 const qaCoverage = [
   ["42/42", "requested screens returned HTTP 200"],
   ["42", "4K screenshots at 3840 × 2160"],
@@ -353,25 +320,6 @@ export default function SyncLeadCaseStudy({ project }: { project: Project }) {
                     />
                     <figcaption className="p-4 text-sm text-[var(--text-secondary)]">
                       {media.title}
-                    </figcaption>
-                  </figure>
-                ))}
-              </div>
-              <h3 className="mt-10 text-h3">Focused workflow proof</h3>
-              <div className="mt-6 grid gap-6 md:grid-cols-2">
-                {focusedProofs.map((proof) => (
-                  <figure key={proof.src} className="modern-card overflow-hidden rounded-[var(--radius-xl)]">
-                    <video
-                      src={proof.src}
-                      poster={proof.poster}
-                      controls
-                      preload="metadata"
-                      playsInline
-                      className="aspect-video w-full bg-black object-cover"
-                      aria-label={`SyncLead ${proof.title}`}
-                    />
-                    <figcaption className="p-4 text-sm text-[var(--text-secondary)]">
-                      {proof.title}
                     </figcaption>
                   </figure>
                 ))}
