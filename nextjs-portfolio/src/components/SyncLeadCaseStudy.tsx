@@ -292,17 +292,16 @@ export default function SyncLeadCaseStudy({ project }: { project: Project }) {
 
             <CaseSection id="gallery" eyebrow="Selected product views" title="Visual gallery">
               <figure className="modern-card overflow-hidden rounded-[var(--radius-xl)]">
-                <video
-                  src="/images/synclead/full-project-demo-hd.mp4"
-                  poster="/images/synclead/portfolio-media/png/dashboard-overview.png"
-                  controls
-                  preload="metadata"
-                  playsInline
+                <Image
+                  src="/images/synclead/full-project-walkthrough.gif"
+                  alt="Animated SyncLead walkthrough showing the dashboard, messaging, AI assistant, campaigns, quotes, calendar, and public landing page"
+                  width={1280}
+                  height={720}
+                  unoptimized
                   className="aspect-video w-full bg-black object-cover"
-                  aria-label="Full SyncLead project walkthrough across nine product screens"
                 />
                 <figcaption className="p-4 text-sm text-[var(--text-secondary)]">
-                  Full project walkthrough across nine verified product views
+                  Full project walkthrough across seven current product views
                 </figcaption>
               </figure>
               <h3 className="mt-10 text-h3">Selected product walkthroughs</h3>

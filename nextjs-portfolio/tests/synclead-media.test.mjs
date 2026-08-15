@@ -13,6 +13,8 @@ test("the SyncLead case study only renders the current portfolio media", async (
 
   assert.match(source, /\/images\/synclead\/portfolio-media\/png\/dashboard-overview\.png/);
   assert.doesNotMatch(source, /\/images\/synclead\/focused-proof\//);
+  assert.match(source, /\/images\/synclead\/full-project-walkthrough\.gif/);
+  assert.doesNotMatch(source, /\/images\/synclead\/full-project-demo-hd\.mp4/);
   assert.match(projects, /heroImage: "\/images\/synclead\/portfolio-media\/png\/dashboard-overview\.png"/);
   assert.match(
     projects,
