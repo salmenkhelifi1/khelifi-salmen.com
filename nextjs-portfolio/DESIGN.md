@@ -92,6 +92,12 @@ retained for the rest of the site; the hero uses these intent tokens:
 - Max content width: `1280px` (`max-w-7xl`).
 - Desktop: 12-column CSS grid, 8 columns for copy and 4 for media alignment.
 - Tablet: copy first, media below; no squeezed two-column layout.
+- Mobile and small-tablet screens below `1024px` hide the secondary workspace
+  photo so the first screen stays focused on the introduction, value proposition,
+  and CTAs.
+- Large tablets (`1024px`–`1119px`) use a landscape `3:2` workspace frame and a
+  balanced two-column credibility grid so the hero does not become a tall image
+  wall or leave one proof item orphaned.
 - Mobile: one column, 20px minimum side gutter, CTAs remain at least 44px high.
 - Breakpoints: 640px, 768px, 1024px, 1280px.
 
@@ -105,6 +111,23 @@ retained for the rest of the site; the hero uses these intent tokens:
 - **Accessibility**: existing skip link, labelled nav, Escape-to-close, focus return.
 - **Motion**: existing short opacity/transform transition; unchanged in this scope.
 - **Layout**: fixed navigation over the document.
+
+### Credibility strip
+
+- **Structure**: one semantic strip with four icon-and-label proof items.
+- **Responsive variants**: a single balanced row on wide screens, a two-column
+  grid from `640px`–`1119px`, and a single readable column below `640px`.
+- **Iconography**: one consistent 20px SVG stroke treatment; icons are
+  decorative because each item also has a visible text label.
+
+### Greeting kicker
+
+- **Structure**: availability dot, personal greeting, and a compact hand icon
+  badge.
+- **States**: static, focus-adjacent, and reduced-motion; no decorative loop.
+- **Iconography**: the hand keeps the existing Lucide source but gains a
+  tactile accent badge and optical rotation so it reads as a greeting rather
+  than a stop symbol.
 
 ### CTA button (existing shared primitive)
 

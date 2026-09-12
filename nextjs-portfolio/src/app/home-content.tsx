@@ -125,7 +125,9 @@ export default function HomeContent() {
               >
                 <span className="hero-kicker-dot" aria-hidden="true" />
                 <span>Hey, I&apos;m Salmen</span>
-                <Hand className="hero-kicker-icon" aria-hidden="true" />
+                <span className="hero-kicker-icon" aria-hidden="true">
+                  <Hand className="hero-kicker-icon-glyph" strokeWidth={2.25} />
+                </span>
               </div>
 
               <h1 className="hero-title reveal" style={{ transitionDelay: "100ms" }}>
@@ -193,11 +195,10 @@ export default function HomeContent() {
               src="/images/salmen-workspace-hero.png"
               alt="Salmen Khelifi, full-stack developer and automation specialist"
               fill
-              sizes="(max-width: 1119px) 72vw, 100vw"
+              sizes="(max-width: 1119px) min(44rem, calc(100vw - 3rem)), 100vw"
               className="hero-portrait"
               placeholder="blur"
               blurDataURL={BLUR_PLACEHOLDER}
-              priority
             />
             <div className="hero-media-shade" aria-hidden="true" />
             <div className="hero-media-caption">
