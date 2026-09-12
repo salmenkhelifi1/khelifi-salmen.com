@@ -816,7 +816,8 @@ section[id],
 
 @media (max-width: 1023px) {
   .hero-media {
-    display: none;
+    aspect-ratio: 16 / 9;
+    max-width: 44rem;
   }
 }
 

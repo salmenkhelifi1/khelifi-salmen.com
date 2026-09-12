@@ -92,9 +92,8 @@ retained for the rest of the site; the hero uses these intent tokens:
 - Max content width: `1280px` (`max-w-7xl`).
 - Desktop: 12-column CSS grid, 8 columns for copy and 4 for media alignment.
 - Tablet: copy first, media below; no squeezed two-column layout.
-- Mobile and small-tablet screens below `1024px` hide the secondary workspace
-  photo so the first screen stays focused on the introduction, value proposition,
-  and CTAs.
+- Mobile and small-tablet screens below `1024px` keep the secondary workspace photo
+  in a compact `16:9` frame so it remains visible without taking over the hero.
 - Large tablets (`1024px`–`1119px`) use a landscape `3:2` workspace frame and a
   balanced two-column credibility grid so the hero does not become a tall image
   wall or leave one proof item orphaned.
