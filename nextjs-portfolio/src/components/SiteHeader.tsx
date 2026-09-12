@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowLeft, Menu, X, createLucideIcon } from "lucide-react";
 import { githubUrl } from "@/data/schema";
 import { navLinks } from "@/data/homepage";
@@ -24,9 +25,11 @@ type SiteHeaderProps = {
 };
 
 export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const contactHref = pathname === "/" ? "#contact" : "/#contact";
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -91,7 +94,7 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
                 {navLinks.map((link) => (
                   <a
                     key={link.href}
-                    href={link.href}
+                    href={pathname === "/" && link.href.startsWith("/#") ? link.href.slice(1) : link.href}
                     className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
                   >
                     {link.label}
@@ -109,9 +112,9 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
                   <Github className="h-4 w-4" aria-hidden="true" />
                 </a>
                 <ThemeSwitcher />
-                <Link href="/#contact" className="cta-button cta-primary cta-small">
+                <a href={contactHref} className="cta-button cta-primary cta-small">
                   Tell me about your project
-                </Link>
+                </a>
               </div>
               <button
                 ref={buttonRef}
@@ -150,7 +153,7 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
               {navLinks.map((link) => (
                 <a
                   key={link.href}
-                  href={link.href}
+                  href={pathname === "/" && link.href.startsWith("/#") ? link.href.slice(1) : link.href}
                   onClick={() => setIsMenuOpen(false)}
                   className="inline-flex min-h-11 items-center border-b border-[var(--border-subtle)] text-sm font-semibold text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
                 >
@@ -174,13 +177,13 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
                   <ThemeSwitcher />
                 </div>
               </div>
-              <Link
-                href="/#contact"
+              <a
+                href={contactHref}
                 onClick={() => setIsMenuOpen(false)}
                 className="cta-button cta-primary mt-3 w-full"
               >
                 Tell me about your project
-              </Link>
+              </a>
             </div>
           </div>
         )}
