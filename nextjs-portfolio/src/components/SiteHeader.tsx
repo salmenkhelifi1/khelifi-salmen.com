@@ -75,7 +75,7 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
             </div>
           ) : (
             <>
-              <div className="hidden gap-8 text-sm font-medium text-[var(--text-secondary)] md:flex">
+              <div className="hidden gap-8 text-sm font-medium text-[var(--text-secondary)] lg:flex">
                 {navLinks.map((link) => (
                   <a
                     key={link.href}
@@ -86,7 +86,7 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
                   </a>
                 ))}
               </div>
-              <div className="hidden items-center gap-3 md:flex">
+              <div className="hidden items-center gap-3 lg:flex">
                 <a
                   href={githubUrl}
                   target="_blank"
@@ -114,7 +114,7 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-menu"
                 onClick={() => setIsMenuOpen((open) => !open)}
-                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--glass-bg-elevated)] md:hidden"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--glass-bg-elevated)] lg:hidden"
               >
                 {isMenuOpen ? (
                   <X className="h-5 w-5" aria-hidden="true" />
@@ -134,7 +134,7 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
             aria-modal="true"
             aria-label="Mobile navigation"
             hidden={!isMenuOpen}
-            className={`absolute left-0 right-0 top-[calc(100%+0.5rem)] glass-panel px-6 backdrop-blur-xl transition-all duration-[180ms] md:hidden ${
+            className={`absolute left-0 right-0 top-[calc(100%+0.5rem)] glass-panel px-6 backdrop-blur-xl transition-all duration-[180ms] lg:hidden ${
               isMenuOpen
                 ? "pointer-events-auto translate-y-0 opacity-100"
                 : "pointer-events-none -translate-y-2 opacity-0"

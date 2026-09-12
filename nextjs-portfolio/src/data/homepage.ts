@@ -113,6 +113,12 @@ export const capabilityMarkers = [
   "High-Performance Experiences",
 ] as const;
 
+export const heroProofItems = [
+  { value: "5+", label: "Years building software" },
+  { value: "3+", label: "Years freelance delivery" },
+  { value: "Remote", label: "Worldwide" },
+] as const;
+
 // Absolute home anchors so nav works from every route (/work, /resume, /projects/*),
 // plus real route links (résumé) for the recruiter path.
 export const navLinks: NavLink[] = [

@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   ArrowRight,
   Download,
+  Hand,
   createLucideIcon,
 } from "lucide-react";
 import {
@@ -21,8 +22,8 @@ import {
   BLUR_PLACEHOLDER,
   capabilityMarkers,
   credibilityItems,
-  ecosystemNodes,
   featuredWork,
+  heroProofItems,
   homepageCompactHrefs,
   portraitPreviewImages,
   projects,
@@ -37,7 +38,6 @@ import StatusBadge from "@/components/StatusBadge";
 import PrimaryButton from "@/components/PrimaryButton";
 import SecondaryButton from "@/components/SecondaryButton";
 import SubstackEmbed from "@/components/SubstackEmbed";
-import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 import CredibilityStrip from "@/components/CredibilityStrip";
 import FeaturedProject from "@/components/FeaturedProject";
 import CompactProject from "@/components/CompactProject";
@@ -113,59 +113,99 @@ export default function HomeContent() {
       <SiteHeader />
 
       <main id="main-content">
-      <section aria-label="Hero introduction" className="hero-section mx-auto flex w-full max-w-7xl items-center px-6">
-        <div className="hero-content grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-12">
-          <div className="hero-copy flex flex-col items-start text-left lg:col-span-8">
-            <StatusBadge>AVAILABLE FOR NEW PROJECTS</StatusBadge>
+        <section
+          aria-label="Hero introduction"
+          className="hero-section flex w-full flex-col items-center px-6"
+        >
+          <div className="hero-content mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
+            <div className="hero-copy flex flex-col items-start text-left lg:col-span-8">
+              <div
+                className="hero-kicker reveal"
+                style={{ transitionDelay: "50ms" }}
+              >
+                <span className="hero-kicker-dot" aria-hidden="true" />
+                <span>Hey, I&apos;m Salmen</span>
+                <Hand className="hero-kicker-icon" aria-hidden="true" />
+              </div>
 
-            <h1 className="hero-title reveal" style={{ transitionDelay: "100ms" }}>
-              I build digital products that <span className="text-gradient">automate work</span>, convert users, and scale.
-            </h1>
+              <h1 className="hero-title reveal" style={{ transitionDelay: "100ms" }}>
+                <span className="hero-title-line">I build digital products</span>{" "}
+                <span className="hero-title-line">
+                  that <span className="hero-title-accent">automate work</span>,
+                </span>{" "}
+                <span className="hero-title-line">convert users, and scale.</span>
+              </h1>
 
-            <p
-              className="hero-subtitle reveal max-w-2xl text-body-large"
-              style={{ transitionDelay: "200ms" }}
-            >
-              Salmen Khelifi is a Tunisia-based full-stack developer and automation specialist working remotely worldwide. I build resilient web products, mobile apps, SaaS platforms, and n8n integrations.
-            </p>
+              <p
+                className="hero-subtitle reveal max-w-2xl text-body-large"
+                style={{ transitionDelay: "200ms" }}
+              >
+                Full-stack developer and automation specialist helping businesses
+                and founders turn ideas into reliable web products, mobile apps,
+                SaaS platforms, and automated workflows.
+              </p>
 
-            <ul
-              className="hero-capabilities reveal flex flex-wrap gap-3"
-              style={{ transitionDelay: "250ms" }}
-              aria-label="Core capabilities"
-            >
-              {capabilityMarkers.map((marker) => (
-                <li
-                  key={marker}
-                  className="inline-flex items-center gap-2 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-4 py-2 text-caption text-[var(--text-secondary)]"
-                >
-                  <span
-                    className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]"
-                    aria-hidden="true"
-                  />
-                  {marker}
-                </li>
-              ))}
-            </ul>
+              <ul
+                className="hero-capabilities reveal flex flex-wrap gap-3"
+                style={{ transitionDelay: "250ms" }}
+                aria-label="Core capabilities"
+              >
+                {capabilityMarkers.map((marker) => (
+                  <li key={marker}>
+                    <span className="hero-capability-dot" aria-hidden="true" />
+                    {marker}
+                  </li>
+                ))}
+              </ul>
 
-            <div
-              className="hero-actions reveal flex w-full flex-col gap-4 sm:w-auto sm:flex-row"
-              style={{ transitionDelay: "300ms" }}
-            >
-              <PrimaryButton href={bookingUrl} className="w-full sm:w-auto">
-                Start a Project
-              </PrimaryButton>
-              <SecondaryButton href="#work" className="w-full sm:w-auto">
-                View Selected Work
-              </SecondaryButton>
+              <div
+                className="hero-actions reveal flex w-full flex-col gap-4 sm:w-auto sm:flex-row"
+                style={{ transitionDelay: "300ms" }}
+              >
+                <PrimaryButton href={bookingUrl} className="w-full sm:w-auto">
+                  Start a Project <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </PrimaryButton>
+                <SecondaryButton href="#work" className="w-full sm:w-auto">
+                  View Selected Work
+                </SecondaryButton>
+              </div>
+
+              <div
+                className="hero-proof reveal"
+                style={{ transitionDelay: "350ms" }}
+                aria-label="Selected experience highlights"
+              >
+                {heroProofItems.map((item, index) => (
+                  <div className="hero-proof-item" key={item.label}>
+                    <span className="hero-proof-value">{item.value}</span>
+                    <span className="hero-proof-label">{item.label}</span>
+                    {index < heroProofItems.length - 1 && (
+                      <span className="hero-proof-divider" aria-hidden="true" />
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="hero-visual hidden reveal lg:col-span-4 lg:block" style={{ transitionDelay: "400ms" }}>
-            <ArchitectureDiagram nodes={ecosystemNodes} />
+          <div className="hero-media reveal" style={{ transitionDelay: "400ms" }}>
+            <Image
+              src="/images/salmen-workspace-hero.png"
+              alt="Salmen Khelifi, full-stack developer and automation specialist"
+              fill
+              sizes="(max-width: 1119px) 72vw, 100vw"
+              className="hero-portrait"
+              placeholder="blur"
+              blurDataURL={BLUR_PLACEHOLDER}
+              priority
+            />
+            <div className="hero-media-shade" aria-hidden="true" />
+            <div className="hero-media-caption">
+              <span className="hero-media-caption-dot" aria-hidden="true" />
+              <span>Based in Tunisia · working worldwide</span>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       <CredibilityStrip items={credibilityItems} />
 
