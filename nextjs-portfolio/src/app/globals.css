@@ -162,6 +162,7 @@
 
 html {
   background: var(--bg-page);
+  scroll-behavior: smooth;
 }
 
 /*

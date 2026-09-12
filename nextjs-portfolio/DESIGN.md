@@ -195,6 +195,8 @@ retained for the rest of the site; the hero uses these intent tokens:
 | Emphasis | `600ms` | `cubic-bezier(.16,1,.3,1)` | Hero reveal |
 
 - Animate only `transform` and `opacity` for hero entry.
+- In-page navigation uses native CSS smooth scrolling and the fixed-header
+  offset; reduced-motion preference restores immediate scrolling.
 - The existing `IntersectionObserver` reveal system remains the single entry
   mechanism; no scroll listener or new animation dependency.
 - `prefers-reduced-motion: reduce` removes the reveal movement and keeps content
