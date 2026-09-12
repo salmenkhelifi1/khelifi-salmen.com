@@ -18,6 +18,7 @@
 
   /* Accent (Single Color System: Steel Blue/Cyan) */
   --accent: #2f80ed;
+  --accent-hover: #67a7ff;
   --accent-dim: rgba(47, 128, 237, 0.1);
   --accent-glow: rgba(47, 128, 237, 0.04);
   --hero-bg: #070b12;
@@ -107,6 +108,7 @@
   --text-tertiary: #6b6b76;
 
   --accent: #1b64d8;
+  --accent-hover: #124da9;
   --accent-dim: rgba(31, 111, 235, 0.08);
   --accent-glow: rgba(31, 111, 235, 0.1);
   --hero-bg: #f6f6f8;
@@ -971,6 +973,17 @@ section[id],
 .cta-primary:hover {
   background: color-mix(in srgb, var(--accent) 72%, transparent);
   box-shadow: var(--glow-accent), var(--shadow-hover), var(--glass-shadow);
+}
+
+[data-theme="light"] .cta-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-on-accent);
+}
+
+[data-theme="light"] .cta-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
 }
 
 .cta-secondary {

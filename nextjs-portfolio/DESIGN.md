@@ -37,6 +37,8 @@ the source of truth for copy, project facts, routes, and functionality.
 
 - The accent is reserved for interaction and the single highlighted phrase.
 - Warm light belongs to the workspace image, not to a second UI accent.
+- Light-mode primary CTAs use the opaque accent with `--text-on-accent`; translucent
+  glass treatment remains reserved for secondary controls.
 - Hero background depth comes from a near-black base, a cobalt ambient wash,
   and a photographic fade; no purple nebula or decorative blob is used in the
   hero.
