@@ -1,128 +1,45 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Download,
-  Hand,
-  createLucideIcon,
-} from "lucide-react";
-import {
-  bookingUrl,
-  facebookUrl,
-  fiverrGigs,
-  fiverrUrl,
-  freelancerUrl,
-  githubUrl,
-  instagramUrl,
-  linkedinUrl,
-  upworkUrl,
-  xUrl,
-} from "@/data/schema";
+import { ArrowRight, Hand } from "lucide-react";
+import { bookingUrl } from "@/data/schema";
 import {
   BLUR_PLACEHOLDER,
-  capabilityMarkers,
   credibilityItems,
   featuredWork,
-  heroProofItems,
   homepageCompactHrefs,
   portraitPreviewImages,
   projects,
   services,
-  technicalDepth,
 } from "@/data/homepage";
+import CompactProject from "@/components/CompactProject";
+import ContactCTA from "@/components/ContactCTA";
+import CredibilityStrip from "@/components/CredibilityStrip";
+import EngineeringProof from "@/components/EngineeringProof";
+import FeaturedProject from "@/components/FeaturedProject";
+import HomeAbout from "@/components/HomeAbout";
+import PrimaryButton from "@/components/PrimaryButton";
+import ProcessTimeline from "@/components/ProcessTimeline";
 import RevealObserver from "@/components/RevealObserver";
-import SiteHeader from "@/components/SiteHeader";
+import SecondaryButton from "@/components/SecondaryButton";
 import SectionContainer from "@/components/SectionContainer";
 import SectionHeading from "@/components/SectionHeading";
-import StatusBadge from "@/components/StatusBadge";
-import PrimaryButton from "@/components/PrimaryButton";
-import SecondaryButton from "@/components/SecondaryButton";
-import SubstackEmbed from "@/components/SubstackEmbed";
-import CredibilityStrip from "@/components/CredibilityStrip";
-import FeaturedProject from "@/components/FeaturedProject";
-import CompactProject from "@/components/CompactProject";
-import TestimonialSpotlight from "@/components/TestimonialSpotlight";
-import ProcessTimeline from "@/components/ProcessTimeline";
-import ContactCTA from "@/components/ContactCTA";
 import SiteFooter from "@/components/SiteFooter";
-
-const GithubIcon = createLucideIcon("Github", [
-  [
-    "path",
-    {
-      key: "github-path",
-      d: "M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22",
-    },
-  ],
-]);
-
-const LinkedinIcon = createLucideIcon("Linkedin", [
-  [
-    "path",
-    {
-      key: "linkedin-main",
-      d: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z",
-    },
-  ],
-  ["rect", { key: "linkedin-posts", width: "4", height: "12", x: "2", y: "9" }],
-  ["circle", { key: "linkedin-dot", cx: "4", cy: "4", r: "2" }],
-]);
-
-const FacebookIcon = createLucideIcon("Facebook", [
-  [
-    "path",
-    {
-      key: "facebook-path",
-      d: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
-    },
-  ],
-]);
-
-const InstagramIcon = createLucideIcon("Instagram", [
-  ["rect", { key: "instagram-frame", width: "20", height: "20", x: "2", y: "2", rx: "5", ry: "5" }],
-  [
-    "path",
-    {
-      key: "instagram-lens",
-      d: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z",
-    },
-  ],
-  ["line", { key: "instagram-dot", x1: "17.5", x2: "17.51", y1: "6.5", y2: "6.5" }],
-]);
-
-const XIcon = createLucideIcon("X", [
-  [
-    "path",
-    {
-      key: "x-path",
-      d: "M18.9 2h3.4l-7.4 8.5L23.6 22h-6.8l-5.3-7-6.1 7H2l7.9-9L1.6 2h7l4.8 6.4L18.9 2Zm-1.2 18h1.9L7.6 3.9h-2L17.7 20Z",
-    },
-  ],
-]);
+import SiteHeader from "@/components/SiteHeader";
+import TestimonialSpotlight from "@/components/TestimonialSpotlight";
 
 export default function HomeContent() {
-  // Homepage shows a curated four: two featured + two compact. The full,
-  // filterable archive lives at /work — the homepage is a focused journey,
-  // not a project database.
   const compactProjects = homepageCompactHrefs
-    .map((href) => projects.find((p) => p.href === href))
-    .filter((p): p is (typeof projects)[number] => Boolean(p));
+    .map((href) => projects.find((project) => project.href === href))
+    .filter((project): project is (typeof projects)[number] => Boolean(project));
 
   return (
     <>
       <SiteHeader />
-
       <main id="main-content">
-        <section
-          aria-label="Hero introduction"
-          className="hero-section flex w-full flex-col items-center px-6"
-        >
-          <div className="hero-content mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
-            <div className="hero-copy flex flex-col items-start text-left lg:col-span-8">
-              <div
-                className="hero-kicker reveal"
-                style={{ transitionDelay: "50ms" }}
-              >
+        <section aria-label="Hero introduction" className="hero-section flex w-full flex-col items-center px-5 sm:px-6">
+          <div className="hero-content mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="hero-copy flex flex-col items-start text-left lg:col-span-7">
+              <div className="hero-kicker reveal" style={{ transitionDelay: "50ms" }}>
                 <span className="hero-kicker-dot" aria-hidden="true" />
                 <span>Hey, I&apos;m Salmen</span>
                 <span className="hero-kicker-icon" aria-hidden="true">
@@ -131,74 +48,43 @@ export default function HomeContent() {
               </div>
 
               <h1 className="hero-title reveal" style={{ transitionDelay: "100ms" }}>
-                <span className="hero-title-line">I build digital products</span>{" "}
-                <span className="hero-title-line">
-                  that <span className="hero-title-accent">automate work</span>,
-                </span>{" "}
-                <span className="hero-title-line">convert users, and scale.</span>
+                I build and improve digital products that <span className="hero-title-accent">save work</span>, convert customers, and stay reliable as they grow.
               </h1>
 
-              <p
-                className="hero-subtitle reveal max-w-2xl text-body-large"
-                style={{ transitionDelay: "200ms" }}
-              >
-                Full-stack developer and automation specialist helping businesses
-                and founders turn ideas into reliable web products, mobile apps,
-                SaaS platforms, and automated workflows.
+              <p className="hero-subtitle reveal text-body-large" style={{ transitionDelay: "180ms" }}>
+                I help founders, agencies, and businesses launch web and mobile products, fix existing systems, and automate repetitive operations, from architecture to production.
               </p>
 
-              <ul
-                className="hero-capabilities reveal flex flex-wrap gap-3"
-                style={{ transitionDelay: "250ms" }}
-                aria-label="Core capabilities"
-              >
-                {capabilityMarkers.map((marker) => (
-                  <li key={marker}>
-                    <span className="hero-capability-dot" aria-hidden="true" />
-                    {marker}
-                  </li>
-                ))}
-              </ul>
-
-              <div
-                className="hero-actions reveal flex w-full flex-col gap-4 sm:w-auto sm:flex-row"
-                style={{ transitionDelay: "300ms" }}
-              >
-                <PrimaryButton href={bookingUrl} className="w-full sm:w-auto">
-                  Start a Project <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              <div className="hero-actions reveal flex w-full flex-col gap-3 sm:w-auto sm:flex-row" style={{ transitionDelay: "240ms" }}>
+                <PrimaryButton href="#contact" className="w-full sm:w-auto">
+                  Tell me about your project <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </PrimaryButton>
-                <SecondaryButton href="#work" className="w-full sm:w-auto">
-                  View Selected Work
-                </SecondaryButton>
+                <SecondaryButton href="#work" className="w-full sm:w-auto">View selected work</SecondaryButton>
               </div>
 
-              <div
-                className="hero-proof reveal"
-                style={{ transitionDelay: "350ms" }}
-                aria-label="Selected experience highlights"
+              <a
+                href={bookingUrl}
+                data-cal-namespace="30min"
+                data-cal-link="salmen-khelifi/30min"
+                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                className="hero-calendar-link reveal"
+                style={{ transitionDelay: "280ms" }}
               >
-                {heroProofItems.map((item, index) => (
-                  <div className="hero-proof-item" key={item.label}>
-                    <span className="hero-proof-value">{item.value}</span>
-                    <span className="hero-proof-label">{item.label}</span>
-                    {index < heroProofItems.length - 1 && (
-                      <span className="hero-proof-divider" aria-hidden="true" />
-                    )}
-                  </div>
-                ))}
-              </div>
+                Prefer a call? Book 30 minutes <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
             </div>
           </div>
 
-          <div className="hero-media reveal" style={{ transitionDelay: "400ms" }}>
+          <div className="hero-media reveal" style={{ transitionDelay: "220ms" }}>
             <Image
               src="/images/salmen-workspace-hero.png"
-              alt="Salmen Khelifi, full-stack developer and automation specialist"
+              alt="Salmen Khelifi working at a laptop in his workspace"
               fill
-              sizes="(max-width: 1119px) min(44rem, calc(100vw - 3rem)), 100vw"
+              sizes="(max-width: 1023px) calc(100vw - 2.5rem), 46vw"
               className="hero-portrait"
               placeholder="blur"
               blurDataURL={BLUR_PLACEHOLDER}
+              priority
             />
             <div className="hero-media-shade" aria-hidden="true" />
             <div className="hero-media-caption">
@@ -208,389 +94,71 @@ export default function HomeContent() {
           </div>
         </section>
 
-      <CredibilityStrip items={credibilityItems} />
+        <CredibilityStrip items={credibilityItems} />
 
-      <section id="work" aria-label="Featured projects" className="py-32 md:py-40">
-        <SectionContainer>
-          <SectionHeading className="mb-16 md:mb-20">
-            Selected Work
-          </SectionHeading>
-
-          <div className="mb-24 md:mb-32 space-y-20 md:space-y-32">
-            {featuredWork.map((item, index) => (
-              <FeaturedProject
-                key={item.title}
-                item={item}
-                imageOnRight={index % 2 === 0}
-                headingLevel="h3"
-              />
-            ))}
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {compactProjects.map((project) => (
-              <CompactProject
-                key={project.title}
-                project={project}
-                isPortraitPreview={portraitPreviewImages.has(project.image)}
-              />
-            ))}
-          </div>
-
-          <div className="mt-16 text-center reveal">
-            <Link
-              href="/work"
-              className="project-link inline-flex min-h-11 items-center text-lg font-bold text-[var(--text-primary)]"
-            >
-              View All Work <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </div>
-        </SectionContainer>
-      </section>
-
-      <section id="technical-depth" aria-label="Technical depth" className="py-32 md:py-40">
-        <SectionContainer>
-          <div className="mb-16 text-center reveal">
-            <SectionHeading className="mb-4">
-              Technical Credibility & Engineering Proof
-            </SectionHeading>
-            <p className="max-w-2xl mx-auto text-body-large text-[var(--text-secondary)]">
-              Owning hard technical decisions: every architecture choice, live migration, and system constraint is backed by verified engineering proof.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {technicalDepth.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.title}
-                  className="modern-card reveal rounded-[var(--radius-xl)] p-8 md:p-10 flex flex-col justify-between"
-                  style={{ transitionDelay: `${index * 100}ms` }}
-                >
-                  <div>
-                    <div className="flex items-center justify-between gap-4 mb-6">
-                      <div className="service-icon flex h-12 w-12 items-center justify-center rounded-[var(--radius-md)]">
-                        <Icon className="h-6 w-6 text-[var(--text-secondary)]" />
-                      </div>
-                      <Link
-                        href={item.href}
-                        className="inline-flex min-h-11 items-center gap-1.5 text-xs font-semibold text-[var(--accent)] hover:underline"
-                      >
-                        {item.projectLabel} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+        <section id="capabilities" aria-label="What I can help you do" className="py-24 md:py-32">
+          <SectionContainer>
+            <div className="mb-12 max-w-3xl reveal md:mb-16">
+              <p className="mb-3 text-caption text-[var(--accent)]">Ways I can help</p>
+              <SectionHeading className="mb-4">What I can help you do</SectionHeading>
+              <p className="text-body-large text-[var(--text-secondary)]">
+                Start with the business outcome. I will shape the product and technical path around what already exists, what is risky, and what needs to ship.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {services.map((service, index) => {
+                const Icon = service.icon;
+                return (
+                  <article key={service.title} className="outcome-card reveal" style={{ transitionDelay: `${index * 80}ms` }}>
+                    <div className="service-icon mb-6 flex h-12 w-12 items-center justify-center rounded-[var(--radius-md)]">
+                      <Icon className="h-6 w-6 text-[var(--accent)]" aria-hidden="true" />
+                    </div>
+                    <h3 className="mb-3 text-h3">{service.title}</h3>
+                    <p className="text-body-regular text-[var(--text-secondary)]">{service.description}</p>
+                    {service.href && (
+                      <Link href={service.href} className="project-link mt-5 inline-flex min-h-11 items-center font-semibold text-[var(--text-primary)]">
+                        Explore automation services <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                       </Link>
-                    </div>
+                    )}
+                  </article>
+                );
+              })}
+            </div>
+          </SectionContainer>
+        </section>
 
-                    <h3 className="mb-6 text-h3 text-[var(--text-primary)]">
-                      {item.title}
-                    </h3>
-
-                    <div className="space-y-4 text-sm text-[var(--text-secondary)]">
-                      <div className="border-l-2 border-[var(--border-muted)] pl-3">
-                        <span className="font-semibold text-[var(--text-tertiary)] block text-caption mb-0.5">
-                          Challenge
-                        </span>
-                        {item.challenge}
-                      </div>
-
-                      <div className="border-l-2 border-[var(--border-muted)] pl-3">
-                        <span className="font-semibold text-[var(--text-tertiary)] block text-caption mb-0.5">
-                          Risk
-                        </span>
-                        {item.risk}
-                      </div>
-
-                      <div className="border-l-2 border-[var(--accent-dim)] pl-3">
-                        <span className="font-semibold text-[var(--text-primary)] block text-caption mb-0.5">
-                          Decision
-                        </span>
-                        {item.decision}
-                      </div>
-
-                      <div className="border-l-2 border-[var(--accent)] pl-3">
-                        <span className="font-semibold text-[var(--accent)] block text-caption mb-0.5">
-                          Verification
-                        </span>
-                        <span className="font-medium text-[var(--text-primary)]">
-                          {item.verification}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between">
-                    <span className="text-xs text-[var(--text-tertiary)] font-mono">
-                      Verified Case Study
-                    </span>
-                    <Link
-                      href={item.href}
-                      className="text-xs font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors inline-flex items-center gap-1"
-                    >
-                      View details <ArrowRight className="h-3 w-3" />
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </SectionContainer>
-      </section>
-
-      <section id="capabilities" aria-label="Capabilities and services" className="py-32 md:py-40">
-        <SectionContainer>
-          <SectionHeading className="mb-20 text-center md:mb-24">
-            Capabilities
-          </SectionHeading>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <div
-                  className="service-card modern-card reveal rounded-[var(--radius-xl)] p-8 md:p-10"
-                  key={service.title}
-                  style={{ transitionDelay: `${index * 100}ms` }}
-                >
-                  <div className="service-icon mb-8 flex h-14 w-14 items-center justify-center rounded-[var(--radius-md)]">
-                    <Icon className="h-7 w-7 text-[var(--text-secondary)]" />
-                  </div>
-                  <h3 className="mb-4 text-h3">{service.title}</h3>
-                  <p className="text-body-regular text-[var(--text-secondary)]">
-                    {service.description}
-                  </p>
-                  {service.href && (
-                    <Link
-                      href={service.href}
-                      className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)]"
-                    >
-                      Explore automation services <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </SectionContainer>
-      </section>
-
-      <TestimonialSpotlight />
-
-      <ProcessTimeline />
-
-      <section id="about" aria-label="About Salmen Khelifi" className="border-t border-[var(--border-subtle)] py-32 md:py-40">
-        <SectionContainer>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            {/* Left / Editorial Sidebar */}
-            <div className="lg:col-span-5 flex flex-col items-start reveal">
-              <div className="glass-panel relative mb-8 h-44 w-44 md:h-52 md:w-52 overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border-bright)] shadow-xl">
-                <Image
-                  src="/images/khelifi-salmen.png"
-                  alt="Salmen Khelifi, Full-Stack Developer & Automation Specialist"
-                  fill
-                  sizes="(max-width: 768px) 176px, 208px"
-                  className="object-cover"
-                  placeholder="blur"
-                  blurDataURL={BLUR_PLACEHOLDER}
-                  priority={false}
-                />
+        <section id="work" aria-label="Featured projects" className="py-24 md:py-32">
+          <SectionContainer>
+            <div className="mb-14 flex flex-col gap-4 md:mb-20 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="mb-3 text-caption text-[var(--accent)]">Selected evidence</p>
+                <SectionHeading className="mb-0">Selected work</SectionHeading>
               </div>
-
-              <div className="mb-6">
-                <StatusBadge>AVAILABLE FOR NEW PROJECTS</StatusBadge>
-              </div>
-
-              <ul className="mb-8 space-y-3 w-full text-sm text-[var(--text-secondary)]">
-                <li className="flex items-center gap-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3.5 py-2.5">
-                  <span className="h-2 w-2 rounded-full bg-[var(--accent)]" aria-hidden="true" />
-                  <span>Solo, full-stack: architecture to deployment</span>
-                </li>
-                <li className="flex items-center gap-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3.5 py-2.5">
-                  <span className="h-2 w-2 rounded-full bg-[var(--accent)]" aria-hidden="true" />
-                  <span>Based in Tunisia, working remote worldwide</span>
-                </li>
-                <li className="flex items-center gap-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3.5 py-2.5">
-                  <span className="h-2 w-2 rounded-full bg-[var(--accent)]" aria-hidden="true" />
-                  <span>Building web, mobile, and SaaS since 2021</span>
-                </li>
-              </ul>
-
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full mb-8">
-                <PrimaryButton
-                  href={bookingUrl}
-                  className="w-full sm:w-auto min-h-11 justify-center"
-                >
-                  Book a Call
-                </PrimaryButton>
-                <Link
-                  href="/resume"
-                  className="inline-flex min-h-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border-active)] bg-[var(--bg-surface)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
-                >
-                  View résumé
-                </Link>
-                <a
-                  href="/salmen-khelifi-cv.pdf"
-                  download
-                  className="inline-flex min-h-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3 py-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                  aria-label="Download CV"
-                >
-                  <Download className="h-4 w-4 mr-1.5" />
-                  CV
-                </a>
-              </div>
-
-              {/* Secondary Social Links */}
-              <div className="pt-6 border-t border-[var(--border-subtle)] w-full">
-                <p className="text-caption text-[var(--text-tertiary)] uppercase tracking-wider mb-3">
-                  Profiles & Channels
-                </p>
-                <div className="flex flex-wrap items-center gap-3">
-                  <a
-                    href={githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="GitHub Profile"
-                    className="inline-flex min-h-11 min-w-11 items-center justify-center p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
-                  >
-                    <GithubIcon className="h-5 w-5" />
-                  </a>
-                  <a
-                    href={linkedinUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="LinkedIn Profile"
-                    className="inline-flex min-h-11 min-w-11 items-center justify-center p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
-                  >
-                    <LinkedinIcon className="h-5 w-5" />
-                  </a>
-                  <a
-                    href={freelancerUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex min-h-11 items-center px-3 py-1.5 rounded-md border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
-                  >
-                    Freelancer.com
-                  </a>
-                  <a
-                    href={upworkUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex min-h-11 items-center px-3 py-1.5 rounded-md border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
-                  >
-                    Upwork
-                  </a>
-                  <a
-                    href={fiverrUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex min-h-11 items-center px-3 py-1.5 rounded-md border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
-                  >
-                    Fiverr
-                  </a>
-                  <a
-                    href={xUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="X Profile"
-                    className="inline-flex min-h-11 min-w-11 items-center justify-center p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
-                  >
-                    <XIcon className="h-5 w-5" />
-                  </a>
-                  <a
-                    href={facebookUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="Facebook Profile"
-                    className="inline-flex min-h-11 min-w-11 items-center justify-center p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
-                  >
-                    <FacebookIcon className="h-5 w-5" />
-                  </a>
-                  <a
-                    href={instagramUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="Instagram Profile"
-                    className="inline-flex min-h-11 min-w-11 items-center justify-center p-2 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-active)] transition-colors"
-                  >
-                    <InstagramIcon className="h-5 w-5" />
-                  </a>
-                </div>
-              </div>
+              <Link href="/work" className="project-link inline-flex min-h-11 items-center font-semibold text-[var(--text-primary)]">
+                View all work <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+              </Link>
             </div>
 
-            {/* Right / Main Editorial Composition */}
-            <div className="lg:col-span-7 flex flex-col justify-start reveal space-y-8">
-              <SectionHeading className="mb-4">About Me</SectionHeading>
-
-              <div className="space-y-6 text-body-large text-[var(--text-secondary)] leading-relaxed">
-                <p className="text-xl font-medium text-[var(--text-primary)] leading-relaxed">
-                  I protect working software. I avoid unnecessary rewrites and focus on changes that improve the product, reduce operational risk, or move the roadmap forward.
-                </p>
-
-                <p>
-                  I can own delivery end to end, from architecture and backend systems to the interface, automation, testing, and deployment.
-                </p>
-
-                <div className="my-6 rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-6 md:p-8">
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--text-tertiary)] mb-3">
-                    Engineering Philosophy & Tooling
-                  </h3>
-                  <p className="text-base text-[var(--text-secondary)] leading-relaxed">
-                    Reliable software is built through clear system boundaries, thorough verification, and pragmatic decisions. I use automation and AI-assisted tooling to accelerate investigation and repetitive implementation. Architecture, review, testing, and final decisions stay deliberate.
-                  </p>
-                </div>
-              </div>
-
-              {/* Fixed-scope entry points */}
-              <div className="pt-6 border-t border-[var(--border-subtle)] w-full">
-                <p className="text-caption text-[var(--text-tertiary)] uppercase tracking-wider mb-3">
-                  Hire me for a fixed scope
-                </p>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-                  {fiverrGigs.map((gig) => (
-                    <li key={gig.url}>
-                      <a
-                        href={gig.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group flex items-start gap-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3.5 py-2.5 hover:border-[var(--accent)] transition-colors h-full"
-                      >
-                        <ArrowRight
-                          className="h-4 w-4 mt-0.5 shrink-0 text-[var(--text-tertiary)] group-hover:text-[var(--accent)] transition-colors"
-                          aria-hidden="true"
-                        />
-                        <span>
-                          <span className="block text-sm font-medium text-[var(--text-primary)]">
-                            {gig.title}
-                          </span>
-                          <span className="block text-xs text-[var(--text-secondary)]">
-                            {gig.blurb}
-                          </span>
-                        </span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href={fiverrUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
-                >
-                  See all services on Fiverr
-                </a>
-              </div>
-
-              {/* Email capture */}
-              <div className="pt-6 border-t border-[var(--border-subtle)] w-full">
-                <SubstackEmbed />
-              </div>
+            <div className="mb-16 space-y-16 md:mb-20 md:space-y-24">
+              {featuredWork.map((item, index) => (
+                <FeaturedProject key={item.title} item={item} imageOnRight={index % 2 === 0} headingLevel="h3" />
+              ))}
             </div>
-          </div>
-        </SectionContainer>
-      </section>
 
-      <ContactCTA />
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              {compactProjects.map((project) => (
+                <CompactProject key={project.title} project={project} isPortraitPreview={portraitPreviewImages.has(project.image)} />
+              ))}
+            </div>
+          </SectionContainer>
+        </section>
+
+        <TestimonialSpotlight />
+        <EngineeringProof />
+        <ProcessTimeline />
+        <HomeAbout />
+        <ContactCTA />
       </main>
-
       <SiteFooter />
       <RevealObserver />
     </>

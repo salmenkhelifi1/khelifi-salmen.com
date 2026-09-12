@@ -107,27 +107,13 @@ export interface ProcessStep {
   deliverable: string;
 }
 
-export const capabilityMarkers = [
-  "Product Engineering",
-  "Automation & Integrations",
-  "High-Performance Experiences",
-] as const;
-
-export const heroProofItems = [
-  { value: "5+", label: "Years building software" },
-  { value: "3+", label: "Years freelance delivery" },
-  { value: "Remote", label: "Worldwide" },
-] as const;
-
 // Absolute home anchors so nav works from every route (/work, /resume, /projects/*),
 // plus real route links (résumé) for the recruiter path.
 export const navLinks: NavLink[] = [
   { href: "/#work", label: "Work" },
-  { href: "/#capabilities", label: "Capabilities" },
+  { href: "/#capabilities", label: "What I Do" },
   { href: "/#process", label: "Process" },
   { href: "/#about", label: "About" },
-  { href: "/resume", label: "Resume" },
-  { href: "/#contact", label: "Contact" },
   { href: "/blog", label: "Blog" },
 ];
 
@@ -446,50 +432,50 @@ export const portraitPreviewImages: Set<string> = new Set([
 export const services: ServiceItem[] = [
   {
     icon: Network,
-    title: "Product Engineering",
+    title: "Build & launch",
     description:
-      "Full-stack SaaS products and multi-tenant platforms, built end to end: architecture, authentication, payments, databases, dashboards, and mobile and web delivery. React, Next.js, Flutter, Node, Express, PostgreSQL.",
-  },
-  {
-    icon: Workflow,
-    title: "Automation & Integrations",
-    description:
-      "n8n and AI-assisted workflows that remove repetitive operations, connected to CRMs, messaging, notifications, data sync, and third-party APIs, with reliable monitoring.",
-    href: "/n8n-automation-developer",
+      "Turn a validated idea into a dependable web, mobile, or SaaS product, from architecture and interface through testing and production.",
   },
   {
     icon: Zap,
-    title: "High-Performance Web Experiences",
+    title: "Fix & improve",
     description:
-      "Conversion-focused, accessible, SEO-ready websites and storefronts with strong performance and clear interaction design.",
+      "Stabilize an existing system, remove delivery bottlenecks, improve performance, and ship focused changes without an unnecessary rewrite.",
+  },
+  {
+    icon: Workflow,
+    title: "Automate & integrate",
+    description:
+      "Connect tools, data, messaging, and AI-assisted workflows so repetitive operations run reliably with clear monitoring.",
+    href: "/n8n-automation-developer",
   },
 ];
 
 export const processSteps: ProcessStep[] = [
   {
     number: "01",
-    title: "Discover",
+    title: "Understand",
     concern: "Will you understand the real problem?",
     activity: "Clarify users, workflows, business constraints, and success criteria.",
     deliverable: "A focused product brief and prioritized scope.",
   },
   {
     number: "02",
-    title: "Architect",
+    title: "Plan",
     concern: "Will the system stay reliable as it grows?",
     activity: "Define data, services, integrations, security, and operational risks.",
     deliverable: "A practical architecture and delivery plan.",
   },
   {
     number: "03",
-    title: "Build",
+    title: "Build & validate",
     concern: "Will I see progress and get working software?",
     activity: "Implement in reviewable stages with regular validation.",
     deliverable: "Tested increments and visible progress.",
   },
   {
     number: "04",
-    title: "Launch and Improve",
+    title: "Launch & improve",
     concern: "Will it stay stable after release?",
     activity: "Validate production behavior, monitor risks, and improve from real use.",
     deliverable: "A launch checklist, production verification, and an improvement backlog.",

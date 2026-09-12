@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { bookingUrl } from "@/data/schema";
+import { bookingUrl, fiverrUrl } from "@/data/schema";
 import { footerSocials, navLinks } from "@/data/homepage";
 import SectionContainer from "./SectionContainer";
 
@@ -32,6 +32,9 @@ export default function SiteFooter() {
                 {link.label}
               </a>
             ))}
+            <Link href="/resume" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
+              Résumé
+            </Link>
             <a
               href={bookingUrl}
               data-cal-namespace="30min"
@@ -57,6 +60,9 @@ export default function SiteFooter() {
                 {link.label}
               </a>
             ))}
+            <a href={fiverrUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
+              Fixed-scope services
+            </a>
           </div>
         </nav>
       </SectionContainer>

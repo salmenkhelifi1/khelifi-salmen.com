@@ -1,152 +1,60 @@
-import { ArrowRight, Award, Clock, Star } from "lucide-react";
+import { ArrowRight, ChevronDown, Star } from "lucide-react";
 import { freelancerUrl } from "@/data/schema";
 import { testimonials } from "@/data/testimonials";
 import SectionContainer from "./SectionContainer";
-import SectionHeading from "./SectionHeading";
 
 export default function TestimonialSpotlight() {
-  const featured = testimonials[0]; // Austin L.
-  const supporting = [testimonials[1], testimonials[2]]; // Robert D. & Jørgen G.
+  const featured = testimonials[0];
+  const supporting = testimonials.slice(1, 3);
 
   return (
-    <section id="feedback" className="py-32 md:py-40">
+    <section id="feedback" aria-labelledby="feedback-heading" className="py-24 md:py-32">
       <SectionContainer>
-        <div className="mb-12 flex flex-col gap-4 md:mb-16 md:flex-row md:items-end md:justify-between">
-          <SectionHeading className="mb-0">Client Feedback</SectionHeading>
-          <a
-            href={freelancerUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="reveal inline-flex min-h-11 items-center text-body-regular font-semibold text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
-          >
-            4.9 / 5 across 8 reviews on Freelancer.com
-            <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-          </a>
-        </div>
-
-        {/* Verified Stats Row */}
-        <div className="glass-panel reveal mb-12 grid grid-cols-1 gap-6 rounded-[var(--radius-xl)] p-6 sm:grid-cols-3 md:p-8">
-          <a
-            href={freelancerUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="group flex flex-col items-center justify-center text-center transition-colors"
-          >
-            <div className="mb-2 flex items-center gap-1.5 text-[var(--accent)]">
-              <Star className="h-5 w-5 fill-current" aria-hidden="true" />
-              <span className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[var(--accent)]">
-                4.9 / 5
-              </span>
-            </div>
-            <span className="text-caption text-[var(--text-secondary)]">
-              Across 8 reviews on Freelancer.com
-            </span>
-          </a>
-          <div className="flex flex-col items-center justify-center text-center">
-            <div className="mb-2 flex items-center gap-1.5 text-[var(--accent)]">
-              <Clock className="h-5 w-5" aria-hidden="true" />
-              <span className="text-lg font-bold text-[var(--text-primary)]">
-                5+ Years
-              </span>
-            </div>
-            <span className="text-caption text-[var(--text-secondary)]">
-              Engineering Experience
-            </span>
-          </div>
-          <div className="flex flex-col items-center justify-center text-center">
-            <div className="mb-2 flex items-center gap-1.5 text-[var(--accent)]">
-              <Award className="h-5 w-5" aria-hidden="true" />
-              <span className="text-lg font-bold text-[var(--text-primary)]">
-                3+ Years
-              </span>
-            </div>
-            <span className="text-caption text-[var(--text-secondary)]">
-              Freelance Delivery
-            </span>
-          </div>
-        </div>
-
-        {/* Featured Testimonial */}
-        <article className="glass-panel reveal mb-8 rounded-[var(--radius-xl)] p-8 md:p-12">
-          <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-1 text-[var(--accent)]" aria-label="5 out of 5 stars">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-5 w-5 fill-current" aria-hidden="true" />
-              ))}
-              <span className="ml-2 text-sm font-semibold text-[var(--text-secondary)]">
-                {featured.rating.toFixed(1)}
-              </span>
-            </div>
-            <span className="inline-flex rounded-full border border-[var(--glass-border-bright)] bg-[var(--accent-dim)] px-3.5 py-1 text-xs font-semibold text-[var(--text-primary)]">
-              Featured Review
-            </span>
-          </div>
-
-          <blockquote className="mb-8 text-xl font-medium leading-relaxed text-[var(--text-primary)] md:text-2xl md:leading-relaxed">
-            &ldquo;{featured.quote}&rdquo;
-          </blockquote>
-
-          <footer className="flex flex-col justify-between gap-2 border-t border-[var(--border-subtle)] pt-6 sm:flex-row sm:items-center">
-            <div>
-              <p className="font-bold text-[var(--text-primary)] text-lg">{featured.author}</p>
-              <p className="text-sm text-[var(--text-secondary)]">{featured.projectTitle}</p>
-            </div>
-            <a
-              href={freelancerUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-11 items-center self-start sm:self-auto rounded-full border border-[var(--border-muted)] px-3 py-1 text-xs font-semibold text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
-            >
-              via Freelancer.com
-            </a>
-          </footer>
-        </article>
-
-        {/* 2 Supporting Excerpts */}
-        <div className="grid gap-6 md:grid-cols-2">
-          {supporting.map((item, index) => (
-            <article
-              key={`${item.author}-${item.projectTitle}`}
-              className="modern-card reveal flex flex-col justify-between rounded-[var(--radius-xl)] p-6 md:p-8"
-              style={{ transitionDelay: `${(index + 1) * 100}ms` }}
-            >
-              <div>
-                <div className="mb-4 flex items-center gap-1 text-[var(--accent)]" aria-label={`${item.rating} out of 5 stars`}>
-                  {Array.from({ length: 5 }).map((_, starIndex) => (
-                    <Star
-                      key={starIndex}
-                      className="h-4 w-4 fill-current"
-                      aria-hidden="true"
-                    />
-                  ))}
-                  <span className="ml-2 text-sm font-semibold text-[var(--text-secondary)]">
-                    {item.rating.toFixed(1)}
-                  </span>
-                </div>
-                <blockquote className="mb-6 text-body-regular text-[var(--text-primary)]">
-                  &ldquo;{item.quote}&rdquo;
-                </blockquote>
+        <article className="testimonial-feature reveal">
+          <div className="grid gap-8 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-4">
+              <p className="mb-4 text-caption text-[var(--accent)]">Client perspective</p>
+              <h2 id="feedback-heading" className="mb-4 text-h2">Trusted to take ownership</h2>
+              <div className="flex items-center gap-1 text-[var(--accent)]" aria-label={`${featured.rating} out of 5 stars`}>
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <Star key={index} className="h-5 w-5 fill-current" aria-hidden="true" />
+                ))}
+                <span className="ml-2 font-semibold text-[var(--text-secondary)]">{featured.rating.toFixed(1)}</span>
               </div>
+            </div>
 
-              <footer className="border-t border-[var(--border-subtle)] pt-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-semibold text-[var(--text-primary)]">{item.author}</p>
-                    <p className="text-sm text-[var(--text-secondary)]">{item.projectTitle}</p>
-                  </div>
-                  <a
-                    href={freelancerUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex min-h-11 items-center rounded-full border border-[var(--border-muted)] px-2.5 py-0.5 text-xs font-semibold text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
-                  >
-                    Freelancer.com
-                  </a>
-                </div>
+            <div className="lg:col-span-8">
+              <blockquote className="text-xl font-medium leading-relaxed text-[var(--text-primary)] md:text-2xl">
+                &ldquo;{featured.quote}&rdquo;
+              </blockquote>
+              <footer className="mt-7 border-t border-[var(--border-subtle)] pt-5">
+                <p className="font-bold text-[var(--text-primary)]">{featured.author}</p>
+                <p className="text-sm text-[var(--text-secondary)]">{featured.projectTitle}</p>
               </footer>
-            </article>
-          ))}
-        </div>
+            </div>
+          </div>
+
+          <details className="supporting-reviews mt-8">
+            <summary>
+              Read two more verified client reviews
+              <ChevronDown className="disclosure-chevron h-4 w-4" aria-hidden="true" />
+            </summary>
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              {supporting.map((item) => (
+                <blockquote key={`${item.author}-${item.projectTitle}`} className="supporting-review">
+                  <p>&ldquo;{item.quote}&rdquo;</p>
+                  <footer className="mt-4 text-sm text-[var(--text-secondary)]">
+                    <strong className="text-[var(--text-primary)]">{item.author}</strong> · {item.projectTitle}
+                  </footer>
+                </blockquote>
+              ))}
+            </div>
+          </details>
+
+          <a href={freelancerUrl} target="_blank" rel="noreferrer" className="project-link mt-6 inline-flex min-h-11 items-center font-semibold text-[var(--text-secondary)]">
+            4.9 / 5 across 8 reviews on Freelancer.com <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+          </a>
+        </article>
       </SectionContainer>
     </section>
   );

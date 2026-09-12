@@ -7,7 +7,7 @@ interface CredibilityStripProps {
 
 export default function CredibilityStrip({ items }: CredibilityStripProps) {
   return (
-    <div className="credibility-strip py-8">
+    <aside aria-label="Credibility highlights" className="credibility-strip py-8">
       <SectionContainer className="credibility-items flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
         {items.map((item) => {
           const Icon = item.icon;
@@ -24,6 +24,6 @@ export default function CredibilityStrip({ items }: CredibilityStripProps) {
           );
         })}
       </SectionContainer>
-    </div>
+    </aside>
   );
 }

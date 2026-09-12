@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { ArrowLeft, Menu, X, createLucideIcon } from "lucide-react";
-import { bookingUrl, githubUrl } from "@/data/schema";
+import { githubUrl } from "@/data/schema";
 import { navLinks } from "@/data/homepage";
 import ThemeSwitcher from "@/components/theme/theme-switcher";
 
@@ -43,6 +43,18 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
         if (e.key === "Escape") {
           setIsMenuOpen(false);
           buttonRef.current?.focus();
+        }
+
+        if (e.key === "Tab" && focusableElements?.length) {
+          const first = focusableElements[0];
+          const last = focusableElements[focusableElements.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
         }
       };
 
@@ -97,15 +109,9 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
                   <Github className="h-4 w-4" aria-hidden="true" />
                 </a>
                 <ThemeSwitcher />
-                <a
-                  href={bookingUrl}
-                  data-cal-namespace="30min"
-                  data-cal-link="salmen-khelifi/30min"
-                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-                  className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-6 py-2.5 text-sm font-bold text-[var(--text-primary)] transition-colors hover:border-[var(--border-active)] hover:bg-[var(--glass-bg-elevated)] cursor-pointer"
-                >
-                  Let&apos;s Talk
-                </a>
+                <Link href="/#contact" className="cta-button cta-primary cta-small">
+                  Tell me about your project
+                </Link>
               </div>
               <button
                 ref={buttonRef}
@@ -168,16 +174,13 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
                   <ThemeSwitcher />
                 </div>
               </div>
-              <a
-                href={bookingUrl}
-                data-cal-namespace="30min"
-                data-cal-link="salmen-khelifi/30min"
-                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+              <Link
+                href="/#contact"
                 onClick={() => setIsMenuOpen(false)}
-                className="cta-button cta-primary mt-3 w-full cursor-pointer"
+                className="cta-button cta-primary mt-3 w-full"
               >
-                Book a call
-              </a>
+                Tell me about your project
+              </Link>
             </div>
           </div>
         )}
