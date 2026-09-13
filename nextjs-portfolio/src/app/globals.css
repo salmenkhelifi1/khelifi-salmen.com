@@ -422,6 +422,11 @@ html.theme-resolving .bg-blooms > span {
   background: var(--glass-bg-elevated);
 }
 
+.mobile-menu,
+.mobile-menu:hover {
+  background: color-mix(in srgb, var(--bg-surface-elevated) 90%, transparent);
+}
+
 .modern-card {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));

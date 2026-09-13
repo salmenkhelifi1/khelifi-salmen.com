@@ -8,6 +8,7 @@ import {
   getStoredPreference,
   storePreference,
   getSystemTheme,
+  resolveTheme,
 } from "@/lib/theme";
 
 interface ThemeContextValue {
@@ -100,7 +101,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     getSystemThemeServerSnapshot
   );
 
-  const resolvedTheme: ResolvedTheme = preference === "system" ? systemTheme : preference;
+  const resolvedTheme: ResolvedTheme = resolveTheme(preference, systemTheme);
 
   // Keep the DOM (data-theme, color-scheme, dynamic meta theme-color) in
   // sync with the resolved theme. The pre-hydration script in layout.tsx

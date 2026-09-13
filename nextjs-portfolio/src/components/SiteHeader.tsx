@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { ArrowLeft, Menu, X, createLucideIcon } from "lucide-react";
 import { githubUrl } from "@/data/schema";
 import { navLinks } from "@/data/homepage";
+import { FORCE_DARK_MODE } from "@/lib/theme";
 import ThemeSwitcher from "@/components/theme/theme-switcher";
 
 const Github = createLucideIcon("Github", [
@@ -79,7 +80,7 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
 
           {backHref ? (
             <div className="flex items-center gap-3">
-              <ThemeSwitcher />
+              {!FORCE_DARK_MODE && <ThemeSwitcher />}
               <Link
                 href={backHref}
                 className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
@@ -111,7 +112,7 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
                 >
                   <Github className="h-4 w-4" aria-hidden="true" />
                 </a>
-                <ThemeSwitcher />
+                {!FORCE_DARK_MODE && <ThemeSwitcher />}
                 <a href={contactHref} className="cta-button cta-primary cta-small">
                   Tell me about your project
                 </a>
@@ -143,7 +144,7 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
             aria-modal="true"
             aria-label="Mobile navigation"
             hidden={!isMenuOpen}
-            className={`absolute left-0 right-0 top-[calc(100%+0.5rem)] glass-panel px-6 backdrop-blur-xl transition-all duration-[180ms] lg:hidden ${
+            className={`mobile-menu absolute left-0 right-0 top-[calc(100%+0.5rem)] glass-panel px-6 backdrop-blur-xl transition-all duration-[180ms] lg:hidden ${
               isMenuOpen
                 ? "pointer-events-auto translate-y-0 opacity-100"
                 : "pointer-events-none -translate-y-2 opacity-0"
@@ -169,14 +170,16 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
               >
                 GitHub
               </a>
-              <div className="flex flex-col gap-2 py-3 border-b border-[var(--border-subtle)]">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[var(--text-secondary)]">
-                  Theme
-                </span>
-                <div>
-                  <ThemeSwitcher />
+              {!FORCE_DARK_MODE && (
+                <div className="flex flex-col gap-2 py-3 border-b border-[var(--border-subtle)]">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[var(--text-secondary)]">
+                    Theme
+                  </span>
+                  <div>
+                    <ThemeSwitcher />
+                  </div>
                 </div>
-              </div>
+              )}
               <a
                 href={contactHref}
                 onClick={() => setIsMenuOpen(false)}

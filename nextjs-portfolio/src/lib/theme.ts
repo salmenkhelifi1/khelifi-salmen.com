@@ -17,6 +17,8 @@ export type ResolvedTheme = "light" | "dark";
 export const THEME_STORAGE_KEY = "portfolio-theme";
 export const THEME_PREFERENCES: ThemePreference[] = ["light", "dark", "system"];
 
+export const FORCE_DARK_MODE = true;
+
 export function isThemePreference(value: unknown): value is ThemePreference {
   return value === "light" || value === "dark" || value === "system";
 }
@@ -45,8 +47,12 @@ export function getSystemTheme(): ResolvedTheme {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
-export function resolveTheme(preference: ThemePreference): ResolvedTheme {
-  return preference === "system" ? getSystemTheme() : preference;
+export function resolveTheme(
+  preference: ThemePreference,
+  systemTheme = getSystemTheme()
+): ResolvedTheme {
+  if (FORCE_DARK_MODE) return "dark";
+  return preference === "system" ? systemTheme : preference;
 }
 
 /**
@@ -59,4 +65,4 @@ export function resolveTheme(preference: ThemePreference): ResolvedTheme {
  */
 export const THEME_INIT_SCRIPT = `(function(){try{var k=${JSON.stringify(
   THEME_STORAGE_KEY
-)};var s=localStorage.getItem(k);var p=(s==="light"||s==="dark"||s==="system")?s:"system";var r=p==="system"?(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"):p;var d=document.documentElement;d.classList.add("theme-resolving");d.setAttribute("data-theme",r);d.style.colorScheme=r;requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.remove("theme-resolving")})})}catch(e){}})();`;
+)};var s=localStorage.getItem(k);var p=(s==="light"||s==="dark"||s==="system")?s:"system";var r=${FORCE_DARK_MODE ? '"dark"' : 'p==="system"?(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"):p'};var d=document.documentElement;d.classList.add("theme-resolving");d.setAttribute("data-theme",r);d.style.colorScheme=r;requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.remove("theme-resolving")})})}catch(e){}})();`;
