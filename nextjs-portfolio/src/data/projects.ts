@@ -90,7 +90,7 @@ export const projects: Project[] = [
       hoverText: "hover:text-cyan-400",
       button: "bg-cyan-600 hover:bg-cyan-500",
     },
-    heroImage: "/images/synclead/portfolio-media/png/dashboard-overview.png",
+    heroImage: "/images/synclead/case-study/synclead-01-landing.png",
     galleryAspect: "desktop",
     overview: {
       what: "A role-aware sales operations workspace that connects CRM, email and WhatsApp campaigns, quotes and PDFs, calendars, unified messaging, AI assistance, catalog management, public landing pages, agent invitations, and Odoo synchronization.",
@@ -133,32 +133,36 @@ export const projects: Project[] = [
     ],
     gallery: [
       {
-        src: "/images/synclead/portfolio-media/png/dashboard-overview.png",
-        alt: "SyncLead sales dashboard with campaign, quote, contact, and activity summaries",
+        src: "/images/synclead/case-study/synclead-03-dashboard.png",
+        alt: "SyncLead dashboard showing contacts, quotes, campaigns, and upcoming events",
       },
       {
-        src: "/images/synclead/portfolio-media/png/unified-messaging.png",
+        src: "/images/synclead/case-study/synclead-08-messaging.png",
         alt: "SyncLead unified messaging workspace with conversation and customer context",
       },
       {
-        src: "/images/synclead/portfolio-media/png/ai-assistant.png",
+        src: "/images/synclead/case-study/synclead-09-ai-assistant.png",
         alt: "SyncLead AI assistant workspace for sales and content tasks",
       },
       {
-        src: "/images/synclead/portfolio-media/png/campaign-management.png",
+        src: "/images/synclead/case-study/synclead-05-campaigns-empty.png",
         alt: "SyncLead email and WhatsApp campaign management screen",
       },
       {
-        src: "/images/synclead/portfolio-media/png/quote-detail.png",
+        src: "/images/synclead/case-study/synclead-07-quotes.png",
         alt: "SyncLead quote detail screen with line items, totals, and status actions",
       },
       {
-        src: "/images/synclead/portfolio-media/png/shared-calendar.png",
+        src: "/images/synclead/case-study/synclead-06-calendar.png",
         alt: "SyncLead shared calendar with scheduled sales follow-ups",
       },
       {
-        src: "/images/synclead/portfolio-media/png/public-landing-page.png",
-        alt: "Public landing page created and managed through SyncLead",
+        src: "/images/synclead/case-study/synclead-04-landing-editor.png",
+        alt: "SyncLead landing-page editor with editable public page sections",
+      },
+      {
+        src: "/images/synclead/case-study/synclead-10-catalogue.png",
+        alt: "SyncLead service catalogue showing categories, prices, promotions, cycles, and status",
       },
     ],
     techStack: {

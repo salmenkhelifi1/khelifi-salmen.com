@@ -82,41 +82,46 @@ const architecture = [
   },
 ];
 
-const portfolioMedia = [
+const caseStudyMedia = [
   {
     title: "SyncLead dashboard overview",
-    src: "/images/synclead/portfolio-media/mp4/dashboard-overview.mp4",
-    poster: "/images/synclead/portfolio-media/png/dashboard-overview.png",
+    src: "/images/synclead/case-study/synclead-03-dashboard.png",
+    alt: "SyncLead dashboard showing contacts, quotes, campaigns, and upcoming events",
   },
   {
     title: "SyncLead unified messaging workspace with conversation and customer context",
-    src: "/images/synclead/portfolio-media/mp4/unified-messaging.mp4",
-    poster: "/images/synclead/portfolio-media/png/unified-messaging.png",
+    src: "/images/synclead/case-study/synclead-08-messaging.png",
+    alt: "SyncLead messaging workspace with a lead conversation and customer context",
   },
   {
     title: "SyncLead AI assistant workspace for sales and content tasks",
-    src: "/images/synclead/portfolio-media/mp4/ai-assistant.mp4",
-    poster: "/images/synclead/portfolio-media/png/ai-assistant.png",
+    src: "/images/synclead/case-study/synclead-09-ai-assistant.png",
+    alt: "SyncLead AI assistant workspace for sales and content tasks",
   },
   {
     title: "SyncLead email and WhatsApp campaign management screen",
-    src: "/images/synclead/portfolio-media/mp4/campaign-management.mp4",
-    poster: "/images/synclead/portfolio-media/png/campaign-management.png",
+    src: "/images/synclead/case-study/synclead-05-campaigns-empty.png",
+    alt: "SyncLead campaigns screen for email and WhatsApp campaign creation",
   },
   {
     title: "SyncLead quote detail screen with line items, totals, and status actions",
-    src: "/images/synclead/portfolio-media/mp4/quote-detail.mp4",
-    poster: "/images/synclead/portfolio-media/png/quote-detail.png",
+    src: "/images/synclead/case-study/synclead-07-quotes.png",
+    alt: "SyncLead quote management board with commercial proposal stages",
   },
   {
     title: "SyncLead shared calendar with scheduled sales follow-ups",
-    src: "/images/synclead/portfolio-media/mp4/shared-calendar.mp4",
-    poster: "/images/synclead/portfolio-media/png/shared-calendar.png",
+    src: "/images/synclead/case-study/synclead-06-calendar.png",
+    alt: "SyncLead calendar showing day, week, and month scheduling controls",
   },
   {
-    title: "Public landing page created and managed through SyncLead",
-    src: "/images/synclead/portfolio-media/mp4/public-landing-page.mp4",
-    poster: "/images/synclead/portfolio-media/png/public-landing-page.png",
+    title: "SyncLead landing-page editor",
+    src: "/images/synclead/case-study/synclead-04-landing-editor.png",
+    alt: "SyncLead landing-page editor with editable public page sections",
+  },
+  {
+    title: "SyncLead service catalogue",
+    src: "/images/synclead/case-study/synclead-10-catalogue.png",
+    alt: "SyncLead service catalogue showing categories, prices, promotions, cycles, and status",
   },
 ] as const;
 
@@ -210,12 +215,13 @@ export default function SyncLeadCaseStudy({ project }: { project: Project }) {
 
               <div className="relative mt-10 aspect-video overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border-bright)] bg-black shadow-2xl">
                 <Image
-                  src="/images/synclead/portfolio-media/png/dashboard-overview.png"
-                  alt="SyncLead sales dashboard with campaign, quote, contact, and activity summaries"
-                  fill
+                  src="/images/synclead/case-study/synclead-01-landing.png"
+                  alt="SyncLead public landing page showing the AI-powered lead management product"
+                  width={1440}
+                  height={827}
                   priority
                   sizes="(max-width: 1024px) 95vw, 900px"
-                  className="object-cover object-top"
+                  className="h-auto w-full object-cover object-top"
                 />
               </div>
             </section>
@@ -293,29 +299,30 @@ export default function SyncLeadCaseStudy({ project }: { project: Project }) {
             <CaseSection id="gallery" eyebrow="Selected product views" title="Visual gallery">
               <figure className="modern-card overflow-hidden rounded-[var(--radius-xl)]">
                 <Image
-                  src="/images/synclead/full-project-walkthrough.gif"
-                  alt="Animated SyncLead walkthrough showing the dashboard, messaging, AI assistant, campaigns, quotes, calendar, and public landing page"
+                  src="/images/synclead/case-study/synclead-03-dashboard.png"
+                  alt="SyncLead dashboard showing contacts, quotes, campaigns, and upcoming events"
                   width={1280}
                   height={720}
-                  unoptimized
-                  className="aspect-video w-full bg-black object-cover"
+                  loading="lazy"
+                  sizes="(max-width: 1024px) 95vw, 900px"
+                  className="h-auto w-full bg-white object-cover object-top"
                 />
                 <figcaption className="p-4 text-sm text-[var(--text-secondary)]">
-                  Full project walkthrough across seven current product views
+                  Current dashboard screenshot from the verified SyncLead demo set
                 </figcaption>
               </figure>
-              <h3 className="mt-10 text-h3">Selected product walkthroughs</h3>
+              <h3 className="mt-10 text-h3">Selected product screenshots</h3>
               <div className="mt-6 grid gap-6 md:grid-cols-2">
-                {portfolioMedia.map((media) => (
+                {caseStudyMedia.slice(1).map((media) => (
                   <figure key={media.src} className="modern-card overflow-hidden rounded-[var(--radius-xl)]">
-                    <video
+                    <Image
                       src={media.src}
-                      poster={media.poster}
-                      controls
-                      preload="metadata"
-                      playsInline
-                      className="aspect-video w-full bg-black object-cover"
-                      aria-label={media.title}
+                      alt={media.alt}
+                      width={1280}
+                      height={720}
+                      loading="lazy"
+                      sizes="(max-width: 1024px) 95vw, 600px"
+                      className="h-auto w-full bg-white object-cover object-top"
                     />
                     <figcaption className="p-4 text-sm text-[var(--text-secondary)]">
                       {media.title}
