@@ -8,6 +8,7 @@ export type ProjectAccent = {
 export type ProjectFeature = {
   title: string;
   description: string;
+  media?: string;
 };
 
 export type ProjectChallenge = {
@@ -53,6 +54,7 @@ export type Project = {
   links: {
     github?: string;
     live?: string;
+    liveLabel?: string;
     demo?: string;
   };
   /**
@@ -967,82 +969,103 @@ export const projects: Project[] = [
     slug: "noxivo",
     title: "Noxivo",
     tagline:
-      "A WhatsApp-first automation SaaS for agencies with a public waitlist, protected agency dashboard, developer docs, and a Fastify workflow engine.",
+      "A multi-tenant operating platform for agencies running WhatsApp conversations, automation, and integrations across client workspaces from one governed system.",
     category: "WhatsApp Automation SaaS",
     accent: {
       text: "text-green-400",
       hoverText: "hover:text-green-400",
       button: "bg-green-600 hover:bg-green-500",
     },
-    heroImage: "/images/noxivo/noxivo-01.png",
+    heroImage: "/images/noxivo/case-study/02-main-dashboard.png",
     galleryAspect: "desktop",
     overview: {
-      what: "A multi-tenant platform for agencies to manage tenant workspaces, WhatsApp sessions, team inbox operations, automation workflows, public API access, and developer documentation.",
+      what: "A WhatsApp-first multi-tenant platform for agencies to manage client workspaces, team conversations, automation workflows, developer access, and integrations from one governed operating layer.",
       problem:
-        "Agencies need one operating layer for multiple client WhatsApp workspaces instead of separate dashboards, scattered automations, and one-off session infrastructure per client.",
+        "Agencies managing multiple clients need one operational system where conversations, automation, team access, credentials, and integrations remain manageable without collapsing client boundaries into one shared account.",
       audience:
-        "Agency owners, platform operators, client workspace admins, and developers building against tenant-scoped WhatsApp automation APIs.",
+        "Agency owners, platform operators, client workspace administrators, support agents, and developers building against tenant-scoped WhatsApp automation APIs.",
     },
     features: [
       {
-        title: "Public Waitlist Funnel",
+        title: "Agency workspace operations",
         description:
-          "The public site presents an early-access waitlist with Netlify form handling, consent links, theme switching, cookie consent, and a contact modal.",
+          "One agency context brings client workspaces, service state, activity, settings, analytics, and operational controls into a shared dashboard.",
+        media: "/images/noxivo/case-study/02-main-dashboard.png",
       },
       {
-        title: "Agency And Tenant Dashboard",
+        title: "Tenant-scoped team inbox",
         description:
-          "The protected Next.js dashboard includes agency context, tenant workspaces, team access, settings, billing, catalog, conversations, inbox, workflows, analytics, and admin routes.",
+          "Conversation and message state, assignments, customer context, unread state, and team access stay scoped to the active tenant workspace.",
       },
       {
-        title: "WhatsApp-First Team Inbox",
+        title: "Compiled workflow engine",
         description:
-          "Dashboard and engine code support WhatsApp conversation management, CRM context, saved replies, inbox rules, macros, summaries, media handling, assignment, and handoff workflows.",
+          "A visual workflow graph is validated and compiled into a DAG before queue-backed workers execute actions, conditions, delays, and continuations.",
       },
       {
-        title: "Workflow Engine",
+        title: "Developer platform",
         description:
-          "A Fastify service runs DAG-style automation, queues delayed work with BullMQ, publishes workflow events, and shares contracts with the dashboard through Zod packages.",
+          "Tenant-scoped API access, rate limits, webhooks, SDK package surfaces, and n8n-oriented documentation extend the product beyond the dashboard.",
+        media: "/images/noxivo/case-study/15-api-management.png",
       },
       {
-        title: "Public Developer API",
+        title: "Platform → Agency → Tenant access",
         description:
-          "Docusaurus docs cover tenant-scoped public API use, WhatsApp messaging, contacts, webhooks, rate limits, SDK guides, and n8n integration paths.",
+          "Memberships, request and session context, service queries, worker payloads, scoped models, credentials, conversations, workflows, and sessions carry tenant boundaries forward.",
+        media: "/images/noxivo/case-study/04-tenant-workspaces.png",
       },
       {
-        title: "Multi-Tier Access Model",
+        title: "Operational control plane",
         description:
-          "The repo documents and implements a Platform -> Agency -> Tenant model with membership roles, tenant scopes, custom roles, and protected admin surfaces.",
+          "Analytics, integration setup, team management, settings, and API administration give operators a current view of system activity and configuration.",
+        media: "/images/noxivo/case-study/12-analytics.png",
       },
     ],
     gallery: [
       {
-        src: "/images/noxivo/noxivo-01.png",
-        alt: "Noxivo public waitlist landing page",
+        src: "/images/noxivo/case-study/02-main-dashboard.png",
+        alt: "Noxivo workspace overview with automation, activity, and service-status cards",
       },
       {
-        src: "/images/noxivo/noxivo-02.png",
-        alt: "Noxivo protected dashboard login screen",
+        src: "/images/noxivo/case-study/04-tenant-workspaces.png",
+        alt: "Noxivo client workspaces grouped under an agency context",
       },
       {
-        src: "/images/noxivo/noxivo-03.png",
-        alt: "Noxivo agency settings dashboard",
+        src: "/images/noxivo/case-study/13-team-management.png",
+        alt: "Noxivo team management view for scoped workspace access",
       },
       {
-        src: "/images/noxivo/noxivo-06.png",
-        alt: "Noxivo tenant workspace dashboard",
+        src: "/images/noxivo/case-study/15-api-management.png",
+        alt: "Noxivo API management view with tenant-scoped developer access settings",
       },
       {
-        src: "/images/noxivo/noxivo-04.png",
-        alt: "Noxivo developer documentation site",
+        src: "/images/noxivo/case-study/16-integrations.png",
+        alt: "Noxivo integrations control plane with workspace setup categories",
+      },
+      {
+        src: "/images/noxivo/case-study/12-analytics.png",
+        alt: "Noxivo analytics snapshot for conversation and workflow activity",
+      },
+      {
+        src: "/images/noxivo/case-study/17-settings.png",
+        alt: "Noxivo workspace settings and operational controls",
+      },
+      {
+        src: "/images/noxivo/case-study/01-auth-login.png",
+        alt: "Noxivo authentication screen for the protected dashboard",
+      },
+      {
+        src: "/images/noxivo/case-study/23-catalog-settings.png",
+        alt: "Noxivo catalog and commerce settings view",
       },
     ],
     techStack: {
       frontend: [
-        "Static HTML/CSS/JS waitlist",
         "Next.js 15 App Router",
         "React 19",
         "TailwindCSS",
+        "Radix UI",
+        "React Flow",
         "Docusaurus 3",
       ],
       backend: [
@@ -1050,9 +1073,16 @@ export const projects: Project[] = [
         "MongoDB / Mongoose",
         "Redis / BullMQ",
         "Zod contracts",
-        "MessagingProvider / WAHA adapters",
+        "Messaging-provider and session abstractions",
       ],
-      tools: ["pnpm + Turborepo", "Netlify", "Dokploy", "Sentry", "PostHog", "Langfuse"],
+      tools: [
+        "pnpm + Turborepo",
+        "Docker / Dokploy documentation",
+        "Pino structured logging",
+        "Sentry",
+        "PostHog",
+        "Optional Langfuse hooks",
+      ],
     },
     badges: ["Next.js 15", "Fastify", "MongoDB", "Redis", "Docusaurus", "BullMQ"],
     challenges: [
@@ -1064,7 +1094,7 @@ export const projects: Project[] = [
       {
         challenge: "WhatsApp session scale",
         solution:
-          "Designed shared MessagingProvider cluster allocation instead of a separate provider container per tenant workspace.",
+          "Separated messaging and session behavior behind provider abstractions, including capacity-aware allocation logic rather than coupling product routes to one transport implementation.",
       },
       {
         challenge: "Dashboard and engine separation",
@@ -1081,13 +1111,14 @@ export const projects: Project[] = [
       // Owner confirmed live. Domain to double-check: data uses noxivo.pro,
       // founder record references noxivo.app — see docs/CONTENT_NEEDED.md.
       live: "https://noxivo.pro",
+      liveLabel: "Project Site",
     },
     snapshot: {
       timeframe: "2025 - present",
       status: "in-development",
-      role: "Solo full-stack developer",
+      role: "Full-stack / Platform Engineering",
       ownership:
-        "Multi-tenant automation engine, API, and dashboard, built end to end",
+        "Direct contributions across the platform architecture, dashboard, workflow engine, tenant model, inbox, integrations, and deployment documentation",
       industry: "WhatsApp automation (SaaS)",
       platform: "Web",
     },

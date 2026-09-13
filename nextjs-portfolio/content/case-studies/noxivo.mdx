@@ -1,0 +1,128 @@
+---
+projectSlug: "noxivo"
+placement: "after-engineering-decisions"
+toc:
+  - id: "tenant-model"
+    label: "Tenant Model"
+  - id: "durable-workflow-execution"
+    label: "Durable Workflow Execution"
+  - id: "live-inbox-architecture"
+    label: "Live Inbox Architecture"
+  - id: "developer-platform"
+    label: "Developer Platform"
+  - id: "operational-visibility"
+    label: "Operational Visibility"
+  - id: "evidence-bounds"
+    label: "Evidence Bounds"
+---
+
+## Tenant model
+
+Noxivo's core operating model is explicit: Platform → Agency → Tenant / client workspace. The dashboard makes that hierarchy visible, while the repository carries the active tenant context through memberships, request and session context, service queries, worker payloads, scoped models, credentials, conversations, workflows, sessions, and integrations.
+
+<div role="img" aria-label="Platform flows to Agency, then Tenant or Client Workspace, then scoped inbox, workflows, sessions, credentials, and API operations" className="my-8 rounded-[var(--radius-xl)] border border-[var(--glass-border)] bg-[var(--glass-bg)] p-5 md:p-6">
+  <p className="mb-4 text-xs font-bold uppercase tracking-wider text-[var(--accent)]">Platform boundary</p>
+  <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-[var(--text-primary)]">
+    <span className="rounded-lg border border-[var(--glass-border)] bg-[var(--bg-surface-elevated)] px-3 py-2">Platform</span>
+    <span aria-hidden="true" className="text-[var(--accent)]">→</span>
+    <span className="rounded-lg border border-[var(--glass-border)] bg-[var(--bg-surface-elevated)] px-3 py-2">Agency</span>
+    <span aria-hidden="true" className="text-[var(--accent)]">→</span>
+    <span className="rounded-lg border border-[var(--glass-border)] bg-[var(--bg-surface-elevated)] px-3 py-2">Tenant / Client Workspace</span>
+    <span aria-hidden="true" className="text-[var(--accent)]">→</span>
+    <span className="rounded-lg border border-[var(--glass-border)] bg-[var(--bg-surface-elevated)] px-3 py-2">Inbox · Workflows · Sessions · API</span>
+  </div>
+</div>
+
+<Callout variant="info" title="Why this matters">
+  Tenant scope is not treated as a visual filter. The evidence package documents the boundary continuing into authorization, persistence, background work, messaging state, and developer operations. That is the architectural basis for operating multiple client workspaces from one agency system.
+</Callout>
+
+## Durable workflow execution
+
+The workflow editor and the execution model are separate concerns. A graph is compiled into a DAG before workers run it, with validation for trigger structure, edges, branches, cycles, delays, and scoped plugin references. Persisted context and workflow events provide a durable record around execution.
+
+<div role="img" aria-label="Workflow execution flows from editor graph to DAG validation and compiler, persisted context, BullMQ queue, worker DAG executor, actions conditions and delays, then events analytics and live updates" className="my-8 rounded-[var(--radius-xl)] border border-[var(--glass-border)] bg-[var(--glass-bg)] p-5 md:p-6">
+  <p className="mb-4 text-xs font-bold uppercase tracking-wider text-[var(--accent)]">Automation path</p>
+  <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-[var(--text-primary)]">
+    <span className="rounded-lg border border-[var(--glass-border)] bg-[var(--bg-surface-elevated)] px-3 py-2">Editor graph</span>
+    <span aria-hidden="true" className="text-[var(--accent)]">→</span>
+    <span className="rounded-lg border border-[var(--glass-border)] bg-[var(--bg-surface-elevated)] px-3 py-2">DAG validation / compiler</span>
+    <span aria-hidden="true" className="text-[var(--accent)]">→</span>
+    <span className="rounded-lg border border-[var(--glass-border)] bg-[var(--bg-surface-elevated)] px-3 py-2">Persisted context</span>
+    <span aria-hidden="true" className="text-[var(--accent)]">→</span>
+    <span className="rounded-lg border border-[var(--glass-border)] bg-[var(--bg-surface-elevated)] px-3 py-2">BullMQ queue / worker</span>
+    <span aria-hidden="true" className="text-[var(--accent)]">→</span>
+    <span className="rounded-lg border border-[var(--glass-border)] bg-[var(--bg-surface-elevated)] px-3 py-2">Actions · delays · events</span>
+  </div>
+</div>
+
+<DecisionCard
+  title="Durable continuations"
+  subtitle="Queue-backed background work"
+  problem="Delayed steps and background actions should not depend on an open HTTP request or one process remaining alive."
+  decision="Use BullMQ jobs, persisted workflow context, and worker continuations so delayed work can resume through the queue boundary."
+  result="The runtime has an explicit place for delays, retries, and observable workflow progress without treating the browser request as the execution host."
+/>
+
+## Live inbox architecture
+
+The inbox is database-first. Conversation and message records remain the source of truth, with agency and tenant scope carried into assignment, status, unread state, customer context, and synchronization. Live updates can move through Redis pub/sub to SSE clients, with a local subscriber fallback when Redis is unavailable.
+
+<div role="img" aria-label="Provider event flows through sync service to MongoDB conversation and message state, then tenant event backplane and Redis or local fallback, then SSE dashboard updates" className="my-8 rounded-[var(--radius-xl)] border border-[var(--glass-border)] bg-[var(--glass-bg)] p-5 md:p-6">
+  <p className="mb-4 text-xs font-bold uppercase tracking-wider text-[var(--accent)]">Inbox event path</p>
+  <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-[var(--text-primary)]">
+    <span className="rounded-lg border border-[var(--glass-border)] bg-[var(--bg-surface-elevated)] px-3 py-2">Provider event</span>
+    <span aria-hidden="true" className="text-[var(--accent)]">→</span>
+    <span className="rounded-lg border border-[var(--glass-border)] bg-[var(--bg-surface-elevated)] px-3 py-2">Sync service</span>
+    <span aria-hidden="true" className="text-[var(--accent)]">→</span>
+    <span className="rounded-lg border border-[var(--glass-border)] bg-[var(--bg-surface-elevated)] px-3 py-2">MongoDB state</span>
+    <span aria-hidden="true" className="text-[var(--accent)]">→</span>
+    <span className="rounded-lg border border-[var(--glass-border)] bg-[var(--bg-surface-elevated)] px-3 py-2">Redis pub/sub or local fallback</span>
+    <span aria-hidden="true" className="text-[var(--accent)]">→</span>
+    <span className="rounded-lg border border-[var(--glass-border)] bg-[var(--bg-surface-elevated)] px-3 py-2">SSE / dashboard</span>
+  </div>
+</div>
+
+<DecisionCard
+  title="Database-first live updates"
+  subtitle="State and events have different jobs"
+  problem="A live event stream is fast for interface updates but is a fragile source of truth for conversations, assignments, and unread state."
+  decision="Persist scoped conversation and message state first, then fan out tenant-scoped events through Redis pub/sub and SSE, with a local subscriber fallback."
+  result="The interface can stay current without making the event stream responsible for durable product state."
+/>
+
+## Developer platform
+
+The dashboard is paired with a developer surface rather than treated as the only integration path. The repository evidence includes tenant-scoped public API operations, bearer or API-key authentication, rate limiting, webhook subscriptions with signed delivery, and SDK package directories for Node, Python, PHP, and Laravel. Docusaurus documentation and an n8n-oriented package or guide extend the integration story.
+
+<MdxArchitectureNote
+  title="Integration control plane"
+  subtitle="Tenant-scoped external access"
+  components={[
+    { name: "Public API", tech: "Fastify routes + scoped auth", role: "External operations remain associated with an agency and tenant context.", type: "api" },
+    { name: "Webhooks", tech: "Subscriptions + signed delivery", role: "Outbound events have an explicit delivery surface instead of ad hoc callbacks.", type: "security" },
+    { name: "SDK surfaces", tech: "Node · Python · PHP · Laravel", role: "Package directories support developers integrating in more than one runtime.", type: "core" },
+    { name: "Automation tooling", tech: "n8n package and docs", role: "Integration guidance connects external automation tools to the platform surface.", type: "queue" },
+    { name: "Documentation", tech: "Docusaurus 3", role: "API, WhatsApp, webhook, rate-limit, SDK, and integration guidance is published as a distinct app surface.", type: "ui" },
+  ]}
+>
+  The supplied API-management screenshot shows the administrative surface without exposing an active secret. The integrations screenshot is treated as a setup/control-plane view, not as proof that every provider connection is live.
+</MdxArchitectureNote>
+
+## Operational visibility
+
+The dashboard includes analytics, service and integration settings, team management, and API administration. The supplied analytics capture is a runtime/demo snapshot that demonstrates the interface and available categories; its visible values are not presented here as product-wide adoption, performance, or business-result metrics.
+
+<Callout variant="success" title="Control plane, not just a message screen">
+  The visual evidence shows a product organized around operating the system: workspace context, access management, developer credentials, integrations, analytics, and settings sit alongside the messaging and automation surfaces.
+</Callout>
+
+## Evidence bounds
+
+<TechnicalNote title="Historical repository acceptance evidence" codeRef="snapshot-qualified">
+  The supplied evidence package records historical acceptance totals for the workflow-engine, dashboard, Node SDK, database, and focused workflow-engine route and analytics suites. Those records are useful proof that substantial verification work existed on the referenced snapshot, but they are not current test totals for this dirty portfolio checkout and they are not a claim about production health.
+</TechnicalNote>
+
+<Callout variant="warning" title="Claims deliberately excluded">
+  No customer count, revenue, adoption, conversion lift, uptime, throughput, response-time improvement, current production-health statement, security certification, independent audit, exactly-once guarantee, or sole-authorship claim is made here without direct evidence.
+</Callout>

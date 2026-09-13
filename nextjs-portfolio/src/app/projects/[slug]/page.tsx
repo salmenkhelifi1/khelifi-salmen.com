@@ -109,7 +109,7 @@ function TechBadge({ label }: { label: string }) {
 }
 
 function ProjectLinks({ project, large }: { project: Project; large?: boolean }) {
-  const { demo, github, live } = project.links;
+  const { demo, github, live, liveLabel } = project.links;
   if (!demo && !github && !live) return null;
   const base = large
     ? "inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full px-8 py-4 font-bold transition-all focus-visible:outline-2 focus-visible:outline-[var(--accent)]"
@@ -133,7 +133,7 @@ function ProjectLinks({ project, large }: { project: Project; large?: boolean })
           rel="noreferrer"
           className={`${base} system-live-link`}
         >
-          Live Demo <ExternalLink className={large ? "w-5 h-5" : "w-4 h-4"} aria-hidden="true" />
+          {liveLabel || "Live Demo"} <ExternalLink className={large ? "w-5 h-5" : "w-4 h-4"} aria-hidden="true" />
         </a>
       )}
       {github && (
@@ -324,26 +324,38 @@ function getFactualArchitecture(project: Project): ArchitectureComponent[] {
       {
         name: "Protected Agency Dashboard",
         tech: "Next.js 15 App Router, React 19, TailwindCSS",
-        role: "Multi-tenant workspace management & WhatsApp team inbox",
+        role: "Agency and tenant workspace operations, team access, and WhatsApp inbox surfaces",
         icon: <Layers className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Fastify Workflow Engine",
         tech: "Fastify 5, BullMQ, Redis",
-        role: "DAG-style automation engine, message queues & event publishing",
+        role: "Compiled DAG execution, delayed continuations, background workers, and event publishing",
         icon: <Cpu className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Database & Models",
         tech: "MongoDB, Mongoose, Zod Contracts",
-        role: "Agency, tenant, workspace & WhatsApp conversation state",
+        role: "Scoped agency, tenant, workspace, conversation, message, workflow, and integration state",
         icon: <Database className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
-        name: "Developer Portal",
-        tech: "Docusaurus 3",
-        role: "Public API documentation, webhooks & n8n integration guides",
+        name: "Inbox Event Layer",
+        tech: "Redis pub/sub, SSE, local subscriber fallback",
+        role: "Tenant-scoped live updates while stored conversation state remains authoritative",
+        icon: <MessageSquare className="w-5 h-5 text-[var(--accent)]" />,
+      },
+      {
+        name: "Developer Platform",
+        tech: "Fastify public API, Docusaurus 3, SDK package surfaces",
+        role: "Tenant-scoped API access, webhooks, rate limits, and n8n integration guidance",
         icon: <Code2 className="w-5 h-5 text-[var(--accent)]" />,
+      },
+      {
+        name: "Observability Hooks",
+        tech: "Pino, Sentry, PostHog, optional Langfuse",
+        role: "Structured logging, error tracking, product analytics, and AI-path tracing hooks",
+        icon: <ShieldCheck className="w-5 h-5 text-[var(--accent)]" />,
       },
     ];
   }
@@ -399,6 +411,7 @@ export default async function ProjectProfilePage({
   const nextProject = projects[(slugIndex + 1) % projects.length];
 
   const hasDesktopGallery = project.galleryAspect === "desktop";
+  const hasGenericEngineeringDecisions = project.features.length > 0 && project.slug !== "noxivo";
   const jsonLd = projectJsonLd(project);
   const architectureItems = getFactualArchitecture(project);
   const relatedPosts = getPublishedPosts().filter((post) =>
@@ -438,7 +451,9 @@ export default async function ProjectProfilePage({
 
   if (project.features.length > 0) {
     renderedSections.push({ id: "key-product-flows", label: "Key Product Flows" });
-    renderedSections.push({ id: "engineering-decisions", label: "Engineering Decisions" });
+    if (hasGenericEngineeringDecisions) {
+      renderedSections.push({ id: "engineering-decisions", label: "Engineering Decisions" });
+    }
   }
 
   if (project.challenges && project.challenges.length > 0) {
@@ -467,9 +482,11 @@ export default async function ProjectProfilePage({
       insertAfterId = "key-product-flows";
     } else if (
       narrative.placement === "after-engineering-decisions" &&
-      project.features.length > 0
+      hasGenericEngineeringDecisions
     ) {
       insertAfterId = "engineering-decisions";
+    } else if (narrative.placement === "after-engineering-decisions") {
+      insertAfterId = "key-product-flows";
     } else if (narrative.placement === "before-gallery") {
       if (project.challenges && project.challenges.length > 0) {
         insertAfterId = "challenges";
@@ -562,7 +579,9 @@ export default async function ProjectProfilePage({
                   </span>
                   <span className="text-[var(--text-tertiary)]">•</span>
                   <span className="text-xs font-semibold text-[var(--accent)]">
-                    Full-Stack & Automation
+                    {project.slug === "noxivo"
+                      ? "Full-stack / Platform Engineering"
+                      : "Full-Stack & Automation"}
                   </span>
                 </div>
                 <h1 className="text-h1">{project.title}</h1>
@@ -642,7 +661,7 @@ export default async function ProjectProfilePage({
                       Scope & Ownership
                     </h2>
                     <p className="text-xs font-semibold uppercase tracking-wider text-[var(--text-tertiary)]">
-                      What I built and owned
+                      {project.slug === "noxivo" ? "My role and contributions" : "What I built and owned"}
                     </p>
                   </div>
                 </div>
@@ -654,7 +673,7 @@ export default async function ProjectProfilePage({
                   {project.slug === "chaktech" &&
                     "Built a multi-tenant commerce platform for Tunisia with instant hostname tenant resolution, zero-FOUC server theming, cash-on-delivery checkout, and Payload CMS back-office."}
                   {project.slug === "noxivo" &&
-                    "Created a WhatsApp-first automation platform with multi-tenant agency workspaces, Fastify workflow engine, BullMQ job queues, and Docusaurus developer documentation."}
+                    "Owned or directly contributed across the platform architecture, dashboard, workflow engine, tenant model, inbox, integrations, deployment documentation, and acceptance evidence represented in repository history."}
                   {project.slug === "adaptifit" &&
                     "Implemented the client's supplied brand and UI/UX as a Flutter app, then built the Express/MongoDB services and n8n workflows behind personalized plans, progress, and AI coach flows."}
                   {project.slug !== "luxe-spa" &&
@@ -785,10 +804,9 @@ export default async function ProjectProfilePage({
                 </h2>
                 <div className="space-y-12">
                   {project.features.map((feat, idx) => {
-                    const matchedScreenshot =
-                      project.gallery.length > 0
-                        ? project.gallery[idx % project.gallery.length]
-                        : null;
+                    const matchedScreenshot = feat.media
+                      ? project.gallery.find((shot) => shot.src === feat.media) || null
+                      : null;
                     const screenshotIsPhone = matchedScreenshot
                       ? matchedScreenshot.aspect
                         ? matchedScreenshot.aspect === "phone"
@@ -859,7 +877,7 @@ export default async function ProjectProfilePage({
             {renderNarrativeSlot("after-key-product-flows")}
 
             {/* Section 7: Engineering Decisions */}
-            {project.features.length > 0 && (
+            {hasGenericEngineeringDecisions && (
               <section id="engineering-decisions" className="scroll-mt-32" aria-labelledby="decisions-heading">
                 <h2 id="decisions-heading" className="mb-8 text-h2">
                   Engineering Decisions & Trade-offs

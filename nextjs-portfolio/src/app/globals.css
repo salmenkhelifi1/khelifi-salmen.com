@@ -1424,3 +1424,9 @@ div[id*="cal-modal"],
   justify-content: center !important;
   padding: 1.5rem !important;
 }
+
+@media (max-width: 767px) {
+  cal-floating-button {
+    display: none !important;
+  }
+}

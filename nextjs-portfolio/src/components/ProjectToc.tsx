@@ -92,7 +92,7 @@ export default function ProjectToc({ sections }: ProjectTocProps) {
 
       {/* Desktop Sticky Sidebar TOC */}
       <nav
-        className="hidden lg:block sticky top-28 p-5 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-xl shadow-[var(--glass-shadow)]"
+        className="hidden lg:block sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto overscroll-contain p-5 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-xl shadow-[var(--glass-shadow)]"
         aria-label="Table of contents"
       >
         <div className="flex items-center gap-2 pb-3 mb-3 border-b border-[var(--border-subtle)] text-xs font-semibold uppercase tracking-wider text-[var(--text-tertiary)]">
