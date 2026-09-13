@@ -812,6 +812,12 @@ section[id],
   z-index: 1;
 }
 
+[data-theme="light"] .hero-media-shade {
+  background:
+    linear-gradient(90deg, var(--hero-bg) 0 8%, transparent 13%),
+    linear-gradient(0deg, var(--hero-bg) 0%, transparent 8%);
+}
+
 .hero-media-caption {
   align-items: center;
   border-top: 1px solid var(--border-active);
@@ -840,6 +846,10 @@ section[id],
   .hero-media {
     aspect-ratio: 16 / 9;
     max-width: 36rem;
+  }
+
+  [data-theme="light"] .hero-media-shade {
+    background: linear-gradient(0deg, var(--hero-bg) 0%, transparent 8%);
   }
 }
 
@@ -907,6 +917,10 @@ section[id],
     margin-top: 1rem;
     aspect-ratio: 16 / 9;
     max-width: 40rem;
+  }
+
+  [data-theme="light"] .hero-media-shade {
+    background: linear-gradient(0deg, var(--hero-bg) 0%, transparent 8%);
   }
 }
 
