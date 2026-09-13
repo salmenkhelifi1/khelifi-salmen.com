@@ -10,6 +10,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@builder.io/partytown": "^0.10.3",
     "@calcom/embed-react": "^1.5.3",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",

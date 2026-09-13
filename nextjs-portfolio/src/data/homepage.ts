@@ -130,14 +130,14 @@ export const footerSocials: FooterSocial[] = [
 
 export const projects: Project[] = [
   {
-    category: "SaaS & Booking Platform",
-    title: "White-Label Booking System",
+    category: "Client Booking Platform",
+    title: "LuxeNail.art",
     description:
-      "A comprehensive white-label booking, CRM, and management system designed for appointment-based service businesses (spas, salons, clinics) with dynamic preset-based branding, real-time messaging, and an AI concierge.",
-    tags: ["Next.js 16", "Express.js", "PostgreSQL", "Socket.io", "Gemini API"],
-    href: "/projects/luxe-spa",
+      "A live Luxe Nail Spa implementation of a reusable white-label booking platform with specialist-aware availability and a responsive request flow.",
+    tags: ["Next.js 16", "Express 5", "PostgreSQL", "Prisma", "BullMQ"],
+    href: "/projects/luxenail",
     linkLabel: "View Case Study",
-    image: "/images/luxe_spa_home.png",
+    image: "/images/luxenail/01-luxenail-home-desktop.png",
   },
   {
     category: "AI Writing SaaS",
@@ -307,7 +307,7 @@ export const categoryToFilter: Record<string, WorkFilter> = {
 };
 
 export const featuredHrefs: string[] = [
-  "/projects/luxe-spa",
+  "/projects/luxenail",
   "/projects/anlingo",
 ];
 
@@ -321,23 +321,23 @@ export const homepageCompactHrefs: string[] = [
 
 export const featuredWork: FeaturedWorkItem[] = [
   {
-    eyebrow: "FEATURED PLATFORM",
-    title: "Luxe Spa Booking",
-    href: "/projects/luxe-spa",
-    image: "/images/luxe_spa_home.png",
-    tags: ["SaaS", "Booking"],
+    eyebrow: "CLIENT BOOKING PLATFORM",
+    title: "LuxeNail.art",
+    href: "/projects/luxenail",
+    image: "/images/luxenail/01-luxenail-home-desktop.png",
+    tags: ["Client", "Booking", "White-label"],
     rows: [
       {
         label: "Problem",
-        text: "Appointment businesses get squeezed between expensive booking SaaS with per-transaction fees and slow one-off custom builds that are hard to change.",
+        text: "A premium salon experience still needs authoritative scheduling rules behind the interface: specialists, duration, location hours, resources, buffers, and time zone.",
       },
       {
         label: "What I built",
-        text: "A white-label booking and CRM platform where one preset reconfigures the whole product for a new vertical, spa to clinic, in under 10 seconds with no code changes.",
+        text: "A live Luxe Nail Spa implementation with branded discovery, specialist-aware live availability, and a responsive four-stage booking request flow.",
       },
       {
         label: "My role",
-        text: "Solo across architecture, booking engine, staff dashboards, payments, and the automation pipeline, end to end.",
+        text: "Full-stack development across the customer booking experience, scheduling/backend architecture, protected business-management foundations, localization, and deployment foundations.",
       },
     ],
   },
@@ -391,13 +391,13 @@ export const technicalDepth: TechnicalDepthItem[] = [
   },
   {
     icon: Zap,
-    title: "10-Second Vertical Preset Swap",
-    challenge: "Instant product re-configuration across distinct service verticals (spa to clinic).",
-    risk: "Maintaining custom code forks per business vertical slows releases and increases drift.",
-    decision: "Architected a Zod-validated JSON preset schema to reconfigure categories, terms, and rules on seed.",
-    verification: "Reconfigured an entire vertical setup in under 10 seconds with zero code changes.",
-    projectLabel: "Luxe Spa Booking",
-    href: "/projects/luxe-spa",
+    title: "Server-Authoritative Booking Integrity",
+    challenge: "A browser slot can become stale before a booking request reaches the server.",
+    risk: "Trusting frontend availability alone can create stale-slot and overlapping-request conflicts.",
+    decision: "Revalidated current availability during booking creation with transaction, conflict, resource, snapshot, and idempotency boundaries.",
+    verification: "The implementation contains server-side booking validation and the live client exposes a server-driven specialist/date/time flow.",
+    projectLabel: "LuxeNail.art",
+    href: "/projects/luxenail",
   },
   {
     icon: ScanEye,

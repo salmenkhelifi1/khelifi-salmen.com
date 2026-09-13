@@ -55,7 +55,7 @@ export const metadata: Metadata = {
 };
 
 const independentSlugs = ["anlingo", "adaptifit"];
-const clientSlugs = ["chaktech", "rentiora", "ai-workflow-automation"];
+const clientSlugs = ["luxenail", "chaktech", "rentiora", "ai-workflow-automation"];
 
 const independentProjects = independentSlugs
   .map((slug) => projects.find((p) => p.slug === slug))
@@ -66,6 +66,7 @@ const clientProjects = clientSlugs
   .filter((p): p is NonNullable<typeof p> => !!p);
 
 const projectRoles: Record<string, string> = {
+  luxenail: "Full-Stack Developer",
   chaktech: "Lead Architect & Full-Stack Developer",
   adaptifit: "Full-Stack Developer & AI Specialist",
   rentiora: "Frontend Developer",
@@ -74,6 +75,11 @@ const projectRoles: Record<string, string> = {
 };
 
 const projectBullets: Record<string, string[]> = {
+  luxenail: [
+    "Delivered a branded Luxe Nail Spa client implementation on top of a reusable white-label booking platform.",
+    "Built the customer-facing catalog, specialist-aware live availability, responsive booking request flow, and scheduling/backend foundations.",
+    "Implemented protected business-management, localization, queued worker, and deployment foundation paths without claiming unverified production integrations or outcomes.",
+  ],
   chaktech: [
     "Designed a multi-tenant resolver system using Next.js 16, React 19, and PostgreSQL to load custom themes/settings dynamically.",
     "Implemented cash-on-delivery checkout logic with promo codes, timbre fiscal, and atomic database revalidation to ensure order integrity.",

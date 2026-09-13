@@ -186,6 +186,47 @@ type ArchitectureComponent = {
 function getFactualArchitecture(project: Project): ArchitectureComponent[] {
   const components: ArchitectureComponent[] = [];
 
+  if (project.slug === "luxenail") {
+    return [
+      {
+        name: "Client Booking Experience",
+        tech: "Next.js 16, React 19, Tailwind CSS 4, next-intl",
+        role: "Branded storefront, catalog, service details, and responsive booking request flow",
+        icon: <Smartphone className="w-5 h-5 text-[var(--accent)]" />,
+      },
+      {
+        name: "Booking & Availability API",
+        tech: "Express 5, TypeScript",
+        role: "Server-side booking, availability, catalog, and business-management services",
+        icon: <Server className="w-5 h-5 text-[var(--accent)]" />,
+      },
+      {
+        name: "Scheduling Data Layer",
+        tech: "PostgreSQL, Prisma ORM",
+        role: "Bookings, services, locations, staff schedules, resources, settings, and translations",
+        icon: <Database className="w-5 h-5 text-[var(--accent)]" />,
+      },
+      {
+        name: "Protected Operations",
+        tech: "JWT, bcrypt, httpOnly cookies, CSRF",
+        role: "Role hierarchy and capability policies for customer and staff application boundaries",
+        icon: <ShieldCheck className="w-5 h-5 text-[var(--accent)]" />,
+      },
+      {
+        name: "Async Processing",
+        tech: "Redis, BullMQ",
+        role: "Notification, review, SMS, media, and import worker paths outside the request cycle",
+        icon: <Cpu className="w-5 h-5 text-[var(--accent)]" />,
+      },
+      {
+        name: "White-label Content",
+        tech: "Runtime site settings, ImageKit, optional R2",
+        role: "Client-specific brand, catalog, media, localization, feature flags, and SEO boundaries",
+        icon: <Layers className="w-5 h-5 text-[var(--accent)]" />,
+      },
+    ];
+  }
+
   // Luxe Spa Booking specific factual components
   if (project.slug === "luxe-spa") {
     return [
@@ -210,7 +251,7 @@ function getFactualArchitecture(project: Project): ArchitectureComponent[] {
       {
         name: "Data & ORM Layer",
         tech: "PostgreSQL, Prisma ORM",
-        role: "Multi-tenant business settings, appointment logs & customer CRM",
+        role: "Client-specific business settings, appointment logs, and customer CRM",
         icon: <Database className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
@@ -569,7 +610,7 @@ export default async function ProjectProfilePage({
           <ProjectToc sections={renderedSections} />
 
           {/* Main Case Study Content */}
-          <main className="flex-1 min-w-0 space-y-20">
+          <main id="main-content" className="flex-1 min-w-0 space-y-20">
             {/* Section 1: Hero */}
             <section id="hero" className="scroll-mt-32">
               <div className="space-y-6">
@@ -579,7 +620,9 @@ export default async function ProjectProfilePage({
                   </span>
                   <span className="text-[var(--text-tertiary)]">•</span>
                   <span className="text-xs font-semibold text-[var(--accent)]">
-                    {project.slug === "noxivo"
+                    {project.slug === "luxenail"
+                      ? "Full-Stack Product Engineering"
+                      : project.slug === "noxivo"
                       ? "Full-stack / Platform Engineering"
                       : "Full-Stack & Automation"}
                   </span>
@@ -667,16 +710,19 @@ export default async function ProjectProfilePage({
                 </div>
                 <p className="text-body-large text-[var(--text-primary)] mb-8">
                   {project.slug === "luxe-spa" &&
-                    "A solo-built multi-tenant white-label booking and CRM platform (in development), designed to avoid per-transaction SaaS fees, with sub-10-second vertical preset switching, real-time technician sync, and an AI concierge scheduling flow."}
+                    "A reusable white-label booking and business-management platform with client-specific deployments, scheduling, protected staff operations, localization, and provider integration boundaries."}
                   {project.slug === "anlingo" &&
                     "A solo-built AI writing product (in development) spanning web editor, Express API, usage-limited subscription billing, and a Flutter companion, keeping the free path lightweight and routing advanced work through guarded backend AI providers."}
                   {project.slug === "chaktech" &&
                     "Built a multi-tenant commerce platform for Tunisia with instant hostname tenant resolution, zero-FOUC server theming, cash-on-delivery checkout, and Payload CMS back-office."}
                   {project.slug === "noxivo" &&
                     "Owned or directly contributed across the platform architecture, dashboard, workflow engine, tenant model, inbox, integrations, deployment documentation, and acceptance evidence represented in repository history."}
+                  {project.slug === "luxenail" &&
+                    "A live Luxe Nail Spa implementation of a reusable white-label booking platform, spanning the customer booking experience, scheduling/backend architecture, protected business-management foundations, localization, and deployment foundations."}
                   {project.slug === "adaptifit" &&
                     "Implemented the client's supplied brand and UI/UX as a Flutter app, then built the Express/MongoDB services and n8n workflows behind personalized plans, progress, and AI coach flows."}
                   {project.slug !== "luxe-spa" &&
+                    project.slug !== "luxenail" &&
                     project.slug !== "anlingo" &&
                     project.slug !== "chaktech" &&
                     project.slug !== "noxivo" &&

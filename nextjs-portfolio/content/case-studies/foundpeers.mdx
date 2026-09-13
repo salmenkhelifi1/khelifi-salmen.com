@@ -1,0 +1,163 @@
+---
+projectSlug: "foundpeers"
+placement: "after-engineering-decisions"
+toc:
+  - id: "build-log"
+    label: "Build Log"
+  - id: "road-to-launch"
+    label: "Road to Launch"
+---
+
+{/*
+  CONTENT DISCIPLINE REMINDER:
+  Every phase, date and number below traces to the FoundPeers repository —
+  git history, migration filenames, and a measured test run on 2026-08-10.
+  FoundPeers is pre-launch: no users, no revenue, no verified traction.
+  Do not add outcome claims. Future phases carry gates, never completions.
+*/}
+
+## Build Log
+
+Thirty days, solo. The interesting part of this project is not any single
+feature — it is that a security-tested product with a real backend got built in
+a month, and that the schedule below is reconstructed from git history rather
+than from memory.
+
+<BuildLog
+  caption="Six phases, 10 July to 10 August 2026 · 699 commits · 433 tests green"
+  phases={[
+    {
+      date: "10-12 Jul",
+      title: "Foundation",
+      status: "shipped",
+      summary: "The part that decides whether the next four weeks are possible.",
+      items: [
+        "Flutter + Supabase monorepo, feature-first clean architecture",
+        "CI gate: nothing merges without analysis, format and tests passing",
+        "Architecture, schema, API contracts and security docs written before the code",
+      ],
+    },
+    {
+      date: "13-15 Jul",
+      title: "Build sprint",
+      status: "shipped",
+      summary: "Every screen navigable end to end on mock data, in three days.",
+      items: [
+        "Design system: colour, type, spacing and motion tokens, light and dark from day one",
+        "All core screens with real empty, loading and error states",
+        "188 commits in 72 hours",
+      ],
+    },
+    {
+      date: "15-20 Jul",
+      title: "Real backend",
+      status: "shipped",
+      items: [
+        "Apple and Google sign-in, session-driven routing, account deletion",
+        "Server-side founder search: full text over skills and bio, multi-filter, paginated",
+        "Consent-based location map, off by default and always revocable",
+        "Connection requests with a daily cap, no duplicates, and a terminal decline",
+      ],
+    },
+    {
+      date: "20-28 Jul",
+      title: "Events and curation",
+      status: "shipped",
+      items: [
+        "Curated events with capacity-aware invite requests",
+        "Founder-submitted events that never publish without a curator decision",
+        "In-app admin review queue, so moderation never needs database access",
+      ],
+    },
+    {
+      date: "28 Jul-5 Aug",
+      title: "Trust, safety and hardening",
+      status: "shipped",
+      summary: "Not optional when the product's whole promise is that these are real people.",
+      items: [
+        "Report and block, moderation states, database-enforced row-level security",
+        "Every sensitive mutation behind a server function, so the client cannot be tricked into writing what it should not",
+        "16 database contract-test files and 189 assertions, run against a clean database",
+        "Full account deletion covering data, files and login",
+      ],
+    },
+    {
+      date: "5-10 Aug",
+      title: "Design pass, proximity and web",
+      status: "building",
+      items: [
+        "Full redesign onto Apple's iOS 26 Liquid Glass language",
+        "Same-Wi-Fi founder discovery over Bonjour: no GPS, no location permission, no server round trip",
+        "Map radius selector at 5, 10, 25 or 50 km, remembered per device",
+        "Installable web build, so the product can be demoed before either store approves anything",
+      ],
+    },
+  ]}
+/>
+
+<TechnicalNote>
+  The same-Wi-Fi rail ships with a deliberate constraint: café and hotel
+  networks frequently enable client isolation, which silently blocks the
+  multicast traffic discovery depends on. So the rail only ever appears when it
+  finds peers. It never renders an empty state promising something the network
+  cannot deliver.
+</TechnicalNote>
+
+## Road to Launch
+
+Each phase below closes on a measurable gate rather than a date. A gate that
+fails is a signal to change the work, not to move on from it.
+
+<BuildLog
+  caption="Planned. Nothing here is a result."
+  phases={[
+    {
+      date: "Aug, wk 2-3",
+      title: "Get it installable",
+      status: "blocked",
+      summary: "Blocked on $124 of developer-account fees, not on code.",
+      items: [
+        "Apple Developer Program at $99/year unlocks signing, TestFlight and physical-device sign-in verification",
+        "Play Console at $25 once, where a new account must run a 12-tester closed test for 14 days before public release",
+      ],
+      gate: "A signed build installed by someone who is not me.",
+    },
+    {
+      date: "Aug-Sep",
+      title: "First 25 founders",
+      status: "next",
+      items: [
+        "Recruited by hand, one conversation at a time. No ads.",
+        "Durable notification inbox with push and email",
+        "Revenue verification switched from coming-soon to live",
+      ],
+      gate: "25 completed profiles and 10 accepted connections between people who did not already know each other.",
+    },
+    {
+      date: "Sep-Oct",
+      title: "Prove one city",
+      status: "next",
+      items: [
+        "Four consecutive real-world sessions, run alongside the community that already exists there",
+        "Verification tier one: prove you own the domain, GitHub org or store listing you claim",
+      ],
+      gate: "12 people who returned twice or hosted, a 60% show-up rate, and 3 people willing to host without me.",
+    },
+    {
+      date: "Q4 2026",
+      title: "Second city",
+      status: "next",
+      items: [
+        "City two launched by a local host from a written playbook",
+        "Peer vouching, capped so a vouch stays scarce enough to mean something",
+      ],
+      gate: "City one still holding four weeks after I stop adding effort.",
+    },
+  ]}
+/>
+
+<Callout variant="info" title="Status as of 10 August 2026">
+  FoundPeers is pre-launch. No users, no revenue, no events run. Revenue
+  verification is built but not switched on. Every phase marked Next is a plan
+  with a gate attached, not an outcome.
+</Callout>

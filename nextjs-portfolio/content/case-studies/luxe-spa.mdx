@@ -8,9 +8,14 @@ toc:
 
 {/* Supplemental System Design Notes backing Luxe Spa implementation */}
 
+<Callout variant="info" title="Production client implementation">
+  See the [LuxeNail.art case study](/projects/luxenail) for a live branded
+  salon implementation of this reusable platform.
+</Callout>
+
 ## System Design Notes
 
-To support multi-tenant white-label deployments while maintaining high runtime performance, the Luxe Spa platform was architected around three critical backend subsystems: dynamic schema presets, concurrent booking synchronization, and an asynchronous background worker pipeline.
+To support reusable white-label client deployments while maintaining clear runtime boundaries, the Luxe Spa platform was architected around three critical backend subsystems: dynamic configuration, booking synchronization, and an asynchronous background worker pipeline.
 
 <Callout variant="info" title="Verified Technology Stack">
   The system is built with Next.js 16 App Router, React 19, Tailwind CSS 4, Zustand, Express.js/TypeScript, PostgreSQL + Prisma ORM, Socket.io, Redis/BullMQ, ImageKit CDN, and Zod validation.
@@ -19,23 +24,23 @@ To support multi-tenant white-label deployments while maintaining high runtime p
 <DecisionCard
   title="Vertical Adaptability"
   subtitle="Dynamic Preset Engine"
-  problem="Adapting the booking platform to different service domains (e.g., spas vs. medical clinics) without maintaining separate codebase forks."
-  decision="Built a centralized JSON preset schema that dynamically populates Categories, MenuItems, and SiteSetting records in PostgreSQL on seed, translating terminology (such as 'Therapist' vs 'Doctor') globally at runtime."
-  result="Enables a complete spa-to-clinic vertical swap in under 10 seconds with zero code changes."
+  problem="Adapting the booking platform to different service domains without maintaining separate product implementations."
+  decision="The repository contains centralized preset/configuration paths that populate catalog and site-setting records for a service vertical."
+  result="Provides a reusable configuration boundary for client-specific terminology, catalog, branding, and operating settings; runtime tenant isolation is not claimed here."
 />
 
 <DecisionCard
   title="Slot Concurrency & Real-Time Sync"
   subtitle="Transactional Booking Layer"
-  problem="Preventing double-booking race conditions when multiple customers or receptionists attempt to book the same appointment slot simultaneously."
-  decision="Implemented a transaction layer in Prisma to enforce slot validation at booking time, coupled with Socket.io broadcast rooms that instantly synchronize booking states across receptionist dashboards."
-  result="Eliminates double-bookings under concurrent access while keeping receptionists updated in real time."
+  problem="Preventing stale-slot and conflict errors when multiple customers or staff users request overlapping appointment times."
+  decision="Implemented server-side slot validation at booking time with Prisma transaction boundaries and Socket.io/inbox code paths for operational updates."
+  result="The code protects booking creation with current-state validation and conflict handling; a production concurrency load result is not claimed here."
 />
 
 <DecisionCard
   title="Non-Blocking Notification Pipeline"
   subtitle="Offloaded Async Workers"
-  problem="Preventing high-latency external messaging and credit calculation tasks from degrading API response times."
-  decision="Offloaded high-latency operations—including Nodemailer email dispatch, Twilio SMS sending, and membership credit updates—to a background BullMQ worker process running alongside Express, complete with retry logic and failure resilience."
-  result="Keeps the main HTTP request/response cycle fast and responsive while guaranteeing background job completion."
+  problem="Preventing provider-dependent messaging and follow-up tasks from blocking the main API request path."
+  decision="Offloaded notification, review, SMS, media, and import work to BullMQ workers backed by Redis, with durable notification state for retries and provider errors."
+  result="Keeps provider-dependent work outside the main request path; provider delivery success and completion guarantees are not claimed without live receipts."
 />

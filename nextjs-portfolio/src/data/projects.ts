@@ -352,7 +352,7 @@ export const projects: Project[] = [
     slug: "luxe-spa",
     title: "Luxe Spa Booking",
     tagline:
-      "A high-performance white-label booking, CRM, and management system for appointment-based service businesses, featuring real-time staff dashboards, BullMQ workflows, and AI-powered concierge scheduling.",
+      "A reusable white-label booking and business-management platform for appointment-based service businesses.",
     category: "SaaS & Booking Platform",
     accent: {
       text: "text-purple-400",
@@ -362,42 +362,42 @@ export const projects: Project[] = [
     heroImage: "/images/luxe_spa_home.png",
     galleryAspect: "desktop",
     overview: {
-      what: "A comprehensive multi-service white-label booking, CRM, and shop management SaaS platform. The system is designed to allow service-oriented businesses (such as medical aesthetics clinics, hair salons, spas, and consultants) to launch custom-branded online booking experiences, manage technicians, automate customer communications, and handle deposits/payments, fully isolated from other clients.",
+      what: "A reusable white-label booking and business-management platform with client-specific deployments, runtime site configuration, scheduling, staff, customer, content, authentication, and integration boundaries.",
       problem:
-        "Service businesses face a trade-off: use expensive SaaS platforms (Mindbody, Vagaro) that charge high transaction fees, or build custom software that is slow and costly to maintain. Furthermore, switching a platform from a nail spa layout to a dental clinic layout typically requires extensive code modifications, custom databases, and frontend rebuilds.",
+        "Appointment-based businesses need polished branded booking and operational tools without rebuilding scheduling and administration foundations for every deployment.",
       audience:
         "Independent boutique operators, local clinic chains, and digital agencies looking to offer localized booking platforms as a service without rebuilding the core scheduling engine.",
     },
     features: [
       {
-        title: "Instant Multi-Vertical Preset System",
+        title: "Client-specific configuration",
         description:
-          "Zod-validated preset structures (Spa, Salon, Barber, Clinic) dynamically seed the database on command. Swaps catalog categories, custom services, brand colors, vocabulary terminology, and operational hours in less than 10 seconds without code changes.",
+          "Typed preset and runtime site-setting paths carry client-specific catalog, brand, vocabulary, operating settings, feature flags, and SEO data.",
       },
       {
-        title: "Real-Time Staff Inbox & Messaging",
+        title: "Booking and availability domain",
         description:
-          "Socket.io-based communication pipeline syncs technician agendas instantly when appointments are updated. Incorporates a unified staff inbox for receptionist-to-client live chats and system notifications.",
+          "The booking domain models availability, staff schedules, locations, resources, service duration, conflicts, and request state.",
       },
       {
-        title: "Automated Multi-Channel Engagement",
+        title: "Protected staff operations",
         description:
-          "Twilio-integrated SMS review invitations, automated booking confirmations, and customer discount campaigns running on background workers powered by Redis and BullMQ to prevent main event-loop degradation.",
+          "Role and capability policies protect booking, customer, catalog, staff-schedule, marketing, settings, and integration operations.",
       },
       {
-        title: "AI Concierge Booking Flow",
+        title: "Queue-backed notifications",
         description:
-          "An intelligent conversational booking assistant powered by the Gemini API. The AI references live business settings, catalog metadata, and provider availability to answer customer queries and guide them through the scheduling funnel.",
+          "Redis and BullMQ worker paths support notification, review, SMS, media, and import work outside the main request path.",
       },
       {
-        title: "Granular Role-Based Access Control",
+        title: "Localization and CMS",
         description:
-          "Strict hierarchical security rules (OWNER > MANAGER > RECEPTIONIST > TECHNICIAN > CUSTOMER) protecting sensitive customer CRM files, financial metrics, and operational settings.",
+          "Site content, branding, catalog data, translations, gallery/media, and business settings are represented as managed product surfaces.",
       },
       {
-        title: "Secure Payments & Digital Vouchers",
+        title: "Provider integration boundaries",
         description:
-          "Full Stripe Checkout integration for session deposits, active VIP memberships subscription billing, and dynamically generated barcodes for digital gift card validation.",
+          "The backend contains integration paths for payments, email, SMS, push, media, analytics, and AI providers without claiming that every path is enabled in production.",
       },
     ],
     gallery: [
@@ -439,22 +439,22 @@ export const projects: Project[] = [
       ],
       tools: ["ImageKit CDN", "Docker", "Dokploy / VPS", "Zod Validation", "Helmet HTTP Headers"],
     },
-    badges: ["Next.js 16", "Express.js", "PostgreSQL", "Socket.io", "Gemini API"],
+    badges: ["Next.js 16", "Express.js", "PostgreSQL", "Prisma", "BullMQ"],
     challenges: [
       {
-        challenge: "Instant re-branding per client/vertical",
+        challenge: "Client-specific configuration without duplicated products",
         solution:
-          "Designed a centralized JSON preset schema that dynamically populates Categories, MenuItems, and SiteSetting records in the database on seed, translating terms (e.g. 'Therapist' vs 'Doctor') globally at runtime.",
+          "Centralized preset and site-setting paths carry client-specific catalog, brand, terminology, operating settings, feature flags, and SEO data.",
       },
       {
         challenge: "Real-time calendar concurrency and synchronization",
         solution:
-          "Built a robust transaction layer in Prisma to enforce slot validation at booking time, coupled with Socket.io broadcast rooms to instantly update booking states on the receptionist dashboard.",
+          "Server-side booking validation and Prisma transaction boundaries protect booking creation, while Socket.io and inbox paths support operational updates.",
       },
       {
         challenge: "Decoupled asynchronous notification pipelines",
         solution:
-          "Offloaded high-latency operations (Nodemailer dispatch, Twilio SMS sending, membership credits updates) to a background BullMQ worker process running alongside Express, with retry logic and failure handling.",
+          "Offloaded notification, review, SMS, media, and import work to BullMQ workers backed by Redis, with durable state for retries and provider errors.",
       },
       {
         challenge: "Largest Contentful Paint (LCP) and media optimization",
@@ -478,6 +478,178 @@ export const projects: Project[] = [
         "Architecture, booking engine, admin and staff dashboards, payments, and automation, built end to end",
       industry: "Appointment-based services (spa, salon, clinic)",
       platform: "Web",
+    },
+  },
+  {
+    slug: "luxenail",
+    title: "LuxeNail.art",
+    tagline:
+      "A live salon booking experience built on a reusable white-label platform.",
+    category: "Client Booking Platform",
+    accent: {
+      text: "text-pink-400",
+      hoverText: "hover:text-pink-400",
+      button: "bg-pink-600 hover:bg-pink-500",
+    },
+    heroImage: "/images/luxenail/01-luxenail-home-desktop.png",
+    galleryAspect: "desktop",
+    overview: {
+      what:
+        "A branded Luxe Nail Spa implementation of the reusable Luxe Spa Booking platform, combining a premium service catalog with specialist-aware availability, responsive booking, localization foundations, and protected business-management capabilities.",
+      problem:
+        "A premium salon experience still needs authoritative scheduling rules behind the interface. Availability can depend on specialists, service duration, location hours, resources, buffers, and time zone rather than a simple calendar widget.",
+      audience:
+        "Salon customers, owners, managers, receptionists, and technicians using a client-specific appointment platform.",
+    },
+    features: [
+      {
+        title: "Branded service discovery",
+        description:
+          "A client-specific homepage, searchable catalog, service details, gallery, and specialist directory connect visual discovery to booking.",
+      },
+      {
+        title: "Specialist-aware availability",
+        description:
+          "Customers can choose a named specialist or any available specialist before selecting a date and live appointment slot.",
+      },
+      {
+        title: "Four-stage booking request",
+        description:
+          "The public flow progressively collects service, specialist, date/time, and contact details before the final request boundary.",
+      },
+      {
+        title: "Business-management foundation",
+        description:
+          "Protected code paths cover dashboard, bookings, customers, catalog, staff schedules, content, inbox, translations, SEO, and settings.",
+      },
+      {
+        title: "Capability-aware operations",
+        description:
+          "JWT, cookies, CSRF, role hierarchy, session checks, and capability grants separate customer access from staff operations.",
+      },
+      {
+        title: "Queue-backed automation",
+        description:
+          "Redis and BullMQ worker paths support notification, review, SMS, media, and import jobs outside the main request path.",
+      },
+    ],
+    gallery: [
+      {
+        src: "/images/luxenail/01-luxenail-home-desktop.png",
+        alt: "Luxe Nail Spa desktop homepage with luxury imagery, navigation, and booking call to action",
+      },
+      {
+        src: "/images/luxenail/03-services.png",
+        alt: "Luxe Nail Spa service catalog with search and booking filters",
+      },
+      {
+        src: "/images/luxenail/04-service-detail.png",
+        alt: "Luxe Nail Spa service detail page with duration, price, and booking action",
+      },
+      {
+        src: "/images/luxenail/05-booking-service-selection.png",
+        alt: "Luxe Nail Spa booking wizard service selection stage",
+      },
+      {
+        src: "/images/luxenail/06-booking-provider-selection.png",
+        alt: "Luxe Nail Spa booking wizard specialist selection stage",
+      },
+      {
+        src: "/images/luxenail/07-booking-date-selection.png",
+        alt: "Luxe Nail Spa booking wizard date selection stage",
+      },
+      {
+        src: "/images/luxenail/08-booking-time-selection.png",
+        alt: "Luxe Nail Spa booking wizard live appointment time selection",
+      },
+      {
+        src: "/images/luxenail/09-booking-details.png",
+        alt: "Luxe Nail Spa booking request details form with blank contact fields",
+      },
+      {
+        src: "/images/luxenail/15-gallery.png",
+        alt: "Luxe Nail Spa image-led nail artistry gallery",
+      },
+      {
+        src: "/images/luxenail/40-mobile-home.png",
+        alt: "Luxe Nail Spa mobile homepage view",
+        aspect: "phone",
+      },
+      {
+        src: "/images/luxenail/41-mobile-services.png",
+        alt: "Luxe Nail Spa mobile service browsing view",
+        aspect: "phone",
+      },
+      {
+        src: "/images/luxenail/42-mobile-booking.png",
+        alt: "Luxe Nail Spa mobile booking specialist view with sticky summary",
+        aspect: "phone",
+      },
+    ],
+    techStack: {
+      frontend: [
+        "Next.js 16 (App Router)",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS 4",
+        "next-intl",
+        "TanStack React Query",
+        "Radix UI",
+      ],
+      backend: [
+        "Node.js 22",
+        "Express 5 (TypeScript)",
+        "PostgreSQL",
+        "Prisma ORM",
+        "JWT / bcrypt",
+        "Socket.io",
+      ],
+      tools: [
+        "Redis / BullMQ",
+        "Docker",
+        "Dokploy-oriented deployment",
+        "Netlify frontend configuration",
+        "ImageKit / optional R2",
+      ],
+    },
+    badges: ["Next.js 16", "Express 5", "PostgreSQL", "Prisma", "BullMQ"],
+    challenges: [
+      {
+        challenge: "Server-authoritative booking integrity",
+        solution:
+          "Revalidated selected availability during booking creation and combined transactions, service snapshots, resource allocation, conflict handling, and idempotency boundaries.",
+      },
+      {
+        challenge: "Multi-dimensional scheduling",
+        solution:
+          "Modeled location hours, dated overrides, staff shifts, qualifications, service duration, blocks, resources, buffers, lead time, horizon, and time zone explicitly.",
+      },
+      {
+        challenge: "Capability-aware business security",
+        solution:
+          "Separated authentication from authorization with JWT verification, bcrypt, httpOnly cookies, CSRF, session-version checks, role hierarchy, and capability-level policies.",
+      },
+      {
+        challenge: "Durable notifications and async work",
+        solution:
+          "Used Redis and BullMQ worker paths with notification records for deduplication, scheduling, retries, provider identifiers, errors, and delivery timestamps.",
+      },
+      {
+        challenge: "White-label configuration without duplication",
+        solution:
+          "Combined typed fallback configuration with runtime site settings, localization, client media boundaries, catalog content, feature flags, and SEO fields.",
+      },
+    ],
+    links: {
+      live: "https://luxenail.art/",
+    },
+    snapshot: {
+      status: "live",
+      role: "Full-stack developer",
+      ownership:
+        "Customer booking experience, scheduling/backend architecture, protected business-management foundations, localization, and deployment foundations",
+      industry: "Nail salon / appointment-based services",
+      platform: "Responsive web application",
     },
   },
   {

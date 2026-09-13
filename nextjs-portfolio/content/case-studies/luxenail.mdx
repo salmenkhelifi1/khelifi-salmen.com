@@ -1,0 +1,141 @@
+---
+projectSlug: "luxenail"
+placement: "after-engineering-decisions"
+toc:
+  - id: "client-implementation"
+    label: "Client Implementation"
+  - id: "production-boundaries"
+    label: "Production Boundaries"
+---
+
+<Callout variant="info" title="Built on Luxe Spa Booking">
+  LuxeNail.art is a live branded client implementation of the reusable Luxe Spa
+  Booking platform. The platform case study explains the broader product
+  architecture; this case study focuses on how that foundation became a real
+  salon-facing experience.
+</Callout>
+
+## Client implementation
+
+LuxeNail.art connects a client-specific identity, catalog, gallery, specialists,
+location settings, and booking journey to the shared platform foundation. The
+public experience is intentionally focused: customers discover a service,
+choose a specialist or any available specialist, select a date and live slot,
+then submit their contact details for review.
+
+The live flow was verified at:
+
+**Service → Specialist → Date & Time → Contact Details → Submit Request**
+
+At capture time, the public catalog exposed 112 curated treatments and six
+public specialists. These are product-state observations, not business-success
+metrics.
+
+## Customer booking journey
+
+The booking experience progressively collects the information needed to resolve
+an appointment instead of presenting one large form:
+
+- The selected service establishes duration and price.
+- The specialist stage supports a named specialist or any available specialist.
+- The alignment stage exposes the configured location, `America/New_York`
+  context, date, and live appointment windows.
+- The final stage collects contact details and notes while preserving the
+  selected service, time, and total in the summary.
+
+The capture intentionally stopped before submission. No production appointment
+was created.
+
+## Business-management foundation
+
+The paired codebase contains protected routes and services for dashboard and
+booking operations, customer management, specialists, recurring schedules,
+schedule exceptions, services, categories, gallery/media, site content,
+locations, inbox/support, reviews, referrals, members, translations, SEO,
+integrations, and team access.
+
+This surface is described from repository evidence. No authenticated production
+admin session or private customer data was used for the portfolio screenshots.
+
+## Engineering decisions in the client deployment
+
+### Booking integrity
+
+The browser can display a slot that becomes stale before a request reaches the
+server. Booking creation therefore revalidates current availability inside a
+transaction and coordinates service snapshots, resource allocation, conflict
+handling, and idempotency records.
+
+### Scheduling as a domain model
+
+Availability is modeled across location hours, dated overrides, staff shifts,
+qualifications, service duration, blocks, resources, buffers, lead time,
+booking horizon, and time zone. The client consumes server-driven dates and
+slots rather than treating the browser calendar as authoritative.
+
+### Capability-aware operations
+
+Authentication and authorization are separate boundaries. JWT verification,
+bcrypt, httpOnly cookies, CSRF protection, session-version checks, role
+hierarchy, and capability grants protect the operational surface.
+
+The role hierarchy is:
+
+**Owner → Manager → Receptionist → Technician → Customer**
+
+### Durable asynchronous work
+
+Redis and BullMQ worker paths support notification, review, SMS, media, and
+import jobs outside the main request path. Notification records carry
+deduplication, scheduling, retry, provider, error, and delivery state.
+
+Provider delivery was not exercised during this capture, so these are presented
+as implemented architecture rather than a claim that every channel is enabled
+in production.
+
+### White-label configuration
+
+Typed fallback configuration and runtime site settings carry client-specific
+brand, copy, business settings, feature flags, social data, SEO fields, and
+localization. Media integration is kept behind provider boundaries so the
+client-specific experience does not require duplicating the scheduling product.
+
+## Responsive evidence
+
+Mobile captures were verified at `390 × 844` for the homepage, services, and
+booking specialist state. The specialist-selection view keeps the booking
+summary usable in a narrow viewport.
+
+The date/time capture is retained as technical evidence but is not presented as
+finished mobile polish: the live layout currently leaves substantial empty
+space beside a narrow slot column at this breakpoint. The application was not
+changed to improve the screenshot.
+
+<h2 id="production-boundaries" className="mt-8 mb-4 text-h2 text-[var(--text-primary)]">
+  Production boundaries
+</h2>
+
+The live site and API health endpoint were reachable during the evidence
+capture. The public flow, catalog, service detail, specialist directory,
+gallery, live availability, and request boundary were observed directly.
+
+The following were not claimed as live results:
+
+- Checkout, deposits, or online payment in the public booking flow.
+- Gift-card checkout, which reported unavailable.
+- Provider delivery through email, SMS, or push integrations.
+- A successful production AI concierge response.
+- A live-tested authenticated admin session.
+- Any booking, revenue, conversion, customer-volume, or operational-efficiency
+  metric.
+
+See the [Luxe Spa Booking platform case study](/projects/luxe-spa) for the
+reusable system context, and [visit the live client site](https://luxenail.art/)
+for the public experience.
+
+## What this project demonstrates
+
+LuxeNail.art demonstrates the connection between product presentation and
+domain architecture: a client-specific storefront can remain polished while
+the underlying system models real scheduling constraints, protected staff
+operations, localization, media boundaries, and queued background work.
