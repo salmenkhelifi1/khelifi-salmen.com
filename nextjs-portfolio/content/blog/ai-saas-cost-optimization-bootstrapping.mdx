@@ -25,11 +25,11 @@ My goal was to create a valuable product without relying on external funding, wh
 
 ## Strategic Tech Stack: Open Source First, Cloud Smart
 
-When I started, the first decision was the tech stack. I prioritized open-source solutions and widely adopted, cost-effective languages. I chose **Python** for its AI ecosystem, **FastAPI** for a lightweight API, **PostgreSQL** with `pgvector` for data storage and basic RAG capabilities, and **Svelte** for the frontend. This stack allowed rapid development without significant licensing costs.
+The first decision is usually the tech stack. Favour open-source solutions and widely adopted, cost-effective languages. One example stack is **Python** for its AI ecosystem, **FastAPI** for a lightweight API, **PostgreSQL** (optionally with the `pgvector` extension) for data storage and basic RAG-style retrieval, and a lightweight frontend framework. A stack like this can allow rapid development without significant licensing costs.
 
 **What I learned:**
 
-*   **Leverage Open Source Aggressively:** For many initial AI tasks, open-source models or libraries can provide 80% of the value at 0% direct model cost. I explored **Hugging Face** models for specific classification or summarization tasks before defaulting to commercial APIs. For vector search, `pgvector` was sufficient for the MVP, delaying the need for a dedicated vector database like Pinecone or Weaviate, which can add significant cost.
+*   **Leverage Open Source Aggressively:** For many initial AI tasks, open-source models or libraries can provide 80% of the value at 0% direct model cost. Consider trying **Hugging Face** models for specific classification or summarization tasks before defaulting to commercial APIs. For vector search, `pgvector` can be sufficient for an MVP, delaying the need for a dedicated vector database such as Pinecone or Weaviate, which can add significant cost.
 *   **Avoid Vendor Lock-in:** By using open standards and widely supported frameworks, I maintained flexibility. If one cloud provider or AI API became too expensive, migration would be feasible.
 *   **Simplicity Reduces Overhead:** A simpler stack means fewer dependencies, easier debugging, and less time spent on infrastructure management. This directly translates to lower operational costs and faster iteration.
 

@@ -1,10 +1,7 @@
 ---
 title: Building a Scalable Multi-tenant SaaS with Next.js and PostgreSQL
 slug: building-a-scalable-multi-tenant-saas-with-next-js-and-postgresql
-excerpt: >-
-  How I architected a multi-tenant SaaS platform handling dozens of clients with
-  isolated data and shared infrastructure using Next.js app router and
-  PostgreSQL row-level security.
+excerpt: 'A general architecture for a multi-tenant SaaS with isolated data and shared infrastructure using the Next.js app router and PostgreSQL row-level security.'
 status: "published"
 indexable: false
 category: Full-Stack Development
@@ -22,7 +19,7 @@ relatedCaseStudies: []
 
 ## Context
 
-When building building a scalable multi-tenant saas with next.js and postgresql, I faced several architectural decisions that shaped the final outcome. This article breaks down the approach, the trade-offs I considered, and the implementation details that made the difference between a working prototype and a production-ready system.
+When building building a scalable multi-tenant saas with next.js and postgresql, several architectural decisions shape the final outcome. This article breaks down a general approach, the trade-offs to consider, and the implementation details that made the difference between a working prototype and a production-ready system.
 
 Every project starts with constraints — budget, timeline, existing infrastructure. Understanding these constraints upfront drove the decisions you'll read about below.
 
@@ -30,7 +27,7 @@ Every project starts with constraints — budget, timeline, existing infrastruct
 
 ### Research and planning
 
-Before writing any code, I mapped out the requirements and identified the key decision points. This involved:
+Before writing any code, map out the requirements and identify the key decision points. This involves:
 
 - Understanding the core domain and its edge cases
 - Evaluating existing solutions and their limitations
@@ -38,7 +35,7 @@ Before writing any code, I mapped out the requirements and identified the key de
 
 ### Implementation
 
-I structured the implementation in phases, each delivering value independently:
+A phased implementation lets each step deliver value independently:
 
 1. **Foundation** — Setting up the core infrastructure and data models
 2. **Core features** — Building the primary user-facing functionality

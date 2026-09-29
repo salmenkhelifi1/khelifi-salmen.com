@@ -1,9 +1,7 @@
 ---
 title: Nginx and Reverse Proxy Configuration for Node.js Apps
 slug: nginx-and-reverse-proxy-configuration-for-node-js-apps
-excerpt: >-
-  Nginx configurations I use in production: reverse proxy, SSL termination, rate
-  limiting, and static file serving for Node.js backends.
+excerpt: 'Common Nginx configurations for Node.js backends: reverse proxy, SSL termination, rate limiting, and static file serving.'
 status: "published"
 indexable: false
 category: DevOps & Infrastructure
@@ -21,9 +19,9 @@ relatedCaseStudies: []
 
 ## Context
 
-Infrastructure is the foundation that everything else runs on. When I set out to devops & infrastructure, my goals were reliability, repeatability, and minimal manual intervention.
+Infrastructure is the foundation that everything else runs on. Typical goals are reliability, repeatability, and minimal manual intervention.
 
-This guide walks through the exact setup I use in production, including the configuration files, the rationale behind each choice, and the lessons learned from operating it daily.
+This guide outlines an example setup, including the configuration approach and the rationale behind each choice. It is a general guide, not a record of a specific production system.
 
 ## The approach
 
@@ -46,7 +44,7 @@ Key decisions included:
 
 ## Results and takeaways
 
-The setup has been running in production with minimal issues. What I learned:
+Key takeaways:
 
 - Automate everything you do more than once — the second time should be the last manual time
 - Test your disaster recovery procedure, not just your deployment pipeline

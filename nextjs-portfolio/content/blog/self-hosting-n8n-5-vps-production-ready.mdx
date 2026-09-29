@@ -34,7 +34,7 @@ n8n is an incredible open-source workflow automation tool. It's self-hostable, h
 
 For a related n8n implementation that orchestrates AI and business-tool inputs, see the [AI-powered workflow automation case study](/projects/ai-workflow-automation).
 
-This article details exactly how I achieved this. I'll walk you through setting up n8n with **Docker**, securing it with **Nginx** and **SSL**, and implementing a solid **backup strategy**. This isn't just theory; it's the exact setup I use daily for my business operations. It proves that powerful infrastructure doesn't demand a huge budget. 
+This article outlines one way to achieve this. It walks through setting up n8n with **Docker**, securing it with **Nginx** and **SSL**, and implementing a solid **backup strategy**. It is a general guide, not a description of a specific production system, and it shows that useful infrastructure doesn't demand a huge budget. 
 
 ## The Foundation: Choosing Your $5 VPS & Docker
 
@@ -149,9 +149,9 @@ Using `docker-compose` for multi-service applications like n8n and Postgres is a
 
 **What I Did:**
 
-n8n runs on port 5678 internally. To make it accessible via a custom domain (e.g., `n8n.yourdomain.com`) and secure it with HTTPS, I installed **Nginx** as a reverse proxy. Nginx listens on standard HTTP (80) and HTTPS (443) ports and forwards requests to the n8n container.
+n8n runs on port 5678 internally. To make it accessible via a custom domain (e.g., `n8n.yourdomain.com`) and secure it with HTTPS, one option is to install **Nginx** as a reverse proxy. Nginx listens on standard HTTP (80) and HTTPS (443) ports and forwards requests to the n8n container.
 
-After configuring Nginx, I used **Certbot** from Let's Encrypt to provision and automatically renew SSL certificates. This provides free, trusted SSL, ensuring all traffic between users and n8n is encrypted.
+After configuring Nginx, use **Certbot** from Let's Encrypt to provision and automatically renew SSL certificates. This provides free, trusted SSL, ensuring all traffic between users and n8n is encrypted.
 
 First, install Nginx and Certbot:
 
@@ -278,7 +278,7 @@ sudo apt update && sudo apt upgrade -y
 
 ## Conclusion: Powerful Automation on a Budget
 
-I set out to build a production-ready n8n automation platform on a $5 VPS, and I achieved it. By leveraging **Docker**, **Nginx**, **Let's Encrypt SSL**, and a robust **backup strategy**, I created a reliable, secure, and cost-effective solution that powers my business operations daily. This setup demonstrates that you don't need a massive budget or complex infrastructure to run powerful tools.
+A production-ready n8n automation platform on a small, inexpensive VPS is achievable. By leveraging **Docker**, **Nginx**, **Let's Encrypt SSL**, and a robust **backup strategy**, you can assemble a reliable, secure, and cost-effective solution. This setup demonstrates that you don't need a massive budget or complex infrastructure to run powerful tools.
 
 This approach gives me full control over my data and environment, something managed services often restrict. It's a testament to the power of open-source software and modern DevOps practices. If you're a freelance engineer, solo founder, or small business owner, this blueprint can empower you to take control of your automation without breaking the bank.
 

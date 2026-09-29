@@ -1,9 +1,7 @@
 ---
 title: PostgreSQL Indexing Strategies for High-Performance Apps
 slug: postgresql-indexing-strategies-for-high-performance-apps
-excerpt: >-
-  B-tree, GiST, GIN, and BRIN indexes — when each shines and how I cut query
-  times from seconds to milliseconds.
+excerpt: 'B-tree, GiST, GIN, and BRIN indexes: when each fits and how indexing can reduce query times.'
 status: "published"
 indexable: false
 category: Databases and Architecture
@@ -21,7 +19,7 @@ relatedCaseStudies: []
 
 ## Context
 
-When building postgresql indexing strategies for high-performance apps, I faced several architectural decisions that shaped the final outcome. This article breaks down the approach, the trade-offs I considered, and the implementation details that made the difference between a working prototype and a production-ready system.
+When building postgresql indexing strategies for high-performance apps, several architectural decisions shape the final outcome. This article breaks down a general approach, the trade-offs to consider, and the implementation details that made the difference between a working prototype and a production-ready system.
 
 Every project starts with constraints — budget, timeline, existing infrastructure. Understanding these constraints upfront drove the decisions you'll read about below.
 
@@ -29,7 +27,7 @@ Every project starts with constraints — budget, timeline, existing infrastruct
 
 ### Research and planning
 
-Before writing any code, I mapped out the requirements and identified the key decision points. This involved:
+Before writing any code, map out the requirements and identify the key decision points. This involves:
 
 - Understanding the core domain and its edge cases
 - Evaluating existing solutions and their limitations
@@ -37,7 +35,7 @@ Before writing any code, I mapped out the requirements and identified the key de
 
 ### Implementation
 
-I structured the implementation in phases, each delivering value independently:
+A phased implementation lets each step deliver value independently:
 
 1. **Foundation** — Setting up the core infrastructure and data models
 2. **Core features** — Building the primary user-facing functionality
