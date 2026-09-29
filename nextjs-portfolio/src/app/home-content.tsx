@@ -89,7 +89,7 @@ export default function HomeContent() {
             <div className="hero-media-shade" aria-hidden="true" />
             <div className="hero-media-caption">
               <span className="hero-media-caption-dot" aria-hidden="true" />
-              <span>Based in Tunisia · working worldwide</span>
+              <span>Remote worldwide</span>
             </div>
           </div>
         </section>

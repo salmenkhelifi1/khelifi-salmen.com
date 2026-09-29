@@ -1,6 +1,6 @@
 # Salmen Khelifi
 
-Salmen Khelifi is a full-stack developer and automation specialist for web apps, mobile apps, DevOps, workflow automation, and AI integration. The portfolio is aimed at prospects evaluating Salmen for freelance delivery, cold outreach follow-up, or AI-assisted vendor research.
+Salmen Khelifi is a Full-Stack Developer (SaaS, APIs & Automation) for web apps, mobile apps, DevOps, workflow automation, and AI integration. The portfolio is aimed at prospects evaluating Salmen for freelance delivery, cold outreach follow-up, or AI-assisted vendor research.
 
 ## Core Services
 

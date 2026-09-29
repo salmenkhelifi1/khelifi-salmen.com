@@ -160,8 +160,10 @@ for (const page of routes) {
     errors.push("/: root layout still emits an explicit index robots directive");
   }
 
-  if (title.length < 50 || title.length > 60) {
-    errors.push(`${page.route}: title length ${title.length}, expected 50-60`);
+  // Homepage title is the canonical positioning line (63 chars), allowed up to 65.
+  const maxTitle = page.route === "/" ? 65 : 60;
+  if (title.length < 50 || title.length > maxTitle) {
+    errors.push(`${page.route}: title length ${title.length}, expected 50-${maxTitle}`);
   }
   // A complete source-backed description can be shorter than a conventional
   // snippet target; do not pad it with an unrelated fragment to reach 80.

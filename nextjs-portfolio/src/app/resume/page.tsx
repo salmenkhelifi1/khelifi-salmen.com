@@ -29,7 +29,7 @@ import {
 } from "@/data/schema";
 import SiteHeader from "@/components/SiteHeader";
 
-const title = "Resume — Full-Stack Developer & Automation Specialist";
+const title = "Resume — Full-Stack Developer | SaaS, APIs & Automation";
 const description =
   "Review Salmen Khelifi’s full-stack resume, including React, Next.js, Node.js, Flutter, automation experience, selected projects, and technical skills.";
 
@@ -68,10 +68,10 @@ const clientProjects = clientSlugs
 const projectRoles: Record<string, string> = {
   luxenail: "Full-Stack Developer",
   chaktech: "Lead Architect & Full-Stack Developer",
-  adaptifit: "Full-Stack Developer & AI Specialist",
+  adaptifit: "Full-Stack & AI Developer",
   rentiora: "Frontend Developer",
   "ai-workflow-automation": "Automation Architect",
-  anlingo: "Full-Stack Developer & Automation Specialist",
+  anlingo: "Full-Stack Developer",
 };
 
 const projectBullets: Record<string, string[]> = {
@@ -294,13 +294,13 @@ export default function ResumePage() {
                 Salmen Khelifi
               </h1>
               <p className="text-xl font-medium text-[var(--accent)] mb-4 print-accent">
-                Full-Stack Developer & Automation Specialist
+                Full-Stack Developer | SaaS, APIs & Automation
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-[var(--text-secondary)] print-text-secondary">
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-[var(--text-tertiary)] no-print" />
-                  <span>Tunisia · Remote worldwide</span>
+                  <span>Remote worldwide</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[var(--text-tertiary)] no-print" />
@@ -392,7 +392,7 @@ export default function ResumePage() {
             <Briefcase className="w-5 h-5 text-[var(--accent)] no-print" /> Professional Summary
           </h2>
           <p className="text-[var(--text-secondary)] leading-relaxed print-text-secondary">
-            Full-stack product engineer and automation specialist with 5+ years building web, mobile, and SaaS systems. I own delivery across architecture, backend, frontend, integrations, and deployment, with particular experience in multi-tenant platforms and operational automation. I maintain a{" "}
+            Full-stack developer with 5+ years building SaaS products, web applications, API integrations, and business automation. I own delivery across architecture, backend, frontend, integrations, and deployment, with particular experience in multi-tenant platforms and operational automation. I maintain a{" "}
             <a
               href={freelancerUrl}
               target="_blank"

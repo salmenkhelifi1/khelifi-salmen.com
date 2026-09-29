@@ -21,9 +21,9 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.khelifi-salmen.com"),
-  title: "Salmen Khelifi | Full-Stack, Mobile & Automation Specialist",
+  title: "Salmen Khelifi | Full-Stack Developer — SaaS, APIs & Automation",
   description:
-    "Salmen Khelifi is a Software Engineer & Automation Specialist building revenue-focused web apps, mobile products, SaaS platforms, and AI workflows worldwide.",
+    "Full-stack developer building SaaS products, web applications, API integrations and business automation. Explore production work, case studies and résumé.",
   authors: [{ name: "Salmen Khelifi", url: siteUrl }],
   creator: "Salmen Khelifi",
   publisher: "Salmen Khelifi",
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Salmen Khelifi | Full-Stack, Mobile & Automation Specialist",
+    title: "Salmen Khelifi | Full-Stack Developer — SaaS, APIs & Automation",
     description:
-      "Salmen Khelifi is a Software Engineer & Automation Specialist building revenue-focused web apps, mobile products, SaaS platforms, and AI workflows worldwide.",
+      "Full-stack developer building SaaS products, web applications, API integrations and business automation. Explore production work, case studies and résumé.",
     url: siteUrl,
     siteName: "Salmen Khelifi",
     locale: "en_US",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Salmen Khelifi | Full-Stack, Mobile & Automation Specialist",
+    title: "Salmen Khelifi | Full-Stack Developer — SaaS, APIs & Automation",
     description:
-      "Salmen Khelifi is a Software Engineer & Automation Specialist building revenue-focused web apps, mobile products, SaaS platforms, and AI workflows worldwide.",
+      "Full-stack developer building SaaS products, web applications, API integrations and business automation. Explore production work, case studies and résumé.",
     images: [twitterImage],
   },
 };

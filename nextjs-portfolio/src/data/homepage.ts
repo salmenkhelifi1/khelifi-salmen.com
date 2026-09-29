@@ -366,7 +366,7 @@ export const featuredWork: FeaturedWorkItem[] = [
 
 export const credibilityItems: CredibilityItem[] = [
   { icon: Code2, label: "5+ years building software" },
-  { icon: Briefcase, label: "3+ years freelance delivery" },
+  { icon: Briefcase, label: "100% on-time, on-budget on Freelancer.com" },
   { icon: Star, label: "4.9/5 on Freelancer.com" },
   { icon: Layers, label: "Full-stack ownership" },
 ];

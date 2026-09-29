@@ -44,7 +44,7 @@ export const websiteId = `${siteUrl}/#website`;
 export const serviceId = `${siteUrl}/#service`;
 export const socialImage = {
   url: `${siteUrl}/opengraph-image`,
-  alt: "Salmen Khelifi - Full-Stack Developer & Automation Specialist",
+  alt: "Salmen Khelifi - Full-Stack Developer | SaaS, APIs & Automation",
 };
 export const twitterImage = {
   url: `${siteUrl}/twitter-image`,
@@ -57,16 +57,12 @@ export const siteJsonLd = [
     "@type": "Person",
     "@id": personId,
     name: "Salmen Khelifi",
-    jobTitle: "Full-Stack Developer & Automation Specialist",
+    jobTitle: "Full-Stack Developer | SaaS, APIs & Automation",
     url: authorProfileUrl,
     email: "hello@khelifi-salmen.com",
     description:
-      "Tunisia-based full-stack developer and automation specialist working remotely worldwide on web products, mobile apps, SaaS platforms, and n8n integrations.",
+      "Full-stack developer working remotely worldwide on SaaS products, web applications, API integrations, and business automation.",
     image: `${siteUrl}/images/salmen-khelifi-full-stack-developer-portrait.jpg`,
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "TN",
-    },
     // telephone removed pending owner confirmation
     sameAs: [
       githubUrl,

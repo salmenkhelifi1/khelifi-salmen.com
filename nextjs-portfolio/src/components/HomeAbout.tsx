@@ -16,7 +16,7 @@ export default function HomeAbout() {
             <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border-muted)]">
               <Image
                 src="/images/khelifi-salmen.png"
-                alt="Salmen Khelifi, full-stack developer and automation specialist"
+                alt="Salmen Khelifi, full-stack developer for SaaS, APIs and automation"
                 fill
                 sizes="(max-width: 1023px) 384px, 32vw"
                 className="object-cover"

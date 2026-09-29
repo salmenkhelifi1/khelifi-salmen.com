@@ -1,6 +1,6 @@
 # Services & Technical Capabilities — Salmen Khelifi
 
-> Salmen Khelifi is a full-stack engineer, AI automation developer, and mobile app specialist available for hire on a project, retainer, or consultation basis.
+> Salmen Khelifi is a Full-Stack Developer (SaaS, APIs & Automation) available for hire on a project, retainer, or consultation basis.
 
 ## Core Capabilities & Services
 

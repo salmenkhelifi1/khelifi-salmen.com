@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Salmen Khelifi - Full-Stack Developer & Automation Specialist";
+export const alt = "Salmen Khelifi - Full-Stack Developer | SaaS, APIs & Automation";
 export const size = {
   width: 1200,
   height: 630,
@@ -42,7 +42,7 @@ export default function Image() {
             />
           </div>
           <div style={{ color: "#c7c7d1", fontSize: 44, fontWeight: 500 }}>
-            Full-Stack Developer & Automation Specialist
+            Full-Stack Developer | SaaS, APIs & Automation
           </div>
         </div>
       </div>
