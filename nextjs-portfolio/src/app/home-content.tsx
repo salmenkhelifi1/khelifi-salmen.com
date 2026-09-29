@@ -47,6 +47,10 @@ export default function HomeContent() {
                 </span>
               </div>
 
+              <p className="hero-role reveal" style={{ transitionDelay: "70ms" }}>
+                Full-Stack Developer · SaaS · API Integrations · Automation
+              </p>
+
               <h1 className="hero-title reveal" style={{ transitionDelay: "100ms" }}>
                 I build and improve digital products that <span className="hero-title-accent">save work</span>, convert customers, and stay reliable as they grow.
               </h1>
@@ -56,10 +60,10 @@ export default function HomeContent() {
               </p>
 
               <div className="hero-actions reveal flex w-full flex-col gap-3 sm:w-auto sm:flex-row" style={{ transitionDelay: "240ms" }}>
-                <PrimaryButton href="#contact" className="w-full sm:w-auto">
-                  Tell me about your project <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                <PrimaryButton href="#work" className="w-full sm:w-auto">
+                  View selected work <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </PrimaryButton>
-                <SecondaryButton href="#work" className="w-full sm:w-auto">View selected work</SecondaryButton>
+                <SecondaryButton href="/resume" className="w-full sm:w-auto">View résumé</SecondaryButton>
               </div>
 
               <a
@@ -70,7 +74,7 @@ export default function HomeContent() {
                 className="hero-calendar-link reveal"
                 style={{ transitionDelay: "280ms" }}
               >
-                Prefer a call? Book 30 minutes <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                Book a call <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
             </div>
           </div>

@@ -112,8 +112,8 @@ export interface ProcessStep {
 export const navLinks: NavLink[] = [
   { href: "/#work", label: "Work" },
   { href: "/#capabilities", label: "What I Do" },
-  { href: "/#process", label: "Process" },
   { href: "/#about", label: "About" },
+  { href: "/resume", label: "Résumé" },
   { href: "/blog", label: "Blog" },
 ];
 
