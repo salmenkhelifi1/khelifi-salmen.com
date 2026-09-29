@@ -231,19 +231,19 @@ function getFactualArchitecture(project: Project): ArchitectureComponent[] {
     return [
       {
         name: "Public Booking Interface",
-        tech: "Next.js 16 (App Router), Tailwind CSS 4, Zustand",
+        tech: "Next.js 16 (App Router), Tailwind CSS 4, next-intl, TanStack React Query",
         role: "Client-facing white-label booking funnel & service selector",
         icon: <Smartphone className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Admin & Staff Dashboard",
-        tech: "shadcn/ui, Socket.io Client, Zustand",
+        tech: "Radix UI, Socket.io client",
         role: "Real-time agenda management, receptionist chat & service configuration",
         icon: <Layers className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "API & Access Control",
-        tech: "Express.js (TypeScript), Helmet, Zod Validation",
+        tech: "Express 5 (TypeScript), JWT, CSRF protection, Zod",
         role: "Strict RBAC (Owner > Manager > Receptionist > Technician > Customer)",
         icon: <ShieldCheck className="w-5 h-5 text-[var(--accent)]" />,
       },
@@ -262,20 +262,14 @@ function getFactualArchitecture(project: Project): ArchitectureComponent[] {
       {
         name: "Async Queue Workers",
         tech: "Redis, BullMQ Queue Workers",
-        role: "Offloaded email dispatch, SMS reminders & background job processing",
+        role: "Notification, review, SMS, media and import jobs outside the main request path",
         icon: <Cpu className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
-        name: "Automated Messaging",
-        tech: "Twilio API, Nodemailer",
-        role: "Automated SMS confirmations, review invitations & customer campaigns",
+        name: "Provider Integration Paths",
+        tech: "Email, SMS and push provider boundaries",
+        role: "Implemented integration paths; delivery through each provider is not verified in production",
         icon: <MessageSquare className="w-5 h-5 text-[var(--accent)]" />,
-      },
-      {
-        name: "AI Concierge Engine",
-        tech: "Gemini API",
-        role: "Conversational assistant referencing live catalog & provider availability",
-        icon: <Code2 className="w-5 h-5 text-[var(--accent)]" />,
       },
     ];
   }

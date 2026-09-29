@@ -402,20 +402,12 @@ export const projects: Project[] = [
     ],
     gallery: [
       {
-        src: "/images/luxe_spa_video_demo.webp",
-        alt: "Full end-to-end video walkthrough of the Luxe Spa platform",
-      },
-      {
         src: "/images/luxe_spa_home.png",
         alt: "Customer facing booking website landing page showing premium typography and active services",
       },
       {
         src: "/images/luxe_spa_booking_flow.png",
         alt: "Interactive step-by-step customer booking wizard page",
-      },
-      {
-        src: "/images/luxe_spa_ai_chat.png",
-        alt: "Conversational AI concierge bot answering services questions and guiding bookings",
       },
       {
         src: "/images/luxe_spa_admin.png",
@@ -426,18 +418,26 @@ export const projects: Project[] = [
       frontend: [
         "Next.js 16 (App Router)",
         "React 19",
+        "TypeScript",
         "Tailwind CSS 4",
-        "Zustand State Store",
-        "shadcn/ui Layouts",
+        "next-intl",
+        "TanStack React Query",
+        "Radix UI",
       ],
       backend: [
-        "Express.js (TypeScript)",
+        "Node.js 22",
+        "Express 5 (TypeScript)",
         "PostgreSQL & Prisma ORM",
-        "Socket.io Websockets",
-        "Redis / BullMQ Queue Workers",
-        "Nodemailer & Twilio API",
+        "JWT / bcrypt",
+        "Socket.io",
       ],
-      tools: ["ImageKit CDN", "Docker", "Dokploy / VPS", "Zod Validation", "Helmet HTTP Headers"],
+      tools: [
+        "Redis / BullMQ queue workers",
+        "Docker",
+        "Dokploy-oriented deployment",
+        "ImageKit / optional R2",
+        "Zod validation",
+      ],
     },
     badges: ["Next.js 16", "Express.js", "PostgreSQL", "Prisma", "BullMQ"],
     challenges: [
@@ -461,11 +461,6 @@ export const projects: Project[] = [
         solution:
           "Optimized image sizes and aspect ratios using ImageKit real-time transformation parameters, prevented layout shifts via fixed Next.js Image dimensions, and added database indexing on foreign keys.",
       },
-      {
-        challenge: "AI concierge query security and context control",
-        solution:
-          "Injected live catalog details, open hours, and booking guidelines dynamically into the Gemini system prompt and sanitized user inputs to reduce the risk of prompt injection and off-catalog answers.",
-      },
     ],
     links: {
       // Live demo intentionally omitted: previous value was a localhost URL.
@@ -475,7 +470,7 @@ export const projects: Project[] = [
       status: "in-development",
       role: "Solo full-stack developer",
       ownership:
-        "Architecture, booking engine, admin and staff dashboards, payments, and automation, built end to end",
+        "Architecture, booking engine, admin and staff dashboards, and queue-backed automation, built end to end",
       industry: "Appointment-based services (spa, salon, clinic)",
       platform: "Web",
     },

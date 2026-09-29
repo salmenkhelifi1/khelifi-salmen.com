@@ -25,7 +25,7 @@ FoundPeers is a working iOS-first founder discovery and curated-meetup MVP under
 
 URL: https://www.khelifi-salmen.com/projects/luxe-spa
 
-Luxe Spa Booking is an in-development white-label booking, CRM, and management system for appointment-based service businesses. Salmen owns the architecture, booking engine, staff dashboards, payments, and automation pipeline; the platform can reconfigure a vertical preset from spa to clinic in under 10 seconds without code changes.
+Luxe Spa Booking is an in-development white-label booking, CRM, and management system for appointment-based service businesses. Salmen owns the architecture, booking engine, staff dashboards, and queue-backed automation pipeline; the platform can reconfigure a vertical preset from spa to clinic in under 10 seconds without code changes.
 
 ### Adaptifit
 
