@@ -87,7 +87,6 @@ export const siteJsonLd = [
       "AI integration",
       "Gemini API",
       "OpenAI API",
-      "Vapi",
       "Docker",
       "Linux",
     ],
@@ -112,13 +111,13 @@ export const siteJsonLd = [
     url: siteUrl,
     email: "hello@khelifi-salmen.com",
     description:
-      "Full-stack web and SaaS engineering, mobile app development, n8n automation, AI integration, and DevOps for clients worldwide.",
+      "Full-stack SaaS and web application development, API integrations, and business workflow automation, with n8n, AI integration, mobile (Flutter) and DevOps as supporting capabilities, for clients worldwide.",
     areaServed: "Worldwide",
     serviceType: [
       "Full-stack development",
-      "Mobile app development",
-      "DevOps",
-      "Workflow automation",
+      "SaaS development",
+      "API integration",
+      "Business workflow automation",
       "AI integration",
     ],
     provider: {

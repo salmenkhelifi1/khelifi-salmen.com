@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowUpRight,
   CheckCircle2,
@@ -381,6 +382,12 @@ export default function SyncLeadCaseStudy({ project }: { project: Project }) {
                 <h2 id="contact-heading" className="mx-auto mt-4 max-w-2xl text-h2">Need full-stack or AI engineering support for a connected product?</h2>
                 <p className="mx-auto mt-5 max-w-2xl text-body-regular text-[var(--text-secondary)]">
                   I can contribute across product workflows, integrations, AI-assisted features, and evidence-led QA within an existing team or delivery partnership.
+                </p>
+                <p className="mx-auto mt-5 max-w-2xl text-sm text-[var(--text-secondary)]">
+                  More SaaS case studies:{" "}
+                  <Link className="underline underline-offset-4" href="/projects/luxe-spa">Luxe Spa Booking</Link>,{" "}
+                  <Link className="underline underline-offset-4" href="/projects/noxivo">Noxivo</Link>, or the{" "}
+                  <Link className="underline underline-offset-4" href="/work">full portfolio</Link>.
                 </p>
                 <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
                   <PrimaryButton href={bookingUrl}>

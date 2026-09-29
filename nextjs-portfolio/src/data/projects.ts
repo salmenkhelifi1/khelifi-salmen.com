@@ -656,8 +656,8 @@ export const projects: Project[] = [
     slug: "adaptifit",
     title: "Adaptifit",
     tagline:
-      "A client fitness and nutrition app implemented in Flutter, backed by an Express API and n8n-powered AI plan generation.",
-    category: "Client Fitness & Nutrition App",
+      "An AI fitness application built for a client with Flutter and FastAPI, combining real-time pose detection with personalized training and nutrition features.",
+    category: "AI Fitness Coach App",
     accent: {
       text: "text-cyan-400",
       hoverText: "hover:text-cyan-400",
@@ -666,13 +666,18 @@ export const projects: Project[] = [
     heroImage: "/images/adaptifit/my-plan.png",
     galleryAspect: "phone",
     overview: {
-      what: "A cross-platform Flutter mobile app that turns a client's fitness product brief and supplied UI/UX into daily workout plans, nutrition plans, progress tracking, calendar views, profile management, and an AI coach experience. The app connects to an Express and MongoDB backend, with n8n workflows coordinating AI-generated plan data.",
+      what: "A cross-platform Flutter mobile app that combines real-time pose detection (Google ML Kit) with personalized training and nutrition recommendations, delivered through daily workout plans, nutrition plans, progress tracking, calendar views, and an AI coach experience. A FastAPI backend and n8n workflows with OpenAI coordinate AI-generated plan data. Built for a client; completed for the client but not publicly launched.",
       problem:
         "Fitness users need one place to follow an adaptive workout and nutrition routine instead of managing plans, meals, completion data, and coaching conversations across separate tools.",
       audience:
-        "People following a personalized fitness and nutrition program through the client's Adaptifit product.",
+        "People following a personalized fitness and nutrition program.",
     },
     features: [
+      {
+        title: "Real-Time Pose Detection",
+        description:
+          "Camera-based pose detection with Google ML Kit gives real-time movement feedback during workouts.",
+      },
       {
         title: "Personalized Daily Plans",
         description:
@@ -686,7 +691,7 @@ export const projects: Project[] = [
       {
         title: "AI Coach Chat",
         description:
-          "The Flutter coach experience sends authenticated prompts through Express to an n8n webhook and stores the resulting conversation history.",
+          "The Flutter coach experience sends authenticated prompts through the backend API to an n8n workflow and stores the resulting conversation history.",
       },
       {
         title: "Progress & Plan Management",
@@ -738,20 +743,20 @@ export const projects: Project[] = [
     ],
     techStack: {
       frontend: ["Flutter", "Dart", "Riverpod"],
-      backend: ["Express.js", "MongoDB", "Mongoose", "JWT authentication"],
-      tools: ["n8n", "OpenAI"],
+      backend: ["FastAPI"],
+      tools: ["Google ML Kit", "n8n", "OpenAI"],
     },
-    badges: ["Flutter", "Express.js", "MongoDB", "n8n", "OpenAI"],
+    badges: ["Flutter", "FastAPI", "Google ML Kit", "n8n", "OpenAI"],
     challenges: [
       {
-        challenge: "Implementing an existing client-owned visual system without claiming design ownership",
+        challenge: "Implementing a supplied visual system without claiming design ownership",
         solution:
-          "Translated the supplied brand and UI/UX into reusable Flutter screens, navigation, state, and responsive mobile layouts while keeping the portfolio credit explicit: the client owns the brand and a separate designer created the UI/UX.",
+          "Translated the supplied UI/UX into reusable Flutter screens, navigation, state, and responsive mobile layouts while keeping the portfolio credit explicit: a separate designer created the UI/UX.",
       },
       {
         challenge: "Turning AI output into consistent product data",
         solution:
-          "Connected Express endpoints to n8n workflows that generate and parse AI output, then save the main plan, individual workouts, nutrition, and calendar entries through authenticated API calls.",
+          "Connected backend API endpoints to n8n workflows that generate and parse AI output, then save the main plan, individual workouts, nutrition, and calendar entries through authenticated API calls.",
       },
       {
         challenge: "Keeping plan rewrites and progress views aligned",
@@ -763,8 +768,8 @@ export const projects: Project[] = [
     snapshot: {
       role: "Flutter, backend & automation developer",
       ownership:
-        "Flutter mobile implementation, Express/MongoDB API, authentication and data flows, progress/calendar integration, and n8n AI workflows",
-      team: "Client-owned brand; UI/UX created by a separate designer",
+        "Flutter mobile implementation, FastAPI backend, pose detection with Google ML Kit, progress/calendar integration, and n8n AI workflows",
+      team: "Client work; UI/UX created by a separate designer",
       industry: "Fitness and wellness",
       platform: "Mobile",
     },

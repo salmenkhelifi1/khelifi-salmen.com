@@ -52,7 +52,7 @@ export default function TestimonialSpotlight() {
           </details>
 
           <a href={freelancerUrl} target="_blank" rel="noreferrer" className="project-link mt-6 inline-flex min-h-11 items-center font-semibold text-[var(--text-secondary)]">
-            4.9 / 5 across 8 reviews on Freelancer.com <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+            4.9 / 5 across 9 reviews on Freelancer.com <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
           </a>
         </article>
       </SectionContainer>

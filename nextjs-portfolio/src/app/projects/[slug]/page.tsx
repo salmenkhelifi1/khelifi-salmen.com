@@ -69,7 +69,6 @@ export async function generateMetadata({
     `${project.title} — ${project.category}`,
     "Salmen Khelifi",
     project.tagline,
-    "Project",
   );
   const description = createSeoDescription(project.tagline);
   const heroAlt = project.gallery.find((shot) => shot.src === project.heroImage)?.alt
@@ -448,8 +447,16 @@ export default async function ProjectProfilePage({
   const narrative = await getCaseStudyNarrative(slug);
 
   const slugIndex = projects.findIndex((p) => p.slug === slug);
-  const prevProject = projects[(slugIndex - 1 + projects.length) % projects.length];
-  const nextProject = projects[(slugIndex + 1) % projects.length];
+  // Sequence navigation, except where the array neighbour is unrelated: Noxivo
+  // (multi-tenant SaaS) would otherwise lead into a fashion e-commerce site.
+  const neighbourOverride: Record<string, { prev?: string; next?: string }> = {
+    noxivo: { next: "luxe-spa" },
+  };
+  const neighbour = (offset: number, slugOverride?: string) =>
+    (slugOverride && projects.find((p) => p.slug === slugOverride)) ||
+    projects[(slugIndex + offset + projects.length) % projects.length];
+  const prevProject = neighbour(-1, neighbourOverride[slug]?.prev);
+  const nextProject = neighbour(1, neighbourOverride[slug]?.next);
 
   const hasDesktopGallery = project.galleryAspect === "desktop";
   const hasGenericEngineeringDecisions = project.features.length > 0 && project.slug !== "noxivo";
@@ -720,7 +727,7 @@ export default async function ProjectProfilePage({
                   {project.slug === "luxenail" &&
                     "A live Luxe Nail Spa implementation of a reusable white-label booking platform, spanning the customer booking experience, scheduling/backend architecture, protected business-management foundations, localization, and deployment foundations."}
                   {project.slug === "adaptifit" &&
-                    "Implemented the client's supplied brand and UI/UX as a Flutter app, then built the Express/MongoDB services and n8n workflows behind personalized plans, progress, and AI coach flows."}
+                    "Implemented the supplied UI/UX as a Flutter app, then built the FastAPI backend, pose detection with Google ML Kit, and the n8n workflows behind personalized plans, progress, and AI coach flows."}
                   {project.slug !== "luxe-spa" &&
                     project.slug !== "luxenail" &&
                     project.slug !== "anlingo" &&

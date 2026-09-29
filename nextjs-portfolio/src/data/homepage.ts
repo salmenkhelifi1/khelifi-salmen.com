@@ -273,11 +273,11 @@ export const projects: Project[] = [
     image: "/images/chaktech/chaktech-admin-dashboard-live.png",
   },
   {
-    category: "Client Fitness & Nutrition App",
+    category: "AI Fitness Coach App",
     title: "Adaptifit",
     description:
-      "Client fitness and nutrition app implemented in Flutter with an Express/MongoDB backend and n8n-powered AI plan generation.",
-    tags: ["Flutter", "Express.js", "MongoDB", "n8n", "OpenAI"],
+      "Client work: AI fitness app built with Flutter and FastAPI, combining real-time pose detection with personalized training and nutrition features. Not publicly launched.",
+    tags: ["Flutter", "FastAPI", "Google ML Kit", "n8n", "OpenAI"],
     href: "/projects/adaptifit",
     linkLabel: "View Project",
     image: "/images/adaptifit/my-plan.png",

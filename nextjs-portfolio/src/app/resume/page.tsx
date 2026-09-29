@@ -86,9 +86,9 @@ const projectBullets: Record<string, string[]> = {
     "Integrated Typesense for instant faceted search and built a secure administrative back-office using Payload CMS.",
   ],
   adaptifit: [
-    "Built an interactive mobile experience in Flutter for personalized workout programs and meal tracking.",
+    "Built an AI fitness application for a client, combining real-time pose detection (Google ML Kit) with personalized training and nutrition features. Completed for the client; not publicly launched.",
+    "Developed the Flutter mobile app and FastAPI backend for personalized workout programs and meal tracking.",
     "Integrated OpenAI API and n8n workflow automations to generate adaptive coaching responses and custom training metrics.",
-    "Modeled persistent database structures using MongoDB to track user training metrics, body composition, and macronutrients.",
   ],
   rentiora: [
     "Designed a modern, responsive landing page and browse flow showcasing premium luxury vehicles.",
@@ -361,7 +361,7 @@ export default function ResumePage() {
                   rel="noreferrer"
                   className="print-link inline-flex min-h-11 items-center underline hover:text-[var(--text-primary)]"
                 >
-                  Freelancer.com (4.9/5, 8 reviews)
+                  Freelancer.com (4.9/5, 9 reviews)
                 </a>
               </div>
             </div>
@@ -399,7 +399,7 @@ export default function ResumePage() {
               rel="noreferrer"
               className="print-link inline-flex min-h-11 items-center underline hover:text-[var(--text-primary)]"
             >
-              4.9/5 rating across 8 reviews on Freelancer.com
+              4.9/5 rating across 9 reviews on Freelancer.com
             </a>
             .
           </p>

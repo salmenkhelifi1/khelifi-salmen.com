@@ -4,12 +4,12 @@
 
 ## Main pages
 
-- [Home](https://www.khelifi-salmen.com/): Overview of Salmen's full-stack, mobile, and automation work.
+- [Home](https://www.khelifi-salmen.com/): Overview of Salmen's full-stack SaaS, API integration, and automation work.
 - [Work](https://www.khelifi-salmen.com/work): Portfolio and case studies for software products, platforms, and automation projects.
 - [Resume](https://www.khelifi-salmen.com/resume): Professional experience, technical skills, selected work, and contact details.
 - [Blog](https://www.khelifi-salmen.com/blog): Engineering write-ups, architecture decisions, and project retrospectives.
 - [n8n Automation](https://www.khelifi-salmen.com/n8n-automation-developer): How Salmen scopes, builds, tests, and hands over reliable workflow automation.
-- [Services](https://www.khelifi-salmen.com/services.md): Detailed breakdown of full-stack, n8n automation, and Flutter services.
+- [Services](https://www.khelifi-salmen.com/services.md): Detailed breakdown of full-stack SaaS, API and automation services, with AI, Flutter mobile, and DevOps as supporting capabilities.
 - [Engagement Process](https://www.khelifi-salmen.com/pricing.md): Discovery call booking policy and custom contract engagement process (no public fixed rates).
 - [Full portfolio context](https://www.khelifi-salmen.com/llms-full.txt): Detailed project, service, and contact information.
 

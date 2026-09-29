@@ -2,8 +2,8 @@
 title: Implementing Semantic Search with Vector Databases
 slug: implementing-semantic-search-with-vector-databases
 excerpt: >-
-  Using pgvector and OpenAI embeddings to add natural-language search across
-  thousands of documents to an existing PostgreSQL database.
+  An educational overview of adding semantic search to an existing PostgreSQL
+  database with pgvector and embeddings.
 status: "published"
 indexable: false
 category: AI / ML
@@ -21,36 +21,32 @@ relatedCaseStudies: []
 
 ## Context
 
-When building implementing semantic search with vector databases, I faced several architectural decisions that shaped the final outcome. This article breaks down the approach, the trade-offs I considered, and the implementation details that made the difference between a working prototype and a production-ready system.
-
-Every project starts with constraints — budget, timeline, existing infrastructure. Understanding these constraints upfront drove the decisions you'll read about below.
+Semantic search finds content by meaning instead of exact keywords. Text is converted into embeddings (vectors), stored, and compared by distance so that similar passages can be retrieved. This article is an educational overview of the decisions involved in adding it to an application. It is a general guide, not a description of a specific client project.
 
 ## The approach
 
 ### Research and planning
 
-Before writing any code, I mapped out the requirements and identified the key decision points. This involved:
+Before writing any code, map out the requirements and the key decision points:
 
-- Understanding the core domain and its edge cases
-- Evaluating existing solutions and their limitations
-- Identifying the minimal viable architecture that supports future growth
+- Understand the core domain and its edge cases
+- Evaluate existing solutions and their limitations, including whether a vector extension in your current database is enough
+- Identify the minimal architecture that supports future growth
 
 ### Implementation
 
-I structured the implementation in phases, each delivering value independently:
+A phased approach lets each step deliver value on its own:
 
-1. **Foundation** — Setting up the core infrastructure and data models
-2. **Core features** — Building the primary user-facing functionality
-3. **Optimization** — Performance tuning, caching, and error handling
-4. **Hardening** — Security, monitoring, and disaster recovery
+1. **Foundation**: set up the core infrastructure and data models
+2. **Core features**: build the primary user-facing functionality
+3. **Optimization**: performance tuning, caching, and error handling
+4. **Hardening**: security, monitoring, and disaster recovery
 
-Each phase included automated tests and a deployment step to catch regressions early.
+Each phase should include automated tests and a deployment step to catch regressions early.
 
-## Results and takeaways
+## Takeaways
 
-The implementation covered the requirements and left room for growth. Key takeaways:
-
-- Invest in the data model early — it's the most expensive thing to change later
-- Measure before optimising — assumptions about bottlenecks are often wrong
+- Invest in the data model early. It is the most expensive thing to change later
+- Measure before optimising. Assumptions about bottlenecks are often wrong
 - Document architectural decisions and the rationale behind them
 - Build with observability in mind from day one

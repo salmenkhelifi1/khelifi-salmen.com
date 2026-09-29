@@ -63,6 +63,9 @@ export default function N8nAutomationDeveloperPage() {
           <p className="mt-6 max-w-2xl text-body-large text-[var(--text-secondary)]">
             As an n8n automation consultant, Salmen Khelifi builds and improves n8n automations that connect forms, CRMs, AI tools, messaging, and internal systems—without leaving fragile workflows behind.
           </p>
+          <p className="mt-4 max-w-2xl text-body-regular text-[var(--text-secondary)]">
+            n8n is one part of my work as a full-stack developer building SaaS products, API integrations, and business automation. See the <Link className="underline underline-offset-4" href="/work">full portfolio</Link> or my <Link className="underline underline-offset-4" href="/resume">résumé</Link>.
+          </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <PrimaryButton href={bookingUrl}>Book a discovery call</PrimaryButton>
             <SecondaryButton href="/work">View relevant work</SecondaryButton>

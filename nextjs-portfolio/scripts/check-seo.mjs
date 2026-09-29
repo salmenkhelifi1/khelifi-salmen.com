@@ -161,9 +161,12 @@ for (const page of routes) {
   }
 
   // Homepage title is the canonical positioning line (63 chars), allowed up to 65.
+  // Title length only matters for pages meant to appear in search, so it is not
+  // enforced on noindex pages. Indexed minimum is 40: shorter clear titles beat
+  // titles padded with filler to reach a character count.
   const maxTitle = page.route === "/" ? 65 : 60;
-  if (title.length < 50 || title.length > maxTitle) {
-    errors.push(`${page.route}: title length ${title.length}, expected 50-${maxTitle}`);
+  if (page.indexable !== false && (title.length < 40 || title.length > maxTitle)) {
+    errors.push(`${page.route}: title length ${title.length}, expected 40-${maxTitle}`);
   }
   // A complete source-backed description can be shorter than a conventional
   // snippet target; do not pad it with an unrelated fragment to reach 80.

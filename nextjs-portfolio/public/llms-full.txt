@@ -1,15 +1,15 @@
 # Salmen Khelifi
 
-Salmen Khelifi is a Full-Stack Developer (SaaS, APIs & Automation) for web apps, mobile apps, DevOps, workflow automation, and AI integration. The portfolio is aimed at prospects evaluating Salmen for freelance delivery, cold outreach follow-up, or AI-assisted vendor research.
+Salmen Khelifi is a Full-Stack Developer (SaaS, APIs & Automation) for SaaS and web applications, API integrations, and business workflow automation, with AI integration, mobile apps, and DevOps as supporting capabilities. The portfolio is aimed at prospects evaluating Salmen for freelance delivery, cold outreach follow-up, or AI-assisted vendor research.
 
 ## Core Services
 
-- Mobile Apps: Flutter, iOS, Android, cross-platform apps, offline storage, mobile UI/UX, cloud backends.
-- Web Applications: Next.js, React, Node.js, Express, Fastify, PostgreSQL, multi-tenant SaaS architecture, admin dashboards, custom APIs.
-- Landing Pages & Websites: SEO-first landing pages, custom marketing websites, high-converting product pages, Payload CMS, WordPress/WooCommerce.
-- Website & Workflow Automation: n8n (self-hosted & cloud), Make.com, webhooks, automated lead capture, CRM sync, WhatsApp business bots, email sequences.
-- AI Integration: OpenAI API, Google Vertex AI, Gemini API, Vapi AI voice agents, speech-to-text, RAG search, intelligent AI agents.
-- Server Operations & DevOps: Docker, Linux/Ubuntu VPS setup & troubleshooting, Dokploy, Nginx, Traefik, Netlify, Cloudflare, CI/CD pipelines.
+- Full-Stack Web Applications & SaaS: Next.js, React, Node.js, Express, Fastify, PostgreSQL, multi-tenant SaaS architecture, admin dashboards, custom APIs.
+- API Integrations & Business Workflow Automation: n8n (self-hosted & cloud), Make.com, webhooks, automated lead capture, CRM sync, WhatsApp business bots, email sequences.
+- AI Integration: OpenAI API, Google Vertex AI, Gemini API, speech-to-text, RAG-style retrieval, multi-provider model routing.
+- Landing Pages & Websites: SEO-first landing pages, custom marketing websites, Payload CMS, WordPress/WooCommerce.
+- Mobile Apps: Flutter, iOS, Android, cross-platform apps, offline storage, cloud backends.
+- Server Operations & DevOps: Docker, Linux/Ubuntu VPS setup & troubleshooting, Dokploy, Traefik, Netlify, Cloudflare, CI/CD pipelines.
 
 ## Projects
 
@@ -31,7 +31,7 @@ Luxe Spa Booking is an in-development white-label booking, CRM, and management s
 
 URL: https://www.khelifi-salmen.com/projects/adaptifit
 
-Adaptifit is a client fitness and nutrition app. Salmen implemented the Flutter mobile app, Express and MongoDB backend, and n8n/OpenAI workflows for personalized plans and coach chat. The client owns the brand, and a separate designer created the UI/UX.
+Adaptifit is an AI fitness application Salmen built for a client using Flutter, FastAPI, Google ML Kit, OpenAI and n8n, combining real-time pose detection with personalized training and nutrition features. A separate designer created the UI/UX. The product was completed for the client but was not publicly launched.
 
 ### Anlingo
 
@@ -115,14 +115,14 @@ A car-rental platform concept for browsing premium vehicles such as sedans, coup
 
 Freelancer.com profile: https://www.freelancer.com/u/khelifisalmen
 
-Aggregate rating: 4.9 out of 5 across 8 reviews.
+Aggregate rating: 4.9 out of 5 across 9 reviews.
 
 - Austin L., n8n Automation Workflows Specialist, 5.0: "Best freelancer I've ever worked with, always available, knows his stuff and even suggested extra add-ons to help my project, couldn't have asked for more... Highly recommend."
 - Robert D., Email Automation for Travel Agency, 4.8: "Salmen was everything I was hoping for. He was knowledgeable in every area where I needed him to be... He was always professional, and always a pleasure to work with. I would hire him again without hesitation."
 - Jorgen G., Ubuntu Server Troubleshooting, 5.0: "Helpful, easy going - goes directly to the goal of the project. Technical insight and supporting not only what you have requested. Great."
-- Arban C., Vapi.ai Conversational Flow Developer, 5.0: "I would hire him again."
+- Arban C., Affordable Vapi.ai Conversational Flow Developer, 5.0: "I would hire him again."
 - Remco Willem T., n8n Google OAuth Setup, 5.0: "Great working with him, solved the issue professional and fast!"
-- Austin L., Bug fixes - 22nd project, 5.0: "Delivered early and perfect."
+- Austin L., Bug fixes -- 2, 5.0: "2nd project delivered early and perfect"
 
 ## Contact
 

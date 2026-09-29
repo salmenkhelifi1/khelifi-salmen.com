@@ -32,7 +32,7 @@ export const testimonials: Testimonial[] = [
   {
     author: "Arban C.",
     rating: 5,
-    projectTitle: "Vapi.ai Conversational Flow Developer",
+    projectTitle: "Affordable Vapi.ai Conversational Flow Developer",
     quote: "I would hire him again.",
   },
   {
@@ -44,7 +44,7 @@ export const testimonials: Testimonial[] = [
   {
     author: "Austin L.",
     rating: 5,
-    projectTitle: "Bug fixes — 22nd project",
-    quote: "Delivered early and perfect.",
+    projectTitle: "Bug fixes -- 2",
+    quote: "2nd project delivered early and perfect",
   },
 ];
