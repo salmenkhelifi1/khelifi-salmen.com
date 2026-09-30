@@ -28,9 +28,9 @@ export default function Timeline({ items }: TimelineProps) {
 
             <div className="space-y-1.5 pl-4">
               <div className="flex items-center gap-2">
-                <h4 className="text-sm font-bold text-[var(--text-primary)]">
+                <h3 className="text-sm font-bold text-[var(--text-primary)]">
                   {step.title}
-                </h4>
+                </h3>
                 {step.subtitle && (
                   <span className="text-xs font-mono text-[var(--text-tertiary)]">
                     • {step.subtitle}

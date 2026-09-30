@@ -158,7 +158,7 @@ export default function WorkGrid() {
               onClick={() => setActiveCategory(cat)}
               className={`tech-badge min-h-11 cursor-pointer transition-colors px-5 py-2.5 rounded-full border text-sm font-semibold ${
                 isSelected
-                  ? "border-[var(--accent)] bg-[var(--accent)] text-[var(--text-on-accent)]"
+                  ? "border-[var(--cta-bg)] bg-[var(--cta-bg)] text-[var(--text-on-accent)]"
                   : "border-[var(--border-control)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:border-[var(--border-active)] hover:text-[var(--text-primary)]"
               }`}
             >

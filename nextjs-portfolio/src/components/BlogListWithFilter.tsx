@@ -162,7 +162,7 @@ export default function BlogListWithFilter({ posts }: BlogListWithFilterProps) {
                 onClick={() => handleCategorySelect(category)}
                 className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium transition-all ${
                   isSelected
-                    ? "bg-[var(--accent)] text-white font-semibold shadow-md shadow-[var(--accent)]/25 scale-[1.03]"
+                    ? "bg-[var(--cta-bg)] text-white font-semibold shadow-md shadow-[var(--cta-bg)]/25 scale-[1.03]"
                     : "border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md text-[var(--text-secondary)] hover:border-[var(--accent)] hover:text-[var(--text-primary)] hover:bg-[var(--glass-bg-elevated)]"
                 }`}
               >
@@ -170,7 +170,7 @@ export default function BlogListWithFilter({ posts }: BlogListWithFilterProps) {
                 <span
                   className={`px-2 py-0.5 rounded-full text-[11px] font-bold transition-all ${
                     isSelected
-                      ? "bg-white/25 text-white shadow-xs"
+                      ? "bg-black/25 text-white shadow-xs"
                       : "bg-[var(--accent-dim)] text-[var(--accent)] border border-[var(--accent)]/30"
                   }`}
                 >
@@ -330,7 +330,7 @@ export default function BlogListWithFilter({ posts }: BlogListWithFilterProps) {
                   onClick={() => handlePageChange(item)}
                   className={`h-9 w-9 text-xs font-semibold rounded-full transition-all ${
                     isCurrent
-                      ? "bg-[var(--accent)] text-white shadow-md shadow-[var(--accent)]/25 scale-[1.05]"
+                      ? "bg-[var(--cta-bg)] text-white shadow-md shadow-[var(--cta-bg)]/25 scale-[1.05]"
                       : "border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md text-[var(--text-secondary)] hover:border-[var(--accent)] hover:text-[var(--text-primary)]"
                   }`}
                 >

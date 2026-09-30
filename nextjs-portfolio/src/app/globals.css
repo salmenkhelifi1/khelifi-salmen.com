@@ -17,7 +17,7 @@
   --text-tertiary: #8090a8;
 
   /* Accent (Single Color System: Steel Blue/Cyan) */
-  --accent: #2f80ed;
+  --accent: #4a93f1; /* raised from #2f80ed: 4.4:1 -> >=4.5:1 for small text on dark surfaces */
   --accent-hover: #67a7ff;
   --cta-bg: #1b64d8;
   --cta-hover: #124da9;
@@ -297,7 +297,7 @@ html.theme-resolving .bg-blooms > span {
 }
 
 ::selection {
-  background: var(--accent);
+  background: var(--cta-bg);
   color: var(--text-on-accent);
 }
 
@@ -315,7 +315,7 @@ html.theme-resolving .bg-blooms > span {
   z-index: 9999;
   padding: 0.75rem 1.5rem;
   border-radius: 0 0 var(--radius-md, 12px) var(--radius-md, 12px);
-  background: var(--accent);
+  background: var(--cta-bg);
   color: var(--text-on-accent, #fff);
   font-weight: 700;
   font-size: 0.875rem;
@@ -1061,7 +1061,7 @@ section[id],
 }
 
 .system-live-link {
-  background: var(--accent) !important;
+  background: var(--cta-bg) !important;
   border-color: transparent !important;
   box-shadow: var(--glow-accent);
   color: var(--text-on-accent);

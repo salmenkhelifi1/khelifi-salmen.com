@@ -109,9 +109,9 @@ export default function BuildLog({ phases, caption }: BuildLogProps) {
               {/* Body */}
               <div className="col-start-2 row-start-2 pb-7 sm:col-start-3 sm:row-start-1">
                 <div className="mb-1.5 flex flex-wrap items-center gap-x-3 gap-y-1.5">
-                  <h4 className="text-sm font-bold text-[var(--text-primary)]">
+                  <h3 className="text-sm font-bold text-[var(--text-primary)]">
                     {phase.title}
-                  </h4>
+                  </h3>
                   <span
                     className={`rounded border px-1.5 py-0.5 font-mono text-[0.6rem] uppercase tracking-wider ${statusChip[phase.status]}`}
                   >

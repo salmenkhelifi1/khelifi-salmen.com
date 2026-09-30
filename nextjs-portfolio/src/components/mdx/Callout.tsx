@@ -49,9 +49,9 @@ export default function Callout({
         </div>
         <div className="flex-1 min-w-0 space-y-1">
           {title && (
-            <h4 className="text-sm font-bold text-[var(--text-primary)]">
+            <h3 className="text-sm font-bold text-[var(--text-primary)]">
               {title}
-            </h4>
+            </h3>
           )}
           <div className="text-sm text-[var(--text-secondary)] leading-relaxed">
             {children}

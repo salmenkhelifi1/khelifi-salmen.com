@@ -60,9 +60,9 @@ export default function MdxArchitectureNote({
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--bg-surface-elevated)] border border-[var(--glass-border)]">
                   {getIcon(comp.type)}
                 </div>
-                <h4 className="text-sm font-bold text-[var(--text-primary)]">
+                <h3 className="text-sm font-bold text-[var(--text-primary)]">
                   {comp.name}
-                </h4>
+                </h3>
               </div>
               <div className="text-xs font-mono font-medium text-[var(--accent)] mb-2">
                 {comp.tech}
