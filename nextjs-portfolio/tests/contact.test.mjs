@@ -30,6 +30,25 @@ test("email: header injection is neutralised", () => {
   const r = validateContact({ ...valid, name: "Ada\r\nBcc: x@y.z" });
   assert.ok(!buildEmail(r.data).subject.includes("\n"));
 });
+test("attribution: safe context is appended at the bottom, empty fields omitted", () => {
+  const r = validateContact({ ...valid, attribution: { utm_source: "linkedin", utm_medium: "outreach", utm_campaign: "saas_agencies", landing_page: "/api-integration-developer", current_page: "/", referrer_domain: "LinkedIn.com", posthog_session_id: "0199abcd-1234-7abc-8def-0123456789ab" } });
+  assert.ok(r.ok);
+  const { text } = buildEmail(r.data);
+  assert.ok(text.indexOf("Project need:") < text.indexOf("Acquisition context"));
+  for (const t of ["Source: linkedin", "Medium: outreach", "Campaign: saas_agencies", "Landing page: /api-integration-developer", "Contact page: /", "Referrer: linkedin.com", "PostHog session: 0199abcd-1234-7abc-8def-0123456789ab"]) assert.ok(text.includes(t), t);
+  assert.ok(!text.includes("Term:") && !text.includes("Content:"));
+});
+test("attribution: absent or hostile values never reject the enquiry and never reach the email", () => {
+  const none = validateContact(valid);
+  assert.ok(none.ok);
+  assert.ok(!buildEmail(none.data).text.includes("Acquisition context"));
+  const bad = validateContact({ ...valid, attribution: { utm_source: "<script>alert(1)</script>", utm_campaign: "x".repeat(500), landing_page: "//evil.com/x", referrer_domain: "a b\nBcc: x", posthog_session_id: "../../etc", first_touch_at: "yesterday" } });
+  assert.ok(bad.ok);
+  assert.ok(!buildEmail(bad.data).text.includes("Acquisition context"));
+  const worse = validateContact({ ...valid, attribution: "not-an-object" });
+  assert.ok(worse.ok);
+  assert.ok(!buildEmail(worse.data).text.includes("Acquisition context"));
+});
 test("rate limiter blocks the 6th hit", () => {
   let last;
   for (let i = 0; i < 6; i++) last = rateLimited("k", 1000 + i);

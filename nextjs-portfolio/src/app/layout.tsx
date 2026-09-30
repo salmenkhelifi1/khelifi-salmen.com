@@ -11,6 +11,7 @@ import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import CalFloatingButton from "@/components/CalFloatingButton";
 import Analytics from "@/components/Analytics";
+import AttributionCapture from "@/components/AttributionCapture";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -102,6 +103,7 @@ export default function RootLayout({
           {children}
           <CalFloatingButton />
           <Analytics />
+            <AttributionCapture />
           {process.env.NODE_ENV === "development" && (
             <Script
               src="//unpkg.com/react-grab/dist/index.global.js"

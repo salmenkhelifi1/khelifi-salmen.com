@@ -18,6 +18,41 @@ function clean(value: unknown) {
 
 const text = (max: number) => z.preprocess(clean, z.string().max(max));
 
+// Attribution comes from the browser, so it is never trusted: each field is
+// allow-listed and length-limited, and anything that does not match is dropped
+// to "" (a bad value must never reject a real enquiry).
+const safe = (pattern: RegExp, max: number, lower = false) =>
+  z
+    .preprocess((v) => {
+      const c = clean(v);
+      return typeof c === "string" && lower ? c.toLowerCase() : c;
+    }, z.string().max(max).regex(pattern))
+    .catch("")
+    .default("");
+const UTM = /^[A-Za-z0-9 _.\-~+:/]{1,100}$/;
+const PATH = /^\/(?!\/)[A-Za-z0-9/_.\-~%]{0,199}$/;
+const HOST = /^[a-z0-9.-]{1,100}$/;
+const SESSION = /^[A-Za-z0-9-]{8,64}$/;
+const ISO = /^\d{4}-\d{2}-\d{2}T[\d:.]{5,16}Z$/;
+
+export const attributionSchema = z
+  .object({
+    utm_source: safe(UTM, 100),
+    utm_medium: safe(UTM, 100),
+    utm_campaign: safe(UTM, 100),
+    utm_content: safe(UTM, 100),
+    utm_term: safe(UTM, 100),
+    landing_page: safe(PATH, 200),
+    current_page: safe(PATH, 200),
+    referrer_domain: safe(HOST, 100, true),
+    first_touch_at: safe(ISO, 30),
+    posthog_session_id: safe(SESSION, 64),
+  })
+  .catch({
+    utm_source: "", utm_medium: "", utm_campaign: "", utm_content: "", utm_term: "",
+    landing_page: "", current_page: "", referrer_domain: "", first_touch_at: "", posthog_session_id: "",
+  });
+
 export const contactSchema = z.object({
   name: z.preprocess(clean, z.string().min(1, "Enter your name.").max(100)),
   email: z.preprocess(
@@ -37,6 +72,10 @@ export const contactSchema = z.object({
   source: text(200).optional().default(""),
   // Honeypot: real visitors never fill this in.
   website: text(200).optional().default(""),
+  attribution: attributionSchema.optional().default({
+    utm_source: "", utm_medium: "", utm_campaign: "", utm_content: "", utm_term: "",
+    landing_page: "", current_page: "", referrer_domain: "", first_touch_at: "", posthog_session_id: "",
+  }),
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;
@@ -55,6 +94,25 @@ export function validateContact(raw: unknown):
   return { ok: false, errors };
 }
 
+// Small block at the bottom of the email; empty fields are omitted and the
+// whole block disappears when there is no context.
+function attributionLines(a: ContactInput["attribution"]) {
+  const rows: [string, string][] = [
+    ["Source", a.utm_source],
+    ["Medium", a.utm_medium],
+    ["Campaign", a.utm_campaign],
+    ["Content", a.utm_content],
+    ["Term", a.utm_term],
+    ["Landing page", a.landing_page],
+    ["Contact page", a.current_page],
+    ["Referrer", a.referrer_domain],
+    ["First visit", a.first_touch_at],
+    ["PostHog session", a.posthog_session_id],
+  ];
+  const present = rows.filter(([, value]) => value);
+  return present.length ? ["", "---", "Acquisition context", ...present.map(([k, v]) => `${k}: ${v}`)] : [];
+}
+
 export function buildEmail(data: ContactInput, when = new Date()) {
   const line = (label: string, value: string) => `${label}: ${value || "Not specified"}`;
   return {
@@ -70,6 +128,7 @@ export function buildEmail(data: ContactInput, when = new Date()) {
       "",
       "Project need:",
       data.problem,
+      ...attributionLines(data.attribution),
     ].join("\n"),
   };
 }

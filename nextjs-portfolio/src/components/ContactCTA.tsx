@@ -12,6 +12,7 @@ import {
   trackLeadGenerated,
   trackOutboundLink,
 } from "@/lib/analytics";
+import { getAttribution } from "@/lib/attribution";
 import SectionContainer from "./SectionContainer";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
@@ -62,7 +63,7 @@ export default function ContactCTA() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ ...values, attribution: getAttribution() }),
       });
       const payload = await response.json().catch(() => ({}));
       if (response.status === 422 && payload.fields) {
