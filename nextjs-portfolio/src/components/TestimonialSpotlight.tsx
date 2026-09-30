@@ -15,7 +15,7 @@ export default function TestimonialSpotlight() {
             <div className="lg:col-span-4">
               <p className="mb-4 text-caption text-[var(--accent)]">Client perspective</p>
               <h2 id="feedback-heading" className="mb-4 text-h2">Trusted to take ownership</h2>
-              <div className="flex items-center gap-1 text-[var(--accent)]" aria-label={`${featured.rating} out of 5 stars`}>
+              <div className="flex items-center gap-1 text-[var(--accent)]" role="img" aria-label={`${featured.rating} out of 5 stars`}>
                 {Array.from({ length: 5 }).map((_, index) => (
                   <Star key={index} className="h-5 w-5 fill-current" aria-hidden="true" />
                 ))}

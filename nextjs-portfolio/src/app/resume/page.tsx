@@ -466,7 +466,7 @@ export default function ResumePage() {
               <MessageSquare className="w-5 h-5 text-[var(--accent)] no-print" /> Client Feedback
             </h2>
             <blockquote className="p-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] relative print-project">
-              <div className="flex gap-1 text-[var(--accent)] mb-3 no-print" aria-label={`${featuredReview.rating} out of 5 stars`}>
+              <div className="flex gap-1 text-[var(--accent)] mb-3 no-print" role="img" aria-label={`${featuredReview.rating} out of 5 stars`}>
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="w-4.5 h-4.5 fill-current" aria-hidden="true" />
                 ))}
