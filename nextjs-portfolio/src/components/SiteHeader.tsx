@@ -7,6 +7,7 @@ import { ArrowLeft, Menu, X, createLucideIcon } from "lucide-react";
 import { githubUrl } from "@/data/schema";
 import { navLinks } from "@/data/homepage";
 import { FORCE_DARK_MODE } from "@/lib/theme";
+import { trackCta, trackOutboundLink } from "@/lib/analytics";
 import ThemeSwitcher from "@/components/theme/theme-switcher";
 
 const Github = createLucideIcon("Github", [
@@ -108,12 +109,31 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="GitHub profile"
+                  data-ph-capture="nav-github"
+                  onClick={() =>
+                    trackOutboundLink({
+                      destination_type: "github",
+                      href: githubUrl,
+                      placement: "navigation",
+                    })
+                  }
                   className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] text-[var(--text-secondary)] transition-colors hover:border-[var(--border-active)] hover:text-[var(--text-primary)]"
                 >
                   <Github className="h-4 w-4" aria-hidden="true" />
                 </a>
                 {!FORCE_DARK_MODE && <ThemeSwitcher />}
-                <a href={contactHref} className="cta-button cta-primary cta-small">
+                <a
+                  href={contactHref}
+                  data-ph-capture="nav-contact"
+                  onClick={() =>
+                    trackCta({
+                      cta_name: "contact_me",
+                      placement: "navigation",
+                      destination: contactHref,
+                    })
+                  }
+                  className="cta-button cta-primary cta-small"
+                >
                   Tell me about your project
                 </a>
               </div>
@@ -182,7 +202,15 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
               )}
               <a
                 href={contactHref}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  trackCta({
+                    cta_name: "contact_me",
+                    placement: "navigation-mobile",
+                    destination: contactHref,
+                  });
+                }}
+                data-ph-capture="nav-contact-mobile"
                 className="cta-button cta-primary mt-3 w-full"
               >
                 Tell me about your project

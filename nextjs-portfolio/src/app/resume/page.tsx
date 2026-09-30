@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   ArrowUpRight,
   Download,
@@ -18,7 +17,6 @@ import { projects } from "@/data/projects";
 import { testimonials } from "@/data/testimonials";
 import {
   authorProfileJsonLd,
-  bookingUrl,
   freelancerUrl,
   githubUrl,
   linkedinUrl,
@@ -28,6 +26,7 @@ import {
   upworkUrl,
 } from "@/data/schema";
 import SiteHeader from "@/components/SiteHeader";
+import { BookCallLink, OutboundLink, ProjectCardLink, ResumeLink } from "@/components/TrackedCta";
 
 const title = "Resume — Full-Stack Developer | SaaS, APIs & Automation";
 const description =
@@ -138,13 +137,16 @@ function renderProjectEntry(project: (typeof projects)[number]) {
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1">
         <div>
           <h4 className="text-lg font-bold text-[var(--text-primary)] print-text-primary hover:text-[var(--accent)] transition-colors">
-            <Link
-              href={`/projects/${project.slug}`}
+            <ProjectCardLink
+              projectSlug={project.slug}
+              projectName={project.title}
+              destination={`/projects/${project.slug}`}
+              placement="resume"
               className="print-link inline-flex min-h-11 items-center gap-1.5"
             >
               {project.title}
               <ExternalLink className="w-3.5 h-3.5 no-print opacity-60" />
-            </Link>
+            </ProjectCardLink>
           </h4>
           <p className="text-sm text-[var(--accent)] font-medium print-accent">
             {projectRoles[project.slug]}
@@ -304,9 +306,14 @@ export default function ResumePage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[var(--text-tertiary)] no-print" />
-                  <a href="mailto:hello@khelifi-salmen.com" className="inline-flex min-h-11 items-center hover:text-[var(--text-primary)]">
+                  <OutboundLink
+                    href="mailto:hello@khelifi-salmen.com"
+                    destinationType="email"
+                    placement="resume"
+                    className="inline-flex min-h-11 items-center hover:text-[var(--text-primary)]"
+                  >
                     hello@khelifi-salmen.com
-                  </a>
+                  </OutboundLink>
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[var(--text-tertiary)] no-print" />
@@ -328,61 +335,61 @@ export default function ResumePage() {
               </div>
 
               <div className="flex flex-wrap items-center gap-4 mt-4 text-xs text-[var(--text-tertiary)] print-text-muted">
-                <a
+                <OutboundLink
                   href={linkedinUrl}
-                  target="_blank"
-                  rel="noreferrer"
+                  destinationType="linkedin"
+                  placement="resume"
                   className="print-link inline-flex min-h-11 items-center underline hover:text-[var(--text-primary)]"
                 >
                   LinkedIn
-                </a>
+                </OutboundLink>
                 <span className="no-print">·</span>
-                <a
+                <OutboundLink
                   href={githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
+                  destinationType="github"
+                  placement="resume"
                   className="print-link inline-flex min-h-11 items-center underline hover:text-[var(--text-primary)]"
                 >
                   GitHub
-                </a>
+                </OutboundLink>
                 <span className="no-print">·</span>
-                <a
+                <OutboundLink
                   href={upworkUrl}
-                  target="_blank"
-                  rel="noreferrer"
+                  destinationType="upwork"
+                  placement="resume"
                   className="print-link inline-flex min-h-11 items-center underline hover:text-[var(--text-primary)]"
                 >
                   Upwork
-                </a>
+                </OutboundLink>
                 <span className="no-print">·</span>
-                <a
+                <OutboundLink
                   href={freelancerUrl}
-                  target="_blank"
-                  rel="noreferrer"
+                  destinationType="freelancer"
+                  placement="resume"
                   className="print-link inline-flex min-h-11 items-center underline hover:text-[var(--text-primary)]"
                 >
                   Freelancer.com (4.9/5, 9 reviews)
-                </a>
+                </OutboundLink>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row md:flex-col gap-3 no-print shrink-0">
-              <a
-                href="/salmen-khelifi-cv.pdf"
+              <ResumeLink
+                destination="/salmen-khelifi-cv.pdf"
                 download
+                placement="resume"
+                captureId="resume-pdf-download"
                 className="cta-button cta-primary inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold text-[var(--text-primary)]"
               >
                 <Download className="w-4 h-4" aria-hidden="true" /> Download PDF
-              </a>
-              <a
-                href={bookingUrl}
-                data-cal-namespace="30min"
-                data-cal-link="salmen-khelifi/30min"
-                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+              </ResumeLink>
+              <BookCallLink
+                placement="resume"
+                captureId="resume-book-call"
                 className="cta-button cta-secondary inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold text-[var(--text-primary)] cursor-pointer"
               >
                 Book a call <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
-              </a>
+              </BookCallLink>
             </div>
           </div>
         </header>

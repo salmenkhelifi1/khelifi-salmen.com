@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { BLUR_PLACEHOLDER, Project } from "@/data/homepage";
 import { getProject } from "@/data/projects";
+import { ProjectCardLink } from "@/components/TrackedCta";
 
 interface CompactProjectProps {
   project: Project;
@@ -44,12 +44,16 @@ export default function CompactProject({
         {project.category}
       </div>
       <h3 className="mb-4 text-h3 flex-grow">{project.title}</h3>
-      <Link
-        href={project.href}
+      <ProjectCardLink
+        projectSlug={project.href.split("/").at(-1) || "unknown"}
+        projectName={project.title}
+        destination={project.href}
+        placement="compact_project"
+        captureId={`project-card-${project.href.split("/").at(-1) || "unknown"}`}
         className="project-link inline-flex min-h-11 items-center font-bold text-[var(--text-primary)]"
       >
         {project.linkLabel} <ArrowRight className="ml-1.5 h-4 w-4" />
-      </Link>
+      </ProjectCardLink>
     </article>
   );
 }

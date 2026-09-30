@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { BLUR_PLACEHOLDER, FeaturedWorkItem } from "@/data/homepage";
 import { getProject } from "@/data/projects";
+import { ProjectCardLink } from "@/components/TrackedCta";
 
 interface FeaturedProjectProps {
   item: FeaturedWorkItem;
@@ -48,12 +48,16 @@ export default function FeaturedProject({
             </div>
           ))}
         </div>
-        <Link
-          href={item.href}
+        <ProjectCardLink
+          projectSlug={item.href.split("/").at(-1) || "unknown"}
+          projectName={item.title}
+          destination={item.href}
+          placement="featured_project"
+          captureId={`project-card-${item.href.split("/").at(-1) || "unknown"}`}
           className="project-link inline-flex min-h-11 items-center text-lg font-bold text-[var(--text-primary)]"
         >
           View Case Study <ArrowRight className="ml-2 h-5 w-5" />
-        </Link>
+        </ProjectCardLink>
       </div>
       <div className={`md:col-span-7 ${imageOnRight ? "md:order-2" : "md:order-1"}`}>
         <div className="image-preview relative overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border-muted)] bg-[var(--bg-surface)] aspect-[16/10]">

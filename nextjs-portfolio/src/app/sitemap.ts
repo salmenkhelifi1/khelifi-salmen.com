@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       post.frontmatter.canonicalUrl === `${siteUrl}/blog/${post.slug}`,
   );
 
-  const staticRoutes = ["", "/work", "/resume", "/blog", "/n8n-automation-developer"];
+  const staticRoutes = ["", "/work", "/resume", "/blog", "/saas-developer", "/api-integration-developer", "/n8n-automation-developer"];
   const projectRoutes = projects.map((project) => `/projects/${project.slug}`);
 
   const mainEntries: MetadataRoute.Sitemap = [

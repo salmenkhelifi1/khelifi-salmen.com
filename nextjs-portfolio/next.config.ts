@@ -3,6 +3,27 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  // Required by PostHog API trailing-slash endpoints (e.g. /e/).
+  skipTrailingSlashRedirect: true,
+  async rewrites() {
+    // First-party PostHog proxy for local dev + Netlify fallback.
+    // Production on Netlify uses netlify.toml redirects (same /ingest path).
+    // Region: us by default; switch `us` -> `eu` if the PostHog project is EU.
+    return [
+      {
+        source: "/ingest/static/:path*",
+        destination: "https://us-assets.i.posthog.com/static/:path*",
+      },
+      {
+        source: "/ingest/array/:path*",
+        destination: "https://us-assets.i.posthog.com/array/:path*",
+      },
+      {
+        source: "/ingest/:path*",
+        destination: "https://us.i.posthog.com/:path*",
+      },
+    ];
+  },
   async redirects() {
     return [
       {
@@ -86,11 +107,12 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://cal.com https://*.cal.com https://connect.facebook.net https://static.cloudflareinsights.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://cal.com https://*.cal.com https://connect.facebook.net https://static.cloudflareinsights.com https://*.posthog.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cal.com https://*.cal.com",
-              "img-src 'self' data: blob: https://*.googleusercontent.com https://*.google-analytics.com https://*.cal.com https://cal.com https://www.facebook.com",
+              "img-src 'self' data: blob: https://*.googleusercontent.com https://*.google-analytics.com https://*.cal.com https://cal.com https://www.facebook.com https://*.posthog.com",
               "font-src 'self' https://fonts.gstatic.com https://cal.com https://*.cal.com",
-              "connect-src 'self' https://*.cal.com https://cal.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.sentry.io https://www.facebook.com https://cloudflareinsights.com https://*.cloudflareinsights.com",
+              "connect-src 'self' https://*.cal.com https://cal.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.sentry.io https://www.facebook.com https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.posthog.com https://us.i.posthog.com https://us-assets.i.posthog.com https://eu.i.posthog.com https://eu-assets.i.posthog.com",
+              "worker-src 'self' blob: data:",
               "frame-src 'self' https://cal.com https://*.cal.com https://salmenkhelifi.substack.com",
               "object-src 'none'",
               "base-uri 'self'",

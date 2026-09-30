@@ -1,7 +1,19 @@
 import Link from "next/link";
-import { bookingUrl, fiverrUrl } from "@/data/schema";
+import { fiverrUrl } from "@/data/schema";
 import { footerSocials, navLinks } from "@/data/homepage";
 import SectionContainer from "./SectionContainer";
+import { BookCallLink, OutboundLink } from "@/components/TrackedCta";
+
+const SOCIAL_TYPES: Record<string, string> = {
+  GitHub: "github",
+  LinkedIn: "linkedin",
+  Substack: "substack",
+  YouTube: "youtube",
+  Instagram: "instagram",
+  Upwork: "upwork",
+  Freelancer: "freelancer",
+  X: "x",
+};
 
 export default function SiteFooter() {
   const currentYear = new Date().getFullYear();
@@ -32,48 +44,62 @@ export default function SiteFooter() {
                 {link.label}
               </a>
             ))}
-            <Link href="/resume" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
+            <Link href="/saas-developer" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
+              SaaS development
+            </Link>
+            <Link href="/api-integration-developer" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
+              API integrations
+            </Link>
+            <Link href="/n8n-automation-developer" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
+              n8n automation
+            </Link>
+            <Link href="/resume" data-ph-capture="footer-resume" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
               Résumé
             </Link>
-            <a
-              href={bookingUrl}
-              data-cal-namespace="30min"
-              data-cal-link="salmen-khelifi/30min"
-              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+            <BookCallLink
+              placement="footer"
+              captureId="footer-book-call"
               className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)] cursor-pointer text-left font-inherit"
             >
               Book a call
-            </a>
+            </BookCallLink>
           </div>
         </nav>
         <nav aria-label="Footer social links">
           <h2 className="mb-4 text-caption text-[var(--text-tertiary)]">Socials</h2>
           <div className="grid gap-2">
             {footerSocials.map((link) => (
-              <a
+              <OutboundLink
                 key={link.href}
                 href={link.href}
-                target="_blank"
-                rel="noreferrer"
+                destinationType={SOCIAL_TYPES[link.label] ?? "social"}
+                placement="footer"
                 className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
               >
                 {link.label}
-              </a>
+              </OutboundLink>
             ))}
-            <a href={fiverrUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
+            <OutboundLink
+              href={fiverrUrl}
+              destinationType="fiverr"
+              placement="footer"
+              className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
+            >
               Fixed-scope services
-            </a>
+            </OutboundLink>
           </div>
         </nav>
       </SectionContainer>
       <SectionContainer className="mt-10 flex flex-col gap-3 border-t border-[var(--border-subtle)] pt-8 text-sm text-[var(--text-tertiary)] md:flex-row md:items-center md:justify-between">
         <p>© {currentYear} Salmen Khelifi. All rights reserved.</p>
-        <a
+        <OutboundLink
           href="mailto:hello@khelifi-salmen.com"
+          destinationType="email"
+          placement="footer"
           className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
         >
           hello@khelifi-salmen.com
-        </a>
+        </OutboundLink>
       </SectionContainer>
     </footer>
   );

@@ -94,6 +94,7 @@ export interface ServiceItem {
   title: string;
   description: string;
   href?: string;
+  linkLabel?: string;
 }
 
 export const BLUR_PLACEHOLDER =
@@ -435,12 +436,16 @@ export const services: ServiceItem[] = [
     title: "Build & launch",
     description:
       "Turn a validated idea into a dependable web, mobile, or SaaS product, from architecture and interface through testing and production.",
+    href: "/saas-developer",
+    linkLabel: "Explore SaaS development",
   },
   {
     icon: Zap,
     title: "Fix & improve",
     description:
       "Stabilize an existing system, remove delivery bottlenecks, improve performance, and ship focused changes without an unnecessary rewrite.",
+    href: "/api-integration-developer",
+    linkLabel: "Explore API and backend work",
   },
   {
     icon: Workflow,
@@ -448,6 +453,7 @@ export const services: ServiceItem[] = [
     description:
       "Connect tools, data, messaging, and AI-assisted workflows so repetitive operations run reliably with clear monitoring.",
     href: "/n8n-automation-developer",
+    linkLabel: "Explore automation services",
   },
 ];
 

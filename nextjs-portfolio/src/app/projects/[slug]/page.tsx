@@ -23,7 +23,6 @@ import {
 } from "lucide-react";
 import { getProject, projects, type Project } from "@/data/projects";
 import {
-  bookingUrl,
   projectJsonLd,
   siteUrl,
   socialImage as defaultSocialImage,
@@ -33,6 +32,7 @@ import { BLUR_PLACEHOLDER } from "@/data/homepage";
 import ProjectToc, { type TocSection } from "@/components/ProjectToc";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { BookCallLink, CtaLink } from "@/components/TrackedCta";
 import { getCaseStudyNarrative } from "@/lib/content/case-study-narratives";
 import { getPublishedPosts } from "@/lib/content/blog";
 import type { CaseStudyPlacement } from "@/lib/content/schemas";
@@ -1201,21 +1201,23 @@ export default async function ProjectProfilePage({
                     Have a platform, SaaS application, or automated workflow that needs expert engineering? Let&apos;s build it with clarity and precision.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-                    <a
-                      href={bookingUrl}
-                      data-cal-namespace="30min"
-                      data-cal-link="salmen-khelifi/30min"
-                      data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                    <BookCallLink
+                      placement="project_page"
+                      captureId="project-book-call"
                       className="cta-button cta-primary w-full sm:w-auto text-base font-bold min-h-11 focus-visible:outline-2 focus-visible:outline-[var(--accent)]"
                     >
                       Book a 30-min Call <ArrowUpRight className="w-5 h-5" aria-hidden="true" />
-                    </a>
-                    <Link
-                      href="/work"
+                    </BookCallLink>
+                    <CtaLink
+                      ctaName="explore_all_work"
+                      destination="/work"
+                      placement="project_page"
+                      captureId="project-explore-all-work"
+                      useNextLink
                       className="cta-button cta-secondary w-full sm:w-auto text-base font-bold min-h-11 focus-visible:outline-2 focus-visible:outline-[var(--accent)]"
                     >
                       Explore All Work
-                    </Link>
+                    </CtaLink>
                   </div>
                 </div>
               </div>

@@ -20,6 +20,34 @@ type Props = {
 };
 
 const automationTopicPattern = /\b(n8n|automation|workflow|webhook|integration)\b/i;
+const apiTopicPattern = /\b(api|apis|payment|payments|backend|stripe|webhooks?)\b/i;
+
+// Article -> relevant service page -> contact. Only for indexable posts.
+function serviceForPost(slug: string, tags: string[]) {
+  const haystack = `${slug.replace(/-/g, " ")} ${tags.join(" ")}`;
+  if (automationTopicPattern.test(haystack)) {
+    return {
+      href: "/n8n-automation-developer",
+      heading: "Need an n8n workflow implemented?",
+      text: "Explore Salmen's approach to scoped, tested automation and API integration work.",
+      cta: "Explore n8n automation development",
+    };
+  }
+  if (apiTopicPattern.test(haystack)) {
+    return {
+      href: "/api-integration-developer",
+      heading: "Need an API or integration built?",
+      text: "Backend APIs, webhooks and third-party integrations, built and handed over with documentation.",
+      cta: "Explore API and integration development",
+    };
+  }
+  return {
+    href: "/saas-developer",
+    heading: "Building or improving a web product?",
+    text: "Full-stack development for SaaS products, web apps and e-commerce platforms, from database to interface.",
+    cta: "Explore full-stack SaaS development",
+  };
+}
 
 function firstArticleParagraph(content: string) {
   return content
@@ -127,9 +155,9 @@ export default async function BlogPostPage({ params }: Props) {
   const relatedProjects = post.frontmatter.relatedCaseStudies
     .map(getProject)
     .filter((project): project is Project => Boolean(project));
-  const isAutomationArticle =
-    post.frontmatter.indexable &&
-    post.frontmatter.tags.some((tag) => automationTopicPattern.test(tag));
+  const service = post.frontmatter.indexable
+    ? serviceForPost(slug, post.frontmatter.tags)
+    : null;
 
   return (
     <>
@@ -224,23 +252,29 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="glass-panel p-8 md:p-12 blog-article-content">
               <MDXContent />
             </div>
-            {isAutomationArticle && (
+            {service && (
               <aside
                 className="modern-card mt-12 rounded-[var(--radius-lg)] p-6"
-                aria-labelledby="automation-service-heading"
+                aria-labelledby="article-service-heading"
               >
-                <h2 id="automation-service-heading" className="text-h2 mb-3">
-                  Need an n8n workflow implemented?
+                <h2 id="article-service-heading" className="text-h2 mb-3">
+                  {service.heading}
                 </h2>
-                <p className="text-body-regular text-[var(--text-secondary)]">
-                  Explore Salmen&apos;s approach to scoped, tested automation and API integration work.
-                </p>
-                <Link
-                  href="/n8n-automation-developer"
-                  className="mt-4 inline-flex min-h-11 items-center font-semibold text-[var(--accent)] hover:underline"
-                >
-                  Explore n8n automation development →
-                </Link>
+                <p className="text-body-regular text-[var(--text-secondary)]">{service.text}</p>
+                <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2">
+                  <Link
+                    href={service.href}
+                    className="inline-flex min-h-11 items-center font-semibold text-[var(--accent)] hover:underline"
+                  >
+                    {service.cta} →
+                  </Link>
+                  <Link
+                    href="/#contact"
+                    className="inline-flex min-h-11 items-center font-semibold text-[var(--accent)] hover:underline"
+                  >
+                    Send me the problem →
+                  </Link>
+                </div>
               </aside>
             )}
             {relatedProjects.length > 0 && (

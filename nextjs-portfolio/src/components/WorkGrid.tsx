@@ -13,8 +13,7 @@ import SectionContainer from "@/components/SectionContainer";
 import SectionHeading from "@/components/SectionHeading";
 import FeaturedProject from "@/components/FeaturedProject";
 import CompactProject from "@/components/CompactProject";
-import PrimaryButton from "@/components/PrimaryButton";
-import SecondaryButton from "@/components/SecondaryButton";
+import { trackBookCall, trackOutboundLink } from "@/lib/analytics";
 
 export type WorkPageCategory =
   | "All"
@@ -213,12 +212,31 @@ export default function WorkGrid() {
             I am available for new full-stack development, SaaS architecture, and automation projects.
           </p>
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-            <PrimaryButton href={bookingUrl}>
+            <a
+              href={bookingUrl}
+              data-cal-namespace="30min"
+              data-cal-link="salmen-khelifi/30min"
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+              data-ph-capture="work-book-call"
+              onClick={() => trackBookCall({ placement: "work" })}
+              className="cta-button cta-primary cursor-pointer"
+            >
               Start a Project
-            </PrimaryButton>
-            <SecondaryButton href="mailto:hello@khelifi-salmen.com">
+            </a>
+            <a
+              href="mailto:hello@khelifi-salmen.com"
+              data-ph-capture="work-email"
+              onClick={() =>
+                trackOutboundLink({
+                  destination_type: "email",
+                  href: "mailto:hello@khelifi-salmen.com",
+                  placement: "work",
+                })
+              }
+              className="cta-button cta-secondary"
+            >
               Email Me <Mail className="ml-2 h-4 w-4" />
-            </SecondaryButton>
+            </a>
           </div>
         </div>
       </section>

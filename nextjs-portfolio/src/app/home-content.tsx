@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Hand } from "lucide-react";
-import { bookingUrl } from "@/data/schema";
 import {
   BLUR_PLACEHOLDER,
   credibilityItems,
@@ -17,15 +16,14 @@ import CredibilityStrip from "@/components/CredibilityStrip";
 import EngineeringProof from "@/components/EngineeringProof";
 import FeaturedProject from "@/components/FeaturedProject";
 import HomeAbout from "@/components/HomeAbout";
-import PrimaryButton from "@/components/PrimaryButton";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import RevealObserver from "@/components/RevealObserver";
-import SecondaryButton from "@/components/SecondaryButton";
 import SectionContainer from "@/components/SectionContainer";
 import SectionHeading from "@/components/SectionHeading";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import TestimonialSpotlight from "@/components/TestimonialSpotlight";
+import { BookCallLink, CtaLink, ResumeLink } from "@/components/TrackedCta";
 
 export default function HomeContent() {
   const compactProjects = homepageCompactHrefs
@@ -60,22 +58,25 @@ export default function HomeContent() {
               </p>
 
               <div className="hero-actions reveal flex w-full flex-col gap-3 sm:w-auto sm:flex-row" style={{ transitionDelay: "240ms" }}>
-                <PrimaryButton href="#work" className="w-full sm:w-auto">
+                <CtaLink
+                  ctaName="view_selected_work"
+                  destination="#work"
+                  placement="hero"
+                  captureId="hero-work"
+                  className="cta-button cta-primary w-full sm:w-auto"
+                >
                   View selected work <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </PrimaryButton>
-                <SecondaryButton href="/resume" className="w-full sm:w-auto">View résumé</SecondaryButton>
+                </CtaLink>
+                <ResumeLink placement="hero" captureId="hero-resume" className="cta-button cta-secondary w-full sm:w-auto">View résumé</ResumeLink>
               </div>
 
-              <a
-                href={bookingUrl}
-                data-cal-namespace="30min"
-                data-cal-link="salmen-khelifi/30min"
-                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+              <BookCallLink
+                placement="hero"
+                captureId="hero-book-call"
                 className="hero-calendar-link reveal"
-                style={{ transitionDelay: "280ms" }}
               >
                 Book a call <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
+              </BookCallLink>
             </div>
           </div>
 
@@ -121,7 +122,7 @@ export default function HomeContent() {
                     <p className="text-body-regular text-[var(--text-secondary)]">{service.description}</p>
                     {service.href && (
                       <Link href={service.href} className="project-link mt-5 inline-flex min-h-11 items-center font-semibold text-[var(--text-primary)]">
-                        Explore automation services <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                        {service.linkLabel ?? "Learn more"} <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                       </Link>
                     )}
                   </article>
@@ -138,9 +139,16 @@ export default function HomeContent() {
                 <p className="mb-3 text-caption text-[var(--accent)]">Selected evidence</p>
                 <SectionHeading className="mb-0">Selected work</SectionHeading>
               </div>
-              <Link href="/work" className="project-link inline-flex min-h-11 items-center font-semibold text-[var(--text-primary)]">
+              <CtaLink
+                ctaName="view_all_work"
+                destination="/work"
+                placement="home-work-section"
+                captureId="home-view-all-work"
+                useNextLink
+                className="project-link inline-flex min-h-11 items-center font-semibold text-[var(--text-primary)]"
+              >
                 View all work <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-              </Link>
+              </CtaLink>
             </div>
 
             <div className="mb-16 space-y-16 md:mb-20 md:space-y-24">
