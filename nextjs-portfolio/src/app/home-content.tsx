@@ -17,7 +17,6 @@ import EngineeringProof from "@/components/EngineeringProof";
 import FeaturedProject from "@/components/FeaturedProject";
 import HomeAbout from "@/components/HomeAbout";
 import ProcessTimeline from "@/components/ProcessTimeline";
-import QaClientProbe from "@/components/QaClientProbe";
 import RevealObserver from "@/components/RevealObserver";
 import SectionContainer from "@/components/SectionContainer";
 import SectionHeading from "@/components/SectionHeading";
@@ -34,7 +33,6 @@ export default function HomeContent() {
   return (
     <>
       <SiteHeader />
-      <QaClientProbe />
       <main id="main-content">
         <section aria-label="Hero introduction" className="hero-section flex w-full flex-col items-center px-5 sm:px-6">
           <div className="hero-content mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
