@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { buildEmail, rateLimited, validateContact } from "@/lib/contact";
+import { reportServerError } from "@/lib/posthog-server";
 import { siteUrl } from "@/data/schema";
 
 export const runtime = "nodejs";
@@ -55,10 +56,13 @@ export async function POST(request: Request) {
     });
     if (!response.ok) {
       console.error("[contact] Resend rejected the request", response.status, await response.text());
+      // Unexpected provider failure (not user validation): code + status only.
+      await reportServerError("contact_resend_rejected", { status_code: response.status });
       return json({ ok: false, error: "send_failed" }, 502);
     }
   } catch (error) {
     console.error("[contact] Resend request failed", error);
+    await reportServerError("contact_resend_exception");
     return json({ ok: false, error: "send_failed" }, 502);
   }
 

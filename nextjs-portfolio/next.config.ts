@@ -1,4 +1,5 @@
 import createMDX from "@next/mdx";
+import { withPostHogConfig } from "@posthog/nextjs-config";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -149,4 +150,16 @@ const withMDX = createMDX({
   },
 });
 
-export default withMDX(nextConfig);
+const configWithMDX = withMDX(nextConfig);
+
+// Source-map upload activates only when a server-side personal key is present
+// (Netlify env POSTHOG_API_KEY, never committed). Without it the build is
+// byte-identical to before: no public source maps, no behavior change.
+export default process.env.POSTHOG_API_KEY
+  ? withPostHogConfig(configWithMDX, {
+      personalApiKey: process.env.POSTHOG_API_KEY,
+      projectId: process.env.POSTHOG_PROJECT_ID ?? "252702",
+      host: "https://us.posthog.com",
+      sourcemaps: { enabled: true, deleteAfterUpload: true },
+    })
+  : configWithMDX;
