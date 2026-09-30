@@ -4,7 +4,7 @@ import { breadcrumbJsonLd, personId, siteUrl, socialImage, twitterImage } from "
 
 const title = "Full-Stack SaaS Developer for Hire | Salmen Khelifi";
 const description =
-  "Hire a full-stack developer to build a SaaS product, web app or e-commerce platform, or to improve an existing product. Next.js, Node.js, PostgreSQL, from database to interface.";
+  "Hire a full-stack developer to build a SaaS product, web app or e-commerce platform, or improve an existing one. Next.js, Node.js, PostgreSQL, database to interface.";
 const pageUrl = `${siteUrl}/saas-developer`;
 
 export const metadata: Metadata = {

@@ -33,7 +33,7 @@ export default function WorkPage() {
   return (
     <div className="min-h-screen bg-[var(--bg-page)] text-[var(--text-primary)]">
       <SiteHeader />
-      <main className="pt-28 pb-20">
+      <main id="main-content" className="pt-28 pb-20">
         <WorkGrid />
       </main>
       <SiteFooter />

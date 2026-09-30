@@ -27,7 +27,7 @@ export default function ServicePage({ content }: { content: ServiceContent }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(content.jsonLd) }}
       />
       <SiteHeader />
-      <main className="pt-32 pb-24">
+      <main id="main-content" className="pt-32 pb-24">
         <SectionContainer className="max-w-4xl">
           <p className="text-caption uppercase tracking-wider text-[var(--accent)]">{content.eyebrow}</p>
           <h1 className="mt-3 max-w-3xl text-h1">{content.h1}</h1>

@@ -116,7 +116,7 @@ const coreSkills = [
   },
   {
     title: "Automation & Integrations",
-    skills: "n8n, Make.com, APIs, webhooks",
+    skills: "n8n, APIs, webhooks",
   },
   {
     title: "Mobile & Applied AI",
@@ -288,7 +288,7 @@ export default function ResumePage() {
         <SiteHeader backHref="/" backLabel="Back to home" />
       </div>
 
-      <main className="mx-auto max-w-4xl px-6 resume-container">
+      <main id="main-content" className="mx-auto max-w-4xl px-6 resume-container">
         <header className="border-b border-[var(--border-muted)] pb-8 mb-10 print-header">
           <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
             <div>

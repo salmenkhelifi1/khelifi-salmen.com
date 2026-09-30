@@ -40,7 +40,7 @@ export default function BlogIndexPage() {
   return (
     <>
       <SiteHeader />
-      <main className="min-h-screen pt-32 pb-24">
+      <main id="main-content" className="min-h-screen pt-32 pb-24">
         <SectionContainer>
           <div className="mb-12 max-w-3xl">
             <span className="text-caption text-[var(--accent)]">Writing & Retrospectives</span>

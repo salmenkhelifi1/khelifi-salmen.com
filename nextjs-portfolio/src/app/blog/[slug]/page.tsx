@@ -166,7 +166,7 @@ export default async function BlogPostPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <SiteHeader backHref="/blog" backLabel="Back to Blog" />
-      <main className="min-h-screen pt-32 pb-24">
+      <main id="main-content" className="min-h-screen pt-32 pb-24">
         <article>
           <SectionContainer className="max-w-4xl">
             {/* Header / Meta */}

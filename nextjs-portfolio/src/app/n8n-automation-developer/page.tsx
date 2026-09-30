@@ -56,7 +56,7 @@ export default function N8nAutomationDeveloperPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <SiteHeader />
-      <main className="pt-32 pb-24">
+      <main id="main-content" className="pt-32 pb-24">
         <SectionContainer className="max-w-4xl">
           <p className="text-caption uppercase tracking-wider text-[var(--accent)]">Automation & integrations</p>
           <h1 className="mt-3 max-w-3xl text-h1">n8n automation developer for reliable business workflows.</h1>
