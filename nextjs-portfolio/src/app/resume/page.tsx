@@ -437,7 +437,7 @@ export default function ResumePage() {
           <h2 id="professional-experience-heading" className="text-xl font-bold mb-6 flex items-center gap-2 text-[var(--text-primary)] border-b border-[var(--border-subtle)] pb-2 print-text-primary print-border">
             <Briefcase className="w-5 h-5 text-[var(--accent)] no-print" /> Professional Experience
           </h2>
-          <div className="print-project">
+          <div className="print-project mb-8">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1">
               <div>
                 <h3 className="text-lg font-bold text-[var(--text-primary)] print-text-primary">Vazygo</h3>
@@ -450,6 +450,23 @@ export default function ResumePage() {
             </p>
             <div className="flex flex-wrap gap-2 mt-3">
               {["Next.js", "Nuxt", "Node.js", "Express.js"].map((technology) => (
+                <span key={technology} className="text-xs px-2 py-1 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] print-text-secondary">{technology}</span>
+              ))}
+            </div>
+          </div>
+          <div className="print-project">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1">
+              <div>
+                <h3 className="text-lg font-bold text-[var(--text-primary)] print-text-primary">Base Développement</h3>
+                <p className="text-sm text-[var(--text-secondary)] print-text-secondary">CMS Developer · Tunis</p>
+              </div>
+              <p className="text-sm text-[var(--text-secondary)] print-text-secondary whitespace-nowrap">August 2021 – August 2023</p>
+            </div>
+            <p className="text-[var(--text-secondary)] leading-relaxed print-text-secondary">
+              Built custom WordPress and WooCommerce websites and e-commerce stores.
+            </p>
+            <div className="flex flex-wrap gap-2 mt-3">
+              {["WordPress", "WooCommerce"].map((technology) => (
                 <span key={technology} className="text-xs px-2 py-1 rounded-md border border-[var(--border-subtle)] text-[var(--text-secondary)] print-text-secondary">{technology}</span>
               ))}
             </div>
