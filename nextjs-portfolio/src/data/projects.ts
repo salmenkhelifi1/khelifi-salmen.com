@@ -92,7 +92,7 @@ export const projects: Project[] = [
       hoverText: "hover:text-cyan-400",
       button: "bg-cyan-600 hover:bg-cyan-500",
     },
-    heroImage: "/images/synclead/case-study/synclead-01-landing.png",
+    heroImage: "/images/project-thumbnails/synclead-v2.webp",
     galleryAspect: "desktop",
     overview: {
       what: "A role-aware sales operations workspace that connects CRM, email and WhatsApp campaigns, quotes and PDFs, calendars, unified messaging, AI assistance, catalog management, public landing pages, agent invitations, and Odoo synchronization.",
@@ -195,8 +195,7 @@ export const projects: Project[] = [
       hoverText: "hover:text-indigo-400",
       button: "bg-indigo-600 hover:bg-indigo-500",
     },
-    heroImage: "/images/foundpeers/foundpeers-cover.png",
-    heroDarkImage: "/images/foundpeers/foundpeers-cover-dark.png",
+    heroImage: "/images/project-thumbnails/foundpeers-v2.webp",
     heroVideo: "/images/foundpeers/foundpeers-demo.mp4",
     galleryAspect: "phone",
     overview: {
@@ -359,7 +358,7 @@ export const projects: Project[] = [
       hoverText: "hover:text-purple-400",
       button: "bg-purple-600 hover:bg-purple-500",
     },
-    heroImage: "/images/luxe_spa_home.png",
+    heroImage: "/images/project-thumbnails/luxe-spa-booking-v2.webp",
     galleryAspect: "desktop",
     overview: {
       what: "A reusable white-label booking and business-management platform with client-specific deployments, runtime site configuration, scheduling, staff, customer, content, authentication, and integration boundaries.",
@@ -486,7 +485,7 @@ export const projects: Project[] = [
       hoverText: "hover:text-pink-400",
       button: "bg-pink-600 hover:bg-pink-500",
     },
-    heroImage: "/images/luxenail/01-luxenail-home-desktop.png",
+    heroImage: "/images/project-thumbnails/luxe-nail-v2.webp",
     galleryAspect: "desktop",
     overview: {
       what:
@@ -658,7 +657,7 @@ export const projects: Project[] = [
       hoverText: "hover:text-cyan-400",
       button: "bg-cyan-600 hover:bg-cyan-500",
     },
-    heroImage: "/images/adaptifit/my-plan.png",
+    heroImage: "/images/project-thumbnails/adaptifit-v2.webp",
     galleryAspect: "phone",
     overview: {
       what: "A cross-platform Flutter mobile app that combines real-time pose detection (Google ML Kit) with personalized training and nutrition recommendations, delivered through daily workout plans, nutrition plans, progress tracking, calendar views, and an AI coach experience. A FastAPI backend and n8n workflows with OpenAI coordinate AI-generated plan data. Built for a client; completed for the client but not publicly launched.",
@@ -780,7 +779,7 @@ export const projects: Project[] = [
       hoverText: "hover:text-violet-400",
       button: "bg-violet-600 hover:bg-violet-500",
     },
-    heroImage: "/images/anlingo/anlingo-03.jpg",
+    heroImage: "/images/project-thumbnails/anlingo-v2.webp",
     galleryAspect: "desktop",
     overview: {
       what: "A full-stack writing product for grammar correction, rewriting, translation, voice dictation, document import, AI chat, history, pricing, and account workflows across web and mobile.",
@@ -1148,7 +1147,7 @@ export const projects: Project[] = [
       hoverText: "hover:text-green-400",
       button: "bg-green-600 hover:bg-green-500",
     },
-    heroImage: "/images/noxivo/case-study/02-main-dashboard.png",
+    heroImage: "/images/project-thumbnails/noxivo-v2.webp",
     galleryAspect: "desktop",
     overview: {
       what: "A WhatsApp-first multi-tenant platform for agencies to manage client workspaces, team conversations, automation workflows, developer access, and integrations from one governed operating layer.",
@@ -1302,7 +1301,7 @@ export const projects: Project[] = [
       "A public storefront and brand presentation for LEYEL, a modest ready-to-wear fashion label focused on simplicity, quality, and durable style.",
     category: "Fashion E-commerce",
     accent: freelancerAccent,
-    heroImage: "/images/freelancer-portfolio/leyel/leyel-01.png",
+    heroImage: "/images/project-thumbnails/leyel-v2.webp",
     galleryAspect: "desktop",
     overview: {
       what: "A public storefront and brand presentation built for LEYEL, a modest ready-to-wear fashion label focused on simplicity, quality, and durable style.",
@@ -1416,7 +1415,7 @@ export const projects: Project[] = [
       "A WordPress and WooCommerce electronics storefront for HTI.tn with product browsing, payment setup, SEO structure, and performance-focused customization.",
     category: "E-commerce Website",
     accent: freelancerAccent,
-    heroImage: "/images/freelancer-portfolio/hti-ecommerce/hti-ecommerce-01.png",
+    heroImage: "/images/project-thumbnails/hti-ecommerce-v2.webp",
     galleryAspect: "desktop",
     overview: {
       what: "A professional e-commerce website for an electronics and surveillance equipment retailer, built and customized on WordPress and WooCommerce.",
@@ -1478,7 +1477,7 @@ export const projects: Project[] = [
       "A concept-store website for handcrafted artisanal products, focused on product showcase, responsive browsing, and SEO-friendly presentation.",
     category: "E-commerce Website",
     accent: freelancerAccent,
-    heroImage: "/images/freelancer-portfolio/chab-ka/chab-ka-01.png",
+    heroImage: "/images/project-thumbnails/chab-ka-v2.webp",
     galleryAspect: "desktop",
     overview: {
       what: "A visually focused concept-store website for Chab-ka, presenting handcrafted artisanal products such as jewelry and ceramic pieces.",
@@ -1537,7 +1536,7 @@ export const projects: Project[] = [
       "A WordPress and WooCommerce fashion storefront with product categories, product pages, checkout, AWS services, Brevo, and All in One SEO.",
     category: "Fashion E-commerce",
     accent: freelancerAccent,
-    heroImage: "/images/freelancer-portfolio/velyssa/velyssa-01.png",
+    heroImage: "/images/project-thumbnails/velyssa-v2.webp",
     galleryAspect: "desktop",
     overview: {
       what: "A fully functional e-commerce website for Velyssa, a fashion brand, built with WordPress and WooCommerce.",
@@ -1599,8 +1598,7 @@ export const projects: Project[] = [
       "A modern blog platform with responsive design, SEO optimization, performance and security work, and CMS-friendly content management.",
     category: "Blog Platform",
     accent: freelancerAccent,
-    heroImage:
-      "/images/freelancer-portfolio/sainteagnes-blog/sainteagnes-blog-01.png",
+    heroImage: "/images/project-thumbnails/sainteagnes-blog-v2.webp",
     galleryAspect: "desktop",
     overview: {
       what: "A blog platform for blog-sainteagnes.fr, designed for clean reading, performance, SEO, and easy content updates.",
@@ -1661,8 +1659,7 @@ export const projects: Project[] = [
       "A responsive company website for an IT solutions brand covering software development, cloud solutions, DevOps, and digital transformation.",
     category: "Company Website",
     accent: freelancerAccent,
-    heroImage:
-      "/images/freelancer-portfolio/digitrends-dev/digitrends-dev-01.png",
+    heroImage: "/images/project-thumbnails/digitrends-dev-v2.webp",
     galleryAspect: "desktop",
     overview: {
       what: "The official website for DigiTrends.dev, created to present the company's IT services and brand identity.",
@@ -1710,8 +1707,7 @@ export const projects: Project[] = [
       "A WordPress electronics store built with the Proto theme, product listings, responsive layouts, search and filtering, and e-commerce functionality.",
     category: "E-commerce Website",
     accent: freelancerAccent,
-    heroImage:
-      "/images/freelancer-portfolio/electronic-ecommerce/electronic-ecommerce-01.png",
+    heroImage: "/images/project-thumbnails/electronic-ecommerce-v2.webp",
     galleryAspect: "desktop",
     overview: {
       what: "A fully functional electronics e-commerce website built using WordPress and the Proto theme.",
@@ -1763,8 +1759,7 @@ export const projects: Project[] = [
       "A French-language business website presenting operational excellence and digital innovation as two connected transformation services.",
     category: "Company Website",
     accent: freelancerAccent,
-    heroImage:
-      "/images/freelancer-portfolio/digitrends-pro/digitrends-pro-01.png",
+    heroImage: "/images/project-thumbnails/digitrends-pro-v2.webp",
     galleryAspect: "desktop",
     overview: {
       what: "A business website for digitrends.pro, based on a French-language positioning around operational excellence and digital innovation.",
@@ -1819,7 +1814,7 @@ export const projects: Project[] = [
       "A car-rental platform concept for browsing premium vehicles such as sedans, coupes, SUVs, and convertibles.",
     category: "Car Rental Platform",
     accent: freelancerAccent,
-    heroImage: "/images/freelancer-portfolio/rentiora/rentiora-01.png",
+    heroImage: "/images/project-thumbnails/rentiora-v2.webp",
     galleryAspect: "desktop",
     overview: {
       what: "A car-rental platform concept built for rentiora.com, presenting premium rental vehicles with a comfort- and trust-focused brand experience.",

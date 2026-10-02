@@ -568,12 +568,13 @@ export default async function ProjectProfilePage({
     return null;
   };
 
+  const isThumbnailCover = project.heroImage?.startsWith("/images/project-thumbnails/");
   const heroMedia = (project.heroImage || project.slug === "foundpeers") ? (
-    <div className={project.slug === "adaptifit" ? "pt-2" : "mt-10"}>
-      <div className={`relative mx-auto w-full overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border-bright)] bg-black shadow-2xl ${project.slug === "adaptifit" ? "aspect-[9/19] max-w-xs" : "aspect-video max-w-4xl"}`}>
+    <div className={project.slug === "adaptifit" && !isThumbnailCover ? "pt-2" : "mt-10"}>
+      <div className={`relative mx-auto w-full overflow-hidden rounded-[var(--radius-xl)] border border-[var(--glass-border-bright)] bg-black shadow-2xl ${isThumbnailCover ? "aspect-[16/10] max-w-4xl" : project.slug === "adaptifit" ? "aspect-[9/19] max-w-xs" : "aspect-video max-w-4xl"}`}>
         <Image
           src={project.heroImage!}
-          alt={heroAlt}
+          alt={isThumbnailCover ? `${project.title} project overview` : heroAlt}
           fill
           priority
           sizes="(max-width: 1024px) 95vw, 880px"

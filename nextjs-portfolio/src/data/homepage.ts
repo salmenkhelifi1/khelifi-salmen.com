@@ -138,7 +138,7 @@ export const projects: Project[] = [
     tags: ["Next.js 16", "Express 5", "PostgreSQL", "Prisma", "BullMQ"],
     href: "/projects/luxenail",
     linkLabel: "View Case Study",
-    image: "/images/luxenail/01-luxenail-home-desktop.png",
+    image: "/images/project-thumbnails/luxe-nail-v2.webp",
   },
   {
     category: "AI Writing SaaS",
@@ -148,7 +148,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "Express", "Firebase", "Flutter", "Gemini", "Stripe"],
     href: "/projects/anlingo",
     linkLabel: "View Case Study",
-    image: "/images/anlingo/gallery/anlingo-web-dashboard.png",
+    image: "/images/project-thumbnails/anlingo-v2.webp",
   },
   {
     category: "WhatsApp Automation SaaS",
@@ -158,7 +158,7 @@ export const projects: Project[] = [
     tags: ["Next.js 15", "Fastify", "MongoDB", "Redis", "Docusaurus"],
     href: "/projects/noxivo",
     linkLabel: "View Case Study",
-    image: "/images/noxivo/noxivo-01.png",
+    image: "/images/project-thumbnails/noxivo-v2.webp",
   },
   {
     category: "Fashion E-commerce",
@@ -168,7 +168,7 @@ export const projects: Project[] = [
     tags: ["Fashion", "E-commerce", "Brand Site"],
     href: "/projects/leyel",
     linkLabel: "View Case Study",
-    image: "/images/freelancer-portfolio/leyel/leyel-02.png",
+    image: "/images/project-thumbnails/leyel-v2.webp",
   },
   {
     category: "AI & Automation",
@@ -189,7 +189,7 @@ export const projects: Project[] = [
     tags: ["WordPress", "WooCommerce", "SEO", "Payments"],
     href: "/projects/hti-ecommerce",
     linkLabel: "View Case Study",
-    image: "/images/HTI.png",
+    image: "/images/project-thumbnails/hti-ecommerce-v2.webp",
   },
   {
     category: "E-commerce Website",
@@ -199,7 +199,7 @@ export const projects: Project[] = [
     tags: ["Concept Store", "Responsive", "SEO"],
     href: "/projects/chab-ka",
     linkLabel: "View Case Study",
-    image: "/images/chab-ka.png",
+    image: "/images/project-thumbnails/chab-ka-v2.webp",
   },
   {
     category: "Fashion E-commerce",
@@ -209,7 +209,7 @@ export const projects: Project[] = [
     tags: ["WordPress", "WooCommerce", "AWS", "Brevo", "SEO"],
     href: "/projects/velyssa",
     linkLabel: "View Case Study",
-    image: "/images/Velyssa.png",
+    image: "/images/project-thumbnails/velyssa-v2.webp",
   },
   {
     category: "Blog Platform",
@@ -219,8 +219,7 @@ export const projects: Project[] = [
     tags: ["Blog", "CMS", "SEO", "Performance"],
     href: "/projects/sainteagnes-blog",
     linkLabel: "View Case Study",
-    image:
-      "/images/freelancer-portfolio/sainteagnes-blog/sainteagnes-blog-02.png",
+    image: "/images/project-thumbnails/sainteagnes-blog-v2.webp",
   },
   {
     category: "Company Website",
@@ -230,7 +229,7 @@ export const projects: Project[] = [
     tags: ["Company Website", "SEO", "Performance"],
     href: "/projects/digitrends-dev",
     linkLabel: "View Case Study",
-    image: "/images/digitrends.png",
+    image: "/images/project-thumbnails/digitrends-dev-v2.webp",
   },
   {
     category: "E-commerce Website",
@@ -240,8 +239,7 @@ export const projects: Project[] = [
     tags: ["WordPress", "Proto Theme", "E-commerce"],
     href: "/projects/electronic-ecommerce",
     linkLabel: "View Case Study",
-    image:
-      "/images/freelancer-portfolio/electronic-ecommerce/electronic-ecommerce-01.png",
+    image: "/images/project-thumbnails/electronic-ecommerce-v2.webp",
   },
   {
     category: "Company Website",
@@ -251,7 +249,7 @@ export const projects: Project[] = [
     tags: ["Company Website", "French", "Digital Transformation"],
     href: "/projects/digitrends-pro",
     linkLabel: "View Case Study",
-    image: "/images/freelancer-portfolio/digitrends-pro/digitrends-pro-01.png",
+    image: "/images/project-thumbnails/digitrends-pro-v2.webp",
   },
   {
     category: "Car Rental Platform",
@@ -261,7 +259,7 @@ export const projects: Project[] = [
     tags: ["Car Rental", "Landing Page", "Luxury"],
     href: "/projects/rentiora",
     linkLabel: "View Case Study",
-    image: "/images/rentiora.png",
+    image: "/images/project-thumbnails/rentiora-v2.webp",
   },
   {
     category: "E-commerce Platform",
@@ -281,7 +279,7 @@ export const projects: Project[] = [
     tags: ["Flutter", "FastAPI", "Google ML Kit", "n8n", "OpenAI"],
     href: "/projects/adaptifit",
     linkLabel: "View Project",
-    image: "/images/adaptifit/my-plan.png",
+    image: "/images/project-thumbnails/adaptifit-v2.webp",
   },
 ];
 
@@ -325,7 +323,7 @@ export const featuredWork: FeaturedWorkItem[] = [
     eyebrow: "CLIENT BOOKING PLATFORM",
     title: "LuxeNail.art",
     href: "/projects/luxenail",
-    image: "/images/luxenail/01-luxenail-home-desktop.png",
+    image: "/images/project-thumbnails/luxe-nail-v2.webp",
     tags: ["Client", "Booking", "White-label"],
     rows: [
       {
@@ -346,7 +344,7 @@ export const featuredWork: FeaturedWorkItem[] = [
     eyebrow: "AI WRITING SAAS",
     title: "Anlingo",
     href: "/projects/anlingo",
-    image: "/images/anlingo/gallery/anlingo-web-dashboard.png",
+    image: "/images/project-thumbnails/anlingo-v2.webp",
     tags: ["AI", "SaaS"],
     rows: [
       {
@@ -424,8 +422,6 @@ export const technicalDepth: TechnicalDepthItem[] = [
 
 export const portraitPreviewImages: Set<string> = new Set([
   "/images/stitch-projects/14620193470260808168-70889deedbc14545be22752d8c352941.png",
-  "/images/freelancer-portfolio/leyel/leyel-02.png",
-  "/images/adaptifit/my-plan.png",
 ]);
 
 // Three focused service areas, dominant one first. Reduced from six generic

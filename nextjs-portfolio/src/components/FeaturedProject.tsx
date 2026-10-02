@@ -17,7 +17,7 @@ export default function FeaturedProject({
 }: FeaturedProjectProps) {
   const Heading = headingLevel;
   const project = getProject(item.href.split("/").at(-1) || "");
-  const imageAlt =
+  const imageAlt = item.image.startsWith("/images/project-thumbnails/") ? `${item.title} project overview` :
     project?.gallery.find((shot) => shot.src === item.image)?.alt ||
     project?.gallery[0]?.alt ||
     item.title;

@@ -14,7 +14,9 @@ export default function CompactProject({
   isPortraitPreview = false,
 }: CompactProjectProps) {
   const caseStudy = getProject(project.href.split("/").at(-1) || "");
-  const imageAlt =
+  const isThumbnailCover = project.image.startsWith("/images/project-thumbnails/");
+  const isPortrait = isPortraitPreview && !isThumbnailCover;
+  const imageAlt = isThumbnailCover ? `${project.title} project overview` :
     caseStudy?.gallery.find((shot) => shot.src === project.image)?.alt ||
     caseStudy?.gallery[0]?.alt ||
     project.title;
@@ -23,7 +25,7 @@ export default function CompactProject({
     <article className="project-card group reveal flex flex-col">
       <div
         className={`image-preview relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border-muted)] bg-[var(--bg-surface)] mb-6 ${
-          isPortraitPreview ? "aspect-[4/5] mx-auto w-full max-w-sm" : "aspect-[16/10]"
+          isPortrait ? "aspect-[4/5] mx-auto w-full max-w-sm" : "aspect-[16/10]"
         }`}
       >
         <Image
@@ -31,7 +33,7 @@ export default function CompactProject({
           alt={imageAlt}
           fill
           sizes={
-            isPortraitPreview
+            isPortrait
               ? "(max-width: 768px) 100vw, 384px"
               : "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           }
