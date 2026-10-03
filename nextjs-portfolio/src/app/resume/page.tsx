@@ -454,6 +454,18 @@ export default function ResumePage() {
               ))}
             </div>
           </div>
+          <div className="print-project mb-8">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1">
+              <div>
+                <h3 className="text-lg font-bold text-[var(--text-primary)] print-text-primary">DIGITRENDS</h3>
+                <p className="text-sm text-[var(--text-secondary)] print-text-secondary">Backend / Full-Stack Developer · Tunis</p>
+              </div>
+              <p className="text-sm text-[var(--text-secondary)] print-text-secondary whitespace-nowrap">February 2024 – February 2025</p>
+            </div>
+            <p className="text-[var(--text-secondary)] leading-relaxed print-text-secondary">
+              Built and maintained 10+ client sites with authentication systems, REST APIs, and database design.
+            </p>
+          </div>
           <div className="print-project">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1">
               <div>
