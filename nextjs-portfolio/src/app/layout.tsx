@@ -30,6 +30,7 @@ export const metadata: Metadata = {
   publisher: "Salmen Khelifi",
   alternates: {
     canonical: "/",
+    types: { "application/rss+xml": "/feed.xml" },
   },
   openGraph: {
     title: "Salmen Khelifi | Full-Stack Developer — SaaS, APIs & Automation",
