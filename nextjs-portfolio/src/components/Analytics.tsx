@@ -1,5 +1,9 @@
+"use client";
+
+import { useSyncExternalStore } from "react";
 import Script from "next/script";
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { isInternalHost } from "@/lib/internal-traffic";
 /**
  * GA4 and Meta Pixel, both driven by env vars.
  *
@@ -12,6 +16,11 @@ import { GoogleAnalytics } from '@next/third-parties/google';
  *
  * Both are NEXT_PUBLIC_ because they are read in the browser. These IDs are
  * not secrets — they ship in the page source by design.
+ *
+ * Nothing renders off the production host (localhost, previews, automation),
+ * so dev and agent sessions never pollute the production properties. The
+ * host is only known in the browser, so the server render and hydration
+ * render nothing and the client re-renders once the host is known.
  */
 
 // The GA4 measurement ID is not a secret — it is visible in the page source of
@@ -23,7 +32,14 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-8N7BGP0VPJ";
 // No default: an unset pixel should stay unset rather than guess an ID.
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
+const subscribe = () => () => {};
+const isProductionHost = () => !isInternalHost(window.location.hostname);
+const onServer = () => false;
+
 export default function Analytics() {
+  const production = useSyncExternalStore(subscribe, isProductionHost, onServer);
+  if (!production) return null;
+
   return (
     <>
       {GA_ID ? (
