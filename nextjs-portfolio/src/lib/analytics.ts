@@ -39,6 +39,8 @@ function safeCapture(
     if (typeof window === "undefined") return;
     // posthog-js exposes isFeatureEnabled/opted-out helpers; guard on capture.
     if (typeof posthog?.capture !== "function") return;
+    // Not initialised (no token, or internal host — see instrumentation-client.ts).
+    if (!posthog.__loaded) return;
     if (typeof posthog?.has_opted_out_capturing === "function") {
       if (posthog.has_opted_out_capturing()) return;
     }

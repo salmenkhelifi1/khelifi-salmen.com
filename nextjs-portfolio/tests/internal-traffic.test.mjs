@@ -31,3 +31,9 @@ test("GA renders only off the shared gate and keeps its production fallback ID",
   // Production must survive a deploy without NEXT_PUBLIC_GA_ID.
   assert.match(s, /process\.env\.NEXT_PUBLIC_GA_ID \?\? "G-8N7BGP0VPJ"/);
 });
+
+test("PostHog is never initialised on internal hosts", async () => {
+  const s = await src("instrumentation-client.ts");
+  assert.match(s, /isInternalHost\(window\.location\.hostname, forceEnabled\)/);
+  assert.match(s, /if \(token && !internal\) \{\s*posthog\.init\(/);
+});
