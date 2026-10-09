@@ -1,5 +1,4 @@
 import { getImageProps } from "next/image";
-import { preload } from "react-dom";
 import Link from "next/link";
 import { ArrowRight, Hand } from "lucide-react";
 import {
@@ -28,15 +27,17 @@ import { BookCallLink, CtaLink, ResumeLink } from "@/components/TrackedCta";
 
 // .hero-media is display:none below 480px (globals.css). A plain priority
 // <Image> was still preloaded and downloaded on phones, so the portrait is a
-// <picture> whose only source (and preload) is scoped to the visible range:
-// desktop keeps an eager, high-priority fetch and phones fetch nothing.
+// <picture> whose only source is scoped to the visible range: desktop keeps an
+// eager, high-priority fetch and phones fetch nothing. No <link rel=preload>:
+// on mobile Chrome its media query is evaluated against the 980px default
+// layout viewport, so a media-scoped preload still downloaded on phones.
 const HERO_MEDIA_QUERY = "(min-width: 480px)";
 const TRANSPARENT_PIXEL =
   "data:image/gif;base64,R0lGODlhAQABAIAAAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
 
 function HeroPortrait() {
   const {
-    props: { srcSet, sizes, src, alt, ...img },
+    props: { srcSet, sizes, alt, ...img },
   } = getImageProps({
     src: "/images/salmen-workspace-hero.png",
     alt: "Salmen Khelifi working at a laptop in his workspace",
@@ -48,14 +49,6 @@ function HeroPortrait() {
     loading: "eager",
     fetchPriority: "high",
   });
-  preload(src, {
-    as: "image",
-    imageSrcSet: srcSet,
-    imageSizes: sizes,
-    fetchPriority: "high",
-    media: HERO_MEDIA_QUERY,
-  });
-
   return (
     <picture>
       <source media={HERO_MEDIA_QUERY} srcSet={srcSet} sizes={sizes} />
