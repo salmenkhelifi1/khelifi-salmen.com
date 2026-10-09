@@ -16,7 +16,7 @@ export default function EngineeringProof() {
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid items-start gap-4 md:grid-cols-2">
           {technicalDepth.map((item, index) => {
             const Icon = item.icon;
             return (
