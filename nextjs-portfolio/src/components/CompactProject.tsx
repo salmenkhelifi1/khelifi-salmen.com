@@ -54,7 +54,8 @@ export default function CompactProject({
         captureId={`project-card-${project.href.split("/").at(-1) || "unknown"}`}
         className="project-link inline-flex min-h-11 items-center font-bold text-[var(--text-primary)]"
       >
-        {project.linkLabel} <ArrowRight className="ml-1.5 h-4 w-4" />
+        {project.linkLabel}<span className="sr-only">: {project.title}</span>{" "}
+        <ArrowRight className="ml-1.5 h-4 w-4" aria-hidden="true" />
       </ProjectCardLink>
     </article>
   );
