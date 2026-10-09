@@ -35,24 +35,29 @@ export default function SiteHeader({ backHref, backLabel }: SiteHeaderProps) {
 
   useEffect(() => {
     if (isMenuOpen) {
+      const menuItems = () =>
+        Array.from(
+          menuRef.current?.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          ) ?? []
+        );
       // Focus first element in menu
-      const focusableElements = menuRef.current?.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
-      );
-      if (focusableElements && focusableElements.length > 0) {
-        focusableElements[0].focus();
-      }
+      menuItems()[0]?.focus();
 
-      // Handle Escape key
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === "Escape") {
           setIsMenuOpen(false);
           buttonRef.current?.focus();
         }
 
-        if (e.key === "Tab" && focusableElements?.length) {
-          const first = focusableElements[0];
-          const last = focusableElements[focusableElements.length - 1];
+        // Trap Tab inside [close toggle, ...menu items] so the visible close
+        // button is reachable; re-query so the cycle never goes stale.
+        if (e.key === "Tab") {
+          const cycle = [buttonRef.current, ...menuItems()].filter(
+            (el): el is HTMLElement => el !== null
+          );
+          const first = cycle[0];
+          const last = cycle[cycle.length - 1];
           if (e.shiftKey && document.activeElement === first) {
             e.preventDefault();
             last.focus();
