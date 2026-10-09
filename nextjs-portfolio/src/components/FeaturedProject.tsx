@@ -56,7 +56,8 @@ export default function FeaturedProject({
           captureId={`project-card-${item.href.split("/").at(-1) || "unknown"}`}
           className="project-link inline-flex min-h-11 items-center text-lg font-bold text-[var(--text-primary)]"
         >
-          View Case Study <ArrowRight className="ml-2 h-5 w-5" />
+          View Case Study<span className="sr-only">: {item.title}</span>{" "}
+          <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
         </ProjectCardLink>
       </div>
       <div className={`md:col-span-7 ${imageOnRight ? "md:order-2" : "md:order-1"}`}>

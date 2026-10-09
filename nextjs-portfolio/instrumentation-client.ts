@@ -1,4 +1,5 @@
 import posthog from "posthog-js";
+import { isInternalHost } from "@/lib/internal-traffic";
 
 /**
  * Stable client-side PostHog init (official posthog-js, not @posthog/next).
@@ -18,20 +19,16 @@ const uiHost =
   process.env.NEXT_PUBLIC_POSTHOG_UI_HOST ?? "https://us.posthog.com";
 const forceEnabled = process.env.NEXT_PUBLIC_POSTHOG_ENABLED === "true";
 
-function isInternalTraffic(): boolean {
-  if (typeof window === "undefined") return true;
-  const h = window.location.hostname;
-  if (forceEnabled) return false;
-  // localhost, preview deploys, automation: opt out by default.
-  if (h === "localhost" || h === "127.0.0.1") return true;
-  if (h.endsWith(".netlify.app")) return true;
-  if (h.endsWith(".vercel.app")) return true;
-  return false;
-}
+// localhost, previews and automation are internal: PostHog is never initialised
+// there, so no flags/config/script fetches or events leave the browser.
+// Set NEXT_PUBLIC_POSTHOG_ENABLED=true to test PostHog on a non-production host.
+const internal =
+  typeof window === "undefined" ||
+  isInternalHost(window.location.hostname, forceEnabled);
 
-// No token -> no-op. Never fabricate a token; set NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN
+// No token or internal host -> no-op. Never fabricate a token; set NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN
 // in Netlify env + .env.local (see .env.example).
-if (token) {
+if (token && !internal) {
   posthog.init(token, {
     api_host: host,
     ui_host: uiHost,
@@ -86,12 +83,8 @@ if (token) {
       }
       return event;
     },
-    opt_out_capturing_by_default: isInternalTraffic(),
-    loaded: (ph) => {
-      if (isInternalTraffic()) ph.opt_out_capturing();
-      // Never identify anonymous portfolio visitors. Keep PostHog's anonymous
-      // distinct_id unless a real stable ID becomes necessary later.
-    },
+    // Never identify anonymous portfolio visitors. Keep PostHog's anonymous
+    // distinct_id unless a real stable ID becomes necessary later.
   });
 }
 

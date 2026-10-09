@@ -39,6 +39,7 @@ export default function SiteFooter() {
               <a
                 key={link.href}
                 href={link.href}
+                data-ph-capture={link.href === "/resume" ? "footer-resume" : undefined}
                 className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
               >
                 {link.label}
@@ -53,9 +54,6 @@ export default function SiteFooter() {
             <Link href="/n8n-automation-developer" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
               n8n automation
             </Link>
-            <Link href="/resume" data-ph-capture="footer-resume" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
-              Résumé
-            </Link>
             <BookCallLink
               placement="footer"
               captureId="footer-book-call"
@@ -63,6 +61,14 @@ export default function SiteFooter() {
             >
               Book a call
             </BookCallLink>
+            <OutboundLink
+              href={fiverrUrl}
+              destinationType="fiverr"
+              placement="footer"
+              className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
+            >
+              Fixed-scope services
+            </OutboundLink>
           </div>
         </nav>
         <nav aria-label="Footer social links">
@@ -79,14 +85,6 @@ export default function SiteFooter() {
                 {link.label}
               </OutboundLink>
             ))}
-            <OutboundLink
-              href={fiverrUrl}
-              destinationType="fiverr"
-              placement="footer"
-              className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]"
-            >
-              Fixed-scope services
-            </OutboundLink>
           </div>
         </nav>
       </SectionContainer>

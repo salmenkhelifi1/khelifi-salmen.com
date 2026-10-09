@@ -322,8 +322,14 @@ for (const [name, value] of [
   }
 }
 for (const pathname of machineFiles) {
-  if (!fs.existsSync(path.join(process.cwd(), "public", pathname.slice(1)))) {
-    errors.push(`${pathname}: public source missing`);
+  // Served either as a static file from public/ or by a force-static route
+  // handler (e.g. src/app/llms.txt/route.ts), whose build output is <name>.body.
+  const builtBody = path.join(appDir, `${pathname.slice(1)}.body`);
+  if (
+    !fs.existsSync(path.join(process.cwd(), "public", pathname.slice(1))) &&
+    !(fs.existsSync(builtBody) && fs.statSync(builtBody).size > 0)
+  ) {
+    errors.push(`${pathname}: neither public source nor built route output`);
   }
   if (robots.includes(`Disallow: ${pathname}`)) {
     errors.push(`${pathname}: robots.txt blocks crawler access`);

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import Link from "next/link";
 import { ArrowRight, Hand } from "lucide-react";
 import {
@@ -24,6 +24,38 @@ import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import TestimonialSpotlight from "@/components/TestimonialSpotlight";
 import { BookCallLink, CtaLink, ResumeLink } from "@/components/TrackedCta";
+
+// .hero-media is display:none below 480px (globals.css). A plain priority
+// <Image> was still preloaded and downloaded on phones, so the portrait is a
+// <picture> whose only source is scoped to the visible range: desktop keeps an
+// eager, high-priority fetch and phones fetch nothing. No <link rel=preload>:
+// on mobile Chrome its media query is evaluated against the 980px default
+// layout viewport, so a media-scoped preload still downloaded on phones.
+const HERO_MEDIA_QUERY = "(min-width: 480px)";
+const TRANSPARENT_PIXEL =
+  "data:image/gif;base64,R0lGODlhAQABAIAAAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
+
+function HeroPortrait() {
+  const {
+    props: { srcSet, sizes, alt, ...img },
+  } = getImageProps({
+    src: "/images/salmen-workspace-hero.png",
+    alt: "Salmen Khelifi working at a laptop in his workspace",
+    fill: true,
+    sizes: "(max-width: 1023px) calc(100vw - 2.5rem), 46vw",
+    className: "hero-portrait",
+    placeholder: "blur",
+    blurDataURL: BLUR_PLACEHOLDER,
+    loading: "eager",
+    fetchPriority: "high",
+  });
+  return (
+    <picture>
+      <source media={HERO_MEDIA_QUERY} srcSet={srcSet} sizes={sizes} />
+      <img {...img} alt={alt} src={TRANSPARENT_PIXEL} />
+    </picture>
+  );
+}
 
 export default function HomeContent() {
   const compactProjects = homepageCompactHrefs
@@ -81,16 +113,7 @@ export default function HomeContent() {
           </div>
 
           <div className="hero-media reveal" style={{ transitionDelay: "220ms" }}>
-            <Image
-              src="/images/salmen-workspace-hero.png"
-              alt="Salmen Khelifi working at a laptop in his workspace"
-              fill
-              sizes="(max-width: 1023px) calc(100vw - 2.5rem), 46vw"
-              className="hero-portrait"
-              placeholder="blur"
-              blurDataURL={BLUR_PLACEHOLDER}
-              priority
-            />
+            <HeroPortrait />
             <div className="hero-media-shade" aria-hidden="true" />
             <div className="hero-media-caption">
               <span className="hero-media-caption-dot" aria-hidden="true" />
