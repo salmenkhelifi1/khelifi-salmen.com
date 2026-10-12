@@ -10,30 +10,33 @@ toc:
 
 {/*
   CONTENT DISCIPLINE REMINDER:
-  Every phase, date and number below traces to the FoundPeers repository —
-  git history, migration filenames, and a measured test run on 2026-08-10.
+  Every phase, date and number below traces to the FoundPeers repository (git
+  history, migration filenames, documented test runs) as of 2026-10-10.
   FoundPeers is pre-launch: no users, no revenue, no verified traction.
   Do not add outcome claims. Future phases carry gates, never completions.
+  Do NOT add: Apple sign-in "works", TestFlight or App Store, "verified founders",
+  "approximate location" as a guarantee, "events run", user or waitlist numbers,
+  "in-app moderation never needs database access", or any unfixed security or
+  production finding. Never print the legacy product name.
 */}
 
 ## Build Log
 
-Thirty days, solo. The interesting part of this project is not any single
-feature — it is that a security-tested product with a real backend got built in
-a month, and that the schedule below is reconstructed from git history rather
-than from memory.
+Solo, from 10 July to 10 October 2026. The interesting part of this project is
+not any single feature. It is that a security-tested product with a real backend
+got built quickly, that there is a plain six-week gap in the history, and that
+the schedule below is reconstructed from git rather than from memory.
 
 <BuildLog
-  caption="Six phases, 10 July to 10 August 2026 · 699 commits · 433 tests green"
+  caption="Eight phases, 10 July to 10 October 2026 · 912 commits · 958 Flutter tests passed on 10 October"
   phases={[
     {
       date: "10-12 Jul",
       title: "Foundation",
       status: "shipped",
-      summary: "The part that decides whether the next four weeks are possible.",
+      summary: "The part that decides whether the next weeks are possible.",
       items: [
-        "Flutter + Supabase monorepo, feature-first clean architecture",
-        "CI gate: nothing merges without analysis, format and tests passing",
+        "Flutter and Supabase monorepo, feature-first clean architecture",
         "Architecture, schema, API contracts and security docs written before the code",
       ],
     },
@@ -45,7 +48,7 @@ than from memory.
       items: [
         "Design system: colour, type, spacing and motion tokens, light and dark from day one",
         "All core screens with real empty, loading and error states",
-        "188 commits in 72 hours",
+        "86 commits across those three days",
       ],
     },
     {
@@ -53,10 +56,11 @@ than from memory.
       title: "Real backend",
       status: "shipped",
       items: [
-        "Apple and Google sign-in, session-driven routing, account deletion",
-        "Server-side founder search: full text over skills and bio, multi-filter, paginated",
-        "Consent-based location map, off by default and always revocable",
-        "Connection requests with a daily cap, no duplicates, and a terminal decline",
+        "Google sign-in verified on a physical iPhone. Apple sign-in is implemented but not yet verified, because it needs a paid developer account",
+        "Session-driven routing and an account-deletion function",
+        "Server-side founder search: full text over name, company and headline, multi-filter, paginated",
+        "Consent-based location map, off by default",
+        "Connection requests only through server functions, with a daily cap of 20, no duplicates, no self-requests and a terminal decline",
       ],
     },
     {
@@ -66,7 +70,6 @@ than from memory.
       items: [
         "Curated events with capacity-aware invite requests",
         "Founder-submitted events that never publish without a curator decision",
-        "In-app admin review queue, so moderation never needs database access",
       ],
     },
     {
@@ -76,27 +79,50 @@ than from memory.
       summary: "Not optional when the product's whole promise is that these are real people.",
       items: [
         "Report and block, moderation states, database-enforced row-level security",
-        "Every sensitive mutation behind a server function, so the client cannot be tricked into writing what it should not",
-        "16 database contract-test files and 189 assertions, run against a clean database",
-        "Full account deletion covering data, files and login",
+        "Adversarial database tests for security, storage rules, content moderation and rate limiting",
       ],
     },
     {
       date: "5-10 Aug",
       title: "Design pass, proximity and web",
-      status: "building",
+      status: "shipped",
       items: [
-        "Full redesign onto Apple's iOS 26 Liquid Glass language",
-        "Same-Wi-Fi founder discovery over Bonjour: no GPS, no location permission, no server round trip",
-        "Map radius selector at 5, 10, 25 or 50 km, remembered per device",
-        "Installable web build, so the product can be demoed before either store approves anything",
+        "Redesign onto Apple's iOS 26 Liquid Glass language",
+        "Same-Wi-Fi founder discovery over Bonjour: implemented, not yet field-tested on two devices",
+        "Map radius selector at 5, 10, 25 or 50 km",
+        "An installable web build, live as an app on its own domain, not marketed",
+      ],
+    },
+    {
+      date: "11-24 Aug",
+      title: "PWA, notifications and the map",
+      status: "shipped",
+      items: [
+        "Install flow and web push for the installable web build",
+        "Profile-moderation emails through a queue",
+        "A support chat connected to the app",
+        "A connection-request outbox: requests from founders still under review are sent automatically once approved",
+        "Event venue coordinates and an interactive map on iPhone's installable web app",
+        "Last functional release: 24 August",
+      ],
+    },
+    {
+      date: "25 Aug-10 Oct",
+      title: "Six weeks of silence, then an audit",
+      status: "building",
+      summary: "No commits from 25 August to 4 October, and nothing functional shipped in that time. I treat the gap as part of the record.",
+      items: [
+        "5-10 October: a founder-grade technical and launch-readiness audit",
+        "The first clean full run of the database test suite: 26 test files, 631 assertions planned, 629 passing and 2 known failures, in a local run on 10 October",
+        "958 Flutter tests passed, with analysis and formatting clean, on 10 October",
+        "Fixes from that run are committed and queued behind a backup check, not all deployed",
       ],
     },
   ]}
 />
 
 <TechnicalNote>
-  The same-Wi-Fi rail ships with a deliberate constraint: café and hotel
+  The same-Wi-Fi rail is built with a deliberate constraint: café and hotel
   networks frequently enable client isolation, which silently blocks the
   multicast traffic discovery depends on. So the rail only ever appears when it
   finds peers. It never renders an empty state promising something the network
@@ -105,46 +131,47 @@ than from memory.
 
 ## Road to Launch
 
-Each phase below closes on a measurable gate rather than a date. A gate that
-fails is a signal to change the work, not to move on from it.
+Each phase below closes on a measurable gate rather than a date. The calendar
+dates in my first version of this plan lapsed, which is the reason they are gone.
+A gate that fails is a signal to change the work, not to move on from it.
 
 <BuildLog
   caption="Planned. Nothing here is a result."
   phases={[
     {
-      date: "Aug, wk 2-3",
-      title: "Get it installable",
+      date: "Now",
+      title: "Get it installable on iPhone",
       status: "blocked",
-      summary: "Blocked on $124 of developer-account fees, not on code.",
+      summary: "Blocked on developer-account fees and a closed-beta checklist, not only on code.",
       items: [
-        "Apple Developer Program at $99/year unlocks signing, TestFlight and physical-device sign-in verification",
-        "Play Console at $25 once, where a new account must run a 12-tester closed test for 14 days before public release",
+        "Apple Developer Program at $99 per year unlocks signing and TestFlight",
+        "Play Console at $25, where a new account must run a 12-tester closed test for 14 days before public release",
+        "A closed-beta checklist: legal pages and a named operator, a named moderator, a backup decision, and per-founder consent",
       ],
       gate: "A signed build installed by someone who is not me.",
     },
     {
-      date: "Aug-Sep",
+      date: "Next",
       title: "First 25 founders",
       status: "next",
       items: [
-        "Recruited by hand, one conversation at a time. No ads.",
-        "Durable notification inbox with push and email",
-        "Revenue verification switched from coming-soon to live",
+        "Recruited by hand, one conversation at a time, in one city. No ads.",
+        "Interviews and consent first",
       ],
-      gate: "25 completed profiles and 10 accepted connections between people who did not already know each other.",
+      gate: "25 consented founders, and at least 12 of them active at 30 days after the cohort closes.",
     },
     {
-      date: "Sep-Oct",
+      date: "Later",
       title: "Prove one city",
       status: "next",
       items: [
-        "Four consecutive real-world sessions, run alongside the community that already exists there",
+        "Real-world sessions run alongside the community that already exists there",
         "Verification tier one: prove you own the domain, GitHub org or store listing you claim",
       ],
       gate: "12 people who returned twice or hosted, a 60% show-up rate, and 3 people willing to host without me.",
     },
     {
-      date: "Q4 2026",
+      date: "Later",
       title: "Second city",
       status: "next",
       items: [
@@ -156,8 +183,9 @@ fails is a signal to change the work, not to move on from it.
   ]}
 />
 
-<Callout variant="info" title="Status as of 10 August 2026">
-  FoundPeers is pre-launch. No users, no revenue, no events run. Revenue
-  verification is built but not switched on. Every phase marked Next is a plan
-  with a gate attached, not an outcome.
+<Callout variant="info" title="Status as of 12 October 2026 (evidence through 10 October)">
+  FoundPeers is pre-launch. No users, no revenue, and no beta cohort yet. The
+  web build can be installed from a browser but is not marketed, and the iPhone
+  app is not on TestFlight. Every phase marked Next is a plan with a gate
+  attached, not an outcome.
 </Callout>

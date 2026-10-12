@@ -214,12 +214,12 @@ export const projects: Project[] = [
       {
         title: "List and Map Discovery",
         description:
-          "Founder search, filters, map/list switching, approximate locations, a 5/10/25/50 km radius selector that defaults to 10 km and persists per device, explicit zoom controls, and friendly fallback states share one discovery model.",
+          "Founder search, filters, map/list switching, opt-in location sharing (off by default), a 5/10/25/50 km radius selector that defaults to 10 km and persists per device, explicit zoom controls, and friendly fallback states share one discovery model.",
       },
       {
         title: "Same-Network Proximity",
         description:
-          "Bonjour/mDNS discovery surfaces founders using the app on the same Wi-Fi with no GPS, no location permission, and no server round trip. Because café and hotel networks often block multicast, the rail only appears when peers are actually found rather than rendering an empty promise.",
+          "Bonjour/mDNS discovery surfaces founders using the app on the same Wi-Fi with no GPS, no location permission, and no server round trip. Implemented but not yet field-tested on two devices. Because café and hotel networks often block multicast, the rail only appears when peers are actually found rather than rendering an empty promise.",
       },
       {
         title: "Privacy-Aware Connections",
@@ -299,7 +299,7 @@ export const projects: Project[] = [
         "Riverpod",
         "GoRouter",
         "Cupertino / iOS 26 interaction patterns",
-        "Material 3 on Android",
+        "Android (planned)",
       ],
       backend: [
         "Supabase Auth",
@@ -330,7 +330,7 @@ export const projects: Project[] = [
       {
         challenge: "Proving a multi-screen MVP without expanding it into a social network",
         solution:
-          "Locked the product to one core founder journey, then covered it with 433 automated tests and 189 database contract assertions (measured 2026-08-10), deterministic iPhone simulator smoke flows, production-profile builds, and physical-device installation checks without adding feeds, followers, likes, or chat.",
+          "Locked the product to one core founder journey, then covered it with 958 Flutter tests passing and 629 of 631 database contract assertions passing in a local run (both measured 2026-10-10), deterministic iPhone simulator smoke flows, production-profile builds, and physical-device installation checks without adding feeds, followers, likes, or chat.",
       },
     ],
     links: {
