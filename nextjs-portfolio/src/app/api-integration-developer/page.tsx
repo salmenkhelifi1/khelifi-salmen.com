@@ -35,7 +35,7 @@ const content: ServiceContent = {
   ],
   proof: [
     { slug: "anlingo", name: "Anlingo", summary: "Express API behind a web editor and Flutter app: multi-provider AI model routing, billing, usage limits and admin controls." },
-    { slug: "luxe-spa", name: "Luxe", summary: "Booking backend with server-side validation using PostgreSQL transactions, a real-time inbox and queue-backed notifications." },
+    { slug: "luxe-spa", name: "Luxe", summary: "Booking backend with server-side validation backed by PostgreSQL exclusion constraints and transactions, a near-real-time inbox and queue-backed notifications." },
     { slug: "chaktech", name: "ChakTech", summary: "Tenant-scoped Express and PostgreSQL API with hostname-resolved tenants and role-based access." },
     { slug: "ai-workflow-automation", name: "AI workflow automation", summary: "n8n hub turning Gmail, SMS and WhatsApp inputs into structured tasks with OpenAI; cut manual admin work by 85%." },
   ],

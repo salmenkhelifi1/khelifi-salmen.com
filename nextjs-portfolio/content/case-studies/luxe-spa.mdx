@@ -2,45 +2,223 @@
 projectSlug: "luxe-spa"
 placement: "after-engineering-decisions"
 toc:
+  - id: "honest-status"
+    label: "Honest status"
+  - id: "the-hard-problem"
+    label: "The Hard Problem"
   - id: "system-design-notes"
     label: "System Design Notes"
+  - id: "build-log"
+    label: "Build Log"
+  - id: "what-is-next"
+    label: "What Is Next"
 ---
 
-{/* Supplemental System Design Notes backing Luxe Spa implementation */}
+{/*
+  CONTENT DISCIPLINE REMINDER:
+  Every date, count and claim below traces to the Luxe repositories (git history,
+  migration filenames, documented CI and test runs) or to the verified evidence
+  pack dated 2026-10-12. Luxe is client work: no booking volume, user, revenue or
+  no-show figure exists, so none is published. Client-specific launch findings and
+  production incidents are intentionally left out until the client approves a
+  public delivery status.
+  Do not add Socket.io, a "real-time" inbox, presets, payments in the booking flow,
+  SMS/push delivery or multi-tenant claims: the code does not support them.
+*/}
 
 <Callout variant="info" title="Production client implementation">
   See the [LuxeNail.art case study](/projects/luxenail) for a live branded
   salon implementation of this reusable platform.
 </Callout>
 
+## Honest status
+
+Luxe is a white-label booking and CRM platform I built, solo, for a client. One
+client deployment is live. It is **not** a multi-tenant SaaS: each client gets its
+own database, and tenant isolation was designed but deliberately not built.
+
+I have no measured booking volume, revenue or no-show reduction to show, so this
+page does not invent any. What I can show is the engineering: how double bookings
+are prevented, how the work was dated and tested, and what a real self-audit found.
+
+## The hard problem
+
+A booking page can look perfect and still let two people book the same specialist
+at the same minute. The fix cannot live in the interface. The browser asks for a
+slot and the server decides.
+
+<DecisionCard
+  title="Double-booking prevention"
+  subtitle="Enforced in the database, not the UI"
+  problem="Two customers (or a customer and a receptionist) request overlapping time for the same specialist or the same chair, at the same moment."
+  decision="A PostgreSQL EXCLUDE USING gist constraint rejects overlapping time ranges per specialist, including buffer time, and a second one rejects double-allocating a physical resource. Booking creation runs in a Serializable transaction with the slot re-checked inside it, and an Idempotency-Key makes retries safe."
+  result="A documented race test on 2026-10-02 against real PostgreSQL: two concurrent requests for one slot gave one winner, a 409 for the loser, and no orphan rows or leaked database errors. No production load result is claimed."
+/>
+
+The path to that design is visible in the migrations: a unique index on active
+slots first (26 July), replaced the next day by the exclusion constraint, then
+extended to buffers and resources (11 August). Finding a real race before launch,
+rather than after, is the part I would repeat.
+
 ## System Design Notes
 
-To support reusable white-label client deployments while maintaining clear runtime boundaries, the Luxe Spa platform was architected around three critical backend subsystems: dynamic configuration, booking synchronization, and an asynchronous background worker pipeline.
-
-<Callout variant="info" title="Verified Technology Stack">
-  The system is built with Next.js 16 App Router, React 19, Tailwind CSS 4, TypeScript, next-intl, TanStack React Query, Radix UI, Express 5, PostgreSQL + Prisma ORM, Socket.io, Redis/BullMQ, ImageKit, and Zod validation.
+<Callout variant="info" title="Verified technology stack">
+  Two independent repositories. Frontend: Next.js 16, React 19, TypeScript, Tailwind CSS 4, next-intl (English, Spanish, Vietnamese), TanStack Query, Radix UI. Backend: Express 5, PostgreSQL with Prisma, Zod, Redis with BullMQ, ImageKit. Per-client work lives on one branch per client, on top of one product branch.
 </Callout>
 
 <DecisionCard
-  title="Vertical Adaptability"
-  subtitle="Dynamic Preset Engine"
-  problem="Adapting the booking platform to different service domains without maintaining separate product implementations."
-  decision="The repository contains centralized preset/configuration paths that populate catalog and site-setting records for a service vertical."
-  result="Provides a reusable configuration boundary for client-specific terminology, catalog, branding, and operating settings; runtime tenant isolation is not claimed here."
+  title="Availability engine"
+  subtitle="Server-authoritative scheduling"
+  problem="Showing slots that are really bookable, across opening hours, staff shifts, date overrides, which specialist can do which service, buffers, shared resources and time zones."
+  decision="One availability service computes slots from opening windows, shifts, overrides, qualifications, per-service buffers, resource requirements and the location time zone, including multi-service sequences and 'any available specialist'. The interface only renders what the server returns."
+  result="The same rules decide what is shown and what is accepted, so the page cannot offer a slot the server would refuse."
 />
 
 <DecisionCard
-  title="Slot Concurrency & Real-Time Sync"
-  subtitle="Transactional Booking Layer"
-  problem="Preventing stale-slot and conflict errors when multiple customers or staff users request overlapping appointment times."
-  decision="Implemented server-side slot validation at booking time with Prisma transaction boundaries and Socket.io/inbox code paths for operational updates."
-  result="The code protects booking creation with current-state validation and conflict handling; a production concurrency load result is not claimed here."
+  title="Non-blocking notification pipeline"
+  subtitle="Queue-backed workers"
+  problem="Provider-dependent messaging and follow-up work must not block or break the booking request."
+  decision="Notification, review, SMS, media and import jobs run on BullMQ workers with Redis. A durable delivery record is written before a job is queued, and jobs use deduplicated ids and exponential-backoff retries."
+  result="Provider work stays out of the request path. Delivery success in production is not claimed without receipts."
 />
 
 <DecisionCard
-  title="Non-Blocking Notification Pipeline"
-  subtitle="Offloaded Async Workers"
-  problem="Preventing provider-dependent messaging and follow-up tasks from blocking the main API request path."
-  decision="Offloaded notification, review, SMS, media, and import work to BullMQ workers backed by Redis, with durable notification state for retries and provider errors."
-  result="Keeps provider-dependent work outside the main request path; provider delivery success and completion guarantees are not claimed without live receipts."
+  title="Per-client configuration without forking the product"
+  subtitle="Config fallback plus database settings"
+  problem="Different salons need their own brand, catalog, wording and settings without maintaining a separate codebase each."
+  decision="A static site configuration is the fallback, database site settings override it, and CSS variables carry the brand. A client's data arrives through forward migrations, not hand edits."
+  result="A branded client deployment on top of one product. Runtime multi-tenant isolation is not claimed: each client has its own database."
 />
+
+The admin inbox is near-real-time: it polls every 5 to 10 seconds while a tab is
+open, backed by an inbox service. It does not use WebSockets.
+
+## Build Log
+
+Dates come from git history across both repositories, not from memory. Commit
+counts include merges and documentation commits, so they measure activity, not
+features.
+
+<BuildLog
+  caption="Seven phases, 21 April to 4 October 2026 · 649 backend and 577 frontend commits (all branches) · 47 database migrations · single author"
+  phases={[
+    {
+      date: "21-28 Apr",
+      title: "Foundation",
+      status: "shipped",
+      items: [
+        "First commit on 21 April: user profile service, routes and Docker containerisation",
+        "Referral code endpoint and booking verification",
+      ],
+    },
+    {
+      date: "7-22 Jul",
+      title: "Catalog, white-label base and client data",
+      status: "shipped",
+      items: [
+        "Initial Prisma migration and seeded catalog",
+        "Client data delivered as forward migrations",
+        "Audit and branch-workflow documents for the per-client branch model",
+      ],
+    },
+    {
+      date: "25-29 Jul",
+      title: "Self-audit, then containment",
+      status: "shipped",
+      summary: "I audited my own platform before launch and treated the result as a work list.",
+      items: [
+        "Audit on 25 July: 9 critical and 13 high findings",
+        "Fixed from that list: gift cards issued only after a verified payment webhook, AI provider credentials encrypted at rest, role and capability rules, account recovery",
+        "Double-booking constraint introduced (26-27 July)",
+      ],
+    },
+    {
+      date: "9-15 Aug",
+      title: "Availability authority and resources",
+      status: "shipped",
+      items: [
+        "Migrations for locations, resources, buffers and the extended exclusion constraints",
+        "Idempotency-Key support and date-specific overrides",
+        "Shared availability contract and 'any available specialist'",
+        "Backend test suite recorded 225 of 225 passing on 14 August",
+      ],
+    },
+    {
+      date: "16-20 Aug",
+      title: "Notifications, reviews, privacy, hardening",
+      status: "shipped",
+      items: [
+        "Durable notification delivery records and admin audit events",
+        "Paid gift cards behind verified Stripe webhooks",
+        "Accessibility baseline: WCAG 2.2 AA on the booking flow, axe checks at every step",
+        "A deploy-ordering lesson became a rule: a one-shot migrate job now has to finish before the API starts",
+      ],
+    },
+    {
+      date: "23-26 Aug",
+      title: "Marketing, multi-location, localisation, SEO",
+      status: "shipped",
+      items: [
+        "Locale registry with English, Spanish and Vietnamese",
+        "Google review import, multi-location mode, team access grants",
+        "Email provider replaced (SendGrid to Brevo)",
+        "Structured-data entity graph and localised service discovery",
+      ],
+    },
+    {
+      date: "29 Sep - 4 Oct",
+      title: "Pre-launch hardening",
+      status: "building",
+      summary: "Verified in continuous integration, not yet proven in production.",
+      items: [
+        "CI rebuilt to run every test file: the old script ran 95 of 146, and running them all exposed 4 hidden failures that were fixed without weakening a test",
+        "Backend CI green on 2 October: 586 tests, 47 of 47 migrations on a clean PostgreSQL 16, dependency audit gate",
+        "Readiness check and graceful shutdown (all 6 queues closed cleanly in a disposable run)",
+        "19 axe and Playwright accessibility tests passed locally on 2 October",
+      ],
+    },
+  ]}
+/>
+
+## What is next
+
+None of the items below is done. Each one closes on something you can check.
+
+<BuildLog
+  caption="Open work on the client deployment, with gates"
+  phases={[
+    {
+      date: "Next",
+      title: "Release traceability",
+      status: "next",
+      items: ["Deploy the hardening work and expose the running build identifier on both services"],
+      gate: "The production readiness endpoint returns 200 and reports the release commit that was merged.",
+    },
+    {
+      date: "Next",
+      title: "Backups and monitoring",
+      status: "next",
+      items: ["Scheduled database backups, a tested restore, and alerting on errors, uptime and queue depth"],
+      gate: "One restore drill completed and logged, and an induced failure alerts the owner within five minutes.",
+    },
+    {
+      date: "Blocked on client decision",
+      title: "Deposits and cancellation policy",
+      status: "blocked",
+      items: ["Deposit at booking and a cancellation window, behind a feature flag that defaults to off"],
+      gate: "One test-mode booking where a deposit is captured and refunded.",
+    },
+    {
+      date: "Only if sold as shared SaaS",
+      title: "Tenant isolation",
+      status: "blocked",
+      items: ["Every tenant-owned query scoped by a server-resolved tenant id"],
+      gate: "A cross-tenant read test suite that fails closed.",
+    },
+  ]}
+/>
+
+## What I would take from this
+
+Treat the database as the authority for anything two people can race on. Audit
+your own work before a client does. And publish the gates, not the adjectives.

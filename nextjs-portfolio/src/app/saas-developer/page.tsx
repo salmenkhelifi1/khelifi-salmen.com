@@ -29,12 +29,12 @@ const content: ServiceContent = {
   builds: [
     "SaaS products and internal tools with Next.js, React, TypeScript and Node.js.",
     "APIs and data models on PostgreSQL, with authentication and role-based access.",
-    "Real-time features and background jobs (Socket.io, Redis, BullMQ).",
+    "Background jobs and queue-backed notifications (Redis, BullMQ).",
     "E-commerce and platform work, including moving catalogs off WordPress/WooCommerce.",
     "Improvements to an existing codebase: performance, reliability, new features.",
   ],
   proof: [
-    { slug: "luxe-spa", name: "Luxe", summary: "White-label booking and CRM platform: specialist-aware scheduling, server-side booking validation, real-time staff inbox, queue-backed notifications." },
+    { slug: "luxe-spa", name: "Luxe", summary: "White-label booking and CRM platform: specialist-aware scheduling, server-side booking validation, near-real-time staff inbox, queue-backed notifications." },
     { slug: "anlingo", name: "Anlingo", summary: "Privacy-first AI writing assistant: web editor, Express API with multi-provider AI routing, billing and a Flutter companion app." },
     { slug: "chaktech", name: "ChakTech", summary: "Client e-commerce platform: Next.js storefront, Payload CMS admin, tenant-scoped Express and PostgreSQL API, French, Arabic and English." },
     { slug: "noxivo", name: "Noxivo (in development)", summary: "Multi-tenant WhatsApp operations platform for agencies with tenant-scoped inbox and workflow engine." },

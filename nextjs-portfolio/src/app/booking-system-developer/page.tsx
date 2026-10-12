@@ -29,13 +29,13 @@ const content: ServiceContent = {
   builds: [
     "Specialist-aware scheduling: services, durations, staff, locations, hours and buffers.",
     "Server-side booking validation to prevent double bookings.",
-    "A real-time staff inbox so your team sees new requests as they arrive.",
+    "A staff inbox that refreshes every few seconds, so your team sees new requests quickly.",
     "Queue-backed notifications that keep working when a provider is slow.",
     "A customer booking flow that works on a phone, in the languages you need.",
     "An admin and basic CRM for clients, services and staff.",
   ],
   proof: [
-    { slug: "luxe-spa", name: "Luxe", summary: "White-label booking and CRM platform built for a client: specialist-aware scheduling, server-side booking validation, real-time staff inbox, queue-backed notifications." },
+    { slug: "luxe-spa", name: "Luxe", summary: "White-label booking and CRM platform built for a client: specialist-aware scheduling, server-side booking validation, near-real-time staff inbox, queue-backed notifications." },
     { slug: "chaktech", name: "ChakTech", summary: "E-commerce platform built for a client: Next.js storefront, Payload CMS admin, tenant-scoped Express and PostgreSQL API." },
   ],
   steps: [

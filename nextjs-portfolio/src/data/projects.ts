@@ -371,7 +371,7 @@ export const projects: Project[] = [
       {
         title: "Client-specific configuration",
         description:
-          "Typed preset and runtime site-setting paths carry client-specific catalog, brand, vocabulary, operating settings, feature flags, and SEO data.",
+          "A static site configuration with database site-setting overrides carries client-specific catalog, brand, vocabulary, operating settings, feature flags, and SEO data.",
       },
       {
         title: "Booking and availability domain",
@@ -428,7 +428,6 @@ export const projects: Project[] = [
         "Express 5 (TypeScript)",
         "PostgreSQL & Prisma ORM",
         "JWT / bcrypt",
-        "Socket.io",
       ],
       tools: [
         "Redis / BullMQ queue workers",
@@ -443,12 +442,12 @@ export const projects: Project[] = [
       {
         challenge: "Client-specific configuration without duplicated products",
         solution:
-          "Centralized preset and site-setting paths carry client-specific catalog, brand, terminology, operating settings, feature flags, and SEO data.",
+          "A static configuration fallback, database site-setting overrides, and CSS-variable branding carry client-specific catalog, wording, operating settings, and SEO data; client data arrives through forward migrations.",
       },
       {
-        challenge: "Real-time calendar concurrency and synchronization",
+        challenge: "Calendar concurrency and double-booking prevention",
         solution:
-          "Server-side booking validation and Prisma transaction boundaries protect booking creation, while Socket.io and inbox paths support operational updates.",
+          "PostgreSQL exclusion constraints reject overlapping specialist time and resource use, Serializable transactions re-check the slot inside the booking transaction, and an Idempotency-Key makes retries safe. The admin inbox polls every few seconds.",
       },
       {
         challenge: "Decoupled asynchronous notification pipelines",
@@ -596,7 +595,6 @@ export const projects: Project[] = [
         "PostgreSQL",
         "Prisma ORM",
         "JWT / bcrypt",
-        "Socket.io",
       ],
       tools: [
         "Redis / BullMQ",
