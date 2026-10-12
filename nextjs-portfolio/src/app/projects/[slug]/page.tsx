@@ -279,7 +279,7 @@ function getFactualArchitecture(project: Project): ArchitectureComponent[] {
     return [
       {
         name: "Web Editor & Marketing Site",
-        tech: "Next.js 14/16 App Router, TailwindCSS, React",
+        tech: "Next.js 15/16 App Router, TailwindCSS, React",
         role: "Public landing funnel & interactive writing workspace",
         icon: <Smartphone className="w-5 h-5 text-[var(--accent)]" />,
       },
@@ -290,14 +290,14 @@ function getFactualArchitecture(project: Project): ArchitectureComponent[] {
         icon: <Server className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
-        name: "Flutter Mobile Companion",
+        name: "Flutter Companion App (in development)",
         tech: "Flutter, Riverpod, GoRouter, Dio",
         role: "Cross-platform mobile client with Sentry & Firebase Auth",
         icon: <Smartphone className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
         name: "Database & Authentication",
-        tech: "Firebase Auth, Firestore, PostgreSQL",
+        tech: "Firebase Auth, Firestore (primary), optional PostgreSQL archive",
         role: "User identity, writing history & plan entitlement storage",
         icon: <Database className="w-5 h-5 text-[var(--accent)]" />,
       },
@@ -714,7 +714,7 @@ export default async function ProjectProfilePage({
                   {project.slug === "luxe-spa" &&
                     "A reusable white-label booking and business-management platform with client-specific deployments, scheduling, protected staff operations, localization, and provider integration boundaries."}
                   {project.slug === "anlingo" &&
-                    "A solo-built AI writing product (in development) spanning web editor, Express API, usage-limited subscription billing, and a Flutter companion, keeping the free path lightweight and routing advanced work through guarded backend AI providers."}
+                    "An AI writing product, built by me with AI coding agents, spanning a web editor, Express API, usage-limited subscription billing, and a Flutter companion in development. Grammar checks race several AI providers and fall back to a rule-based check."}
                   {project.slug === "chaktech" &&
                     "Built a multi-tenant commerce platform for Tunisia with instant hostname tenant resolution, zero-FOUC server theming, cash-on-delivery checkout, and Payload CMS back-office."}
                   {project.slug === "noxivo" &&

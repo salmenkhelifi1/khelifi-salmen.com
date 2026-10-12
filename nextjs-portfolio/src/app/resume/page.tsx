@@ -99,8 +99,8 @@ const projectBullets: Record<string, string[]> = {
     "Streamlined business communication by storing classified task data in Google Sheets CRM pipelines.",
   ],
   anlingo: [
-    "Built a multi-surface writing suite spanning Next.js web editor, admin portal, and a companion Flutter mobile app.",
-    "Created a high-performance Express API utilizing Redis, PostgreSQL, and Gemini API with robust usage limiting and fallbacks.",
+    "Built a multi-surface writing suite spanning a Next.js web editor, admin portal, and a Flutter companion app in development.",
+    "Created an Express API using Redis, Firestore, and multi-provider AI routing (Gemini and others) with usage limiting and a rule-based fallback.",
     "Integrated payment logic via Stripe, Whop, and MoMo with raw-body webhook verification for automatic subscription updates.",
   ],
 };

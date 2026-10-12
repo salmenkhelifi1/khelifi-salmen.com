@@ -37,7 +37,7 @@ Adaptifit is an AI fitness application Salmen built for a client using Flutter, 
 
 URL: https://www.khelifi-salmen.com/projects/anlingo
 
-An AI writing assistant with a landing site, web editor, Express API, billing, usage limits, and Flutter mobile companion. The product covers grammar correction, rewriting, translation, voice dictation, document import, AI chat, history, pricing, account workflows, provider-backed AI routes, Stripe, Whop, MoMo, and entitlement refresh.
+An AI writing assistant with a landing site, web editor, Express API, billing, usage limits, and a Flutter companion app in development. The product covers grammar correction, rewriting, translation, voice dictation, document import, AI chat, history, pricing, account workflows, provider-backed AI routes, Stripe, Whop, MoMo, and entitlement refresh.
 
 ### ChakTech Platform
 

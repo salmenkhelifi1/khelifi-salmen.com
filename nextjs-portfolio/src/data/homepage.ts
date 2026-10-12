@@ -144,7 +144,7 @@ export const projects: Project[] = [
     category: "AI Writing SaaS",
     title: "Anlingo - AI Writing Assistant",
     description:
-      "Privacy-first grammar and writing platform with a public landing site, web editor, Express API, billing, usage limits, and Flutter mobile companion.",
+      "AI writing assistant and English coach with a landing site, web editor, Express API, billing code, usage limits, and a Flutter companion app in development.",
     tags: ["Next.js", "Express", "Firebase", "Flutter", "Gemini", "Stripe"],
     href: "/projects/anlingo",
     linkLabel: "View Case Study",
@@ -353,11 +353,11 @@ export const featuredWork: FeaturedWorkItem[] = [
       },
       {
         label: "What I built",
-        text: "A writing platform that keeps the free path lightweight, then routes advanced work through guarded backend AI providers with usage limits and fallbacks.",
+        text: "A writing platform that races several AI providers per check, enforces usage limits per tier, and falls back to a rule-based check if every provider fails.",
       },
       {
         label: "My role",
-        text: "Solo across the web app, admin tooling, API, subscription billing, and the Flutter companion, end to end.",
+        text: "Built by me, with AI coding agents, across the web app, admin tooling, API, subscription billing, and the Flutter companion.",
       },
     ],
   },

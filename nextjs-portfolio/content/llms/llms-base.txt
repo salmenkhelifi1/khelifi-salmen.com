@@ -20,6 +20,6 @@ These case studies cover Salmen's independently built products and client delive
 
 - [FoundPeers](https://www.khelifi-salmen.com/projects/foundpeers): An iOS-first founder discovery and curated-meetup app with privacy-aware connections and Supabase-backed data controls.
 - [Luxe Spa Booking](https://www.khelifi-salmen.com/projects/luxe-spa): A white-label booking, CRM, and management platform for appointment-based service businesses.
-- [Anlingo](https://www.khelifi-salmen.com/projects/anlingo): An AI writing product spanning a web editor, Express API, billing, and a Flutter mobile companion.
+- [Anlingo](https://www.khelifi-salmen.com/projects/anlingo): An AI writing product spanning a web editor, Express API, billing, and a Flutter companion app in development.
 - [ChakTech Platform](https://www.khelifi-salmen.com/projects/chaktech): A Tunisia-focused e-commerce platform with a localized storefront, admin back-office, and tenant-scoped API.
 - [Noxivo](https://www.khelifi-salmen.com/projects/noxivo): A WhatsApp-first agency automation SaaS with a waitlist, protected dashboard, developer documentation, and Fastify workflow engine.

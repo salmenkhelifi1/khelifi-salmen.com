@@ -1,0 +1,236 @@
+---
+projectSlug: "anlingo"
+placement: "after-engineering-decisions"
+toc:
+  - id: "honest-status"
+    label: "Honest status"
+  - id: "hard-problems"
+    label: "Hard Problems"
+  - id: "system-design-notes"
+    label: "System Design Notes"
+  - id: "build-log"
+    label: "Build Log"
+  - id: "what-is-next"
+    label: "What Is Next"
+---
+
+{/*
+  CONTENT DISCIPLINE REMINDER:
+  Every date, count and claim below traces to the Anlingo repositories (git
+  history, code, documented audits) or to the verified evidence pack dated
+  2026-10-12. Anlingo is my own product and is pre-launch: no user, subscriber,
+  revenue or rating figure exists, so none is published.
+  Do NOT add "privacy-first", "private free path", "on-device", "we do not store
+  your writing", "not used to train models", "GDPR compliant" or "encrypted"
+  claims: writing text goes to third-party AI providers, is stored in history,
+  and is cached for 24 hours. Privacy wording is an open owner decision.
+  Do not add Make, Vapi, LangChain, SendGrid, Framer Motion, a browser extension,
+  a job queue, "launched", "customers" or "production payments" claims.
+  Mockup screenshots with invented data must never come back into the gallery.
+*/}
+
+## Honest status
+
+Anlingo is an AI writing assistant and English coach that I built myself, with AI
+coding agents. Both the marketing site and the web app respond online. The
+product is pre-launch: I have no user, subscriber or revenue figure, so this page
+does not invent any, and I do not claim that a payment has ever gone through.
+
+The last commits are from July 2026 (18 July for web and API, 22 July for the
+mobile app). The Flutter companion app has not been released to any store. It is
+in development, and some of its work is not pushed yet.
+
+Writing you paste into Anlingo is processed by third-party AI providers, and
+history is stored. I describe it as an honest cloud AI coach, not a private one.
+
+## Hard problems
+
+<DecisionCard
+  title="Racing AI providers for one answer"
+  subtitle="Hedged multi-provider grammar routing"
+  problem="A single AI provider is sometimes slow, returns malformed output, or is down, and a grammar check that waits on it feels broken."
+  decision="The grammar route starts up to three providers in a staggered way (Gemini on Vertex AI and AI Studio, OpenRouter, NVIDIA, DeepSeek) and accepts the first answer that passes strict JSON validation. Malformed output counts as a failure. If every provider fails, a deterministic rule-based checker still returns a result."
+  result="A slow or wrong provider cannot block the user. A slow loser may still be billed, and I have no cost data, so I do not claim savings. Other routes are not all multi-provider."
+/>
+
+<DecisionCard
+  title="Bounded AI cost and abuse"
+  subtitle="Concurrency, timeouts, kill switches, tiers"
+  problem="AI calls cost money, and a free product invites abuse."
+  decision="A guard caps concurrent in-flight provider calls and applies per-provider timeouts. Kill switches can turn off an area, prompts are size-capped, and per-user and per-IP hourly caps run in Redis. Usage tiers enforce guest, free and premium limits, and an allowance is refunded when a call fails."
+  result="Cost has a ceiling by design. The numbers are internal and I have no measured spend."
+/>
+
+<DecisionCard
+  title="Billing that survives retries"
+  subtitle="Verified webhooks, idempotent updates"
+  problem="Payment providers retry and reorder webhooks, and a wrong subscription state either locks out a paying user or gives away the product."
+  decision="Stripe and Whop webhook signatures are verified on the raw request body, MoMo notifications are checked with a timing-safe signature, and Whop deliveries are de-duplicated with a Firestore transaction. Mobile billing goes through RevenueCat."
+  result="The billing code and its tests exist. Whether a real payment has been processed is not verified, and the advertised Teams plan has no billing yet."
+/>
+
+<DecisionCard
+  title="Copy that cannot drift from code"
+  subtitle="Content-accuracy contract tests"
+  problem="A July audit of my own pages found public copy that contradicted what the product does, including usage limits and a refund promise."
+  decision="Contract tests for the landing and web apps fail the build when copy claims drift from the code. The fixes from that audit are in the working tree and are not committed yet."
+  result="This is the most useful lesson of the project. The claims on this page were checked against the code the same way."
+/>
+
+## System Design Notes
+
+<Callout variant="info" title="Verified technology stack">
+  A pnpm and Turborepo monorepo (web app on Next.js 15, landing site on Next.js 16, admin app, and an Express and TypeScript API), plus a separate Flutter repository. Firebase Auth for sign-in. Firestore is the primary store, Redis handles caching and rate limits, and PostgreSQL is only an optional history archive. Speech uses Google Cloud Speech and Text-to-Speech. Billing code covers Stripe, Whop, MoMo and RevenueCat. Sentry and PostHog for errors and analytics. The web apps deploy on Netlify and the API runs as a Docker container on Dokploy behind Traefik.
+</Callout>
+
+<DecisionCard
+  title="One backend, three clients"
+  subtitle="Web, admin and Flutter share one API"
+  problem="Three surfaces would otherwise each grow their own copy of the rules."
+  decision="The web app proxies API calls to one Express service, the Flutter app calls the same routes through Dio, and shared Zod contracts describe the learning features."
+  result="Usage limits, billing state and history have a single source of truth."
+/>
+
+<DecisionCard
+  title="Product depth beyond grammar"
+  subtitle="Notebook, IELTS writing, speaking tutor"
+  problem="Fixing a sentence once does not teach the writer anything."
+  decision="A Mistake Notebook stores recurring errors, an IELTS writing evaluation scores essays, and a speaking tutor runs turn-based attempts."
+  result="These exist in the code. How well the IELTS scoring matches real examiners is not verified."
+/>
+
+## Build Log
+
+Dates come from git history. The web, API, landing and admin apps share one
+repository with 682 commits, and the Flutter app has 50. About 60 percent of the
+repository commits carry an AI co-author trailer, so I say it was built with AI
+coding agents. Commit counts measure activity, not features.
+
+<BuildLog
+  caption="Seven phases, 9 April to 22 July 2026 · 682 monorepo commits and 50 Flutter commits · built by me with AI coding agents"
+  phases={[
+    {
+      date: "9-30 Apr",
+      title: "Split repository and foundation",
+      status: "shipped",
+      items: [
+        "Web, API and landing split into a Turborepo monorepo on 9 April",
+        "Webhook signature verification and an OpenRouter provider",
+      ],
+    },
+    {
+      date: "1-13 May",
+      title: "Providers, billing and admin",
+      status: "shipped",
+      items: [
+        "NVIDIA and DeepSeek providers, Whop billing, MoMo lifecycle",
+        "Tutor session and document ingestion",
+        "Admin dashboard with subscription management and email templates",
+      ],
+    },
+    {
+      date: "14-31 May",
+      title: "Guardrails, analytics and SEO",
+      status: "shipped",
+      items: [
+        "AI guardrails and kill switches",
+        "Editor refactor, localized transactional emails, PostHog events",
+        "Checkout and webhook robustness",
+        "Flutter app shell started (22 May)",
+      ],
+    },
+    {
+      date: "Jun",
+      title: "Quiet month and a security audit",
+      status: "shipped",
+      items: [
+        "reCAPTCHA Enterprise on sign-in",
+        "Gemini structured output to cut malformed responses",
+        "A security audit on 23 June: the critical findings were fixed in that pass",
+      ],
+    },
+    {
+      date: "13-14 Jul",
+      title: "Launch readiness",
+      status: "shipped",
+      items: [
+        "AI concurrency and timeout guard",
+        "Support chat, consent and waitlist",
+        "Flutter app rebuild: core, auth and tests",
+      ],
+    },
+    {
+      date: "15-18 Jul",
+      title: "Product expansion",
+      status: "shipped",
+      items: [
+        "Installable web app with push notifications",
+        "Mistake Notebook and IELTS writing evaluation",
+        "Daily streak and speaking attempts",
+        "Pricing page that matches the live plans",
+      ],
+    },
+    {
+      date: "18-22 Jul",
+      title: "Audit and truth pass",
+      status: "building",
+      summary: "The copy fixes are written but not committed, and there have been no commits since.",
+      items: [
+        "Content audit: 17 copy problems found, 5 of them top priority",
+        "Contract tests that fail when copy drifts from code",
+        "Mobile completion design written (22 July)",
+        "Test files: 94 server, 91 web, 12 landing, 5 admin and 53 Flutter (files, not test cases)",
+      ],
+    },
+  ]}
+/>
+
+## What is next
+
+None of the items below is done. Each one closes on something you can check.
+
+<BuildLog
+  caption="Open work, with gates"
+  phases={[
+    {
+      date: "Next",
+      title: "Copy that matches the product",
+      status: "next",
+      items: ["Commit the audit fixes, including usage limits and the refund wording, and settle the privacy wording as an honest cloud AI coach"],
+      gate: "The content-accuracy contract tests pass and are committed, and no public page claims privacy the code does not provide.",
+    },
+    {
+      date: "Next",
+      title: "Automated checks",
+      status: "next",
+      items: ["The repository has no continuous integration yet"],
+      gate: "Tests and the build run on every push, and the latest run is green.",
+    },
+    {
+      date: "Next",
+      title: "Prove billing end to end",
+      status: "next",
+      items: ["One real or test-mode payment that updates a subscription and unlocks premium"],
+      gate: "A recorded checkout and webhook that changes the user's plan, and a replayed webhook that changes nothing.",
+    },
+    {
+      date: "Blocked",
+      title: "Flutter app in the stores",
+      status: "blocked",
+      items: ["Store accounts and the unpushed mobile work"],
+      gate: "A build submitted to a store, after enough web activation and revenue to cover the store fees.",
+    },
+    {
+      date: "Open decision",
+      title: "Pricing and positioning",
+      status: "blocked",
+      items: ["Reconcile the annual price shown in different places and decide how the Southeast Asia focus is built"],
+      gate: "One price list used by the code, the pricing page and the store listing.",
+    },
+  ]}
+/>
+
+## What I would take from this
+
+Race your providers instead of trusting one. Put a ceiling on anything that costs
+money per request. And write tests that fail when your marketing copy lies.

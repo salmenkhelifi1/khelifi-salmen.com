@@ -35,7 +35,7 @@ const content: ServiceContent = {
   ],
   proof: [
     { slug: "luxe-spa", name: "Luxe", summary: "White-label booking and CRM platform: specialist-aware scheduling, server-side booking validation, near-real-time staff inbox, queue-backed notifications." },
-    { slug: "anlingo", name: "Anlingo", summary: "Privacy-first AI writing assistant: web editor, Express API with multi-provider AI routing, billing and a Flutter companion app." },
+    { slug: "anlingo", name: "Anlingo", summary: "AI writing assistant: web editor, Express API with multi-provider grammar routing, usage limits, billing code and a Flutter companion app in development." },
     { slug: "chaktech", name: "ChakTech", summary: "Client e-commerce platform: Next.js storefront, Payload CMS admin, tenant-scoped Express and PostgreSQL API, French, Arabic and English." },
     { slug: "noxivo", name: "Noxivo (in development)", summary: "Multi-tenant WhatsApp operations platform for agencies with tenant-scoped inbox and workflow engine." },
   ],

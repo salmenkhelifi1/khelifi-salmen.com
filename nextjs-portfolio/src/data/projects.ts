@@ -770,7 +770,7 @@ export const projects: Project[] = [
     slug: "anlingo",
     title: "Anlingo",
     tagline:
-      "A privacy-first AI writing assistant with a public landing site, web editor, Express API, billing, usage limits, and a Flutter mobile companion.",
+      "An AI writing assistant and English coach with a landing site, web editor, Express API, billing code, usage limits, and a Flutter companion app in development.",
     category: "AI Writing SaaS",
     accent: {
       text: "text-violet-400",
@@ -782,15 +782,15 @@ export const projects: Project[] = [
     overview: {
       what: "A full-stack writing product for grammar correction, rewriting, translation, voice dictation, document import, AI chat, history, pricing, and account workflows across web and mobile.",
       problem:
-        "Most grammar tools force users to choose between a fast, lightweight experience and stronger cloud AI. Anlingo keeps the free path lightweight while routing advanced writing work through guarded backend AI providers.",
+        "Grammar tools are either fast and shallow or powerful and expensive to run. Anlingo races several AI providers for each check, enforces usage limits per tier, and falls back to a rule-based check if every provider fails.",
       audience:
         "Professionals, students, job seekers, support teams, and non-native English writers who need cleaner writing without a complicated editing workflow.",
     },
     features: [
       {
-        title: "Privacy-First Writing Flow",
+        title: "Focused Writing Flow",
         description:
-          "The landing page positions free checks as private and fast, while the product editor keeps the writing workflow focused on paste, check, revise, and send.",
+          "The product editor keeps the writing workflow focused on paste, check, revise, and send. Writing is processed by third-party AI providers.",
       },
       {
         title: "AI Editor Workspace",
@@ -810,12 +810,12 @@ export const projects: Project[] = [
       {
         title: "Installable Web App",
         description:
-          "A conservative PWA setup caches only immutable assets and avoids caching API or authenticated data, keeping offline behavior useful without leaking private writing.",
+          "A conservative PWA setup caches only immutable assets and avoids caching API or authenticated data, keeping offline behavior useful.",
       },
       {
-        title: "Flutter Mobile Companion",
+        title: "Flutter Companion App (in development)",
         description:
-          "The separate mobile app uses Riverpod, GoRouter, Dio, Firebase Auth, RevenueCat, Sentry, and matching editor, chat, history, pricing, profile, and support modules.",
+          "A separate mobile app, not yet released to a store, uses Riverpod, GoRouter, Dio, Firebase Auth, RevenueCat, Sentry, and matching editor, chat, history, pricing, profile, and support modules.",
       },
       {
         title: "Protected Admin Surface",
@@ -844,76 +844,10 @@ export const projects: Project[] = [
         src: "/images/anlingo/anlingo-05.jpg",
         alt: "Anlingo admin two-factor security screen",
       },
-      {
-        src: "/images/anlingo/gallery/anlingo-landing-hero.png",
-        alt: "Anlingo landing page hero — AI-generated document summary",
-      },
-      {
-        src: "/images/anlingo/gallery/anlingo-landing-features.png",
-        alt: "Anlingo landing page feature overview",
-      },
-      {
-        src: "/images/anlingo/gallery/anlingo-landing-speaking-ad.png",
-        alt: "Anlingo landing page — speaking practice feature",
-      },
-      {
-        src: "/images/anlingo/gallery/anlingo-web-dashboard.png",
-        alt: "Anlingo web dashboard home",
-      },
-      {
-        src: "/images/anlingo/gallery/anlingo-web-progress.png",
-        alt: "Anlingo web writing progress and score trend",
-      },
-      {
-        src: "/images/anlingo/gallery/anlingo-web-vocabulary-sprint.png",
-        alt: "Anlingo web weekly vocabulary leaderboard",
-      },
-      {
-        src: "/images/anlingo/gallery/anlingo-admin-ai-operations.png",
-        alt: "Anlingo admin AI operations panel",
-      },
-      {
-        src: "/images/anlingo/gallery/anlingo-admin-subscriptions.png",
-        alt: "Anlingo admin subscriptions and revenue dashboard",
-      },
-      {
-        src: "/images/anlingo/gallery/anlingo-admin-users.png",
-        alt: "Anlingo admin users table",
-      },
-      {
-        src: "/images/anlingo/gallery/anlingo-mobile-home.png",
-        alt: "Anlingo mobile home dashboard",
-        aspect: "phone",
-      },
-      {
-        src: "/images/anlingo/gallery/anlingo-mobile-pricing.png",
-        alt: "Anlingo mobile pricing screen",
-        aspect: "phone",
-      },
-      {
-        src: "/images/anlingo/gallery/anlingo-mobile-history.png",
-        alt: "Anlingo mobile writing history",
-        aspect: "phone",
-      },
-      {
-        src: "/images/anlingo/gallery/anlingo-mobile-writing-exercise.png",
-        alt: "Anlingo mobile IELTS writing exercise",
-        aspect: "phone",
-      },
-      {
-        src: "/images/anlingo/gallery/anlingo-mobile-band-feedback.png",
-        alt: "Anlingo mobile band score feedback",
-        aspect: "phone",
-      },
-      {
-        src: "/images/anlingo/gallery/anlingo-mobile-translate.png",
-        alt: "Anlingo mobile translation exercise",
-        aspect: "phone",
-      },
     ],
     techStack: {
       frontend: [
-        "Next.js 14 App Router",
+        "Next.js 15 App Router",
         "Next.js 16 landing",
         "Next.js admin",
         "React 18/19",
@@ -925,7 +859,7 @@ export const projects: Project[] = [
         "TypeScript",
         "Firebase Auth / Firestore",
         "Redis",
-        "PostgreSQL",
+        "PostgreSQL (optional history archive)",
         "Gemini, OpenRouter, NVIDIA, DeepSeek",
       ],
       tools: ["Stripe", "Whop", "MoMo", "Docker", "Dokploy", "Sentry", "PostHog"],
@@ -933,9 +867,9 @@ export const projects: Project[] = [
     badges: ["Next.js", "Express", "Firebase", "Flutter", "Gemini", "Stripe"],
     challenges: [
       {
-        challenge: "Privacy and AI quality tradeoff",
+        challenge: "Reliable AI output when a provider is slow or wrong",
         solution:
-          "Kept the free experience lightweight while sending premium grammar, rewrite, translation, chat, and speech work through guarded backend routes.",
+          "The grammar route races up to three AI providers, accepts the first answer that passes strict JSON validation, and returns a rule-based result if every provider fails.",
       },
       {
         challenge: "Multiple product surfaces",
@@ -962,11 +896,11 @@ export const projects: Project[] = [
       live: "https://anlingo.online",
     },
     snapshot: {
-      timeframe: "2025 - present",
+      timeframe: "2026",
       status: "in-development",
-      role: "Solo full-stack developer",
+      role: "Full-stack developer",
       ownership:
-        "Web app, admin tooling, API, subscription billing, and Flutter companion, built end to end",
+        "Web app, admin tooling, API, subscription billing, and Flutter companion, built by me with AI coding agents",
       industry: "AI writing and language learning (SaaS)",
       platform: "Web and mobile",
     },
