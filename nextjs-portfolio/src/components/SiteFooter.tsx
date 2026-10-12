@@ -51,6 +51,12 @@ export default function SiteFooter() {
             <Link href="/api-integration-developer" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
               API integrations
             </Link>
+            <Link href="/ecommerce-developer" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
+              E-commerce development
+            </Link>
+            <Link href="/booking-system-developer" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
+              Booking systems
+            </Link>
             <Link href="/n8n-automation-developer" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
               n8n automation
             </Link>
