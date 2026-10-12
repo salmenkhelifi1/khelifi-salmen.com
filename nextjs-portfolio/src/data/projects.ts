@@ -1210,14 +1210,14 @@ export const projects: Project[] = [
       // Owner confirmed live. Domain to double-check: data uses noxivo.pro,
       // founder record references noxivo.app — see docs/CONTENT_NEEDED.md.
       live: "https://noxivo.pro",
-      liveLabel: "Project Site",
+      liveLabel: "Waitlist",
     },
     snapshot: {
-      timeframe: "2025 - present",
+      timeframe: "2026 - present",
       status: "in-development",
       role: "Full-stack / Platform Engineering",
       ownership:
-        "Direct contributions across the platform architecture, dashboard, workflow engine, tenant model, inbox, integrations, and deployment documentation",
+        "Built and maintained by me with AI coding agents: platform architecture, dashboard, workflow engine, tenant model, inbox, integrations, and deployment documentation",
       industry: "WhatsApp automation (SaaS)",
       platform: "Web",
     },

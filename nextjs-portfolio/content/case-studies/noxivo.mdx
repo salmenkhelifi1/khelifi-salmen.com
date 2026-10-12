@@ -2,6 +2,8 @@
 projectSlug: "noxivo"
 placement: "after-engineering-decisions"
 toc:
+  - id: "honest-status"
+    label: "Honest Status"
   - id: "tenant-model"
     label: "Tenant Model"
   - id: "durable-workflow-execution"
@@ -14,7 +16,17 @@ toc:
     label: "Operational Visibility"
   - id: "evidence-bounds"
     label: "Evidence Bounds"
+  - id: "build-log"
+    label: "Build Log"
+  - id: "what-is-next"
+    label: "What Is Next"
 ---
+
+## Honest status
+
+Noxivo is my own multi-tenant WhatsApp automation platform for agencies. It is in development and not open to the public: the public site is a waitlist page, and the docs site is online. I built and maintain it with AI coding agents. It has no verified customers, tenants, messages or revenue, and its own launch gate still reads "not ready".
+
+The git history starts on 19 April 2026 with a rebrand and refactor of an earlier private repository, so that date is the start of this codebase, not the start of the idea.
 
 ## Tenant model
 
@@ -34,12 +46,12 @@ Noxivo's core operating model is explicit: Platform → Agency → Tenant / clie
 </div>
 
 <Callout variant="info" title="Why this matters">
-  Tenant scope is not treated as a visual filter. The evidence package documents the boundary continuing into authorization, persistence, background work, messaging state, and developer operations. That is the architectural basis for operating multiple client workspaces from one agency system.
+  Tenant scope is not treated as a visual filter. The evidence package documents the boundary continuing into authorization, persistence, background work, messaging state, and developer operations. That is the architectural basis for operating multiple client workspaces from one agency system. The tenant filter fails closed, so a request with no tenant matches nothing. The boundary has been audited internally, with cross-tenant tests, and a few items from that audit are still open, so I do not call it proven everywhere.
 </Callout>
 
 ## Durable workflow execution
 
-The workflow editor and the execution model are separate concerns. A graph is compiled into a DAG before workers run it, with validation for trigger structure, edges, branches, cycles, delays, and scoped plugin references. Persisted context and workflow events provide a durable record around execution.
+The workflow editor and the execution model are separate concerns. A graph is compiled into a DAG before workers run it, with validation for trigger structure, edges, branches, cycles, delays, and scoped plugin references. Persisted workflow runs and per-node events provide a record around execution. Delays resume through queue-backed jobs with deterministic job ids, and handing a conversation to a human cancels the pending continuation. Delivery is at least once, not exactly once, and it relies on Redis persistence with a one-second flush.
 
 <div role="img" aria-label="Workflow execution flows from editor graph to DAG validation and compiler, persisted context, BullMQ queue, worker DAG executor, actions conditions and delays, then events analytics and live updates" className="my-8 rounded-[var(--radius-xl)] border border-[var(--glass-border)] bg-[var(--glass-bg)] p-5 md:p-6">
   <p className="mb-4 text-xs font-bold uppercase tracking-wider text-[var(--accent)]">Automation path</p>
@@ -93,7 +105,7 @@ The inbox is database-first. Conversation and message records remain the source 
 
 ## Developer platform
 
-The dashboard is paired with a developer surface rather than treated as the only integration path. The repository evidence includes tenant-scoped public API operations, bearer or API-key authentication, rate limiting, webhook subscriptions with signed delivery, and SDK package directories for Node, Python, PHP, and Laravel. Docusaurus documentation and an n8n-oriented package or guide extend the integration story.
+The dashboard is paired with a developer surface rather than treated as the only integration path. The repository evidence includes tenant-scoped public API operations, bearer or API-key authentication, plan-based rate limiting, webhook subscriptions with signed delivery and a server-side request guard, and SDK package directories for Node, Python, PHP, and Laravel. The SDKs are not published to a package registry yet. Docusaurus documentation and an n8n-oriented package or guide extend the integration story.
 
 <MdxArchitectureNote
   title="Integration control plane"
@@ -126,3 +138,143 @@ The dashboard includes analytics, service and integration settings, team managem
 <Callout variant="warning" title="Claims deliberately excluded">
   No customer count, revenue, adoption, conversion lift, uptime, throughput, response-time improvement, current production-health statement, security certification, independent audit, exactly-once guarantee, or sole-authorship claim is made here without direct evidence.
 </Callout>
+
+## Build Log
+
+Dates come from git history on the main branch. The repository has 2,028 commits
+(1,768 excluding merges) from 19 April to 12 October 2026, and about 47 commit
+subjects are cherry-picked duplicates, so counts overstate unique work. They
+measure activity, not features.
+
+<BuildLog
+  caption="Eight phases, 19 April to 12 October 2026 · 2,028 commits · built with AI coding agents · a gap of almost six weeks with no commits"
+  phases={[
+    {
+      date: "19-24 Apr",
+      title: "Rebrand and baseline",
+      status: "shipped",
+      items: [
+        "First commit imports an earlier private repository, trimmed and rebranded",
+        "Dashboard backend modularised, inbound webhook and inbox recovery, API documentation, waitlist page",
+        "QR settings recovery and a live WhatsApp session recovery plan",
+      ],
+    },
+    {
+      date: "25 Apr-2 May",
+      title: "AI, commerce and billing burst",
+      status: "shipped",
+      items: [
+        "Commerce models and tools, a configurable inbox reply policy",
+        "Whop billing phase one, an analytics workspace, managed storage",
+      ],
+    },
+    {
+      date: "3-24 May",
+      title: "Channels, public API and a production incident",
+      status: "shipped",
+      items: [
+        "A Meta channel adapter, email channel and an agency webhooks panel",
+        "Public API, SDK package directories and WhatsApp session routes",
+        "An 18 May production outage on the dashboard: built output re-exported modules in a way Node could not load. Fixed, with a regression test that imports the built output",
+      ],
+    },
+    {
+      date: "25 May-14 Jul",
+      title: "Near pause, then a launch gate",
+      status: "shipped",
+      items: [
+        "Nine commits in June, then a launch-gate checklist that read 'not ready' on 10 July",
+        "A readiness audit scored the codebase 38 percent and blocked launch",
+        "Error-report scrubbing of personal data, a tenant-isolation audit and a durable webhook outbox",
+      ],
+    },
+    {
+      date: "15 Jul-14 Aug",
+      title: "Client readiness and the first integrations",
+      status: "shipped",
+      items: [
+        "Backup and restore tooling, a content security policy, encrypted Meta credentials",
+        "A signed read-only commerce connector that lets the inbox serve my own ChakTech and Luxe products. They are my own products, so this is dogfooding, not customers",
+        "AI replies across inbox channels",
+      ],
+    },
+    {
+      date: "26-27 Aug",
+      title: "Interface acceptance pass",
+      status: "shipped",
+      items: [
+        "Truthful loading and error states, browser acceptance checks",
+        "Full test run recorded on 27 August: 1,342 workflow-engine tests and 866 dashboard tests passed in a local run, plus 11 browser tests",
+      ],
+    },
+    {
+      date: "28 Aug-7 Oct",
+      title: "Almost six weeks of silence",
+      status: "shipped",
+      summary: "No commits in this window. I record it, not hide it.",
+      items: ["The reason is not in the repository"],
+    },
+    {
+      date: "8-12 Oct",
+      title: "AI safety, one production line, session recovery",
+      status: "building",
+      items: [
+        "A commerce chat harness with prompt-injection defences and rules against invented days, towns, competitors and free promises",
+        "A lost-QR recovery flow: a session that needs re-linking gets a clear 'rescan needed' state and a single notification",
+        "Durable AI reply dispatch: if the queue is down the webhook answers with an error so the provider redelivers, and a bounded enqueue keeps a Redis outage from stalling webhooks",
+        "Production and main merged into one branch on 11 October",
+        "Dashboard restructured into layered modules with import-boundary linting",
+      ],
+    },
+  ]}
+/>
+
+## What is next
+
+None of the items below is done. Each one closes on something you can check.
+
+<BuildLog
+  caption="Open work, with gates"
+  phases={[
+    {
+      date: "Next",
+      title: "Replace the missing CI",
+      status: "next",
+      items: ["GitHub Actions were switched off in July and checks run by hand"],
+      gate: "One recorded run per release of tests, lint and build, tied to the release commit.",
+    },
+    {
+      date: "Next",
+      title: "Backups with a restore drill",
+      status: "next",
+      items: ["Backup tooling exists but no restore drill is recorded"],
+      gate: "One restore drill completed and logged for the database and the queue store.",
+    },
+    {
+      date: "Next",
+      title: "Prove the core journey",
+      status: "next",
+      items: ["Agency signup, new workspace, connect a number, inbound message, agent reply, on both WhatsApp lanes"],
+      gate: "The journey passes three times in a row, including a real send through the Meta lane, which is not verified yet.",
+    },
+    {
+      date: "Next",
+      title: "Session hardening",
+      status: "next",
+      items: ["WhatsApp sessions through the unofficial engine need a stall watchdog, a circuit breaker and a per-session send limit"],
+      gate: "Each of the ten hardening items merged with tests.",
+    },
+    {
+      date: "Blocked",
+      title: "Launch approval",
+      status: "blocked",
+      items: ["The launch gate reads 'not ready' and owner sign-off has not been given"],
+      gate: "Launch gate items checked with evidence, and a pilot run with a first agency.",
+    },
+  ]}
+/>
+
+<Callout variant="info" title="Honest wording about WhatsApp">
+  Sessions are linked by QR code through an unofficial WhatsApp Web engine, with a Meta Cloud API adapter implemented but not yet verified against real Meta delivery. I do not claim official or approved status, and I do not claim ban protection.
+</Callout>
+
