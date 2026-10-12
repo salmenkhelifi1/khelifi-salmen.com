@@ -66,7 +66,7 @@ const clientProjects = clientSlugs
 
 const projectRoles: Record<string, string> = {
   luxenail: "Full-Stack Developer",
-  chaktech: "Lead Architect & Full-Stack Developer",
+  chaktech: "Full-Stack Developer",
   adaptifit: "Full-Stack & AI Developer",
   rentiora: "Frontend Developer",
   "ai-workflow-automation": "Automation Architect",
