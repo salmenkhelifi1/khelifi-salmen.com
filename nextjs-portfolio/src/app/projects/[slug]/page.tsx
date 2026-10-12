@@ -237,8 +237,8 @@ function getFactualArchitecture(project: Project): ArchitectureComponent[] {
       },
       {
         name: "Admin & Staff Dashboard",
-        tech: "Radix UI, Socket.io client",
-        role: "Real-time agenda management, receptionist chat & service configuration",
+        tech: "Radix UI, TanStack Query",
+        role: "Agenda management, staff inbox & service configuration",
         icon: <Layers className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
@@ -254,9 +254,9 @@ function getFactualArchitecture(project: Project): ArchitectureComponent[] {
         icon: <Database className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
-        name: "Real-Time Pipeline",
-        tech: "Socket.io WebSockets",
-        role: "Instant schedule synchronization & live receptionist inbox",
+        name: "Near-real-time Inbox",
+        tech: "TanStack Query polling (5-10 s)",
+        role: "Staff inbox that refreshes every few seconds, backed by an inbox service",
         icon: <Zap className="w-5 h-5 text-[var(--accent)]" />,
       },
       {
