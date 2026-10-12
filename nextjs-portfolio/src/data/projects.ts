@@ -985,7 +985,7 @@ export const projects: Project[] = [
     heroImage: "/images/chaktech/chaktech-01.jpg",
     galleryAspect: "desktop",
     overview: {
-      what: "A full-stack commerce platform built for the Tunisian market: customer storefront, admin back-office, and custom API, architected as multi-tenant SaaS and launched as a single store.",
+      what: "A full-stack commerce platform built for the Tunisian market: customer storefront, admin back-office, and custom API, built with a tenant-scoped design and launched as a single store.",
       problem:
         "Tunisian online buying is still driven by cash on delivery, phone-first ordering, French and Arabic content, and fast product discovery. ChakTech handles those local workflows without hardcoding the store into the app.",
       audience:
@@ -1061,10 +1061,6 @@ export const projects: Project[] = [
         alt: "ChakTech live admin product catalog",
       },
       {
-        src: "/images/chaktech/chaktech-admin-orders-live.png",
-        alt: "ChakTech live admin order queue",
-      },
-      {
         src: "/images/chaktech/chaktech-admin-add-product-live.png",
         alt: "ChakTech live admin add product form",
       },
@@ -1118,18 +1114,18 @@ export const projects: Project[] = [
       {
         challenge: "Production hardening",
         solution:
-          "Ran a 54-finding self-audit covering tenant isolation, PII protection, Zod validation, HTTP hardening, auth, uploads, and operational controls.",
+          "Ran a security gap audit (5 findings, all resolved or documented as accepted configuration), added a transactional outbox with email recovery, readiness checks, graceful shutdown, Sentry error tracking, and backup tooling.",
       },
     ],
     links: {
-      live: "https://dev.chaktech.tn",
+      live: "https://chaktech.tn",
     },
     snapshot: {
-      timeframe: "2023 - present",
-      status: "in-development",
-      role: "Solo full-stack developer",
+      timeframe: "2026",
+      status: "live",
+      role: "Full-stack developer",
       ownership:
-        "Multi-tenant architecture, backend, storefront, admin back-office, and deployment, built end to end",
+        "Storefront, admin back-office, API, and release workflow for a client e-commerce platform, built with an AI-assisted workflow",
       industry: "E-commerce (Tunisian market)",
       platform: "Web",
     },

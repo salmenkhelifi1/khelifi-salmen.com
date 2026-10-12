@@ -1,0 +1,226 @@
+---
+projectSlug: "chaktech"
+placement: "after-engineering-decisions"
+toc:
+  - id: "honest-status"
+    label: "Honest status"
+  - id: "hard-problems"
+    label: "Hard Problems"
+  - id: "system-design-notes"
+    label: "System Design Notes"
+  - id: "build-log"
+    label: "Build Log"
+  - id: "what-is-next"
+    label: "What Is Next"
+---
+
+{/*
+  CONTENT DISCIPLINE REMINDER:
+  Every date, count and claim below traces to the ChakTech repositories (git
+  history, migrations, documented release and test records) or to the verified
+  evidence pack dated 2026-10-12. ChakTech is client work and ownership is
+  unconfirmed: word it "built for a client", never "my product" or "founder".
+  No order, customer, revenue, traffic or performance figure exists in the
+  evidence, so none is published. Security findings, credential items, production
+  incidents, client catalog numbers and infrastructure identifiers are
+  intentionally NOT on this page.
+  Do not add payment-gateway (Flouci, Konnect, Stripe, D17) or carrier claims:
+  checkout is cash on delivery and those integrations are disabled placeholders.
+  Do not add AWS, Vercel, DigitalOcean, MERN or "solo" claims.
+*/}
+
+## Honest status
+
+ChakTech is an online store for tech and electronics in Tunisia that I built as
+a full-stack developer for a client. The store is live on its own domain after a
+cutover from WordPress and WooCommerce in early October 2026.
+
+It was built with an AI-assisted workflow that I directed, so I do not call it
+hand-written or solo. I have no measured order, revenue, traffic or page-speed
+figure to show, so this page does not invent any. Checkout is cash on delivery
+only, which is how most Tunisian online orders still work. Other payment methods
+exist in the code only as disabled placeholders.
+
+## Hard problems
+
+<DecisionCard
+  title="Leaving WordPress without losing the catalog"
+  subtitle="Migration with a no-price-no-sale rule"
+  problem="A store with a large WooCommerce catalog needed to move to a custom stack without publishing broken products or losing history."
+  decision="An import pipeline reads the WordPress database dump into PostgreSQL, a reconciliation script compares it with the result, and a read-only audit compared the final dump with the live database at cutover. A rule that no product can be sold without a price is enforced in four places: the schema, order creation, the importer and the storefront."
+  result="The admin has been the source of truth since the early October cutover. A later fix made a variable product's parent price the cheapest purchasable variation."
+/>
+
+<DecisionCard
+  title="Tenant isolation on a shared API"
+  subtitle="Host resolution plus a token-pinned tenant"
+  problem="The admin always calls one API host, so the hostname alone cannot say which store a signed-in user belongs to."
+  decision="Anonymous storefront traffic resolves its store from the hostname and fails closed with a 421 on an unknown host. Signed-in traffic is pinned to the tenant in the token and cross-checked against the host. The tenant is never read from a client-supplied header."
+  result="20 test files cover tenant isolation across carts, orders, cache, search and email. The product was designed tenant-scoped and launched as a single store, so I do not call it a multi-client SaaS."
+/>
+
+<DecisionCard
+  title="Order integrity and reliable order email"
+  subtitle="The server is the authority"
+  problem="Prices, stock and totals must come from the server, orders must survive retries and races, and a failed email must not lose or duplicate an order."
+  decision="Order pricing and stock are resolved server-side and client totals are ignored. Orders use an idempotency key and row locks. A transactional outbox sends the order emails, with per-recipient idempotency so a retry does not resend the customer confirmation when only the internal leg failed."
+  result="Outbox recovery was observed working after a production reliability batch in early October. This is the engineering result, not a business figure."
+/>
+
+## System Design Notes
+
+<Callout variant="info" title="Verified technology stack">
+  Three independent repositories. Storefront: Next.js 16, React 19, next-intl with French, Arabic (right to left) and English, Redux Toolkit. Admin: Next.js 16 with Payload CMS 3 and its multi-tenant plugin. API: Express and TypeScript on PostgreSQL through Drizzle, with Redis, BullMQ, Typesense search, Cloudflare R2 media, Sentry and PostHog. Shipped as Docker containers on Dokploy behind Traefik and Cloudflare.
+</Callout>
+
+<DecisionCard
+  title="Search and caching"
+  subtitle="Typesense plus a Redis cache with stampede protection"
+  problem="Product discovery needs to be fast and typo tolerant, and cached pages must not go stale when a price changes."
+  decision="Typesense serves search and faceting, fed by an outbox and a periodic reconciliation job. Redis caching has stampede protection, and a tagged revalidation endpoint refreshes storefront pages when catalog data changes."
+  result="Search indexing and cache invalidation are driven by the same events that change the data, not by manual steps."
+/>
+
+<DecisionCard
+  title="Operability"
+  subtitle="Readiness, graceful shutdown and backups"
+  problem="A store that takes orders must restart and recover without losing work."
+  decision="Readiness and health endpoints, a leader-gated job scheduler, a graceful drain on shutdown, a dedicated backup worker, and Sentry and PostHog for errors and tracing."
+  result="Restores are not claimed as proven in production: a restore drill is an open item below."
+/>
+
+## Build Log
+
+Dates come from git history, not from memory. The three repositories share their
+first 124 commits, so I quote one repository: the API has about 1,800 commits
+over five months. Counts include merges and agent commits, so they measure
+activity, not features.
+
+<BuildLog
+  caption="Seven phases, 20 May to 12 October 2026 · API, admin and storefront repositories · 152 database migrations · AI-assisted, owner-directed"
+  phases={[
+    {
+      date: "20 May - 4 Jun",
+      title: "Workspace and WordPress exit plan",
+      status: "shipped",
+      items: [
+        "Workspace shell created on 20 May and the WordPress exit migration plans written",
+        "Tenant authentication changed from fail-open to fail-closed on 4 June",
+      ],
+    },
+    {
+      date: "5-30 Jun",
+      title: "Native rebuild",
+      status: "shipped",
+      items: [
+        "Repositories split, PostgreSQL native engine, Payload admin, storefront theme",
+        "Transactional outbox, recovery and soft-delete purge",
+        "Redis cache handler and Sentry instrumentation in the storefront",
+      ],
+    },
+    {
+      date: "Jul",
+      title: "Commerce features and tracking",
+      status: "shipped",
+      items: [
+        "Restock notification form and inventory ledger collections",
+        "Server-side Meta and TikTok conversion events",
+        "Signed connector to an external WhatsApp service (not confirmed live)",
+      ],
+    },
+    {
+      date: "Aug",
+      title: "Consolidation and tenant isolation",
+      status: "shipped",
+      items: [
+        "Release gates written for the commerce roadmap",
+        "Token-pinned tenant isolation with host cross-check (31 August)",
+      ],
+    },
+    {
+      date: "Sep",
+      title: "Hardening, observability, backups",
+      status: "shipped",
+      items: [
+        "A security gap audit: 5 findings, all resolved or documented as accepted configuration",
+        "Dependency patching across all three apps",
+        "Dedicated backup worker, readiness endpoint, leader-gated scheduler and graceful drain",
+        "N+1 query fix on the product list, PostHog tracing and metrics",
+      ],
+    },
+    {
+      date: "1-9 Oct",
+      title: "Cutover and production releases",
+      status: "shipped",
+      items: [
+        "Final WordPress dump and cutover on 3 October",
+        "Node 22 runtime and a Sentry-driven reliability batch released to production",
+        "Product add and edit released, then courier CSV export in the admin",
+        "A feature-to-DEV-to-production workflow with status markers: CODE_COMPLETE, DEV_GREEN, PRODUCTION_GREEN",
+      ],
+    },
+    {
+      date: "10-12 Oct",
+      title: "Catalog correctness and automated jobs",
+      status: "building",
+      summary: "Merged to the staging branch, not yet released to production.",
+      items: [
+        "Variable-product pricing fix released to production on 10 October",
+        "Restock alerts and their hardening, and a fix for double HTML escaping that stored escaped text in orders, merged to the staging branch",
+        "Cloudflare Turnstile on the API side, replacing reCAPTCHA",
+        "729 API, 257 admin and 378 storefront test files (files, not test cases)",
+      ],
+    },
+  ]}
+/>
+
+## What is next
+
+None of the items below is done. Each one closes on something you can check.
+
+<BuildLog
+  caption="Open work, with gates"
+  phases={[
+    {
+      date: "Next",
+      title: "Release the staging-branch work to production",
+      status: "next",
+      items: ["Port the merged restock, escaping and Turnstile work to production in selective releases"],
+      gate: "Each release reaches PRODUCTION_GREEN, with the running container's commit read back and matching the merged commit.",
+    },
+    {
+      date: "Next",
+      title: "Shopping feed release",
+      status: "next",
+      items: ["Release the product feed fix"],
+      gate: "The feed returns 200 with zero null or undefined ids, and every item carries a group id.",
+    },
+    {
+      date: "Next",
+      title: "Performance baseline",
+      status: "blocked",
+      items: ["No page-speed score exists yet because the PageSpeed quota was exhausted on 10 October"],
+      gate: "A recorded PageSpeed run for home, product, category and search, on mobile and desktop.",
+    },
+    {
+      date: "Next",
+      title: "Restore drill",
+      status: "next",
+      items: ["Prove that a backup restores into a clean database"],
+      gate: "One restore drill completed and logged, with an alert on a missed backup.",
+    },
+    {
+      date: "Only if sold to more stores",
+      title: "Second tenant",
+      status: "blocked",
+      items: ["Run a second real store on the tenant-scoped design"],
+      gate: "A second tenant live with the cross-tenant test suite passing in CI.",
+    },
+  ]}
+/>
+
+## What I would take from this
+
+A migration is finished when the old system can be switched off, not when the
+data has moved. Make the server the authority for money and stock. And label what
+is merged, what is released, and what is only planned.
