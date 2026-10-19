@@ -44,7 +44,7 @@ const resources = [
     icon: ShieldCheck,
     name: "The 7-Prompt Security Audit Pack",
     detail: "Seven prompts to audit AI-generated code before it ships to production.",
-    href: "/guides/ai-code-security-prompt-pack.md",
+    href: "/guides/ai-code-security-prompt-pack",
     label: "Open the pack",
     external: false,
   },

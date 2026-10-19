@@ -83,7 +83,7 @@ export default function SiteFooter() {
             <Link href="/checklist" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
               App scoping checklist
             </Link>
-            <Link href="/guides/ai-code-security-prompt-pack.md" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
+            <Link href="/guides/ai-code-security-prompt-pack" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
               7-prompt security audit pack
             </Link>
             <Link href="/resources" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
