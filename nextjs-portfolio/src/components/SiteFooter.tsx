@@ -20,7 +20,7 @@ export default function SiteFooter() {
 
   return (
     <footer className="border-t border-[var(--border-subtle)] py-14">
-      <SectionContainer className="grid gap-10 text-sm text-[var(--text-secondary)] md:grid-cols-3">
+      <SectionContainer className="grid gap-10 text-sm text-[var(--text-secondary)] md:grid-cols-2 lg:grid-cols-4">
         <div>
           <Link
             href="/"
@@ -75,6 +75,20 @@ export default function SiteFooter() {
             >
               Fixed-scope services
             </OutboundLink>
+          </div>
+        </nav>
+        <nav aria-label="Footer free resources">
+          <h2 className="mb-4 text-caption text-[var(--text-tertiary)]">Free Resources</h2>
+          <div className="grid gap-2">
+            <Link href="/checklist" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
+              App scoping checklist
+            </Link>
+            <Link href="/guides/ai-code-security-prompt-pack.md" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
+              7-prompt security audit pack
+            </Link>
+            <Link href="/resources" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
+              All free resources
+            </Link>
           </div>
         </nav>
         <nav aria-label="Footer social links">
