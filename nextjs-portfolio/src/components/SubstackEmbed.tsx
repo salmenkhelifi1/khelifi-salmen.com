@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useId, useState, FormEvent } from "react";
 import { substackUrl } from "@/data/schema";
 
 /**
@@ -17,6 +17,7 @@ export default function SubstackEmbed({
   blurb?: string;
 }) {
   const [email, setEmail] = useState("");
+  const headingId = useId();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -27,11 +28,11 @@ export default function SubstackEmbed({
 
   return (
     <section
-      aria-labelledby="newsletter-heading"
+      aria-labelledby={headingId}
       className="w-full rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-6 sm:p-8"
     >
       <h2
-        id="newsletter-heading"
+        id={headingId}
         className="text-xl font-semibold text-[var(--text-primary)]"
       >
         {heading}

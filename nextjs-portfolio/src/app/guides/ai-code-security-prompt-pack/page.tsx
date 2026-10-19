@@ -40,6 +40,8 @@ export default function SecurityPromptPackPage() {
       <SiteHeader />
       <main id="main-content" className="min-h-screen pt-32 pb-24">
         <SectionContainer>
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,48rem)_1fr] lg:gap-16">
+          <div>
           <header className="max-w-3xl">
             <span className="text-caption text-[var(--accent)]">Free guide</span>
             <h1 className="mt-2 text-h1 text-[var(--text-primary)]">
@@ -88,7 +90,7 @@ export default function SecurityPromptPackPage() {
 
           <ol className="mt-12 grid max-w-3xl gap-6">
             {promptStages.map((stage) => (
-              <li key={stage.number} className="glass-panel p-6 md:p-8">
+              <li key={stage.number} id={`stage-${stage.number}`} className="glass-panel scroll-mt-28 p-6 md:p-8">
                 <span className="text-caption text-[var(--accent)]">Stage {stage.number}</span>
                 <h2 className="mt-1 text-h3 text-[var(--text-primary)]">{stage.title}</h2>
                 <blockquote className="mt-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-4 text-body-regular text-[var(--text-primary)]">
@@ -126,9 +128,29 @@ export default function SecurityPromptPackPage() {
             </Link>
             .
           </p>
+          </div>
+          <aside className="hidden lg:block" aria-label="In this guide">
+            <div className="glass-panel sticky top-28 p-6">
+              <h2 className="text-caption text-[var(--text-tertiary)]">The 7 stages</h2>
+              <ol className="mt-4 grid gap-1">
+                {promptStages.map((stage) => (
+                  <li key={stage.number}>
+                    <a
+                      href={`#stage-${stage.number}`}
+                      className="inline-flex min-h-11 items-center gap-3 text-body-regular text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
+                    >
+                      <span className="w-4 shrink-0 text-center text-caption text-[var(--accent)]">{stage.number}</span>
+                      {stage.title}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </aside>
+          </div>
         </SectionContainer>
       </main>
-      <SiteFooter />
+      <SiteFooter showNewsletter={false} />
     </>
   );
 }

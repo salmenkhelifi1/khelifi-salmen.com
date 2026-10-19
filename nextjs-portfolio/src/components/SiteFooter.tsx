@@ -2,6 +2,7 @@ import Link from "next/link";
 import { fiverrUrl } from "@/data/schema";
 import { footerSocials, navLinks } from "@/data/homepage";
 import SectionContainer from "./SectionContainer";
+import SubstackEmbed from "./SubstackEmbed";
 import { BookCallLink, OutboundLink } from "@/components/TrackedCta";
 
 const SOCIAL_TYPES: Record<string, string> = {
@@ -15,12 +16,12 @@ const SOCIAL_TYPES: Record<string, string> = {
   X: "x",
 };
 
-export default function SiteFooter() {
+export default function SiteFooter({ showNewsletter = true }: { showNewsletter?: boolean }) {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="border-t border-[var(--border-subtle)] py-14">
-      <SectionContainer className="grid gap-10 text-sm text-[var(--text-secondary)] md:grid-cols-2 lg:grid-cols-4">
+      <SectionContainer className="grid gap-10 text-sm text-[var(--text-secondary)] lg:items-start lg:grid-cols-2">
         <div>
           <Link
             href="/"
@@ -32,9 +33,12 @@ export default function SiteFooter() {
             Full-stack, mobile, and automation systems built for revenue-focused launches.
           </p>
         </div>
-        <nav aria-label="Footer quick links">
+        {showNewsletter ? <SubstackEmbed /> : null}
+      </SectionContainer>
+      <SectionContainer className="mt-12 grid gap-10 text-sm text-[var(--text-secondary)] md:grid-cols-4">
+        <nav aria-label="Footer quick links" className="md:col-span-2">
           <h2 className="mb-4 text-caption text-[var(--text-tertiary)]">Quick Links</h2>
-          <div className="grid gap-2">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-1 md:gap-y-2">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -79,7 +83,7 @@ export default function SiteFooter() {
         </nav>
         <nav aria-label="Footer free resources">
           <h2 className="mb-4 text-caption text-[var(--text-tertiary)]">Free Resources</h2>
-          <div className="grid gap-2">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-1 md:grid-cols-1 md:gap-y-2">
             <Link href="/checklist" className="inline-flex min-h-11 items-center transition-colors hover:text-[var(--text-primary)]">
               App scoping checklist
             </Link>
@@ -93,7 +97,7 @@ export default function SiteFooter() {
         </nav>
         <nav aria-label="Footer social links">
           <h2 className="mb-4 text-caption text-[var(--text-tertiary)]">Socials</h2>
-          <div className="grid gap-2">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-1 md:grid-cols-1 md:gap-y-2">
             {footerSocials.map((link) => (
               <OutboundLink
                 key={link.href}

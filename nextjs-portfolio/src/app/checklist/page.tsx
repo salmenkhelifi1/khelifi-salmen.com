@@ -99,10 +99,10 @@ export default function ChecklistPage() {
             <div className="lg:sticky lg:top-28">
               <div className="glass-panel overflow-hidden p-4">
                 <Image
-                  src="/images/checklist-preview.jpg"
+                  src="/images/checklist-preview-v2.jpg"
                   alt="Preview of the one-page checklist: 12 questions in three parts, plus red flags in any quote"
                   width={989}
-                  height={900}
+                  height={1028}
                   className="h-auto w-full rounded-md"
                   sizes="(min-width: 1024px) 40vw, 100vw"
                   priority
@@ -116,7 +116,7 @@ export default function ChecklistPage() {
           </div>
         </SectionContainer>
       </main>
-      <SiteFooter />
+      <SiteFooter showNewsletter={false} />
     </>
   );
 }
