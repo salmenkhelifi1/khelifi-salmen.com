@@ -27,6 +27,12 @@
     X-Robots-Tag = "noindex"
 
 [[headers]]
+  for = "/guides/*.md"
+
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
   for = "/services.md"
 
   [headers.values]
