@@ -1,0 +1,78 @@
+---
+title: "Flutter or React Native? How I Choose for a New App"
+slug: "flutter-or-react-native-how-to-choose"
+excerpt: "Five questions I ask before choosing between Flutter and React Native, and what I would not do."
+status: "draft"
+publishedAt: "2026-11-14"
+updatedAt: "2026-11-14"
+category: "Mobile Development"
+tags: ["flutter", "react native", "mobile apps"]
+featured: false
+author: "Salmen Khelifi"
+seoTitle: "Flutter or React Native? 5 Questions That Decide It"
+seoDescription: "How to choose between Flutter and React Native: team skills, custom UI, phone features, web app and who maintains it. A developer's honest answers."
+canonicalUrl: "https://www.khelifi-salmen.com/blog/flutter-or-react-native-how-to-choose"
+relatedCaseStudies: ["foundpeers", "adaptifit"]
+---
+
+Choose React Native if your team already writes React, and Flutter if you want the same custom design on every phone. For most projects the real answer comes from five questions about your team, your design, your phone features, your web app and who maintains the app in a year.
+
+I get asked this a lot, usually before the person has told me what the app does. That is the wrong order. Decide what the app is first, ideally with the [12 questions to answer before hiring a mobile app developer](/blog/questions-to-answer-before-hiring-a-mobile-app-developer), then choose the tool.
+
+## An honest note first
+
+My public shipped mobile work is in Flutter: [FoundPeers](/projects/foundpeers), an iOS app, and [Adaptifit](/projects/adaptifit), a fitness coach with pose detection. I also work in React Native. Because I use both, I have no team to defend. I pick the one that fits the project.
+
+## The five questions I ask
+
+### 1. Does the team already write React?
+
+If the people who will maintain the app already know React, React Native saves a hiring step and a learning curve. Maintenance cost beats elegance.
+
+### 2. Do you want the same custom UI on both phones?
+
+Flutter draws its own pixels, so the app looks identical on iOS and Android. If a pixel-exact custom design matters to your brand, that is a real advantage.
+
+### 3. How heavy are the phone features?
+
+Camera, sensors, background work. Before choosing, check that a solid plugin exists for that exact feature in the framework you lean towards. This is the question that changes the answer most often.
+
+### 4. Is there a web app next to it?
+
+If the same team builds a React or Next.js web app, shared skills can matter more than shared code. A team that already thinks in React moves faster in React Native.
+
+### 5. Who maintains it in a year?
+
+Choose what that person knows. The best stack on paper is the worst stack if nobody can fix it.
+
+## Quick comparison
+
+- **Team skills:** React Native if the team already writes React. Flutter if the team is new to both.
+- **Design:** Flutter if you want a custom, identical UI on both phones. React Native if the standard platform look is fine.
+- **Phone features:** check the plugin for your exact feature in each framework. This answer can override the rest.
+- **Web app:** React Native if a React or Next.js web app sits alongside. Flutter if you need no shared web skills.
+- **Maintenance:** pick the framework your maintainer already knows, or will realistically learn.
+
+## What I would not do
+
+- I would not pick a framework from a benchmark or a forum thread.
+- I would not rewrite a working app just because another framework is trending.
+- I would not start before the app itself is scoped.
+
+## Frequently asked questions
+
+### Is Flutter or React Native better for a startup MVP?
+
+Neither wins on its own. Pick the one your team can maintain and that has a solid plugin for your hardest phone feature. A scoped, small first version matters more than the framework.
+
+### Can one developer build for both iOS and Android with either?
+
+Yes. Both let one codebase run on both phones. The question is who maintains it afterwards, which is why question 5 matters.
+
+### Should I build native instead?
+
+Native can make sense for very heavy phone features, but it usually means two codebases. Start from your answers to the questions above and ask your developer to justify any choice in writing.
+
+## If you are stuck
+
+Send me three lines: what the app does, who uses it, and what your team already knows. I will tell you which way I lean and why, in writing. You can start from the [free scoping checklist](/checklist) or browse the [resources page](/resources).
