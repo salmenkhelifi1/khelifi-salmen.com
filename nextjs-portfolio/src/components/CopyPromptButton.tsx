@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Check, Copy } from "lucide-react";
+import { trackPromptCopied } from "@/lib/analytics";
 
 export default function CopyPromptButton({ text, label }: { text: string; label: string }) {
   const [copied, setCopied] = useState(false);
@@ -9,6 +10,7 @@ export default function CopyPromptButton({ text, label }: { text: string; label:
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(text);
+      trackPromptCopied({ stage: label });
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {

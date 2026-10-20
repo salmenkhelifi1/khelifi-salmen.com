@@ -1,4 +1,5 @@
 import posthog from "posthog-js";
+import { sendGAEvent } from "@next/third-parties/google";
 
 /**
  * Single source of truth for custom conversion events.
@@ -21,6 +22,9 @@ export const ANALYTICS_EVENTS = {
   lead_generated: ["source_page", "form_type"],
   contact_form_failed: ["error_type", "status_code"],
   outbound_link_clicked: ["destination_type", "destination_domain", "placement"],
+  lead_magnet_signup_attempt: ["resource", "placement", "source_page"],
+  resource_download: ["resource", "format", "placement", "source_page"],
+  prompt_copied: ["stage", "source_page"],
 } as const;
 
 export type AnalyticsEventName = keyof typeof ANALYTICS_EVENTS;
@@ -175,4 +179,64 @@ export function trackOutboundLink(params: {
     destination_domain: destinationDomain(params.href),
     placement: params.placement,
   });
+}
+
+/**
+ * GA4 mirror for lead-magnet events. GA4 only receives page views and
+ * generate_lead today, so these events also go to GA4 (no PII, flat strings).
+ * sendGAEvent is a no-op when GA is not loaded (internal hosts).
+ */
+function safeGA(event: string, properties: Record<string, string | undefined>) {
+  try {
+    if (typeof window === "undefined") return;
+    const clean: Record<string, string> = {};
+    for (const [k, v] of Object.entries(properties)) {
+      if (v) clean[k] = v;
+    }
+    sendGAEvent("event", event, clean);
+  } catch {
+    // Analytics must never break UX.
+  }
+}
+
+/**
+ * Subscribe form submitted. This is an ATTEMPT, not a confirmed subscription:
+ * the Substack form completes on substack.com, which this site cannot observe.
+ */
+export function trackLeadMagnetSignupAttempt(params: {
+  resource: string;
+  placement: string;
+  source_page?: string;
+}) {
+  const props = {
+    resource: params.resource,
+    placement: params.placement,
+    source_page: sourcePage(params.source_page),
+  };
+  safeCapture("lead_magnet_signup_attempt", props);
+  safeGA("lead_magnet_signup_attempt", props);
+}
+
+/** Download link clicked (a click, not proof the file finished downloading). */
+export function trackResourceDownload(params: {
+  resource: string;
+  format: string;
+  placement: string;
+  source_page?: string;
+}) {
+  const props = {
+    resource: params.resource,
+    format: params.format,
+    placement: params.placement,
+    source_page: sourcePage(params.source_page),
+  };
+  safeCapture("resource_download", props);
+  safeGA("resource_download", props);
+}
+
+/** A prompt from the security guide was copied. */
+export function trackPromptCopied(params: { stage: string; source_page?: string }) {
+  const props = { stage: params.stage, source_page: sourcePage(params.source_page) };
+  safeCapture("prompt_copied", props);
+  safeGA("prompt_copied", props);
 }

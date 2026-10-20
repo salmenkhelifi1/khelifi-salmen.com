@@ -6,6 +6,7 @@ import SiteFooter from "@/components/SiteFooter";
 import SectionContainer from "@/components/SectionContainer";
 import SubstackEmbed from "@/components/SubstackEmbed";
 import CopyPromptButton from "@/components/CopyPromptButton";
+import TrackedDownloadLink from "@/components/TrackedDownloadLink";
 import { promptStages } from "@/data/security-prompt-pack";
 import { siteUrl, socialImage, twitterImage } from "@/data/schema";
 
@@ -53,14 +54,16 @@ export default function SecurityPromptPackPage() {
               one that catches the confident, wrong answer.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-4">
-              <a
+              <TrackedDownloadLink
                 href="/guides/ai-code-security-prompt-pack.md"
-                download
+                resource="security-prompt-pack"
+                format="md"
+                placement="guide_page"
                 className="inline-flex min-h-11 items-center gap-2 text-[var(--accent)] underline underline-offset-4"
               >
                 <Download className="h-4 w-4" aria-hidden="true" />
                 Download as Markdown
-              </a>
+              </TrackedDownloadLink>
               <a
                 href="https://guide.khelifi-salmen.com"
                 target="_blank"
@@ -118,7 +121,7 @@ export default function SecurityPromptPackPage() {
           </section>
 
           <div className="mt-12 max-w-xl">
-            <SubstackEmbed />
+            <SubstackEmbed resource="security-prompt-pack" placement="guide_page" />
           </div>
 
           <p className="mt-8 text-body-regular text-[var(--text-secondary)]">

@@ -2,6 +2,7 @@
 
 import { useId, useState, FormEvent } from "react";
 import { substackUrl } from "@/data/schema";
+import { trackLeadMagnetSignupAttempt } from "@/lib/analytics";
 
 /**
  * Substack subscribe form, native dark mode UI.
@@ -12,9 +13,13 @@ import { substackUrl } from "@/data/schema";
 export default function SubstackEmbed({
   heading = "One practical guide a week",
   blurb = "Shipping AI-assisted software without shipping bugs. Subscribe and get the 7-prompt security audit pack straight away.",
+  resource = "newsletter",
+  placement = "footer",
 }: {
   heading?: string;
   blurb?: string;
+  resource?: string;
+  placement?: string;
 }) {
   const [email, setEmail] = useState("");
   const headingId = useId();
@@ -22,6 +27,7 @@ export default function SubstackEmbed({
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!email) return;
+    trackLeadMagnetSignupAttempt({ resource, placement });
     const targetUrl = `${substackUrl}/subscribe?email=${encodeURIComponent(email)}`;
     window.open(targetUrl, "_blank", "noopener,noreferrer");
   };

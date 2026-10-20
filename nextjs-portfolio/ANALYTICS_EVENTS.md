@@ -135,3 +135,23 @@ Do NOT launch surveys, A/B or flag experiments until baseline traffic exists. Su
 ## Experiments (baseline first)
 
 Candidates: hero headline, contact CTA wording, Book-a-Call vs Contact-Me, project order, social proof, résumé placement, form length. Require hypothesis + existing funnel + sufficient traffic.
+
+## lead_magnet_signup_attempt (GA4 + PostHog)
+
+- Meaning: the subscribe form was submitted. An ATTEMPT only: the Substack signup completes on substack.com, so confirmed subscriptions are NOT observable here (use Substack's own subscriber count).
+- Trigger: `SubstackEmbed.tsx` submit.
+- Allowed: `resource` (scoping-checklist|security-prompt-pack|newsletter), `placement` (checklist_page|guide_page|footer), `source_page`. No email, ever.
+- Impl: `src/lib/analytics.ts:trackLeadMagnetSignupAttempt` (sends to GA4 via `sendGAEvent` and to PostHog).
+
+## resource_download (GA4 + PostHog)
+
+- Meaning: a download link was clicked (a click, not a finished download).
+- Trigger: `TrackedDownloadLink.tsx` (guide page "Download as Markdown").
+- Allowed: `resource`, `format`, `placement`, `source_page`.
+- Gap: the checklist PDF is delivered in emails and DMs as a direct file link, which loads no site JavaScript, so those downloads are not measured by GA4. Use UTM-tagged landing pages for attribution instead.
+
+## prompt_copied (GA4 + PostHog)
+
+- Meaning: a prompt from the security guide was copied.
+- Trigger: `CopyPromptButton.tsx`.
+- Allowed: `stage` (stage title), `source_page`.

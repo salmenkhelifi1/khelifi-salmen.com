@@ -82,6 +82,8 @@ export default function ChecklistPage() {
 
               <div className="mt-10 max-w-xl">
                 <SubstackEmbed
+                  resource="scoping-checklist"
+                  placement="checklist_page"
                   heading="Get the checklist by email"
                   blurb="Subscribe and the checklist lands in your inbox, then occasional emails about building apps and websites. Unsubscribe any time."
                 />
