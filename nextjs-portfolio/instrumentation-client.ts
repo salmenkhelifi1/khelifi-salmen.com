@@ -37,7 +37,13 @@ if (token && !internal) {
     // scroll, Core Web Vitals (where supported by posthog-js defaults).
     capture_pageview: true,
     capture_pageleave: true,
-    autocapture: true,
+    // Privacy-safe mode (owner decision 2026-10-20, no consent banner yet):
+    // no session recording, no autocapture, nothing stored in cookies or
+    // localStorage. Custom events and page views only. Re-enable recording
+    // and persistence only after a consent banner exists.
+    autocapture: false,
+    disable_session_recording: true,
+    persistence: "memory",
     capture_exceptions: true,
     capture_performance: true,
     save_referrer: true,
